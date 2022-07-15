@@ -1,6 +1,11 @@
 import { Fragment, useRef, useState } from "react";
 import { Combobox, Transition } from "@headlessui/react";
-import { CheckIcon, SearchIcon, SelectorIcon } from "@heroicons/react/solid";
+import {
+  CheckIcon,
+  MenuIcon,
+  SearchIcon,
+  SelectorIcon,
+} from "@heroicons/react/solid";
 
 const people = [
   { id: 1, name: "Wade Cooper" },
@@ -11,8 +16,9 @@ const people = [
   { id: 6, name: "Hellen Schmidt" },
 ];
 
-export function Autocomplete() {
+export function Autocomplete(props: { className?: string }) {
   const ref = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState("");
   const [query, setQuery] = useState("");
 
@@ -27,14 +33,23 @@ export function Autocomplete() {
         );
 
   return (
-    <div className="top-16 md:w-72 hidden md:block">
-      <Combobox value={selected} onChange={setSelected}>
-        <InputDesktop
-          query={query}
-          setQuery={(text: string) => setQuery(text)}
-          filteredPeople={filteredPeople}
+    <div {...props}>
+      <div className="flex gap-4">
+        <MenuIcon
+          className="w-6 h-6 md:hidden text-gray-400 hover:text-gray-600 cursor-pointer"
+          aria-hidden="true"
         />
-      </Combobox>
+        <SearchIcon className="w-6 h-6 md:hidden" aria-hidden="true" />
+      </div>
+      <div className="top-16 md:w-64 hidden md:block">
+        <Combobox value={selected} onChange={setSelected}>
+          <InputDesktop
+            query={query}
+            setQuery={(text: string) => setQuery(text)}
+            filteredPeople={filteredPeople}
+          />
+        </Combobox>
+      </div>
     </div>
   );
 }
