@@ -1,11 +1,6 @@
 import { Fragment, useRef, useState } from "react";
 import { Combobox, Transition } from "@headlessui/react";
-import {
-  CheckIcon,
-  MenuIcon,
-  SearchIcon,
-  SelectorIcon,
-} from "@heroicons/react/solid";
+import { CheckIcon, MenuIcon, SearchIcon } from "@heroicons/react/solid";
 
 const people = [
   { id: 1, name: "Wade Cooper" },
@@ -36,10 +31,13 @@ export function Autocomplete(props: { className?: string }) {
     <div {...props}>
       <div className="flex gap-4">
         <MenuIcon
-          className="w-6 h-6 md:hidden text-gray-400 hover:text-gray-600 cursor-pointer"
+          className="w-7 h-7 md:hidden cursor-pointer"
           aria-hidden="true"
         />
-        <SearchIcon className="w-6 h-6 md:hidden" aria-hidden="true" />
+        <SearchIcon
+          className="w-7 h-7 md:hidden text-gray-400 hover:text-gray-600 cursor-pointer"
+          aria-hidden="true"
+        />
       </div>
       <div className="top-16 md:w-64 hidden md:block">
         <Combobox value={selected} onChange={setSelected}>
