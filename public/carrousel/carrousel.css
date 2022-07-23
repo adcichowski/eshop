@@ -1,0 +1,20 @@
+:root {
+  --swiper-navigation-color: "transparent";
+}
+.swiper-button-next,
+.swiper-button-prev {
+  margin: 0 10px;
+  background-repeat: no-repeat;
+  background-size: clamp(1rem, 2vw, 1.5rem) auto;
+  background-position: center;
+}
+.swiper-button-next {
+  background-image: url(./next.png);
+}
+.swiper-button-prev {
+  background-image: url(./prev.png);
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  display: none;
+}

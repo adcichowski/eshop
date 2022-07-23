@@ -3,11 +3,21 @@ import Image from "next/image";
 import React from "react";
 import "swiper/css";
 import "swiper/css/navigation";
-import { Navigation } from "swiper";
+
+import { Autoplay, Navigation } from "swiper";
 export const Carrousel = () => {
   return (
-    <>
-      <Swiper navigation={true} modules={[Navigation]}>
+    <div>
+      <Swiper
+        speed={450}
+        autoplay={{
+          delay: 3500,
+          disableOnInteraction: false,
+        }}
+        navigation={true}
+        className="my-6"
+        modules={[Navigation, Autoplay]}
+      >
         {["First", "Second", "Third"].map((room, i) => (
           <SwiperSlide key={room} className="min-w-screen aspect-video">
             <Image
@@ -18,6 +28,6 @@ export const Carrousel = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </>
+    </div>
   );
 };

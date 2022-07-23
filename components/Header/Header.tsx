@@ -6,8 +6,8 @@ import { headerCategories, navigationIcons } from "./constants";
 export const Header = () => {
   return (
     <>
-      <header className="grid items-center max-w-7xl min-w-md w-full mx-auto py-4 px-1 my-2 grid-cols-3 ">
-        <Autocomplete className="-ml-2" />
+      <header className="grid items-center max-w-7xl min-w-md w-full mx-auto py-4 px-3 md:px-1 my-2 grid-cols-3 ">
+        <Autocomplete />
         <h1 className="font-medium md:text-3xl text-2xl justify-self-center uppercase">
           PosterWall
         </h1>
