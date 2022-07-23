@@ -29,19 +29,6 @@ export const Header = () => {
           ))}
         </ul>
       </header>
-      <ul
-        className="uppercase flex bg-black text-white font-medium gap-4 col-span-3 justify-center
-        p-2 text-sm md:text-base"
-        aria-label="poster categories"
-      >
-        {headerCategories.map((category) => (
-          <li key={category}>
-            <Link href={`/${category}`} passHref>
-              <a>{category}</a>
-            </Link>
-          </li>
-        ))}
-      </ul>
     </>
   );
 };
