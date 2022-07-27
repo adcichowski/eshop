@@ -8,9 +8,11 @@ export const Header = () => {
     <>
       <header className="grid items-center max-w-7xl min-w-md w-full mx-auto py-4 px-3 md:px-1 my-2 grid-cols-3 ">
         <Autocomplete />
-        <h1 className="font-medium md:text-3xl text-2xl justify-self-center uppercase">
-          PosterWall
-        </h1>
+        <Link href="/" passHref>
+          <a className="justify-self-center uppercase">
+            <h1 className="font-medium md:text-3xl text-2xl ">PosterWall</h1>
+          </a>
+        </Link>
         <ul
           aria-label="navigation icons"
           className="flex justify-self-end gap-3"

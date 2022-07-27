@@ -1,15 +1,17 @@
-import { DotsVerticalIcon } from "@heroicons/react/solid";
-import { Pagination } from "@nextui-org/react";
-import { Autocomplete } from "components/Autocomplete/Autocomplete";
+import { gql, useQuery } from "@apollo/client";
 import { Carrousel } from "components/Carrousel/Carrousel";
 import { headerCategories } from "components/Header/constants";
-import { Header } from "components/Header/Header";
+import { GetProductsDocument } from "generated/graphql";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { useState } from "react";
-import { useQuery } from "react-query";
 
 const Home = () => {
+  const { loading, error, data } = useQuery(GetProductsDocument);
+  if (error) {
+    return <h1>{error.message}</h1>;
+  }
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
   return (
     <div className="flex flex-col min-h-screen ">
       <ul
@@ -26,6 +28,7 @@ const Home = () => {
         ))}
       </ul>
       <Carrousel />
+      <pre>{JSON.stringify(data, null, 2)}</pre>
     </div>
   );
 };
