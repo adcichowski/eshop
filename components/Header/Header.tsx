@@ -2,7 +2,7 @@
 import { Autocomplete } from "components/Autocomplete/Autocomplete";
 
 import Link from "next/link";
-import { headerCategories, navigationIcons } from "./constants";
+import { navigationIcons } from "./constants";
 export const Header = () => {
   return (
     <>
@@ -15,15 +15,15 @@ export const Header = () => {
         </Link>
         <ul
           aria-label="navigation icons"
-          className="flex justify-self-end gap-3"
+          className="flex justify-self-end gap-4"
         >
           {navigationIcons.map(({ Icon, ...propsArchon }) => (
             <li
-              className="text-gray-600 hover:text-gray-400"
+              className="hover:text-gray-600 text-gray-400"
               key={propsArchon.href}
             >
               <Archon {...propsArchon}>
-                <div className="md:w-7 md:h-7 w-5 h-5">
+                <div className="md:w-8 md:h-8 w-6 h-6">
                   <Icon />
                 </div>
               </Archon>

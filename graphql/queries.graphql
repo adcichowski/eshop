@@ -4,6 +4,10 @@ query GetProducts {
     price
     slug
     name
+    images(first: 1) {
+      id
+      url
+    }
   }
 }
 

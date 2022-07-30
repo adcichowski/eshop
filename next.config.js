@@ -12,6 +12,7 @@ const nextConfig = {
   },
   images: {
     formats: ["image/avif", "image/webp"],
+    domains: ["media.graphassets.com"],
   },
 };
 
