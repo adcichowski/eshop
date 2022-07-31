@@ -6,11 +6,13 @@ import { navigationIcons } from "./constants";
 export const Header = () => {
   return (
     <>
-      <header className="grid items-center max-w-7xl min-w-md w-full mx-auto py-4 px-3 md:px-1 my-2 grid-cols-3 ">
+      <header className="grid items-center max-w-7xl min-w-md w-full mx-auto py-4 md:px-3 px-1 my-2 grid-cols-3 ">
         <Autocomplete />
         <Link href="/" passHref>
           <a className="justify-self-center uppercase">
-            <h1 className="font-medium md:text-3xl text-2xl ">PosterWall</h1>
+            <h1 className="font-medium md:text-3xl sm:text-2xl text-base ">
+              PosterWall
+            </h1>
           </a>
         </Link>
         <ul
