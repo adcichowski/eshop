@@ -29,7 +29,7 @@ export function Autocomplete(props: { className?: string }) {
 
   return (
     <div {...props}>
-      <div className="flex gap-4">
+      <div className="flex gap-2">
         <MenuIcon
           className="w-7 h-7 md:hidden cursor-pointer"
           aria-hidden="true"
@@ -39,7 +39,7 @@ export function Autocomplete(props: { className?: string }) {
           aria-hidden="true"
         />
       </div>
-      <div className="top-16 md:w-64 hidden md:block">
+      <div className="top-16 md:w-70 hidden md:block">
         <Combobox value={selected} onChange={setSelected}>
           <InputDesktop
             query={query}

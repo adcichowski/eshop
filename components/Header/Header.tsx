@@ -6,26 +6,24 @@ import { navigationIcons } from "./constants";
 export const Header = () => {
   return (
     <>
-      <header className="grid items-center max-w-7xl min-w-md w-full mx-auto py-4 md:px-3 px-1 my-2 grid-cols-3 ">
-        <Autocomplete />
-        <Link href="/" passHref>
-          <a className="justify-self-center uppercase">
-            <h1 className="font-medium md:text-3xl sm:text-2xl text-base ">
-              PosterWall
-            </h1>
-          </a>
-        </Link>
-        <ul
-          aria-label="navigation icons"
-          className="flex justify-self-end gap-4"
-        >
+      <header className="flex items-center min-w-md w-full flex-column justify-around">
+        <Autocomplete className="pt-[22px] pb-12 pl-[60px]" />
+        <div className="flex flex-col uppercase text-center gap-[10px] -ml-32 pt-4">
+          <Link href="/" passHref>
+            <a className="font-medium xl:text-4xl md:text-3xl sm:text-2xl text-base">
+              <h1>PosterWall</h1>
+            </a>
+          </Link>
+          <p>Wysyłka w 2-4 dni robocze | darmowa dostawa od 199zł</p>
+        </div>
+        <ul aria-label="navigation icons" className="flex gap-4 pr-[71.5px]">
           {navigationIcons.map(({ Icon, ...propsArchon }) => (
             <li
               className="hover:text-gray-600 text-gray-400"
               key={propsArchon.href}
             >
               <Archon {...propsArchon}>
-                <div className="md:w-8 md:h-8 w-6 h-6">
+                <div className="w-[27.5px] h-[27.5px]">
                   <Icon />
                 </div>
               </Archon>
