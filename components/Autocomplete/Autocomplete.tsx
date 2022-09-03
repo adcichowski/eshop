@@ -35,7 +35,7 @@ export function Autocomplete(props: { className?: string }) {
           aria-hidden="true"
         />
         <SearchIcon
-          className="w-7 h-7 md:hidden text-gray-400 hover:text-gray-600 cursor-pointer"
+          className="w-7 h-7 md:hidden text-gray-400  cursor-pointer"
           aria-hidden="true"
         />
       </div>
@@ -71,12 +71,12 @@ const InputDesktop = ({
   }[];
 }) => {
   return (
-    <div className="relative mt-1">
+    <div className="relative mt-1 w-64">
       <div className="relative w-full cursor-default overflow-hidden rounded-sm bg-white text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 sm:text-sm">
         <Combobox.Input
           autoCorrect="false"
-          placeholder="search..."
-          className="w-full border-none py-1 pl-1 pr-10 text-sm leading-5 text-gray-900"
+          placeholder="Szukaj..."
+          className="w-full border-none py-1 pl-1 pr-10 placeholder-black text-sm leading-5 placeholder-opacity-70"
           displayValue={(person: { name: string }) => person.name}
           onChange={(event) => setQuery(event.target.value)}
         />
@@ -91,17 +91,15 @@ const InputDesktop = ({
       >
         <Combobox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
           {filteredPeople.length === 0 && query !== "" ? (
-            <div className="relative cursor-default select-none py-2 px-4 text-gray-700">
+            <div className="relative cursor-default select-none py-2 px-4">
               Nothing found.
             </div>
           ) : (
             filteredPeople.map((person) => (
               <Combobox.Option
                 key={person.id}
-                className={({ active }) =>
-                  `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                    active ? "bg-teal-600 text-white" : "text-gray-900"
-                  }`
+                className={
+                  "relative cursor-default select-none py-2 pl-10 pr-4"
                 }
                 value={person}
               >
