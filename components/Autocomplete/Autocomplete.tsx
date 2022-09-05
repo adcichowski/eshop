@@ -1,4 +1,4 @@
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useState } from "react";
 import { Combobox, Transition } from "@headlessui/react";
 import { CheckIcon, MenuIcon, SearchIcon } from "@heroicons/react/solid";
 
@@ -12,8 +12,6 @@ const people = [
 ];
 
 export function Autocomplete(props: { className?: string }) {
-  const ref = useRef(null);
-  const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState("");
   const [query, setQuery] = useState("");
 

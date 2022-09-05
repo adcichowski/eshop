@@ -1,5 +1,3 @@
-import { HTMLAttributes } from "react";
-
 type ButtonVariants = "primary" | "secondary";
 type ButtonProps = JSX.IntrinsicElements["button"] & {
   variant: ButtonVariants;

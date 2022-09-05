@@ -2,10 +2,7 @@ import { useQuery } from "@apollo/client";
 import { headerCategories } from "components/Header/constants";
 import { GetProductsDocument, GetProductsQuery } from "generated/graphql";
 import Link from "next/link";
-import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { PlusCircleIcon } from "@heroicons/react/outline";
-import { RoomsCarrousel } from "components/RoomsCarrousel/RoomsCarrousel";
+
 import { ProductsCarrousel } from "components/ProductsCarrousel/ProductsCarrousel";
 const Home = () => {
   const { loading, error, data } =
@@ -20,7 +17,6 @@ const Home = () => {
   return (
     <div className="flex flex-col min-h-screen ">
       <ListCategories />
-      <RoomsCarrousel />
 
       <section aria-labelledby="bestsellers">
         <h2 className="text-4xl m-8 font-medium" id="bestsellers">

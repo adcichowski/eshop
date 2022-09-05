@@ -1,4 +1,3 @@
-import Layout from "components/Layout/Layout";
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {

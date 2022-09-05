@@ -1,4 +1,3 @@
-import { gql, useQuery } from "@apollo/client";
 import { GetProductsDocument, GetProductsQuery } from "generated/graphql";
 import { apolloClient } from "graphql/apolloClient";
 import { InferGetStaticPropsType } from "next";

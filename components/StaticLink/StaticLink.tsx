@@ -8,11 +8,11 @@ export function StaticLink({
   href: string;
   children: React.ReactNode;
 }) {
-  const isFirstCharSlash = props.href[0] === "/";
-  if (isFirstCharSlash) {
+  const isFirstSlash = props.href[0] === "/";
+  if (isFirstSlash) {
     return (
       <Link {...props} passHref>
-        <a>{children}</a>
+        {children}
       </Link>
     );
   }
