@@ -6,6 +6,7 @@ module.exports = {
       primary: "#76A765",
       white: "#FFFFFF",
       red: "#D03535",
+      black: "#000000",
     },
   },
 };

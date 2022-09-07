@@ -6,7 +6,7 @@ import { navigationIcons } from "./constants";
 export const Header = () => (
   <>
     <header className="grid place-items-center grid-cols-3 items-center min-w-md w-full flex-column justify-around p-3 sm:p-4">
-      <Autocomplete />
+      <Autocomplete className="ml-14" />
       <div className="flex flex-col uppercase text-center gap-3">
         <Link href="/" passHref>
           <a className="font-medium xl:text-4xl md:text-3xl text-2xl">
@@ -19,10 +19,10 @@ export const Header = () => (
           darmowa dostawa od 199zł
         </p>
       </div>
-      <ul aria-label="navigation icons" className="flex gap-4">
+      <ul aria-label="navigation icons" className="flex gap-4 mr-5">
         {navigationIcons.map(({ Icon, ...propsArchon }) => (
           <li
-            className="hover:text-gray-600 text-gray-400"
+            className="hover:text-gray-600 text-gray-400 w-4 h-4 sm:w-7 sm:h-7"
             key={propsArchon.href}
           >
             <StaticLink {...propsArchon}>

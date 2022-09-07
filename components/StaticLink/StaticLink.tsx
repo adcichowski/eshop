@@ -10,11 +10,7 @@ export function StaticLink({
 }) {
   const isFirstSlash = props.href[0] === "/";
   if (isFirstSlash) {
-    return (
-      <Link {...props} passHref>
-        {children}
-      </Link>
-    );
+    return <Link {...props}>{children}</Link>;
   }
   return <a {...props}>{children}</a>;
 }
