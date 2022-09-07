@@ -19,28 +19,16 @@ const Home = () => {
 
   return (
     <div className="flex flex-col min-h-screen ">
-      <ul
-        className="hidden sm:flex uppercase bg-black text-white font-medium gap-4 justify-center
-p-2 text-sm md:text-base"
-        aria-label="poster categories"
-      >
-        {headerCategories.map((category) => (
-          <li key={category}>
-            <StaticLink
-              aria-label={`Go to category ${category}`}
-              href={`/${category}`}
-            >
-              {category}
-            </StaticLink>
-          </li>
-        ))}
-      </ul>
       <Carrousel
         {...settingsToEachCarrousel.mainRoomsCarrousel}
         renderSwiperSlide={() => (
           <>
             {["first", "second", "third"].map((el, i) => (
-              <SwiperSlide className="min-w-screen aspect-video" key={el}>
+              <SwiperSlide
+                aria-label="gallery"
+                className="min-w-screen aspect-video"
+                key={el}
+              >
                 <Image
                   priority={!i}
                   alt={`${el} room with posters`}

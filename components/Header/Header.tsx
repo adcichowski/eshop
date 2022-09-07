@@ -2,7 +2,7 @@ import { Autocomplete } from "components/Autocomplete/Autocomplete";
 import { StaticLink } from "components/StaticLink/StaticLink";
 
 import Link from "next/link";
-import { navigationIcons } from "./constants";
+import { headerCategories, navigationIcons } from "./constants";
 export const Header = () => (
   <>
     <header className="grid place-items-center grid-cols-3 items-center min-w-md w-full flex-column justify-around p-3 sm:p-4">
@@ -22,15 +22,31 @@ export const Header = () => (
       <ul aria-label="navigation icons" className="flex gap-4 mr-5">
         {navigationIcons.map(({ Icon, ...propsArchon }) => (
           <li
-            className="hover:text-gray-600 text-gray-400 sm:w-7 sm:h-7"
+            className="hover:text-gray-600 text-gray-400"
             key={propsArchon.href}
           >
             <StaticLink {...propsArchon} className="flex justify-center">
-              <Icon />
+              <Icon aria-hidden="true" />
             </StaticLink>
           </li>
         ))}
       </ul>
     </header>
+    <ul
+      className="hidden sm:flex uppercase bg-black text-white font-medium gap-4 justify-center
+p-2 text-sm md:text-base"
+      aria-label="poster categories"
+    >
+      {headerCategories.map((category) => (
+        <li key={category}>
+          <StaticLink
+            aria-label={`Go to category ${category}`}
+            href={`/${category}`}
+          >
+            {category}
+          </StaticLink>
+        </li>
+      ))}
+    </ul>
   </>
 );
