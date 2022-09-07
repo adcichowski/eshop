@@ -22,10 +22,10 @@ export const Header = () => (
       <ul aria-label="navigation icons" className="flex gap-4 mr-5">
         {navigationIcons.map(({ Icon, ...propsArchon }) => (
           <li
-            className="hover:text-gray-600 text-gray-400 w-4 h-4 sm:w-7 sm:h-7"
+            className="hover:text-gray-600 text-gray-400 sm:w-7 sm:h-7"
             key={propsArchon.href}
           >
-            <StaticLink {...propsArchon}>
+            <StaticLink {...propsArchon} className="flex justify-center">
               <Icon />
             </StaticLink>
           </li>

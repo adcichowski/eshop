@@ -4,8 +4,9 @@ export function StaticLink({
   children,
   ...props
 }: {
-  "aria-label": string;
+  "aria-label"?: string;
   href: string;
+  className?: string;
   children: React.ReactNode;
 }) {
   const isFirstSlash = props.href[0] === "/";
