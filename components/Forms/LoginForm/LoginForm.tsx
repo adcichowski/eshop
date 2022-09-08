@@ -5,15 +5,15 @@ import React from "react";
 export function LoginForm() {
   return (
     <section className="max-w-[435px] w-full" aria-labelledby="sectionLogin">
-      <form>
-        <fieldset className="flex flex-col items-center text-left">
-          <h2 id="sectionLogin" className="text-2xl self-stretch mb-6">
+      <form noValidate>
+        <fieldset className="flex flex-col items-center text-left gap-5">
+          <h2 id="sectionLogin" className="text-2xl self-stretch">
             Zaloguj się
           </h2>
           <label className="flex w-full flex-col">
-            E-mail:
+            <span className="text-[18px] mb-[6px]">E-mail:</span>
             <input
-              className="border border-gray rounded-sm py-0.5 px-2"
+              className="border text-sm border-gray rounded-sm py-3 px-2"
               type="email"
             />
           </label>
@@ -32,9 +32,9 @@ export function LoginForm() {
           Zaloguj się
         </Button>
         <p className="mt-3">
-          Nie pamiętasz{" "}
+          Nie pamiętasz?{" "}
           <StaticLink aria-label="to remind account" href="/remaind">
-            <span className="font-bold">Kliknij Tutaj</span>
+            <span className="font-semibold cursor-pointer">Kliknij Tutaj.</span>
           </StaticLink>
         </p>
       </form>

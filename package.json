@@ -13,6 +13,7 @@
     "@apollo/client": "^3.6.9",
     "@headlessui/react": "^1.6.5",
     "@heroicons/react": "^1.0.6",
+    "@hookform/resolvers": "^2.9.7",
     "@nextui-org/react": "^1.0.0-beta.9",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
@@ -23,9 +24,11 @@
     "prettier": "^2.7.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.34.2",
     "react-query": "^3.39.2",
     "sharp": "^0.30.7",
-    "swiper": "^8.3.1"
+    "swiper": "^8.3.1",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "2.9.1",
