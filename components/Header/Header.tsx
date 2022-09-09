@@ -25,9 +25,11 @@ export const Header = () => (
             className="hover:text-gray-600 text-gray-400"
             key={propsArchon.href}
           >
-            <StaticLink {...propsArchon} className="flex justify-center">
-              <Icon aria-hidden="true" />
-            </StaticLink>
+            <Link {...propsArchon} className="flex justify-center">
+              <span>
+                <Icon />
+              </span>
+            </Link>
           </li>
         ))}
       </ul>

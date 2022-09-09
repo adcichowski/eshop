@@ -1,29 +1,29 @@
 import { Button } from "components/Button/Button";
+import Input from "components/Input/Input";
 import { StaticLink } from "components/StaticLink/StaticLink";
 import React from "react";
 
+import { loginAccountSchema } from "../schemas/loginAccountSchema";
+import { useForm } from "../useForm";
+
 export function LoginForm() {
+  const { errors, handleSubmit } = useForm(loginAccountSchema);
+  const fields: JSX.IntrinsicElements["input"][] & { error?: string } = [
+    { name: "E-mail", type: "email", error: errors?.email },
+    { name: "Hasło", type: "password", error: errors?.password },
+  ];
   return (
     <section className="max-w-[435px] w-full" aria-labelledby="sectionLogin">
       <form noValidate>
-        <fieldset className="flex flex-col items-center text-left gap-5">
+        <fieldset className="flex flex-col items-center text-left gap-2">
           <h2 id="sectionLogin" className="text-2xl self-stretch">
             Zaloguj się
           </h2>
-          <label className="flex w-full flex-col">
-            <span className="text-[18px] mb-[6px]">E-mail:</span>
-            <input
-              className="border text-sm border-gray rounded-sm py-3 px-2"
-              type="email"
-            />
-          </label>
-          <label className="flex w-full flex-col">
-            Hasło:
-            <input
-              className="border border-gray rounded-sm py-0.5 px-2"
-              type="password"
-            />
-          </label>
+          {fields.map(({ name, type }) => (
+            <Input key={name} type={type}>
+              {name}
+            </Input>
+          ))}
         </fieldset>
         <Button
           variant="primary"
