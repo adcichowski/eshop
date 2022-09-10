@@ -1,5 +1,5 @@
 import { Button } from "components/Button/Button";
-import { Checkbox, Input, InputsRender } from "components/Inputs/Inputs";
+import { InputsRender } from "components/Inputs/Inputs";
 import { GenerateFields } from "types/utils";
 
 import { registerAccountSchema } from "../schemas/registerAccountSchema";
@@ -8,8 +8,11 @@ import { useForm } from "../useForm";
 export function RegisterForm() {
   const { errors, handleSubmit, register } = useForm(registerAccountSchema);
   const fields: GenerateFields<typeof registerAccountSchema> = {
-    email: { text: "E-mail", type: "email" },
-    password: { text: "Hasło", type: "password" },
+    email: {
+      text: "E-mail:",
+      type: "email",
+    },
+    password: { text: "Hasło:", type: "password" },
     passwordConfirmation: { text: "Powtórz hasło:", type: "password" },
     statueCheck: {
       text: "*Akceptuję regulamin serwisu i zapoznałem się z informacjami dotyczącymi moich danych osobowych poniżej.",
@@ -26,16 +29,24 @@ export function RegisterForm() {
       type: "checkbox",
     },
   };
+
   return (
     <section className="max-w-[435px] w-full" aria-labelledby="sectionRegister">
-      <form noValidate>
+      <form autoComplete="off" noValidate>
         <fieldset className="flex flex-col items-center text-left gap-2">
           <h2 id="sectionRegister" className="text-2xl self-stretch">
             Zarejestruj się
           </h2>
-          {Object.entries(fields).map(([name, props]) => (
-            <InputsRender key={name} {...props} {...register(name)} />
-          ))}
+          {Object.entries(fields).map(([name, props]) => {
+            return (
+              <InputsRender
+                error={String(errors?.[name]?.message ?? "")}
+                key={name}
+                {...props}
+                {...register(name)}
+              />
+            );
+          })}
         </fieldset>
         <Button
           variant="secondary"

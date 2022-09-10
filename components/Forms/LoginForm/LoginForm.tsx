@@ -17,6 +17,7 @@ export function LoginForm() {
     email: { text: "E-mail", type: "email" },
     password: { text: "Hasło", type: "password" },
   };
+
   return (
     <section className="max-w-[435px] w-full" aria-labelledby="sectionLogin">
       <form noValidate>

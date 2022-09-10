@@ -1,8 +1,8 @@
 import React from "react";
 
 export const InputsRender = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ type, ...props }, ref) => {
-    switch (type) {
+  ({ ...props }, ref) => {
+    switch (props.type) {
       case "checkbox":
         return <Checkbox {...props} ref={ref} />;
       default:
@@ -17,21 +17,24 @@ export type InputProps = JSX.IntrinsicElements["input"] & {
 };
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ text, error, ...props }, ref) => (
-    <>
-      <label className="flex w-full flex-col">
-        <span className="text-[18px] mb-[6px]">{text}</span>
-        <input
-          {...props}
-          ref={ref}
-          className="border text-sm border-gray rounded-sm py-3 px-2"
-        />
-      </label>
-      <p role="alert" className="text-xs">
-        {error ?? ""}
-      </p>
-    </>
-  )
+  ({ text, error, ...props }, ref) => {
+    console.log(props);
+    return (
+      <>
+        <label className="flex w-full flex-col">
+          <span className="text-[18px] mb-[6px]">{text}</span>
+          <input
+            {...props}
+            ref={ref}
+            className="border text-sm border-gray rounded-sm py-3 px-2"
+          />
+        </label>
+        <p role="alert" className="text-xs text-red">
+          {error ?? ""}
+        </p>
+      </>
+    );
+  }
 );
 
 export const Checkbox = React.forwardRef<HTMLInputElement, InputProps>(
@@ -48,7 +51,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, InputProps>(
           <span className="ml-[5px]">{text}</span>
         </label>
       </div>
-      <p role="alert" className="text-xs">
+      <p role="alert" className="text-xs text-red">
         {props.error}
       </p>
     </>
