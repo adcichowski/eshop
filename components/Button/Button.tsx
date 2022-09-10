@@ -9,7 +9,7 @@ const variantsButton: Record<
   JSX.IntrinsicElements["button"]["className"]
 > = {
   primary: "text-white bg-primary",
-  secondary: "bg-white text-primary",
+  secondary: "bg-white text-primary border-2 border-primary",
 };
 
 export function Button(props: ButtonProps) {

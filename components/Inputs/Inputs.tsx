@@ -1,11 +1,5 @@
 import React from "react";
 
-export type InputProps = JSX.IntrinsicElements["input"] & {
-  labelProps?: JSX.IntrinsicElements["label"];
-  error?: string;
-  text: string;
-};
-
 export const InputsRender = React.forwardRef<HTMLInputElement, InputProps>(
   ({ type, ...props }, ref) => {
     switch (type) {
@@ -17,30 +11,46 @@ export const InputsRender = React.forwardRef<HTMLInputElement, InputProps>(
   }
 );
 
+export type InputProps = JSX.IntrinsicElements["input"] & {
+  error?: string;
+  text: string | JSX.Element;
+};
+
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ text, error, labelProps, ...props }, ref) => (
+  ({ text, error, ...props }, ref) => (
     <>
-      <label className="flex w-full flex-col" {...labelProps}>
-        <span className="text-[18px] mb-[6px]">{text}:</span>
+      <label className="flex w-full flex-col">
+        <span className="text-[18px] mb-[6px]">{text}</span>
         <input
-          ref={ref}
           {...props}
-          className={`border text-sm border-gray rounded-sm py-3 px-2 ${props.className}`}
+          ref={ref}
+          className="border text-sm border-gray rounded-sm py-3 px-2"
         />
       </label>
-      <p className="text-xs">{error ?? ""}</p>
+      <p role="alert" className="text-xs">
+        {error ?? ""}
+      </p>
     </>
   )
 );
 
 export const Checkbox = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ labelProps, ...props }: InputProps, ref) => (
+  ({ text, ...props }: InputProps, ref) => (
     <>
-      <div className="flex gap-1">
-        <input {...props} type="checkbox" ref={ref} />
-        <label {...labelProps}>{props.text}</label>
+      <div className="flex gap-2 text-xs justify-center items-start">
+        <label className="flex justify-center items-start">
+          <input
+            {...props}
+            type="checkbox"
+            className=" accent-primary text-white "
+            ref={ref}
+          />
+          <span className="ml-[5px]">{text}</span>
+        </label>
       </div>
-      <p className="text-xs">{props.error}</p>
+      <p role="alert" className="text-xs">
+        {props.error}
+      </p>
     </>
   )
 );

@@ -7,11 +7,16 @@ export const registerAccountSchema = yup
       .matches(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/, {
         message: "Email jest niepoprawny!",
       }),
+
     password: yup
       .string()
       .required()
       .max(255)
       .min(8, "Hasło musi mieć więcej ni 8 znaków"),
+    passwordConfirmation: yup
+      .string()
+      .oneOf([yup.ref("password"), null], "Hasła muszą być takie same"),
+
     statueCheck: yup
       .boolean()
       .isTrue("Pole musi być zaznaczone")
