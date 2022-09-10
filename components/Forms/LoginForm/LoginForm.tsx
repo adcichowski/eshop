@@ -1,17 +1,22 @@
 import { Button } from "components/Button/Button";
-import Input from "components/Input/Input";
+import { Input } from "components/Inputs/Inputs";
 import { StaticLink } from "components/StaticLink/StaticLink";
 import React from "react";
+import type { GenerateFields } from "types/utils";
 
-import { loginAccountSchema } from "../schemas/loginAccountSchema";
+import {
+  LoginAccountSchema,
+  loginAccountSchema,
+} from "../schemas/loginAccountSchema";
 import { useForm } from "../useForm";
 
 export function LoginForm() {
-  const { errors, handleSubmit } = useForm(loginAccountSchema);
-  const fields: JSX.IntrinsicElements["input"][] & { error?: string } = [
-    { name: "E-mail", type: "email", error: errors?.email },
-    { name: "Hasło", type: "password", error: errors?.password },
-  ];
+  const { errors, handleSubmit, register } = useForm(loginAccountSchema);
+
+  const fields: GenerateFields<typeof loginAccountSchema> = {
+    email: { text: "E-mail", type: "email" },
+    password: { text: "Hasło", type: "password" },
+  };
   return (
     <section className="max-w-[435px] w-full" aria-labelledby="sectionLogin">
       <form noValidate>
@@ -19,10 +24,8 @@ export function LoginForm() {
           <h2 id="sectionLogin" className="text-2xl self-stretch">
             Zaloguj się
           </h2>
-          {fields.map(({ name, type }) => (
-            <Input key={name} type={type}>
-              {name}
-            </Input>
+          {Object.entries(fields).map(([name, props]) => (
+            <Input key={name} {...props} {...register(name)} />
           ))}
         </fieldset>
         <Button
