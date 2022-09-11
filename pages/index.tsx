@@ -1,12 +1,10 @@
 import { useQuery } from "@apollo/client";
-import { headerCategories } from "components/Header/constants";
 import { GetProductsDocument, GetProductsQuery } from "generated/graphql";
 import Image from "next/image";
 import { ProductsCarrousel } from "components/ProductsCarrousel/ProductsCarrousel";
 import { Carrousel } from "components/Carrousel/Carrousel";
 import { SwiperSlide } from "swiper/react";
 import { settingsToEachCarrousel } from "components/Carrousel/constants";
-import { StaticLink } from "components/StaticLink/StaticLink";
 const Home = () => {
   const { loading, error, data } =
     useQuery<GetProductsQuery>(GetProductsDocument);

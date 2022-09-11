@@ -31,7 +31,10 @@ export function RegisterForm() {
   };
 
   return (
-    <section className="max-w-[435px] w-full" aria-labelledby="sectionRegister">
+    <section
+      className="max-w-[435px] w-full mt-10 md:mt-0"
+      aria-labelledby="sectionRegister"
+    >
       <form
         autoComplete="off"
         noValidate
@@ -55,12 +58,7 @@ export function RegisterForm() {
             );
           })}
         </fieldset>
-        <Button
-          variant="secondary"
-          className="px-12 py-4 rounded-[10px] mt-6 text-lg"
-        >
-          Zarejestruj się
-        </Button>
+        <Button variant="secondary">Zarejestruj się</Button>
       </form>
     </section>
   );

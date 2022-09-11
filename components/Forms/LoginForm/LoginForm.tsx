@@ -16,8 +16,14 @@ export function LoginForm() {
   };
 
   return (
-    <section className="max-w-[435px] w-full" aria-labelledby="sectionLogin">
-      <form noValidate>
+    <section className="max-w-[435px] w-full " aria-labelledby="sectionLogin">
+      <form
+        noValidate
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSubmit((data) => console.log(data))();
+        }}
+      >
         <fieldset className="flex flex-col items-center text-left gap-2">
           <h2 id="sectionLogin" className="text-2xl self-stretch">
             Zaloguj się
@@ -26,14 +32,9 @@ export function LoginForm() {
             <Input key={name} {...props} {...register(name)} />
           ))}
         </fieldset>
-        <Button
-          variant="primary"
-          className="px-12 py-4 rounded-[10px] mt-6 text-lg"
-        >
-          Zaloguj się
-        </Button>
+        <Button variant="primary">Zaloguj się</Button>
         <p className="mt-3">
-          Nie pamiętasz?{" "}
+          Nie pamiętasz hasła?{" "}
           <StaticLink aria-label="to remind account" href="/remaind">
             <span className="font-semibold cursor-pointer">Kliknij Tutaj.</span>
           </StaticLink>
