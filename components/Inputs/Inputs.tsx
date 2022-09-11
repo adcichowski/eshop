@@ -18,7 +18,6 @@ export type InputProps = JSX.IntrinsicElements["input"] & {
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ text, error, ...props }, ref) => {
-    console.log(props);
     return (
       <>
         <label className="flex w-full flex-col">

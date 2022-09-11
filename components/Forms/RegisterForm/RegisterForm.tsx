@@ -32,7 +32,14 @@ export function RegisterForm() {
 
   return (
     <section className="max-w-[435px] w-full" aria-labelledby="sectionRegister">
-      <form autoComplete="off" noValidate>
+      <form
+        autoComplete="off"
+        noValidate
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSubmit((data) => console.log(data))();
+        }}
+      >
         <fieldset className="flex flex-col items-center text-left gap-2">
           <h2 id="sectionRegister" className="text-2xl self-stretch">
             Zarejestruj się

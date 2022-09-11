@@ -44,9 +44,7 @@ export async function getStaticProps({
   };
 }
 
-const ProductPage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
-  console.log(props);
-
+const ProductPage = () => {
   return (
     <div className="flex flex-col min-h-screen ">
       <main className="flex-grow grid grid-cols-2"></main>

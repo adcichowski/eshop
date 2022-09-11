@@ -4,10 +4,7 @@ import { StaticLink } from "components/StaticLink/StaticLink";
 import React from "react";
 import type { GenerateFields } from "types/utils";
 
-import {
-  LoginAccountSchema,
-  loginAccountSchema,
-} from "../schemas/loginAccountSchema";
+import { loginAccountSchema } from "../schemas/loginAccountSchema";
 import { useForm } from "../useForm";
 
 export function LoginForm() {
