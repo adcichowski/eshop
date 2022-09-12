@@ -15,7 +15,9 @@ export function RegisterForm({
     }>
   >;
 }) {
-  const { errors, handleSubmit, register } = useForm(registerAccountSchema);
+  const { errors, isValid, handleSubmit, register } = useForm(
+    registerAccountSchema
+  );
   const fields: GenerateFields<typeof registerAccountSchema> = {
     email: {
       text: "E-mail:",
@@ -38,7 +40,7 @@ export function RegisterForm({
       type: "checkbox",
     },
   };
-
+  console.log(errors);
   return (
     <section
       className="max-w-[435px] w-full mt-10 md:mt-0 md:justify-self-end"
@@ -70,7 +72,7 @@ export function RegisterForm({
             );
           })}
         </fieldset>
-        <Button variant="secondary">Zarejestruj się</Button>
+        <Button blocked={!isValid}>Zarejestruj się</Button>
       </form>
     </section>
   );

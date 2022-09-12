@@ -32,7 +32,7 @@ export function LoginForm({ setFormError }: { setFormError: () => void }) {
             <Input key={name} {...props} {...register(name)} />
           ))}
         </fieldset>
-        <Button variant="primary">Zaloguj się</Button>
+        <Button>Zaloguj się</Button>
         <p className="mt-3">
           Nie pamiętasz hasła?{" "}
           <StaticLink aria-label="to remind account" href="/remaind">
