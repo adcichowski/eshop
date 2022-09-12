@@ -7,16 +7,7 @@ import type { GenerateFields } from "types/utils";
 import { loginAccountSchema } from "../schemas/loginAccountSchema";
 import { useForm } from "../useForm";
 
-export function LoginForm({
-  setFormError,
-}: {
-  setFormError: React.Dispatch<
-    React.SetStateAction<{
-      isError: boolean;
-      errorFrom: string;
-    }>
-  >;
-}) {
+export function LoginForm({ setFormError }: { setFormError: () => void }) {
   const { errors, handleSubmit, register } = useForm(loginAccountSchema);
 
   const fields: GenerateFields<typeof loginAccountSchema> = {
@@ -30,10 +21,7 @@ export function LoginForm({
         noValidate
         onSubmit={(e) => {
           e.preventDefault();
-          handleSubmit(
-            (data) => console.log(data),
-            () => setFormError({ errorFrom: "logowania", isError: true })
-          )();
+          handleSubmit((data) => console.log(data), setFormError)();
         }}
       >
         <fieldset className="flex flex-col items-center text-left gap-2">
