@@ -5,7 +5,16 @@ import { GenerateFields } from "types/utils";
 import { registerAccountSchema } from "../schemas/registerAccountSchema";
 import { useForm } from "../useForm";
 
-export function RegisterForm() {
+export function RegisterForm({
+  setFormError,
+}: {
+  setFormError: React.Dispatch<
+    React.SetStateAction<{
+      isError: boolean;
+      errorFrom: string;
+    }>
+  >;
+}) {
   const { errors, handleSubmit, register } = useForm(registerAccountSchema);
   const fields: GenerateFields<typeof registerAccountSchema> = {
     email: {
@@ -32,7 +41,7 @@ export function RegisterForm() {
 
   return (
     <section
-      className="max-w-[435px] w-full mt-10 md:mt-0"
+      className="max-w-[435px] w-full mt-10 md:mt-0 md:justify-self-end"
       aria-labelledby="sectionRegister"
     >
       <form
@@ -40,7 +49,10 @@ export function RegisterForm() {
         noValidate
         onSubmit={(e) => {
           e.preventDefault();
-          handleSubmit((data) => console.log(data))();
+          handleSubmit(
+            (data) => console.log(data),
+            () => setFormError({ isError: true, errorFrom: "rejestracji" })
+          )();
         }}
       >
         <fieldset className="flex flex-col items-center text-left gap-2">
