@@ -15,7 +15,7 @@ export function RegisterForm({
     }>
   >;
 }) {
-  const { errors, isValid, handleSubmit, register } = useForm(
+  const { errors, isDirty, handleSubmit, register } = useForm(
     registerAccountSchema
   );
   const fields: GenerateFields<typeof registerAccountSchema> = {
@@ -72,7 +72,7 @@ export function RegisterForm({
             );
           })}
         </fieldset>
-        <Button blocked={!isValid}>Zarejestruj się</Button>
+        <Button blocked={!isDirty}>Zarejestruj się</Button>
       </form>
     </section>
   );

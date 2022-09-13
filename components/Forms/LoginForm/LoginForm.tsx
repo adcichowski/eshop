@@ -8,7 +8,8 @@ import { loginAccountSchema } from "../schemas/loginAccountSchema";
 import { useForm } from "../useForm";
 
 export function LoginForm({ setFormError }: { setFormError: () => void }) {
-  const { errors, handleSubmit, register } = useForm(loginAccountSchema);
+  const { errors, isValid, handleSubmit, register } =
+    useForm(loginAccountSchema);
 
   const fields: GenerateFields<typeof loginAccountSchema> = {
     email: { text: "E-mail", type: "email" },
@@ -29,10 +30,15 @@ export function LoginForm({ setFormError }: { setFormError: () => void }) {
             Zaloguj się
           </h2>
           {Object.entries(fields).map(([name, props]) => (
-            <Input key={name} {...props} {...register(name)} />
+            <Input
+              error={String(errors?.[name]?.message ?? "")}
+              key={name}
+              {...props}
+              {...register(name)}
+            />
           ))}
         </fieldset>
-        <Button>Zaloguj się</Button>
+        <Button blocked={!!isValid}>Zaloguj się</Button>
         <p className="mt-3">
           Nie pamiętasz hasła?{" "}
           <StaticLink aria-label="to remind account" href="/remaind">

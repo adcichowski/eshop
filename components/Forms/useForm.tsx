@@ -5,7 +5,7 @@ export function useForm<T extends Parameters<Resolver>[0]>(provideSchema: T) {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors, isValid, isDirty },
   } = useFormHook({
     resolver: yupResolver(provideSchema),
   });
@@ -13,6 +13,7 @@ export function useForm<T extends Parameters<Resolver>[0]>(provideSchema: T) {
     register,
     handleSubmit,
     errors,
+    isDirty,
     isValid,
   };
 }
