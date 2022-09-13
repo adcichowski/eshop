@@ -6,7 +6,7 @@ type ButtonProps = {
 export function Button({ blocked, ...props }: ButtonProps) {
   return (
     <button
-      aria-disabled={Boolean(blocked)}
+      aria-disabled={!!blocked}
       {...props}
       className={`font-semibold uppercase md:px-16 px-8 py-2 md:py-4 rounded-[10px] mt-6 text-base md:text-lg ${
         blocked

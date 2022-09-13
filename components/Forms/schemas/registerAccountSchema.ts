@@ -15,6 +15,7 @@ export const registerAccountSchema = yup
       .min(8, "Hasło musi mieć więcej niż 8 znaków!"),
     passwordConfirmation: yup
       .string()
+      .required("Hasła muszą być takie same!")
       .oneOf([yup.ref("password"), null], "Hasła muszą być takie same!"),
 
     statueCheck: yup

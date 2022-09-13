@@ -27,7 +27,7 @@ const AlertInfo = ({ errorInForm }: { errorInForm: ErrorInForm }) => {
   return !!errorInForm ? (
     <div
       role="alert"
-      className="w-full border-2 border-red col-span-2 mt-9 text-center text-red py-3 rounded-[4px]"
+      className="w-full border-2 border-red-200 col-span-2 mt-9 text-center text-red-200 py-3 rounded-[4px]"
     >
       Formularz {!!errorInForm && infoErrors[errorInForm]} zawiera błędy !!!
     </div>

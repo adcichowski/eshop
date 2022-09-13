@@ -1,5 +1,6 @@
 import React from "react";
-
+import clsx from "clsx";
+import { ErrorInInput } from "./components/ErrorInInput";
 export const InputsRender = React.forwardRef<HTMLInputElement, InputProps>(
   ({ ...props }, ref) => {
     switch (props.type) {
@@ -18,6 +19,7 @@ export type InputProps = JSX.IntrinsicElements["input"] & {
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ text, error, ...props }, ref) => {
+    console.log(error);
     return (
       <>
         <label className="flex w-full flex-col">
@@ -25,19 +27,19 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <input
             {...props}
             ref={ref}
-            className="border text-sm border-gray rounded-sm py-3 px-2"
+            className={`border text-sm border-gray rounded-sm py-3 px-2 ${clsx(
+              error && "bg-red-100 border-red-200"
+            )}`}
           />
         </label>
-        <p role="alert" className="text-xs text-red">
-          {error ?? ""}
-        </p>
+        <ErrorInInput error={error} />
       </>
     );
   }
 );
 
 export const Checkbox = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ text, ...props }: InputProps, ref) => (
+  ({ text, error, ...props }: InputProps, ref) => (
     <>
       <div className="flex gap-2 text-xs justify-center items-start">
         <label className="flex justify-center items-start">
@@ -50,9 +52,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, InputProps>(
           <span className="ml-[5px]">{text}</span>
         </label>
       </div>
-      <p role="alert" className="text-xs text-red">
-        {props.error}
-      </p>
+      <ErrorInInput error={error} />
     </>
   )
 );
