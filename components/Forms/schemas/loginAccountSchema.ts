@@ -3,15 +3,15 @@ export const loginAccountSchema = yup
   .object({
     email: yup
       .string()
-      .required("Email jest wymagany!")
+      .required("Email jest wymagany.")
       .matches(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/, {
-        message: "Email jest niepoprawny!",
+        message: "Nieprawidłowy adres e-mail.",
       }),
     password: yup
       .string()
-      .required()
-      .max(255)
-      .min(8, "Hasło musi mieć więcej ni 8 znaków"),
+      .required("Hasło jest wymagane.")
+      .max(255, "Hasło musi mieć mniej niż 8 znaków.")
+      .min(8, "Hasło musi mieć więcej niż 8 znaków."),
   })
   .required();
 

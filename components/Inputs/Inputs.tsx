@@ -32,7 +32,13 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             )}`}
           />
         </label>
-        <ErrorInInput error={error} />
+        {!!error && (
+          <ErrorInInput
+            id={props["aria-describedby"]}
+            data-testid={`${props.name}Error`}
+            error={error}
+          />
+        )}
       </>
     );
   }
@@ -52,7 +58,9 @@ export const Checkbox = React.forwardRef<HTMLInputElement, InputProps>(
           <span className="ml-[5px]">{text}</span>
         </label>
       </div>
-      <ErrorInInput error={error} />
+      {!!error && (
+        <ErrorInInput data-testid={props["aria-describedby"]} error={error} />
+      )}
     </>
   )
 );

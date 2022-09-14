@@ -1,5 +1,6 @@
 import { Button } from "components/Button/Button";
 import { InputsRender } from "components/Inputs/Inputs";
+
 import { GenerateFields } from "types/utils";
 
 import { registerAccountSchema } from "../schemas/registerAccountSchema";
@@ -15,7 +16,7 @@ export function RegisterForm({
     }>
   >;
 }) {
-  const { errors, isDirty, handleSubmit, register } = useForm(
+  const { errors, isValid, handleSubmit, register } = useForm(
     registerAccountSchema
   );
   const fields: GenerateFields<typeof registerAccountSchema> = {
@@ -40,7 +41,7 @@ export function RegisterForm({
       type: "checkbox",
     },
   };
-  console.log(errors);
+
   return (
     <section
       className="max-w-[435px] w-full mt-10 md:mt-0 md:justify-self-end"
@@ -66,13 +67,17 @@ export function RegisterForm({
               <InputsRender
                 error={String(errors?.[name]?.message ?? "")}
                 key={name}
+                aria-describedby={`${name}HintRegister`}
                 {...props}
                 {...register(name)}
+                data-testid={`${name}Register`}
               />
             );
           })}
         </fieldset>
-        <Button blocked={!isDirty}>Zarejestruj się</Button>
+        <Button data-testid="buttonRegister" blocked={!isValid}>
+          Zarejestruj się
+        </Button>
       </form>
     </section>
   );

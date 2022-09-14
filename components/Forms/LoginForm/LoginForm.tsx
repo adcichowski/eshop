@@ -32,13 +32,17 @@ export function LoginForm({ setFormError }: { setFormError: () => void }) {
           {Object.entries(fields).map(([name, props]) => (
             <Input
               error={String(errors?.[name]?.message ?? "")}
-              key={name}
+              key={`${name}Login`}
               {...props}
               {...register(name)}
+              aria-describedby={`${name}HintLogin`}
+              data-testid={`${name}Login`}
             />
           ))}
         </fieldset>
-        <Button blocked={!!isValid}>Zaloguj się</Button>
+        <Button data-testid="buttonLogin" blocked={!!isValid}>
+          Zaloguj się
+        </Button>
         <p className="mt-3">
           Nie pamiętasz hasła?{" "}
           <StaticLink aria-label="to remind account" href="/remaind">
