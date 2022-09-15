@@ -8,14 +8,14 @@ import { loginAccountSchema } from "../schemas/loginAccountSchema";
 import { useForm } from "../useForm";
 
 export function LoginForm({ setFormError }: { setFormError: () => void }) {
-  const { errors, isValid, handleSubmit, register } =
+  const { errors, isDirty, handleSubmit, register } =
     useForm(loginAccountSchema);
 
   const fields: GenerateFields<typeof loginAccountSchema> = {
-    email: { text: "E-mail", type: "email" },
-    password: { text: "Hasło", type: "password" },
+    email: { text: "E-mail:", type: "email" },
+    password: { text: "Hasło:", type: "password" },
   };
-
+  const shouldButtonBlocked = !!Object.values(errors).length || !isDirty;
   return (
     <section className="max-w-[435px] w-full " aria-labelledby="sectionLogin">
       <form
@@ -33,6 +33,7 @@ export function LoginForm({ setFormError }: { setFormError: () => void }) {
             <Input
               error={String(errors?.[name]?.message ?? "")}
               key={`${name}Login`}
+              id={`${name}Login`}
               {...props}
               {...register(name)}
               aria-describedby={`${name}HintLogin`}
@@ -40,7 +41,7 @@ export function LoginForm({ setFormError }: { setFormError: () => void }) {
             />
           ))}
         </fieldset>
-        <Button data-testid="buttonLogin" blocked={!!isValid}>
+        <Button data-testid="buttonLogin" blocked={shouldButtonBlocked}>
           Zaloguj się
         </Button>
         <p className="mt-3">

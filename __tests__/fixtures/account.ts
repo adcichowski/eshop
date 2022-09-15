@@ -22,6 +22,7 @@ export const errorsAlertsInputs = {
     required: "Powtórz hasło jest wymagane.",
   },
 };
+
 export const errorAlertLabel = (form: "login" | "register") => {
   const errors = {
     login: "logowania",

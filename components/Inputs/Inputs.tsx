@@ -19,7 +19,6 @@ export type InputProps = JSX.IntrinsicElements["input"] & {
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ text, error, ...props }, ref) => {
-    console.log(error);
     return (
       <>
         <label className="flex w-full flex-col">
@@ -35,7 +34,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {!!error && (
           <ErrorInInput
             id={props["aria-describedby"]}
-            data-testid={`${props.name}Error`}
+            data-testid={`${props.id}Error`}
             error={error}
           />
         )}

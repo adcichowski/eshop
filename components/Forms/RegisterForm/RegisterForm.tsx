@@ -16,9 +16,10 @@ export function RegisterForm({
     }>
   >;
 }) {
-  const { errors, isValid, handleSubmit, register } = useForm(
+  const { errors, handleSubmit, register, isDirty } = useForm(
     registerAccountSchema
   );
+
   const fields: GenerateFields<typeof registerAccountSchema> = {
     email: {
       text: "E-mail:",
@@ -41,7 +42,7 @@ export function RegisterForm({
       type: "checkbox",
     },
   };
-
+  const shouldButtonBlocked = !!Object.values(errors).length || !isDirty;
   return (
     <section
       className="max-w-[435px] w-full mt-10 md:mt-0 md:justify-self-end"
@@ -52,9 +53,8 @@ export function RegisterForm({
         noValidate
         onSubmit={(e) => {
           e.preventDefault();
-          handleSubmit(
-            (data) => console.log(data),
-            () => setFormError({ isError: true, errorFrom: "rejestracji" })
+          handleSubmit(() =>
+            setFormError({ isError: true, errorFrom: "rejestracji" })
           )();
         }}
       >
@@ -67,6 +67,7 @@ export function RegisterForm({
               <InputsRender
                 error={String(errors?.[name]?.message ?? "")}
                 key={name}
+                id={`${name}Register`}
                 aria-describedby={`${name}HintRegister`}
                 {...props}
                 {...register(name)}
@@ -75,7 +76,7 @@ export function RegisterForm({
             );
           })}
         </fieldset>
-        <Button data-testid="buttonRegister" blocked={!isValid}>
+        <Button data-testid="buttonRegister" blocked={shouldButtonBlocked}>
           Zarejestruj się
         </Button>
       </form>
