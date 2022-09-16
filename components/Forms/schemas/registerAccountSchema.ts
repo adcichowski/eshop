@@ -10,7 +10,7 @@ export const registerAccountSchema = yup.object({
   password: yup
     .string()
     .required("Hasło jest wymagane.")
-    .max(255, "Hasło nie może mieć więcej niż 60 znaków.")
+    .max(60, "Hasło nie może mieć więcej niż 60 znaków.")
     .min(8, "Hasło musi mieć więcej niż 8 znaków."),
   passwordConfirmation: yup
     .string()

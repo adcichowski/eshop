@@ -23,6 +23,41 @@ export const errorsAlertsInputs = {
   },
 };
 
+export const testsLoginForm = [
+  {
+    test: "required fields",
+    errors: [
+      { value: "Email jest wymagany." },
+      { value: "Hasło jest wymagane." },
+    ],
+  },
+
+  {
+    test: "invalid email",
+    fixtures: [
+      { testId: "emailLogin", value: faker.internet.email().slice(0, 2) },
+    ],
+    errors: { testId: "emailLoginError", value: "Nieprawidłowy adres e-mail." },
+  },
+
+  {
+    test: "too low chars in password",
+    fixtures: [{ testId: "passwordLogin", value: faker.internet.password(5) }],
+    errors: {
+      testId: "passwordLoginError",
+      value: "Hasło musi mieć więcej niż 8 znaków.",
+    },
+  },
+  {
+    test: "too much chars in password",
+    fixtures: [{ testId: "passwordLogin", value: faker.internet.password(61) }],
+    errors: {
+      testId: "passwordLoginError",
+      value: "Hasło musi mieć mniej niż 60 znaków.",
+    },
+  },
+];
+
 export const errorAlertLabel = (form: "login" | "register") => {
   const errors = {
     login: "logowania",
