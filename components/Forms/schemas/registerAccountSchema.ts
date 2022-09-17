@@ -4,7 +4,7 @@ export const registerAccountSchema = yup.object({
     .string()
     .required("Email jest wymagany.")
     .matches(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/, {
-      message: "Email jest niepoprawny.",
+      message: "Nieprawidłowy adres e-mail.",
     }),
 
   password: yup

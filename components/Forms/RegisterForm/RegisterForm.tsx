@@ -1,24 +1,25 @@
 import { Button } from "components/Button/Button";
 import { InputsRender } from "components/Inputs/Inputs";
-
+import { useEffect } from "react";
 import { GenerateFields } from "types/utils";
 
 import { registerAccountSchema } from "../schemas/registerAccountSchema";
 import { useForm } from "../useForm";
 
 export function RegisterForm({
-  setFormError,
+  setAlertInfo,
 }: {
-  setFormError: React.Dispatch<
-    React.SetStateAction<{
-      isError: boolean;
-      errorFrom: string;
-    }>
-  >;
+  setAlertInfo: (isOpen: boolean) => void;
 }) {
-  const { errors, handleSubmit, register, isDirty } = useForm(
+  const { errors, handleSubmit, register, formState } = useForm(
     registerAccountSchema
   );
+  const isErrorInForm = !!Object.values(errors).length;
+  useEffect(() => {
+    if (isErrorInForm) {
+      setAlertInfo(isErrorInForm);
+    }
+  }, [formState.errors]);
 
   const fields: GenerateFields<typeof registerAccountSchema> = {
     email: {
@@ -42,7 +43,6 @@ export function RegisterForm({
       type: "checkbox",
     },
   };
-  const shouldButtonBlocked = !!Object.values(errors).length || !isDirty;
   return (
     <section
       className="max-w-[435px] w-full mt-10 md:mt-0 md:justify-self-end"
@@ -53,9 +53,7 @@ export function RegisterForm({
         noValidate
         onSubmit={(e) => {
           e.preventDefault();
-          handleSubmit(() =>
-            setFormError({ isError: true, errorFrom: "rejestracji" })
-          )();
+          handleSubmit(() => console.log("hi"))();
         }}
       >
         <fieldset className="flex flex-col items-center text-left gap-2">
@@ -76,7 +74,10 @@ export function RegisterForm({
             );
           })}
         </fieldset>
-        <Button data-testid="buttonRegister" blocked={shouldButtonBlocked}>
+        <Button
+          data-testid="buttonRegister"
+          disabled={!!Object.values(errors).length}
+        >
           Zarejestruj się
         </Button>
       </form>

@@ -1,15 +1,13 @@
 type ButtonProps = {
   children: string;
-  blocked?: boolean;
 } & JSX.IntrinsicElements["button"];
 
-export function Button({ blocked, ...props }: ButtonProps) {
+export function Button({ ...props }: ButtonProps) {
   return (
     <button
-      aria-disabled={!!blocked}
       {...props}
       className={`transition-colors font-semibold uppercase md:px-16 px-8 py-2 md:py-4 rounded-[10px] mt-6 text-base md:text-lg ${
-        blocked
+        props.disabled
           ? "bg-white text-primary border-2 border-primary cursor-not-allowed"
           : "text-white bg-primary"
       }`}

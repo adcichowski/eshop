@@ -3,22 +3,34 @@ import { RegisterForm } from "components/Forms/RegisterForm/RegisterForm";
 import React, { useState } from "react";
 
 export function AccountPage() {
-  const [errorInForm, setErrorInForm] = useState<ErrorInForm>(undefined);
+  const [alertLabel, setAlertLabel] = useState<AlertLabel>({
+    isOpen: false,
+    errorIn: undefined,
+  });
+  const handleSetAlert =
+    (errorIn: "login" | "register") => (isOpen: boolean) => {
+      if (alertLabel.errorIn !== errorIn) {
+        setAlertLabel({ errorIn, isOpen });
+      }
+    };
   return (
     <div className="flex flex-col items-center">
       <div className="w-3/4">
-        <AlertInfo errorInForm={errorInForm} />
+        <AlertInfo errorInForm={alertLabel.errorIn} />
         <div className="grid md:grid-cols-2 sm:mt-16 mt-4 gap-2 grow">
-          <LoginForm setFormError={() => setErrorInForm("login")} />
-          <RegisterForm setFormError={() => setErrorInForm("register")} />
+          <LoginForm setAlertInfo={handleSetAlert("login")} />
+          <RegisterForm setAlertInfo={handleSetAlert("register")} />
         </div>
       </div>
     </div>
   );
 }
 
-type ErrorInForm = "login" | "register" | undefined;
-const AlertInfo = ({ errorInForm }: { errorInForm: ErrorInForm }) => {
+type AlertLabel = {
+  isOpen: boolean;
+  errorIn: undefined | "login" | "register";
+};
+const AlertInfo = ({ errorInForm }: { errorInForm: AlertLabel["errorIn"] }) => {
   const infoErrors = {
     login: "logowania",
     register: "rejestracji",
