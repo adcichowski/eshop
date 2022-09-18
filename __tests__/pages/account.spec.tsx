@@ -11,6 +11,10 @@ describe("Check validation in login form", () => {
     await userEvent.click(button);
   });
 
+  it("button log in should be disable", () => {
+    const button = screen.getByRole("button", { name: /Zaloguj się/i });
+    expect(button).toBeDisabled;
+  });
   it("required fields", async () => {
     const errorAlerts = await screen.findAllByRole("alert");
     const errorsText = errorAlerts.map((el) => el.textContent);
@@ -73,6 +77,11 @@ describe("Check validation in register form", () => {
     render(<AccountPage />);
     const button = screen.getByRole("button", { name: /Zarejestruj się/i });
     await userEvent.click(button);
+  });
+
+  it("button log in should be disable", () => {
+    const button = screen.getByRole("button", { name: /Zarejestruj się/i });
+    expect(button).toBeDisabled;
   });
 
   it("required fields", async () => {
