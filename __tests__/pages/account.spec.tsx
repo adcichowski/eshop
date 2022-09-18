@@ -57,7 +57,7 @@ describe("Check validation in login form", () => {
 
     expect(await alertsTexts()).toStrictEqual([
       "Formularz logowania zawiera błędy !!!",
-      "Hasło musi mieć mniej niż 60 znaków.",
+      "Hasło nie może mieć więcej niż 60 znaków.",
     ]);
   });
 
@@ -135,7 +135,6 @@ describe("Check validation in register form", () => {
   });
 
   it("password and repeated password must be same", async () => {
-    const repeatedPasswordInput = screen.getByLabelText("Powtórz hasło:");
     await userEvent.type(getInputsForm.email(), userAccount.email);
     await userEvent.type(getInputsForm.password(), userAccount.password);
     await userEvent.type(
