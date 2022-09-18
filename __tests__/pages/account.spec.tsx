@@ -4,21 +4,25 @@ import { render, screen } from "@testing-library/react";
 import { AccountPage } from "../../src/pages/account/AccountPage";
 import { faker } from "@faker-js/faker";
 import { userAccount } from "__tests__/fixtures/account";
+import { alertsTexts } from "__tests__/utils/utils";
+
 describe("Check validation in login form", () => {
+  const getInputsForm = {
+    button: () => screen.getByRole("button", { name: /Zaloguj się/i }),
+    email: () => screen.getAllByLabelText("E-mail:")[0],
+    password: () => screen.getAllByLabelText("Hasło:")[0],
+  };
+
   beforeEach(async () => {
     render(<AccountPage />);
-    const button = screen.getByRole("button", { name: /Zaloguj się/i });
-    await userEvent.click(button);
+    await userEvent.click(getInputsForm.button());
   });
 
   it("button log in should be disable", () => {
-    const button = screen.getByRole("button", { name: /Zaloguj się/i });
-    expect(button).toBeDisabled;
+    expect(getInputsForm.button()).toBeDisabled;
   });
   it("required fields", async () => {
-    const errorAlerts = await screen.findAllByRole("alert");
-    const errorsText = errorAlerts.map((el) => el.textContent);
-    expect(errorsText).toStrictEqual([
+    expect(await alertsTexts()).toStrictEqual([
       "Formularz logowania zawiera błędy !!!",
       "Email jest wymagany.",
       "Hasło jest wymagane.",
@@ -26,12 +30,11 @@ describe("Check validation in login form", () => {
   });
 
   it("invalid email", async () => {
-    const emailInput = screen.getAllByLabelText("E-mail:")[0];
-    await userEvent.type(emailInput, faker.internet.email().slice(0, 3));
-    const errorAlerts = (await screen.findAllByRole("alert")).map(
-      (error) => error.textContent
+    await userEvent.type(
+      getInputsForm.email(),
+      faker.internet.email().slice(0, 3)
     );
-    expect(errorAlerts).toStrictEqual([
+    expect(await alertsTexts()).toStrictEqual([
       "Formularz logowania zawiera błędy !!!",
       "Nieprawidłowy adres e-mail.",
       "Hasło jest wymagane.",
@@ -39,44 +42,42 @@ describe("Check validation in login form", () => {
   });
 
   it("too low chars in password", async () => {
-    const emailInput = screen.getAllByLabelText("E-mail:")[0];
-    const passwordInput = screen.getAllByLabelText("Hasło:")[0];
-    await userEvent.type(emailInput, faker.internet.email());
-    await userEvent.type(passwordInput, faker.internet.password(4));
-    const errorAlerts = (await screen.findAllByRole("alert")).map(
-      (err) => err.textContent
-    );
+    await userEvent.type(getInputsForm.email(), faker.internet.email());
+    await userEvent.type(getInputsForm.password(), faker.internet.password(4));
 
-    expect(errorAlerts).toStrictEqual([
+    expect(await alertsTexts()).toStrictEqual([
       "Formularz logowania zawiera błędy !!!",
       "Hasło musi mieć więcej niż 8 znaków.",
     ]);
   });
 
   it("too much chars in password", async () => {
-    const emailInput = screen.getAllByLabelText("E-mail:")[0];
-    const passwordInput = screen.getAllByLabelText("Hasło:")[0];
-    await userEvent.type(emailInput, faker.internet.email());
-    await userEvent.type(passwordInput, faker.internet.password(62));
-    const errorAlerts = (await screen.findAllByRole("alert")).map(
-      (err) => err.textContent
-    );
-    expect(errorAlerts).toStrictEqual([
+    await userEvent.type(getInputsForm.email(), faker.internet.email());
+    await userEvent.type(getInputsForm.password(), faker.internet.password(62));
+
+    expect(await alertsTexts()).toStrictEqual([
       "Formularz logowania zawiera błędy !!!",
       "Hasło musi mieć mniej niż 60 znaków.",
     ]);
   });
 
   it("should render 3 errors information", async () => {
-    expect(await screen.findAllByRole("alert")).toHaveLength(3);
+    expect(await alertsTexts()).toHaveLength(3);
   });
 });
 
 describe("Check validation in register form", () => {
+  const getInputsForm = {
+    button: () => screen.getByRole("button", { name: /Zarejestruj się/i }),
+    email: () => screen.getAllByLabelText("E-mail:")[1],
+    password: () => screen.getAllByLabelText("Hasło:")[1],
+    statueConfirm: () => screen.getAllByRole("checkbox")[0],
+    repeatedPassword: () => screen.getByLabelText("Powtórz hasło:"),
+  };
+
   beforeEach(async () => {
     render(<AccountPage />);
-    const button = screen.getByRole("button", { name: /Zarejestruj się/i });
-    await userEvent.click(button);
+    await userEvent.click(getInputsForm.button());
   });
 
   it("button log in should be disable", () => {
@@ -85,9 +86,7 @@ describe("Check validation in register form", () => {
   });
 
   it("required fields", async () => {
-    const errorAlerts = await screen.findAllByRole("alert");
-    const errorsText = errorAlerts.map((el) => el.textContent);
-    expect(errorsText).toStrictEqual([
+    expect(await alertsTexts()).toStrictEqual([
       "Formularz rejestracji zawiera błędy !!!",
       "Email jest wymagany.",
       "Hasło jest wymagane.",
@@ -97,12 +96,12 @@ describe("Check validation in register form", () => {
   });
 
   it("invalid email", async () => {
-    const emailInput = screen.getAllByLabelText("E-mail:")[1];
-    await userEvent.type(emailInput, faker.internet.email().slice(0, 3));
-    const errorAlerts = (await screen.findAllByRole("alert")).map(
-      (error) => error.textContent
+    await userEvent.type(
+      getInputsForm.email(),
+      faker.internet.email().slice(0, 3)
     );
-    expect(errorAlerts).toStrictEqual([
+
+    expect(await alertsTexts()).toStrictEqual([
       "Formularz rejestracji zawiera błędy !!!",
       "Nieprawidłowy adres e-mail.",
       "Hasło jest wymagane.",
@@ -112,15 +111,10 @@ describe("Check validation in register form", () => {
   });
 
   it("too low chars in password", async () => {
-    const emailInput = screen.getAllByLabelText("E-mail:")[1];
-    const passwordInput = screen.getAllByLabelText("Hasło:")[1];
-    await userEvent.type(emailInput, faker.internet.email());
-    await userEvent.type(passwordInput, faker.internet.password(4));
-    const errorAlerts = (await screen.findAllByRole("alert")).map(
-      (err) => err.textContent
-    );
+    await userEvent.type(getInputsForm.email(), faker.internet.email());
+    await userEvent.type(getInputsForm.password(), faker.internet.password(4));
 
-    expect(errorAlerts).toStrictEqual([
+    expect(await alertsTexts()).toStrictEqual([
       "Formularz rejestracji zawiera błędy !!!",
       "Hasło musi mieć więcej niż 8 znaków.",
       "Powtórz hasło jest wymagane.",
@@ -129,14 +123,10 @@ describe("Check validation in register form", () => {
   });
 
   it("too much chars in password", async () => {
-    const emailInput = screen.getAllByLabelText("E-mail:")[1];
-    const passwordInput = screen.getAllByLabelText("Hasło:")[1];
-    await userEvent.type(emailInput, faker.internet.email());
-    await userEvent.type(passwordInput, faker.internet.password(62));
-    const errorAlerts = (await screen.findAllByRole("alert")).map(
-      (err) => err.textContent
-    );
-    expect(errorAlerts).toStrictEqual([
+    await userEvent.type(getInputsForm.email(), faker.internet.email());
+    await userEvent.type(getInputsForm.password(), faker.internet.password(62));
+
+    expect(await alertsTexts()).toStrictEqual([
       "Formularz rejestracji zawiera błędy !!!",
       "Hasło nie może mieć więcej niż 60 znaków.",
       "Powtórz hasło jest wymagane.",
@@ -145,18 +135,16 @@ describe("Check validation in register form", () => {
   });
 
   it("password and repeated password must be same", async () => {
-    const emailInput = screen.getAllByLabelText("E-mail:")[1];
-    const passwordInput = screen.getAllByLabelText("Hasło:")[1];
-    const statueConfirmInput = screen.getAllByRole("checkbox")[0];
     const repeatedPasswordInput = screen.getByLabelText("Powtórz hasło:");
-    await userEvent.type(emailInput, userAccount.email);
-    await userEvent.type(passwordInput, userAccount.password);
-    await userEvent.type(repeatedPasswordInput, userAccount.repeatedPassword);
-    await userEvent.click(statueConfirmInput);
-    const errorsText = (await screen.findAllByRole("alert")).map(
-      (err) => err.textContent
+    await userEvent.type(getInputsForm.email(), userAccount.email);
+    await userEvent.type(getInputsForm.password(), userAccount.password);
+    await userEvent.type(
+      getInputsForm.repeatedPassword(),
+      userAccount.repeatedPassword
     );
-    expect(errorsText).toStrictEqual([
+    await userEvent.click(getInputsForm.statueConfirm());
+
+    expect(await alertsTexts()).toStrictEqual([
       "Formularz rejestracji zawiera błędy !!!",
       "Hasła muszą być takie same.",
       "Pole musi być zaznaczone.",
@@ -164,6 +152,6 @@ describe("Check validation in register form", () => {
   });
 
   it("should render 5 errors information", async () => {
-    expect(await screen.findAllByRole("alert")).toHaveLength(5);
+    expect(await alertsTexts()).toHaveLength(5);
   });
 });
