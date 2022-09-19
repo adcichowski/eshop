@@ -1,5 +1,6 @@
 type TypeHeadersTag = "h1" | "h2" | "h3" | "h4" | "h5";
 export function Newsletter({ HeaderTag }: { HeaderTag: TypeHeadersTag }) {
+  const DISCOUNT_PERCENT = "10%";
   return (
     <section
       className="w-full bg-primary mb-6"
@@ -21,8 +22,7 @@ export function Newsletter({ HeaderTag }: { HeaderTag: TypeHeadersTag }) {
         >
           Zyskaj{" "}
           <span className="text-4xl mx-1 my-1 text-white font-semibold">
-            {" "}
-            10%
+            {DISCOUNT_PERCENT}
           </span>{" "}
           zniżki na pierwsze zakupy{" "}
           <form className="inline text-base">
@@ -32,13 +32,13 @@ export function Newsletter({ HeaderTag }: { HeaderTag: TypeHeadersTag }) {
               </label>
               <input
                 id="email"
-                className="py-3 pl-3 placeholder:text-black"
-                placeholder="Twój email:"
+                className="py-3 pl-3 w-60 placeholder:text-black placeholder:text-opacity-70 border-2 border-white"
+                placeholder="Twój e-mail"
                 type="email"
               />
 
               <button
-                className="border-2 py-3 px-2 border-black uppercase"
+                className="border-2 py-3 px-2 w-32 font-semibold border-black uppercase"
                 type="submit"
               >
                 Zapisz się
