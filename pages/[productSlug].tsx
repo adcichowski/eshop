@@ -52,27 +52,39 @@ const ProductPage = ({
     <div className="flex flex-col min-h-screen ">
       <main className="grid grid-cols-3">
         <div className="mt-12">Categories</div>
-        <section className="col-span-2 mt-10 text-3xl">
-          {product?.name}
-          <div className="grid grid-cols-3">
-            <div className="col-span-2 self-start">
-              <Image
-                layout="responsive"
-                objectFit="contain"
-                width={4}
-                height={3}
-                alt={product?.name}
-                src={product?.images[0].url}
-              />
+        <section className="col-span-2 mt-10 text-[32px]">
+          <div className="grid grid-cols-2">
+            <div>
+              <h2>{product?.name}</h2>
+              <div className="grid grid-cols-2 mt-5">
+                <div className="col-span-2 self-start">
+                  <div className="flex">
+                    <Image
+                      objectPosition="left"
+                      width={392.36}
+                      height={551.43}
+                      alt={product?.name}
+                      src={product?.images[0].url}
+                    />
+                    <div className="ml-4 text-xl">
+                      <DiscountProduct />
+                      <div className="mt-6">Rozmiar:</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div>1</div>
           </div>
         </section>
       </main>
-      <pre>{JSON.stringify(product, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(product, null, 2)}</pre> */}
       <footer>Footer</footer>
     </div>
   );
 };
 
 export default ProductPage;
+
+const DiscountProduct = () => (
+  <div className="bg-black px-8 py-2 font-semibold text-white">-30%</div>
+);
