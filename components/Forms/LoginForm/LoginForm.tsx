@@ -2,7 +2,7 @@ import { Button } from "components/Button/Button";
 import { Input } from "components/Inputs/Inputs";
 import { StaticLink } from "components/StaticLink/StaticLink";
 import React, { useEffect } from "react";
-import type { GenerateFields } from "types/utils";
+import type { GenerateFields } from "types/types";
 
 import { loginAccountSchema } from "../schemas/loginAccountSchema";
 import { useForm } from "../useForm";

@@ -1,7 +1,7 @@
 import { Button } from "components/Button/Button";
 import { InputsRender } from "components/Inputs/Inputs";
 import { useEffect } from "react";
-import { GenerateFields } from "types/utils";
+import { GenerateFields } from "types/types";
 
 import { registerAccountSchema } from "../schemas/registerAccountSchema";
 import { useForm } from "../useForm";

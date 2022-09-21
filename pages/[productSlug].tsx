@@ -11,7 +11,8 @@ import { InferGetStaticPropsType } from "next";
 import { useState } from "react";
 import { useSelect } from "downshift";
 
-import { InferGetStaticPathsType } from "types/utils";
+import { InferGetStaticPathsType } from "types/types";
+import { changeValueCurrency, priceWithDiscount } from "utils/utils";
 
 export async function getStaticPaths() {
   const { data } = await apolloClient.query<GetProductsSlugsQuery>({
@@ -80,7 +81,7 @@ const ProductPage = ({
               <div className="mt-6 flex">
                 <div>Rozmiar:</div>
 
-                <SelectExample />
+                <SelectExample discount={30} />
               </div>
             </div>
           </div>
@@ -100,7 +101,7 @@ const DiscountProduct = () => (
   </div>
 );
 
-function SelectExample() {
+function SelectExample({ discount }: { discount: number }) {
   const sizes = [
     { width: 21, height: 30, prize: 4300 },
     { width: 30, height: 40, prize: 6500 },
@@ -111,7 +112,7 @@ function SelectExample() {
   function itemToString(
     item: { width: number; height: number; prize: number } | null
   ) {
-    return item ? `${item.width}x${item.height} ${item.prize}` : "";
+    return item ? `${item.width} x ${item.height} cm` : "";
   }
 
   function Select() {
@@ -136,19 +137,32 @@ function SelectExample() {
             type="button"
             {...getToggleButtonProps()}
           >
-            <span>{selectedItem ? selectedItem.width : "Wybierz rozmiar"}</span>
+            <div className="flex w-full justify-between">
+              <div className="text-sm">
+                {selectedItem ? itemToString(selectedItem) : "Wybierz rozmiar"}
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="text-xs line-through">
+                  {selectedItem?.prize &&
+                    priceWithDiscount(selectedItem?.prize, discount)}
+                </div>
+                <div className="text-sm text-discount font-semibold">
+                  {selectedItem?.prize &&
+                    changeValueCurrency(selectedItem?.prize)}
+                </div>
+              </div>
+            </div>
           </button>
         </div>
         <ul {...getMenuProps()} className="max-h-80 overflow-auto">
           {isOpen &&
             sizes.map((item, index) => (
               <li
-                className="py-2 px-3 shadow-sm flex flex-col max-w-40 max-w-[220px]"
+                className="py-2 px-3 shadow-sm flex flex-col max-w-40 max-w-[220px] text-sm"
                 key={`${item.prize}${index}`}
                 {...getItemProps({ item, index })}
               >
-                <span>{item.width}</span>
-                <span className="text-sm text-gray-700">{item.height}</span>
+                <span>{itemToString(item)}</span>
               </li>
             ))}
         </ul>
