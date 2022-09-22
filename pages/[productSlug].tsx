@@ -13,6 +13,7 @@ import { useSelect } from "downshift";
 
 import { InferGetStaticPathsType } from "types/types";
 import { changeValueCurrency, priceWithDiscount } from "utils/utils";
+import { ProductDescription } from "src/pages/product/components/ProductDescription";
 
 export async function getStaticPaths() {
   const { data } = await apolloClient.query<GetProductsSlugsQuery>({
@@ -69,37 +70,46 @@ const ProductPage = ({
               <Image
                 layout="responsive"
                 objectFit="contain"
-                width={392}
-                height={552}
+                width={292}
+                height={452}
                 alt={product?.name}
                 src={product?.images[0].url}
               />
             </div>
             <div className="ml-4 text-xl mt-5 flex flex-col">
-              <DiscountProduct />
-
-              <div className="mt-6 flex">
-                <div>Rozmiar:</div>
-
-                <SelectExample discount={30} />
+              <div className="bg-black text-center px-8 py-2 font-semibold text-white self-start">
+                -30%
               </div>
+              <div className="mt-6 flex flex-col gap-5">
+                <label className="flex items-center cursor-pointer">
+                  <span className="w-24">Rozmiar:</span>
+                  <SelectExample discount={30} />
+                </label>
+
+                <label className="flex items-center">
+                  <span className="w-24">Ilość:</span>
+                  <div>
+                    <input
+                      className="p-2 bg-white border-[0.5px] border-black px-3 w-16 text-center h-10 cursor-pointer"
+                      type="number"
+                      min={1}
+                    />
+                    <span className="ml-1">szt</span>
+                  </div>
+                </label>
+              </div>
+              <ProductDescription />
             </div>
           </div>
         </section>
       </main>
-      {/* <pre>{JSON.stringify(product, null, 2)}</pre> */}
+
       <footer>Footer</footer>
     </div>
   );
 };
 
 export default ProductPage;
-
-const DiscountProduct = () => (
-  <div className="bg-black text-center px-8 py-2 font-semibold text-white self-start">
-    -30%
-  </div>
-);
 
 function SelectExample({ discount }: { discount: number }) {
   const sizes = [
@@ -133,7 +143,7 @@ function SelectExample({ discount }: { discount: number }) {
         <div>
           <button
             aria-label="toggle menu"
-            className="p-2 bg-white flex justify-between border-2 border-black px-3 w-60"
+            className="p-2 bg-white flex justify-between border-[0.5px] border-black px-3 w-56"
             type="button"
             {...getToggleButtonProps()}
           >
@@ -154,15 +164,28 @@ function SelectExample({ discount }: { discount: number }) {
             </div>
           </button>
         </div>
-        <ul {...getMenuProps()} className="max-h-80 overflow-auto">
+        <ul
+          {...getMenuProps()}
+          className="max-h-80 overflow-auto absolute w-full max-w-[220px]"
+        >
           {isOpen &&
             sizes.map((item, index) => (
               <li
-                className="py-2 px-3 shadow-sm flex flex-col max-w-40 max-w-[220px] text-sm"
+                className="py-2 px-3 shadow-sm text-sm cursor-pointer bg-white"
                 key={`${item.prize}${index}`}
                 {...getItemProps({ item, index })}
               >
-                <span>{itemToString(item)}</span>
+                <div className="flex w-full justify-between">
+                  <div className="text-sm">{itemToString(item)}</div>
+                  <div>
+                    <div className="text-xs line-through">
+                      {priceWithDiscount(item?.prize, discount)}
+                    </div>
+                    <div className="text-sm text-discount font-semibold">
+                      {changeValueCurrency(item?.prize)}
+                    </div>
+                  </div>
+                </div>
               </li>
             ))}
         </ul>
