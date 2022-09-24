@@ -1,12 +1,12 @@
 query GetProducts {
   products {
     id
-    price
     slug
     name
     images(first: 1) {
       id
       url
+      alt
     }
   }
 }
@@ -21,7 +21,6 @@ query GetProductDetailsBySlug($slug: String) {
   product(where: { slug: $slug }) {
     name
     slug
-    price
     description
     images {
       url

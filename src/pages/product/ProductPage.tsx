@@ -64,3 +64,5 @@ export const ProductPage = ({
     </div>
   );
 };
+
+type x = InferGetStaticPropsType<typeof getStaticProps>;
