@@ -44,12 +44,6 @@ export async function getStaticProps({
     props: { product: data.product }, // will be passed to the page component as props
   };
 }
-const sizesPoster = [
-  { width: 50, height: 70, id: 1 },
-  { width: 40, height: 50, id: 2 },
-  { width: 30, height: 40, id: 3 },
-  { width: 21, height: 30, id: 1 },
-];
 
 const MainProductPage = (
   props: InferGetStaticPropsType<typeof getStaticProps>
