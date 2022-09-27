@@ -24,6 +24,7 @@ query GetProductDetailsBySlug($slug: String) {
     paperWeight
     orientation
     color
+    sale
     whiteFrame
     paperWeight
     finish

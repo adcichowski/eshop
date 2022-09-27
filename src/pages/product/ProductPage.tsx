@@ -35,13 +35,17 @@ export const ProductPage = ({
               />
             </div>
             <div className="ml-4 text-xl mt-5 flex flex-col">
-              <div className="bg-black text-center px-8 py-2 font-semibold text-white self-start">
-                -30%
-              </div>
+              {product.sale ? (
+                <div className="bg-black text-center px-8 py-2 font-semibold text-white self-start">
+                  {`-${product.sale}%`}
+                </div>
+              ) : (
+                <></>
+              )}
               <div className="mt-6 flex flex-col gap-5">
                 <label className="flex items-center cursor-pointer">
                   <span className="w-24 text-base">Rozmiar:</span>
-                  <SelectExample discount={30} />
+                  <SelectExample sale={product.sale} />
                 </label>
 
                 <label className="flex items-center">

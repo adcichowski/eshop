@@ -1,6 +1,6 @@
 import { changeValueCurrency, priceWithDiscount } from "utils/utils";
 import { useSelect } from "downshift";
-export function SelectExample({ discount }: { discount: number }) {
+export function SelectExample({ sale }: { sale?: string | null }) {
   const sizes = [
     { width: 21, height: 30, prize: 4300 },
     { width: 30, height: 40, prize: 6500 },
@@ -43,7 +43,8 @@ export function SelectExample({ discount }: { discount: number }) {
               <div className="flex items-center gap-2">
                 <div className="text-[0.6875rem]  line-through">
                   {selectedItem?.prize &&
-                    priceWithDiscount(selectedItem?.prize, discount)}
+                    sale &&
+                    priceWithDiscount(selectedItem?.prize, Number(sale))}
                 </div>
                 <div className="text-[0.8175rem] text-discount font-semibold">
                   {selectedItem?.prize &&
@@ -67,9 +68,11 @@ export function SelectExample({ discount }: { discount: number }) {
                 <div className="flex w-full text-[0.8125rem] items-center justify-between">
                   <div>{itemToString(item)}</div>
                   <div>
-                    <div className="text-[0.6875rem] line-through">
-                      {priceWithDiscount(item?.prize, discount)}
-                    </div>
+                    {sale && (
+                      <div className="text-[0.6875rem] line-through">
+                        {priceWithDiscount(item?.prize, Number(sale))}
+                      </div>
+                    )}
                     <div className="text-sm text-discount font-semibold">
                       {changeValueCurrency(item?.prize)}
                     </div>

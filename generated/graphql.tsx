@@ -4567,6 +4567,7 @@ export type Product = Node & {
   /** User that last published this document */
   publishedBy?: Maybe<User>;
   reviews: Array<Review>;
+  sale?: Maybe<Scalars['String']>;
   scheduledIn: Array<ScheduledOperation>;
   slug: Scalars['String'];
   /** System stage field */
@@ -4718,6 +4719,7 @@ export type ProductCreateInput = {
   orientation: Orientation;
   paperWeight: Scalars['Int'];
   reviews?: InputMaybe<ReviewCreateManyInlineInput>;
+  sale?: InputMaybe<Scalars['String']>;
   slug: Scalars['String'];
   updatedAt?: InputMaybe<Scalars['DateTime']>;
   variants?: InputMaybe<ProductVariantsCreateManyInlineInput>;
@@ -4898,6 +4900,25 @@ export type ProductManyWhereInput = {
   reviews_every?: InputMaybe<ReviewWhereInput>;
   reviews_none?: InputMaybe<ReviewWhereInput>;
   reviews_some?: InputMaybe<ReviewWhereInput>;
+  sale?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  sale_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  sale_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  sale_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  sale_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  sale_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  sale_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  sale_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  sale_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  sale_starts_with?: InputMaybe<Scalars['String']>;
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
@@ -4960,6 +4981,8 @@ export enum ProductOrderByInput {
   PaperWeightDesc = 'paperWeight_DESC',
   PublishedAtAsc = 'publishedAt_ASC',
   PublishedAtDesc = 'publishedAt_DESC',
+  SaleAsc = 'sale_ASC',
+  SaleDesc = 'sale_DESC',
   SlugAsc = 'slug_ASC',
   SlugDesc = 'slug_DESC',
   UpdatedAtAsc = 'updatedAt_ASC',
@@ -4982,6 +5005,7 @@ export type ProductUpdateInput = {
   orientation?: InputMaybe<Orientation>;
   paperWeight?: InputMaybe<Scalars['Int']>;
   reviews?: InputMaybe<ReviewUpdateManyInlineInput>;
+  sale?: InputMaybe<Scalars['String']>;
   slug?: InputMaybe<Scalars['String']>;
   variants?: InputMaybe<ProductVariantsUpdateManyInlineInput>;
   whiteFrame?: InputMaybe<Scalars['Boolean']>;
@@ -5033,6 +5057,7 @@ export type ProductUpdateManyInput = {
   localizations?: InputMaybe<ProductUpdateManyLocalizationsInput>;
   orientation?: InputMaybe<Orientation>;
   paperWeight?: InputMaybe<Scalars['Int']>;
+  sale?: InputMaybe<Scalars['String']>;
   whiteFrame?: InputMaybe<Scalars['Boolean']>;
 };
 
@@ -5892,6 +5917,25 @@ export type ProductWhereInput = {
   reviews_every?: InputMaybe<ReviewWhereInput>;
   reviews_none?: InputMaybe<ReviewWhereInput>;
   reviews_some?: InputMaybe<ReviewWhereInput>;
+  sale?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  sale_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  sale_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  sale_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  sale_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  sale_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  sale_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  sale_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  sale_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  sale_starts_with?: InputMaybe<Scalars['String']>;
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
@@ -9104,7 +9148,7 @@ export type GetProductDetailsBySlugQueryVariables = Exact<{
 }>;
 
 
-export type GetProductDetailsBySlugQuery = { __typename?: 'Query', product?: { __typename?: 'Product', name: string, description: string, paperWeight: number, orientation: Orientation, color: string, whiteFrame: boolean, finish: string, categories: Array<{ __typename?: 'Category', name: string }>, variants: Array<{ __typename?: 'ProductVariantType', id: string, price: number, size?: { __typename?: 'Size', width: number, height: number } | null }>, images: Array<{ __typename?: 'Asset', url: string, alt?: string | null }> } | null };
+export type GetProductDetailsBySlugQuery = { __typename?: 'Query', product?: { __typename?: 'Product', name: string, description: string, paperWeight: number, orientation: Orientation, color: string, sale?: string | null, whiteFrame: boolean, finish: string, categories: Array<{ __typename?: 'Category', name: string }>, variants: Array<{ __typename?: 'ProductVariantType', id: string, price: number, size?: { __typename?: 'Size', width: number, height: number } | null }>, images: Array<{ __typename?: 'Asset', url: string, alt?: string | null }> } | null };
 
 
 export const GetProductsDocument = gql`
@@ -9190,6 +9234,7 @@ export const GetProductDetailsBySlugDocument = gql`
     paperWeight
     orientation
     color
+    sale
     whiteFrame
     paperWeight
     finish
