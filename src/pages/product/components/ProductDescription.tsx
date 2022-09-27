@@ -9,17 +9,27 @@ type ProductDescriptionProps = {
 export const ProductDescription = ({
   paperWeight,
   whiteFrame,
-  ...restAttributes
+  category,
+  color,
+  orientation,
+  finish,
 }: ProductDescriptionProps) => {
   const displayAttributes = {
-    ...restAttributes,
+    category,
+    color,
+    "Paper Weight": (
+      <>
+        {paperWeight} <span className="lowercase">g/m2</span>
+      </>
+    ),
+    orientation,
+    finish,
     "White Frame": whiteFrame ? "included" : "not included",
-    "Paper Weight": paperWeight,
   };
   return (
     <section aria-labelledby="descriptionProduct" className="mt-4">
       <h4 id="descriptionProduct" className="text-lg">
-        Product Attributes
+        Attributes
       </h4>
       <div className="flex flex-col mt-4">
         {Object.entries(displayAttributes).map(([attribute, info]) => (

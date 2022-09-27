@@ -38,7 +38,7 @@ export function SelectExample({ sale }: { sale?: string | null }) {
           >
             <div className="flex  w-full justify-between">
               <div className="text-[0.8175rem]">
-                {selectedItem ? itemToString(selectedItem) : "Wybierz rozmiar"}
+                {selectedItem ? itemToString(selectedItem) : "Choose size"}
               </div>
               <div className="flex items-center gap-2">
                 <div className="text-[0.6875rem]  line-through">
