@@ -1,16 +1,18 @@
 import { PlusCircleIcon } from "@heroicons/react/outline";
+import { ProductVariantType } from "generated/graphql";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 export type ProductCarrouselProps = {
   id: string;
-  price: number;
   slug: string;
   name: string;
+  price: number;
   images: {
     id: string;
     url: string;
+    alt?: string | null;
   }[];
 };
 

@@ -32072,11 +32072,35 @@
                 "deprecationReason": null
               },
               {
+                "name": "orderBy",
+                "description": null,
+                "type": {
+                  "kind": "ENUM",
+                  "name": "ProductVariantTypeOrderByInput",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
                 "name": "skip",
                 "description": null,
                 "type": {
                   "kind": "SCALAR",
                   "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "ProductVariantTypeWhereInput",
                   "ofType": null
                 },
                 "defaultValue": null,
@@ -32094,8 +32118,8 @@
                   "kind": "NON_NULL",
                   "name": null,
                   "ofType": {
-                    "kind": "UNION",
-                    "name": "ProductVariants",
+                    "kind": "OBJECT",
+                    "name": "ProductVariantType",
                     "ofType": null
                   }
                 }
@@ -32445,7 +32469,7 @@
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "ProductVariantsCreateManyInlineInput",
+              "name": "ProductVariantTypeCreateManyInlineInput",
               "ofType": null
             },
             "defaultValue": null,
@@ -34150,6 +34174,42 @@
             "deprecationReason": null
           },
           {
+            "name": "variants_every",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "ProductVariantTypeWhereInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "variants_none",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "ProductVariantTypeWhereInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "variants_some",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "ProductVariantTypeWhereInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "whiteFrame",
             "description": null,
             "type": {
@@ -34500,7 +34560,7 @@
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "ProductVariantsUpdateManyInlineInput",
+              "name": "ProductVariantTypeUpdateManyInlineInput",
               "ofType": null
             },
             "defaultValue": null,
@@ -38997,526 +39057,6 @@
         "possibleTypes": null
       },
       {
-        "kind": "UNION",
-        "name": "ProductVariants",
-        "description": null,
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": [
-          {
-            "kind": "OBJECT",
-            "name": "ProductVariantType",
-            "ofType": null
-          }
-        ]
-      },
-      {
-        "kind": "INPUT_OBJECT",
-        "name": "ProductVariantsConnectInput",
-        "description": null,
-        "fields": null,
-        "inputFields": [
-          {
-            "name": "ProductVariantType",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "ProductVariantTypeConnectInput",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "INPUT_OBJECT",
-        "name": "ProductVariantsCreateInput",
-        "description": null,
-        "fields": null,
-        "inputFields": [
-          {
-            "name": "ProductVariantType",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "ProductVariantTypeCreateInput",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "INPUT_OBJECT",
-        "name": "ProductVariantsCreateManyInlineInput",
-        "description": null,
-        "fields": null,
-        "inputFields": [
-          {
-            "name": "connect",
-            "description": "Connect multiple existing ProductVariants documents",
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "ProductVariantsWhereUniqueInput",
-                  "ofType": null
-                }
-              }
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "create",
-            "description": "Create and connect multiple existing ProductVariants documents",
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "ProductVariantsCreateInput",
-                  "ofType": null
-                }
-              }
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "INPUT_OBJECT",
-        "name": "ProductVariantsCreateOneInlineInput",
-        "description": null,
-        "fields": null,
-        "inputFields": [
-          {
-            "name": "connect",
-            "description": "Connect one existing ProductVariants document",
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "ProductVariantsWhereUniqueInput",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "create",
-            "description": "Create and connect one ProductVariants document",
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "ProductVariantsCreateInput",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "INPUT_OBJECT",
-        "name": "ProductVariantsUpdateInput",
-        "description": null,
-        "fields": null,
-        "inputFields": [
-          {
-            "name": "ProductVariantType",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "ProductVariantTypeUpdateInput",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "INPUT_OBJECT",
-        "name": "ProductVariantsUpdateManyInlineInput",
-        "description": null,
-        "fields": null,
-        "inputFields": [
-          {
-            "name": "connect",
-            "description": "Connect multiple existing ProductVariants documents",
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "ProductVariantsConnectInput",
-                  "ofType": null
-                }
-              }
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "create",
-            "description": "Create and connect multiple ProductVariants documents",
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "ProductVariantsCreateInput",
-                  "ofType": null
-                }
-              }
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "delete",
-            "description": "Delete multiple ProductVariants documents",
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "ProductVariantsWhereUniqueInput",
-                  "ofType": null
-                }
-              }
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "disconnect",
-            "description": "Disconnect multiple ProductVariants documents",
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "ProductVariantsWhereUniqueInput",
-                  "ofType": null
-                }
-              }
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "set",
-            "description": "Override currently-connected documents with multiple existing ProductVariants documents",
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "ProductVariantsWhereUniqueInput",
-                  "ofType": null
-                }
-              }
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "update",
-            "description": "Update multiple ProductVariants documents",
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "ProductVariantsUpdateWithNestedWhereUniqueInput",
-                  "ofType": null
-                }
-              }
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "upsert",
-            "description": "Upsert multiple ProductVariants documents",
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "ProductVariantsUpsertWithNestedWhereUniqueInput",
-                  "ofType": null
-                }
-              }
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "INPUT_OBJECT",
-        "name": "ProductVariantsUpdateManyWithNestedWhereInput",
-        "description": null,
-        "fields": null,
-        "inputFields": [
-          {
-            "name": "ProductVariantType",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "ProductVariantTypeUpdateManyWithNestedWhereInput",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "INPUT_OBJECT",
-        "name": "ProductVariantsUpdateOneInlineInput",
-        "description": null,
-        "fields": null,
-        "inputFields": [
-          {
-            "name": "connect",
-            "description": "Connect existing ProductVariants document",
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "ProductVariantsWhereUniqueInput",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "create",
-            "description": "Create and connect one ProductVariants document",
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "ProductVariantsCreateInput",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "delete",
-            "description": "Delete currently connected ProductVariants document",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "disconnect",
-            "description": "Disconnect currently connected ProductVariants document",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "update",
-            "description": "Update single ProductVariants document",
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "ProductVariantsUpdateWithNestedWhereUniqueInput",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "upsert",
-            "description": "Upsert single ProductVariants document",
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "ProductVariantsUpsertWithNestedWhereUniqueInput",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "INPUT_OBJECT",
-        "name": "ProductVariantsUpdateWithNestedWhereUniqueInput",
-        "description": null,
-        "fields": null,
-        "inputFields": [
-          {
-            "name": "ProductVariantType",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "ProductVariantTypeUpdateWithNestedWhereUniqueInput",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "INPUT_OBJECT",
-        "name": "ProductVariantsUpsertWithNestedWhereUniqueInput",
-        "description": null,
-        "fields": null,
-        "inputFields": [
-          {
-            "name": "ProductVariantType",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "ProductVariantTypeUpsertWithNestedWhereUniqueInput",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "INPUT_OBJECT",
-        "name": "ProductVariantsWhereInput",
-        "description": null,
-        "fields": null,
-        "inputFields": [
-          {
-            "name": "ProductVariantType",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "ProductVariantTypeWhereInput",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "INPUT_OBJECT",
-        "name": "ProductVariantsWhereUniqueInput",
-        "description": null,
-        "fields": null,
-        "inputFields": [
-          {
-            "name": "ProductVariantType",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "ProductVariantTypeWhereUniqueInput",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
         "kind": "INPUT_OBJECT",
         "name": "ProductWhereComparatorInput",
         "description": "This contains a set of filters that can be used to compare values internally",
@@ -41195,6 +40735,42 @@
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "UserWhereInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "variants_every",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "ProductVariantTypeWhereInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "variants_none",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "ProductVariantTypeWhereInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "variants_some",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "ProductVariantTypeWhereInput",
               "ofType": null
             },
             "defaultValue": null,

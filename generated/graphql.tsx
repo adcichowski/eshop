@@ -4576,7 +4576,7 @@ export type Product = Node & {
   updatedAt: Scalars['DateTime'];
   /** User that last updated this document */
   updatedBy?: Maybe<User>;
-  variants: Array<ProductVariants>;
+  variants: Array<ProductVariantType>;
   whiteFrame: Scalars['Boolean'];
 };
 
@@ -4684,7 +4684,9 @@ export type ProductVariantsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<ProductVariantTypeOrderByInput>;
   skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ProductVariantTypeWhereInput>;
 };
 
 export type ProductConnectInput = {
@@ -4722,7 +4724,7 @@ export type ProductCreateInput = {
   sale?: InputMaybe<Scalars['String']>;
   slug: Scalars['String'];
   updatedAt?: InputMaybe<Scalars['DateTime']>;
-  variants?: InputMaybe<ProductVariantsCreateManyInlineInput>;
+  variants?: InputMaybe<ProductVariantTypeCreateManyInlineInput>;
   whiteFrame: Scalars['Boolean'];
 };
 
@@ -4957,6 +4959,9 @@ export type ProductManyWhereInput = {
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   updatedBy?: InputMaybe<UserWhereInput>;
+  variants_every?: InputMaybe<ProductVariantTypeWhereInput>;
+  variants_none?: InputMaybe<ProductVariantTypeWhereInput>;
+  variants_some?: InputMaybe<ProductVariantTypeWhereInput>;
   whiteFrame?: InputMaybe<Scalars['Boolean']>;
   /** All values that are not equal to given value. */
   whiteFrame_not?: InputMaybe<Scalars['Boolean']>;
@@ -5007,7 +5012,7 @@ export type ProductUpdateInput = {
   reviews?: InputMaybe<ReviewUpdateManyInlineInput>;
   sale?: InputMaybe<Scalars['String']>;
   slug?: InputMaybe<Scalars['String']>;
-  variants?: InputMaybe<ProductVariantsUpdateManyInlineInput>;
+  variants?: InputMaybe<ProductVariantTypeUpdateManyInlineInput>;
   whiteFrame?: InputMaybe<Scalars['Boolean']>;
 };
 
@@ -5660,86 +5665,6 @@ export type ProductVariantTypeWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
-export type ProductVariants = ProductVariantType;
-
-export type ProductVariantsConnectInput = {
-  ProductVariantType?: InputMaybe<ProductVariantTypeConnectInput>;
-};
-
-export type ProductVariantsCreateInput = {
-  ProductVariantType?: InputMaybe<ProductVariantTypeCreateInput>;
-};
-
-export type ProductVariantsCreateManyInlineInput = {
-  /** Connect multiple existing ProductVariants documents */
-  connect?: InputMaybe<Array<ProductVariantsWhereUniqueInput>>;
-  /** Create and connect multiple existing ProductVariants documents */
-  create?: InputMaybe<Array<ProductVariantsCreateInput>>;
-};
-
-export type ProductVariantsCreateOneInlineInput = {
-  /** Connect one existing ProductVariants document */
-  connect?: InputMaybe<ProductVariantsWhereUniqueInput>;
-  /** Create and connect one ProductVariants document */
-  create?: InputMaybe<ProductVariantsCreateInput>;
-};
-
-export type ProductVariantsUpdateInput = {
-  ProductVariantType?: InputMaybe<ProductVariantTypeUpdateInput>;
-};
-
-export type ProductVariantsUpdateManyInlineInput = {
-  /** Connect multiple existing ProductVariants documents */
-  connect?: InputMaybe<Array<ProductVariantsConnectInput>>;
-  /** Create and connect multiple ProductVariants documents */
-  create?: InputMaybe<Array<ProductVariantsCreateInput>>;
-  /** Delete multiple ProductVariants documents */
-  delete?: InputMaybe<Array<ProductVariantsWhereUniqueInput>>;
-  /** Disconnect multiple ProductVariants documents */
-  disconnect?: InputMaybe<Array<ProductVariantsWhereUniqueInput>>;
-  /** Override currently-connected documents with multiple existing ProductVariants documents */
-  set?: InputMaybe<Array<ProductVariantsWhereUniqueInput>>;
-  /** Update multiple ProductVariants documents */
-  update?: InputMaybe<Array<ProductVariantsUpdateWithNestedWhereUniqueInput>>;
-  /** Upsert multiple ProductVariants documents */
-  upsert?: InputMaybe<Array<ProductVariantsUpsertWithNestedWhereUniqueInput>>;
-};
-
-export type ProductVariantsUpdateManyWithNestedWhereInput = {
-  ProductVariantType?: InputMaybe<ProductVariantTypeUpdateManyWithNestedWhereInput>;
-};
-
-export type ProductVariantsUpdateOneInlineInput = {
-  /** Connect existing ProductVariants document */
-  connect?: InputMaybe<ProductVariantsWhereUniqueInput>;
-  /** Create and connect one ProductVariants document */
-  create?: InputMaybe<ProductVariantsCreateInput>;
-  /** Delete currently connected ProductVariants document */
-  delete?: InputMaybe<Scalars['Boolean']>;
-  /** Disconnect currently connected ProductVariants document */
-  disconnect?: InputMaybe<Scalars['Boolean']>;
-  /** Update single ProductVariants document */
-  update?: InputMaybe<ProductVariantsUpdateWithNestedWhereUniqueInput>;
-  /** Upsert single ProductVariants document */
-  upsert?: InputMaybe<ProductVariantsUpsertWithNestedWhereUniqueInput>;
-};
-
-export type ProductVariantsUpdateWithNestedWhereUniqueInput = {
-  ProductVariantType?: InputMaybe<ProductVariantTypeUpdateWithNestedWhereUniqueInput>;
-};
-
-export type ProductVariantsUpsertWithNestedWhereUniqueInput = {
-  ProductVariantType?: InputMaybe<ProductVariantTypeUpsertWithNestedWhereUniqueInput>;
-};
-
-export type ProductVariantsWhereInput = {
-  ProductVariantType?: InputMaybe<ProductVariantTypeWhereInput>;
-};
-
-export type ProductVariantsWhereUniqueInput = {
-  ProductVariantType?: InputMaybe<ProductVariantTypeWhereUniqueInput>;
-};
-
 /** This contains a set of filters that can be used to compare values internally */
 export type ProductWhereComparatorInput = {
   /** This field can be used to request to check if the entry is outdated by internal comparison */
@@ -5974,6 +5899,9 @@ export type ProductWhereInput = {
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   updatedBy?: InputMaybe<UserWhereInput>;
+  variants_every?: InputMaybe<ProductVariantTypeWhereInput>;
+  variants_none?: InputMaybe<ProductVariantTypeWhereInput>;
+  variants_some?: InputMaybe<ProductVariantTypeWhereInput>;
   whiteFrame?: InputMaybe<Scalars['Boolean']>;
   /** All values that are not equal to given value. */
   whiteFrame_not?: InputMaybe<Scalars['Boolean']>;
@@ -9136,7 +9064,7 @@ export enum _SystemDateTimeFieldVariation {
 export type GetProductsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetProductsQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', id: string, slug: string, name: string, images: Array<{ __typename?: 'Asset', id: string, url: string, alt?: string | null }> }> };
+export type GetProductsQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', id: string, name: string, slug: string, variants: Array<{ __typename?: 'ProductVariantType', price: number, size?: { __typename?: 'Size', width: number, height: number } | null }>, images: Array<{ __typename?: 'Asset', id: string, alt?: string | null, url: string }> }> };
 
 export type GetProductsSlugsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -9155,12 +9083,19 @@ export const GetProductsDocument = gql`
     query GetProducts {
   products {
     id
-    slug
     name
+    slug
+    variants(orderBy: price_ASC, first: 1) {
+      price
+      size {
+        width
+        height
+      }
+    }
     images(first: 1) {
       id
-      url
       alt
+      url
     }
   }
 }
