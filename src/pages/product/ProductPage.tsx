@@ -1,30 +1,37 @@
-import { SelectExample } from "components/Select/Select";
+import { SelectVariant } from "src/pages/product/components/SelectVariant";
 import { InferGetStaticPropsType } from "next";
 import { getStaticProps } from "pages/[productSlug]";
 import { useState } from "react";
 import Image from "next/image";
 import { ProductDescription } from "./components/ProductDescription";
-const sizesPoster = [
-  { width: 50, height: 70, id: 1 },
-  { width: 40, height: 50, id: 2 },
-  { width: 30, height: 40, id: 3 },
-  { width: 21, height: 30, id: 1 },
-];
+import { StateSelect } from "./types";
 
 export const ProductPage = ({
   product,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const [sizePoster, setSizePoster] = useState(sizesPoster[0]);
-
   if (!product) return <h2>Product not found!</h2>;
+
+  const { finish, color, paperWeight, orientation, whiteFrame, variants } =
+    product;
+
+  const productVariants = product.variants.map(({ size, id, price }) => ({
+    price,
+    id,
+    width: size?.width,
+    height: size?.height,
+  }));
+
+  const [selectedVariant, setSelectedVariant] = useState<StateSelect>(
+    productVariants[0]
+  );
 
   const productDescription = {
     category: product.categories[0].name,
-    paperWeight: product.paperWeight,
-    color: product.color,
-    finish: product.finish,
-    orientation: product.orientation,
-    whiteFrame: product.whiteFrame,
+    paperWeight,
+    color,
+    finish,
+    orientation,
+    whiteFrame,
   };
 
   return (
@@ -45,17 +52,16 @@ export const ProductPage = ({
           </div>
 
           <div className="text-xl flex flex-col">
-            {product.sale ? (
-              <div className="bg-black text-center px-8 py-2 font-semibold text-white self-start">
-                {`-${product.sale}%`}
-              </div>
-            ) : (
-              <></>
-            )}
-            <div className="mt-6 flex flex-col gap-5">
+            <ProductSale sale={product.sale} />
+            <div className="flex flex-col gap-5">
               <label className="flex items-center cursor-pointer">
                 <span className="w-24 text-base">Size:</span>
-                <SelectExample sale={product.sale} />
+                <SelectVariant
+                  selectedVariant={selectedVariant}
+                  setSelectedVariant={setSelectedVariant}
+                  sale={product.sale}
+                  productVariants={productVariants}
+                />
               </label>
 
               <label className="flex items-center">
@@ -72,6 +78,7 @@ export const ProductPage = ({
             </div>
 
             <ProductDescription {...productDescription} />
+            <div></div>
           </div>
         </section>
       </main>
@@ -80,3 +87,12 @@ export const ProductPage = ({
     </div>
   );
 };
+
+const ProductSale = ({ sale }: { sale: string | undefined | null }) =>
+  sale ? (
+    <div className="mb-6 bg-black text-center px-8 py-2 font-semibold text-white self-start">
+      {`-${sale}%`}
+    </div>
+  ) : (
+    <></>
+  );

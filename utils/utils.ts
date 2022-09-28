@@ -1,8 +1,8 @@
-export const changeValueCurrency = (price: number, format = "pl-PL") => {
+export const changeValueCurrency = (price: number, format = "en-US") => {
   const priceWithRest = price / 100;
   const formatterPLN = new Intl.NumberFormat(format, {
     style: "currency",
-    currency: "PLN",
+    currency: "USD",
   });
   return formatterPLN.format(priceWithRest);
 };
