@@ -38,7 +38,7 @@ export function Newsletter({ HeaderTag }: { HeaderTag: TypeHeadersTag }) {
               />
 
               <button
-                className="border-2 py-3 px-2 w-32 font-semibold border-black uppercase"
+                className="border-2 py-3 px-2 w-32 font-semibold border-black uppercase "
                 type="submit"
               >
                 Zapisz się

@@ -52,7 +52,11 @@ export function LoginForm({
             />
           ))}
         </fieldset>
-        <Button data-testid="buttonLogin" disabled={isErrorInForm}>
+        <Button
+          data-testid="buttonLogin"
+          className="md:px-16 px-8 py-2 md:py-4 mt-6"
+          disabled={isErrorInForm}
+        >
           Zaloguj się
         </Button>
         <p className="mt-3">

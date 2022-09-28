@@ -5,9 +5,8 @@ import { useState } from "react";
 import Image from "next/image";
 import { ProductDescription } from "./components/ProductDescription";
 import { StateSelect } from "./types";
-import { changeValueCurrency, priceWithDiscount } from "utils/utils";
-import { clsx } from "clsx";
 import { ProductPrice } from "./components/ProductPrice";
+import { Button } from "components/Button/Button";
 export const ProductPage = ({
   product,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -16,7 +15,7 @@ export const ProductPage = ({
   const { finish, color, paperWeight, orientation, whiteFrame, variants } =
     product;
 
-  const productVariants = product.variants.map(({ size, id, price }) => ({
+  const productVariants = variants.map(({ size, id, price }) => ({
     price,
     id,
     width: size?.width,
@@ -40,7 +39,7 @@ export const ProductPage = ({
     <div className="flex flex-col">
       <main className="grid grid-cols-3 ml-40">
         <div className="mt-12">Categories</div>
-        <section className="mt-10 text-[32px] col-span-2 grid grid-cols-2 gap-5">
+        <section className="mt-10 text-[32px] col-span-2 grid grid-cols-2 gap-3">
           <h2 className="col-span-2 max-w-md text-3xl">{product.name}</h2>
           <div className="max-w-[392px]">
             <Image
@@ -81,6 +80,18 @@ export const ProductPage = ({
 
             <ProductDescription {...productDescription} />
             <ProductPrice sale={product.sale} price={selectedVariant.price} />
+            <div className="flex mt-3">
+              <div className="w-4 h-4 bg-avaible-product bg-contain"></div>
+              <div className="text-xs ml-[3px] font-normal">In store</div>
+            </div>
+            <span className="text-xs">
+              Delivery in 2-4 working days | Free delivery from 199zł
+            </span>
+            <div className="flex">
+              <Button className="px-14 rounded-none py-5 w-[306px]">
+                To Cart
+              </Button>
+            </div>
           </div>
         </section>
       </main>

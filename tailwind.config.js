@@ -6,6 +6,11 @@ module.exports = {
     "./src/**/*.{ts,tsx}",
   ],
   theme: {
+    extend: {
+      backgroundImage: {
+        "avaible-product": "url('/avaible-product.svg')",
+      },
+    },
     colors: {
       primary: "#76A765",
       white: "#FFFFFF",

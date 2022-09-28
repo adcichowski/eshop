@@ -8,6 +8,7 @@ export const changeValueCurrency = (price: number, format = "en-US") => {
 };
 
 export const priceWithDiscount = (price: number, discount: number) => {
-  const valueDiscount = price * (discount / 100);
+  const valueDiscount = Math.floor((price * discount) / 100);
+  console.log(price, valueDiscount);
   return changeValueCurrency(price - valueDiscount);
 };

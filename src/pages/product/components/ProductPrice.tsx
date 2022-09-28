@@ -7,16 +7,17 @@ export function ProductPrice({
   sale: string | undefined | null;
   price: number;
 }) {
+  console.log(price, sale);
   return (
     <div className="flex mt-4">
       <div
         className={`text-4xl ${clsx(sale && "text-discount")} font-semibold`}
       >
-        {changeValueCurrency(price)}
+        {priceWithDiscount(price, Number(sale))}
       </div>
       {sale ? (
         <div className="text-2xl line-through self-center ml-3">
-          {priceWithDiscount(price, Number(sale))}
+          {changeValueCurrency(price)}
         </div>
       ) : (
         <></>

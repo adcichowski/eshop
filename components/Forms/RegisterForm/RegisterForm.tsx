@@ -75,6 +75,7 @@ export function RegisterForm({
           })}
         </fieldset>
         <Button
+          className="md:px-16 px-8 py-2 md:py-4 mt-6"
           data-testid="buttonRegister"
           disabled={!!Object.values(errors).length}
         >

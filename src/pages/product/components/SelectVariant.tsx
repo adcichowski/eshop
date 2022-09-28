@@ -52,14 +52,14 @@ export function SelectVariant({
               <div className="text-[0.6875rem] line-through">
                 {selectedVariant?.price &&
                   sale &&
-                  priceWithDiscount(selectedVariant.price, Number(sale))}
+                  changeValueCurrency(selectedVariant.price)}
               </div>
               <div
                 className={`text-[0.8175rem] ${clsx(
                   sale && "text-discount"
                 )} font-semibold`}
               >
-                {changeValueCurrency(selectedVariant.price)}
+                {priceWithDiscount(selectedVariant.price, Number(sale))}
               </div>
             </div>
           </div>
@@ -81,7 +81,7 @@ export function SelectVariant({
                 <div>
                   {sale && (
                     <span className="text-[0.6875rem] mr-1 line-through">
-                      {priceWithDiscount(item?.price, Number(sale))}
+                      {changeValueCurrency(item?.price)}
                     </span>
                   )}
                   <span
@@ -89,7 +89,7 @@ export function SelectVariant({
                       sale && "text-discount"
                     )} font-semibold`}
                   >
-                    {changeValueCurrency(item?.price)}
+                    {priceWithDiscount(item?.price, Number(sale))}
                   </span>
                 </div>
               </div>
