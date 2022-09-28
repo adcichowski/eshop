@@ -5,7 +5,9 @@ import { useState } from "react";
 import Image from "next/image";
 import { ProductDescription } from "./components/ProductDescription";
 import { StateSelect } from "./types";
-
+import { changeValueCurrency, priceWithDiscount } from "utils/utils";
+import { clsx } from "clsx";
+import { ProductPrice } from "./components/ProductPrice";
 export const ProductPage = ({
   product,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -78,7 +80,7 @@ export const ProductPage = ({
             </div>
 
             <ProductDescription {...productDescription} />
-            <div></div>
+            <ProductPrice sale={product.sale} price={selectedVariant.price} />
           </div>
         </section>
       </main>

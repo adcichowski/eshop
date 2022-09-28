@@ -15,6 +15,7 @@ export function SelectVariant({
   sale,
   productVariants,
   selectedVariant,
+  setSelectedVariant,
 }: {
   sale?: string | null;
   productVariants: ProductVariants[];
@@ -30,6 +31,8 @@ export function SelectVariant({
   } = useSelect({
     items: productVariants,
     itemToString,
+    onSelectedItemChange: ({ selectedItem: newSelectedItem }) =>
+      newSelectedItem && setSelectedVariant(newSelectedItem),
   });
 
   return (
