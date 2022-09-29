@@ -40,11 +40,11 @@ export function SelectVariant({
       <div className="relative">
         <button
           aria-label="toggle menu"
-          className="p-[0.5px] bg-white flex justify-between border-[0.5px] border-black px-3 w-60"
+          className="p-[0.2px] bg-white flex justify-between border-[0.5px] border-black px-3 w-60"
           type="button"
           {...getToggleButtonProps()}
         >
-          <div className="flex  w-full justify-between">
+          <div className="flex w-full justify-between">
             <div className="text-[0.8175rem] ">
               {selectedItem ? itemToString(selectedItem) : "Choose size"}
             </div>

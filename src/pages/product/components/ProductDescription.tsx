@@ -27,11 +27,11 @@ export const ProductDescription = ({
     "White Frame": whiteFrame ? "included" : "not included",
   };
   return (
-    <section aria-labelledby="descriptionProduct" className="mt-4">
+    <section aria-labelledby="descriptionProduct" className="mt-3">
       <h4 id="descriptionProduct" className="text-lg">
         Attributes
       </h4>
-      <div className="flex flex-col mt-4">
+      <div className="flex flex-col mt-2">
         {Object.entries(displayAttributes).map(([attribute, info]) => (
           <div key={attribute} className="relative">
             <dl className="grid grid-cols-2 justify-between max-w-xs bg-opacity-60">

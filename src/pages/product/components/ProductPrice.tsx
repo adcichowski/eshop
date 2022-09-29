@@ -7,9 +7,8 @@ export function ProductPrice({
   sale: string | undefined | null;
   price: number;
 }) {
-  console.log(price, sale);
   return (
-    <div className="flex mt-4">
+    <div className="flex mt-3">
       <div
         className={`text-4xl ${clsx(sale && "text-discount")} font-semibold`}
       >

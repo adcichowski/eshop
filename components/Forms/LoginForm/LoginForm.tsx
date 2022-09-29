@@ -33,7 +33,6 @@ export function LoginForm({
         noValidate
         onSubmit={(e) => {
           e.preventDefault();
-          handleSubmit((data) => console.log(data))();
         }}
       >
         <fieldset className="flex flex-col items-center text-left gap-2">

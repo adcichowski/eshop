@@ -37,24 +37,27 @@ export const ProductPage = ({
 
   return (
     <div className="flex flex-col">
-      <main className="grid grid-cols-3 ml-40">
+      <main className="grid grid-cols-3">
         <div className="mt-12">Categories</div>
-        <section className="mt-10 text-[32px] col-span-2 grid grid-cols-2 gap-3">
-          <h2 className="col-span-2 max-w-md text-3xl">{product.name}</h2>
-          <div className="max-w-[392px]">
-            <Image
-              objectFit="contain"
-              layout="responsive"
-              width={392.36}
-              height={551.43}
-              alt={product?.name}
-              src={product?.images[0].url || ""}
-            />
+        <section className="mt-10 text-[32px] col-span-2 grid grid-cols-2 gap-5">
+          <div>
+            <h2 className="max-w-md md:text-3xl sm:text-2xl text-xl mb-5">
+              {product.name}
+            </h2>
+            <div>
+              <Image
+                objectFit="contain"
+                layout="responsive"
+                width={392.36}
+                height={551.43}
+                alt={product?.name}
+                src={product?.images[0].url || ""}
+              />
+            </div>
           </div>
-
-          <div className="text-xl flex flex-col">
+          <aside className="text-xl flex flex-col pt-14">
             <ProductSale sale={product.sale} />
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-3">
               <label className="flex items-center cursor-pointer">
                 <span className="w-24 text-base">Size:</span>
                 <SelectVariant
@@ -84,15 +87,15 @@ export const ProductPage = ({
               <div className="w-4 h-4 bg-avaible-product bg-contain"></div>
               <div className="text-xs ml-[3px] font-normal">In store</div>
             </div>
-            <span className="text-xs">
+            <span className="text-xs mt-4">
               Delivery in 2-4 working days | Free delivery from 199zł
             </span>
             <div className="flex">
-              <Button className="px-14 rounded-none py-5 w-[306px]">
+              <Button className="px-12 rounded-none py-4 w-[206px] mt-4">
                 To Cart
               </Button>
             </div>
-          </div>
+          </aside>
         </section>
       </main>
 
@@ -103,7 +106,7 @@ export const ProductPage = ({
 
 const ProductSale = ({ sale }: { sale: string | undefined | null }) =>
   sale ? (
-    <div className="mb-6 bg-black text-center px-8 py-2 font-semibold text-white self-start">
+    <div className="mb-[22px] bg-black text-center px-8 py-2 font-semibold text-white self-start">
       {`-${sale}%`}
     </div>
   ) : (

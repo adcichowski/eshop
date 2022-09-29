@@ -53,7 +53,6 @@ export function RegisterForm({
         noValidate
         onSubmit={(e) => {
           e.preventDefault();
-          handleSubmit(() => console.log("hi"))();
         }}
       >
         <fieldset className="flex flex-col items-center text-left gap-2">
