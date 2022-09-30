@@ -7,6 +7,7 @@ import { ProductDescription } from "./components/ProductDescription";
 import { StateSelect } from "./types";
 import { ProductPrice } from "./components/ProductPrice";
 import { Button } from "components/Button/Button";
+import Heart from "../../assets/heart.svg";
 export const ProductPage = ({
   product,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -39,15 +40,11 @@ export const ProductPage = ({
     <div className="flex flex-col">
       <main className="grid grid-cols-3">
         <div className="mt-12">Categories</div>
-        <section className="mt-10 text-[32px] col-span-2 grid grid-cols-2 gap-5">
+        <section className="mt-10 text-[32px] grid-rows-2 col-span-2 grid grid-cols-2 gap-5">
           <div>
-            <h2 className="max-w-md md:text-3xl sm:text-2xl text-xl mb-5">
-              {product.name}
-            </h2>
+            <h2 className="max-w-md text-[2rem] mb-5">{product.name}</h2>
             <div>
               <Image
-                objectFit="contain"
-                layout="responsive"
                 width={392.36}
                 height={551.43}
                 alt={product?.name}
@@ -55,7 +52,7 @@ export const ProductPage = ({
               />
             </div>
           </div>
-          <aside className="text-xl flex flex-col pt-14">
+          <aside className="text-xl flex flex-col pt-14 max-w-[377px]">
             <ProductSale sale={product.sale} />
             <div className="flex flex-col gap-3">
               <label className="flex items-center cursor-pointer">
@@ -90,10 +87,16 @@ export const ProductPage = ({
             <span className="text-xs mt-4">
               Delivery in 2-4 working days | Free delivery from 199zł
             </span>
-            <div className="flex">
-              <Button className="px-12 rounded-none py-4 w-[206px] mt-4">
+            <div className="flex mt-4 gap-1 w-full">
+              <Button className="px-12 w-full rounded-none py-4 h-full">
                 To Cart
               </Button>
+              <label className="h-full border-2 cursor-pointer border-black p-4">
+                <input type="checkbox" hidden />
+                <span>
+                  <Heart />
+                </span>
+              </label>
             </div>
           </aside>
         </section>
