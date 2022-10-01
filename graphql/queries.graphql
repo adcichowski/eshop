@@ -54,3 +54,10 @@ query GetProductDetailsBySlug($slug: String) {
     }
   }
 }
+
+query GetCategories {
+  categories {
+    name
+    slug
+  }
+}

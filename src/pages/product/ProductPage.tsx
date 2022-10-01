@@ -8,6 +8,7 @@ import { StateSelect } from "./types";
 import { ProductPrice } from "./components/ProductPrice";
 import { Button } from "components/Button/Button";
 import Heart from "../../assets/heart.svg";
+import { Categories } from "components/Categories/Categories";
 export const ProductPage = ({
   product,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -39,7 +40,7 @@ export const ProductPage = ({
   return (
     <div className="flex flex-col">
       <main className="grid grid-cols-3">
-        <div className="mt-12">Categories</div>
+        <Categories />
         <section className="mt-10 text-[32px] grid-rows-2 col-span-2 grid grid-cols-2 gap-5">
           <div>
             <h2 className="max-w-md text-[2rem] mb-5">{product.name}</h2>
