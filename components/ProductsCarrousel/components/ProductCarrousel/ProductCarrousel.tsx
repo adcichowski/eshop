@@ -1,4 +1,5 @@
 import { PlusCircleIcon } from "@heroicons/react/outline";
+import { Button } from "components/Button/Button";
 import { ProductVariantType } from "generated/graphql";
 import Image from "next/image";
 import Link from "next/link";
@@ -27,33 +28,28 @@ export const ProductCarrousel = ({
       <a href={slug}>
         <article aria-labelledby={name}>
           <div className="flex flex-col items-center">
-            <div className="border-black border flex items-center h-full">
-              <div className="w-48 sm:w-64 md:w-80">
+            <div className="flex items-center h-full">
+              <div className="sm:w-64 md:w-80 flex justify-center">
                 <Image
                   alt={name}
                   src={images[0].url}
-                  layout="responsive"
-                  width={4}
-                  objectFit="contain"
-                  height={3}
+                  width={180}
+                  height={251}
                 />
               </div>
             </div>
             <div className="my-1">
-              <h3
-                className="text-center mt-1 text-md md:text-2xl font-light"
-                id={name}
-              >
+              <h3 className="mt-1 text-xs" id={name}>
                 {name}
               </h3>
+              <span className="font-medium text-sm md:text-md">
+                od {price / 100} zł
+              </span>
 
-              <div className="flex justify-between w-48 items-center mt-1">
-                <span className="font-medium text-sm md:text-md">
-                  od {price / 100} zł
-                </span>
-                <button className="w-8 h-8 sm:w-10 sm:h-10">
-                  <PlusCircleIcon className="stroke-1 hover:text-gray-600 text-gray-400 duration-200" />
-                </button>
+              <div className="flex w-48 items-center mt-1">
+                <Button className="md:text-xs rounded-none py-1 px-4 font-thin normal-case">
+                  To Cart
+                </Button>
               </div>
             </div>
           </div>

@@ -3,15 +3,9 @@ import React from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
-import {
-  ProductCarrousel,
-  ProductCarrouselProps,
-} from "./components/ProductCarrousel/ProductCarrousel";
-export const ProductsCarrousel = ({
-  products,
-}: {
-  products: ProductCarrouselProps[];
-}) => {
+import { ProductCarrousel } from "./components/ProductCarrousel/ProductCarrousel";
+import { useGetProductsQuery } from "generated/graphql";
+export const ProductsCarrousel = () => {
   const settings: SwiperProps = {
     navigation: true,
     slidesPerView: 2,
@@ -35,10 +29,18 @@ export const ProductsCarrousel = ({
 
     modules: [Navigation],
   };
+  const { data } = useGetProductsQuery();
+  if (!data) return <></>;
+
+  const productsWithSmallestPrice = data.products.map((product) => ({
+    ...product,
+    price: Math.min(...product.variants.map(({ price }) => price)),
+  }));
+
   return (
     <div>
       <Swiper className="my-8" {...settings}>
-        {products.map((product) => (
+        {productsWithSmallestPrice.map((product) => (
           <SwiperSlide key={product.name}>
             <ProductCarrousel {...product} />
           </SwiperSlide>

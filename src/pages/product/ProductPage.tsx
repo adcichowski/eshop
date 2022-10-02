@@ -9,8 +9,8 @@ import { ProductPrice } from "./components/ProductPrice";
 import { Button } from "components/Button/Button";
 import Heart from "../../assets/heart.svg";
 import { Categories } from "components/Categories/Categories";
-import { MDXRemote } from "next-mdx-remote";
 import ProductDescription from "./components/ProductDescription";
+import { ProductsCarrousel } from "components/ProductsCarrousel/ProductsCarrousel";
 
 export const ProductPage = ({
   product,
@@ -106,6 +106,7 @@ export const ProductPage = ({
           <ProductDescription productDescription={product.description} />
         </section>
       </main>
+      <ProductsCarrousel />
 
       <footer>Footer</footer>
     </div>

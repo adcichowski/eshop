@@ -14,11 +14,7 @@ const Home = () => {
   if (loading) {
     return <p>Loading...</p>;
   }
-  const productsToCarrousel = data.products.map((product) => ({
-    ...product,
-    images: product.images,
-    price: product.variants[0].price,
-  }));
+
   return (
     <div className="flex flex-col min-h-screen ">
       <Carrousel
@@ -46,7 +42,7 @@ const Home = () => {
         <h2 className="text-4xl m-8 font-medium" id="bestsellers">
           Bestsellers
         </h2>
-        <ProductsCarrousel products={productsToCarrousel} />
+        <ProductsCarrousel />
       </section>
     </div>
   );
