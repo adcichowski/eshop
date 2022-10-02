@@ -9,6 +9,8 @@ import { ProductPrice } from "./components/ProductPrice";
 import { Button } from "components/Button/Button";
 import Heart from "../../assets/heart.svg";
 import { Categories } from "components/Categories/Categories";
+import { MDXRemote } from "next-mdx-remote";
+
 export const ProductPage = ({
   product,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -103,7 +105,9 @@ export const ProductPage = ({
             <div>
               <h2 className="text-2xl mb-2">Product Description</h2>
             </div>
-            <div className="text-xs">{product.description}</div>
+            <div className="text-xs">
+              <MDXRemote {...product.description} />
+            </div>
           </div>
         </section>
       </main>

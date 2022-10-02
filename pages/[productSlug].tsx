@@ -9,6 +9,7 @@ import { apolloClient } from "graphql/apolloClient";
 import { InferGetStaticPropsType } from "next";
 import { InferGetStaticPathsType } from "types/types";
 import { ProductPage } from "src/pages/product/ProductPage";
+import { serialize } from "next-mdx-remote/serialize";
 
 export async function getStaticPaths() {
   const { data } = await apolloClient.query<GetProductsSlugsQuery>({
@@ -40,8 +41,19 @@ export async function getStaticProps({
     query: GetProductDetailsBySlugDocument,
   });
 
+  if (!data.product) {
+    return {
+      props: {},
+      notFound: true,
+    };
+  }
   return {
-    props: { product: data.product }, // will be passed to the page component as props
+    props: {
+      product: {
+        ...data.product,
+        description: await serialize(data.product.description),
+      },
+    },
   };
 }
 
