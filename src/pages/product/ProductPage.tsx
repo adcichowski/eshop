@@ -10,6 +10,7 @@ import { Button } from "components/Button/Button";
 import Heart from "../../assets/heart.svg";
 import { Categories } from "components/Categories/Categories";
 import { MDXRemote } from "next-mdx-remote";
+import ProductDescription from "./components/ProductDescription";
 
 export const ProductPage = ({
   product,
@@ -101,14 +102,8 @@ export const ProductPage = ({
               </label>
             </div>
           </aside>
-          <div className="col-span-2">
-            <div>
-              <h2 className="text-2xl mb-2">Product Description</h2>
-            </div>
-            <div className="text-xs">
-              <MDXRemote {...product.description} />
-            </div>
-          </div>
+
+          <ProductDescription productDescription={product.description} />
         </section>
       </main>
 
