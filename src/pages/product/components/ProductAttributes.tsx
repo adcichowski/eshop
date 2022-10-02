@@ -1,4 +1,4 @@
-type ProductDescriptionProps = {
+type ProductAttributesProps = {
   category: string;
   paperWeight: number;
   orientation: string;
@@ -6,14 +6,14 @@ type ProductDescriptionProps = {
   finish: string;
   whiteFrame: boolean;
 };
-export const ProductDescription = ({
+export const ProductAttributes = ({
   paperWeight,
   whiteFrame,
   category,
   color,
   orientation,
   finish,
-}: ProductDescriptionProps) => {
+}: ProductAttributesProps) => {
   const displayAttributes = {
     category,
     color,

@@ -3,7 +3,7 @@ import { InferGetStaticPropsType } from "next";
 import { getStaticProps } from "pages/[productSlug]";
 import { useState } from "react";
 import Image from "next/image";
-import { ProductDescription } from "./components/ProductDescription";
+import { ProductAttributes } from "./components/ProductAttributes";
 import { StateSelect } from "./types";
 import { ProductPrice } from "./components/ProductPrice";
 import { Button } from "components/Button/Button";
@@ -41,19 +41,18 @@ export const ProductPage = ({
     <div className="flex flex-col">
       <main className="grid grid-cols-3">
         <Categories />
-        <section className="mt-10 text-[32px] grid-rows-2 col-span-2 grid grid-cols-2 gap-5">
+        <section className="mt-10 text-[32px] col-span-2 grid grid-cols-2 gap-5 max-w-3xl">
+          <h2 className="max-w-md text-3xl mb-5 col-span-2">{product.name}</h2>
+
           <div>
-            <h2 className="max-w-md text-[2rem] mb-5">{product.name}</h2>
-            <div>
-              <Image
-                width={392.36}
-                height={551.43}
-                alt={product?.name}
-                src={product?.images[0].url || ""}
-              />
-            </div>
+            <Image
+              width={392.36}
+              height={581.43}
+              alt={product?.name}
+              src={product?.images[0].url || ""}
+            />
           </div>
-          <aside className="text-xl flex flex-col pt-14 max-w-[377px]">
+          <aside className="text-xl flex flex-col max-w-[377px]">
             <ProductSale sale={product.sale} />
             <div className="flex flex-col gap-3">
               <label className="flex items-center cursor-pointer">
@@ -79,7 +78,7 @@ export const ProductPage = ({
               </label>
             </div>
 
-            <ProductDescription {...productDescription} />
+            <ProductAttributes {...productDescription} />
             <ProductPrice sale={product.sale} price={selectedVariant.price} />
             <div className="flex mt-3">
               <div className="w-4 h-4 bg-avaible-product bg-contain"></div>
@@ -89,7 +88,7 @@ export const ProductPage = ({
               Delivery in 2-4 working days | Free delivery from 199zł
             </span>
             <div className="flex mt-4 gap-1 w-full">
-              <Button className="px-12 w-full rounded-none py-4 h-full">
+              <Button className="px-12 w-full rounded-none py-4 h-full text-lg sm:text-sm">
                 To Cart
               </Button>
               <label className="h-full border-2 cursor-pointer border-black p-4">
@@ -100,6 +99,12 @@ export const ProductPage = ({
               </label>
             </div>
           </aside>
+          <div className="col-span-2">
+            <div>
+              <h2 className="text-2xl mb-2">Product Description</h2>
+            </div>
+            <div className="text-xs">{product.description}</div>
+          </div>
         </section>
       </main>
 

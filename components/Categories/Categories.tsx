@@ -4,7 +4,7 @@ import React from "react";
 
 export function Categories() {
   const { data } = useGetCategoriesQuery();
-  if (data?.categories === undefined) return <></>;
+  if (data?.categories === undefined) return <div></div>;
   const categories = [
     {
       name: "All posters",
