@@ -1,20 +1,20 @@
 import React, { createContext, useContext, useState } from "react";
 
 interface CartItems {
-  prize: string;
-  title: string;
+  readonly prize: string;
+  readonly title: string;
 }
 interface CartContextType {
-  items: CartItems[];
+  readonly items: readonly CartItems[];
 }
 const CartContext = createContext<CartContextType | null>(null);
 
 export const CartContextProvider = ({
   children,
 }: {
-  children: React.ReactNode;
+  readonly children: React.ReactNode;
 }) => {
-  const [cart, setCart] = useState<CartItems[] | []>([]);
+  const [cart, setCart] = useState<readonly CartItems[] | readonly []>([]);
   return (
     <CartContext.Provider value={{ items: cart }}>
       {children}

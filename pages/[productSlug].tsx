@@ -1,13 +1,15 @@
-import {
-  GetProductDetailsBySlugDocument,
+import type {
   GetProductDetailsBySlugQuery,
   GetProductDetailsBySlugQueryVariables,
-  GetProductsSlugsDocument,
   GetProductsSlugsQuery,
 } from "generated/graphql";
+import {
+  GetProductDetailsBySlugDocument,
+  GetProductsSlugsDocument,
+} from "generated/graphql";
 import { apolloClient } from "graphql/apolloClient";
-import { InferGetStaticPropsType } from "next";
-import { InferGetStaticPathsType } from "types/types";
+import type { InferGetStaticPropsType } from "next";
+import type { InferGetStaticPathsType } from "types/types";
 import { ProductPage } from "src/pages/product/ProductPage";
 import { serialize } from "next-mdx-remote/serialize";
 

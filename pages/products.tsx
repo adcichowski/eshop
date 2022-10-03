@@ -1,6 +1,7 @@
-import { GetProductsDocument, GetProductsQuery } from "generated/graphql";
+import type { GetProductsQuery } from "generated/graphql";
+import { GetProductsDocument } from "generated/graphql";
 import { apolloClient } from "graphql/apolloClient";
-import { InferGetStaticPropsType } from "next";
+import type { InferGetStaticPropsType } from "next";
 
 async function getStaticProps() {
   const { data } = await apolloClient.query<GetProductsQuery>({

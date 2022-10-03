@@ -1,8 +1,8 @@
 export type StateSelect = {
-  size?: {
-    width: number;
-    height: number;
+  readonly size?: {
+    readonly width: number;
+    readonly height: number;
   };
-  price: number;
-  id: string;
+  readonly price: number;
+  readonly id: string;
 };

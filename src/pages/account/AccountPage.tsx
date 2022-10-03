@@ -31,10 +31,14 @@ export function AccountPage() {
 }
 
 type AlertLabel = {
-  isOpen: boolean;
-  errorIn: undefined | "login" | "register";
+  readonly isOpen: boolean;
+  readonly errorIn: undefined | "login" | "register";
 };
-const AlertInfo = ({ errorInForm }: { errorInForm: AlertLabel["errorIn"] }) => {
+const AlertInfo = ({
+  errorInForm,
+}: {
+  readonly errorInForm: AlertLabel["errorIn"];
+}) => {
   const infoErrors = {
     login: "logowania",
     register: "rejestracji",

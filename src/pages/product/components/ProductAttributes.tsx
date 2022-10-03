@@ -1,10 +1,10 @@
 type ProductAttributesProps = {
-  category: string;
-  paperWeight: number;
-  orientation: string;
-  color: string;
-  finish: string;
-  whiteFrame: boolean;
+  readonly category: string;
+  readonly paperWeight: number;
+  readonly orientation: string;
+  readonly color: string;
+  readonly finish: string;
+  readonly whiteFrame: boolean;
 };
 export const ProductAttributes = ({
   paperWeight,

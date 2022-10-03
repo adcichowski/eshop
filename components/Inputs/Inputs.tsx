@@ -1,5 +1,5 @@
 import React from "react";
-import clsx from "clsx";
+import Clsx from "clsx";
 import { ErrorInInput } from "./components/ErrorInInput";
 export const InputsRender = React.forwardRef<HTMLInputElement, InputProps>(
   ({ ...props }, ref) => {
@@ -13,8 +13,8 @@ export const InputsRender = React.forwardRef<HTMLInputElement, InputProps>(
 );
 
 export type InputProps = JSX.IntrinsicElements["input"] & {
-  error?: string;
-  text: string | JSX.Element;
+  readonly error?: string;
+  readonly text: string | JSX.Element;
 };
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -26,7 +26,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <input
             {...props}
             ref={ref}
-            className={`border text-sm border-gray rounded-sm py-3 px-2 ${clsx(
+            className={`border text-sm border-gray rounded-sm py-3 px-2 ${Clsx(
               error && "bg-red-100 border-red-200"
             )}`}
           />

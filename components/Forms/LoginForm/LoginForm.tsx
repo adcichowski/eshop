@@ -10,10 +10,9 @@ import { useForm } from "../useForm";
 export function LoginForm({
   setAlertInfo,
 }: {
-  setAlertInfo: (isOpen: boolean) => void;
+  readonly setAlertInfo: (isOpen: boolean) => void;
 }) {
-  const { errors, handleSubmit, register, formState } =
-    useForm(loginAccountSchema);
+  const { errors, register, formState } = useForm(loginAccountSchema);
 
   const fields: GenerateFields<typeof loginAccountSchema> = {
     email: { text: "E-mail:", type: "email" },

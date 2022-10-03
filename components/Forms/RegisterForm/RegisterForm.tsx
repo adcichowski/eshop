@@ -1,7 +1,7 @@
 import { Button } from "components/Button/Button";
 import { InputsRender } from "components/Inputs/Inputs";
 import { useEffect } from "react";
-import { GenerateFields } from "types/types";
+import type { GenerateFields } from "types/types";
 
 import { registerAccountSchema } from "../schemas/registerAccountSchema";
 import { useForm } from "../useForm";
@@ -9,11 +9,9 @@ import { useForm } from "../useForm";
 export function RegisterForm({
   setAlertInfo,
 }: {
-  setAlertInfo: (isOpen: boolean) => void;
+  readonly setAlertInfo: (isOpen: boolean) => void;
 }) {
-  const { errors, handleSubmit, register, formState } = useForm(
-    registerAccountSchema
-  );
+  const { errors, register, formState } = useForm(registerAccountSchema);
   const isErrorInForm = !!Object.values(errors).length;
   useEffect(() => {
     if (isErrorInForm) {

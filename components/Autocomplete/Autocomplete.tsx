@@ -11,7 +11,7 @@ const people = [
   { id: 6, name: "Hellen Schmidt" },
 ];
 
-export function Autocomplete(props: { className?: string }) {
+export function Autocomplete(props: { readonly className?: string }) {
   const [selected, setSelected] = useState("");
   const [query, setQuery] = useState("");
 
@@ -61,11 +61,11 @@ const InputDesktop = ({
   setQuery,
   query,
 }: {
-  query: string;
-  setQuery: (text: string) => void;
-  filteredPeople: {
-    id: number;
-    name: string;
+  readonly query: string;
+  readonly setQuery: (text: string) => void;
+  readonly filteredPeople: readonly {
+    readonly id: number;
+    readonly name: string;
   }[];
 }) => {
   return (
@@ -75,7 +75,7 @@ const InputDesktop = ({
           autoCorrect="false"
           placeholder="Szukaj..."
           className="w-full border-none py-1 pl-1 pr-10 placeholder-black text-sm leading-5 placeholder-opacity-70"
-          displayValue={(person: { name: string }) => person.name}
+          displayValue={(person: { readonly name: string }) => person.name}
           onChange={(event) => setQuery(event.target.value)}
         />
         <SearchButton />

@@ -1,16 +1,19 @@
-import { SelectVariant } from "src/pages/product/components/SelectVariant";
-import { InferGetStaticPropsType } from "next";
-import { getStaticProps } from "pages/[productSlug]";
-import { useState } from "react";
-import Image from "next/image";
-import { ProductAttributes } from "./components/ProductAttributes";
-import { StateSelect } from "./types";
-import { ProductPrice } from "./components/ProductPrice";
 import { Button } from "components/Button/Button";
-import Heart from "../../assets/heart.svg";
 import { Categories } from "components/Categories/Categories";
-import ProductDescription from "./components/ProductDescription";
 import { ProductsCarrousel } from "components/ProductsCarrousel/ProductsCarrousel";
+import Image from "next/image";
+import { useState } from "react";
+import { SelectVariant } from "src/pages/product/components/SelectVariant";
+
+import Heart from "../../assets/heart.svg";
+
+import { ProductAttributes } from "./components/ProductAttributes";
+import { ProductDescription } from "./components/ProductDescription";
+import { ProductPrice } from "./components/ProductPrice";
+
+import type { StateSelect } from "./types";
+import type { InferGetStaticPropsType } from "next";
+import type { getStaticProps } from "pages/[productSlug]";
 
 export const ProductPage = ({
   product,
@@ -113,7 +116,7 @@ export const ProductPage = ({
   );
 };
 
-const ProductSale = ({ sale }: { sale: string | undefined | null }) =>
+const ProductSale = ({ sale }: { readonly sale: string | undefined | null }) =>
   sale ? (
     <div className="mb-[22px] bg-black text-center px-8 py-2 font-semibold text-white self-start">
       {`-${sale}%`}

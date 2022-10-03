@@ -1,21 +1,19 @@
-import { PlusCircleIcon } from "@heroicons/react/outline";
 import { Button } from "components/Button/Button";
-import { ProductVariantType } from "generated/graphql";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-export type ProductCarrouselProps = {
-  id: string;
-  slug: string;
-  name: string;
-  price: number;
-  images: {
-    id: string;
-    url: string;
-    alt?: string | null;
+export type ProductCarrouselProps = Readonly<{
+  readonly id: string;
+  readonly slug: string;
+  readonly name: string;
+  readonly price: number;
+  readonly images: readonly {
+    readonly id: string;
+    readonly url: string;
+    readonly alt?: string | null;
   }[];
-};
+}>;
 
 export const ProductCarrousel = ({
   slug,

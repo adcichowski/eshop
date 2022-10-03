@@ -1,10 +1,12 @@
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import { MDXRemote } from "next-mdx-remote";
 import React from "react";
 
-export default function ProductDescription({
+import type { MDXRemoteSerializeResult } from "next-mdx-remote";
+
+export function ProductDescription({
   productDescription,
 }: {
-  productDescription: MDXRemoteSerializeResult<
+  readonly productDescription: MDXRemoteSerializeResult<
     Record<string, unknown>,
     Record<string, string>
   >;

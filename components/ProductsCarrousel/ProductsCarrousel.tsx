@@ -1,10 +1,14 @@
-import { Swiper, SwiperProps, SwiperSlide } from "swiper/react";
 import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import type { SwiperProps } from "swiper/react";
+
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
-import { ProductCarrousel } from "./components/ProductCarrousel/ProductCarrousel";
 import { useGetProductsQuery } from "generated/graphql";
+import { ProductCarrousel } from "./components/ProductCarrousel/ProductCarrousel";
+
 export const ProductsCarrousel = () => {
   const settings: SwiperProps = {
     navigation: true,

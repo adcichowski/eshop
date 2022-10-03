@@ -1,7 +1,7 @@
 import { Header } from "components/Header/Header";
 import React from "react";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export function Layout({ children }: { readonly children: React.ReactNode }) {
   return (
     <div className="min-h-screen">
       <Header />

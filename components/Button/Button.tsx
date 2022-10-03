@@ -1,5 +1,5 @@
 type ButtonProps = {
-  children: string;
+  readonly children: string;
 } & JSX.IntrinsicElements["button"];
 
 export function Button({ ...props }: ButtonProps) {

@@ -1,5 +1,5 @@
 export {};
-import userEvent from "@testing-library/user-event";
+import User from "@testing-library/user-event";
 import { render, screen } from "@testing-library/react";
 import { AccountPage } from "../../src/pages/account/AccountPage";
 import { faker } from "@faker-js/faker";
@@ -15,7 +15,7 @@ describe("Check validation in login form", () => {
 
   beforeEach(async () => {
     render(<AccountPage />);
-    await userEvent.click(getInputsForm.button());
+    await User.click(getInputsForm.button());
   });
 
   it("button log in should be disable", () => {
@@ -30,10 +30,7 @@ describe("Check validation in login form", () => {
   });
 
   it("invalid email", async () => {
-    await userEvent.type(
-      getInputsForm.email(),
-      faker.internet.email().slice(0, 3)
-    );
+    await User.type(getInputsForm.email(), faker.internet.email().slice(0, 3));
     expect(await alertsTexts()).toStrictEqual([
       "Formularz logowania zawiera błędy !!!",
       "Nieprawidłowy adres e-mail.",
@@ -42,8 +39,8 @@ describe("Check validation in login form", () => {
   });
 
   it("too low chars in password", async () => {
-    await userEvent.type(getInputsForm.email(), faker.internet.email());
-    await userEvent.type(getInputsForm.password(), faker.internet.password(4));
+    await User.type(getInputsForm.email(), faker.internet.email());
+    await User.type(getInputsForm.password(), faker.internet.password(4));
 
     expect(await alertsTexts()).toStrictEqual([
       "Formularz logowania zawiera błędy !!!",
@@ -52,8 +49,8 @@ describe("Check validation in login form", () => {
   });
 
   it("too much chars in password", async () => {
-    await userEvent.type(getInputsForm.email(), faker.internet.email());
-    await userEvent.type(getInputsForm.password(), faker.internet.password(62));
+    await User.type(getInputsForm.email(), faker.internet.email());
+    await User.type(getInputsForm.password(), faker.internet.password(62));
 
     expect(await alertsTexts()).toStrictEqual([
       "Formularz logowania zawiera błędy !!!",
@@ -77,7 +74,7 @@ describe("Check validation in register form", () => {
 
   beforeEach(async () => {
     render(<AccountPage />);
-    await userEvent.click(getInputsForm.button());
+    await User.click(getInputsForm.button());
   });
 
   it("button log in should be disable", () => {
@@ -96,10 +93,7 @@ describe("Check validation in register form", () => {
   });
 
   it("invalid email", async () => {
-    await userEvent.type(
-      getInputsForm.email(),
-      faker.internet.email().slice(0, 3)
-    );
+    await User.type(getInputsForm.email(), faker.internet.email().slice(0, 3));
 
     expect(await alertsTexts()).toStrictEqual([
       "Formularz rejestracji zawiera błędy !!!",
@@ -111,8 +105,8 @@ describe("Check validation in register form", () => {
   });
 
   it("too low chars in password", async () => {
-    await userEvent.type(getInputsForm.email(), faker.internet.email());
-    await userEvent.type(getInputsForm.password(), faker.internet.password(4));
+    await User.type(getInputsForm.email(), faker.internet.email());
+    await User.type(getInputsForm.password(), faker.internet.password(4));
 
     expect(await alertsTexts()).toStrictEqual([
       "Formularz rejestracji zawiera błędy !!!",
@@ -123,8 +117,8 @@ describe("Check validation in register form", () => {
   });
 
   it("too much chars in password", async () => {
-    await userEvent.type(getInputsForm.email(), faker.internet.email());
-    await userEvent.type(getInputsForm.password(), faker.internet.password(62));
+    await User.type(getInputsForm.email(), faker.internet.email());
+    await User.type(getInputsForm.password(), faker.internet.password(62));
 
     expect(await alertsTexts()).toStrictEqual([
       "Formularz rejestracji zawiera błędy !!!",
@@ -135,13 +129,13 @@ describe("Check validation in register form", () => {
   });
 
   it("password and repeated password must be same", async () => {
-    await userEvent.type(getInputsForm.email(), userAccount.email);
-    await userEvent.type(getInputsForm.password(), userAccount.password);
-    await userEvent.type(
+    await User.type(getInputsForm.email(), userAccount.email);
+    await User.type(getInputsForm.password(), userAccount.password);
+    await User.type(
       getInputsForm.repeatedPassword(),
       userAccount.repeatedPassword
     );
-    await userEvent.click(getInputsForm.statueConfirm());
+    await User.click(getInputsForm.statueConfirm());
 
     expect(await alertsTexts()).toStrictEqual([
       "Formularz rejestracji zawiera błędy !!!",

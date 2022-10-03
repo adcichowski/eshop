@@ -1,16 +1,16 @@
-import clsx from "clsx";
+import Clsx from "clsx";
 import { changeValueCurrency, priceWithDiscount } from "utils/utils";
 export function ProductPrice({
   sale,
   price,
 }: {
-  sale: string | undefined | null;
-  price: number;
+  readonly sale: string | undefined | null;
+  readonly price: number;
 }) {
   return (
     <div className="flex mt-2">
       <div
-        className={`text-4xl ${clsx(sale && "text-discount")} font-semibold`}
+        className={`text-4xl ${Clsx(sale && "text-discount")} font-semibold`}
       >
         {priceWithDiscount(price, Number(sale))}
       </div>

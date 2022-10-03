@@ -1,14 +1,15 @@
-import { changeValueCurrency, priceWithDiscount } from "utils/utils";
-import { useSelect } from "downshift";
 import { clsx } from "clsx";
-import type { StateSelect } from "src/pages/product/types";
+import { useSelect } from "downshift";
+import { changeValueCurrency, priceWithDiscount } from "utils/utils";
+
 import type { Dispatch } from "react";
+import type { StateSelect } from "src/pages/product/types";
 
 type ProductVariants = {
-  price: number;
-  id: string;
-  width: number | undefined;
-  height: number | undefined;
+  readonly price: number;
+  readonly id: string;
+  readonly width: number | undefined;
+  readonly height: number | undefined;
 };
 
 export function SelectVariant({
@@ -17,10 +18,10 @@ export function SelectVariant({
   selectedVariant,
   setSelectedVariant,
 }: {
-  sale?: string | null;
-  productVariants: ProductVariants[];
-  selectedVariant: StateSelect;
-  setSelectedVariant: Dispatch<StateSelect>;
+  readonly sale?: string | null;
+  readonly productVariants: readonly ProductVariants[];
+  readonly selectedVariant: StateSelect;
+  readonly setSelectedVariant: Dispatch<StateSelect>;
 }) {
   const {
     isOpen,
@@ -29,7 +30,7 @@ export function SelectVariant({
     getMenuProps,
     getItemProps,
   } = useSelect({
-    items: productVariants,
+    items: [...productVariants],
     itemToString,
     onSelectedItemChange: ({ selectedItem: newSelectedItem }) =>
       newSelectedItem && setSelectedVariant(newSelectedItem),

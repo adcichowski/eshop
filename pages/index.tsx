@@ -1,5 +1,6 @@
 import { useQuery } from "@apollo/client";
-import { GetProductsDocument, GetProductsQuery } from "generated/graphql";
+import type { GetProductsQuery } from "generated/graphql";
+import { GetProductsDocument } from "generated/graphql";
 import Image from "next/image";
 import { ProductsCarrousel } from "components/ProductsCarrousel/ProductsCarrousel";
 import { Carrousel } from "components/Carrousel/Carrousel";
