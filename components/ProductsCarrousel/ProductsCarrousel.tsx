@@ -15,16 +15,16 @@ export const ProductsCarrousel = () => {
     slidesPerView: 2,
     breakpoints: {
       300: {
-        slidesPerView: 2,
+        slidesPerView: 3,
       },
       1000: {
-        slidesPerView: 3,
-      },
-      1200: {
         slidesPerView: 4,
       },
+      1200: {
+        slidesPerView: 6,
+      },
       1800: {
-        slidesPerView: 3,
+        slidesPerView: 7,
       },
     },
     pagination: {
@@ -43,7 +43,7 @@ export const ProductsCarrousel = () => {
 
   return (
     <div>
-      <Swiper className="my-8" {...settings}>
+      <Swiper {...settings}>
         {productsWithSmallestPrice.map((product) => (
           <SwiperSlide key={product.name}>
             <ProductCarrousel {...product} />

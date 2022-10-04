@@ -108,8 +108,12 @@ export const ProductPage = ({
 
           <ProductDescription productDescription={product.description} />
         </section>
+        <div></div>
+        <div className="w-full col-span-2 mt-[50px]">
+          <h3 className="text-xl">Others buy also:</h3>
+          <ProductsCarrousel />
+        </div>
       </main>
-      <ProductsCarrousel />
 
       <footer>Footer</footer>
     </div>

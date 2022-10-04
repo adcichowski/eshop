@@ -4,7 +4,7 @@ import "public/fonts/fonts.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 import "/public/carrousel/carrousel.css";
 import { CartContextProvider } from "context/CartContext";
-import Layout from "components/Layout/Layout";
+import { Layout } from "components/Layout/Layout";
 import { ApolloProvider } from "@apollo/client";
 import { apolloClient } from "graphql/apolloClient";
 function MyApp({ Component, pageProps }: AppProps) {
