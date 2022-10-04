@@ -68,18 +68,12 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "tsc . --noEmit",
       "eslint --fix",
-      "prettier --write"
+      "prettier --write",
+      "tsc --noEmit"
     ],
     "*.{json,md,yaml,yml,scss,css}": [
       "prettier --write"
-    ]
-  },
-  "lint-prepush": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix .",
-      "tsc . --noEmit"
     ]
   }
 }
