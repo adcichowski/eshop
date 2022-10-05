@@ -3,7 +3,7 @@ import { useSelect } from "downshift";
 import { changeValueCurrency, priceWithDiscount } from "utils/utils";
 
 import type { Dispatch } from "react";
-import type { StateSelect } from "src/pages/product/types";
+import type { StateSelect } from "../types";
 
 type ProductVariants = {
   readonly price: number;

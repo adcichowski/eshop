@@ -3,9 +3,8 @@ import { Categories } from "components/Categories/Categories";
 import { ProductsCarrousel } from "components/ProductsCarrousel/ProductsCarrousel";
 import Image from "next/image";
 import { useState } from "react";
-import { SelectVariant } from "src/pages/product/components/SelectVariant";
 
-import Heart from "../../assets/heart.svg";
+import Heart from "components/assets/heart.svg";
 
 import { ProductAttributes } from "./components/ProductAttributes";
 import { ProductDescription } from "./components/ProductDescription";
@@ -14,6 +13,7 @@ import { ProductPrice } from "./components/ProductPrice";
 import type { StateSelect } from "./types";
 import type { InferGetStaticPropsType } from "next";
 import type { getStaticProps } from "pages/[productSlug]";
+import { SelectVariant } from "./components/SelectVariant";
 
 export const ProductPage = ({
   product,

@@ -1,6 +1,6 @@
 import { LoginForm } from "components/Forms/LoginForm/LoginForm";
-import { RegisterForm } from "components/Forms/RegisterForm/RegisterForm";
 import { Newsletter } from "components/Newsletter/Newsletter";
+import { RegisterForm } from "components/Forms/RegisterForm/RegisterForm";
 import { useState } from "react";
 
 export function AccountPage() {

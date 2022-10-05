@@ -10,7 +10,7 @@ import {
 import { apolloClient } from "graphql/apolloClient";
 import type { InferGetStaticPropsType } from "next";
 import type { InferGetStaticPathsType } from "types/types";
-import { ProductPage } from "src/pages/product/ProductPage";
+import { ProductPage } from "components/pages/product/ProductPage";
 import { serialize } from "next-mdx-remote/serialize";
 
 export async function getStaticPaths() {
