@@ -1,8 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+input.favorite:checked + div svg {
+  @apply fill-heart;
+  @apply border-none;
+}
+input.favorite:checked + div svg path {
+  @apply stroke-heart;
+}
+input.favorite:checked + div svg {
+  @apply block;
 }

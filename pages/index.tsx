@@ -6,6 +6,7 @@ import { ProductsCarrousel } from "components/ProductsCarrousel/ProductsCarrouse
 import { Carrousel } from "components/Carrousel/Carrousel";
 import { SwiperSlide } from "swiper/react";
 import { settingsToEachCarrousel } from "components/Carrousel/constants";
+import { ProductOffer } from "components/ProductOffer/ProductOffer";
 const Home = () => {
   const { loading, error, data } =
     useQuery<GetProductsQuery>(GetProductsDocument);
@@ -45,6 +46,16 @@ const Home = () => {
         </h2>
         <ProductsCarrousel />
       </section>
+      {data.products.map((product) => (
+        <ProductOffer
+          HeaderTag="h3"
+          name={product.name}
+          image={{
+            src: product.images[0].url,
+            alt: product.images[0].alt || product.name,
+          }}
+        />
+      ))}
     </div>
   );
 };

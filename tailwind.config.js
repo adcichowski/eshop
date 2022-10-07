@@ -19,6 +19,7 @@ module.exports = {
         200: "#D03535",
       },
       lightGray: "#A4A0A0",
+      heart: "#D03535",
       discount: "#8C0101",
       black: "#000000",
       gray: "#707070",

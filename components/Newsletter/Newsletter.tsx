@@ -1,8 +1,9 @@
-type TypeHeadersTag = "h1" | "h2" | "h3" | "h4" | "h5";
+import type { TypeHeadlineTags } from "types/types";
+
 export function Newsletter({
   HeaderTag,
 }: {
-  readonly HeaderTag: TypeHeadersTag;
+  readonly HeaderTag: TypeHeadlineTags;
 }) {
   const DISCOUNT_PERCENT = "10%";
   return (
