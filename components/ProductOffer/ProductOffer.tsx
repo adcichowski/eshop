@@ -1,4 +1,5 @@
 import { Button } from "components/Button/Button";
+import { FavoriteInput } from "components/Inputs/components/FavoriteInput";
 import Image from "next/future/image";
 import type { TypeHeadlineTags } from "types/types";
 export function ProductOffer({
@@ -11,7 +12,7 @@ export function ProductOffer({
   readonly image: { readonly src: string; readonly alt: string };
 }) {
   return (
-    <div className="w-90">
+    <div>
       <section
         aria-describedby={`poster${name}`}
         className="flex flex-col items-center"
@@ -28,10 +29,12 @@ export function ProductOffer({
               <HeaderTag id={`poster${name}`}>{name}</HeaderTag>
               <div className="font-medium mb-1">od 10zł</div>
               <div className="grid grid-cols-2 mb-2">
-                <button className="text-xs rounded-none bg-primary px-4 py-2 text-white uppercase">
+                <button className="text-xs rounded-none bg-primary px-4 py-2 text-white uppercase self-center">
                   Add to cart
                 </button>
-                <div className="p-4"></div>
+                <div className="justify-self-end mr-5 relative">
+                  <FavoriteInput id={name} />
+                </div>
               </div>
             </div>
           </div>

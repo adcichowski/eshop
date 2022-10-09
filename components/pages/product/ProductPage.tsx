@@ -14,6 +14,7 @@ import type { StateSelect } from "./types";
 import type { InferGetStaticPropsType } from "next";
 import type { getStaticProps } from "pages/[productSlug]";
 import { SelectVariant } from "./components/SelectVariant";
+import { FavoriteInput } from "components/Inputs/components/FavoriteInput";
 
 export const ProductPage = ({
   product,
@@ -93,16 +94,13 @@ export const ProductPage = ({
             <span className="text-xs mt-4">
               Delivery in 2-4 working days | Free delivery from 199zł
             </span>
-            <div className="flex mt-4 gap-1 w-full">
+            <div className="flex mt-4 gap-1">
               <Button className="px-12 w-full rounded-none py-4 h-full text-lg sm:text-sm">
                 To Cart
               </Button>
-              <label className="h-full border-2 cursor-pointer border-black p-4">
-                <input type="checkbox" hidden />
-                <span>
-                  <Heart />
-                </span>
-              </label>
+              <div className="border-[1px] cursor-pointer border-black p-4 relative">
+                <FavoriteInput id={product.name} />
+              </div>
             </div>
           </aside>
 
