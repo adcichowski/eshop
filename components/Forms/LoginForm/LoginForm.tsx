@@ -38,15 +38,15 @@ export function LoginForm({
           <h2 id="sectionLogin" className="text-2xl self-stretch">
             Zaloguj się
           </h2>
-          {Object.entries(fields).map(([name, props]) => (
+          {Object.entries(fields).map(([name, { text, type }]) => (
             <Input
               error={String(errors?.[name]?.message ?? "")}
               key={`${name}Login`}
               id={`${name}Login`}
               {...register(name)}
               aria-describedby={`${name}HintLogin`}
-              text={props.text}
-              type={props.type}
+              text={text}
+              type={type}
               data-testid={`${name}Login`}
             />
           ))}

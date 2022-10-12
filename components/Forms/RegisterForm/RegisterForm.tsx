@@ -57,7 +57,7 @@ export function RegisterForm({
           <h2 id="sectionRegister" className="text-2xl self-stretch">
             Zarejestruj się
           </h2>
-          {Object.entries(fields).map(([name, props]) => {
+          {Object.entries(fields).map(([name, { text, type }]) => {
             return (
               <InputsRender
                 error={String(errors?.[name]?.message ?? "")}
@@ -65,8 +65,8 @@ export function RegisterForm({
                 id={`${name}Register`}
                 aria-describedby={`${name}HintRegister`}
                 {...register(name)}
-                text={props.text}
-                type={props.type}
+                text={text}
+                type={type}
                 data-testid={`${name}Register`}
               />
             );
