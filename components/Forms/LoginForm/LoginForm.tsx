@@ -45,7 +45,8 @@ export function LoginForm({
               id={`${name}Login`}
               {...register(name)}
               aria-describedby={`${name}HintLogin`}
-              text={name}
+              text={props.text}
+              type={props.type}
               data-testid={`${name}Login`}
             />
           ))}

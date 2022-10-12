@@ -64,8 +64,9 @@ export function RegisterForm({
                 key={name}
                 id={`${name}Register`}
                 aria-describedby={`${name}HintRegister`}
-                {...props}
                 {...register(name)}
+                text={props.text}
+                type={props.type}
                 data-testid={`${name}Register`}
               />
             );
