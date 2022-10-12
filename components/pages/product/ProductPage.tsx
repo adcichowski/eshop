@@ -4,8 +4,6 @@ import { ProductsCarrousel } from "components/ProductsCarrousel/ProductsCarrouse
 import Image from "next/image";
 import { useState } from "react";
 
-import Heart from "components/assets/heart.svg";
-
 import { ProductAttributes } from "./components/ProductAttributes";
 import { ProductDescription } from "./components/ProductDescription";
 import { ProductPrice } from "./components/ProductPrice";
