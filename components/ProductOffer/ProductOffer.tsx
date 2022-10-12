@@ -1,4 +1,3 @@
-import { Button } from "components/Button/Button";
 import { FavoriteInput } from "components/Inputs/components/FavoriteInput";
 import Image from "next/future/image";
 import type { TypeHeadlineTags } from "types/types";

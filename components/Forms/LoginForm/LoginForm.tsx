@@ -43,9 +43,9 @@ export function LoginForm({
               error={String(errors?.[name]?.message ?? "")}
               key={`${name}Login`}
               id={`${name}Login`}
-              {...props}
               {...register(name)}
               aria-describedby={`${name}HintLogin`}
+              text={name}
               data-testid={`${name}Login`}
             />
           ))}
