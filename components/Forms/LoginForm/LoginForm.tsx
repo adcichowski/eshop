@@ -7,6 +7,11 @@ import type { GenerateFields } from "types/types";
 import { loginAccountSchema } from "../schemas/loginAccountSchema";
 import { useForm } from "../useForm";
 
+const fields: GenerateFields<typeof loginAccountSchema> = {
+  email: { text: "E-mail:", type: "email" },
+  password: { text: "Hasło:", type: "password" },
+};
+
 export function LoginForm({
   setAlertInfo,
 }: {
@@ -14,10 +19,6 @@ export function LoginForm({
 }) {
   const { errors, register, formState } = useForm(loginAccountSchema);
 
-  const fields: GenerateFields<typeof loginAccountSchema> = {
-    email: { text: "E-mail:", type: "email" },
-    password: { text: "Hasło:", type: "password" },
-  };
   const isErrorInForm = !!Object.values(errors).length;
 
   useEffect(() => {
