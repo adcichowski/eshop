@@ -1,7 +1,8 @@
 import { Button } from "components/Button/Button";
 import { InputsRender } from "components/Inputs/Inputs";
 import { useEffect } from "react";
-import type { GenerateFields } from "types/types";
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports -- Problem with vercel deploy
+import { GenerateFields } from "types/types";
 
 import { registerAccountSchema } from "../schemas/registerAccountSchema";
 import { useForm } from "../useForm";
