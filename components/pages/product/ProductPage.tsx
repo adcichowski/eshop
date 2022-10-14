@@ -8,32 +8,31 @@ import { ProductAttributes } from "./components/ProductAttributes";
 import { ProductDescription } from "./components/ProductDescription";
 import { ProductPrice } from "./components/ProductPrice";
 
-import type { StateSelect } from "./types";
 import type { InferGetStaticPropsType } from "next";
 import type { getStaticProps } from "pages/[productSlug]";
 import { SelectVariant } from "./components/SelectVariant";
 import { FavoriteInput } from "components/Inputs/components/FavoriteInput";
+import type { ProductVariant } from "./types";
 
 export const ProductPage = ({
   product,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  if (!product) return <h2>Product not found!</h2>;
-
-  const { finish, color, paperWeight, orientation, whiteFrame, variants } =
-    product;
-
-  const productVariants = variants.map(({ size, id, price }) => ({
+  const productVariants = product?.variants.map(({ size, id, price }) => ({
     price,
     id,
     width: size?.width,
     height: size?.height,
   }));
+  const [selectedVariant, setSelectedVariant] = useState<
+    ProductVariant | undefined
+  >(productVariants?.length ? productVariants[0] : undefined);
 
-  const [selectedVariant, setSelectedVariant] = useState<StateSelect>(
-    productVariants[0]
-  );
+  if (!product || !selectedVariant || !productVariants)
+    return <h2>Product not found!</h2>;
 
-  const productDescription = {
+  const { finish, color, paperWeight, orientation, whiteFrame } = product;
+
+  const productAttributes = {
     category: product.categories[0].name,
     paperWeight,
     color,
@@ -41,7 +40,6 @@ export const ProductPage = ({
     orientation,
     whiteFrame,
   };
-
   return (
     <div className="flex flex-col">
       <main className="grid grid-cols-3">
@@ -83,7 +81,7 @@ export const ProductPage = ({
               </label>
             </div>
 
-            <ProductAttributes {...productDescription} />
+            <ProductAttributes {...productAttributes} />
             <ProductPrice sale={product.sale} price={selectedVariant.price} />
             <div className="flex mt-3">
               <div className="w-4 h-4 bg-avaible-product bg-contain"></div>

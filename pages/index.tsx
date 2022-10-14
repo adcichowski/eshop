@@ -48,6 +48,7 @@ const Home = () => {
       </section>
       {data.products.map((product) => (
         <ProductOffer
+          key={product.name}
           HeaderTag="h3"
           name={product.name}
           image={{

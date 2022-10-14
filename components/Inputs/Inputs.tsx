@@ -11,6 +11,7 @@ export const InputsRender = React.forwardRef<HTMLInputElement, InputProps>(
     }
   }
 );
+InputsRender.displayName = "InputsRender";
 
 export type InputProps = JSX.IntrinsicElements["input"] & {
   readonly error?: string;
@@ -42,6 +43,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     );
   }
 );
+Input.displayName = "Input";
 
 export const Checkbox = React.forwardRef<HTMLInputElement, InputProps>(
   ({ text, error, ...props }: InputProps, ref) => (
@@ -63,3 +65,5 @@ export const Checkbox = React.forwardRef<HTMLInputElement, InputProps>(
     </>
   )
 );
+
+Checkbox.displayName = "Checkbox";

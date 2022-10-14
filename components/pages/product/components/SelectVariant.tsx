@@ -3,14 +3,7 @@ import { useSelect } from "downshift";
 import { changeValueCurrency, priceWithDiscount } from "utils/utils";
 
 import type { Dispatch } from "react";
-import type { StateSelect } from "../types";
-
-type ProductVariants = {
-  readonly price: number;
-  readonly id: string;
-  readonly width: number | undefined;
-  readonly height: number | undefined;
-};
+import type { ProductVariant } from "../types";
 
 export function SelectVariant({
   sale,
@@ -19,22 +12,20 @@ export function SelectVariant({
   setSelectedVariant,
 }: {
   readonly sale?: string | null;
-  readonly productVariants: readonly ProductVariants[];
-  readonly selectedVariant: StateSelect;
-  readonly setSelectedVariant: Dispatch<StateSelect>;
+  readonly productVariants: readonly ProductVariant[];
+  readonly selectedVariant: ProductVariant;
+  readonly setSelectedVariant: Dispatch<ProductVariant>;
 }) {
-  const {
-    isOpen,
-    selectedItem,
-    getToggleButtonProps,
-    getMenuProps,
-    getItemProps,
-  } = useSelect({
-    items: [...productVariants],
-    itemToString,
-    onSelectedItemChange: ({ selectedItem: newSelectedItem }) =>
-      newSelectedItem && setSelectedVariant(newSelectedItem),
-  });
+  const { isOpen, getToggleButtonProps, getMenuProps, getItemProps } =
+    useSelect({
+      items: [...productVariants],
+      itemToString,
+      defaultHighlightedIndex: 0,
+      onSelectedItemChange: ({ selectedItem: newSelectedItem }) =>
+        newSelectedItem && setSelectedVariant(newSelectedItem),
+    });
+
+  const productHaveDiscount = sale !== null;
   return (
     <div className="bg-white z-10">
       <div className="relative">
@@ -44,16 +35,22 @@ export function SelectVariant({
           type="button"
           {...getToggleButtonProps()}
         >
-          <ViewSelectedVariant
-            Sale={() => (
+          {selectedVariant && (
+            <div className="flex w-full justify-between">
               <div className="text-[0.8175rem]">
-                <SaleView sale={sale} price={selectedVariant.price} />
+                {itemToString(selectedVariant)}
               </div>
-            )}
-            selectedItem={itemToString(selectedItem)}
-            setSelectedVariant={setSelectedVariant}
-            selectedVariant={selectedVariant}
-          />
+              <div className="flex items-center gap-2">
+                <div className="text-[0.6875rem] line-through">
+                  {productHaveDiscount &&
+                    changeValueCurrency(selectedVariant.price)}
+                </div>
+                <div className="text-[0.8125rem]">
+                  <SaleView sale={sale} price={selectedVariant.price} />
+                </div>
+              </div>
+            </div>
+          )}
         </button>
       </div>
       <ul
@@ -67,14 +64,22 @@ export function SelectVariant({
               key={`${item.price}${index}`}
               {...getItemProps({ item, index })}
             >
-              <ProductVariant
-                item={item}
-                Sale={() => (
-                  <>
-                    <SaleView sale={sale} price={item.price} />
-                  </>
-                )}
-              />
+              <div className="flex w-full text-[0.8125rem] items-center justify-between">
+                <div>{itemToString(item)}</div>
+                <div>
+                  <span
+                    className={`text-[0.6875rem] mr-1 ${clsx(
+                      sale && "line-through"
+                    )}`}
+                  >
+                    {changeValueCurrency(item?.price)}
+                  </span>
+
+                  <span className="text-sm">
+                    {sale && <SaleView price={item.price} sale={sale} />}
+                  </span>
+                </div>
+              </div>
             </li>
           ))}
       </ul>
@@ -82,59 +87,11 @@ export function SelectVariant({
   );
 }
 
-function itemToString(item: ProductVariants | null) {
+function itemToString(item: ProductVariant | null) {
+  if (item && Object.values(item).some((itemAttr) => itemAttr === undefined))
+    return "";
   return item ? `${item.width} x ${item.height} cm` : "";
 }
-
-const ViewSelectedVariant = ({
-  selectedVariant,
-  selectedItem,
-  Sale,
-}: {
-  readonly Sale: () => JSX.Element;
-  readonly selectedItem: string | null | undefined;
-  readonly selectedVariant: StateSelect;
-  readonly setSelectedVariant: Dispatch<StateSelect>;
-}) => {
-  if (!selectedItem) {
-    return (
-      <div className="flex w-full justify-between">
-        <div className="text-[0.8175rem] ">Choose size</div>
-      </div>
-    );
-  }
-  return (
-    <div className="flex w-full justify-between">
-      <div className="text-[0.8175rem]">{selectedItem}</div>
-      <div className="flex items-center gap-2">
-        <div className="text-[0.6875rem] line-through">
-          {changeValueCurrency(selectedVariant.price)}
-        </div>
-        <Sale />
-      </div>
-    </div>
-  );
-};
-
-const ProductVariant = ({
-  item,
-  Sale,
-}: {
-  readonly item: ProductVariants;
-  readonly Sale?: () => JSX.Element;
-}) => (
-  <div className="flex w-full text-[0.8125rem] items-center justify-between">
-    <div>{itemToString(item)}</div>
-    <div>
-      {Sale && (
-        <span className="text-[0.6875rem] mr-1 line-through">
-          {changeValueCurrency(item?.price)}
-        </span>
-      )}
-      <span className="text-sm">{Sale && <Sale />}</span>
-    </div>
-  </div>
-);
 
 const SaleView = ({
   sale,
