@@ -8,7 +8,7 @@ import { GenerateFields } from "types/types";
 import { loginAccountSchema } from "../schemas/loginAccountSchema";
 import { useForm } from "../useForm";
 
-const fields: GenerateFields<typeof loginAccountSchema> = {
+const fields = {
   email: { text: "E-mail:", type: "email" },
   password: { text: "Hasło:", type: "password" },
 };
@@ -26,7 +26,7 @@ export function LoginForm({
     if (isErrorInForm) {
       setAlertInfo(isErrorInForm);
     }
-  }, [formState.errors]);
+  }, [formState.errors, setAlertInfo, isErrorInForm]);
 
   return (
     <section className="max-w-[435px] w-full " aria-labelledby="sectionLogin">

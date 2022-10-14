@@ -21,6 +21,7 @@ export function ProductOffer({
           {...image}
           width={218.63}
           height={323.46}
+          alt={image.alt}
         />
         <div className="pl-6">
           <HeaderTag id={`poster${name}`}>{name}</HeaderTag>

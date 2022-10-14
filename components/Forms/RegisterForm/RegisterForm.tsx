@@ -7,7 +7,7 @@ import { GenerateFields } from "types/types";
 import { registerAccountSchema } from "../schemas/registerAccountSchema";
 import { useForm } from "../useForm";
 
-const fields: GenerateFields<typeof registerAccountSchema> = {
+const fields = {
   email: {
     text: "E-mail:",
     type: "email",
@@ -41,7 +41,7 @@ export function RegisterForm({
     if (isErrorInForm) {
       setAlertInfo(isErrorInForm);
     }
-  }, [formState.errors]);
+  }, [formState.errors, isErrorInForm, setAlertInfo]);
 
   return (
     <section
