@@ -1,4 +1,4 @@
-import * as Yup from "Yup";
+import * as Yup from "yup";
 export const defaultSchema = Yup.object({
   email: Yup.string()
     .required("Email jest wymagany.")

@@ -2,8 +2,6 @@ import { Button } from "components/Button/Button";
 import { Input } from "components/Inputs/Inputs";
 import { StaticLink } from "components/StaticLink/StaticLink";
 import React, { useEffect } from "react";
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports -- Problem with vercel deploy
-import { GenerateFields } from "types/types";
 
 import { loginAccountSchema } from "../schemas/loginAccountSchema";
 import { useForm } from "../useForm";

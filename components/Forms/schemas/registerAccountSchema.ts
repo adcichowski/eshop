@@ -1,5 +1,5 @@
 import { defaultSchema } from "components/Forms/schemas/defaultSchema";
-import * as Yup from "Yup";
+import * as Yup from "yup";
 export const registerAccountSchema = Yup.object({
   passwordConfirmation: Yup.string()
     .required("Powtórz hasło jest wymagane.")
