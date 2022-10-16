@@ -9,6 +9,7 @@ export const registerAccountSchema = Yup.object({
     .isTrue("Pole musi być zaznaczone.")
     .required("Pole musi być zaznaczone."),
   newsletter: Yup.boolean(),
-}).concat(defaultSchema);
+  ...defaultSchema,
+});
 
 export type RegisterAccountSchema = Yup.InferType<typeof registerAccountSchema>;

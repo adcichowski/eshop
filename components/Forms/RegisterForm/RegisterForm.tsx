@@ -33,14 +33,16 @@ export function RegisterForm({
 }: {
   readonly setAlertInfo: (isOpen: boolean) => void;
 }) {
-  const { errors, register, formState } = useForm(registerAccountSchema);
+  const { errors, register, formState, handleSubmit } = useForm(
+    registerAccountSchema
+  );
   const isErrorInForm = !!Object.values(errors).length;
   useEffect(() => {
     if (isErrorInForm) {
       setAlertInfo(isErrorInForm);
     }
   }, [formState.errors, isErrorInForm, setAlertInfo]);
-
+  console.log(errors);
   return (
     <section
       className="max-w-[435px] w-full mt-10 md:mt-0 md:justify-self-end"
@@ -51,6 +53,7 @@ export function RegisterForm({
         noValidate
         onSubmit={(e) => {
           e.preventDefault();
+          handleSubmit;
         }}
       >
         <fieldset className="flex flex-col items-center text-left gap-2">
@@ -59,16 +62,16 @@ export function RegisterForm({
           </h2>
           {Object.entries(fields).map(([name, { text, type }]) => {
             return (
-              <InputsRender
-                error={String(errors?.[name]?.message ?? "")}
-                key={name}
-                id={`${name}Register`}
-                aria-describedby={`${name}HintRegister`}
-                {...register(name)}
-                text={text}
-                type={type}
-                data-testid={`${name}Register`}
-              />
+              <div className="flex w-full flex-col" key={`${name}Register`}>
+                <InputsRender
+                  error={String(errors?.[name]?.message ?? "")}
+                  id={`${name}Register`}
+                  aria-describedby={`${name}HintRegister`}
+                  {...register(name)}
+                  text={text}
+                  type={type}
+                />
+              </div>
             );
           })}
         </fieldset>

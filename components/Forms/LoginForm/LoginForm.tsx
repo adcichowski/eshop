@@ -16,7 +16,8 @@ export function LoginForm({
 }: {
   readonly setAlertInfo: (isOpen: boolean) => void;
 }) {
-  const { errors, register, formState } = useForm(loginAccountSchema);
+  const { errors, register, formState, handleSubmit } =
+    useForm(loginAccountSchema);
 
   const isErrorInForm = !!Object.values(errors).length;
 
@@ -28,27 +29,22 @@ export function LoginForm({
 
   return (
     <section className="max-w-[435px] w-full " aria-labelledby="sectionLogin">
-      <form
-        noValidate
-        onSubmit={(e) => {
-          e.preventDefault();
-        }}
-      >
+      <form noValidate>
         <fieldset className="flex flex-col items-center text-left gap-2">
           <h2 id="sectionLogin" className="text-2xl self-stretch">
             Zaloguj się
           </h2>
           {Object.entries(fields).map(([name, { text, type }]) => (
-            <Input
-              error={String(errors?.[name]?.message ?? "")}
-              key={`${name}Login`}
-              id={`${name}Login`}
-              {...register(name)}
-              aria-describedby={`${name}HintLogin`}
-              text={text}
-              type={type}
-              data-testid={`${name}Login`}
-            />
+            <div className="flex w-full flex-col" key={`${name}Login`}>
+              <Input
+                error={String(errors?.[name]?.message ?? "")}
+                id={`${name}Login`}
+                {...register(name)}
+                aria-describedby={`${name}HintLogin`}
+                text={text}
+                type={type}
+              />
+            </div>
           ))}
         </fieldset>
         <Button

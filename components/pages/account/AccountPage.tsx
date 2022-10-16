@@ -1,5 +1,5 @@
 import { LoginForm } from "components/Forms/LoginForm/LoginForm";
-import { Newsletter } from "components/Newsletter/Newsletter";
+import { Newsletter } from "components/Forms/Newsletter/Newsletter";
 import { RegisterForm } from "components/Forms/RegisterForm/RegisterForm";
 import { useState } from "react";
 

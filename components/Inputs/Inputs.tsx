@@ -14,24 +14,30 @@ export const InputsRender = React.forwardRef<HTMLInputElement, InputProps>(
 InputsRender.displayName = "InputsRender";
 
 export type InputProps = JSX.IntrinsicElements["input"] & {
+  readonly id: string;
+  readonly hideLabel?: boolean;
   readonly error?: string;
   readonly text: string | JSX.Element;
 };
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ text, error, ...props }, ref) => {
+  ({ text, error, hideLabel, ...props }, ref) => {
     return (
       <>
-        <label className="flex w-full flex-col">
-          <span className="text-[18px] mb-[6px]">{text}</span>
-          <input
-            {...props}
-            ref={ref}
-            className={`border text-sm border-gray rounded-sm py-3 px-2 ${Clsx(
-              error && "bg-red-100 border-red-200"
-            )}`}
-          />
+        <label htmlFor={props.id}>
+          <span
+            className={`text-[18px] mb-[6px] ${Clsx(hideLabel && "sr-only")}`}
+          >
+            {text}
+          </span>
         </label>
+        <input
+          {...props}
+          ref={ref}
+          className={`border text-sm border-gray rounded-sm py-3 px-2 ${Clsx(
+            error && "bg-red-100 border-red-200"
+          )}`}
+        />
         {!!error && (
           <ErrorInInput
             id={props["aria-describedby"]}
