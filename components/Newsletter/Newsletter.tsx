@@ -1,11 +1,12 @@
 import type { TypeHeadlineTags } from "types/types";
 
+const DISCOUNT_PERCENT = "10%";
+
 export function Newsletter({
   HeaderTag,
 }: {
   readonly HeaderTag: TypeHeadlineTags;
 }) {
-  const DISCOUNT_PERCENT = "10%";
   return (
     <section
       className="w-full bg-primary mb-6"
