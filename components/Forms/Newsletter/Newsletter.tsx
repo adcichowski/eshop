@@ -3,7 +3,6 @@ import { defaultSchema } from "../schemas/defaultSchema";
 import { useForm } from "../useForm";
 import * as Yup from "yup";
 import { Input } from "components/Inputs/Inputs";
-import type { SyntheticEvent } from "react";
 const DISCOUNT_PERCENT = "10%";
 
 export function Newsletter({
@@ -14,9 +13,7 @@ export function Newsletter({
   const { errors, register, handleSubmit } = useForm(
     Yup.object({ email: defaultSchema.email })
   );
-  const onSubmit = (e: SyntheticEvent) => {
-    e.preventDefault();
-  };
+
   return (
     <section
       className="w-full bg-primary mb-6"
@@ -40,13 +37,9 @@ export function Newsletter({
             <span>Zyskaj</span>
             <span className="text-4xl mx-1 my-1 text-white font-semibold">
               {DISCOUNT_PERCENT}
-            </span>{" "}
+            </span>
             <span>zniżki na pierwsze zakupy</span>
-            <form
-              noValidate
-              onSubmit={handleSubmit(onSubmit)}
-              className="text-base block ml-2 h-20"
-            >
+            <form noValidate className="text-base block ml-2 h-20">
               <fieldset className="my-2 xl:my-0 inline">
                 <div className="flex">
                   <div className="flex flex-col max-h-5">
