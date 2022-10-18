@@ -3,18 +3,41 @@ import { defaultSchema } from "../schemas/defaultSchema";
 import { useForm } from "../useForm";
 import * as Yup from "yup";
 import { Input } from "components/Inputs/Inputs";
+import { useMutation } from "react-query";
+import { fetcher } from "utils/fetcher";
+
 const DISCOUNT_PERCENT = "10%";
-
-export function Newsletter({
-  HeaderTag,
-}: {
+export type NewsletterProps = {
   readonly HeaderTag: TypeHeadlineTags;
-}) {
-  const { errors, register, handleSubmit } = useForm(
-    Yup.object({ email: defaultSchema.email })
-  );
+};
 
-  return (
+const checkIsCookieMailerLite = () => {
+  const COOKIE_VALUE_MAILERLITE = "ML=1";
+  const cookie = document.cookie;
+  return cookie === COOKIE_VALUE_MAILERLITE;
+};
+
+export function Newsletter({ HeaderTag }: NewsletterProps) {
+  const isCookieAvaible = checkIsCookieMailerLite();
+  const schemaEmail = Yup.object({ email: defaultSchema.email });
+  const { errors, register, handleSubmit } = useForm<{
+    readonly email: string;
+  }>(schemaEmail);
+  const { mutate } = useMutation(
+    ["addToNewsletter"],
+
+    async (data: { readonly email: string }) => {
+      await fetcher("/api/newsletter", {
+        method: "POST",
+        body: data,
+      });
+    }
+  );
+  const onSumbit = handleSubmit((data) => {
+    mutate(data);
+  });
+
+  return !isCookieAvaible ? (
     <section
       className="w-full bg-primary mb-6"
       role="dialog"
@@ -39,7 +62,11 @@ export function Newsletter({
               {DISCOUNT_PERCENT}
             </span>
             <span>zniżki na pierwsze zakupy</span>
-            <form noValidate className="text-base block ml-2 h-20">
+            <form
+              noValidate
+              className="text-base block ml-2 h-20"
+              onSubmit={onSumbit}
+            >
               <fieldset className="my-2 xl:my-0 inline">
                 <div className="flex">
                   <div className="flex flex-col max-h-5">
@@ -67,5 +94,7 @@ export function Newsletter({
         </div>
       </div>
     </section>
+  ) : (
+    <></>
   );
 }

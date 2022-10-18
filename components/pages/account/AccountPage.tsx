@@ -1,13 +1,26 @@
 import { LoginForm } from "components/Forms/LoginForm/LoginForm";
-import { Newsletter } from "components/Forms/Newsletter/Newsletter";
 import { RegisterForm } from "components/Forms/RegisterForm/RegisterForm";
 import { useState } from "react";
+import Dynamic from "next/dynamic";
+import type { NewsletterProps } from "../../Forms/Newsletter/Newsletter";
+
+const NewsletterComp = Dynamic<NewsletterProps>(
+  () =>
+    import(
+      /* webpackChunkName: "newsletter" */
+      "../../Forms/Newsletter/Newsletter"
+    ).then((module) => module.Newsletter),
+  {
+    ssr: false,
+  }
+);
 
 export function AccountPage() {
   const [alertLabel, setAlertLabel] = useState<AlertLabel>({
     isOpen: false,
     errorIn: undefined,
   });
+
   const handleSetAlert =
     (errorIn: "login" | "register") => (isOpen: boolean) => {
       if (alertLabel.errorIn !== errorIn) {
@@ -24,7 +37,7 @@ export function AccountPage() {
             <RegisterForm setAlertInfo={handleSetAlert("register")} />
           </div>
         </div>
-        <Newsletter HeaderTag="h3" />
+        <NewsletterComp HeaderTag="h3" />
       </div>
     </>
   );
