@@ -28,7 +28,7 @@ const handler: NextApiHandler = async (req, res) => {
     }
   );
   const json: ResponseFromMailerLite = await response.json();
-  console.log(json);
+
   return res
     .setHeader(
       "Set-Cookie",
