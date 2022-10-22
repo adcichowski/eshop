@@ -5,7 +5,7 @@ import { changeValueCurrency, priceWithDiscount } from "utils/utils";
 import type { Dispatch } from "react";
 import type { ProductVariant } from "../types";
 
-export function SelectVariant({
+export function ProductSelectVariant({
   sale,
   productVariants,
   selectedVariant,

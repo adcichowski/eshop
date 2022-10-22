@@ -10,8 +10,8 @@ import { ProductPrice } from "./components/ProductPrice";
 
 import type { InferGetStaticPropsType } from "next";
 import type { getStaticProps } from "pages/[productSlug]";
-import { SelectVariant } from "./components/SelectVariant";
-import { FavoriteInput } from "components/Inputs/components/FavoriteInput";
+import { ProductSelectVariant } from "./components/ProductSelectVariant";
+import { FavoriteInput } from "components/Inputs/FavoriteInput";
 import type { ProductVariant } from "./types";
 
 export const ProductPage = ({
@@ -60,7 +60,7 @@ export const ProductPage = ({
             <div className="flex flex-col gap-3">
               <label className="flex items-center cursor-pointer">
                 <span className="w-24 text-base">Size:</span>
-                <SelectVariant
+                <ProductSelectVariant
                   selectedVariant={selectedVariant}
                   setSelectedVariant={setSelectedVariant}
                   sale={product.sale}

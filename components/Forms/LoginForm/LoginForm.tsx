@@ -1,5 +1,5 @@
 import { Button } from "components/Button/Button";
-import { Input } from "components/Inputs/Inputs";
+import { Input } from "components/Inputs/components/Input";
 import { StaticLink } from "components/StaticLink/StaticLink";
 import React, { useEffect } from "react";
 

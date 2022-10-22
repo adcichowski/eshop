@@ -1,6 +1,9 @@
 import React from "react";
 import Clsx from "clsx";
 import { ErrorInInput } from "./components/ErrorInInput";
+import type { InputProps } from "./types";
+import { Input } from "./components/Input";
+import { Checkbox } from "./components/Checkbox";
 export const InputsRender = React.forwardRef<HTMLInputElement, InputProps>(
   ({ ...props }, ref) => {
     switch (props.type) {
@@ -12,64 +15,3 @@ export const InputsRender = React.forwardRef<HTMLInputElement, InputProps>(
   }
 );
 InputsRender.displayName = "InputsRender";
-
-export type InputProps = JSX.IntrinsicElements["input"] & {
-  readonly id: string;
-  readonly hideLabel?: boolean;
-  readonly error?: string;
-  readonly text: string | JSX.Element;
-};
-
-export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ text, error, hideLabel, ...props }, ref) => {
-    return (
-      <>
-        <label htmlFor={props.id}>
-          <span
-            className={`text-[18px] mb-[6px] ${Clsx(hideLabel && "sr-only")}`}
-          >
-            {text}
-          </span>
-        </label>
-        <input
-          {...props}
-          ref={ref}
-          className={`border text-sm border-gray rounded-sm py-3 px-2 ${Clsx(
-            error && "bg-red-100 border-red-200"
-          )}`}
-        />
-        {!!error && (
-          <ErrorInInput
-            id={props["aria-describedby"]}
-            data-testid={`${props.id}Error`}
-            error={error}
-          />
-        )}
-      </>
-    );
-  }
-);
-Input.displayName = "Input";
-
-export const Checkbox = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ text, error, ...props }: InputProps, ref) => (
-    <>
-      <div className="flex gap-2 text-xs justify-center items-start">
-        <label className="flex justify-center items-start">
-          <input
-            {...props}
-            type="checkbox"
-            className="accent-primary text-white"
-            ref={ref}
-          />
-          <span className="ml-[5px]">{text}</span>
-        </label>
-      </div>
-      {!!error && (
-        <ErrorInInput data-testid={props["aria-describedby"]} error={error} />
-      )}
-    </>
-  )
-);
-
-Checkbox.displayName = "Checkbox";

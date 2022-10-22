@@ -2,9 +2,9 @@ import type { TypeHeadlineTags } from "types/types";
 import { defaultSchema } from "../schemas/defaultSchema";
 import { useForm } from "../useForm";
 import * as Yup from "yup";
-import { Input } from "components/Inputs/Inputs";
 import { useMutation } from "react-query";
 import { fetcher } from "utils/fetcher";
+import { Input } from "components/Inputs/components/Input";
 
 const DISCOUNT_PERCENT = "10%";
 export type NewsletterProps = {

@@ -42,7 +42,6 @@ export function RegisterForm({
       setAlertInfo(isErrorInForm);
     }
   }, [formState.errors, isErrorInForm, setAlertInfo]);
-  console.log(errors);
   return (
     <section
       className="max-w-[435px] w-full mt-10 md:mt-0 md:justify-self-end"
