@@ -15,7 +15,7 @@ export function Categories() {
   return (
     <aside
       aria-describedby="categories"
-      className="mx-auto w-full max-w-[230px]"
+      className="row-span-3 mx-auto max-w-[230px] w-full"
     >
       <h2 id="categories" className="mt-12 text-xl font-medium">
         Posters

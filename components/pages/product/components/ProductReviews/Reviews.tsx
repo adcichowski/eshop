@@ -1,7 +1,7 @@
 import { useForm } from "components/Forms/useForm";
 import { Input } from "components/Inputs/components/Input";
 import { addReviewSchema } from "./addReviewSchema";
-
+import Heart from "../../../../assets/heart.svg";
 type ReviewFormProps = {
   readonly name: string;
   readonly opinion: string;
@@ -13,15 +13,24 @@ export function ProductReviews() {
     <>
       <h4>Opinions about product</h4>
       <form>
-        <Input
-          id="name"
-          error={errors.name?.message ?? ""}
-          text="Name or pseudonym"
-          type="text"
-          {...register("name")}
-        />
-        <div>Rate</div>
-        <textarea {...register("opinion")}></textarea>
+        <fieldset className="flex flex-col">
+          <Input
+            id="name"
+            error={errors.name?.message ?? ""}
+            text="Name or pseudonym"
+            type="text"
+            {...register("name")}
+          />
+
+          <label htmlFor="rangeRate" className="sr-only">
+            Your rate:
+          </label>
+          <input id="rangeRate" type="range" />
+          <textarea
+            className="border-gray border resize-none"
+            {...register("opinion")}
+          ></textarea>
+        </fieldset>
       </form>
     </>
   );

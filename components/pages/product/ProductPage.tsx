@@ -13,6 +13,7 @@ import type { getStaticProps } from "pages/[productSlug]";
 import { ProductSelectVariant } from "./components/ProductSelectVariant";
 import { FavoriteInput } from "components/Inputs/FavoriteInput";
 import type { ProductVariant } from "./types";
+import { ProductReviews } from "./components/ProductReviews/Reviews";
 
 export const ProductPage = ({
   product,
@@ -44,6 +45,7 @@ export const ProductPage = ({
     <div className="flex flex-col">
       <main className="grid grid-cols-3">
         <Categories />
+
         <section className="mt-10 text-[32px] col-span-2 grid grid-cols-2 gap-5 max-w-3xl">
           <h2 className="max-w-md text-3xl mb-5 col-span-2">{product.name}</h2>
 
@@ -102,11 +104,18 @@ export const ProductPage = ({
 
           <ProductDescription productDescription={product.description} />
         </section>
-        <div></div>
-        <div className="w-full col-span-2 mt-[50px]">
-          <h3 className="text-xl">Others buy also:</h3>
+        <section
+          aria-describedby="othersBuyAlso"
+          className="w-full col-span-2 mt-[50px]"
+        >
+          <h3 id="othersBuyAlso" className="text-xl">
+            Others buy also:
+          </h3>
           <ProductsCarrousel />
-        </div>
+        </section>
+        <section>
+          <ProductReviews />
+        </section>
       </main>
 
       <footer>Footer</footer>

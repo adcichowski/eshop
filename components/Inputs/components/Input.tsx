@@ -21,7 +21,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             error && "bg-red-100 border-red-200"
           )}`}
         />
-        {!!error && (
+        {Boolean(error) && (
           <ErrorInInput
             id={props["aria-describedby"]}
             data-testid={`${props.id}Error`}
