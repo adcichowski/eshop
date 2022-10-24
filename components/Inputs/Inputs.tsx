@@ -1,6 +1,4 @@
 import React from "react";
-import Clsx from "clsx";
-import { ErrorInInput } from "./components/ErrorInInput";
 import type { InputProps } from "./types";
 import { Input } from "./components/Input";
 import { Checkbox } from "./components/Checkbox";

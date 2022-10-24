@@ -1,4 +1,4 @@
-import type { InputProps } from "components/Inputs/Inputs";
+import type { InputProps } from "components/Inputs/types";
 import type { GetStaticPropsContext } from "next";
 import type { ParsedUrlQuery } from "querystring";
 import type { AnyObjectSchema, InferType } from "yup";
