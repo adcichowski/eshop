@@ -75,7 +75,7 @@ export function Newsletter({ HeaderTag }: NewsletterProps) {
                       text="Your email"
                       hideLabel
                       {...register("email")}
-                      error={String(errors?.email?.message ?? "")}
+                      error={errors?.email?.message}
                     />
                   </div>
                   <button

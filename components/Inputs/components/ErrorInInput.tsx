@@ -1,8 +1,16 @@
+import type {
+  FieldError,
+  FieldErrorsImpl,
+  Merge,
+} from "react-hook-form/dist/types";
+
 export const ErrorInInput = ({
   error,
   ...props
-}: { readonly error: string | undefined } & JSX.IntrinsicElements["p"]) => (
+}: {
+  readonly error?: FieldError | string | Merge<FieldError, FieldErrorsImpl>;
+} & JSX.IntrinsicElements["p"]) => (
   <p role="alert" {...props} className="w-full text-xs text-left text-red-200">
-    {error}
+    {error ? String(error) : ""}
   </p>
 );

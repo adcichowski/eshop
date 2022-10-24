@@ -63,7 +63,7 @@ export function RegisterForm({
             return (
               <div className="flex w-full flex-col" key={`${name}Register`}>
                 <InputsRender
-                  error={String(errors?.[name]?.message ?? "")}
+                  error={errors?.[name]?.message}
                   id={`${name}Register`}
                   aria-describedby={`${name}HintRegister`}
                   {...register(name)}

@@ -1,7 +1,6 @@
 import { useForm } from "components/Forms/useForm";
 import { Input } from "components/Inputs/components/Input";
 import { addReviewSchema } from "./addReviewSchema";
-import Heart from "../../../../assets/heart.svg";
 type ReviewFormProps = {
   readonly name: string;
   readonly opinion: string;
@@ -16,7 +15,7 @@ export function ProductReviews() {
         <fieldset className="flex flex-col">
           <Input
             id="name"
-            error={errors.name?.message ?? ""}
+            error={errors.name?.message}
             text="Name or pseudonym"
             type="text"
             {...register("name")}

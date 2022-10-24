@@ -37,7 +37,7 @@ export function LoginForm({
           {Object.entries(fields).map(([name, { text, type }]) => (
             <div className="flex w-full flex-col" key={`${name}Login`}>
               <Input
-                error={String(errors?.[name]?.message ?? "")}
+                error={errors?.name?.message}
                 id={`${name}Login`}
                 {...register(name)}
                 aria-describedby={`${name}HintLogin`}
