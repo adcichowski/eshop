@@ -6,11 +6,16 @@ import type {
 
 export const ErrorInInput = ({
   error,
-  ...props
+  id,
 }: {
   readonly error?: FieldError | string | Merge<FieldError, FieldErrorsImpl>;
-} & JSX.IntrinsicElements["p"]) => (
-  <p role="alert" {...props} className="w-full text-xs text-left text-red-200">
+  readonly id: string;
+}) => (
+  <p
+    role="alert"
+    aria-describedby={id}
+    className="w-full text-xs text-left text-red-200"
+  >
     {error ? String(error) : ""}
   </p>
 );

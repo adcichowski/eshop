@@ -15,6 +15,7 @@ export function ProductReviews() {
         <fieldset className="flex flex-col">
           <Input
             id="name"
+            size="small"
             error={errors.name?.message}
             text="Name or pseudonym"
             type="text"

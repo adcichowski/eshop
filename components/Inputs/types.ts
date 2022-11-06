@@ -5,7 +5,8 @@ import type {
 } from "react-hook-form/dist/types";
 
 export type InputProps =
-  | JSX.IntrinsicElements["input"] & {
+  | Omit<JSX.IntrinsicElements["input"], "size"> & {
+      readonly size?: "small" | "normal";
       readonly id: string;
       readonly hideLabel?: boolean;
       readonly error?: FieldError | string | Merge<FieldError, FieldErrorsImpl>;
