@@ -46,76 +46,84 @@ export const ProductPage = ({
       <main className="grid grid-cols-3">
         <Categories />
 
-        <section className="mt-10 text-[32px] col-span-2 grid grid-cols-2 gap-5 max-w-3xl">
-          <h2 className="max-w-md text-3xl mb-5 col-span-2">{product.name}</h2>
+        <div className="mt-10 text-[32px] col-span-2 max-w-3xl">
+          <section className=" grid grid-cols-2">
+            <h2 className="max-w-md text-3xl mb-5 col-span-2">
+              {product.name}
+            </h2>
 
-          <div>
-            <Image
-              width={392.36}
-              height={581.43}
-              alt={product?.name}
-              src={product?.images[0].url || ""}
-            />
-          </div>
-          <aside className="text-xl flex flex-col max-w-[377px]">
-            <ProductSale sale={product.sale} />
-            <div className="flex flex-col gap-3">
-              <label className="flex items-center cursor-pointer">
-                <span className="w-24 text-base">Size:</span>
-                <ProductSelectVariant
-                  selectedVariant={selectedVariant}
-                  setSelectedVariant={setSelectedVariant}
-                  sale={product.sale}
-                  productVariants={productVariants}
-                />
-              </label>
-
-              <label className="flex items-center">
-                <span className="w-24 text-base">Quantity:</span>
-                <div>
-                  <input
-                    className="p-2 bg-white border-[0.5px] border-black px-3 w-12 text-center h-10 cursor-pointer"
-                    type="text"
-                    min={1}
+            <div>
+              <Image
+                width={392.36}
+                height={581.43}
+                alt={product?.name}
+                src={product?.images[0].url || ""}
+              />
+            </div>
+            <aside className="text-xl flex flex-col max-w-[377px] ml-5">
+              <ProductSale sale={product.sale} />
+              <div className="flex flex-col gap-3">
+                <label className="flex items-center cursor-pointer">
+                  <span className="w-24 text-base">Size:</span>
+                  <ProductSelectVariant
+                    selectedVariant={selectedVariant}
+                    setSelectedVariant={setSelectedVariant}
+                    sale={product.sale}
+                    productVariants={productVariants}
                   />
-                  <span className="ml-1">szt</span>
-                </div>
-              </label>
-            </div>
+                </label>
 
-            <ProductAttributes {...productAttributes} />
-            <ProductPrice sale={product.sale} price={selectedVariant.price} />
-            <div className="flex mt-3">
-              <div className="w-4 h-4 bg-avaible-product bg-contain"></div>
-              <div className="text-xs ml-[3px] font-normal">In store</div>
-            </div>
-            <span className="text-xs mt-4">
-              Delivery in 2-4 working days | Free delivery from 199zł
-            </span>
-            <div className="flex mt-4 gap-1">
-              <Button className="px-12 w-full rounded-none py-4 h-full text-lg sm:text-sm">
-                To Cart
-              </Button>
-              <div className="border-[1px] cursor-pointer border-black p-4 relative">
-                <FavoriteInput id={product.name} />
+                <label className="flex items-center">
+                  <span className="w-24 text-base">Quantity:</span>
+                  <div>
+                    <input
+                      className="p-2 bg-white border-[0.5px] border-black px-3 w-12 text-center h-10 cursor-pointer"
+                      type="text"
+                      min={1}
+                    />
+                    <span className="ml-1">szt</span>
+                  </div>
+                </label>
               </div>
-            </div>
-          </aside>
 
-          <ProductDescription productDescription={product.description} />
-        </section>
-        <section
-          aria-describedby="othersBuyAlso"
-          className="w-full col-span-2 mt-[50px]"
-        >
-          <h3 id="othersBuyAlso" className="text-xl">
-            Others buy also:
-          </h3>
-          <ProductsCarrousel />
-        </section>
-        <section>
+              <div>
+                <ProductAttributes {...productAttributes} />
+                <ProductPrice
+                  sale={product.sale}
+                  price={selectedVariant.price}
+                />
+                <div className="flex mt-3">
+                  <div className="w-4 h-4 bg-avaible-product bg-contain"></div>
+                  <div className="text-xs ml-[3px] font-normal">In store</div>
+                </div>
+                <span className="text-xs mt-4">
+                  Delivery in 2-4 working days | Free delivery from 199zł
+                </span>
+                <div className="flex mt-4 gap-1">
+                  <Button className="px-12 w-full rounded-none py-5 h-full text-lg sm:text-sm">
+                    To Cart
+                  </Button>
+                  <div className="border-[1px] cursor-pointer border-black p-4 flex justify-center items-center relative">
+                    <FavoriteInput id={product.name} />
+                  </div>
+                </div>
+              </div>
+            </aside>
+
+            <ProductDescription productDescription={product.description} />
+          </section>
+          <section
+            aria-describedby="othersBuyAlso"
+            className="w-full col-span-2 mt-[50px]"
+          >
+            <h3 id="othersBuyAlso" className="text-xl">
+              Others buy also:
+            </h3>
+            <ProductsCarrousel />
+          </section>
+
           <ProductReviews />
-        </section>
+        </div>
       </main>
 
       <footer>Footer</footer>

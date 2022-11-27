@@ -12,6 +12,7 @@ export function useForm<TFieldValues extends FieldValues>(
     formState,
     formState: { errors, isValid, isDirty },
     watch,
+    control,
   } = useFormHook<TFieldValues>({
     resolver: yupResolver(provideSchema),
   });
@@ -22,6 +23,7 @@ export function useForm<TFieldValues extends FieldValues>(
     isDirty,
     isValid,
     watch,
+    control,
     formState,
   };
 }
