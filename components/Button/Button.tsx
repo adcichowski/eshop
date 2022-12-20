@@ -1,8 +1,10 @@
-type ButtonProps = {
-  readonly children: string;
-} & JSX.IntrinsicElements["button"];
+import type { ReactNode } from "react";
 
-export function Button({ ...props }: ButtonProps) {
+type ButtonProps = {
+  readonly children: ReactNode;
+} & Omit<JSX.IntrinsicElements["button"], "children">;
+
+export function Button({ children, ...props }: ButtonProps) {
   return (
     <button
       {...props}
@@ -13,6 +15,8 @@ export function Button({ ...props }: ButtonProps) {
           ? "bg-white text-primary border-2 border-primary cursor-not-allowed"
           : "text-white bg-primary"
       }`}
-    />
+    >
+      {children}
+    </button>
   );
 }

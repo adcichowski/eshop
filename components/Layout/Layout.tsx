@@ -1,5 +1,4 @@
 import { Header } from "components/Header/Header";
-import React from "react";
 
 export function Layout({ children }: { readonly children: React.ReactNode }) {
   return (
