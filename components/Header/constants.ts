@@ -16,18 +16,18 @@ export const navigationIcons = [
     Icon: InstagramIcon,
   },
   {
-    href: "/account",
+    popper: "account",
     "aria-label": "your profile",
     Icon: UserIcon,
   },
 
   {
-    href: "/cart",
+    popper: "cart",
     "aria-label": "Check your cart",
     Icon: CartIcon,
   },
   {
-    href: "/favorites",
+    popper: "favorite",
     "aria-label": "Check your favorites products",
     Icon: FavoriteIcon,
   },

@@ -1,15 +1,15 @@
+import Clsx from "clsx";
 import { Autocomplete } from "components/Autocomplete/Autocomplete";
-import { Button } from "components/Button/Button";
-import { Popover } from "components/Popover/Popover";
-import { usePopper } from "components/Popover/usePopper";
+import { HeaderPoppers } from "components/Popper/HeaderPoppers/HeaderPoppers";
+import { Popper } from "components/Popper/Popper";
+import { usePopper } from "components/Popper/usePopper";
 import { StaticLink } from "components/StaticLink/StaticLink";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React from "react";
 
 import { headerCategories, navigationIcons } from "./constants";
 export const Header = () => {
-  const { popperRef, saveParentPopper, parentPopper } = usePopper();
-
+  const { saveParentPopper, parentPopper, typePopper } = usePopper();
   return (
     <>
       <header className="grid place-items-center grid-cols-3 items-center min-w-md w-full flex-column z-10 relative justify-around p-3 sm:p-4">
@@ -26,32 +26,30 @@ export const Header = () => {
             darmowa dostawa od 199zł
           </p>
         </div>
-        <div className="relative">
+        <div className="relative z-20">
           <ul aria-label="navigation icons" className="flex gap-4 mr-5">
-            {navigationIcons.map(({ Icon, ...propsArchon }) => (
-              <li
-                onClick={saveParentPopper}
-                className="hover:text-gray-600 text-gray-400"
-                key={propsArchon.href}
-              >
-                <Icon />
-              </li>
+            {navigationIcons.map(({ Icon, popper, ...propsArchon }) => (
+              <>
+                <li
+                  onClick={(e) => saveParentPopper(e, popper)}
+                  className={`relative ${Clsx(
+                    typePopper === popper &&
+                      popper &&
+                      "before:w-full before:h-[1.5px] before:absolute before:bg-black before:-bottom-[9px]"
+                  )} hover:text-gray-600 text-gray-400`}
+                  key={propsArchon?.href ?? popper}
+                >
+                  <Icon />
+                </li>
+              </>
             ))}
           </ul>
-          {parentPopper && (
-            <Popover ref={popperRef}>
-              <div className="flex flex-col text-center top-4 left-4 px-10">
-                <Button className="md:text-sm px-16 py-[5px] rounded-[10px] text-sm">
-                  <span className="w-full whitespace-nowrap">Zaloguj się</span>
-                </Button>
-                <div className="text-sm line leading-6">
-                  Jesteś tu pierwszy raz?
-                </div>
-                <Link href="/register">
-                  <span className="underline text-sm">Zarejestruj się</span>
-                </Link>
+          {parentPopper && typePopper && (
+            <Popper>
+              <div className="absolute flex justify-center py-[19px] bg-white border-gray border-[0.5px] top-9 -left-28 max-w-[400px] w-[400px] z-10">
+                <HeaderPoppers type={typePopper} />
               </div>
-            </Popover>
+            </Popper>
           )}
         </div>
       </header>
