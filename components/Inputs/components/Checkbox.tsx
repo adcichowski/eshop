@@ -17,7 +17,11 @@ export const Checkbox = React.forwardRef<HTMLInputElement, InputProps>(
         </label>
       </div>
       {!!error && (
-        <ErrorInInput data-testid={props["aria-describedby"]} error={error} />
+        <ErrorInInput
+          id={props.id}
+          data-testid={props["aria-describedby"]}
+          error={error}
+        />
       )}
     </>
   )
