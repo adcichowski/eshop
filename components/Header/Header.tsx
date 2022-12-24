@@ -1,7 +1,6 @@
 import Clsx from "clsx";
 import { Autocomplete } from "components/Autocomplete/Autocomplete";
 import { HeaderPoppers } from "components/Popper/HeaderPoppers/HeaderPoppers";
-import { Popper } from "components/Popper/Popper";
 import { usePopper } from "components/Popper/usePopper";
 import { StaticLink } from "components/StaticLink/StaticLink";
 import Link from "next/link";
@@ -9,7 +8,7 @@ import React from "react";
 
 import { headerCategories, navigationIcons } from "./constants";
 export const Header = () => {
-  const { saveParentPopper, parentPopper, typePopper } = usePopper();
+  const { saveParentPopper, parentPopper, typePopper, popperRef } = usePopper();
   return (
     <>
       <header className="grid place-items-center grid-cols-3 items-center min-w-md w-full flex-column z-10 relative justify-around p-3 sm:p-4">
@@ -26,7 +25,7 @@ export const Header = () => {
             darmowa dostawa od 199zł
           </p>
         </div>
-        <div className="relative z-20">
+        <div ref={popperRef} className="relative z-20">
           <ul aria-label="navigation icons" className="flex gap-4 mr-5">
             {navigationIcons.map(({ Icon, popper, ...propsArchon }) => (
               <>
@@ -45,11 +44,11 @@ export const Header = () => {
             ))}
           </ul>
           {parentPopper && typePopper && (
-            <Popper>
+            <div>
               <div className="absolute flex justify-center py-[19px] bg-white border-gray border-[0.5px] top-9 -left-28 max-w-[400px] w-[400px] z-10">
                 <HeaderPoppers type={typePopper} />
               </div>
-            </Popper>
+            </div>
           )}
         </div>
       </header>
