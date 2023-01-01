@@ -1,11 +1,17 @@
 import React, { createContext, useContext, useState } from "react";
 
-interface CartItems {
-  readonly prize: string;
+interface CartItem {
+  readonly id: string;
+  readonly image: {
+    readonly url: string;
+    readonly alt?: string | null;
+  };
+  readonly price: number;
   readonly title: string;
 }
 interface CartContextType {
-  readonly cart: readonly CartItems[];
+  readonly cart: Record<string, CartItem> | undefined;
+  readonly addProductToCart: (product: CartItem) => void;
 }
 const CartContext = createContext<CartContextType | null>(null);
 
@@ -14,9 +20,16 @@ export const CartContextProvider = ({
 }: {
   readonly children: React.ReactNode;
 }) => {
-  const [cart, setCart] = useState<readonly CartItems[] | readonly []>([]);
+  const [cart, setCart] = useState<Record<string, CartItem> | undefined>(
+    undefined
+  );
+  const addProductToCart = (product: CartItem) => {
+    setCart((prev) => ({ ...prev, product }));
+  };
   return (
-    <CartContext.Provider value={{ cart }}>{children}</CartContext.Provider>
+    <CartContext.Provider value={{ cart, addProductToCart }}>
+      {children}
+    </CartContext.Provider>
   );
 };
 

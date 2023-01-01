@@ -14,11 +14,12 @@ import { ProductSelectVariant } from "./components/ProductSelectVariant";
 import { FavoriteInput } from "components/Inputs/FavoriteInput";
 import type { ProductVariant } from "./types";
 import { ProductReviews } from "./components/ProductReviews/Reviews";
+import { useCartContext } from "context/CartContext";
 
 export const ProductPage = ({
   product,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  console.log(product);
+  const { addProductToCart } = useCartContext();
   const productVariants = product?.variants.map(({ size, id, price }) => ({
     price,
     id,
@@ -101,7 +102,17 @@ export const ProductPage = ({
                   Delivery in 2-4 working days | Free delivery from 199zł
                 </span>
                 <div className="flex mt-4 gap-1">
-                  <Button className="px-12 w-full rounded-none py-5 h-full text-lg sm:text-sm">
+                  <Button
+                    onClick={() =>
+                      addProductToCart({
+                        id: selectedVariant.id,
+                        title: product.name,
+                        price: selectedVariant.price,
+                        image: product.images[0],
+                      })
+                    }
+                    className="px-12 w-full rounded-none py-5 h-full text-lg sm:text-sm"
+                  >
                     To Cart
                   </Button>
                   <div className="border-[1px] cursor-pointer border-black p-4 flex justify-center items-center relative">
