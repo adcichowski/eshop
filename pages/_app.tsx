@@ -11,13 +11,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   const queryClient = new QueryClient();
   return (
     <ApolloProvider client={apolloClient}>
-      <Layout>
-        <CartContextProvider>
+      <CartContextProvider>
+        <Layout>
           <QueryClientProvider client={queryClient}>
             <Component {...pageProps} />
           </QueryClientProvider>
-        </CartContextProvider>
-      </Layout>
+        </Layout>
+      </CartContextProvider>
     </ApolloProvider>
   );
 }

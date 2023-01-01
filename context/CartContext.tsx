@@ -5,7 +5,7 @@ interface CartItems {
   readonly title: string;
 }
 interface CartContextType {
-  readonly items: readonly CartItems[];
+  readonly cart: readonly CartItems[];
 }
 const CartContext = createContext<CartContextType | null>(null);
 
@@ -16,9 +16,7 @@ export const CartContextProvider = ({
 }) => {
   const [cart, setCart] = useState<readonly CartItems[] | readonly []>([]);
   return (
-    <CartContext.Provider value={{ items: cart }}>
-      {children}
-    </CartContext.Provider>
+    <CartContext.Provider value={{ cart }}>{children}</CartContext.Provider>
   );
 };
 

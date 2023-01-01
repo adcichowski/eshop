@@ -18,6 +18,7 @@ import { ProductReviews } from "./components/ProductReviews/Reviews";
 export const ProductPage = ({
   product,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  console.log(product);
   const productVariants = product?.variants.map(({ size, id, price }) => ({
     price,
     id,
