@@ -1,6 +1,6 @@
 import { useClickOutside } from "hooks/useClickOutside";
 import type { MouseEvent } from "react";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 export function usePopper() {
   const popperRef = React.useRef<HTMLDivElement>(null);

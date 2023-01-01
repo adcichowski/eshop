@@ -28,7 +28,7 @@ export const Header = () => {
         <div ref={popperRef} className="relative z-20">
           <ul aria-label="navigation icons" className="flex gap-4 mr-5">
             {navigationIcons.map(({ Icon, popper, ...propsArchon }) => (
-              <>
+              <React.Fragment key={popper ?? propsArchon.href}>
                 <li
                   onClick={(e) => saveParentPopper(e, popper)}
                   className={`relative ${Clsx(
@@ -40,7 +40,7 @@ export const Header = () => {
                 >
                   <Icon />
                 </li>
-              </>
+              </React.Fragment>
             ))}
           </ul>
           {parentPopper && typePopper && (
