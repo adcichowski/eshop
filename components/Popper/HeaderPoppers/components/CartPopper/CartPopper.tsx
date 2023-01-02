@@ -5,9 +5,8 @@ import { useCartContext } from "context/CartContext";
 import { ProductCartPopper } from "./components/ProductCartPopper";
 export function CartPopper() {
   const { cart } = useCartContext();
-  console.log(cart);
   return (
-    <div>
+    <section>
       <div className="flex flex-col text-center px-10 items-center">
         {!cart ? (
           <>
@@ -29,6 +28,6 @@ export function CartPopper() {
           <span className="w-full whitespace-nowrap">Przejdź do nowości</span>
         </Button>
       </div>
-    </div>
+    </section>
   );
 }

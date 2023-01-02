@@ -12,7 +12,7 @@ interface CartItem {
 }
 interface CartContextType {
   readonly cart: Record<string, CartItem> | undefined;
-  readonly addProductToCart: (product: CartItem) => void;
+  readonly addProductToCart: (product: Omit<CartItem, "amount">) => void;
 }
 const CartContext = createContext<CartContextType | null>(null);
 
@@ -24,7 +24,7 @@ export const CartContextProvider = ({
   const [cart, setCart] = useState<Record<string, CartItem> | undefined>(
     undefined
   );
-  const addProductToCart = (product: CartItem) => {
+  const addProductToCart = (product: Omit<CartItem, "amount">) => {
     setCart((prev) => {
       if (prev?.[product.id] === undefined) {
         return { ...prev, [product.id]: { ...product, amount: 1 } };
