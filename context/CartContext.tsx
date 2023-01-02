@@ -6,6 +6,7 @@ interface CartItem {
     readonly url: string;
     readonly alt?: string | null;
   };
+  readonly amount: number;
   readonly price: number;
   readonly title: string;
 }
@@ -24,7 +25,19 @@ export const CartContextProvider = ({
     undefined
   );
   const addProductToCart = (product: CartItem) => {
-    setCart((prev) => ({ ...prev, product }));
+    setCart((prev) => {
+      if (prev?.[product.id] === undefined) {
+        return { ...prev, [product.id]: { ...product, amount: 1 } };
+      }
+
+      return {
+        ...prev,
+        [product.id]: {
+          ...product,
+          amount: Number(prev?.[product.id].amount) + 1,
+        },
+      };
+    });
   };
   return (
     <CartContext.Provider value={{ cart, addProductToCart }}>

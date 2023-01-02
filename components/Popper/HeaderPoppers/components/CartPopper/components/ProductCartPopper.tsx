@@ -1,16 +1,17 @@
 import React from "react";
 import Image from "next/future/image";
 import ClearIcon from "./clear.svg";
+import { changeValueCurrency } from "utils/utils";
 type ProductCartPopperProps = {
   readonly image: { readonly url: string; readonly alt?: string | null };
   readonly price: number;
-  readonly numberOf: number;
+  readonly amount: number;
   readonly title: string;
 };
 export function ProductCartPopper({
   image,
   title,
-  numberOf,
+  amount,
   price,
 }: ProductCartPopperProps) {
   return (
@@ -37,8 +38,10 @@ export function ProductCartPopper({
           </button>
         </div>
         <div className="flex justify-between">
-          <div className="text-sm">{numberOf} szt.</div>
-          <div className="text-base font-semibold">{price}</div>
+          <div className="text-sm">{amount} szt.</div>
+          <div className="text-base font-semibold">
+            {changeValueCurrency(price)}
+          </div>
         </div>
       </div>
     </section>

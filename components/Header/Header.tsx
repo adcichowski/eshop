@@ -11,7 +11,7 @@ export const Header = () => {
   const { saveParentPopper, parentPopper, typePopper, popperRef } = usePopper();
   return (
     <>
-      <header className="grid place-items-center grid-cols-3 items-center min-w-md w-full flex-column z-10 relative justify-around p-3 sm:p-4">
+      <header className="grid place-items-center grid-cols-3 items-center min-w-md w-full flex-column z-20 relative justify-around p-3 sm:p-4">
         <Autocomplete className="ml-14" />
         <div className="flex flex-col uppercase text-center gap-3">
           <Link href="/" passHref>

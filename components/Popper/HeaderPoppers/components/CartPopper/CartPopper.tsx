@@ -5,6 +5,7 @@ import { useCartContext } from "context/CartContext";
 import { ProductCartPopper } from "./components/ProductCartPopper";
 export function CartPopper() {
   const { cart } = useCartContext();
+  console.log(cart);
   return (
     <div>
       <div className="flex flex-col text-center px-10 items-center">
@@ -18,9 +19,9 @@ export function CartPopper() {
             </div>
           </>
         ) : (
-          <div className="flex flex-col h-auto w-full">
+          <div className="flex flex-col h-auto w-full gap-y-2">
             {Object.entries(cart).map(([id, product]) => (
-              <ProductCartPopper key={id} {...product} numberOf={1} />
+              <ProductCartPopper key={id} {...product} />
             ))}
           </div>
         )}
