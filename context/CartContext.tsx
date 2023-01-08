@@ -13,6 +13,7 @@ interface CartItem {
 interface CartContextType {
   readonly cart: Record<string, CartItem> | undefined;
   readonly addProductToCart: (product: Omit<CartItem, "amount">) => void;
+  readonly deleteProductFromCart: (product: Omit<CartItem, "amount">) => void;
 }
 const CartContext = createContext<CartContextType | null>(null);
 
@@ -40,8 +41,28 @@ export const CartContextProvider = ({
       };
     });
   };
+
+  const deleteProductFromCart = (product: Omit<CartItem, "amount">) => {
+    setCart((prev) => {
+      const deleteProduct = prev?.[product.id];
+      if (!deleteProduct) return prev;
+      if (deleteProduct.amount === 1) {
+        const cartWithoutDeleted = Object.entries(prev).filter(
+          ([id]) => id !== product.id
+        );
+        if (cartWithoutDeleted.length === 0) return undefined;
+        return Object.fromEntries(cartWithoutDeleted);
+      }
+      return {
+        ...prev,
+        [product.id]: { ...deleteProduct, amount: deleteProduct.amount - 1 },
+      };
+    });
+  };
   return (
-    <CartContext.Provider value={{ cart, addProductToCart }}>
+    <CartContext.Provider
+      value={{ cart, addProductToCart, deleteProductFromCart }}
+    >
       {children}
     </CartContext.Provider>
   );
