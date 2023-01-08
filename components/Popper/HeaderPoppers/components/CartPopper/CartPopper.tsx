@@ -19,8 +19,8 @@ export function CartPopper() {
           </>
         ) : (
           <div className="flex flex-col h-auto w-full gap-y-2">
-            {cart.map((product) => (
-              <ProductCartPopper key={product.id} {...product} />
+            {Object.entries(cart).map(([id, product]) => (
+              <ProductCartPopper key={id} {...product} />
             ))}
           </div>
         )}

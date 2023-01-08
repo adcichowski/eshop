@@ -11,7 +11,7 @@ interface CartItem {
   readonly title: string;
 }
 interface CartContextType {
-  readonly cart: readonly CartItem[];
+  readonly cart: Record<string, CartItem> | undefined;
   readonly addProductToCart: (product: Omit<CartItem, "amount">) => void;
 }
 const CartContext = createContext<CartContextType | null>(null);
@@ -21,17 +21,23 @@ export const CartContextProvider = ({
 }: {
   readonly children: React.ReactNode;
 }) => {
-  const [cart, setCart] = useState<readonly CartItem[] | readonly []>([]);
+  const [cart, setCart] = useState<Record<string, CartItem> | undefined>(
+    undefined
+  );
   const addProductToCart = (product: Omit<CartItem, "amount">) => {
-    setCart((cartItems) => {
-      const productInCart = cartItems.find((item) => item.id === product.id);
-      if (productInCart) {
-        return [
-          ...cart,
-          { ...productInCart, amount: productInCart.amount + 1 },
-        ];
+    setCart((prev) => {
+      const productInCart = prev?.[product.id];
+      if (!productInCart) {
+        return { ...prev, [product.id]: { ...product, amount: 1 } };
       }
-      return [...cart, { ...product, amount: 1 }];
+
+      return {
+        ...prev,
+        [product.id]: {
+          ...product,
+          amount: Number(prev?.[product.id].amount) + 1,
+        },
+      };
     });
   };
   return (
