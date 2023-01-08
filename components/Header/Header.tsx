@@ -8,7 +8,7 @@ import React from "react";
 
 import { headerCategories, navigationIcons } from "./constants";
 export const Header = () => {
-  const { saveParentPopper, parentPopper, typePopper, popperRef } = usePopper();
+  const { saveParentPopper, typePopper, popperRef } = usePopper();
   return (
     <>
       <header className="grid place-items-center grid-cols-3 items-center min-w-md w-full flex-column z-20 relative justify-around p-3 sm:p-4">
@@ -28,22 +28,20 @@ export const Header = () => {
         <div ref={popperRef} className="relative z-20">
           <ul aria-label="navigation icons" className="flex gap-4 mr-5">
             {navigationIcons.map(({ Icon, popper, ...propsArchon }) => (
-              <React.Fragment key={popper ?? propsArchon.href}>
-                <li
-                  onClick={(e) => saveParentPopper(e, popper)}
-                  className={`relative ${Clsx(
-                    typePopper === popper &&
-                      popper &&
-                      "before:w-full before:h-[1.5px] before:absolute before:bg-black before:-bottom-[9px]"
-                  )} hover:text-gray-600 text-gray-400`}
-                  key={propsArchon?.href ?? popper}
-                >
-                  <Icon />
-                </li>
-              </React.Fragment>
+              <li
+                key={popper ?? propsArchon.href}
+                onClick={(e) => saveParentPopper(e, popper)}
+                className={`relative ${Clsx(
+                  typePopper === popper &&
+                    popper &&
+                    "before:w-full before:h-[1.5px] before:absolute before:bg-black before:-bottom-[9px]"
+                )} hover:text-gray-600 text-gray-400`}
+              >
+                <Icon />
+              </li>
             ))}
           </ul>
-          {parentPopper && typePopper && (
+          {typePopper && (
             <div>
               <div className="absolute flex justify-center py-[19px] bg-white border-gray border-[0.5px] top-9 -left-28 max-w-[400px] w-[400px] z-10">
                 <HeaderPoppers type={typePopper} />
