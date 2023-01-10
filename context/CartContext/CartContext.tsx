@@ -1,6 +1,7 @@
+import { faker } from "@faker-js/faker";
 import React, { createContext, useContext, useState } from "react";
 
-interface CartItem {
+export interface CartItem {
   readonly id: string;
   readonly image: {
     readonly url: string;
@@ -25,6 +26,7 @@ export const CartContextProvider = ({
   const [cart, setCart] = useState<Record<string, CartItem> | undefined>(
     undefined
   );
+
   const addProductToCart = (product: Omit<CartItem, "amount">) => {
     setCart((prev) => {
       const productInCart = prev?.[product.id];

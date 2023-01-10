@@ -3,6 +3,8 @@ import { RegisterForm } from "components/Forms/RegisterForm/RegisterForm";
 import { useState } from "react";
 import Dynamic from "next/dynamic";
 import type { NewsletterProps } from "../../Forms/Newsletter/Newsletter";
+import { AlertInfo } from "components/AlertInfo/AlertInfo";
+import { useAlertInfo } from "components/AlertInfo/useAlertInfo";
 
 const NewsletterComp = Dynamic<NewsletterProps>(
   () =>
@@ -16,17 +18,7 @@ const NewsletterComp = Dynamic<NewsletterProps>(
 );
 
 export function AccountPage() {
-  const [alertLabel, setAlertLabel] = useState<AlertLabel>({
-    isOpen: false,
-    errorIn: undefined,
-  });
-
-  const handleSetAlert =
-    (errorIn: "login" | "register") => (isOpen: boolean) => {
-      if (alertLabel.errorIn !== errorIn) {
-        setAlertLabel({ errorIn, isOpen });
-      }
-    };
+  const { alertLabel, handleSetAlert } = useAlertInfo();
   return (
     <>
       <div className="flex flex-col items-center">
@@ -42,29 +34,3 @@ export function AccountPage() {
     </>
   );
 }
-
-type AlertLabel = {
-  readonly isOpen: boolean;
-  readonly errorIn: undefined | "login" | "register";
-};
-const AlertInfo = ({
-  errorInForm,
-}: {
-  readonly errorInForm: AlertLabel["errorIn"];
-}) => {
-  const infoErrors = {
-    login: "logowania",
-    register: "rejestracji",
-  };
-
-  return !!errorInForm ? (
-    <div
-      role="alert"
-      className="w-full border-2 border-red-200 col-span-2 mt-9 text-center text-red-200 py-3 rounded-[4px]"
-    >
-      Formularz {infoErrors[errorInForm]} zawiera błędy !!!
-    </div>
-  ) : (
-    <></>
-  );
-};

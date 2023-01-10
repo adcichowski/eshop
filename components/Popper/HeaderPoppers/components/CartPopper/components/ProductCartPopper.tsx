@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/future/image";
 import ClearIcon from "./clear.svg";
 import { changeValueCurrency } from "utils/utils";
-import { useCartContext } from "context/CartContext";
+import { useCartContext } from "context/CartContext/CartContext";
 type ProductCartPopperProps = {
   readonly id: string;
   readonly image: { readonly url: string; readonly alt?: string | null };

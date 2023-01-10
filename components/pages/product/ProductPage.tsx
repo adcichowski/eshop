@@ -14,7 +14,7 @@ import { ProductSelectVariant } from "./components/ProductSelectVariant";
 import { FavoriteInput } from "components/Inputs/FavoriteInput";
 import type { ProductVariant } from "./types";
 import { ProductReviews } from "./components/ProductReviews/Reviews";
-import { useCartContext } from "context/CartContext";
+import { useCartContext } from "context/CartContext/CartContext";
 
 export const ProductPage = ({
   product,
