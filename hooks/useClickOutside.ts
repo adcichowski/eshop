@@ -1,15 +1,19 @@
-import type { MutableRefObject, RefObject } from "react";
+import type { RefObject } from "react";
 import { useEffect } from "react";
 
 export function useClickOutside(
-  /*
-  Hook to run handler if click in document not contained ref then the handler will be running.
-  */
   ref: RefObject<HTMLDivElement>,
   handler: () => void
 ) {
   useEffect(() => {
     const listener = (event: MouseEvent) => {
+      // Do nothing if target is element with attribute data-outside
+      if (event.target instanceof Element) {
+        const attribute = event.target.getAttribute("data-outside");
+        if (attribute) {
+          return;
+        }
+      }
       // Do nothing if clicking ref's element or descendent elements
       if (!event) return;
       // eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- need asserts to repair type problems

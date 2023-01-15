@@ -41,7 +41,7 @@ export function ProductCartPopper({
             onClick={() => deleteProductFromCart({ image, title, price, id })}
             className="self-start mt-[3px]"
           >
-            <ClearIcon />
+            <ClearIcon data-outside="false" />
           </button>
         </div>
         <div className="flex justify-between">
