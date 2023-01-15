@@ -20,9 +20,9 @@ export const Header = () => {
             </a>
           </Link>
           <p className="text-sm hidden md:inline-block opacity-70">
-            Wysyłka w 2-4 dni robocze
+            Shipping in 2-4 business days
             <span className="inline-block before:block before:relative  before:w-[1px] before:h-4 before:bg-black mx-1 before:-bottom-1"></span>
-            darmowa dostawa od 199zł
+            free delivery from 199 PLN
           </p>
         </div>
         <div ref={popperRef} className="relative z-20">
@@ -34,7 +34,7 @@ export const Header = () => {
                 className={`relative ${Clsx(
                   typePopper === popper &&
                     popper &&
-                    "before:w-full before:h-[1.5px] before:absolute before:bg-black before:-bottom-[9px]"
+                    "before:w-full before:h-[1.5px] before:translate-x-0.5 before:absolute before:bg-black before:-bottom-[9px]"
                 )} hover:text-gray-600 text-gray-400`}
               >
                 <Icon />

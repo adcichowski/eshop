@@ -1,6 +1,5 @@
 import { LoginForm } from "components/Forms/LoginForm/LoginForm";
 import { RegisterForm } from "components/Forms/RegisterForm/RegisterForm";
-import { useState } from "react";
 import Dynamic from "next/dynamic";
 import type { NewsletterProps } from "../../Forms/Newsletter/Newsletter";
 import { AlertInfo } from "components/AlertInfo/AlertInfo";

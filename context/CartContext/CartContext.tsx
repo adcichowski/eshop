@@ -1,4 +1,3 @@
-import { faker } from "@faker-js/faker";
 import React, { createContext, useContext, useState } from "react";
 
 export interface CartItem {

@@ -8,7 +8,7 @@ export function Button({ children, ...props }: ButtonProps) {
   return (
     <button
       {...props}
-      className={`transition-colors font-semibold uppercase rounded-[10px] text-base md:text-lg ${
+      className={`transition-colors font-semibold uppercase rounded-[10px] text-base md:text-lg w-full ${
         props.className
       } ${
         props.disabled

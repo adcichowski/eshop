@@ -1,7 +1,6 @@
 import { useForm } from "components/Forms/useForm";
 import { Input } from "components/Inputs/components/Input";
 import Star from "./Star.svg";
-import { useState } from "react";
 import { addReviewSchema } from "./addReviewSchema";
 import { Controller, useWatch } from "react-hook-form";
 type ReviewFormProps = {

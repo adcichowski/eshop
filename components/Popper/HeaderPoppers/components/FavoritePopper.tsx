@@ -9,10 +9,10 @@ export function FavoritePopper() {
           <FavoriteIcon />
         </div>
         <div className="text-sm line leading-6 whitespace-nowrap mt-1">
-          Twoja lista ulubionych jest pusta
+          Your likes list is empty
         </div>
         <Button className="md:text-sm px-16 py-[5px] rounded-[10px] text-sm mt-2">
-          <span className="w-full whitespace-nowrap">Przejdź do nowości</span>
+          <span className="whitespace-nowrap">Go to new products</span>
         </Button>
       </div>
     </div>

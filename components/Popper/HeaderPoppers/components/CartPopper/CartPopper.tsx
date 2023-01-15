@@ -14,19 +14,26 @@ export function CartPopper() {
               <CartIcon />
             </div>
             <div className="text-sm line leading-6 whitespace-nowrap mt-1">
-              Twój koszyk jest pusty
+              Your cart is empty
             </div>
+            <Button className="md:text-sm px-16 py-[5px] rounded-[10px] text-sm mt-2">
+              <span className="whitespace-nowrap min-w-fit">
+                go to new products
+              </span>
+            </Button>
           </>
         ) : (
-          <div className="flex flex-col h-auto w-full gap-y-2">
-            {Object.entries(cart).map(([id, product]) => (
-              <ProductCartPopper key={id} {...product} />
-            ))}
-          </div>
+          <>
+            <div className="flex flex-col h-auto w-full gap-y-2">
+              {Object.entries(cart).map(([id, product]) => (
+                <ProductCartPopper key={id} {...product} />
+              ))}
+            </div>
+            <Button className="md:text-sm px-16 py-[5px] rounded-[10px] text-sm mt-2">
+              <span className="whitespace-nowrap">Go to cart</span>
+            </Button>
+          </>
         )}
-        <Button className="md:text-sm px-16 py-[5px] rounded-[10px] text-sm mt-2">
-          <span className="w-full whitespace-nowrap">Przejdź do nowości</span>
-        </Button>
       </div>
     </section>
   );

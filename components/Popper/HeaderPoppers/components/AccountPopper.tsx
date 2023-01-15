@@ -4,13 +4,15 @@ import React from "react";
 
 export function AccountPopper() {
   return (
-    <div className="flex flex-col text-center px-10">
+    <div className="flex flex-col text-center w-full px-14">
       <Button className="md:text-sm px-16 py-[5px] rounded-[10px] text-sm">
-        <span className="w-full whitespace-nowrap">Zaloguj się</span>
+        <span className="whitespace-nowrap">Log in</span>
       </Button>
-      <div className="text-sm line leading-6">Jesteś tu pierwszy raz?</div>
+      <div className="text-sm line leading-6">
+        Are you here for the first time?
+      </div>
       <Link href="/register">
-        <span className="underline text-sm">Zarejestruj się</span>
+        <span className="underline text-sm cursor-pointer">Sign up</span>
       </Link>
     </div>
   );
