@@ -19,7 +19,7 @@ import { useCartContext } from "context/CartContext/CartContext";
 export const ProductPage = ({
   product,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { addProductToCart } = useCartContext();
+  const { addProduct } = useCartContext();
   const productVariants = product?.variants.map(({ size, id, price }) => ({
     price,
     id,
@@ -104,11 +104,12 @@ export const ProductPage = ({
                 <div className="flex mt-4 gap-1">
                   <Button
                     onClick={() =>
-                      addProductToCart({
+                      addProduct({
                         id: selectedVariant.id,
                         title: product.name,
                         price: selectedVariant.price,
                         image: product.images[0],
+                        amount: 1,
                       })
                     }
                     className="px-12 w-full rounded-none py-5 h-full text-lg sm:text-sm"

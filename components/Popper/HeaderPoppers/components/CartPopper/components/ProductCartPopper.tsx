@@ -17,7 +17,7 @@ export function ProductCartPopper({
   amount,
   price,
 }: ProductCartPopperProps) {
-  const { deleteProductFromCart } = useCartContext();
+  const { deleteProduct } = useCartContext();
   return (
     <section
       className="flex w-[322px] pb-2 border-b-[1px] border-lightGray"
@@ -38,7 +38,7 @@ export function ProductCartPopper({
         <div className="flex justify-between grow">
           <h3 className="text-left">{title}</h3>
           <button
-            onClick={() => deleteProductFromCart({ image, title, price, id })}
+            onClick={() => deleteProduct({ image, title, price, id, amount })}
             className="self-start mt-[3px]"
           >
             <ClearIcon data-outside="false" />
