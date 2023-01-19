@@ -2,7 +2,7 @@ import { Button } from "components/Button/Button";
 import { Categories } from "components/Categories/Categories";
 import { ProductsCarrousel } from "components/ProductsCarrousel/ProductsCarrousel";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { ProductAttributes } from "./components/ProductAttributes";
 import { ProductDescription } from "./components/ProductDescription";
@@ -15,6 +15,7 @@ import { FavoriteInput } from "components/Inputs/FavoriteInput";
 import type { ProductVariant } from "./types";
 import { ProductReviews } from "./components/ProductReviews/Reviews";
 import { useCartContext } from "context/CartContext/CartContext";
+import { useRouter } from "next/router";
 
 export const ProductPage = ({
   product,
@@ -28,8 +29,13 @@ export const ProductPage = ({
   }));
   const [selectedVariant, setSelectedVariant] = useState<
     ProductVariant | undefined
-  >(productVariants?.length ? productVariants[0] : undefined);
-
+  >(undefined);
+  const router = useRouter();
+  useEffect(() => {
+    setSelectedVariant(
+      productVariants?.length ? productVariants[0] : undefined
+    );
+  }, [router.asPath]);
   if (!product || !selectedVariant || !productVariants)
     return <h2>Product not found!</h2>;
 

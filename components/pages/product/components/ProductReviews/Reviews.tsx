@@ -12,7 +12,6 @@ export function ProductReviews() {
   const { register, errors, control, handleSubmit } =
     useForm<ReviewFormProps>(addReviewSchema);
   const selectedRate = useWatch({ name: "opinion", control });
-  console.log(selectedRate);
   return (
     <section className="col-span-2 mr-2">
       <h4>Opinions about product</h4>
