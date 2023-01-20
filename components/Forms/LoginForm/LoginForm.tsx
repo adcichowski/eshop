@@ -1,6 +1,6 @@
 import { Button } from "components/Button/Button";
 import { Input } from "components/Inputs/components/Input";
-import { StaticLink } from "components/StaticLink/StaticLink";
+import Link from "next/link";
 import React, { useEffect } from "react";
 
 import { loginAccountSchema } from "../schemas/loginAccountSchema";
@@ -56,9 +56,9 @@ export function LoginForm({
         </Button>
         <p className="mt-3">
           Nie pamiętasz hasła?{" "}
-          <StaticLink aria-label="to remind account" href="/remaind">
+          <Link aria-label="to remind account" href="/remaind">
             <span className="font-semibold cursor-pointer">Kliknij Tutaj.</span>
-          </StaticLink>
+          </Link>
         </p>
       </form>
     </section>

@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/future/image";
+import Image from "next/image";
 import ClearIcon from "./clear.svg";
 import { changeValueCurrency } from "utils/utils";
 import { useCartContext } from "context/CartContext/CartContext";

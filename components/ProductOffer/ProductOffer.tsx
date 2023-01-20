@@ -1,5 +1,5 @@
 import { FavoriteInput } from "components/Inputs/FavoriteInput";
-import Image from "next/future/image";
+import Image from "next/image";
 import type { TypeHeadlineTags } from "types/types";
 export function ProductOffer({
   name,

@@ -2,7 +2,6 @@ import Clsx from "clsx";
 import { Autocomplete } from "components/Autocomplete/Autocomplete";
 import { HeaderPoppers } from "components/Popper/HeaderPoppers/HeaderPoppers";
 import { usePopper } from "components/Popper/usePopper";
-import { StaticLink } from "components/StaticLink/StaticLink";
 import Link from "next/link";
 import React from "react";
 
@@ -14,10 +13,12 @@ export const Header = () => {
       <header className="grid place-items-center grid-cols-3 items-center min-w-md w-full flex-column z-20 relative justify-around p-3 sm:p-4">
         <Autocomplete className="ml-14" />
         <div className="flex flex-col uppercase text-center gap-3">
-          <Link href="/" passHref>
-            <a className="font-medium xl:text-4xl md:text-3xl text-2xl">
-              <h1>PosterWall</h1>
-            </a>
+          <Link
+            href="/"
+            passHref
+            className="font-medium xl:text-4xl md:text-3xl text-2xl"
+          >
+            <h1>PosterWall</h1>
           </Link>
           <p className="text-sm hidden md:inline-block opacity-70">
             Shipping in 2-4 business days
@@ -57,12 +58,12 @@ p-2 text-sm md:text-base"
       >
         {headerCategories.map((category) => (
           <li key={category}>
-            <StaticLink
+            <Link
               aria-label={`Go to category ${category}`}
               href={`/${category}`}
             >
               {category}
-            </StaticLink>
+            </Link>
           </li>
         ))}
       </ul>

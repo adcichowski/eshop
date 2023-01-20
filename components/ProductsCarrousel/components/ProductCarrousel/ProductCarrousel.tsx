@@ -23,36 +23,29 @@ export const ProductCarrousel = ({
 }: ProductCarrouselProps) => {
   return (
     <Link passHref href={slug}>
-      <a href={slug}>
-        <section aria-labelledby={name}>
-          <div className="flex flex-col items-center">
-            <div className="flex items-center h-full">
-              <div className="flex justify-center">
-                <Image
-                  alt={name}
-                  src={images[0].url}
-                  width={180}
-                  height={251}
-                />
-              </div>
-            </div>
-            <div className="my-1 self-start ml-1">
-              <h3 className="mt-1 text-xs" id={name}>
-                {name}
-              </h3>
-              <span className="font-medium text-sm md:text-md">
-                od {price / 100} zł
-              </span>
-
-              <div className="flex mt-1">
-                <Button className="md:text-xs rounded-none py-1 px-4 font-thin normal-case">
-                  To Cart
-                </Button>
-              </div>
+      <section aria-labelledby={name}>
+        <div className="flex flex-col items-center">
+          <div className="flex items-center h-full">
+            <div className="flex justify-center">
+              <Image alt={name} src={images[0].url} width={180} height={251} />
             </div>
           </div>
-        </section>
-      </a>
+          <div className="my-1 self-start ml-1">
+            <h3 className="mt-1 text-xs" id={name}>
+              {name}
+            </h3>
+            <span className="font-medium text-sm md:text-md">
+              od {price / 100} zł
+            </span>
+
+            <div className="flex mt-1">
+              <Button className="md:text-xs rounded-none py-1 px-4 font-thin normal-case">
+                To Cart
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
     </Link>
   );
 };
