@@ -45,7 +45,7 @@ export const ProductsCarrousel = () => {
     <div>
       <Swiper {...settings}>
         {productsWithSmallestPrice.map((product) => (
-          <SwiperSlide key={product.name}>
+          <SwiperSlide key={product.name} className={"shrink basis-64"}>
             <ProductCarrousel {...product} />
           </SwiperSlide>
         ))}
