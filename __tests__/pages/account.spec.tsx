@@ -1,7 +1,7 @@
 export {};
 import User from "@testing-library/user-event";
 import { render, screen } from "@testing-library/react";
-import { AccountPage } from "components/pages/account/AccountPage";
+import { AccountPage } from "views/account/AccountPage";
 import { faker } from "@faker-js/faker";
 import { userAccount } from "__tests__/fixtures/account";
 import { alertsTexts } from "__tests__/utils/utils";

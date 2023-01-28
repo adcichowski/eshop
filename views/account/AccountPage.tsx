@@ -1,20 +1,7 @@
 import { LoginForm } from "components/Forms/LoginForm/LoginForm";
 import { RegisterForm } from "components/Forms/RegisterForm/RegisterForm";
-import Dynamic from "next/dynamic";
-import type { NewsletterProps } from "../../Forms/Newsletter/Newsletter";
 import { AlertInfo } from "components/AlertInfo/AlertInfo";
 import { useAlertInfo } from "components/AlertInfo/useAlertInfo";
-
-const NewsletterComp = Dynamic<NewsletterProps>(
-  () =>
-    import(
-      /* webpackChunkName: "newsletter" */
-      "../../Forms/Newsletter/Newsletter"
-    ).then((module) => module.Newsletter),
-  {
-    ssr: false,
-  }
-);
 
 export function AccountPage() {
   const { alertLabel, handleSetAlert } = useAlertInfo();
@@ -28,7 +15,6 @@ export function AccountPage() {
             <RegisterForm setAlertInfo={handleSetAlert("register")} />
           </div>
         </div>
-        <NewsletterComp HeaderTag="h3" />
       </div>
     </>
   );

@@ -5,6 +5,8 @@ import * as Yup from "yup";
 import { useMutation } from "react-query";
 import { fetcher } from "utils/fetcher";
 import { Input } from "components/Inputs/components/Input";
+import { useRouter } from "next/router";
+import Dynamic from "next/dynamic";
 
 const DISCOUNT_PERCENT = "10%";
 export type NewsletterProps = {
@@ -17,7 +19,21 @@ const checkIsCookieMailerLite = () => {
   return cookie === COOKIE_VALUE_MAILERLITE;
 };
 
-export function Newsletter({ HeaderTag }: NewsletterProps) {
+const PATHS_RENDER = ["/account", "/"];
+
+export const NewsletterComp = Dynamic<NewsletterProps>(
+  () =>
+    import(
+      /* webpackChunkName: "newsletter" */
+      "./Newsletter"
+    ).then(() => Newsletter),
+  {
+    ssr: false,
+  }
+);
+
+function Newsletter({ HeaderTag }: NewsletterProps) {
+  const router = useRouter();
   const isCookieAvaible = checkIsCookieMailerLite();
   const schemaEmail = Yup.object({ email: defaultSchema.email });
   const { errors, register, handleSubmit } = useForm<{
@@ -25,7 +41,6 @@ export function Newsletter({ HeaderTag }: NewsletterProps) {
   }>(schemaEmail);
   const { mutate } = useMutation(
     ["addToNewsletter"],
-
     async (data: { readonly email: string }) => {
       await fetcher("/api/newsletter", {
         method: "POST",
@@ -36,15 +51,17 @@ export function Newsletter({ HeaderTag }: NewsletterProps) {
   const onSumbit = handleSubmit((data) => {
     mutate(data);
   });
-
+  if (!PATHS_RENDER.includes(router.asPath)) {
+    return <></>;
+  }
   return !isCookieAvaible ? (
     <section
-      className="w-full bg-primary mb-6"
+      className="w-full bg-primary py-5"
       role="dialog"
       aria-labelledby="newsletterHeading"
       aria-describedby="newsletterDescription"
     >
-      <div className="my-5 flex items-center flex-col ">
+      <div className="flex items-center flex-col ">
         <HeaderTag
           id="newsletterHeading"
           className="uppercase font-semibold text-2xl text-center md:text-left"
