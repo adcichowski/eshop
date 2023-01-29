@@ -36,6 +36,16 @@ export function RegisterForm({
   const { errors, register, formState, handleSubmit } = useForm(
     registerAccountSchema
   );
+  const onSubmit = handleSubmit(async (data, e) => {
+    e?.preventDefault();
+    await fetch("/api/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+  });
   const isErrorInForm = !!Object.values(errors).length;
   useEffect(() => {
     if (isErrorInForm) {
@@ -47,14 +57,7 @@ export function RegisterForm({
       className="max-w-[435px] w-full mt-10 md:mt-0 md:justify-self-end"
       aria-labelledby="sectionRegister"
     >
-      <form
-        autoComplete="off"
-        noValidate
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleSubmit;
-        }}
-      >
+      <form autoComplete="off" noValidate onSubmit={onSubmit}>
         <fieldset className="flex flex-col items-center text-left gap-2 shrink-0">
           <h2 id="sectionRegister" className="text-2xl self-stretch">
             Zarejestruj się
