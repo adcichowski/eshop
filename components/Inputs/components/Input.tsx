@@ -31,7 +31,7 @@ export const Input = React.forwardRef<
           error && "bg-red-100 border-red-200"
         )} ${variants[size].input}`}
       />
-      {Boolean(error) && <ErrorInInput id={`${props.id}Error`} error={error} />}
+      <ErrorInInput id={`${props.id}Error`} error={error} />
     </>
   );
 });

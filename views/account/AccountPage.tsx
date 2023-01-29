@@ -9,7 +9,7 @@ export function AccountPage() {
     <div className="flex flex-col items-center">
       <div className="w-3/4">
         <AlertInfo errorInForm={alertLabel.errorIn} />
-        <div className="flex xl:justify-between my-12 gap-4 flex-wrap justify-center">
+        <div className="flex xl:justify-between mt-5 mb-16 gap-4 flex-wrap justify-center">
           <LoginForm setAlertInfo={handleSetAlert("login")} />
           <RegisterForm setAlertInfo={handleSetAlert("register")} />
         </div>

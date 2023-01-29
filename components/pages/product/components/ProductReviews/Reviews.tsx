@@ -15,7 +15,7 @@ export function ProductReviews() {
   return (
     <section className="col-span-2 mr-2">
       <h4>Opinions about product</h4>
-      <form onSubmit={handleSubmit((data) => console.log(data))}>
+      <form>
         <fieldset className="flex flex-col">
           <Input
             id="name"

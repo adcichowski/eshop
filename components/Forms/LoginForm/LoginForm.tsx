@@ -2,7 +2,7 @@ import { Button } from "components/Button/Button";
 import { Input } from "components/Inputs/components/Input";
 import Link from "next/link";
 import React, { useEffect } from "react";
-
+import { objectKeys } from "utils/utils";
 import { loginAccountSchema } from "../schemas/loginAccountSchema";
 import { useForm } from "../useForm";
 
@@ -16,36 +16,40 @@ export function LoginForm({
 }: {
   readonly setAlertInfo: (isOpen: boolean) => void;
 }) {
-  const { errors, register, formState, handleSubmit } =
-    useForm(loginAccountSchema);
+  const { errors, register, formState, handleSubmit } = useForm<{
+    readonly email: string;
+    readonly password: string;
+  }>(loginAccountSchema);
 
   const isErrorInForm = !!Object.values(errors).length;
-
+  const onSubmit = (
+    data: { readonly email: string; readonly password: string },
+    e?: React.BaseSyntheticEvent
+  ) => e?.preventDefault();
   useEffect(() => {
     if (isErrorInForm) {
       setAlertInfo(isErrorInForm);
     }
   }, [formState.errors, setAlertInfo, isErrorInForm]);
-
   return (
     <section
       className="max-w-[435px] w-full shrink-0"
       aria-labelledby="sectionLogin"
     >
-      <form noValidate onSubmit={(e) => e.preventDefault()}>
+      <form noValidate onSubmit={handleSubmit(onSubmit)}>
         <fieldset className="flex flex-col items-center text-left gap-2">
           <h2 id="sectionLogin" className="text-2xl self-stretch">
             Zaloguj się
           </h2>
-          {Object.entries(fields).map(([name, { text, type }]) => (
+          {objectKeys(fields).map((name) => (
             <div className="flex w-full flex-col" key={`${name}Login`}>
               <Input
-                error={errors?.name?.message}
+                error={errors[name]?.message}
                 id={`${name}Login`}
                 {...register(name)}
                 aria-describedby={`${name}HintLogin`}
-                text={text}
-                type={type}
+                text={fields[name].text}
+                type={fields[name].type}
               />
             </div>
           ))}
@@ -54,7 +58,6 @@ export function LoginForm({
           type="submit"
           data-testid="buttonLogin"
           className="md:px-16 px-8 py-2 md:py-4 mt-6"
-          disabled={isErrorInForm}
         >
           Zaloguj się
         </Button>
