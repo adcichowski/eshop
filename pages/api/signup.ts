@@ -8,6 +8,7 @@ import { authorizedApolloClient } from "graphql/apolloClient";
 import type { NextApiHandler } from "next";
 import { defaultSchema } from "components/Forms/schemas/defaultSchema";
 import * as Yup from "yup";
+import { convertYupError } from "utils/errors";
 const handler: NextApiHandler = async (req, res) => {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST").status(405).json({});
@@ -16,9 +17,9 @@ const handler: NextApiHandler = async (req, res) => {
     throw new Error("Problem to get hygraph token");
   }
   try {
-    const { email, password } = Yup.object(defaultSchema).validateSync(
-      req.body
-    );
+    const { email, password } = await Yup.object(defaultSchema)
+      .typeError("You should provide email and password")
+      .validate(req.body);
     const hashedPassword = await Bcrypt.hash(password, 12);
     const { data } = await authorizedApolloClient.mutate<
       CreateAccountMutation,
@@ -34,8 +35,11 @@ const handler: NextApiHandler = async (req, res) => {
       email: data?.createAccount?.email,
       password: data?.createAccount?.id,
     });
-  } catch (error) {
-    res.status(400).json(error);
+  } catch (err) {
+    if (err instanceof Yup.ValidationError) {
+      res.status(400).json(convertYupError(err));
+    }
+    res.status(404).json({ error: "Uknown error in signup!" });
   }
 };
 
