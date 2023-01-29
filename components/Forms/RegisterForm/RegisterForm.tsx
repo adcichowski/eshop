@@ -55,7 +55,7 @@ export function RegisterForm({
           handleSubmit;
         }}
       >
-        <fieldset className="flex flex-col items-center text-left gap-2">
+        <fieldset className="flex flex-col items-center text-left gap-2 shrink-0">
           <h2 id="sectionRegister" className="text-2xl self-stretch">
             Zarejestruj się
           </h2>

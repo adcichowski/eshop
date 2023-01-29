@@ -1,6 +1,6 @@
 import Clsx from "clsx";
 import { Autocomplete } from "components/Autocomplete/Autocomplete";
-import { HeaderPoppers } from "components/Popper/HeaderPoppers/HeaderPoppers";
+import { HeaderPoppers } from "components/Header/components/HeaderPoppers/HeaderPoppers";
 import { usePopper } from "components/Popper/usePopper";
 import Link from "next/link";
 import React from "react";

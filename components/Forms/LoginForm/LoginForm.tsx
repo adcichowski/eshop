@@ -28,8 +28,11 @@ export function LoginForm({
   }, [formState.errors, setAlertInfo, isErrorInForm]);
 
   return (
-    <section className="max-w-[435px] w-full " aria-labelledby="sectionLogin">
-      <form noValidate>
+    <section
+      className="max-w-[435px] w-full shrink-0"
+      aria-labelledby="sectionLogin"
+    >
+      <form noValidate onSubmit={(e) => e.preventDefault()}>
         <fieldset className="flex flex-col items-center text-left gap-2">
           <h2 id="sectionLogin" className="text-2xl self-stretch">
             Zaloguj się
@@ -48,6 +51,7 @@ export function LoginForm({
           ))}
         </fieldset>
         <Button
+          type="submit"
           data-testid="buttonLogin"
           className="md:px-16 px-8 py-2 md:py-4 mt-6"
           disabled={isErrorInForm}

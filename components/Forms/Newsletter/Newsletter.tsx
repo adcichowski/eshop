@@ -61,7 +61,7 @@ function Newsletter({ HeaderTag }: NewsletterProps) {
       aria-labelledby="newsletterHeading"
       aria-describedby="newsletterDescription"
     >
-      <div className="flex items-center flex-col ">
+      <div className="flex items-center flex-col">
         <HeaderTag
           id="newsletterHeading"
           className="uppercase font-semibold text-2xl text-center md:text-left"
@@ -96,7 +96,7 @@ function Newsletter({ HeaderTag }: NewsletterProps) {
                     />
                   </div>
                   <button
-                    className="border-2 py-2 px-2 w-32 font-semibold border-black uppercase "
+                    className="border-2 py-2 px-2 w-32 font-semibold border-black uppercase"
                     type="submit"
                   >
                     Zapisz się

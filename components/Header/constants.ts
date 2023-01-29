@@ -7,28 +7,23 @@ import InstagramIcon from "./icons/instagram.svg";
 export const navigationIcons = [
   {
     href: "facebook.com",
-    "aria-label": "facebook",
     Icon: FacebookIcon,
   },
   {
     href: "instagram.com",
-    "aria-label": "instagram",
     Icon: InstagramIcon,
   },
   {
     popper: "account",
-    "aria-label": "your profile",
     Icon: UserIcon,
   },
 
   {
     popper: "cart",
-    "aria-label": "Check your cart",
     Icon: CartIcon,
   },
   {
     popper: "favorite",
-    "aria-label": "Check your favorites products",
     Icon: FavoriteIcon,
   },
 ];

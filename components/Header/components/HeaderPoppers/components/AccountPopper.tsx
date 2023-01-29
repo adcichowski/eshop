@@ -11,7 +11,7 @@ export function AccountPopper() {
       <div className="text-sm line leading-6">
         Are you here for the first time?
       </div>
-      <Link href="/register">
+      <Link href="/account">
         <span className="underline text-sm cursor-pointer">Sign up</span>
       </Link>
     </div>
