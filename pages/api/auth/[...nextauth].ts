@@ -13,7 +13,7 @@ export default NextAuth({
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        email: { label: "Email", type: "text" },
+        email: { label: "E-mail", type: "text" },
         password: { label: "Password", type: "password" },
       },
 
@@ -21,7 +21,6 @@ export default NextAuth({
         if (!credentials) {
           return null;
         }
-        console.log(credentials);
         const userByEmail = await authorizedApolloClient.query<
           GetAccountByEmailQuery,
           GetAccountByEmailQueryVariables
@@ -45,5 +44,5 @@ export default NextAuth({
       },
     }),
   ],
-  pages: { signIn: "/account", signOut: "/account" },
+  pages: { signIn: "/account" },
 });

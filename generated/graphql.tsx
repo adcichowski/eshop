@@ -9921,7 +9921,7 @@ export type CreateAccountMutationOptions = Apollo.BaseMutationOptions<
 >;
 export const GetAccountByEmailDocument = gql`
   query GetAccountByEmail($email: String!) {
-    account(where: { email: $email }) {
+    account(where: { email: $email }, stage: DRAFT) {
       id
       email
       password

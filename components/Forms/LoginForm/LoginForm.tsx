@@ -1,6 +1,6 @@
 import { Button } from "components/Button/Button";
 import { Input } from "components/Inputs/components/Input";
-import { useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import { objectKeys } from "utils/utils";
@@ -8,7 +8,7 @@ import { loginAccountSchema } from "../schemas/loginAccountSchema";
 import { useForm } from "../useForm";
 
 const fields = {
-  email: { text: "E-mail:", type: "email" },
+  email: { text: "Email:", type: "email" },
   password: { text: "Hasło:", type: "password" },
 };
 
@@ -21,13 +21,13 @@ export function LoginForm({
     readonly email: string;
     readonly password: string;
   }>(loginAccountSchema);
-  console.log(useSession());
   const isErrorInForm = !!Object.values(errors).length;
-  const onSubmit = (
+  const onSubmit = async (
     data: { readonly email: string; readonly password: string },
     e?: React.BaseSyntheticEvent
   ) => {
     e?.preventDefault();
+    await signIn("credentials", data);
   };
   useEffect(() => {
     if (isErrorInForm) {
