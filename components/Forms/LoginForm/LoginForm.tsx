@@ -1,5 +1,6 @@
 import { Button } from "components/Button/Button";
 import { Input } from "components/Inputs/components/Input";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import { objectKeys } from "utils/utils";
@@ -20,12 +21,14 @@ export function LoginForm({
     readonly email: string;
     readonly password: string;
   }>(loginAccountSchema);
-
+  console.log(useSession());
   const isErrorInForm = !!Object.values(errors).length;
   const onSubmit = (
     data: { readonly email: string; readonly password: string },
     e?: React.BaseSyntheticEvent
-  ) => e?.preventDefault();
+  ) => {
+    e?.preventDefault();
+  };
   useEffect(() => {
     if (isErrorInForm) {
       setAlertInfo(isErrorInForm);

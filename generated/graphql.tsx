@@ -9586,6 +9586,20 @@ export type CreateAccountMutation = {
   createAccount?: { __typename?: "Account"; id: string; email: string } | null;
 };
 
+export type GetAccountByEmailQueryVariables = Exact<{
+  email: Scalars["String"];
+}>;
+
+export type GetAccountByEmailQuery = {
+  __typename?: "Query";
+  account?: {
+    __typename?: "Account";
+    id: string;
+    email: string;
+    password: string;
+  } | null;
+};
+
 export const GetProductsDocument = gql`
   query GetProducts {
     products {
@@ -9904,4 +9918,64 @@ export type CreateAccountMutationResult =
 export type CreateAccountMutationOptions = Apollo.BaseMutationOptions<
   CreateAccountMutation,
   CreateAccountMutationVariables
+>;
+export const GetAccountByEmailDocument = gql`
+  query GetAccountByEmail($email: String!) {
+    account(where: { email: $email }) {
+      id
+      email
+      password
+    }
+  }
+`;
+
+/**
+ * __useGetAccountByEmailQuery__
+ *
+ * To run a query within a React component, call `useGetAccountByEmailQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAccountByEmailQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAccountByEmailQuery({
+ *   variables: {
+ *      email: // value for 'email'
+ *   },
+ * });
+ */
+export function useGetAccountByEmailQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetAccountByEmailQuery,
+    GetAccountByEmailQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetAccountByEmailQuery,
+    GetAccountByEmailQueryVariables
+  >(GetAccountByEmailDocument, options);
+}
+export function useGetAccountByEmailLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetAccountByEmailQuery,
+    GetAccountByEmailQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetAccountByEmailQuery,
+    GetAccountByEmailQueryVariables
+  >(GetAccountByEmailDocument, options);
+}
+export type GetAccountByEmailQueryHookResult = ReturnType<
+  typeof useGetAccountByEmailQuery
+>;
+export type GetAccountByEmailLazyQueryHookResult = ReturnType<
+  typeof useGetAccountByEmailLazyQuery
+>;
+export type GetAccountByEmailQueryResult = Apollo.QueryResult<
+  GetAccountByEmailQuery,
+  GetAccountByEmailQueryVariables
 >;

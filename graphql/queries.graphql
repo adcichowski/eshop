@@ -68,3 +68,11 @@ mutation CreateAccount($email: String!, $password: String!) {
     email
   }
 }
+
+query GetAccountByEmail($email: String!) {
+  account(where: { email: $email }) {
+    id
+    email
+    password
+  }
+}
