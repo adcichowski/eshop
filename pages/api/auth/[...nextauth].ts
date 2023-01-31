@@ -9,6 +9,7 @@ import type {
 import { GetAccountByEmailDocument } from "generated/graphql";
 
 export default NextAuth({
+  secret: process.env.AUTH_SECRET,
   providers: [
     CredentialsProvider({
       name: "Credentials",
