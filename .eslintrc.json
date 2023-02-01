@@ -41,5 +41,9 @@
       }
     }
   ],
-  "rules": { "import/order": "off", "no-console": "warn" }
+  "rules": {
+    "import/order": "off",
+    "no-console": "warn",
+    "@typescript-eslint/no-floating-promises": "off"
+  }
 }
