@@ -38,7 +38,7 @@ export const Header = () => {
                     "before:w-full before:h-[1.5px] before:translate-x-0.5 before:absolute before:bg-black before:-bottom-[9px]"
                 )} hover:text-gray-600 text-gray-400`}
               >
-                <Icon />
+                {Icon}
               </li>
             ))}
           </ul>
