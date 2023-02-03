@@ -32,7 +32,7 @@ export const Header = () => {
               <li
                 key={popper ?? propsArchon.href}
                 onClick={(e) => saveParentPopper(e, popper)}
-                className={`relative ${Clsx(
+                className={`relative cursor-pointer ${Clsx(
                   typePopper === popper &&
                     popper &&
                     "before:w-full before:h-[1.5px] before:translate-x-0.5 before:absolute before:bg-black before:-bottom-[9px]"
@@ -42,13 +42,7 @@ export const Header = () => {
               </li>
             ))}
           </ul>
-          {typePopper && (
-            <div>
-              <div className="absolute flex justify-center py-[19px] bg-white border-gray border-[0.5px] top-9 -left-28 max-w-[400px] w-[400px] z-10">
-                <HeaderPoppers type={typePopper} />
-              </div>
-            </div>
-          )}
+          {typePopper && <HeaderPoppers type={typePopper} />}
         </div>
       </header>
       <ul

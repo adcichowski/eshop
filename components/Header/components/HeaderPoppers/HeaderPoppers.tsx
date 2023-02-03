@@ -5,14 +5,11 @@ import { FavoritePopper } from "components/Header/components/HeaderPoppers/compo
 
 export function HeaderPoppers({ type }: { readonly type: string | undefined }) {
   if (type === undefined) return <></>;
-  switch (type) {
-    case "cart":
-      return <CartPopper />;
-    case "account":
-      return <AccountPopper />;
-    case "favorite":
-      return <FavoritePopper />;
-    default:
-      return <></>;
-  }
+  return (
+    <div className="absolute flex justify-center py-[19px] bg-white border-gray border-[0.5px] top-9 -left-28 max-w-[400px] w-[400px] z-10">
+      {type === "cart" && <CartPopper />}
+      {type === "account" && <AccountPopper />}
+      {type === "favorite" && <FavoritePopper />}
+    </div>
+  );
 }
