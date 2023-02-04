@@ -2,7 +2,7 @@ import { Button } from "components/Button/Button";
 import { Categories } from "components/Categories/Categories";
 import { ProductsCarrousel } from "components/ProductsCarrousel/ProductsCarrousel";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { ProductAttributes } from "./components/ProductAttributes";
 import { ProductDescription } from "./components/ProductDescription";
@@ -16,6 +16,7 @@ import type { ProductVariant } from "./types";
 import { ProductReviews } from "./components/ProductReviews/Reviews";
 import { useCartContext } from "context/CartContext/CartContext";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 export const ProductPage = ({
   product,
@@ -109,15 +110,16 @@ export const ProductPage = ({
                 </span>
                 <div className="flex mt-4 gap-1">
                   <Button
-                    onClick={() =>
+                    onClick={() => {
+                      toast.success("Great you are add product!");
                       addProduct({
                         id: selectedVariant.id,
                         title: product.name,
                         price: selectedVariant.price,
                         image: product.images[0],
                         amount: 1,
-                      })
-                    }
+                      });
+                    }}
                     className="px-12 w-full rounded-none py-5 h-full text-lg sm:text-sm"
                   >
                     To Cart
