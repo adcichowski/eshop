@@ -17,10 +17,13 @@ import { ProductReviews } from "./components/ProductReviews/Reviews";
 import { useCartContext } from "context/CartContext/CartContext";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+import { useToastContext } from "context/ToastContext/ToastContext";
 
 export const ProductPage = ({
   product,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const { toast } = useToastContext();
+
   const { addProduct } = useCartContext();
   const productVariants = product?.variants.map(({ size, id, price }) => ({
     price,

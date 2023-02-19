@@ -8,17 +8,21 @@ import { CartContextProvider } from "context/CartContext/CartContext";
 import { Layout } from "components/Layout/Layout";
 import { ApolloProvider } from "@apollo/client";
 import { apolloClient } from "graphql/apolloClient";
+import { ToastProvider } from "context/ToastContext/ToastContext";
+
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const queryClient = new QueryClient();
   return (
     <SessionProvider session={session}>
       <ApolloProvider client={apolloClient}>
         <CartContextProvider>
-          <QueryClientProvider client={queryClient}>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </QueryClientProvider>
+          <ToastProvider>
+            <QueryClientProvider client={queryClient}>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </QueryClientProvider>
+          </ToastProvider>
         </CartContextProvider>
       </ApolloProvider>
     </SessionProvider>

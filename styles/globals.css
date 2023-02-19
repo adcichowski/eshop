@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --toastify-icon-color-success: #76a76565;
-}
 * {
   margin: 0;
   padding: 0;
@@ -19,10 +16,4 @@ input.favorite:checked + div svg path {
 }
 input.favorite:checked + div svg {
   @apply block;
-}
-
-.Toastify__toast-icon {
-  width: 20px;
-  height: 20px;
-  color: red;
 }
