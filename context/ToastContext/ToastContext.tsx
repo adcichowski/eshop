@@ -1,13 +1,14 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import type { ToastTypes } from "./constants";
 
 type ToastContextType = {
   readonly handleClose: () => void;
   readonly isHidden: boolean;
-  readonly toast: { readonly success: (text: string) => void };
+  readonly handleToast: (type: ToastTypes, text: string) => void;
 };
 type ToastStateType = {
   readonly text: string;
-  readonly type: "success";
+  readonly type: ToastTypes;
 };
 const ToastContext = createContext<ToastContextType | null>(null);
 export const ToastProvider = ({
@@ -27,10 +28,8 @@ export const ToastProvider = ({
   return (
     <ToastContext.Provider
       value={{
-        toast: {
-          success: (text: string) => {
-            setToast({ type: "success", text });
-          },
+        handleToast: (type: ToastTypes, text: string) => {
+          setToast({ type, text });
         },
         handleClose: () => {
           setToast(undefined);

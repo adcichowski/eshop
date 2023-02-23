@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import type { CartContextType, CartItem } from "./types";
 import { addProductToCart, deleteProductFromCart } from "./utilsCart";
+
 const CartContext = createContext<CartContextType | null>(null);
 
 export const CartContextProvider = ({
