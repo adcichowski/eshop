@@ -4,7 +4,7 @@ import type { ToastTypes } from "./constants";
 type ToastContextType = {
   readonly handleClose: () => void;
   readonly isHidden: boolean;
-  readonly handleToast: (type: ToastTypes, text: string) => void;
+  readonly toast: (type: ToastTypes, text: string) => void;
 };
 type ToastStateType = {
   readonly text: string;
@@ -28,7 +28,7 @@ export const ToastProvider = ({
   return (
     <ToastContext.Provider
       value={{
-        handleToast: (type: ToastTypes, text: string) => {
+        toast: (type: ToastTypes, text: string) => {
           setToast({ type, text });
         },
         handleClose: () => {

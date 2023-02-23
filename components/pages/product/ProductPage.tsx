@@ -16,7 +16,6 @@ import type { ProductVariant } from "./types";
 import { ProductReviews } from "./components/ProductReviews/Reviews";
 import { useCartContext } from "context/CartContext/CartContext";
 import { useRouter } from "next/router";
-import { toast } from "react-toastify";
 import { useToastContext } from "context/ToastContext/ToastContext";
 
 export const ProductPage = ({
@@ -114,7 +113,7 @@ export const ProductPage = ({
                 <div className="flex mt-4 gap-1">
                   <Button
                     onClick={() => {
-                      toast.success("Great you are add product!");
+                      toast("success", "Great you are add product!");
                       addProduct({
                         id: selectedVariant.id,
                         title: product.name,

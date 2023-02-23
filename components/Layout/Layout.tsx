@@ -1,6 +1,7 @@
 import { NewsletterComp } from "components/Forms/Newsletter/Newsletter";
 import { Header } from "components/Header/Header";
 import { Toast } from "components/Toast/Toast";
+import { useRef } from "react";
 
 export function Layout({ children }: { readonly children: React.ReactNode }) {
   return (

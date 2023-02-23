@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { RefObject, useEffect, useRef, useState } from "react";
 import SuccessIcon from "./success-icon.svg";
 import CloseIcon from "./close-icon.svg";
 import { useToastContext } from "context/ToastContext/ToastContext";
+import { useToastPosition } from "./hooks/useToastPosition";
 
-export function Toast() {
+function ToastContainer() {
   const { isHidden, handleClose } = useToastContext();
-
+  const { ref, isContainerVisible } = useToastPosition();
   return (
-    <div className="my-4 relative text-white w-full">
-      <div className="absolute flex items-center justify-center w-full left-0 top-0 my-1">
+    <div ref={ref} className="my-4 relative text-white w-full">
+      <div
+        className={`flex items-center justify-center w-full left-0 my-2 z-20 ${
+          !isContainerVisible ? "fixed top-3" : "absolute top-0"
+        } `}
+      >
         {!isHidden && (
           <div
             id="toast-success"
@@ -40,3 +45,5 @@ export function Toast() {
     </div>
   );
 }
+
+export const Toast = React.memo(ToastContainer);
