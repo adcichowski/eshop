@@ -38,7 +38,7 @@ export const ProductAttributes = ({
               <dt className="uppercase text-xs">{attribute}</dt>
               <dd className="uppercase text-xs">{info}</dd>
             </dl>
-            <hr className="my-[6px] h-[0.4px] max-w-[377px] border-lightGray" />
+            <hr className="my-[6px] h-[0.4px] max-w-[377px] border-gray-100" />
           </div>
         ))}
       </div>

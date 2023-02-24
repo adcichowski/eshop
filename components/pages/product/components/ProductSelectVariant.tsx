@@ -101,7 +101,7 @@ const SaleView = ({
   readonly price: number;
 }) => {
   return (
-    <span className={`${clsx(sale && "text-discount")} font-semibold`}>
+    <span className={`${clsx(sale && "text-red-300")} font-semibold`}>
       {priceWithDiscount(price, Number(sale))}
     </span>
   );

@@ -20,7 +20,7 @@ export function ProductCartPopper({
   const { deleteProduct } = useCartContext();
   return (
     <section
-      className="flex w-[322px] pb-2 border-b-[1px] border-lightGray"
+      className="flex w-[322px] pb-2 border-b-[1px] border-gray-100"
       aria-label="products in your cart"
     >
       <div className="basis-[86px]">

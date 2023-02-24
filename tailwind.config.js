@@ -14,16 +14,17 @@ module.exports = {
     },
     colors: {
       primary: "#76A765",
+      black: "#000000",
       white: "#FFFFFF",
       red: {
         100: "#FFECE2",
         200: "#D03535",
+        300: "#8C0101",
       },
-      lightGray: "#A4A0A0",
-      heart: "#D03535",
-      discount: "#8C0101",
-      black: "#000000",
-      gray: "#707070",
+      gray: {
+        100: "#A4A0A0",
+        200: "#707070",
+      },
     },
   },
 };

@@ -1,4 +1,4 @@
-import React, { RefObject, useEffect, useRef, useState } from "react";
+import React from "react";
 import SuccessIcon from "./success-icon.svg";
 import CloseIcon from "./close-icon.svg";
 import { useToastContext } from "context/ToastContext/ToastContext";

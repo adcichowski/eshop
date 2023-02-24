@@ -9,9 +9,7 @@ export function ProductPrice({
 }) {
   return (
     <div className="flex mt-2">
-      <div
-        className={`text-4xl ${Clsx(sale && "text-discount")} font-semibold`}
-      >
+      <div className={`text-4xl ${Clsx(sale && "text-red-300")} font-semibold`}>
         {priceWithDiscount(price, Number(sale))}
       </div>
       {sale ? (

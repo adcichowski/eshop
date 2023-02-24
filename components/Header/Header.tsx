@@ -10,7 +10,7 @@ export const Header = () => {
   const { saveParentPopper, typePopper, popperRef } = usePopper();
   return (
     <>
-      <header className="grid place-items-center grid-cols-3 items-center min-w-md w-full flex-column z-20 relative justify-around p-3 sm:p-4">
+      <header className="grid z-40 place-items-center grid-cols-3 items-center min-w-md w-full flex-column relative justify-around p-3 sm:p-4">
         <Autocomplete className="ml-14" />
         <div className="flex flex-col uppercase text-center gap-3">
           <Link
@@ -36,7 +36,7 @@ export const Header = () => {
                   typePopper === popper &&
                     popper &&
                     "before:w-full before:h-[1.5px] before:translate-x-0.5 before:absolute before:bg-black before:-bottom-[9px]"
-                )} hover:text-gray-600 text-gray-400`}
+                )}`}
               >
                 {Icon}
               </li>

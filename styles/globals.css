@@ -8,11 +8,11 @@
   box-sizing: border-box;
 }
 input.favorite:checked + div svg {
-  @apply fill-heart;
+  @apply fill-red-200;
   @apply border-none;
 }
 input.favorite:checked + div svg path {
-  @apply stroke-heart;
+  @apply stroke-red-200;
 }
 input.favorite:checked + div svg {
   @apply block;

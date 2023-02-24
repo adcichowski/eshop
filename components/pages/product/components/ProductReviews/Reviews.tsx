@@ -60,7 +60,7 @@ export function ProductReviews() {
           />
 
           <textarea
-            className="border-gray border resize-none"
+            className="border-200 border resize-none"
             {...register("opinion")}
           ></textarea>
         </fieldset>

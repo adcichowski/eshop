@@ -26,7 +26,7 @@ export function Categories() {
             <Link href={slug}>
               <div>
                 <span className="text-sm cursor-pointer">{name}</span>
-                <hr className="my-[6px] h-[0.4px] border-lightGray" />
+                <hr className="my-[6px] h-[0.4px] border-gray-100" />
               </div>
             </Link>
           </li>
