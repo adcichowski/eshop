@@ -12,14 +12,12 @@
     "graphql/*",
     "*.config.js"
   ],
-  "plugins": ["@typescript-eslint", "@typeofweb/eslint-plugin"],
-  "extends": [
-    "prettier",
-    "plugin:@typeofweb/recommended",
-    "plugin:prettier/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "next"
+  "plugins": [
+    "@typescript-eslint",
+    "eslint-plugin-react",
+    "eslint-plugin-react-hooks"
   ],
+  "extends": ["prettier", "plugin:prettier/recommended", "next"],
   "overrides": [
     {
       "files": [
