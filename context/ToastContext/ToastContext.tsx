@@ -4,7 +4,8 @@ import type { ToastTypes } from "./constants";
 type ToastContextType = {
   readonly handleClose: () => void;
   readonly isHidden: boolean;
-  readonly toast: (type: ToastTypes, text: string) => void;
+  readonly handleToast: (type: ToastTypes, text: string) => void;
+  toast: ToastStateType | undefined;
 };
 type ToastStateType = {
   readonly text: string;
@@ -17,18 +18,19 @@ export const ToastProvider = ({
   readonly children: React.ReactNode;
 }) => {
   const [toast, setToast] = useState<ToastStateType | undefined>(undefined);
-  useEffect(() => {
-    if (toast) {
-      const hideToast = setInterval(() => {
-        setToast(undefined);
-      }, 5000);
-      return () => clearInterval(hideToast);
-    }
-  }, [toast]);
+  // useEffect(() => {
+  //   if (toast) {
+  //     const hideToast = setInterval(() => {
+  //       setToast(undefined);
+  //     }, 5000);
+  //     return () => clearInterval(hideToast);
+  //   }
+  // }, [toast]);
   return (
     <ToastContext.Provider
       value={{
-        toast: (type: ToastTypes, text: string) => {
+        toast,
+        handleToast: (type: ToastTypes, text: string) => {
           setToast({ type, text });
         },
         handleClose: () => {

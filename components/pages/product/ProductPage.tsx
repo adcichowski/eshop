@@ -21,7 +21,7 @@ import { useToastContext } from "context/ToastContext/ToastContext";
 export const ProductPage = ({
   product,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { toast } = useToastContext();
+  const { handleToast } = useToastContext();
 
   const { addProduct } = useCartContext();
   const productVariants = product?.variants.map(({ size, id, price }) => ({
@@ -113,7 +113,7 @@ export const ProductPage = ({
                 <div className="flex mt-4 gap-1">
                   <Button
                     onClick={() => {
-                      toast("success", "Great you are add product!");
+                      handleToast("info", "Great you are add product!");
                       addProduct({
                         id: selectedVariant.id,
                         title: product.name,

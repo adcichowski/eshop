@@ -1,11 +1,13 @@
 import React from "react";
-import SuccessIcon from "./success-icon.svg";
-import CloseIcon from "./close-icon.svg";
+import SuccessIcon from "./assets/success-icon.svg";
+import CloseIcon from "./assets/close-icon.svg";
+import InfoIcon from "./assets/info-icon.svg";
 import { useToastContext } from "context/ToastContext/ToastContext";
 import { useToastPosition } from "./hooks/useToastPosition";
+import clsx from "clsx";
 
 function ToastContainer() {
-  const { isHidden, handleClose } = useToastContext();
+  const { isHidden, handleClose, toast } = useToastContext();
   const { ref, isContainerVisible } = useToastPosition();
   return (
     <div ref={ref} className="my-4 relative text-white w-full">
@@ -17,16 +19,18 @@ function ToastContainer() {
         {!isHidden && (
           <div
             id="toast-success"
-            className="absolute flex items-center w-5/6 p-2 text-gray-500 bg-primary rounded-lg shadow"
+            className={`absolute flex items-center w-5/6 p-2 ${clsx(
+              toast?.type === "success" && "bg-primary",
+              toast?.type === "info" && "bg-blue-200"
+            )} rounded-lg shadow`}
             role="alert"
           >
             <div className="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 relative text-green-500 bg-green-100 rounded-lg">
-              <SuccessIcon />
+              {toast?.type === "success" && <SuccessIcon />}
+              {toast?.type === "info" && <InfoIcon />}
               <span className="sr-only">Check icon</span>
             </div>
-            <div className="ml-3 text-sm font-normal">
-              Item moved successfully.
-            </div>
+            <div className="ml-3 text-sm font-normal">{toast?.text}</div>
             <button
               type="button"
               className="ml-auto"
