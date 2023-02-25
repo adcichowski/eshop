@@ -17,3 +17,6 @@ export const objectKeys = <Obj extends object>(obj: Obj): (keyof Obj)[] => {
 };
 
 export const uniqId = () => `${Math.random()}${new Date()}`;
+
+export const randomInt = (max: number, min = 0) =>
+  Math.floor(Math.random() * (max - min + 1)) + min;
