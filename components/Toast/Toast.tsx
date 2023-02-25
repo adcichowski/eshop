@@ -8,30 +8,6 @@ import clsx from "clsx";
 import { ToastTypes } from "context/ToastContext/constants";
 import { useToast } from "./hooks/useToast";
 
-function ToastContainer() {
-  const { toasts } = useToastContext();
-  const { ref, isContainerVisible } = useToastPosition();
-  return (
-    <div ref={ref} className="my-1 relative text-white w-full">
-      <div
-        className={`flex flex-col gap-2 items-center justify-center w-full left-0 my-2 z-20 ${
-          !isContainerVisible ? "fixed top-3" : "absolute top-0"
-        } `}
-      >
-        {toasts.map((toast, i) => (
-          <ToastChild
-            key={toast.id}
-            {...toast}
-            autoClose={toast.addedTime - toasts[i].addedTime ?? 3000}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-export const Toast = React.memo(ToastContainer);
-
 export const ToastChild = ({
   text,
   type,
