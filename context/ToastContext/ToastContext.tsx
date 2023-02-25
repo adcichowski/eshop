@@ -1,42 +1,50 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useContext,
+  useState,
+} from "react";
+import { uniqId } from "utils/utils";
 import type { ToastTypes } from "./constants";
 
 type ToastContextType = {
-  readonly handleClose: () => void;
-  readonly isHidden: boolean;
-  readonly handleToast: (type: ToastTypes, text: string) => void;
-  toast: ToastStateType | undefined;
+  readonly removeToast: (id: string) => void;
+  readonly addToast: (type: ToastTypes, text: string) => void;
+  toasts: ToastStateType[];
+  setToasts: Dispatch<SetStateAction<ToastStateType[]>>;
 };
 type ToastStateType = {
+  readonly addedTime: number;
+  readonly id: string;
   readonly text: string;
   readonly type: ToastTypes;
 };
+const MAX_RENDER_TOASTS = 4;
 const ToastContext = createContext<ToastContextType | null>(null);
 export const ToastProvider = ({
   children,
 }: {
   readonly children: React.ReactNode;
 }) => {
-  const [toast, setToast] = useState<ToastStateType | undefined>(undefined);
-  // useEffect(() => {
-  //   if (toast) {
-  //     const hideToast = setInterval(() => {
-  //       setToast(undefined);
-  //     }, 5000);
-  //     return () => clearInterval(hideToast);
-  //   }
-  // }, [toast]);
+  const [toasts, setToasts] = useState<ToastStateType[]>([]);
+
   return (
     <ToastContext.Provider
       value={{
-        toast,
-        handleToast: (type: ToastTypes, text: string) => {
-          setToast({ type, text });
+        removeToast: (id: string) => {
+          setToasts((prev) => prev.filter((toast) => toast.id !== id));
         },
-        handleClose: () => {
-          setToast(undefined);
+        setToasts,
+        toasts,
+        addToast: (type: ToastTypes, text: string) => {
+          if (toasts.length === MAX_RENDER_TOASTS)
+            setToasts((prev) => prev.slice(0, -1));
+          setToasts((prev) => [
+            ...prev,
+            { text, type, id: uniqId(), addedTime: new Date().getTime() },
+          ]);
         },
-        isHidden: Boolean(!toast),
       }}
     >
       {children}

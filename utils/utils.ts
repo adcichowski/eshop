@@ -16,3 +16,5 @@ export const objectKeys = <Obj>(obj: Obj): readonly (keyof Obj)[] => {
   // @ts-ignore -- get keys from object
   return Object.keys(obj) as readonly (keyof Obj)[];
 };
+
+export const uniqId = () => `${Math.random()}${new Date()}`;
