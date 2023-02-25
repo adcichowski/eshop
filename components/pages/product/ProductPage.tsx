@@ -57,9 +57,9 @@ export const ProductPage = ({
       <main className="grid grid-cols-3">
         <Categories />
 
-        <div className="mt-10 text-[32px] col-span-2 max-w-3xl">
+        <div className="col-span-2 mt-10 max-w-3xl text-[32px]">
           <section className=" grid grid-cols-2">
-            <h2 className="max-w-md text-3xl mb-5 col-span-2">
+            <h2 className="col-span-2 mb-5 max-w-md text-3xl">
               {product.name}
             </h2>
 
@@ -71,10 +71,10 @@ export const ProductPage = ({
                 src={product?.images[0].url || ""}
               />
             </div>
-            <aside className="text-xl flex flex-col max-w-[377px] ml-5">
+            <aside className="ml-5 flex max-w-[377px] flex-col text-xl">
               <ProductSale sale={product.sale} />
               <div className="flex flex-col gap-3">
-                <label className="flex items-center cursor-pointer">
+                <label className="flex cursor-pointer items-center">
                   <span className="w-24 text-base">Size:</span>
                   <ProductSelectVariant
                     selectedVariant={selectedVariant}
@@ -88,7 +88,7 @@ export const ProductPage = ({
                   <span className="w-24 text-base">Quantity:</span>
                   <div>
                     <input
-                      className="p-2 bg-white border-[0.5px] border-black px-3 w-12 text-center h-10 cursor-pointer"
+                      className="h-10 w-12 cursor-pointer border-[0.5px] border-black bg-white p-2 px-3 text-center"
                       type="text"
                       min={1}
                     />
@@ -103,14 +103,14 @@ export const ProductPage = ({
                   sale={product.sale}
                   price={selectedVariant.price}
                 />
-                <div className="flex mt-3">
-                  <div className="w-4 h-4 bg-avaible-product bg-contain"></div>
-                  <div className="text-xs ml-[3px] font-normal">In store</div>
+                <div className="mt-3 flex">
+                  <div className="h-4 w-4 bg-avaible-product bg-contain"></div>
+                  <div className="ml-[3px] text-xs font-normal">In store</div>
                 </div>
-                <span className="text-xs mt-4">
+                <span className="mt-4 text-xs">
                   Delivery in 2-4 working days | Free delivery from 199zł
                 </span>
-                <div className="flex mt-4 gap-1">
+                <div className="mt-4 flex gap-1">
                   <Button
                     onClick={() => {
                       addToast("success", "Great you are add product!");
@@ -122,11 +122,11 @@ export const ProductPage = ({
                         amount: 1,
                       });
                     }}
-                    className="px-12 w-full rounded-none py-5 h-full text-lg sm:text-sm"
+                    className="h-full w-full rounded-none px-12 py-5 text-lg sm:text-sm"
                   >
                     To Cart
                   </Button>
-                  <div className="border-[1px] cursor-pointer border-black p-4 flex justify-center items-center relative">
+                  <div className="relative flex cursor-pointer items-center justify-center border-[1px] border-black p-4">
                     <FavoriteInput id={product.name} />
                   </div>
                 </div>
@@ -137,7 +137,7 @@ export const ProductPage = ({
           </section>
           <section
             aria-describedby="othersBuyAlso"
-            className="w-full col-span-2 mt-[50px]"
+            className="col-span-2 mt-[50px] w-full"
           >
             <h3 id="othersBuyAlso" className="text-xl">
               Others buy also:
@@ -156,7 +156,7 @@ export const ProductPage = ({
 
 const ProductSale = ({ sale }: { readonly sale: string | undefined | null }) =>
   sale ? (
-    <div className="mb-[22px] bg-black text-center px-8 py-2 font-semibold text-white self-start">
+    <div className="mb-[22px] self-start bg-black px-8 py-2 text-center font-semibold text-white">
       {`-${sale}%`}
     </div>
   ) : (

@@ -15,7 +15,7 @@ export function Categories() {
   return (
     <aside
       aria-describedby="categories"
-      className="row-span-3 mx-auto max-w-[230px] w-full"
+      className="row-span-3 mx-auto w-full max-w-[230px]"
     >
       <h2 id="categories" className="mt-12 text-xl font-medium">
         Posters
@@ -25,7 +25,7 @@ export function Categories() {
           <li key={slug}>
             <Link href={slug}>
               <div>
-                <span className="text-sm cursor-pointer">{name}</span>
+                <span className="cursor-pointer text-sm">{name}</span>
                 <hr className="my-[6px] h-[0.4px] border-gray-100" />
               </div>
             </Link>

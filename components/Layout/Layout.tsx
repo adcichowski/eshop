@@ -4,10 +4,10 @@ import { ToastsContainer } from "components/Toast/ToastsContainer";
 
 export function Layout({ children }: { readonly children: React.ReactNode }) {
   return (
-    <div className="min-h-screen flex flex-col overflow-hidden">
+    <div className="flex min-h-screen flex-col overflow-hidden">
       <div>
         <Header />
-        <div className="max-w-[1440px] mx-auto relative">
+        <div className="relative mx-auto max-w-[1440px]">
           <ToastsContainer />
           {children}
         </div>

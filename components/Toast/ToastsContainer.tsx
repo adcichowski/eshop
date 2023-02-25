@@ -6,9 +6,9 @@ export const ToastsContainer = React.memo(() => {
   const { toasts } = useToastContext();
   const { ref, isContainerVisible } = useToastPosition();
   return (
-    <div ref={ref} className="my-1 relative text-white w-full">
+    <div ref={ref} className="relative my-1 w-full text-white">
       <div
-        className={`flex flex-col gap-2 items-center justify-center w-full left-0 my-2 z-20 ${
+        className={`left-0 z-20 my-2 flex w-full flex-col items-center justify-center gap-2 ${
           !isContainerVisible ? "fixed top-3" : "absolute top-0"
         } `}
       >

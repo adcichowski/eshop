@@ -29,15 +29,15 @@ export function Autocomplete(props: { readonly className?: string }) {
     <div {...props}>
       <div className="flex gap-2">
         <MenuIcon
-          className="w-7 h-7 md:hidden cursor-pointer"
+          className="h-7 w-7 cursor-pointer md:hidden"
           aria-hidden="true"
         />
         <SearchIcon
-          className="w-7 h-7 md:hidden text-gray-400  cursor-pointer"
+          className="text-gray-400 h-7 w-7 cursor-pointer  md:hidden"
           aria-hidden="true"
         />
       </div>
-      <div className="top-16 md:w-70 hidden md:block">
+      <div className="md:w-70 top-16 hidden md:block">
         <Combobox value={selected} onChange={setSelected}>
           <InputDesktop
             query={query}
@@ -74,7 +74,7 @@ const InputDesktop = ({
         <Combobox.Input
           autoCorrect="false"
           placeholder="Szukaj..."
-          className="w-full border-none py-1 pl-1 pr-10 placeholder-black text-sm leading-5 placeholder-opacity-70"
+          className="w-full border-none py-1 pl-1 pr-10 text-sm leading-5 placeholder-black placeholder-opacity-70"
           displayValue={(person: { readonly name: string }) => person.name}
           onChange={(event) => setQuery(event.target.value)}
         />

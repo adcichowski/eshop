@@ -27,8 +27,8 @@ export const Input = React.forwardRef<
       <input
         {...props}
         ref={ref}
-        className={`border border-gray ${Clsx(
-          error && "bg-red-100 border-red-200"
+        className={`border-gray border ${Clsx(
+          error && "border-red-200 bg-red-100"
         )} ${variants[size].input}`}
       />
       <ErrorInInput id={`${props.id}Error`} error={error} />

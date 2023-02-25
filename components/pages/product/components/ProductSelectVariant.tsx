@@ -27,11 +27,11 @@ export function ProductSelectVariant({
 
   const productHaveDiscount = sale !== null;
   return (
-    <div className="bg-white z-10">
+    <div className="z-10 bg-white">
       <div className="relative">
         <button
           aria-label="toggle menu"
-          className="p-[0.2px] bg-white flex justify-between border-[0.5px] border-black px-3 w-60"
+          className="flex w-60 justify-between border-[0.5px] border-black bg-white p-[0.2px] px-3"
           type="button"
           {...getToggleButtonProps()}
         >
@@ -55,20 +55,20 @@ export function ProductSelectVariant({
       </div>
       <ul
         {...getMenuProps()}
-        className="max-h-80 absolute w-full max-w-[240px] bg-white"
+        className="absolute max-h-80 w-full max-w-[240px] bg-white"
       >
         {isOpen &&
           productVariants.map((item, index) => (
             <li
-              className="py-2 px-3 shadow-sm text-sm cursor-pointer border-[0.2px] border-t-white border-black bg-white"
+              className="cursor-pointer border-[0.2px] border-black border-t-white bg-white py-2 px-3 text-sm shadow-sm"
               key={`${item.price}${index}`}
               {...getItemProps({ item, index })}
             >
-              <div className="flex w-full text-[0.8125rem] items-center justify-between">
+              <div className="flex w-full items-center justify-between text-[0.8125rem]">
                 <div>{itemToString(item)}</div>
                 <div>
                   <span
-                    className={`text-[0.6875rem] mr-1 ${clsx(
+                    className={`mr-1 text-[0.6875rem] ${clsx(
                       sale && "line-through"
                     )}`}
                   >

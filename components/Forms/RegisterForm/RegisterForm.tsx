@@ -54,12 +54,12 @@ export function RegisterForm({
   }, [formState.errors, isErrorInForm, setAlertInfo]);
   return (
     <section
-      className="max-w-[435px] w-full mt-10 md:mt-0 md:justify-self-end"
+      className="mt-10 w-full max-w-[435px] md:mt-0 md:justify-self-end"
       aria-labelledby="sectionRegister"
     >
       <form autoComplete="off" noValidate onSubmit={onSubmit}>
-        <fieldset className="flex flex-col items-center text-left gap-2 shrink-0">
-          <h2 id="sectionRegister" className="text-2xl self-stretch">
+        <fieldset className="flex shrink-0 flex-col items-center gap-2 text-left">
+          <h2 id="sectionRegister" className="self-stretch text-2xl">
             Zarejestruj się
           </h2>
           {Object.entries(fields).map(([name, { text, type }]) => {
@@ -78,7 +78,7 @@ export function RegisterForm({
           })}
         </fieldset>
         <Button
-          className="md:px-16 px-8 py-2 md:py-4 mt-6"
+          className="mt-6 px-8 py-2 md:px-16 md:py-4"
           data-testid="buttonRegister"
           disabled={!!Object.values(errors).length}
         >

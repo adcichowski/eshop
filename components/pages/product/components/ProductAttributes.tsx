@@ -31,12 +31,12 @@ export const ProductAttributes = ({
       <h4 id="descriptionProduct" className="text-lg">
         Attributes
       </h4>
-      <div className="flex flex-col mt-2">
+      <div className="mt-2 flex flex-col">
         {Object.entries(displayAttributes).map(([attribute, info]) => (
           <div key={attribute} className="relative">
-            <dl className="grid grid-cols-2 justify-between max-w-xs bg-opacity-60">
-              <dt className="uppercase text-xs">{attribute}</dt>
-              <dd className="uppercase text-xs">{info}</dd>
+            <dl className="grid max-w-xs grid-cols-2 justify-between bg-opacity-60">
+              <dt className="text-xs uppercase">{attribute}</dt>
+              <dd className="text-xs uppercase">{info}</dd>
             </dl>
             <hr className="my-[6px] h-[0.4px] max-w-[377px] border-gray-100" />
           </div>

@@ -10,24 +10,24 @@ export const Header = () => {
   const { saveParentPopper, typePopper, popperRef } = usePopper();
   return (
     <>
-      <header className="grid z-40 place-items-center grid-cols-3 items-center min-w-md w-full flex-column relative justify-around p-3 sm:p-4">
+      <header className="min-w-md flex-column relative z-40 grid w-full grid-cols-3 place-items-center items-center justify-around p-3 sm:p-4">
         <Autocomplete className="ml-14" />
-        <div className="flex flex-col uppercase text-center gap-3">
+        <div className="flex flex-col gap-3 text-center uppercase">
           <Link
             href="/"
             passHref
-            className="font-medium xl:text-4xl md:text-3xl text-2xl"
+            className="text-2xl font-medium md:text-3xl xl:text-4xl"
           >
             <h1>PosterWall</h1>
           </Link>
-          <p className="text-sm hidden md:inline-block opacity-70">
+          <p className="hidden text-sm opacity-70 md:inline-block">
             Shipping in 2-4 business days
-            <span className="inline-block before:block before:relative  before:w-[1px] before:h-4 before:bg-black mx-1 before:-bottom-1"></span>
+            <span className="mx-1 inline-block before:relative  before:-bottom-1 before:block before:h-4 before:w-[1px] before:bg-black"></span>
             free delivery from 199 PLN
           </p>
         </div>
         <div ref={popperRef} className="relative z-20">
-          <ul aria-label="navigation icons" className="flex gap-4 mr-5">
+          <ul aria-label="navigation icons" className="mr-5 flex gap-4">
             {navigationIcons.map(({ Icon, popper, ...propsArchon }) => (
               <li
                 key={popper ?? propsArchon.href}
@@ -35,7 +35,7 @@ export const Header = () => {
                 className={`relative cursor-pointer ${Clsx(
                   typePopper === popper &&
                     popper &&
-                    "before:w-full before:h-[1.5px] before:translate-x-0.5 before:absolute before:bg-black before:-bottom-[9px]"
+                    "before:absolute before:-bottom-[9px] before:h-[1.5px] before:w-full before:translate-x-0.5 before:bg-black"
                 )}`}
               >
                 {Icon}
@@ -46,8 +46,8 @@ export const Header = () => {
         </div>
       </header>
       <ul
-        className="hidden sm:flex uppercase bg-black text-white font-medium gap-4 justify-center
-p-2 text-sm md:text-base"
+        className="hidden justify-center gap-4 bg-black p-2 text-sm font-medium uppercase
+text-white sm:flex md:text-base"
         aria-label="poster categories"
       >
         {headerCategories.map((category) => (

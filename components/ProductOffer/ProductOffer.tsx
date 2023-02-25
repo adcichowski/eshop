@@ -27,12 +27,12 @@ export function ProductOffer({
         />
         <div>
           <HeaderTag id={`poster${name}`}>{name}</HeaderTag>
-          <div className="font-medium mb-1">od 10zł</div>
-          <div className="flex mb-2">
-            <Button className="text-[10px] md:text-xs rounded-none bg-primary px-4 py-2 text-white uppercase relative self-center">
+          <div className="mb-1 font-medium">od 10zł</div>
+          <div className="mb-2 flex">
+            <Button className="relative self-center rounded-none bg-primary px-4 py-2 text-[10px] uppercase text-white md:text-xs">
               Add to cart
             </Button>
-            <div className="justify-self-end mr-8 relative">
+            <div className="relative mr-8 justify-self-end">
               <FavoriteInput id={name} />
             </div>
           </div>

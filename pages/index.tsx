@@ -18,7 +18,7 @@ const Home = () => {
   }
 
   return (
-    <div className="flex flex-col min-h-screen ">
+    <div className="flex min-h-screen flex-col ">
       <Carrousel
         {...settingsToEachCarrousel.mainRoomsCarrousel}
         renderSwiperSlide={() => (
@@ -41,7 +41,7 @@ const Home = () => {
         )}
       />
       <section aria-labelledby="bestsellers">
-        <h2 className="text-4xl m-8 font-medium" id="bestsellers">
+        <h2 className="m-8 text-4xl font-medium" id="bestsellers">
           Bestsellers
         </h2>
         <ProductsCarrousel />

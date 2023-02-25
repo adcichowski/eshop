@@ -14,7 +14,7 @@ export const ErrorInInput = ({
   <p
     role="alert"
     aria-describedby={id}
-    className="w-full text-xs text-left text-red-200"
+    className="w-full text-left text-xs text-red-200"
   >
     {error ? String(error) : ""}
   </p>

@@ -20,11 +20,11 @@ export function ProductCartPopper({
   const { deleteProduct } = useCartContext();
   return (
     <section
-      className="flex w-[322px] pb-2 border-b-[1px] border-gray-100"
+      className="flex w-[322px] border-b-[1px] border-gray-100 pb-2"
       aria-label="products in your cart"
     >
       <div className="basis-[86px]">
-        <div className="w-full h-[112px] border p-[6px]">
+        <div className="h-[112px] w-full border p-[6px]">
           <Image
             className="object-cover"
             width={100}
@@ -34,12 +34,12 @@ export function ProductCartPopper({
           />
         </div>
       </div>
-      <div className="basis-[242px] ml-[14px] py-[2px] flex flex-col">
-        <div className="flex justify-between grow">
+      <div className="ml-[14px] flex basis-[242px] flex-col py-[2px]">
+        <div className="flex grow justify-between">
           <h3 className="text-left">{title}</h3>
           <button
             onClick={() => deleteProduct({ image, title, price, id, amount })}
-            className="self-start mt-[3px]"
+            className="mt-[3px] self-start"
           >
             <ClearIcon data-outside="false" />
           </button>

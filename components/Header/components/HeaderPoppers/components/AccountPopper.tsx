@@ -8,7 +8,7 @@ export function AccountPopper() {
   const { status, data } = useSession();
 
   return (
-    <div className="flex flex-col text-center w-full px-14">
+    <div className="flex w-full flex-col px-14 text-center">
       {status === "loading" && <Spinner />}
       {status === "authenticated" && <Authenticated />}
       {status === "unauthenticated" && <Unauthenticated />}
@@ -18,14 +18,14 @@ export function AccountPopper() {
 
 const Unauthenticated = () => (
   <>
-    <Button className="md:text-sm px-16 py-[5px] rounded-[10px] text-sm">
+    <Button className="rounded-[10px] px-16 py-[5px] text-sm md:text-sm">
       <span className="whitespace-nowrap">Log in</span>
     </Button>
-    <div className="text-sm line leading-6">
+    <div className="line text-sm leading-6">
       Are you here for the first time?
     </div>
     <Link href="/account">
-      <span className="underline text-sm cursor-pointer">Sign up</span>
+      <span className="cursor-pointer text-sm underline">Sign up</span>
     </Link>
   </>
 );
@@ -34,15 +34,15 @@ const Authenticated = () => (
   <>
     <Button
       onClick={() => signOut()}
-      className="md:text-sm px-16 py-[5px] rounded-[10px] text-sm"
+      className="rounded-[10px] px-16 py-[5px] text-sm md:text-sm"
     >
       <span className="whitespace-nowrap">Log out</span>
     </Button>
-    <div className="text-sm line leading-6">
+    <div className="line text-sm leading-6">
       Do you wanna see your profile?{" "}
       <div>
         <Link href="/account">
-          <span className="underline text-sm cursor-pointer">Check it.</span>
+          <span className="cursor-pointer text-sm underline">Check it.</span>
         </Link>
       </div>
     </div>

@@ -10,12 +10,12 @@ export function Button({ children, ...props }: ButtonProps) {
     <button
       {...props}
       className={twMerge(
-        `transition-colors font-semibold uppercase rounded-[10px] text-base md:text-lg w-full ${
+        `w-full rounded-[10px] text-base font-semibold uppercase transition-colors md:text-lg ${
           props.className
         } ${
           props.disabled
-            ? "bg-white text-primary border-2 border-primary cursor-not-allowed"
-            : "text-white bg-primary"
+            ? "cursor-not-allowed border-2 border-primary bg-white text-primary"
+            : "bg-primary text-white"
         }`
       )}
     >

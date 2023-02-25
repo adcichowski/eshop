@@ -23,13 +23,13 @@ export const ToastChild = ({
   return (
     <div
       id="toast"
-      className={`flex items-center w-5/6 p-2 ${clsx(
+      className={`flex w-5/6 items-center p-2 ${clsx(
         type === "success" && "bg-primary",
         type === "info" && "bg-blue-200"
       )} rounded-lg shadow`}
       role="alert"
     >
-      <div className="inline-flex items-center justify-center flex-shrink-0 w-4 h-4 relative text-green-500 bg-green-100 rounded-lg">
+      <div className="text-green-500 bg-green-100 relative inline-flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-lg">
         {type === "success" && <SuccessIcon />}
         {type === "info" && <InfoIcon />}
         <span className="sr-only">Check icon</span>
@@ -43,7 +43,7 @@ export const ToastChild = ({
         aria-label="Close"
       >
         <span className="sr-only">Close</span>
-        <div className="w-5 h-5">
+        <div className="h-5 w-5">
           <CloseIcon />
         </div>
       </button>

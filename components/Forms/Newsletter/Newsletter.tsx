@@ -61,32 +61,32 @@ function Newsletter({ HeaderTag }: NewsletterProps) {
       aria-labelledby="newsletterHeading"
       aria-describedby="newsletterDescription"
     >
-      <div className="flex items-center flex-col">
+      <div className="flex flex-col items-center">
         <HeaderTag
           id="newsletterHeading"
-          className="uppercase font-semibold text-2xl text-center md:text-left"
+          className="text-center text-2xl font-semibold uppercase md:text-left"
         >
           Zapisz się do naszego newslettera
         </HeaderTag>
 
         <div
-          className="w-3/4 text-center text-2xl mt-3"
+          className="mt-3 w-3/4 text-center text-2xl"
           id="newsletterDescription"
         >
-          <div className="-mt-2 inline-flex items-center flex-wrap justify-center">
+          <div className="-mt-2 inline-flex flex-wrap items-center justify-center">
             <span>Zyskaj</span>
-            <span className="text-4xl mx-1 my-1 text-white font-semibold">
+            <span className="mx-1 my-1 text-4xl font-semibold text-white">
               {DISCOUNT_PERCENT}
             </span>
             <span>zniżki na pierwsze zakupy</span>
             <form
               noValidate
-              className="text-base block ml-2 h-20"
+              className="ml-2 block h-20 text-base"
               onSubmit={onSumbit}
             >
-              <fieldset className="my-2 xl:my-0 inline">
+              <fieldset className="my-2 inline xl:my-0">
                 <div className="flex">
-                  <div className="flex flex-col max-h-5">
+                  <div className="flex max-h-5 flex-col">
                     <Input
                       id="newsletterEmail"
                       text="Your email"
@@ -96,7 +96,7 @@ function Newsletter({ HeaderTag }: NewsletterProps) {
                     />
                   </div>
                   <button
-                    className="border-2 py-2 px-2 w-32 font-semibold border-black uppercase"
+                    className="w-32 border-2 border-black py-2 px-2 font-semibold uppercase"
                     type="submit"
                   >
                     Zapisz się
@@ -105,7 +105,7 @@ function Newsletter({ HeaderTag }: NewsletterProps) {
               </fieldset>
             </form>
           </div>
-          <div className="text-sm font-medium mt-1">
+          <div className="mt-1 text-sm font-medium">
             i otrzymuj informację o nowościach oraz promocjach
           </div>
         </div>

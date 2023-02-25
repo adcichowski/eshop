@@ -9,7 +9,7 @@ export function IconAbsolute({ children }: { readonly children: JSX.Element }) {
   return (
     <div>
       {children}
-      <div className="flex items-center justify-center absolute -top-1 rounded-[9px] w-[18px] h-[18px] bg-black text-white text-xs right-0">
+      <div className="absolute -top-1 right-0 flex h-[18px] w-[18px] items-center justify-center rounded-[9px] bg-black text-xs text-white">
         {numberItemsInCart}
       </div>
     </div>

@@ -32,11 +32,11 @@ export function ProductReviews() {
           <Controller
             control={control}
             render={({ field }) => (
-              <ul className="flex gap-[6px] h-7 my-[9px]">
+              <ul className="my-[9px] flex h-7 gap-[6px]">
                 {Array.from({ length: 5 }, (_, i) => i).map((starRate) => (
-                  <li key={starRate} className="w-7 relative">
+                  <li key={starRate} className="relative w-7">
                     <label
-                      className="absolute w-full h-full -left-1 bottom-0 z-20 cursor-pointer fill-current"
+                      className="fill-current absolute -left-1 bottom-0 z-20 h-full w-full cursor-pointer"
                       htmlFor={`star-${starRate}`}
                     >
                       <span className="sr-only">
@@ -50,7 +50,7 @@ export function ProductReviews() {
                       id={`star-${starRate}`}
                       {...field}
                       value={starRate}
-                      className="border-none hidden relative w-1"
+                      className="relative hidden w-1 border-none"
                     />
                   </li>
                 ))}
@@ -60,7 +60,7 @@ export function ProductReviews() {
           />
 
           <textarea
-            className="border-200 border resize-none"
+            className="border-200 resize-none border"
             {...register("opinion")}
           ></textarea>
         </fieldset>
