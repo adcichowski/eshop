@@ -1,5 +1,5 @@
 import { Button } from "components/Button/Button";
-import React from "react";
+
 import FavoriteIcon from "components/Header/icons/favorite.svg";
 export function FavoritePopper() {
   return (

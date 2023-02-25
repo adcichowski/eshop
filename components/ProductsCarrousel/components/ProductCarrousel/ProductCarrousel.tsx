@@ -2,7 +2,6 @@ import { Button } from "components/Button/Button";
 import { FavoriteInput } from "components/Inputs/FavoriteInput";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 export type ProductCarrouselProps = Readonly<{
   readonly id: string;

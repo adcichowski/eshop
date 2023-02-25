@@ -5,8 +5,8 @@ import {
   useContext,
   useState,
 } from "react";
-import { uniqId } from "utils/utils";
 import type { ToastTypes } from "./constants";
+import { addToastToList, removeToastFromList } from "./utilsToast";
 
 type ToastContextType = {
   readonly removeToast: (id: string) => void;
@@ -14,13 +14,12 @@ type ToastContextType = {
   toasts: ToastStateType[];
   setToasts: Dispatch<SetStateAction<ToastStateType[]>>;
 };
-type ToastStateType = {
-  readonly addedTime: number;
+export type ToastStateType = {
   readonly id: string;
   readonly text: string;
   readonly type: ToastTypes;
 };
-const MAX_RENDER_TOASTS = 4;
+export const MAX_RENDER_TOASTS = 4;
 const ToastContext = createContext<ToastContextType | null>(null);
 export const ToastProvider = ({
   children,
@@ -33,18 +32,12 @@ export const ToastProvider = ({
     <ToastContext.Provider
       value={{
         removeToast: (id: string) => {
-          setToasts((prev) => prev.filter((toast) => toast.id !== id));
+          setToasts((prev) => removeToastFromList(id, prev));
         },
         setToasts,
         toasts,
-        addToast: (type: ToastTypes, text: string) => {
-          if (toasts.length === MAX_RENDER_TOASTS)
-            setToasts((prev) => prev.slice(0, -1));
-          setToasts((prev) => [
-            ...prev,
-            { text, type, id: uniqId(), addedTime: new Date().getTime() },
-          ]);
-        },
+        addToast: (type, text) =>
+          setToasts((prev) => addToastToList(prev, { type, text })),
       }}
     >
       {children}

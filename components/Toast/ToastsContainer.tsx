@@ -1,8 +1,9 @@
 import { useToastContext } from "context/ToastContext/ToastContext";
+import { memo } from "react";
 import { useToastPosition } from "./hooks/useToastPosition";
 import { ToastChild } from "./Toast";
-import React from "react";
-export const ToastsContainer = React.memo(() => {
+
+export const ToastsContainer = memo(() => {
   const { toasts } = useToastContext();
   const { ref, isContainerVisible } = useToastPosition();
   return (
@@ -12,12 +13,8 @@ export const ToastsContainer = React.memo(() => {
           !isContainerVisible ? "fixed top-3" : "absolute top-0"
         } `}
       >
-        {toasts.map((toast, i) => (
-          <ToastChild
-            key={toast.id}
-            {...toast}
-            autoClose={toast.addedTime - toasts[i].addedTime ?? 3000}
-          />
+        {toasts.map((toast) => (
+          <ToastChild key={toast.id} {...toast} />
         ))}
       </div>
     </div>

@@ -1,6 +1,5 @@
 import { useGetCategoriesQuery } from "generated/graphql";
 import Link from "next/link";
-import React from "react";
 
 export function Categories() {
   const { data } = useGetCategoriesQuery();

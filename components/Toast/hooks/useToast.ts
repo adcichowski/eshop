@@ -1,8 +1,8 @@
 import { useToastContext } from "context/ToastContext/ToastContext";
-import React, { useCallback, useEffect } from "react";
+import { useCallback, useEffect } from "react";
 
-export function useToast(toast: { id: string; autoClose: number }) {
-  const { removeToast, toasts, setToasts } = useToastContext();
+export function useToast(toast: { id: string }) {
+  const { removeToast, toasts } = useToastContext();
   const handleClose = useCallback(
     () => removeToast(toast.id),
     [removeToast, toast.id]
@@ -10,7 +10,7 @@ export function useToast(toast: { id: string; autoClose: number }) {
   useEffect(() => {
     if (toasts) {
       const hideToast = setInterval(() => {
-        setToasts((prev) => prev.slice(0, -1));
+        removeToast(toast.id);
       }, 5000);
       return () => clearInterval(hideToast);
     }

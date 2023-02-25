@@ -17,7 +17,13 @@
     "eslint-plugin-react",
     "eslint-plugin-react-hooks"
   ],
-  "extends": ["prettier", "plugin:prettier/recommended", "next"],
+  "extends": [
+    "prettier",
+    "plugin:prettier/recommended",
+    "next",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
   "overrides": [
     {
       "files": [

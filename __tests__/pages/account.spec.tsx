@@ -1,4 +1,5 @@
 export {};
+import React from "react";
 import User from "@testing-library/user-event";
 import { render, screen } from "@testing-library/react";
 import { AccountPage } from "views/account/AccountPage";

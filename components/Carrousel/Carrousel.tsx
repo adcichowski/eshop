@@ -1,6 +1,5 @@
 import type { SwiperProps } from "swiper/react";
 import { Swiper } from "swiper/react";
-import React from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 

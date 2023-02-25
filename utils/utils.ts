@@ -12,9 +12,8 @@ export const priceWithDiscount = (price: number, discount: number) => {
   return changeValueCurrency(price - valueDiscount);
 };
 
-export const objectKeys = <Obj>(obj: Obj): readonly (keyof Obj)[] => {
-  // @ts-ignore -- get keys from object
-  return Object.keys(obj) as readonly (keyof Obj)[];
+export const objectKeys = <Obj extends object>(obj: Obj): (keyof Obj)[] => {
+  return Object.keys(obj) as (keyof Obj)[];
 };
 
 export const uniqId = () => `${Math.random()}${new Date()}`;

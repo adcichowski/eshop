@@ -1,9 +1,6 @@
-import React, { useEffect } from "react";
 import SuccessIcon from "./assets/success-icon.svg";
 import CloseIcon from "./assets/close-icon.svg";
 import InfoIcon from "./assets/info-icon.svg";
-import { useToastContext } from "context/ToastContext/ToastContext";
-import { useToastPosition } from "./hooks/useToastPosition";
 import clsx from "clsx";
 import { ToastTypes } from "context/ToastContext/constants";
 import { useToast } from "./hooks/useToast";
@@ -12,14 +9,12 @@ export const ToastChild = ({
   text,
   type,
   id,
-  autoClose,
 }: {
-  autoClose: number;
   text: string;
   type: ToastTypes;
   id: string;
 }) => {
-  const { handleClose } = useToast({ id, autoClose });
+  const { handleClose } = useToast({ id });
   return (
     <div
       id="toast"

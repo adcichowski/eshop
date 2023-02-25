@@ -1,4 +1,3 @@
-import React from "react";
 import { AccountPopper } from "components/Header/components/HeaderPoppers/components/AccountPopper";
 import { CartPopper } from "components/Header/components/HeaderPoppers/components/CartPopper/CartPopper";
 import { FavoritePopper } from "components/Header/components/HeaderPoppers/components/FavoritePopper";

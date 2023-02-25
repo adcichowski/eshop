@@ -1,11 +1,11 @@
 import { Button } from "components/Button/Button";
 import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
-import React from "react";
+
 import { Spinner } from "components/Spinner/Spinner";
 
 export function AccountPopper() {
-  const { status, data } = useSession();
+  const { status } = useSession();
 
   return (
     <div className="flex w-full flex-col px-14 text-center">

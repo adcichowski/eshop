@@ -1,5 +1,5 @@
-import React from "react";
 import Clsx from "clsx";
+import React from "react";
 import { ErrorInInput } from "./ErrorInInput";
 import type { InputProps } from "../types";
 

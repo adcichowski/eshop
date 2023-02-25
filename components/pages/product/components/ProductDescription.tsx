@@ -1,5 +1,4 @@
 import { MDXRemote } from "next-mdx-remote";
-import React from "react";
 
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
 
