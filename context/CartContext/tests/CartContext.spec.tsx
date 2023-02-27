@@ -1,10 +1,9 @@
 import React from "react";
 import { CartContextProvider, useCartContext } from "../CartContext";
 import { faker } from "@faker-js/faker";
-import type { CartItem } from "../types";
 import { render, screen } from "@testing-library/react";
-import User from "@testing-library/user-event";
-import { Layout } from "components/Layout/Layout";
+import userEvent from "@testing-library/user-event";
+import { randomInt } from "crypto";
 const setup = () => ({
   product: {
     id: faker.datatype.uuid(),
@@ -13,50 +12,62 @@ const setup = () => ({
     price: Number(faker.commerce.price(1, 200, 100)),
     title: faker.commerce.productName(),
   },
-  initialCart: (length: number) =>
-    Object.fromEntries(
-      Array.from({ length }, () => {
-        const product = setup().product;
-        return [product.id, product];
-      })
-    ),
 });
 
-describe("<CartContext>", () => {
+describe("CartContext", () => {
+  const getElements = {
+    buttons: () => screen.getAllByRole("button"),
+  };
   beforeEach(() => {
     Object.defineProperty(window, "localStorage", {
       value: {
-        getItem: jest.fn().mockReturnValue(setup().initialCart(2)),
+        getItem: jest.fn(),
         setItem: jest.fn(),
       },
     });
-  });
-  it("should call localStorage getItem on render", () => {
-    render(<CartContextProvider />);
-    const cart = window.localStorage.getItem("cart");
-    expect(cart).toBe("");
-  });
-  it("should call localStorage setItem if cart change", () => {
-    const { getByRole } = render(
+    render(
       <CartContextProvider>
         <AddButton />
       </CartContextProvider>
     );
-    const button = getByRole("button");
-    User.click(button);
-    expect(window.localStorage.setItem).toHaveBeenCalled(2);
+  });
+
+  it("should call localStorage getItem in first render", async () => {
+    expect(window.localStorage.getItem).toBeCalled();
+  });
+
+  it("should call localStorage setItem if the product was added", async () => {
+    const addButton = getElements.buttons()[0];
+    await userEvent.click(addButton);
+    expect(window.localStorage.setItem).toBeCalled();
+  });
+
+  it("should call localStorage setItem if the product was removed", async () => {
+    const removeButton = getElements.buttons()[1];
+    await userEvent.click(removeButton);
+    expect(window.localStorage.setItem).toBeCalled();
   });
 });
 
-const AddButton = () => {
-  const { addProduct } = useCartContext();
+function AddButton() {
+  const product = setup().product;
+  const { addProduct, deleteProduct } = useCartContext();
   return (
-    <button
-      onClick={() => {
-        addProduct(setup().product);
-      }}
-    >
-      Add Product
-    </button>
+    <>
+      <button
+        onClick={() => {
+          addProduct(product);
+        }}
+      >
+        Add Product
+      </button>
+      <button
+        onClick={() => {
+          deleteProduct(product);
+        }}
+      >
+        Remove Product
+      </button>
+    </>
   );
-};
+}

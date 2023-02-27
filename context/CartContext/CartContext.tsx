@@ -7,7 +7,7 @@ const CartContext = createContext<CartContextType | null>(null);
 export const CartContextProvider = ({
   children,
 }: {
-  readonly children: React.ReactNode;
+  readonly children?: React.ReactNode;
 }) => {
   const [cart, setCart] = useState<Record<string, CartItem> | undefined>(
     undefined
