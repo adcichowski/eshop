@@ -15,15 +15,15 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <SessionProvider session={session}>
       <ApolloProvider client={apolloClient}>
-        <CartContextProvider>
-          <ToastProvider>
+        <ToastProvider>
+          <CartContextProvider>
             <QueryClientProvider client={queryClient}>
               <Layout>
                 <Component {...pageProps} />
               </Layout>
             </QueryClientProvider>
-          </ToastProvider>
-        </CartContextProvider>
+          </CartContextProvider>
+        </ToastProvider>
       </ApolloProvider>
     </SessionProvider>
   );

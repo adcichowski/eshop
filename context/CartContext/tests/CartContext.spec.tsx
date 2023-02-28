@@ -3,7 +3,9 @@ import { CartContextProvider, useCartContext } from "../CartContext";
 import { faker } from "@faker-js/faker";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { randomInt } from "crypto";
+import { ToastProvider } from "context/ToastContext/ToastContext";
+import { ToastsContainer } from "components/Toast/ToastsContainer";
+
 const setup = () => ({
   product: {
     id: faker.datatype.uuid(),
@@ -25,10 +27,20 @@ describe("CartContext", () => {
         setItem: jest.fn(),
       },
     });
+    const mockIntersectionObserver = jest.fn();
+    mockIntersectionObserver.mockReturnValue({
+      observe: () => null,
+      unobserve: () => null,
+      disconnect: () => null,
+    });
+    window.IntersectionObserver = mockIntersectionObserver;
     render(
-      <CartContextProvider>
-        <AddButton />
-      </CartContextProvider>
+      <ToastProvider>
+        <CartContextProvider>
+          <ToastsContainer />
+          <AddButton />
+        </CartContextProvider>
+      </ToastProvider>
     );
   });
 
@@ -42,10 +54,22 @@ describe("CartContext", () => {
     expect(window.localStorage.setItem).toBeCalled();
   });
 
-  it("should call localStorage setItem if the product was removed", async () => {
-    const removeButton = getElements.buttons()[1];
-    await userEvent.click(removeButton);
-    expect(window.localStorage.setItem).toBeCalled();
+  it("should show alert (*Successful add product to cart*) if product was added", async () => {
+    const addButton = getElements.buttons()[0];
+    await userEvent.click(addButton);
+    const alert = screen.getByRole("alert");
+    const text = screen.getByText("Successful add product to cart");
+    expect(alert).toBeInTheDocument;
+    expect(text).toBeInTheDocument;
+  });
+
+  it("should show alert (*Successful remove product from cart*) if product was added", async () => {
+    const addButton = getElements.buttons()[1];
+    await userEvent.click(addButton);
+    const alert = screen.getByRole("alert");
+    const text = screen.getByText("Successful remove product from cart");
+    expect(alert).toBeInTheDocument;
+    expect(text).toBeInTheDocument;
   });
 });
 

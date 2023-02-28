@@ -1,3 +1,4 @@
+import { useToastContext } from "context/ToastContext/ToastContext";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import type { CartContextType, CartItem } from "./types";
 import { addProductToCart, deleteProductFromCart } from "./utilsCart";
@@ -12,6 +13,7 @@ export const CartContextProvider = ({
   const [cart, setCart] = useState<Record<string, CartItem> | undefined>(
     undefined
   );
+  const { addToast } = useToastContext();
   useEffect(() => {
     setCart(getCartFromLocalStorage());
   }, []);
@@ -25,9 +27,11 @@ export const CartContextProvider = ({
         cart,
         addProduct: (product: CartItem) => {
           setCart(addProductToCart(product, cart));
+          addToast("success", "Successful add product to cart");
         },
         deleteProduct: (product: CartItem) => {
           setCart(deleteProductFromCart(product, cart));
+          addToast("success", "Successful remove product from cart");
         },
       }}
     >

@@ -2,7 +2,6 @@ import Image from "next/image";
 import ClearIcon from "./clear.svg";
 import { changeValueCurrency } from "utils/utils";
 import { useCartContext } from "context/CartContext/CartContext";
-import { useToastContext } from "context/ToastContext/ToastContext";
 type ProductCartPopperProps = {
   readonly id: string;
   readonly image: { readonly url: string; readonly alt?: string | null };
@@ -18,7 +17,6 @@ export function ProductCartPopper({
   price,
 }: ProductCartPopperProps) {
   const { deleteProduct } = useCartContext();
-  const { addToast } = useToastContext();
   return (
     <section
       className="flex w-[322px] border-b-[1px] border-gray-100 pb-2"
@@ -41,7 +39,6 @@ export function ProductCartPopper({
           <button
             onClick={() => {
               deleteProduct({ image, title, price, id, amount });
-              addToast("success", "You are delete product from card.");
             }}
             className="mt-[3px] self-start"
           >

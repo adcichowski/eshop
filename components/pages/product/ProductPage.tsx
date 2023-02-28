@@ -113,7 +113,6 @@ export const ProductPage = ({
                 <div className="mt-4 flex gap-1">
                   <Button
                     onClick={() => {
-                      addToast("success", "Great you are add product!");
                       addProduct({
                         id: selectedVariant.id,
                         title: product.name,

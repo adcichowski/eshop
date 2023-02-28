@@ -3,7 +3,7 @@ import { memo } from "react";
 import { useToastPosition } from "./hooks/useToastPosition";
 import { ToastChild } from "./Toast";
 
-export const ToastsContainer = memo(() => {
+export const ToastsContainer = () => {
   const { toasts } = useToastContext();
   const { ref, isContainerVisible } = useToastPosition();
   return (
@@ -19,6 +19,4 @@ export const ToastsContainer = memo(() => {
       </div>
     </div>
   );
-});
-
-ToastsContainer.displayName = "ToastsContainer";
+};
