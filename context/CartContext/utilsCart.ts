@@ -25,14 +25,17 @@ export const addProductToCart = (
 ) => {
   const productInCart = cartState?.[product.id];
   if (!productInCart) {
-    return { ...cartState, [product.id]: { ...product, amount: 1 } };
+    return {
+      ...cartState,
+      [product.id]: { ...product, amount: product.amount },
+    };
   }
 
   return {
     ...cartState,
     [product.id]: {
       ...product,
-      amount: Number(cartState?.[product.id].amount) + 1,
+      amount: Number(cartState?.[product.id].amount) + product.amount,
     },
   };
 };

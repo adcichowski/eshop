@@ -3,11 +3,9 @@ import { Categories } from "components/Categories/Categories";
 import { ProductsCarrousel } from "components/ProductsCarrousel/ProductsCarrousel";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-
 import { ProductAttributes } from "./components/ProductAttributes";
 import { ProductDescription } from "./components/ProductDescription";
 import { ProductPrice } from "./components/ProductPrice";
-
 import type { InferGetStaticPropsType } from "next";
 import type { getStaticProps } from "pages/[productSlug]";
 import { ProductSelectVariant } from "./components/ProductSelectVariant";
@@ -16,13 +14,11 @@ import type { ProductVariant } from "./types";
 import { ProductReviews } from "./components/ProductReviews/Reviews";
 import { useCartContext } from "context/CartContext/CartContext";
 import { useRouter } from "next/router";
-import { useToastContext } from "context/ToastContext/ToastContext";
+import { useInputAmountProduct } from "hooks/useInputAmountProduct";
 
 export const ProductPage = ({
   product,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { addToast } = useToastContext();
-
   const { addProduct } = useCartContext();
   const productVariants = product?.variants.map(({ size, id, price }) => ({
     price,
@@ -33,15 +29,16 @@ export const ProductPage = ({
   const [selectedVariant, setSelectedVariant] = useState<
     ProductVariant | undefined
   >(undefined);
+  const inputAmountProps = useInputAmountProduct();
   const router = useRouter();
   useEffect(() => {
     setSelectedVariant(
       productVariants?.length ? productVariants[0] : undefined
     );
   }, [router.asPath]);
+
   if (!product || !selectedVariant || !productVariants)
     return <h2>Product not found!</h2>;
-
   const { finish, color, paperWeight, orientation, whiteFrame } = product;
 
   const productAttributes = {
@@ -88,9 +85,12 @@ export const ProductPage = ({
                   <span className="w-24 text-base">Quantity:</span>
                   <div>
                     <input
-                      className="h-10 w-12 cursor-pointer border-[0.5px] border-black bg-white p-2 px-3 text-center"
-                      type="text"
+                      className="h-10 w-14 cursor-pointer border-[0.5px] border-black bg-white p-2 px-3 text-center"
+                      type="number"
+                      inputMode="numeric"
+                      pattern="[0-9]"
                       min={1}
+                      {...inputAmountProps}
                     />
                     <span className="ml-1">szt</span>
                   </div>
@@ -118,7 +118,7 @@ export const ProductPage = ({
                         title: product.name,
                         price: selectedVariant.price,
                         image: product.images[0],
-                        amount: 1,
+                        amount: Number(inputAmountProps.value),
                       });
                     }}
                     className="h-full w-full rounded-none px-12 py-5 text-lg sm:text-sm"
