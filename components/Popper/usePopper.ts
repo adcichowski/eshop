@@ -6,7 +6,7 @@ export function usePopper() {
   const popperRef = React.useRef<HTMLDivElement>(null);
   const [typePopper, setTypePopper] = useState<string | undefined>(undefined);
   const saveParentPopper = (
-    e: MouseEvent<HTMLLIElement>,
+    _: MouseEvent<HTMLLIElement>,
     type: string | undefined
   ) => {
     setTypePopper(type);
