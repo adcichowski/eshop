@@ -1,5 +1,5 @@
 import CredentialsProvider from "next-auth/providers/credentials";
-import NextAuth from "next-auth";
+import NextAuth from "next-auth/next";
 import * as Bcrypt from "bcrypt";
 import { authorizedApolloClient } from "graphql/apolloClient";
 import type {

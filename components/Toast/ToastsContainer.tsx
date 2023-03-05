@@ -1,5 +1,4 @@
 import { useToastContext } from "context/ToastContext/ToastContext";
-import { memo } from "react";
 import { useToastPosition } from "./hooks/useToastPosition";
 import { ToastChild } from "./Toast";
 

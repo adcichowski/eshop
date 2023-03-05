@@ -2,16 +2,16 @@ import { useForm } from "components/Forms/useForm";
 import { Input } from "components/Inputs/components/Input";
 import Star from "./Star.svg";
 import { addReviewSchema } from "./addReviewSchema";
-import { Controller, useWatch } from "react-hook-form";
+import { Controller } from "react-hook-form";
 type ReviewFormProps = {
   readonly name: string;
   readonly opinion: string;
   readonly rate: number;
 };
 export function ProductReviews() {
-  const { register, errors, control, handleSubmit } =
+  const { register, errors, control } =
     useForm<ReviewFormProps>(addReviewSchema);
-  const selectedRate = useWatch({ name: "opinion", control });
+  // const selectedRate = useWatch({ name: "opinion", control });
   return (
     <section className="col-span-2 mr-2">
       <h4>Opinions about product</h4>
