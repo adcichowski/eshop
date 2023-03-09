@@ -7,6 +7,7 @@ import { fetcher } from "utils/fetcher";
 import { Input } from "components/Inputs/components/Input";
 import { useRouter } from "next/router";
 import Dynamic from "next/dynamic";
+import { schemaResponseMailerLite } from "pages/api/newsletter";
 
 const DISCOUNT_PERCENT = "10%";
 export type NewsletterProps = {
@@ -42,10 +43,13 @@ function Newsletter({ HeaderTag }: NewsletterProps) {
   const { mutate } = useMutation(
     ["addToNewsletter"],
     async (data: { readonly email: string }) => {
-      await fetcher("/api/newsletter", {
-        method: "POST",
-        body: data,
-      });
+      await fetcher<Yup.InferType<typeof schemaResponseMailerLite>["data"]>(
+        "/api/newsletter",
+        {
+          method: "POST",
+          body: data,
+        }
+      );
     }
   );
   const onSumbit = handleSubmit((data) => {

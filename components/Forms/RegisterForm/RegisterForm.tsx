@@ -51,7 +51,7 @@ export function RegisterForm({
     if (isErrorInForm) {
       setAlertInfo(isErrorInForm);
     }
-  }, [formState.errors, isErrorInForm, setAlertInfo]);
+  }, [formState.errors]);
   return (
     <section
       className="mt-10 w-full max-w-[435px] md:mt-0 md:justify-self-end"
