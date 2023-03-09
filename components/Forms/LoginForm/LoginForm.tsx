@@ -33,7 +33,7 @@ export function LoginForm({
     if (isErrorInForm) {
       setAlertInfo(isErrorInForm);
     }
-  }, [formState.errors, setAlertInfo, isErrorInForm]);
+  }, [formState.errors]);
   return (
     <section
       className="w-full max-w-[435px] shrink-0"
