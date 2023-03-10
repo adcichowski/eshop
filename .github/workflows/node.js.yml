@@ -21,14 +21,16 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
         env: # Or as an environment variable
           NEXT_PUBLIC_API: ${{ secrets.NEXT_PUBLIC_API }}
           NEXT_PUBLIC_MAILERLITE: ${{ secrets.NEXT_PUBLIC_MAILERLITE }}
           HYGRAPH_TOKEN: ${{ secrets.HYGRAPH_TOKEN }}
-        uses: actions/setup-node@v3
+          Greeting: Hello
         with:
           node-version: ${{ matrix.node-version }}
           cache: "yarn"
+      - run: echo "$Greeting Adam!"
       - run: echo "The operating system on the runner is ${{ secrets.NEXT_PUBLIC_API }}"
       - run: yarn install
       - run: yarn test
