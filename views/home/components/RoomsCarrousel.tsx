@@ -1,4 +1,3 @@
-import { Carrousel } from "components/Carrousel/Carrousel";
 import React from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
