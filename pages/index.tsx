@@ -1,19 +1,15 @@
 import { useQuery } from "@apollo/client";
 import type { GetProductsQuery } from "generated/graphql";
 import { GetProductsDocument } from "generated/graphql";
-import Image from "next/image";
 import { ProductsCarrousel } from "components/ProductsCarrousel/ProductsCarrousel";
-import { Carrousel } from "components/Carrousel/Carrousel";
-import { SwiperSlide } from "swiper/react";
-import { settingsToEachCarrousel } from "components/Carrousel/constants";
 import { ProductOffer } from "components/ProductOffer/ProductOffer";
 import { RoomsCarrousel } from "views/home/components/RoomsCarrousel";
 const Home = () => {
   const { loading, error, data } =
     useQuery<GetProductsQuery>(GetProductsDocument);
-  // if (error || !data?.products) {
-  //   return <p>{error?.message ?? "Problem to fetch products"}</p>;
-  // }
+  if (error) {
+    return <p>{error?.message ?? "Problem to fetch products"}</p>;
+  }
 
   return (
     <div className="flex min-h-screen flex-col ">
