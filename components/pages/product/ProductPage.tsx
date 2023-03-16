@@ -85,7 +85,7 @@ export const ProductPage = ({
                   <span className="w-24 text-base">Quantity:</span>
                   <div>
                     <input
-                      className="h-10 w-14 cursor-pointer border-[0.5px] border-black bg-white p-2 px-3 text-center"
+                      className="h-10 w-[50px] cursor-pointer border-[0.5px] border-black bg-white p-2 px-3 text-center"
                       type="number"
                       inputMode="numeric"
                       pattern="[0-9]"
