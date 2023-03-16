@@ -19,7 +19,7 @@ const ROOMS_IMAGES: { src: string; alt: string }[] = [
 export function RoomsCarrousel({ isLoading }: { isLoading: boolean }) {
   if (isLoading) {
     return (
-      <div className="min-w-screen flex aspect-video h-screen items-center justify-center">
+      <div className="min-w-screen flex aspect-video items-center justify-center">
         <SpinIcon size="big" />
       </div>
     );
