@@ -112,6 +112,7 @@ export const ProductPage = ({
                 </span>
                 <div className="mt-4 flex gap-1">
                   <Button
+                    data-outside="false"
                     onClick={() => {
                       addProduct({
                         id: selectedVariant.id,
