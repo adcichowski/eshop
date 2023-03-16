@@ -51,10 +51,10 @@ export const ProductPage = ({
   };
   return (
     <div className="flex flex-col">
-      <main className="grid grid-cols-3">
+      <main className="grid grid-cols-3 pt-3">
         <Categories />
 
-        <div className="col-span-2 mt-8 max-w-3xl text-[32px]">
+        <div className="col-span-2 max-w-3xl text-[32px]">
           <section className="grid grid-cols-2">
             <h2 className="col-span-2 mb-5 max-w-md text-3xl">
               {product.name}

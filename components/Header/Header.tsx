@@ -8,7 +8,7 @@ import { headerCategories, navigationIcons } from "./constants";
 export const Header = () => {
   const { saveParentPopper, typePopper, popperRef } = usePopper();
   return (
-    <div className="h-36">
+    <div className="h-14 sm:h-[100px] md:h-40">
       <header className="fixed z-50 w-full bg-white">
         <div className="min-w-md flex-column sticky z-40 grid w-full grid-cols-3 place-items-center items-center justify-around p-3 sm:p-4">
           <Autocomplete className="ml-14" />
