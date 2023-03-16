@@ -1,16 +1,6 @@
-import { Autoplay, Navigation } from "swiper";
+import { Navigation } from "swiper";
 
 export const settingsToEachCarrousel = {
-  mainRoomsCarrousel: {
-    speed: 450,
-    navigation: true,
-    autoplay: {
-      delay: 3500,
-      disableOnInteraction: false,
-    },
-    modules: [Navigation, Autoplay],
-  },
-
   productsCarrousel: {
     navigation: true,
     slidesPerView: 2,

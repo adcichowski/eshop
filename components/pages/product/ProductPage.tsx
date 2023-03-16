@@ -51,11 +51,11 @@ export const ProductPage = ({
   };
   return (
     <div className="flex flex-col">
-      <main className="grid grid-cols-3">
+      <main className="grid grid-cols-3 pt-3">
         <Categories />
 
-        <div className="col-span-2 mt-10 max-w-3xl text-[32px]">
-          <section className=" grid grid-cols-2">
+        <div className="col-span-2 max-w-3xl text-[32px]">
+          <section className="grid grid-cols-2">
             <h2 className="col-span-2 mb-5 max-w-md text-3xl">
               {product.name}
             </h2>
@@ -85,7 +85,7 @@ export const ProductPage = ({
                   <span className="w-24 text-base">Quantity:</span>
                   <div>
                     <input
-                      className="h-10 w-14 cursor-pointer border-[0.5px] border-black bg-white p-2 px-3 text-center"
+                      className="h-10 w-[50px] cursor-pointer border-[0.5px] border-black bg-white p-2 px-3 text-center"
                       type="number"
                       inputMode="numeric"
                       pattern="[0-9]"
@@ -112,6 +112,7 @@ export const ProductPage = ({
                 </span>
                 <div className="mt-4 flex gap-1">
                   <Button
+                    data-outside="false"
                     onClick={() => {
                       addProduct({
                         id: selectedVariant.id,

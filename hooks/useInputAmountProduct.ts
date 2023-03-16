@@ -1,27 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 export function useInputAmountProduct() {
-  const [amountProduct, setAmountProduct] = useState("");
-  useEffect(() => {
-    if (amountProduct.length < 0) {
-      setAmountProduct("1");
-    }
-    if (amountProduct.length > 2) {
-      setAmountProduct("99");
-    }
-  }, [amountProduct]);
-  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "-") {
-      e.preventDefault();
-    }
-  };
+  const [amountProduct, setAmountProduct] = useState("1");
+
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = Number(e.currentTarget.value);
+    if (value < 0 || value > 99) return;
     setAmountProduct(e.currentTarget.value);
   };
 
   return {
     value: amountProduct,
     onChange,
-    onKeyDown,
   };
 }

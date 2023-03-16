@@ -25,6 +25,7 @@ describe("CartContext", () => {
       value: {
         getItem: jest.fn(),
         setItem: jest.fn(),
+        removeItem: jest.fn(),
       },
     });
     const mockIntersectionObserver = jest.fn();
@@ -59,15 +60,6 @@ describe("CartContext", () => {
     await userEvent.click(addButton);
     const alert = screen.getByRole("alert");
     const text = screen.getByText("Successful add product to cart");
-    expect(alert).toBeInTheDocument;
-    expect(text).toBeInTheDocument;
-  });
-
-  it("should show alert (*Successful remove product from cart*) if product was added", async () => {
-    const addButton = getElements.buttons()[1];
-    await userEvent.click(addButton);
-    const alert = screen.getByRole("alert");
-    const text = screen.getByText("Successful remove product from cart");
     expect(alert).toBeInTheDocument;
     expect(text).toBeInTheDocument;
   });

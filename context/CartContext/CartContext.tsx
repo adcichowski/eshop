@@ -14,13 +14,15 @@ export const CartContextProvider = ({
     undefined
   );
   const { addToast } = useToastContext();
-  useEffect(() => {
-    setCart(getCartFromLocalStorage());
-  }, []);
 
   useEffect(() => {
     setCartInLocalStorage(cart);
   }, [cart]);
+
+  useEffect(() => {
+    setCart(getCartFromLocalStorage());
+  }, []);
+
   return (
     <CartContext.Provider
       value={{
@@ -62,6 +64,6 @@ const getCartFromLocalStorage = () => {
 };
 
 const setCartInLocalStorage = (cart: Record<string, CartItem> | undefined) => {
-  if (cart === undefined) return;
+  if (cart === undefined) localStorage.removeItem("cart");
   return localStorage.setItem("cart", JSON.stringify(cart));
 };

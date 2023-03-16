@@ -1,0 +1,33 @@
+name: Test & Build Project
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
+
+    env:
+      NEXT_PUBLIC_API: ${{ secrets.NEXT_PUBLIC_API }}
+      NEXT_PUBLIC_MAILERLITE: ${{ secrets.NEXT_PUBLIC_MAILERLITE }}
+      HYGRAPH_TOKEN: ${{ secrets.HYGRAPH_TOKEN }}
+      Greeting: Hello
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "yarn"
+      - run: echo "The operating system on the runner is ${{ secrets.NEXT_PUBLIC_API }}"
+      - run: yarn install
+      - run: yarn test
+      - run: yarn run build
