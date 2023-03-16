@@ -16,7 +16,7 @@ export function Categories() {
       aria-describedby="categories"
       className="row-span-3 mx-auto w-full max-w-[230px]"
     >
-      <h2 id="categories" className="mt-12 text-xl font-medium">
+      <h2 id="categories" className="mt-10 text-xl font-medium">
         Posters
       </h2>
       <ul className="mt-[23px] w-full">
