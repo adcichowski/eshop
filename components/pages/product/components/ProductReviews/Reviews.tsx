@@ -1,7 +1,9 @@
 import { useForm } from "components/Forms/useForm";
 import { Input } from "components/Inputs/components/Input";
-import Star from "./Star.svg";
+import { Star } from "./Star";
 import { addReviewSchema } from "./addReviewSchema";
+import { SyntheticEvent } from "react";
+import clsx from "clsx";
 import { Controller } from "react-hook-form";
 type ReviewFormProps = {
   readonly name: string;
@@ -9,13 +11,17 @@ type ReviewFormProps = {
   readonly rate: number;
 };
 export function ProductReviews() {
-  const { register, errors, control } =
+  const { register, errors, control, handleSubmit } =
     useForm<ReviewFormProps>(addReviewSchema);
-  // const selectedRate = useWatch({ name: "opinion", control });
+  const onSubmit = (e: SyntheticEvent) => {
+    handleSubmit(() => {
+      e.preventDefault();
+    });
+  };
   return (
-    <section className="col-span-2 mr-2">
-      <h4>Opinions about product</h4>
-      <form>
+    <section className="col-span-2 mt-10">
+      <h4 className="text-xl">Opinions about product (0)</h4>
+      <form onSubmit={onSubmit}>
         <fieldset className="flex flex-col">
           <Input
             id="name"
@@ -26,45 +32,55 @@ export function ProductReviews() {
             {...register("name")}
           />
 
-          <label htmlFor="rangeRate" className="sr-only">
-            Your opinion:
+          <label className="mt-[14px] text-sm" htmlFor="rangeRate">
+            Your opinion
           </label>
           <Controller
             control={control}
-            render={({ field }) => (
-              <ul className="my-[9px] flex h-7 gap-[6px]">
-                {Array.from({ length: 5 }, (_, i) => i).map((starRate) => (
-                  <li key={starRate} className="relative w-7">
-                    <label
-                      className="fill-current absolute -left-1 bottom-0 z-20 h-full w-full cursor-pointer"
-                      htmlFor={`star-${starRate}`}
-                    >
-                      <span className="sr-only">
-                        Star with rate ${starRate}
-                      </span>
-
-                      <Star aria-hidden="true" />
-                    </label>
-                    <input
-                      type="radio"
-                      id={`star-${starRate}`}
-                      {...field}
-                      value={starRate}
-                      className="relative hidden w-1 border-none"
-                    />
-                  </li>
-                ))}
-              </ul>
-            )}
             name="rate"
+            render={({ field }) => {
+              return (
+                <ul className="my-[9px] flex gap-1">
+                  {Array.from({ length: 5 }, (_, i) => i + 1).map(
+                    (starRate) => (
+                      <li key={starRate} className="relative h-7 w-7 ">
+                        <label
+                          className="-left-1 bottom-0 z-20 cursor-pointer"
+                          htmlFor={`star-${starRate}`}
+                        >
+                          <span className="sr-only">Star with rate </span>
+                          <div className="flex text-white">
+                            <Star
+                              className={clsx(
+                                "stroke-black",
+                                Number(field.value) >= starRate && "fill-black"
+                              )}
+                              aria-hidden="true"
+                            />
+                          </div>
+                        </label>
+                        <input
+                          type="radio"
+                          id={`star-${starRate}`}
+                          {...field}
+                          value={starRate}
+                          className="sr-only w-1"
+                        />
+                      </li>
+                    )
+                  )}
+                </ul>
+              );
+            }}
           />
-
           <textarea
-            className="border-200 resize-none border"
+            className="border-200 text-md h-24 resize-none border border-gray-400 pt-2 pl-2 text-sm"
             {...register("opinion")}
-          ></textarea>
+          />
         </fieldset>
-        <button>Submit</button>
+        <button className="mt-2 border border-primary px-6 py-3 text-base text-primary transition-colors hover:bg-primary hover:text-white">
+          Send
+        </button>
       </form>
     </section>
   );
