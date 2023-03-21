@@ -33,7 +33,7 @@ export function Autocomplete(props: { readonly className?: string }) {
           aria-hidden="true"
         />
         <SearchIcon
-          className="text-gray-400 h-7 w-7 cursor-pointer  md:hidden"
+          className="h-7 w-7 cursor-pointer text-gray-400  md:hidden"
           aria-hidden="true"
         />
       </div>
