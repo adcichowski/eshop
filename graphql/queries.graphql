@@ -76,3 +76,10 @@ query GetAccountByEmail($email: String!) {
     password
   }
 }
+
+mutation CreateReviewProduct($review: ReviewCreateInput!) {
+  createReview(data: $review) {
+    id
+    stage
+  }
+}

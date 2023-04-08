@@ -162,7 +162,7 @@ export type AccountManyWhereInput = {
   createdAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   createdAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   createdAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -177,7 +177,7 @@ export type AccountManyWhereInput = {
   email_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   email_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   email_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   email_not_contains?: InputMaybe<Scalars["String"]>;
@@ -196,7 +196,7 @@ export type AccountManyWhereInput = {
   id_ends_with?: InputMaybe<Scalars["ID"]>;
   /** All values that are contained in given list. */
   id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   id_not?: InputMaybe<Scalars["ID"]>;
   /** All values not containing the given string. */
   id_not_contains?: InputMaybe<Scalars["ID"]>;
@@ -215,7 +215,7 @@ export type AccountManyWhereInput = {
   password_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   password_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   password_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   password_not_contains?: InputMaybe<Scalars["String"]>;
@@ -238,7 +238,7 @@ export type AccountManyWhereInput = {
   publishedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   publishedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   publishedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -257,7 +257,7 @@ export type AccountManyWhereInput = {
   updatedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   updatedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   updatedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -375,7 +375,7 @@ export type AccountWhereInput = {
   createdAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   createdAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   createdAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -390,7 +390,7 @@ export type AccountWhereInput = {
   email_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   email_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   email_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   email_not_contains?: InputMaybe<Scalars["String"]>;
@@ -409,7 +409,7 @@ export type AccountWhereInput = {
   id_ends_with?: InputMaybe<Scalars["ID"]>;
   /** All values that are contained in given list. */
   id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   id_not?: InputMaybe<Scalars["ID"]>;
   /** All values not containing the given string. */
   id_not_contains?: InputMaybe<Scalars["ID"]>;
@@ -428,7 +428,7 @@ export type AccountWhereInput = {
   password_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   password_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   password_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   password_not_contains?: InputMaybe<Scalars["String"]>;
@@ -451,7 +451,7 @@ export type AccountWhereInput = {
   publishedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   publishedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   publishedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -470,7 +470,7 @@ export type AccountWhereInput = {
   updatedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   updatedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   updatedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -725,7 +725,7 @@ export type AssetManyWhereInput = {
   alt_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   alt_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   alt_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   alt_not_contains?: InputMaybe<Scalars["String"]>;
@@ -748,7 +748,7 @@ export type AssetManyWhereInput = {
   createdAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   createdAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   createdAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -763,7 +763,7 @@ export type AssetManyWhereInput = {
   id_ends_with?: InputMaybe<Scalars["ID"]>;
   /** All values that are contained in given list. */
   id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   id_not?: InputMaybe<Scalars["ID"]>;
   /** All values not containing the given string. */
   id_not_contains?: InputMaybe<Scalars["ID"]>;
@@ -789,7 +789,7 @@ export type AssetManyWhereInput = {
   publishedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   publishedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   publishedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -808,7 +808,7 @@ export type AssetManyWhereInput = {
   updatedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   updatedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   updatedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -1003,7 +1003,7 @@ export type AssetWhereInput = {
   alt_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   alt_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   alt_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   alt_not_contains?: InputMaybe<Scalars["String"]>;
@@ -1026,7 +1026,7 @@ export type AssetWhereInput = {
   createdAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   createdAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   createdAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -1041,7 +1041,7 @@ export type AssetWhereInput = {
   fileName_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   fileName_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   fileName_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   fileName_not_contains?: InputMaybe<Scalars["String"]>;
@@ -1060,7 +1060,7 @@ export type AssetWhereInput = {
   handle_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   handle_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   handle_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   handle_not_contains?: InputMaybe<Scalars["String"]>;
@@ -1083,7 +1083,7 @@ export type AssetWhereInput = {
   height_lt?: InputMaybe<Scalars["Float"]>;
   /** All values less than or equal the given value. */
   height_lte?: InputMaybe<Scalars["Float"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   height_not?: InputMaybe<Scalars["Float"]>;
   /** All values that are not contained in given list. */
   height_not_in?: InputMaybe<Array<InputMaybe<Scalars["Float"]>>>;
@@ -1094,7 +1094,7 @@ export type AssetWhereInput = {
   id_ends_with?: InputMaybe<Scalars["ID"]>;
   /** All values that are contained in given list. */
   id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   id_not?: InputMaybe<Scalars["ID"]>;
   /** All values not containing the given string. */
   id_not_contains?: InputMaybe<Scalars["ID"]>;
@@ -1113,7 +1113,7 @@ export type AssetWhereInput = {
   mimeType_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   mimeType_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   mimeType_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   mimeType_not_contains?: InputMaybe<Scalars["String"]>;
@@ -1139,7 +1139,7 @@ export type AssetWhereInput = {
   publishedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   publishedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   publishedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -1158,7 +1158,7 @@ export type AssetWhereInput = {
   size_lt?: InputMaybe<Scalars["Float"]>;
   /** All values less than or equal the given value. */
   size_lte?: InputMaybe<Scalars["Float"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   size_not?: InputMaybe<Scalars["Float"]>;
   /** All values that are not contained in given list. */
   size_not_in?: InputMaybe<Array<InputMaybe<Scalars["Float"]>>>;
@@ -1173,7 +1173,7 @@ export type AssetWhereInput = {
   updatedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   updatedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   updatedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -1189,7 +1189,7 @@ export type AssetWhereInput = {
   width_lt?: InputMaybe<Scalars["Float"]>;
   /** All values less than or equal the given value. */
   width_lte?: InputMaybe<Scalars["Float"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   width_not?: InputMaybe<Scalars["Float"]>;
   /** All values that are not contained in given list. */
   width_not_in?: InputMaybe<Array<InputMaybe<Scalars["Float"]>>>;
@@ -1426,7 +1426,7 @@ export type CategoryManyWhereInput = {
   createdAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   createdAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   createdAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -1441,7 +1441,7 @@ export type CategoryManyWhereInput = {
   id_ends_with?: InputMaybe<Scalars["ID"]>;
   /** All values that are contained in given list. */
   id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   id_not?: InputMaybe<Scalars["ID"]>;
   /** All values not containing the given string. */
   id_not_contains?: InputMaybe<Scalars["ID"]>;
@@ -1467,7 +1467,7 @@ export type CategoryManyWhereInput = {
   publishedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   publishedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   publishedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -1486,7 +1486,7 @@ export type CategoryManyWhereInput = {
   updatedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   updatedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   updatedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -1657,7 +1657,7 @@ export type CategoryWhereInput = {
   createdAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   createdAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   createdAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -1669,7 +1669,7 @@ export type CategoryWhereInput = {
   description_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   description_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   description_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   description_not_contains?: InputMaybe<Scalars["String"]>;
@@ -1691,7 +1691,7 @@ export type CategoryWhereInput = {
   id_ends_with?: InputMaybe<Scalars["ID"]>;
   /** All values that are contained in given list. */
   id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   id_not?: InputMaybe<Scalars["ID"]>;
   /** All values not containing the given string. */
   id_not_contains?: InputMaybe<Scalars["ID"]>;
@@ -1710,7 +1710,7 @@ export type CategoryWhereInput = {
   name_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   name_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   name_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   name_not_contains?: InputMaybe<Scalars["String"]>;
@@ -1736,7 +1736,7 @@ export type CategoryWhereInput = {
   publishedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   publishedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   publishedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -1751,7 +1751,7 @@ export type CategoryWhereInput = {
   slug_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   slug_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   slug_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   slug_not_contains?: InputMaybe<Scalars["String"]>;
@@ -1774,7 +1774,7 @@ export type CategoryWhereInput = {
   updatedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   updatedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   updatedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -1963,7 +1963,7 @@ export type CurrencyManyWhereInput = {
   code_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   code_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   code_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   code_not_contains?: InputMaybe<Scalars["String"]>;
@@ -1986,13 +1986,13 @@ export type CurrencyManyWhereInput = {
   createdAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   createdAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   createdAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
   createdBy?: InputMaybe<UserWhereInput>;
   default?: InputMaybe<Scalars["Boolean"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   default_not?: InputMaybe<Scalars["Boolean"]>;
   documentInStages_every?: InputMaybe<CurrencyWhereStageInput>;
   documentInStages_none?: InputMaybe<CurrencyWhereStageInput>;
@@ -2004,7 +2004,7 @@ export type CurrencyManyWhereInput = {
   id_ends_with?: InputMaybe<Scalars["ID"]>;
   /** All values that are contained in given list. */
   id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   id_not?: InputMaybe<Scalars["ID"]>;
   /** All values not containing the given string. */
   id_not_contains?: InputMaybe<Scalars["ID"]>;
@@ -2028,7 +2028,7 @@ export type CurrencyManyWhereInput = {
   publishedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   publishedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   publishedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -2044,7 +2044,7 @@ export type CurrencyManyWhereInput = {
   rate_lt?: InputMaybe<Scalars["Float"]>;
   /** All values less than or equal the given value. */
   rate_lte?: InputMaybe<Scalars["Float"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   rate_not?: InputMaybe<Scalars["Float"]>;
   /** All values that are not contained in given list. */
   rate_not_in?: InputMaybe<Array<InputMaybe<Scalars["Float"]>>>;
@@ -2062,7 +2062,7 @@ export type CurrencyManyWhereInput = {
   updatedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   updatedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   updatedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -2180,7 +2180,7 @@ export type CurrencyWhereInput = {
   code_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   code_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   code_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   code_not_contains?: InputMaybe<Scalars["String"]>;
@@ -2203,13 +2203,13 @@ export type CurrencyWhereInput = {
   createdAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   createdAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   createdAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
   createdBy?: InputMaybe<UserWhereInput>;
   default?: InputMaybe<Scalars["Boolean"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   default_not?: InputMaybe<Scalars["Boolean"]>;
   documentInStages_every?: InputMaybe<CurrencyWhereStageInput>;
   documentInStages_none?: InputMaybe<CurrencyWhereStageInput>;
@@ -2221,7 +2221,7 @@ export type CurrencyWhereInput = {
   id_ends_with?: InputMaybe<Scalars["ID"]>;
   /** All values that are contained in given list. */
   id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   id_not?: InputMaybe<Scalars["ID"]>;
   /** All values not containing the given string. */
   id_not_contains?: InputMaybe<Scalars["ID"]>;
@@ -2245,7 +2245,7 @@ export type CurrencyWhereInput = {
   publishedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   publishedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   publishedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -2261,7 +2261,7 @@ export type CurrencyWhereInput = {
   rate_lt?: InputMaybe<Scalars["Float"]>;
   /** All values less than or equal the given value. */
   rate_lte?: InputMaybe<Scalars["Float"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   rate_not?: InputMaybe<Scalars["Float"]>;
   /** All values that are not contained in given list. */
   rate_not_in?: InputMaybe<Array<InputMaybe<Scalars["Float"]>>>;
@@ -2279,7 +2279,7 @@ export type CurrencyWhereInput = {
   updatedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   updatedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   updatedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -4251,7 +4251,7 @@ export type OrderItemManyWhereInput = {
   createdAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   createdAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   createdAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -4266,7 +4266,7 @@ export type OrderItemManyWhereInput = {
   id_ends_with?: InputMaybe<Scalars["ID"]>;
   /** All values that are contained in given list. */
   id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   id_not?: InputMaybe<Scalars["ID"]>;
   /** All values not containing the given string. */
   id_not_contains?: InputMaybe<Scalars["ID"]>;
@@ -4290,7 +4290,7 @@ export type OrderItemManyWhereInput = {
   publishedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   publishedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   publishedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -4306,7 +4306,7 @@ export type OrderItemManyWhereInput = {
   quantity_lt?: InputMaybe<Scalars["Int"]>;
   /** All values less than or equal the given value. */
   quantity_lte?: InputMaybe<Scalars["Int"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   quantity_not?: InputMaybe<Scalars["Int"]>;
   /** All values that are not contained in given list. */
   quantity_not_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
@@ -4324,7 +4324,7 @@ export type OrderItemManyWhereInput = {
   total_lt?: InputMaybe<Scalars["Int"]>;
   /** All values less than or equal the given value. */
   total_lte?: InputMaybe<Scalars["Int"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   total_not?: InputMaybe<Scalars["Int"]>;
   /** All values that are not contained in given list. */
   total_not_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
@@ -4339,7 +4339,7 @@ export type OrderItemManyWhereInput = {
   updatedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   updatedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   updatedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -4459,7 +4459,7 @@ export type OrderItemWhereInput = {
   createdAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   createdAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   createdAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -4474,7 +4474,7 @@ export type OrderItemWhereInput = {
   id_ends_with?: InputMaybe<Scalars["ID"]>;
   /** All values that are contained in given list. */
   id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   id_not?: InputMaybe<Scalars["ID"]>;
   /** All values not containing the given string. */
   id_not_contains?: InputMaybe<Scalars["ID"]>;
@@ -4498,7 +4498,7 @@ export type OrderItemWhereInput = {
   publishedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   publishedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   publishedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -4514,7 +4514,7 @@ export type OrderItemWhereInput = {
   quantity_lt?: InputMaybe<Scalars["Int"]>;
   /** All values less than or equal the given value. */
   quantity_lte?: InputMaybe<Scalars["Int"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   quantity_not?: InputMaybe<Scalars["Int"]>;
   /** All values that are not contained in given list. */
   quantity_not_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
@@ -4532,7 +4532,7 @@ export type OrderItemWhereInput = {
   total_lt?: InputMaybe<Scalars["Int"]>;
   /** All values less than or equal the given value. */
   total_lte?: InputMaybe<Scalars["Int"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   total_not?: InputMaybe<Scalars["Int"]>;
   /** All values that are not contained in given list. */
   total_not_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
@@ -4547,7 +4547,7 @@ export type OrderItemWhereInput = {
   updatedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   updatedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   updatedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -4594,7 +4594,7 @@ export type OrderManyWhereInput = {
   createdAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   createdAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   createdAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -4609,7 +4609,7 @@ export type OrderManyWhereInput = {
   email_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   email_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   email_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   email_not_contains?: InputMaybe<Scalars["String"]>;
@@ -4628,7 +4628,7 @@ export type OrderManyWhereInput = {
   id_ends_with?: InputMaybe<Scalars["ID"]>;
   /** All values that are contained in given list. */
   id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   id_not?: InputMaybe<Scalars["ID"]>;
   /** All values not containing the given string. */
   id_not_contains?: InputMaybe<Scalars["ID"]>;
@@ -4654,7 +4654,7 @@ export type OrderManyWhereInput = {
   publishedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   publishedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   publishedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -4669,7 +4669,7 @@ export type OrderManyWhereInput = {
   stripeCheckoutId_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   stripeCheckoutId_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   stripeCheckoutId_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   stripeCheckoutId_not_contains?: InputMaybe<Scalars["String"]>;
@@ -4692,7 +4692,7 @@ export type OrderManyWhereInput = {
   total_lt?: InputMaybe<Scalars["Int"]>;
   /** All values less than or equal the given value. */
   total_lte?: InputMaybe<Scalars["Int"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   total_not?: InputMaybe<Scalars["Int"]>;
   /** All values that are not contained in given list. */
   total_not_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
@@ -4707,7 +4707,7 @@ export type OrderManyWhereInput = {
   updatedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   updatedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   updatedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -4831,7 +4831,7 @@ export type OrderWhereInput = {
   createdAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   createdAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   createdAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -4846,7 +4846,7 @@ export type OrderWhereInput = {
   email_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   email_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   email_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   email_not_contains?: InputMaybe<Scalars["String"]>;
@@ -4865,7 +4865,7 @@ export type OrderWhereInput = {
   id_ends_with?: InputMaybe<Scalars["ID"]>;
   /** All values that are contained in given list. */
   id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   id_not?: InputMaybe<Scalars["ID"]>;
   /** All values not containing the given string. */
   id_not_contains?: InputMaybe<Scalars["ID"]>;
@@ -4891,7 +4891,7 @@ export type OrderWhereInput = {
   publishedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   publishedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   publishedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -4906,7 +4906,7 @@ export type OrderWhereInput = {
   stripeCheckoutId_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   stripeCheckoutId_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   stripeCheckoutId_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   stripeCheckoutId_not_contains?: InputMaybe<Scalars["String"]>;
@@ -4929,7 +4929,7 @@ export type OrderWhereInput = {
   total_lt?: InputMaybe<Scalars["Int"]>;
   /** All values less than or equal the given value. */
   total_lte?: InputMaybe<Scalars["Int"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   total_not?: InputMaybe<Scalars["Int"]>;
   /** All values that are not contained in given list. */
   total_not_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
@@ -4944,7 +4944,7 @@ export type OrderWhereInput = {
   updatedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   updatedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   updatedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -5235,7 +5235,7 @@ export type ProductManyWhereInput = {
   color_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   color_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   color_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   color_not_contains?: InputMaybe<Scalars["String"]>;
@@ -5258,7 +5258,7 @@ export type ProductManyWhereInput = {
   createdAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   createdAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   createdAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -5273,7 +5273,7 @@ export type ProductManyWhereInput = {
   finish_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   finish_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   finish_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   finish_not_contains?: InputMaybe<Scalars["String"]>;
@@ -5292,7 +5292,7 @@ export type ProductManyWhereInput = {
   id_ends_with?: InputMaybe<Scalars["ID"]>;
   /** All values that are contained in given list. */
   id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   id_not?: InputMaybe<Scalars["ID"]>;
   /** All values not containing the given string. */
   id_not_contains?: InputMaybe<Scalars["ID"]>;
@@ -5310,7 +5310,7 @@ export type ProductManyWhereInput = {
   orientation?: InputMaybe<Orientation>;
   /** All values that are contained in given list. */
   orientation_in?: InputMaybe<Array<InputMaybe<Orientation>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   orientation_not?: InputMaybe<Orientation>;
   /** All values that are not contained in given list. */
   orientation_not_in?: InputMaybe<Array<InputMaybe<Orientation>>>;
@@ -5325,7 +5325,7 @@ export type ProductManyWhereInput = {
   paperWeight_lt?: InputMaybe<Scalars["Int"]>;
   /** All values less than or equal the given value. */
   paperWeight_lte?: InputMaybe<Scalars["Int"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   paperWeight_not?: InputMaybe<Scalars["Int"]>;
   /** All values that are not contained in given list. */
   paperWeight_not_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
@@ -5340,7 +5340,7 @@ export type ProductManyWhereInput = {
   publishedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   publishedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   publishedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -5355,7 +5355,7 @@ export type ProductManyWhereInput = {
   sale_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   sale_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   sale_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   sale_not_contains?: InputMaybe<Scalars["String"]>;
@@ -5377,7 +5377,7 @@ export type ProductManyWhereInput = {
   slug_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   slug_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   slug_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   slug_not_contains?: InputMaybe<Scalars["String"]>;
@@ -5400,7 +5400,7 @@ export type ProductManyWhereInput = {
   updatedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   updatedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   updatedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -5409,7 +5409,7 @@ export type ProductManyWhereInput = {
   variants_none?: InputMaybe<ProductVariantTypeWhereInput>;
   variants_some?: InputMaybe<ProductVariantTypeWhereInput>;
   whiteFrame?: InputMaybe<Scalars["Boolean"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   whiteFrame_not?: InputMaybe<Scalars["Boolean"]>;
 };
 
@@ -5821,11 +5821,15 @@ export type ProductVariantTypeManyWhereInput = {
   createdAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   createdAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   createdAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
   createdBy?: InputMaybe<UserWhereInput>;
+  /** All values in which the union is connected to the given models */
+  currency?: InputMaybe<ProductVariantTypeCurrencyWhereInput>;
+  /** All values in which the union is empty */
+  currency_empty?: InputMaybe<Scalars["Boolean"]>;
   documentInStages_every?: InputMaybe<ProductVariantTypeWhereStageInput>;
   documentInStages_none?: InputMaybe<ProductVariantTypeWhereStageInput>;
   documentInStages_some?: InputMaybe<ProductVariantTypeWhereStageInput>;
@@ -5836,7 +5840,7 @@ export type ProductVariantTypeManyWhereInput = {
   id_ends_with?: InputMaybe<Scalars["ID"]>;
   /** All values that are contained in given list. */
   id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   id_not?: InputMaybe<Scalars["ID"]>;
   /** All values not containing the given string. */
   id_not_contains?: InputMaybe<Scalars["ID"]>;
@@ -5859,7 +5863,7 @@ export type ProductVariantTypeManyWhereInput = {
   price_lt?: InputMaybe<Scalars["Int"]>;
   /** All values less than or equal the given value. */
   price_lte?: InputMaybe<Scalars["Int"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   price_not?: InputMaybe<Scalars["Int"]>;
   /** All values that are not contained in given list. */
   price_not_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
@@ -5875,7 +5879,7 @@ export type ProductVariantTypeManyWhereInput = {
   publishedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   publishedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   publishedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -5895,7 +5899,7 @@ export type ProductVariantTypeManyWhereInput = {
   updatedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   updatedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   updatedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -6017,11 +6021,15 @@ export type ProductVariantTypeWhereInput = {
   createdAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   createdAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   createdAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
   createdBy?: InputMaybe<UserWhereInput>;
+  /** All values in which the union is connected to the given models */
+  currency?: InputMaybe<ProductVariantTypeCurrencyWhereInput>;
+  /** All values in which the union is empty */
+  currency_empty?: InputMaybe<Scalars["Boolean"]>;
   documentInStages_every?: InputMaybe<ProductVariantTypeWhereStageInput>;
   documentInStages_none?: InputMaybe<ProductVariantTypeWhereStageInput>;
   documentInStages_some?: InputMaybe<ProductVariantTypeWhereStageInput>;
@@ -6032,7 +6040,7 @@ export type ProductVariantTypeWhereInput = {
   id_ends_with?: InputMaybe<Scalars["ID"]>;
   /** All values that are contained in given list. */
   id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   id_not?: InputMaybe<Scalars["ID"]>;
   /** All values not containing the given string. */
   id_not_contains?: InputMaybe<Scalars["ID"]>;
@@ -6055,7 +6063,7 @@ export type ProductVariantTypeWhereInput = {
   price_lt?: InputMaybe<Scalars["Int"]>;
   /** All values less than or equal the given value. */
   price_lte?: InputMaybe<Scalars["Int"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   price_not?: InputMaybe<Scalars["Int"]>;
   /** All values that are not contained in given list. */
   price_not_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
@@ -6071,7 +6079,7 @@ export type ProductVariantTypeWhereInput = {
   publishedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   publishedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   publishedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -6091,7 +6099,7 @@ export type ProductVariantTypeWhereInput = {
   updatedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   updatedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   updatedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -6143,7 +6151,7 @@ export type ProductWhereInput = {
   color_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   color_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   color_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   color_not_contains?: InputMaybe<Scalars["String"]>;
@@ -6166,7 +6174,7 @@ export type ProductWhereInput = {
   createdAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   createdAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   createdAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -6178,7 +6186,7 @@ export type ProductWhereInput = {
   description_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   description_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   description_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   description_not_contains?: InputMaybe<Scalars["String"]>;
@@ -6200,7 +6208,7 @@ export type ProductWhereInput = {
   finish_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   finish_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   finish_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   finish_not_contains?: InputMaybe<Scalars["String"]>;
@@ -6219,7 +6227,7 @@ export type ProductWhereInput = {
   id_ends_with?: InputMaybe<Scalars["ID"]>;
   /** All values that are contained in given list. */
   id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   id_not?: InputMaybe<Scalars["ID"]>;
   /** All values not containing the given string. */
   id_not_contains?: InputMaybe<Scalars["ID"]>;
@@ -6241,7 +6249,7 @@ export type ProductWhereInput = {
   name_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   name_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   name_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   name_not_contains?: InputMaybe<Scalars["String"]>;
@@ -6256,7 +6264,7 @@ export type ProductWhereInput = {
   orientation?: InputMaybe<Orientation>;
   /** All values that are contained in given list. */
   orientation_in?: InputMaybe<Array<InputMaybe<Orientation>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   orientation_not?: InputMaybe<Orientation>;
   /** All values that are not contained in given list. */
   orientation_not_in?: InputMaybe<Array<InputMaybe<Orientation>>>;
@@ -6271,7 +6279,7 @@ export type ProductWhereInput = {
   paperWeight_lt?: InputMaybe<Scalars["Int"]>;
   /** All values less than or equal the given value. */
   paperWeight_lte?: InputMaybe<Scalars["Int"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   paperWeight_not?: InputMaybe<Scalars["Int"]>;
   /** All values that are not contained in given list. */
   paperWeight_not_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
@@ -6286,7 +6294,7 @@ export type ProductWhereInput = {
   publishedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   publishedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   publishedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -6301,7 +6309,7 @@ export type ProductWhereInput = {
   sale_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   sale_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   sale_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   sale_not_contains?: InputMaybe<Scalars["String"]>;
@@ -6323,7 +6331,7 @@ export type ProductWhereInput = {
   slug_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   slug_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   slug_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   slug_not_contains?: InputMaybe<Scalars["String"]>;
@@ -6346,7 +6354,7 @@ export type ProductWhereInput = {
   updatedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   updatedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   updatedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -6355,7 +6363,7 @@ export type ProductWhereInput = {
   variants_none?: InputMaybe<ProductVariantTypeWhereInput>;
   variants_some?: InputMaybe<ProductVariantTypeWhereInput>;
   whiteFrame?: InputMaybe<Scalars["Boolean"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   whiteFrame_not?: InputMaybe<Scalars["Boolean"]>;
 };
 
@@ -6953,7 +6961,6 @@ export type Review = Node & {
   /** Get the document in other stages */
   documentInStages: Array<Review>;
   email: Scalars["String"];
-  headline: Scalars["String"];
   /** List of Review versions */
   history: Array<Version>;
   /** The unique identifier */
@@ -7038,7 +7045,6 @@ export type ReviewCreateInput = {
   content: Scalars["String"];
   createdAt?: InputMaybe<Scalars["DateTime"]>;
   email: Scalars["String"];
-  headline: Scalars["String"];
   name: Scalars["String"];
   product?: InputMaybe<ProductCreateOneInlineInput>;
   rating?: InputMaybe<Scalars["Int"]>;
@@ -7085,7 +7091,7 @@ export type ReviewManyWhereInput = {
   content_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   content_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   content_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   content_not_contains?: InputMaybe<Scalars["String"]>;
@@ -7108,7 +7114,7 @@ export type ReviewManyWhereInput = {
   createdAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   createdAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   createdAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -7123,7 +7129,7 @@ export type ReviewManyWhereInput = {
   email_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   email_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   email_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   email_not_contains?: InputMaybe<Scalars["String"]>;
@@ -7135,25 +7141,6 @@ export type ReviewManyWhereInput = {
   email_not_starts_with?: InputMaybe<Scalars["String"]>;
   /** All values starting with the given string. */
   email_starts_with?: InputMaybe<Scalars["String"]>;
-  headline?: InputMaybe<Scalars["String"]>;
-  /** All values containing the given string. */
-  headline_contains?: InputMaybe<Scalars["String"]>;
-  /** All values ending with the given string. */
-  headline_ends_with?: InputMaybe<Scalars["String"]>;
-  /** All values that are contained in given list. */
-  headline_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
-  headline_not?: InputMaybe<Scalars["String"]>;
-  /** All values not containing the given string. */
-  headline_not_contains?: InputMaybe<Scalars["String"]>;
-  /** All values not ending with the given string */
-  headline_not_ends_with?: InputMaybe<Scalars["String"]>;
-  /** All values that are not contained in given list. */
-  headline_not_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values not starting with the given string. */
-  headline_not_starts_with?: InputMaybe<Scalars["String"]>;
-  /** All values starting with the given string. */
-  headline_starts_with?: InputMaybe<Scalars["String"]>;
   id?: InputMaybe<Scalars["ID"]>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars["ID"]>;
@@ -7161,7 +7148,7 @@ export type ReviewManyWhereInput = {
   id_ends_with?: InputMaybe<Scalars["ID"]>;
   /** All values that are contained in given list. */
   id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   id_not?: InputMaybe<Scalars["ID"]>;
   /** All values not containing the given string. */
   id_not_contains?: InputMaybe<Scalars["ID"]>;
@@ -7180,7 +7167,7 @@ export type ReviewManyWhereInput = {
   name_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   name_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   name_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   name_not_contains?: InputMaybe<Scalars["String"]>;
@@ -7204,7 +7191,7 @@ export type ReviewManyWhereInput = {
   publishedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   publishedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   publishedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -7220,7 +7207,7 @@ export type ReviewManyWhereInput = {
   rating_lt?: InputMaybe<Scalars["Int"]>;
   /** All values less than or equal the given value. */
   rating_lte?: InputMaybe<Scalars["Int"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   rating_not?: InputMaybe<Scalars["Int"]>;
   /** All values that are not contained in given list. */
   rating_not_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
@@ -7238,7 +7225,7 @@ export type ReviewManyWhereInput = {
   updatedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   updatedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   updatedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -7252,8 +7239,6 @@ export enum ReviewOrderByInput {
   CreatedAtDesc = "createdAt_DESC",
   EmailAsc = "email_ASC",
   EmailDesc = "email_DESC",
-  HeadlineAsc = "headline_ASC",
-  HeadlineDesc = "headline_DESC",
   IdAsc = "id_ASC",
   IdDesc = "id_DESC",
   NameAsc = "name_ASC",
@@ -7269,7 +7254,6 @@ export enum ReviewOrderByInput {
 export type ReviewUpdateInput = {
   content?: InputMaybe<Scalars["String"]>;
   email?: InputMaybe<Scalars["String"]>;
-  headline?: InputMaybe<Scalars["String"]>;
   name?: InputMaybe<Scalars["String"]>;
   product?: InputMaybe<ProductUpdateOneInlineInput>;
   rating?: InputMaybe<Scalars["Int"]>;
@@ -7295,7 +7279,6 @@ export type ReviewUpdateManyInlineInput = {
 export type ReviewUpdateManyInput = {
   content?: InputMaybe<Scalars["String"]>;
   email?: InputMaybe<Scalars["String"]>;
-  headline?: InputMaybe<Scalars["String"]>;
   name?: InputMaybe<Scalars["String"]>;
   rating?: InputMaybe<Scalars["Int"]>;
 };
@@ -7366,7 +7349,7 @@ export type ReviewWhereInput = {
   content_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   content_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   content_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   content_not_contains?: InputMaybe<Scalars["String"]>;
@@ -7389,7 +7372,7 @@ export type ReviewWhereInput = {
   createdAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   createdAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   createdAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -7404,7 +7387,7 @@ export type ReviewWhereInput = {
   email_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   email_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   email_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   email_not_contains?: InputMaybe<Scalars["String"]>;
@@ -7416,25 +7399,6 @@ export type ReviewWhereInput = {
   email_not_starts_with?: InputMaybe<Scalars["String"]>;
   /** All values starting with the given string. */
   email_starts_with?: InputMaybe<Scalars["String"]>;
-  headline?: InputMaybe<Scalars["String"]>;
-  /** All values containing the given string. */
-  headline_contains?: InputMaybe<Scalars["String"]>;
-  /** All values ending with the given string. */
-  headline_ends_with?: InputMaybe<Scalars["String"]>;
-  /** All values that are contained in given list. */
-  headline_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
-  headline_not?: InputMaybe<Scalars["String"]>;
-  /** All values not containing the given string. */
-  headline_not_contains?: InputMaybe<Scalars["String"]>;
-  /** All values not ending with the given string */
-  headline_not_ends_with?: InputMaybe<Scalars["String"]>;
-  /** All values that are not contained in given list. */
-  headline_not_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values not starting with the given string. */
-  headline_not_starts_with?: InputMaybe<Scalars["String"]>;
-  /** All values starting with the given string. */
-  headline_starts_with?: InputMaybe<Scalars["String"]>;
   id?: InputMaybe<Scalars["ID"]>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars["ID"]>;
@@ -7442,7 +7406,7 @@ export type ReviewWhereInput = {
   id_ends_with?: InputMaybe<Scalars["ID"]>;
   /** All values that are contained in given list. */
   id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   id_not?: InputMaybe<Scalars["ID"]>;
   /** All values not containing the given string. */
   id_not_contains?: InputMaybe<Scalars["ID"]>;
@@ -7461,7 +7425,7 @@ export type ReviewWhereInput = {
   name_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   name_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   name_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   name_not_contains?: InputMaybe<Scalars["String"]>;
@@ -7485,7 +7449,7 @@ export type ReviewWhereInput = {
   publishedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   publishedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   publishedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -7501,7 +7465,7 @@ export type ReviewWhereInput = {
   rating_lt?: InputMaybe<Scalars["Int"]>;
   /** All values less than or equal the given value. */
   rating_lte?: InputMaybe<Scalars["Int"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   rating_not?: InputMaybe<Scalars["Int"]>;
   /** All values that are not contained in given list. */
   rating_not_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
@@ -7519,7 +7483,7 @@ export type ReviewWhereInput = {
   updatedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   updatedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   updatedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -7703,7 +7667,7 @@ export type ScheduledOperationManyWhereInput = {
   createdAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   createdAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   createdAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -7715,7 +7679,7 @@ export type ScheduledOperationManyWhereInput = {
   description_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   description_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   description_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   description_not_contains?: InputMaybe<Scalars["String"]>;
@@ -7734,7 +7698,7 @@ export type ScheduledOperationManyWhereInput = {
   errorMessage_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   errorMessage_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   errorMessage_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   errorMessage_not_contains?: InputMaybe<Scalars["String"]>;
@@ -7753,7 +7717,7 @@ export type ScheduledOperationManyWhereInput = {
   id_ends_with?: InputMaybe<Scalars["ID"]>;
   /** All values that are contained in given list. */
   id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   id_not?: InputMaybe<Scalars["ID"]>;
   /** All values not containing the given string. */
   id_not_contains?: InputMaybe<Scalars["ID"]>;
@@ -7776,16 +7740,25 @@ export type ScheduledOperationManyWhereInput = {
   publishedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   publishedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   publishedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
   publishedBy?: InputMaybe<UserWhereInput>;
+  /** All values containing the given json path. */
+  rawPayload_json_path_exists?: InputMaybe<Scalars["String"]>;
+  /**
+   * Recursively tries to find the provided JSON scalar value inside the field.
+   * It does use an exact match when comparing values.
+   * If you pass `null` as value the filter will be ignored.
+   * Note: This filter fails if you try to look for a non scalar JSON value!
+   */
+  rawPayload_value_recursive?: InputMaybe<Scalars["Json"]>;
   release?: InputMaybe<ScheduledReleaseWhereInput>;
   status?: InputMaybe<ScheduledOperationStatus>;
   /** All values that are contained in given list. */
   status_in?: InputMaybe<Array<InputMaybe<ScheduledOperationStatus>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   status_not?: InputMaybe<ScheduledOperationStatus>;
   /** All values that are not contained in given list. */
   status_not_in?: InputMaybe<Array<InputMaybe<ScheduledOperationStatus>>>;
@@ -7800,7 +7773,7 @@ export type ScheduledOperationManyWhereInput = {
   updatedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   updatedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   updatedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -7870,7 +7843,7 @@ export type ScheduledOperationWhereInput = {
   createdAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   createdAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   createdAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -7882,7 +7855,7 @@ export type ScheduledOperationWhereInput = {
   description_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   description_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   description_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   description_not_contains?: InputMaybe<Scalars["String"]>;
@@ -7901,7 +7874,7 @@ export type ScheduledOperationWhereInput = {
   errorMessage_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   errorMessage_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   errorMessage_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   errorMessage_not_contains?: InputMaybe<Scalars["String"]>;
@@ -7920,7 +7893,7 @@ export type ScheduledOperationWhereInput = {
   id_ends_with?: InputMaybe<Scalars["ID"]>;
   /** All values that are contained in given list. */
   id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   id_not?: InputMaybe<Scalars["ID"]>;
   /** All values not containing the given string. */
   id_not_contains?: InputMaybe<Scalars["ID"]>;
@@ -7943,16 +7916,25 @@ export type ScheduledOperationWhereInput = {
   publishedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   publishedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   publishedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
   publishedBy?: InputMaybe<UserWhereInput>;
+  /** All values containing the given json path. */
+  rawPayload_json_path_exists?: InputMaybe<Scalars["String"]>;
+  /**
+   * Recursively tries to find the provided JSON scalar value inside the field.
+   * It does use an exact match when comparing values.
+   * If you pass `null` as value the filter will be ignored.
+   * Note: This filter fails if you try to look for a non scalar JSON value!
+   */
+  rawPayload_value_recursive?: InputMaybe<Scalars["Json"]>;
   release?: InputMaybe<ScheduledReleaseWhereInput>;
   status?: InputMaybe<ScheduledOperationStatus>;
   /** All values that are contained in given list. */
   status_in?: InputMaybe<Array<InputMaybe<ScheduledOperationStatus>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   status_not?: InputMaybe<ScheduledOperationStatus>;
   /** All values that are not contained in given list. */
   status_not_in?: InputMaybe<Array<InputMaybe<ScheduledOperationStatus>>>;
@@ -7967,7 +7949,7 @@ export type ScheduledOperationWhereInput = {
   updatedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   updatedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   updatedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -8127,7 +8109,7 @@ export type ScheduledReleaseManyWhereInput = {
   createdAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   createdAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   createdAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -8139,7 +8121,7 @@ export type ScheduledReleaseManyWhereInput = {
   description_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   description_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   description_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   description_not_contains?: InputMaybe<Scalars["String"]>;
@@ -8158,7 +8140,7 @@ export type ScheduledReleaseManyWhereInput = {
   errorMessage_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   errorMessage_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   errorMessage_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   errorMessage_not_contains?: InputMaybe<Scalars["String"]>;
@@ -8177,7 +8159,7 @@ export type ScheduledReleaseManyWhereInput = {
   id_ends_with?: InputMaybe<Scalars["ID"]>;
   /** All values that are contained in given list. */
   id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   id_not?: InputMaybe<Scalars["ID"]>;
   /** All values not containing the given string. */
   id_not_contains?: InputMaybe<Scalars["ID"]>;
@@ -8190,10 +8172,10 @@ export type ScheduledReleaseManyWhereInput = {
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars["ID"]>;
   isActive?: InputMaybe<Scalars["Boolean"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   isActive_not?: InputMaybe<Scalars["Boolean"]>;
   isImplicit?: InputMaybe<Scalars["Boolean"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   isImplicit_not?: InputMaybe<Scalars["Boolean"]>;
   operations_every?: InputMaybe<ScheduledOperationWhereInput>;
   operations_none?: InputMaybe<ScheduledOperationWhereInput>;
@@ -8209,7 +8191,7 @@ export type ScheduledReleaseManyWhereInput = {
   publishedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   publishedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   publishedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -8225,14 +8207,14 @@ export type ScheduledReleaseManyWhereInput = {
   releaseAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   releaseAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   releaseAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   releaseAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
   status?: InputMaybe<ScheduledReleaseStatus>;
   /** All values that are contained in given list. */
   status_in?: InputMaybe<Array<InputMaybe<ScheduledReleaseStatus>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   status_not?: InputMaybe<ScheduledReleaseStatus>;
   /** All values that are not contained in given list. */
   status_not_in?: InputMaybe<Array<InputMaybe<ScheduledReleaseStatus>>>;
@@ -8243,7 +8225,7 @@ export type ScheduledReleaseManyWhereInput = {
   title_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   title_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   title_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   title_not_contains?: InputMaybe<Scalars["String"]>;
@@ -8266,7 +8248,7 @@ export type ScheduledReleaseManyWhereInput = {
   updatedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   updatedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   updatedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -8403,7 +8385,7 @@ export type ScheduledReleaseWhereInput = {
   createdAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   createdAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   createdAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -8415,7 +8397,7 @@ export type ScheduledReleaseWhereInput = {
   description_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   description_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   description_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   description_not_contains?: InputMaybe<Scalars["String"]>;
@@ -8434,7 +8416,7 @@ export type ScheduledReleaseWhereInput = {
   errorMessage_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   errorMessage_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   errorMessage_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   errorMessage_not_contains?: InputMaybe<Scalars["String"]>;
@@ -8453,7 +8435,7 @@ export type ScheduledReleaseWhereInput = {
   id_ends_with?: InputMaybe<Scalars["ID"]>;
   /** All values that are contained in given list. */
   id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   id_not?: InputMaybe<Scalars["ID"]>;
   /** All values not containing the given string. */
   id_not_contains?: InputMaybe<Scalars["ID"]>;
@@ -8466,10 +8448,10 @@ export type ScheduledReleaseWhereInput = {
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars["ID"]>;
   isActive?: InputMaybe<Scalars["Boolean"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   isActive_not?: InputMaybe<Scalars["Boolean"]>;
   isImplicit?: InputMaybe<Scalars["Boolean"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   isImplicit_not?: InputMaybe<Scalars["Boolean"]>;
   operations_every?: InputMaybe<ScheduledOperationWhereInput>;
   operations_none?: InputMaybe<ScheduledOperationWhereInput>;
@@ -8485,7 +8467,7 @@ export type ScheduledReleaseWhereInput = {
   publishedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   publishedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   publishedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -8501,14 +8483,14 @@ export type ScheduledReleaseWhereInput = {
   releaseAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   releaseAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   releaseAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   releaseAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
   status?: InputMaybe<ScheduledReleaseStatus>;
   /** All values that are contained in given list. */
   status_in?: InputMaybe<Array<InputMaybe<ScheduledReleaseStatus>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   status_not?: InputMaybe<ScheduledReleaseStatus>;
   /** All values that are not contained in given list. */
   status_not_in?: InputMaybe<Array<InputMaybe<ScheduledReleaseStatus>>>;
@@ -8519,7 +8501,7 @@ export type ScheduledReleaseWhereInput = {
   title_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   title_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   title_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   title_not_contains?: InputMaybe<Scalars["String"]>;
@@ -8542,7 +8524,7 @@ export type ScheduledReleaseWhereInput = {
   updatedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   updatedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   updatedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -8688,7 +8670,7 @@ export type SizeManyWhereInput = {
   createdAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   createdAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   createdAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -8707,7 +8689,7 @@ export type SizeManyWhereInput = {
   height_lt?: InputMaybe<Scalars["Int"]>;
   /** All values less than or equal the given value. */
   height_lte?: InputMaybe<Scalars["Int"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   height_not?: InputMaybe<Scalars["Int"]>;
   /** All values that are not contained in given list. */
   height_not_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
@@ -8718,7 +8700,7 @@ export type SizeManyWhereInput = {
   id_ends_with?: InputMaybe<Scalars["ID"]>;
   /** All values that are contained in given list. */
   id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   id_not?: InputMaybe<Scalars["ID"]>;
   /** All values not containing the given string. */
   id_not_contains?: InputMaybe<Scalars["ID"]>;
@@ -8741,7 +8723,7 @@ export type SizeManyWhereInput = {
   publishedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   publishedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   publishedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -8760,7 +8742,7 @@ export type SizeManyWhereInput = {
   updatedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   updatedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   updatedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -8776,7 +8758,7 @@ export type SizeManyWhereInput = {
   width_lt?: InputMaybe<Scalars["Int"]>;
   /** All values less than or equal the given value. */
   width_lte?: InputMaybe<Scalars["Int"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   width_not?: InputMaybe<Scalars["Int"]>;
   /** All values that are not contained in given list. */
   width_not_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
@@ -8895,7 +8877,7 @@ export type SizeWhereInput = {
   createdAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   createdAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   createdAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -8914,7 +8896,7 @@ export type SizeWhereInput = {
   height_lt?: InputMaybe<Scalars["Int"]>;
   /** All values less than or equal the given value. */
   height_lte?: InputMaybe<Scalars["Int"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   height_not?: InputMaybe<Scalars["Int"]>;
   /** All values that are not contained in given list. */
   height_not_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
@@ -8925,7 +8907,7 @@ export type SizeWhereInput = {
   id_ends_with?: InputMaybe<Scalars["ID"]>;
   /** All values that are contained in given list. */
   id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   id_not?: InputMaybe<Scalars["ID"]>;
   /** All values not containing the given string. */
   id_not_contains?: InputMaybe<Scalars["ID"]>;
@@ -8948,7 +8930,7 @@ export type SizeWhereInput = {
   publishedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   publishedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   publishedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -8967,7 +8949,7 @@ export type SizeWhereInput = {
   updatedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   updatedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   updatedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -8983,7 +8965,7 @@ export type SizeWhereInput = {
   width_lt?: InputMaybe<Scalars["Int"]>;
   /** All values less than or equal the given value. */
   width_lte?: InputMaybe<Scalars["Int"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   width_not?: InputMaybe<Scalars["Int"]>;
   /** All values that are not contained in given list. */
   width_not_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
@@ -9126,7 +9108,7 @@ export type UserManyWhereInput = {
   createdAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   createdAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   createdAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -9140,7 +9122,7 @@ export type UserManyWhereInput = {
   id_ends_with?: InputMaybe<Scalars["ID"]>;
   /** All values that are contained in given list. */
   id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   id_not?: InputMaybe<Scalars["ID"]>;
   /** All values not containing the given string. */
   id_not_contains?: InputMaybe<Scalars["ID"]>;
@@ -9153,12 +9135,12 @@ export type UserManyWhereInput = {
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars["ID"]>;
   isActive?: InputMaybe<Scalars["Boolean"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   isActive_not?: InputMaybe<Scalars["Boolean"]>;
   kind?: InputMaybe<UserKind>;
   /** All values that are contained in given list. */
   kind_in?: InputMaybe<Array<InputMaybe<UserKind>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   kind_not?: InputMaybe<UserKind>;
   /** All values that are not contained in given list. */
   kind_not_in?: InputMaybe<Array<InputMaybe<UserKind>>>;
@@ -9169,7 +9151,7 @@ export type UserManyWhereInput = {
   name_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   name_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   name_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   name_not_contains?: InputMaybe<Scalars["String"]>;
@@ -9188,7 +9170,7 @@ export type UserManyWhereInput = {
   picture_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   picture_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   picture_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   picture_not_contains?: InputMaybe<Scalars["String"]>;
@@ -9211,7 +9193,7 @@ export type UserManyWhereInput = {
   publishedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   publishedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   publishedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -9226,7 +9208,7 @@ export type UserManyWhereInput = {
   updatedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   updatedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   updatedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -9294,7 +9276,7 @@ export type UserWhereInput = {
   createdAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   createdAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   createdAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -9308,7 +9290,7 @@ export type UserWhereInput = {
   id_ends_with?: InputMaybe<Scalars["ID"]>;
   /** All values that are contained in given list. */
   id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   id_not?: InputMaybe<Scalars["ID"]>;
   /** All values not containing the given string. */
   id_not_contains?: InputMaybe<Scalars["ID"]>;
@@ -9321,12 +9303,12 @@ export type UserWhereInput = {
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars["ID"]>;
   isActive?: InputMaybe<Scalars["Boolean"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   isActive_not?: InputMaybe<Scalars["Boolean"]>;
   kind?: InputMaybe<UserKind>;
   /** All values that are contained in given list. */
   kind_in?: InputMaybe<Array<InputMaybe<UserKind>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   kind_not?: InputMaybe<UserKind>;
   /** All values that are not contained in given list. */
   kind_not_in?: InputMaybe<Array<InputMaybe<UserKind>>>;
@@ -9337,7 +9319,7 @@ export type UserWhereInput = {
   name_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   name_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   name_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   name_not_contains?: InputMaybe<Scalars["String"]>;
@@ -9356,7 +9338,7 @@ export type UserWhereInput = {
   picture_ends_with?: InputMaybe<Scalars["String"]>;
   /** All values that are contained in given list. */
   picture_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   picture_not?: InputMaybe<Scalars["String"]>;
   /** All values not containing the given string. */
   picture_not_contains?: InputMaybe<Scalars["String"]>;
@@ -9379,7 +9361,7 @@ export type UserWhereInput = {
   publishedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   publishedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   publishedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -9394,7 +9376,7 @@ export type UserWhereInput = {
   updatedAt_lt?: InputMaybe<Scalars["DateTime"]>;
   /** All values less than or equal the given value. */
   updatedAt_lte?: InputMaybe<Scalars["DateTime"]>;
-  /** All values that are not equal to given value. */
+  /** Any other value that exists and is not equal to the given value. */
   updatedAt_not?: InputMaybe<Scalars["DateTime"]>;
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -9447,6 +9429,8 @@ export enum _FilterKind {
   Gt = "gt",
   Gte = "gte",
   In = "in",
+  JsonPathExists = "json_path_exists",
+  JsonValueRecursive = "json_value_recursive",
   Lt = "lt",
   Lte = "lte",
   NotContains = "not_contains",
@@ -9459,6 +9443,11 @@ export enum _FilterKind {
   RelationalSome = "relational_some",
   Search = "search",
   StartsWith = "starts_with",
+  UnionEmpty = "union_empty",
+  UnionEvery = "union_every",
+  UnionNone = "union_none",
+  UnionSingle = "union_single",
+  UnionSome = "union_some",
 }
 
 export enum _MutationInputFieldKind {
@@ -9598,6 +9587,15 @@ export type GetAccountByEmailQuery = {
     email: string;
     password: string;
   } | null;
+};
+
+export type CreateReviewProductMutationVariables = Exact<{
+  review: ReviewCreateInput;
+}>;
+
+export type CreateReviewProductMutation = {
+  __typename?: "Mutation";
+  createReview?: { __typename?: "Review"; id: string; stage: Stage } | null;
 };
 
 export const GetProductsDocument = gql`
@@ -9978,4 +9976,55 @@ export type GetAccountByEmailLazyQueryHookResult = ReturnType<
 export type GetAccountByEmailQueryResult = Apollo.QueryResult<
   GetAccountByEmailQuery,
   GetAccountByEmailQueryVariables
+>;
+export const CreateReviewProductDocument = gql`
+  mutation CreateReviewProduct($review: ReviewCreateInput!) {
+    createReview(data: $review) {
+      id
+      stage
+    }
+  }
+`;
+export type CreateReviewProductMutationFn = Apollo.MutationFunction<
+  CreateReviewProductMutation,
+  CreateReviewProductMutationVariables
+>;
+
+/**
+ * __useCreateReviewProductMutation__
+ *
+ * To run a mutation, you first call `useCreateReviewProductMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateReviewProductMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createReviewProductMutation, { data, loading, error }] = useCreateReviewProductMutation({
+ *   variables: {
+ *      review: // value for 'review'
+ *   },
+ * });
+ */
+export function useCreateReviewProductMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    CreateReviewProductMutation,
+    CreateReviewProductMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    CreateReviewProductMutation,
+    CreateReviewProductMutationVariables
+  >(CreateReviewProductDocument, options);
+}
+export type CreateReviewProductMutationHookResult = ReturnType<
+  typeof useCreateReviewProductMutation
+>;
+export type CreateReviewProductMutationResult =
+  Apollo.MutationResult<CreateReviewProductMutation>;
+export type CreateReviewProductMutationOptions = Apollo.BaseMutationOptions<
+  CreateReviewProductMutation,
+  CreateReviewProductMutationVariables
 >;

@@ -2,11 +2,11 @@ import * as Yup from "yup";
 const MAX_CHARS_FIELD_OPINION = 60;
 export const addReviewSchema = Yup.object().shape({
   name: Yup.string().required("Field is required"),
-  rate: Yup.string()
+  rating: Yup.string()
     .required("Field is required")
     .max(6, "Max rate can be 6")
-    .min(1, "Min rate can be 6"),
-  opinion: Yup.string()
+    .min(1, "Min rate can be 1"),
+  content: Yup.string()
     .required("Field is required")
     .test(
       "opinion",

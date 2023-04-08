@@ -1005,7 +1005,7 @@
           },
           {
             "name": "createdAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -1133,7 +1133,7 @@
           },
           {
             "name": "email_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -1261,7 +1261,7 @@
           },
           {
             "name": "id_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "ID",
@@ -1389,7 +1389,7 @@
           },
           {
             "name": "password_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -1541,7 +1541,7 @@
           },
           {
             "name": "publishedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -1693,7 +1693,7 @@
           },
           {
             "name": "updatedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -2462,7 +2462,7 @@
           },
           {
             "name": "createdAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -2590,7 +2590,7 @@
           },
           {
             "name": "email_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -2718,7 +2718,7 @@
           },
           {
             "name": "id_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "ID",
@@ -2846,7 +2846,7 @@
           },
           {
             "name": "password_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -2998,7 +2998,7 @@
           },
           {
             "name": "publishedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -3150,7 +3150,7 @@
           },
           {
             "name": "updatedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -4958,7 +4958,7 @@
           },
           {
             "name": "alt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -5110,7 +5110,7 @@
           },
           {
             "name": "createdAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -5238,7 +5238,7 @@
           },
           {
             "name": "id_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "ID",
@@ -5426,7 +5426,7 @@
           },
           {
             "name": "publishedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -5578,7 +5578,7 @@
           },
           {
             "name": "updatedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -7007,7 +7007,7 @@
           },
           {
             "name": "alt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -7159,7 +7159,7 @@
           },
           {
             "name": "createdAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -7287,7 +7287,7 @@
           },
           {
             "name": "fileName_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -7415,7 +7415,7 @@
           },
           {
             "name": "handle_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -7567,7 +7567,7 @@
           },
           {
             "name": "height_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Float",
@@ -7647,7 +7647,7 @@
           },
           {
             "name": "id_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "ID",
@@ -7775,7 +7775,7 @@
           },
           {
             "name": "mimeType_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -7963,7 +7963,7 @@
           },
           {
             "name": "publishedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -8115,7 +8115,7 @@
           },
           {
             "name": "size_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Float",
@@ -8219,7 +8219,7 @@
           },
           {
             "name": "updatedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -8335,7 +8335,7 @@
           },
           {
             "name": "width_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Float",
@@ -9992,7 +9992,7 @@
           },
           {
             "name": "createdAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -10120,7 +10120,7 @@
           },
           {
             "name": "id_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "ID",
@@ -10308,7 +10308,7 @@
           },
           {
             "name": "publishedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -10460,7 +10460,7 @@
           },
           {
             "name": "updatedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -11626,7 +11626,7 @@
           },
           {
             "name": "createdAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -11718,7 +11718,7 @@
           },
           {
             "name": "description_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -11882,7 +11882,7 @@
           },
           {
             "name": "id_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "ID",
@@ -12010,7 +12010,7 @@
           },
           {
             "name": "name_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -12198,7 +12198,7 @@
           },
           {
             "name": "publishedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -12326,7 +12326,7 @@
           },
           {
             "name": "slug_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -12478,7 +12478,7 @@
           },
           {
             "name": "updatedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -13854,7 +13854,7 @@
           },
           {
             "name": "code_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -14006,7 +14006,7 @@
           },
           {
             "name": "createdAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -14058,7 +14058,7 @@
           },
           {
             "name": "default_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Boolean",
@@ -14158,7 +14158,7 @@
           },
           {
             "name": "id_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "ID",
@@ -14322,7 +14322,7 @@
           },
           {
             "name": "publishedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -14438,7 +14438,7 @@
           },
           {
             "name": "rate_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Float",
@@ -14578,7 +14578,7 @@
           },
           {
             "name": "updatedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -15359,7 +15359,7 @@
           },
           {
             "name": "code_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -15511,7 +15511,7 @@
           },
           {
             "name": "createdAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -15563,7 +15563,7 @@
           },
           {
             "name": "default_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Boolean",
@@ -15663,7 +15663,7 @@
           },
           {
             "name": "id_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "ID",
@@ -15827,7 +15827,7 @@
           },
           {
             "name": "publishedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -15943,7 +15943,7 @@
           },
           {
             "name": "rate_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Float",
@@ -16083,7 +16083,7 @@
           },
           {
             "name": "updatedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -30399,7 +30399,7 @@
           },
           {
             "name": "createdAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -30527,7 +30527,7 @@
           },
           {
             "name": "id_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "ID",
@@ -30691,7 +30691,7 @@
           },
           {
             "name": "publishedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -30807,7 +30807,7 @@
           },
           {
             "name": "quantity_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Int",
@@ -30947,7 +30947,7 @@
           },
           {
             "name": "total_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Int",
@@ -31051,7 +31051,7 @@
           },
           {
             "name": "updatedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -31844,7 +31844,7 @@
           },
           {
             "name": "createdAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -31972,7 +31972,7 @@
           },
           {
             "name": "id_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "ID",
@@ -32136,7 +32136,7 @@
           },
           {
             "name": "publishedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -32252,7 +32252,7 @@
           },
           {
             "name": "quantity_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Int",
@@ -32392,7 +32392,7 @@
           },
           {
             "name": "total_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Int",
@@ -32496,7 +32496,7 @@
           },
           {
             "name": "updatedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -32813,7 +32813,7 @@
           },
           {
             "name": "createdAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -32941,7 +32941,7 @@
           },
           {
             "name": "email_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -33069,7 +33069,7 @@
           },
           {
             "name": "id_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "ID",
@@ -33257,7 +33257,7 @@
           },
           {
             "name": "publishedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -33385,7 +33385,7 @@
           },
           {
             "name": "stripeCheckoutId_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -33537,7 +33537,7 @@
           },
           {
             "name": "total_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Int",
@@ -33641,7 +33641,7 @@
           },
           {
             "name": "updatedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -34470,7 +34470,7 @@
           },
           {
             "name": "createdAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -34598,7 +34598,7 @@
           },
           {
             "name": "email_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -34726,7 +34726,7 @@
           },
           {
             "name": "id_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "ID",
@@ -34914,7 +34914,7 @@
           },
           {
             "name": "publishedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -35042,7 +35042,7 @@
           },
           {
             "name": "stripeCheckoutId_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -35194,7 +35194,7 @@
           },
           {
             "name": "total_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Int",
@@ -35298,7 +35298,7 @@
           },
           {
             "name": "updatedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -37683,7 +37683,7 @@
           },
           {
             "name": "color_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -37835,7 +37835,7 @@
           },
           {
             "name": "createdAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -37963,7 +37963,7 @@
           },
           {
             "name": "finish_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -38091,7 +38091,7 @@
           },
           {
             "name": "id_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "ID",
@@ -38231,7 +38231,7 @@
           },
           {
             "name": "orientation_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "ENUM",
               "name": "Orientation",
@@ -38335,7 +38335,7 @@
           },
           {
             "name": "paperWeight_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Int",
@@ -38439,7 +38439,7 @@
           },
           {
             "name": "publishedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -38567,7 +38567,7 @@
           },
           {
             "name": "sale_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -38731,7 +38731,7 @@
           },
           {
             "name": "slug_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -38883,7 +38883,7 @@
           },
           {
             "name": "updatedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -38971,7 +38971,7 @@
           },
           {
             "name": "whiteFrame_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Boolean",
@@ -41826,7 +41826,7 @@
           },
           {
             "name": "createdAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -41858,6 +41858,30 @@
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "UserWhereInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "currency",
+            "description": "All values in which the union is connected to the given models",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "ProductVariantTypeCurrencyWhereInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "currency_empty",
+            "description": "All values in which the union is empty",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null,
@@ -41954,7 +41978,7 @@
           },
           {
             "name": "id_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "ID",
@@ -42106,7 +42130,7 @@
           },
           {
             "name": "price_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Int",
@@ -42222,7 +42246,7 @@
           },
           {
             "name": "publishedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -42386,7 +42410,7 @@
           },
           {
             "name": "updatedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -43167,7 +43191,7 @@
           },
           {
             "name": "createdAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -43199,6 +43223,30 @@
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "UserWhereInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "currency",
+            "description": "All values in which the union is connected to the given models",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "ProductVariantTypeCurrencyWhereInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "currency_empty",
+            "description": "All values in which the union is empty",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
               "ofType": null
             },
             "defaultValue": null,
@@ -43295,7 +43343,7 @@
           },
           {
             "name": "id_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "ID",
@@ -43447,7 +43495,7 @@
           },
           {
             "name": "price_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Int",
@@ -43563,7 +43611,7 @@
           },
           {
             "name": "publishedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -43727,7 +43775,7 @@
           },
           {
             "name": "updatedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -44079,7 +44127,7 @@
           },
           {
             "name": "color_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -44231,7 +44279,7 @@
           },
           {
             "name": "createdAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -44323,7 +44371,7 @@
           },
           {
             "name": "description_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -44487,7 +44535,7 @@
           },
           {
             "name": "finish_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -44615,7 +44663,7 @@
           },
           {
             "name": "id_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "ID",
@@ -44779,7 +44827,7 @@
           },
           {
             "name": "name_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -44883,7 +44931,7 @@
           },
           {
             "name": "orientation_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "ENUM",
               "name": "Orientation",
@@ -44987,7 +45035,7 @@
           },
           {
             "name": "paperWeight_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Int",
@@ -45091,7 +45139,7 @@
           },
           {
             "name": "publishedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -45219,7 +45267,7 @@
           },
           {
             "name": "sale_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -45383,7 +45431,7 @@
           },
           {
             "name": "slug_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -45535,7 +45583,7 @@
           },
           {
             "name": "updatedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -45623,7 +45671,7 @@
           },
           {
             "name": "whiteFrame_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Boolean",
@@ -51206,22 +51254,6 @@
             "deprecationReason": null
           },
           {
-            "name": "headline",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "history",
             "description": "List of Review versions",
             "args": [
@@ -51811,22 +51843,6 @@
             "deprecationReason": null
           },
           {
-            "name": "headline",
-            "description": null,
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "name",
             "description": null,
             "type": {
@@ -52144,7 +52160,7 @@
           },
           {
             "name": "content_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -52296,7 +52312,7 @@
           },
           {
             "name": "createdAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -52424,7 +52440,7 @@
           },
           {
             "name": "email_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -52499,134 +52515,6 @@
             "deprecationReason": null
           },
           {
-            "name": "headline",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "headline_contains",
-            "description": "All values containing the given string.",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "headline_ends_with",
-            "description": "All values ending with the given string.",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "headline_in",
-            "description": "All values that are contained in given list.",
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "headline_not",
-            "description": "All values that are not equal to given value.",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "headline_not_contains",
-            "description": "All values not containing the given string.",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "headline_not_ends_with",
-            "description": "All values not ending with the given string",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "headline_not_in",
-            "description": "All values that are not contained in given list.",
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "headline_not_starts_with",
-            "description": "All values not starting with the given string.",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "headline_starts_with",
-            "description": "All values starting with the given string.",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "id",
             "description": null,
             "type": {
@@ -52680,7 +52568,7 @@
           },
           {
             "name": "id_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "ID",
@@ -52808,7 +52696,7 @@
           },
           {
             "name": "name_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -52972,7 +52860,7 @@
           },
           {
             "name": "publishedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -53088,7 +52976,7 @@
           },
           {
             "name": "rating_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Int",
@@ -53228,7 +53116,7 @@
           },
           {
             "name": "updatedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -53316,18 +53204,6 @@
             "deprecationReason": null
           },
           {
-            "name": "headline_ASC",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "headline_DESC",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "id_ASC",
             "description": null,
             "isDeprecated": false,
@@ -53410,18 +53286,6 @@
           },
           {
             "name": "email",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "headline",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -53644,18 +53508,6 @@
           },
           {
             "name": "email",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "headline",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -54105,7 +53957,7 @@
           },
           {
             "name": "content_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -54257,7 +54109,7 @@
           },
           {
             "name": "createdAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -54385,7 +54237,7 @@
           },
           {
             "name": "email_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -54460,134 +54312,6 @@
             "deprecationReason": null
           },
           {
-            "name": "headline",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "headline_contains",
-            "description": "All values containing the given string.",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "headline_ends_with",
-            "description": "All values ending with the given string.",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "headline_in",
-            "description": "All values that are contained in given list.",
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "headline_not",
-            "description": "All values that are not equal to given value.",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "headline_not_contains",
-            "description": "All values not containing the given string.",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "headline_not_ends_with",
-            "description": "All values not ending with the given string",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "headline_not_in",
-            "description": "All values that are not contained in given list.",
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "headline_not_starts_with",
-            "description": "All values not starting with the given string.",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "headline_starts_with",
-            "description": "All values starting with the given string.",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "id",
             "description": null,
             "type": {
@@ -54641,7 +54365,7 @@
           },
           {
             "name": "id_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "ID",
@@ -54769,7 +54493,7 @@
           },
           {
             "name": "name_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -54933,7 +54657,7 @@
           },
           {
             "name": "publishedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -55049,7 +54773,7 @@
           },
           {
             "name": "rating_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Int",
@@ -55189,7 +54913,7 @@
           },
           {
             "name": "updatedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -56382,7 +56106,7 @@
           },
           {
             "name": "createdAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -56474,7 +56198,7 @@
           },
           {
             "name": "description_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -56602,7 +56326,7 @@
           },
           {
             "name": "errorMessage_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -56730,7 +56454,7 @@
           },
           {
             "name": "id_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "ID",
@@ -56882,7 +56606,7 @@
           },
           {
             "name": "publishedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -56914,6 +56638,30 @@
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "UserWhereInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "rawPayload_json_path_exists",
+            "description": "All values containing the given json path.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "rawPayload_value_recursive",
+            "description": "Recursively tries to find the provided JSON scalar value inside the field.\nIt does use an exact match when comparing values.\nIf you pass `null` as value the filter will be ignored. \nNote: This filter fails if you try to look for a non scalar JSON value!",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Json",
               "ofType": null
             },
             "defaultValue": null,
@@ -56962,7 +56710,7 @@
           },
           {
             "name": "status_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "ENUM",
               "name": "ScheduledOperationStatus",
@@ -57066,7 +56814,7 @@
           },
           {
             "name": "updatedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -57507,7 +57255,7 @@
           },
           {
             "name": "createdAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -57599,7 +57347,7 @@
           },
           {
             "name": "description_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -57727,7 +57475,7 @@
           },
           {
             "name": "errorMessage_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -57855,7 +57603,7 @@
           },
           {
             "name": "id_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "ID",
@@ -58007,7 +57755,7 @@
           },
           {
             "name": "publishedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -58039,6 +57787,30 @@
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "UserWhereInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "rawPayload_json_path_exists",
+            "description": "All values containing the given json path.",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "rawPayload_value_recursive",
+            "description": "Recursively tries to find the provided JSON scalar value inside the field.\nIt does use an exact match when comparing values.\nIf you pass `null` as value the filter will be ignored. \nNote: This filter fails if you try to look for a non scalar JSON value!",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Json",
               "ofType": null
             },
             "defaultValue": null,
@@ -58087,7 +57859,7 @@
           },
           {
             "name": "status_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "ENUM",
               "name": "ScheduledOperationStatus",
@@ -58191,7 +57963,7 @@
           },
           {
             "name": "updatedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -59289,7 +59061,7 @@
           },
           {
             "name": "createdAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -59381,7 +59153,7 @@
           },
           {
             "name": "description_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -59509,7 +59281,7 @@
           },
           {
             "name": "errorMessage_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -59637,7 +59409,7 @@
           },
           {
             "name": "id_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "ID",
@@ -59725,7 +59497,7 @@
           },
           {
             "name": "isActive_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Boolean",
@@ -59749,7 +59521,7 @@
           },
           {
             "name": "isImplicit_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Boolean",
@@ -59873,7 +59645,7 @@
           },
           {
             "name": "publishedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -59989,7 +59761,7 @@
           },
           {
             "name": "releaseAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -60045,7 +59817,7 @@
           },
           {
             "name": "status_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "ENUM",
               "name": "ScheduledReleaseStatus",
@@ -60125,7 +59897,7 @@
           },
           {
             "name": "title_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -60277,7 +60049,7 @@
           },
           {
             "name": "updatedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -61202,7 +60974,7 @@
           },
           {
             "name": "createdAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -61294,7 +61066,7 @@
           },
           {
             "name": "description_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -61422,7 +61194,7 @@
           },
           {
             "name": "errorMessage_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -61550,7 +61322,7 @@
           },
           {
             "name": "id_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "ID",
@@ -61638,7 +61410,7 @@
           },
           {
             "name": "isActive_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Boolean",
@@ -61662,7 +61434,7 @@
           },
           {
             "name": "isImplicit_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Boolean",
@@ -61786,7 +61558,7 @@
           },
           {
             "name": "publishedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -61902,7 +61674,7 @@
           },
           {
             "name": "releaseAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -61958,7 +61730,7 @@
           },
           {
             "name": "status_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "ENUM",
               "name": "ScheduledReleaseStatus",
@@ -62038,7 +61810,7 @@
           },
           {
             "name": "title_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -62190,7 +61962,7 @@
           },
           {
             "name": "updatedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -63265,7 +63037,7 @@
           },
           {
             "name": "createdAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -63417,7 +63189,7 @@
           },
           {
             "name": "height_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Int",
@@ -63497,7 +63269,7 @@
           },
           {
             "name": "id_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "ID",
@@ -63649,7 +63421,7 @@
           },
           {
             "name": "publishedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -63801,7 +63573,7 @@
           },
           {
             "name": "updatedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -63917,7 +63689,7 @@
           },
           {
             "name": "width_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Int",
@@ -64698,7 +64470,7 @@
           },
           {
             "name": "createdAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -64850,7 +64622,7 @@
           },
           {
             "name": "height_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Int",
@@ -64930,7 +64702,7 @@
           },
           {
             "name": "id_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "ID",
@@ -65082,7 +64854,7 @@
           },
           {
             "name": "publishedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -65234,7 +65006,7 @@
           },
           {
             "name": "updatedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -65350,7 +65122,7 @@
           },
           {
             "name": "width_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Int",
@@ -66240,7 +66012,7 @@
           },
           {
             "name": "createdAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -66356,7 +66128,7 @@
           },
           {
             "name": "id_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "ID",
@@ -66444,7 +66216,7 @@
           },
           {
             "name": "isActive_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Boolean",
@@ -66484,7 +66256,7 @@
           },
           {
             "name": "kind_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "ENUM",
               "name": "UserKind",
@@ -66564,7 +66336,7 @@
           },
           {
             "name": "name_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -66692,7 +66464,7 @@
           },
           {
             "name": "picture_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -66844,7 +66616,7 @@
           },
           {
             "name": "publishedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -66948,7 +66720,7 @@
           },
           {
             "name": "updatedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -67371,7 +67143,7 @@
           },
           {
             "name": "createdAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -67487,7 +67259,7 @@
           },
           {
             "name": "id_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "ID",
@@ -67575,7 +67347,7 @@
           },
           {
             "name": "isActive_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "Boolean",
@@ -67615,7 +67387,7 @@
           },
           {
             "name": "kind_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "ENUM",
               "name": "UserKind",
@@ -67695,7 +67467,7 @@
           },
           {
             "name": "name_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -67823,7 +67595,7 @@
           },
           {
             "name": "picture_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -67975,7 +67747,7 @@
           },
           {
             "name": "publishedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -68079,7 +67851,7 @@
           },
           {
             "name": "updatedAt_not",
-            "description": "All values that are not equal to given value.",
+            "description": "Any other value that exists and is not equal to the given value.",
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
@@ -68449,6 +68221,18 @@
             "deprecationReason": null
           },
           {
+            "name": "json_path_exists",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "json_value_recursive",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "lt",
             "description": null,
             "isDeprecated": false,
@@ -68516,6 +68300,36 @@
           },
           {
             "name": "starts_with",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "union_empty",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "union_every",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "union_none",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "union_single",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "union_some",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
