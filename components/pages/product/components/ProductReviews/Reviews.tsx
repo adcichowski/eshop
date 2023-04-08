@@ -22,13 +22,7 @@ export function ProductReviews() {
   const onSubmit = handleSubmit((data, e?: React.BaseSyntheticEvent) => {
     const email = session.data?.user?.email;
     e?.preventDefault();
-    console.log(data);
     if (email && typeof productSlug === "string") {
-      console.log({
-        ...data,
-        email,
-        productSlug,
-      });
       createReview({
         variables: {
           review: {
@@ -41,7 +35,6 @@ export function ProductReviews() {
       });
     }
   });
-  console.log(response);
   return (
     <section className="col-span-2 mt-10">
       <h4 className="text-xl">Opinions about product (0)</h4>
