@@ -18,7 +18,7 @@ export function ProductReviews() {
   const { register, errors, control, handleSubmit } =
     useForm<ReviewFormProps>(addReviewSchema);
   const session = useSession();
-  const [createReview, response] = useCreateReviewProductMutation();
+  const [createReview] = useCreateReviewProductMutation();
   const onSubmit = handleSubmit((data, e?: React.BaseSyntheticEvent) => {
     const email = session.data?.user?.email;
     e?.preventDefault();
