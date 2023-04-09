@@ -7,6 +7,7 @@ import { Controller } from "react-hook-form";
 import { useCreateReviewProductMutation } from "generated/graphql";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import { ReviewByPerson } from "./ReviewByPerson";
 type ReviewFormProps = {
   readonly name: string;
   readonly content: string;
@@ -38,6 +39,9 @@ export function ProductReviews() {
   return (
     <section className="col-span-2 mt-10">
       <h4 className="text-xl">Opinions about product (0)</h4>
+      <ul className="mt-3 flex pl-16">
+        <ReviewByPerson />
+      </ul>
       <form onSubmit={onSubmit}>
         <fieldset className="flex flex-col">
           <Input
@@ -68,10 +72,7 @@ export function ProductReviews() {
                           <span className="sr-only">Star with rate </span>
                           <div className="flex text-white">
                             <Star
-                              className={clsx(
-                                "stroke-black",
-                                Number(field.value) >= starRate && "fill-black"
-                              )}
+                              selected={Number(field.value) >= starRate}
                               aria-hidden="true"
                             />
                           </div>

@@ -83,3 +83,13 @@ mutation CreateReviewProduct($review: ReviewCreateInput!) {
     stage
   }
 }
+
+query GetProductReview($slug: String!) {
+  product(where: { slug: $slug }) {
+    reviews {
+      name
+      rating
+      content
+    }
+  }
+}

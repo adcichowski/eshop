@@ -9598,6 +9598,23 @@ export type CreateReviewProductMutation = {
   createReview?: { __typename?: "Review"; id: string; stage: Stage } | null;
 };
 
+export type GetProductReviewQueryVariables = Exact<{
+  slug: Scalars["String"];
+}>;
+
+export type GetProductReviewQuery = {
+  __typename?: "Query";
+  product?: {
+    __typename?: "Product";
+    reviews: Array<{
+      __typename?: "Review";
+      name: string;
+      rating?: number | null;
+      content: string;
+    }>;
+  } | null;
+};
+
 export const GetProductsDocument = gql`
   query GetProducts {
     products {
@@ -10027,4 +10044,66 @@ export type CreateReviewProductMutationResult =
 export type CreateReviewProductMutationOptions = Apollo.BaseMutationOptions<
   CreateReviewProductMutation,
   CreateReviewProductMutationVariables
+>;
+export const GetProductReviewDocument = gql`
+  query GetProductReview($slug: String!) {
+    product(where: { slug: $slug }) {
+      reviews {
+        name
+        rating
+        content
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetProductReviewQuery__
+ *
+ * To run a query within a React component, call `useGetProductReviewQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetProductReviewQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetProductReviewQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useGetProductReviewQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetProductReviewQuery,
+    GetProductReviewQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetProductReviewQuery, GetProductReviewQueryVariables>(
+    GetProductReviewDocument,
+    options
+  );
+}
+export function useGetProductReviewLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetProductReviewQuery,
+    GetProductReviewQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetProductReviewQuery,
+    GetProductReviewQueryVariables
+  >(GetProductReviewDocument, options);
+}
+export type GetProductReviewQueryHookResult = ReturnType<
+  typeof useGetProductReviewQuery
+>;
+export type GetProductReviewLazyQueryHookResult = ReturnType<
+  typeof useGetProductReviewLazyQuery
+>;
+export type GetProductReviewQueryResult = Apollo.QueryResult<
+  GetProductReviewQuery,
+  GetProductReviewQueryVariables
 >;

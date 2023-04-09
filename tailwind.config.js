@@ -27,6 +27,7 @@ module.exports = {
         300: "rgb(209 213 219)",
         400: "#a3a0a0",
       },
+      reviewContent: "#E3F5DC",
       blue: { 200: "#0070B8" },
     },
   },

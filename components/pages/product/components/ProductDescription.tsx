@@ -13,7 +13,7 @@ export function ProductDescription({
   return (
     <div className="col-span-2">
       <div>
-        <h2 className="mb-2 text-2xl">Product Description</h2>
+        <h2 className="my-2 text-2xl">Product Description</h2>
       </div>
       <div className="text-sm">
         <MDXRemote {...productDescription} />
