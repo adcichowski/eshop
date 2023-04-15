@@ -39,7 +39,7 @@ export function ProductReviews() {
   return (
     <section className="col-span-2 mt-10">
       <h4 className="text-xl">Opinions about product (0)</h4>
-      <ul className="mt-3 flex pl-16">
+      <ul className="mt-3 flex pl-12">
         <ReviewByPerson />
       </ul>
       <form onSubmit={onSubmit}>
