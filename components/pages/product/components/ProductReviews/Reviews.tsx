@@ -1,7 +1,6 @@
 import { useForm } from "components/Forms/useForm";
 import { Input } from "components/Inputs/components/Input";
 import { Star } from "./Star";
-import clsx from "clsx";
 import { addReviewSchema } from "./addReviewSchema";
 import { Controller } from "react-hook-form";
 import { useCreateReviewProductMutation } from "generated/graphql";
