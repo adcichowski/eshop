@@ -1,5 +1,4 @@
 import { useGetProductReviewsBySlugQuery } from "generated/graphql";
-import { useRouter } from "next/router";
 import { CreateReviewForm } from "./CreateReviewForm";
 import { ReviewByPerson } from "./ReviewByPerson";
 
