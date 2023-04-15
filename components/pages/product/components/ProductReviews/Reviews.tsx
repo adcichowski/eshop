@@ -2,25 +2,45 @@ import { useForm } from "components/Forms/useForm";
 import { Input } from "components/Inputs/components/Input";
 import { Star } from "./Star";
 import { addReviewSchema } from "./addReviewSchema";
-import { SyntheticEvent } from "react";
-import clsx from "clsx";
 import { Controller } from "react-hook-form";
+import { useCreateReviewProductMutation } from "generated/graphql";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import { ReviewByPerson } from "./ReviewByPerson";
 type ReviewFormProps = {
   readonly name: string;
-  readonly opinion: string;
-  readonly rate: number;
+  readonly content: string;
+  readonly rating: number;
 };
 export function ProductReviews() {
+  const router = useRouter();
+  const { productSlug } = router.query;
   const { register, errors, control, handleSubmit } =
     useForm<ReviewFormProps>(addReviewSchema);
-  const onSubmit = (e: SyntheticEvent) => {
-    handleSubmit(() => {
-      e.preventDefault();
-    });
-  };
+  const session = useSession();
+  const [createReview] = useCreateReviewProductMutation();
+  const onSubmit = handleSubmit((data, e?: React.BaseSyntheticEvent) => {
+    const email = session.data?.user?.email;
+    e?.preventDefault();
+    if (email && typeof productSlug === "string") {
+      createReview({
+        variables: {
+          review: {
+            ...data,
+            email,
+            rating: Number(data.rating),
+            product: { connect: { slug: productSlug } },
+          },
+        },
+      });
+    }
+  });
   return (
     <section className="col-span-2 mt-10">
       <h4 className="text-xl">Opinions about product (0)</h4>
+      <ul className="mt-3 flex pl-12">
+        <ReviewByPerson />
+      </ul>
       <form onSubmit={onSubmit}>
         <fieldset className="flex flex-col">
           <Input
@@ -37,7 +57,7 @@ export function ProductReviews() {
           </label>
           <Controller
             control={control}
-            name="rate"
+            name="rating"
             render={({ field }) => {
               return (
                 <ul className="my-[9px] flex gap-1">
@@ -51,10 +71,7 @@ export function ProductReviews() {
                           <span className="sr-only">Star with rate </span>
                           <div className="flex text-white">
                             <Star
-                              className={clsx(
-                                "stroke-black",
-                                Number(field.value) >= starRate && "fill-black"
-                              )}
+                              selected={Number(field.value) >= starRate}
                               aria-hidden="true"
                             />
                           </div>
@@ -75,7 +92,7 @@ export function ProductReviews() {
           />
           <textarea
             className="border-200 text-md h-24 resize-none border border-gray-400 pt-2 pl-2 text-sm"
-            {...register("opinion")}
+            {...register("content")}
           />
         </fieldset>
         <button className="mt-2 border border-primary px-6 py-3 text-base text-primary transition-colors hover:bg-primary hover:text-white">
