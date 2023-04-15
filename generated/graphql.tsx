@@ -6971,7 +6971,7 @@ export type Review = Node & {
   publishedAt?: Maybe<Scalars["DateTime"]>;
   /** User that last published this document */
   publishedBy?: Maybe<User>;
-  rating?: Maybe<Scalars["Int"]>;
+  rating: Scalars["Int"];
   scheduledIn: Array<ScheduledOperation>;
   /** System stage field */
   stage: Stage;
@@ -7047,7 +7047,7 @@ export type ReviewCreateInput = {
   email: Scalars["String"];
   name: Scalars["String"];
   product?: InputMaybe<ProductCreateOneInlineInput>;
-  rating?: InputMaybe<Scalars["Int"]>;
+  rating: Scalars["Int"];
   updatedAt?: InputMaybe<Scalars["DateTime"]>;
 };
 
@@ -9598,19 +9598,21 @@ export type CreateReviewProductMutation = {
   createReview?: { __typename?: "Review"; id: string; stage: Stage } | null;
 };
 
-export type GetProductReviewQueryVariables = Exact<{
+export type GetProductReviewsBySlugQueryVariables = Exact<{
   slug: Scalars["String"];
 }>;
 
-export type GetProductReviewQuery = {
+export type GetProductReviewsBySlugQuery = {
   __typename?: "Query";
   product?: {
     __typename?: "Product";
     reviews: Array<{
       __typename?: "Review";
-      name: string;
-      rating?: number | null;
+      id: string;
+      email: string;
+      rating: number;
       content: string;
+      name: string;
     }>;
   } | null;
 };
@@ -10045,65 +10047,67 @@ export type CreateReviewProductMutationOptions = Apollo.BaseMutationOptions<
   CreateReviewProductMutation,
   CreateReviewProductMutationVariables
 >;
-export const GetProductReviewDocument = gql`
-  query GetProductReview($slug: String!) {
-    product(where: { slug: $slug }) {
+export const GetProductReviewsBySlugDocument = gql`
+  query GetProductReviewsBySlug($slug: String!) {
+    product(where: { slug: $slug }, stage: DRAFT) {
       reviews {
-        name
+        id
+        email
         rating
         content
+        name
       }
     }
   }
 `;
 
 /**
- * __useGetProductReviewQuery__
+ * __useGetProductReviewsBySlugQuery__
  *
- * To run a query within a React component, call `useGetProductReviewQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetProductReviewQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetProductReviewsBySlugQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetProductReviewsBySlugQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetProductReviewQuery({
+ * const { data, loading, error } = useGetProductReviewsBySlugQuery({
  *   variables: {
  *      slug: // value for 'slug'
  *   },
  * });
  */
-export function useGetProductReviewQuery(
+export function useGetProductReviewsBySlugQuery(
   baseOptions: Apollo.QueryHookOptions<
-    GetProductReviewQuery,
-    GetProductReviewQueryVariables
+    GetProductReviewsBySlugQuery,
+    GetProductReviewsBySlugQueryVariables
   >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetProductReviewQuery, GetProductReviewQueryVariables>(
-    GetProductReviewDocument,
-    options
-  );
+  return Apollo.useQuery<
+    GetProductReviewsBySlugQuery,
+    GetProductReviewsBySlugQueryVariables
+  >(GetProductReviewsBySlugDocument, options);
 }
-export function useGetProductReviewLazyQuery(
+export function useGetProductReviewsBySlugLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
-    GetProductReviewQuery,
-    GetProductReviewQueryVariables
+    GetProductReviewsBySlugQuery,
+    GetProductReviewsBySlugQueryVariables
   >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
-    GetProductReviewQuery,
-    GetProductReviewQueryVariables
-  >(GetProductReviewDocument, options);
+    GetProductReviewsBySlugQuery,
+    GetProductReviewsBySlugQueryVariables
+  >(GetProductReviewsBySlugDocument, options);
 }
-export type GetProductReviewQueryHookResult = ReturnType<
-  typeof useGetProductReviewQuery
+export type GetProductReviewsBySlugQueryHookResult = ReturnType<
+  typeof useGetProductReviewsBySlugQuery
 >;
-export type GetProductReviewLazyQueryHookResult = ReturnType<
-  typeof useGetProductReviewLazyQuery
+export type GetProductReviewsBySlugLazyQueryHookResult = ReturnType<
+  typeof useGetProductReviewsBySlugLazyQuery
 >;
-export type GetProductReviewQueryResult = Apollo.QueryResult<
-  GetProductReviewQuery,
-  GetProductReviewQueryVariables
+export type GetProductReviewsBySlugQueryResult = Apollo.QueryResult<
+  GetProductReviewsBySlugQuery,
+  GetProductReviewsBySlugQueryVariables
 >;

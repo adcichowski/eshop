@@ -145,7 +145,7 @@ export const ProductPage = ({
             <ProductsCarrousel />
           </section>
 
-          <ProductReviews />
+          <ProductReviews productSlug={product.slug} />
         </div>
       </main>
 

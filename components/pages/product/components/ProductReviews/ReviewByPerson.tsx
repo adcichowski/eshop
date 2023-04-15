@@ -1,19 +1,38 @@
+import { useSession } from "next-auth/react";
 import { Star } from "./Star";
-
-export function ReviewByPerson() {
+import clsx from "clsx";
+type ReviewByPersonProps = {
+  name: string;
+  rating: number;
+  content: string;
+  email: string;
+};
+export function ReviewByPerson({
+  name,
+  rating,
+  content,
+  email,
+}: ReviewByPersonProps) {
+  const { data } = useSession();
   return (
     <article className="flex flex-wrap items-center gap-3 md:flex-nowrap">
       <header className="text-base">
-        <p className="uppercase">Adam</p>
+        <p
+          className={`uppercase ${clsx(
+            data?.user?.email === email && "font-semibold"
+          )}`}
+        >
+          {name}
+        </p>
         <div className="flex items-center gap-2">
           Rate
           <span>
-            <StarsReviewByPerson rating={2} />
+            <StarsReviewByPerson rating={rating} />
           </span>
         </div>
       </header>
-      <p className="mr-2 basis-auto bg-reviewContent px-3 py-4 text-sm ">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste beatae
+      <p className="mr-2 w-full basis-auto bg-reviewContent px-3 py-4 text-sm">
+        {content}
       </p>
     </article>
   );
