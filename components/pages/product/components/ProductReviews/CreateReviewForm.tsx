@@ -5,6 +5,7 @@ import { addReviewSchema } from "./addReviewSchema";
 import { Controller } from "react-hook-form";
 import { useCreateReviewProductMutation } from "generated/graphql";
 import { useSession } from "next-auth/react";
+import { ErrorInInput } from "components/Inputs/components/ErrorInInput";
 
 type ReviewFormProps = {
   readonly name: string;
@@ -16,24 +17,24 @@ export function CreateReviewForm({ productSlug }: { productSlug: string }) {
   const { register, errors, control, handleSubmit } =
     useForm<ReviewFormProps>(addReviewSchema);
   const [createReview, error] = useCreateReviewProductMutation();
-  console.log(error);
-  const onSubmit = handleSubmit((data, e?: React.BaseSyntheticEvent) => {
-    const email = session.data?.user?.email;
-    e?.preventDefault();
-    if (email) {
-      createReview({
-        variables: {
-          review: {
-            ...data,
-            email,
-            rating: Number(data.rating),
-            product: { connect: { slug: productSlug } },
-          },
-        },
-      });
-    }
-  });
   const session = useSession();
+  const isAuthenticated = Boolean(session.data?.user?.email);
+  if (!isAuthenticated) {
+    return <></>;
+  }
+  const onSubmit = handleSubmit((data, e?: React.BaseSyntheticEvent) => {
+    e?.preventDefault();
+    createReview({
+      variables: {
+        review: {
+          ...data,
+          email,
+          rating: Number(data.rating),
+          product: { connect: { slug: productSlug } },
+        },
+      },
+    });
+  });
   return (
     <form onSubmit={onSubmit}>
       <fieldset className="flex flex-col">
@@ -82,10 +83,17 @@ export function CreateReviewForm({ productSlug }: { productSlug: string }) {
             );
           }}
         />
+        <div className="mb-2">
+          <ErrorInInput error={errors.rating?.message} id="rating" />
+        </div>
+
         <textarea
           className="border-200 text-md h-24 resize-none border border-gray-400 pt-2 pl-2 text-sm"
           {...register("content")}
         />
+        <div className="mt-[1px]">
+          <ErrorInInput error={errors.content?.message} id="content" />
+        </div>
       </fieldset>
       <button className="mt-2 border border-primary px-6 py-3 text-base text-primary transition-colors hover:bg-primary hover:text-white">
         Send
