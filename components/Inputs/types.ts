@@ -9,4 +9,4 @@ export type InputProps = {
   readonly hideLabel?: boolean;
   readonly error?: FieldError | string | Merge<FieldError, FieldErrorsImpl>;
   readonly text: string | JSX.Element;
-};
+} & Omit<JSX.IntrinsicElements["input"], "size">;
