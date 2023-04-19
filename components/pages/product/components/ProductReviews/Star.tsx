@@ -9,7 +9,7 @@ export function Star({
 }: {
   className?: string;
   selected: boolean;
-  halfStar: boolean;
+  halfStar?: boolean;
 }) {
   return (
     <svg

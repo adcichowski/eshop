@@ -18,8 +18,7 @@ export function CreateReviewForm({ productSlug }: { productSlug: string }) {
     useForm<ReviewFormProps>(addReviewSchema);
   const [createReview, error] = useCreateReviewProductMutation();
   const session = useSession();
-  const isAuthenticated = Boolean(session.data?.user?.email);
-  if (!isAuthenticated) {
+  if (session.status === "unauthenticated" || !session.data) {
     return <></>;
   }
   const onSubmit = handleSubmit((data, e?: React.BaseSyntheticEvent) => {
@@ -28,7 +27,7 @@ export function CreateReviewForm({ productSlug }: { productSlug: string }) {
       variables: {
         review: {
           ...data,
-          email,
+          email: session.data.user.email,
           rating: Number(data.rating),
           product: { connect: { slug: productSlug } },
         },
