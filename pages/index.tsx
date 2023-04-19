@@ -14,23 +14,12 @@ const Home = () => {
   return (
     <div className="flex min-h-screen flex-col ">
       <RoomsCarrousel isLoading={loading} />
-      <section aria-labelledby="bestsellers">
+      <section className="mb-8" aria-labelledby="bestsellers">
         <h2 className="m-8 text-4xl font-medium" id="bestsellers">
           Bestsellers
         </h2>
         <ProductsCarrousel />
       </section>
-      {data?.products.map((product) => (
-        <ProductOffer
-          key={product.name}
-          HeaderTag="h3"
-          name={product.name}
-          image={{
-            src: product.images[0].url,
-            alt: product.images[0].alt || product.name,
-          }}
-        />
-      ))}
     </div>
   );
 };
