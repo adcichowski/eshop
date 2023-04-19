@@ -51,9 +51,11 @@ export async function getStaticProps({
       notFound: true,
     };
   }
+
   return {
     props: {
       product: {
+        slug: params.productSlug,
         ...data.product,
         description: await serialize(data.product.description),
       },

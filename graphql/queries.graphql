@@ -84,12 +84,14 @@ mutation CreateReviewProduct($review: ReviewCreateInput!) {
   }
 }
 
-query GetProductReview($slug: String!) {
-  product(where: { slug: $slug }) {
+query GetProductReviewsBySlug($slug: String!) {
+  product(where: { slug: $slug }, stage: DRAFT) {
     reviews {
-      name
+      id
+      email
       rating
       content
+      name
     }
   }
 }
