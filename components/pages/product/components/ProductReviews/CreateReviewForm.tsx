@@ -16,7 +16,7 @@ type ReviewFormProps = {
 export function CreateReviewForm({ productSlug }: { productSlug: string }) {
   const { register, errors, control, handleSubmit } =
     useForm<ReviewFormProps>(addReviewSchema);
-  const [createReview, error] = useCreateReviewProductMutation();
+  const [createReview] = useCreateReviewProductMutation();
   const session = useSession();
   if (session.status === "unauthenticated" || !session.data) {
     return <></>;
