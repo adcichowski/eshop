@@ -28,6 +28,7 @@ export function CreateReviewForm({ productSlug }: { productSlug: string }) {
         review: {
           ...data,
           email: session.data.user.email,
+          //Needed to implement number type for mutation
           rating: Number(data.rating),
           product: { connect: { slug: productSlug } },
         },
