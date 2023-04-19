@@ -2,7 +2,6 @@ import { useQuery } from "@apollo/client";
 import type { GetProductsQuery } from "generated/graphql";
 import { GetProductsDocument } from "generated/graphql";
 import { ProductsCarrousel } from "components/ProductsCarrousel/ProductsCarrousel";
-import { ProductOffer } from "components/ProductOffer/ProductOffer";
 import { RoomsCarrousel } from "views/home/components/RoomsCarrousel";
 const Home = () => {
   const { loading, error, data } =
