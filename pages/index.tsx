@@ -4,8 +4,7 @@ import { GetProductsDocument } from "generated/graphql";
 import { ProductsCarrousel } from "components/ProductsCarrousel/ProductsCarrousel";
 import { RoomsCarrousel } from "views/home/components/RoomsCarrousel";
 const Home = () => {
-  const { loading, error, data } =
-    useQuery<GetProductsQuery>(GetProductsDocument);
+  const { loading, error } = useQuery<GetProductsQuery>(GetProductsDocument);
   if (error) {
     return <p>{error?.message ?? "Problem to fetch products"}</p>;
   }
