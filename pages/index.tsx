@@ -3,6 +3,7 @@ import type { GetProductsQuery } from "generated/graphql";
 import { GetProductsDocument } from "generated/graphql";
 import { ProductsCarrousel } from "components/ProductsCarrousel/ProductsCarrousel";
 import { RoomsCarrousel } from "views/home/components/RoomsCarrousel";
+import { PopularCategories } from "views/home/components/PopularCategories/PopularCategories";
 const Home = () => {
   const { loading, error } = useQuery<GetProductsQuery>(GetProductsDocument);
   if (error) {
@@ -12,10 +13,9 @@ const Home = () => {
   return (
     <div className="flex min-h-screen flex-col ">
       <RoomsCarrousel isLoading={loading} />
+      <PopularCategories />
       <section className="mb-8" aria-labelledby="bestsellers">
-        <h2 className="m-8 text-4xl font-medium" id="bestsellers">
-          Bestsellers
-        </h2>
+        <h2 className="m-8 text-center text-xl">Bestsellers</h2>
         <ProductsCarrousel />
       </section>
     </div>
