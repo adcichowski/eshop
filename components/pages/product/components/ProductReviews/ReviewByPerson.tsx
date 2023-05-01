@@ -50,7 +50,6 @@ export const StarsReview = ({
 }) => {
   const [numberBeforeComma, numberAfterComma] = rating.toString().split(".");
   const isRatingWithHalf = numberAfterComma === "5";
-  console.log(numberBeforeComma, numberAfterComma, rating, isRatingWithHalf);
   return (
     <ul id={elementId} className="flex gap-[3px]">
       {Array.from({ length: 5 }, (_, i) => (

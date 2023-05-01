@@ -27,7 +27,6 @@ export function ProductReviews({ productSlug }: { productSlug: string }) {
         {averageRate && (
           <StarsReview elementId="averageRate" rating={averageRate} />
         )}
-        {averageRate}
       </section>
       <ul
         className="mt-3 flex flex-col items-stretch gap-4
