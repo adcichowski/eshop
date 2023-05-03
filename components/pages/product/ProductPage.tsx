@@ -15,6 +15,8 @@ import { ProductReviews } from "./components/ProductReviews/Reviews";
 import { useCartContext } from "context/CartContext/CartContext";
 import { useRouter } from "next/router";
 import { useInputAmountProduct } from "hooks/useInputAmountProduct";
+import { ProductSale } from "./components/ProductSale";
+import ProductQuantityInput from "./components/ProductQuantityInput";
 
 export const ProductPage = ({
   product,
@@ -51,26 +53,25 @@ export const ProductPage = ({
   };
   return (
     <div className="flex flex-col">
-      <main className="grid grid-cols-3 pt-3">
+      <div className="grid grid-cols-3 pt-3 ">
         <Categories />
 
-        <div className="col-span-2 max-w-3xl text-[32px]">
+        <div className="col-start-2 col-end-4 max-w-3xl text-[32px]">
           <section className="grid grid-cols-2">
             <h2 className="col-span-2 mb-5 max-w-md text-3xl">
               {product.name}
             </h2>
 
-            <div>
-              <Image
-                width={392.36}
-                height={581.43}
-                alt={product?.name}
-                src={product?.images[0].url || ""}
-              />
-            </div>
+            <Image
+              width={397.36}
+              height={585.43}
+              alt={product?.name}
+              src={product?.images[0].url || ""}
+            />
+
             <aside className="ml-5 flex max-w-[377px] flex-col text-xl">
               <ProductSale sale={product.sale} />
-              <div className="flex flex-col gap-3">
+              <div>
                 <label className="flex cursor-pointer items-center">
                   <span className="w-24 text-base">Size:</span>
                   <ProductSelectVariant
@@ -81,20 +82,7 @@ export const ProductPage = ({
                   />
                 </label>
 
-                <label className="flex items-center">
-                  <span className="w-24 text-base">Quantity:</span>
-                  <div>
-                    <input
-                      className="h-10 w-[50px] cursor-pointer border-[0.5px] border-black bg-white p-2 px-3 text-center"
-                      type="number"
-                      inputMode="numeric"
-                      pattern="[0-9]"
-                      min={1}
-                      {...inputAmountProps}
-                    />
-                    <span className="ml-1">szt</span>
-                  </div>
-                </label>
+                <ProductQuantityInput {...inputAmountProps} />
               </div>
 
               <div>
@@ -104,61 +92,63 @@ export const ProductPage = ({
                   price={selectedVariant.price}
                 />
                 <div className="mt-3 flex">
-                  <div className="h-4 w-4 bg-avaible-product bg-contain"></div>
+                  <div className="h-4 w-4 bg-avaible-product bg-contain">
+                    <span className="hidden" aria-hidden="true">
+                      Available product
+                    </span>
+                  </div>
                   <div className="ml-[3px] text-xs font-normal">In store</div>
                 </div>
                 <span className="mt-4 text-xs">
                   Delivery in 2-4 working days | Free delivery from 199zł
                 </span>
-                <div className="mt-4 flex gap-1">
-                  <Button
-                    data-outside="false"
-                    onClick={() => {
-                      addProduct({
-                        id: selectedVariant.id,
-                        title: product.name,
-                        price: selectedVariant.price,
-                        image: product.images[0],
-                        amount: Number(inputAmountProps.value),
-                      });
-                    }}
-                    className="h-full w-full rounded-none px-12 py-5 text-lg sm:text-sm"
-                  >
-                    To Cart
-                  </Button>
-                  <div className="relative flex cursor-pointer items-center justify-center border-[1px] border-black p-4">
-                    <FavoriteInput id={product.name} />
-                  </div>
+              </div>
+              <div className="mt-4 flex gap-1">
+                <Button
+                  data-outside="false"
+                  onClick={() => {
+                    addProduct({
+                      id: selectedVariant.id,
+                      title: product.name,
+                      price: selectedVariant.price,
+                      image: product.images[0],
+                      amount: Number(inputAmountProps.value),
+                    });
+                  }}
+                  className="h-full w-full rounded-none px-12 py-5 text-lg sm:text-sm"
+                >
+                  To Cart
+                </Button>
+                <div className="relative flex cursor-pointer items-center justify-center border-[1px] border-black p-4">
+                  <FavoriteInput id={product.name} />
                 </div>
               </div>
             </aside>
 
             <ProductDescription productDescription={product.description} />
           </section>
-          <section
-            aria-describedby="othersBuyAlso"
-            className="col-span-2 mt-[50px] w-full"
-          >
-            <h3 id="othersBuyAlso" className="text-xl">
-              Others buy also:
-            </h3>
-            <ProductsCarrousel />
-          </section>
+
+          <ProductsCarrousel
+            className="mt-[50px] w-full"
+            id="othersProduct"
+            Heading={<h3 className="mb-3 text-xl">Others buy also</h3>}
+          />
 
           <ProductReviews productSlug={product.slug} />
+
+          <ProductsCarrousel
+            className="mt-[50px] w-full"
+            id="othersProduct"
+            Heading={
+              <h3 className="mb-3 text-xl">
+                Popular products in this category
+              </h3>
+            }
+          />
         </div>
-      </main>
+      </div>
 
       <footer>Footer</footer>
     </div>
   );
 };
-
-const ProductSale = ({ sale }: { readonly sale: string | undefined | null }) =>
-  sale ? (
-    <div className="mb-[22px] self-start bg-black px-8 py-2 text-center font-semibold text-white">
-      {`-${sale}%`}
-    </div>
-  ) : (
-    <></>
-  );

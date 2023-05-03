@@ -14,10 +14,11 @@ const Home = () => {
     <div className="flex min-h-screen flex-col ">
       <RoomsCarrousel isLoading={loading} />
       <PopularCategories />
-      <section className="mb-8" aria-labelledby="bestsellers">
-        <h2 className="m-8 text-center text-xl">Bestsellers</h2>
-        <ProductsCarrousel />
-      </section>
+      <ProductsCarrousel
+        id="bestsellers"
+        className="mb-8"
+        Heading={<h2 className="m-8 text-center text-xl">Bestsellers</h2>}
+      />
     </div>
   );
 };
