@@ -8,30 +8,41 @@ import { Navigation } from "swiper";
 import { useGetProductsQuery } from "generated/graphql";
 import { ProductCarrousel } from "./components/ProductCarrousel/ProductCarrousel";
 
-export const ProductsCarrousel = () => {
-  const settings: SwiperProps = {
-    navigation: true,
-    slidesPerView: 2,
-    breakpoints: {
-      300: {
-        slidesPerView: 3,
-      },
-      1000: {
-        slidesPerView: 4,
-      },
-      1200: {
-        slidesPerView: 6,
-      },
-      1800: {
-        slidesPerView: 7,
-      },
-    },
-    pagination: {
-      clickable: true,
-    },
+type ProductsCarrouselProps = {
+  id: string;
+  Heading: JSX.Element;
+  className: string;
+};
 
-    modules: [Navigation],
-  };
+const settings: SwiperProps = {
+  navigation: true,
+  slidesPerView: 2,
+  breakpoints: {
+    300: {
+      slidesPerView: 3,
+    },
+    1000: {
+      slidesPerView: 4,
+    },
+    1200: {
+      slidesPerView: 6,
+    },
+    1800: {
+      slidesPerView: 7,
+    },
+  },
+  pagination: {
+    clickable: true,
+  },
+
+  modules: [Navigation],
+};
+
+export const ProductsCarrousel = ({
+  id,
+  Heading,
+  className,
+}: ProductsCarrouselProps) => {
   const { data } = useGetProductsQuery();
   if (!data) return <></>;
 
@@ -39,9 +50,9 @@ export const ProductsCarrousel = () => {
     ...product,
     price: Math.min(...product.variants.map(({ price }) => price)),
   }));
-
   return (
-    <div>
+    <section id={id} className={className}>
+      {Heading}
       <Swiper {...settings}>
         {productsWithSmallestPrice.map((product) => (
           <SwiperSlide key={product.name} className={"shrink basis-64"}>
@@ -49,6 +60,6 @@ export const ProductsCarrousel = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </div>
+    </section>
   );
 };
