@@ -15,7 +15,6 @@ import { ProductReviews } from "./components/ProductReviews/Reviews";
 import { useCartContext } from "context/CartContext/CartContext";
 import { useRouter } from "next/router";
 import { useInputAmountProduct } from "hooks/useInputAmountProduct";
-import clsx from "clsx";
 
 export const ProductPage = ({
   product,
