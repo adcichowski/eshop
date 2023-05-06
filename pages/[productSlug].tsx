@@ -14,7 +14,6 @@ import { ProductPage } from "components/pages/product/ProductPage";
 import { serialize } from "next-mdx-remote/serialize";
 
 export async function getStaticPaths() {
-  console.log(process.env.NEXT_PUBLIC_API);
   const { data } = await apolloClient.query<GetProductsSlugsQuery>({
     query: GetProductsSlugsDocument,
   });
@@ -22,7 +21,6 @@ export async function getStaticPaths() {
     paths: data.products.map(({ slug }) => ({
       params: {
         productSlug: slug,
-        id: "1",
       },
     })),
     fallback: false,

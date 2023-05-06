@@ -34,7 +34,7 @@ export const ProductCarrousel = ({
           />
         </div>
       </div>
-      <div className="my-1 mx-10 flex flex-col">
+      <div className="my-1 mx-10 flex w-40 flex-col">
         <h3 className="mt-1 text-xs" id={name}>
           <Link
             passHref

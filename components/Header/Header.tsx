@@ -54,7 +54,7 @@ export const Header = () => {
             <li key={category}>
               <Link
                 aria-label={`Go to category ${category}`}
-                href={`/${category}`}
+                href={`poster-print/${category}`}
               >
                 {category}
               </Link>

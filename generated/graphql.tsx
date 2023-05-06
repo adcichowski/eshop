@@ -5590,7 +5590,7 @@ export type ProductVariantType = Node & {
   /** The unique identifier */
   id: Scalars["ID"];
   price: Scalars["Int"];
-  product?: Maybe<Product>;
+  products: Array<Product>;
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars["DateTime"]>;
   /** User that last published this document */
@@ -5632,9 +5632,16 @@ export type ProductVariantTypeHistoryArgs = {
 };
 
 /** Type layout vertical or horizontal */
-export type ProductVariantTypeProductArgs = {
+export type ProductVariantTypeProductsArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  before?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
   forceParentLocale?: InputMaybe<Scalars["Boolean"]>;
+  last?: InputMaybe<Scalars["Int"]>;
   locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<ProductOrderByInput>;
+  skip?: InputMaybe<Scalars["Int"]>;
+  where?: InputMaybe<ProductWhereInput>;
 };
 
 /** Type layout vertical or horizontal */
@@ -5688,7 +5695,7 @@ export type ProductVariantTypeCreateInput = {
   createdAt?: InputMaybe<Scalars["DateTime"]>;
   currency?: InputMaybe<ProductVariantTypeCurrencyCreateOneInlineInput>;
   price: Scalars["Int"];
-  product?: InputMaybe<ProductCreateOneInlineInput>;
+  products?: InputMaybe<ProductCreateManyInlineInput>;
   size?: InputMaybe<SizeCreateOneInlineInput>;
   updatedAt?: InputMaybe<Scalars["DateTime"]>;
 };
@@ -5867,7 +5874,9 @@ export type ProductVariantTypeManyWhereInput = {
   price_not?: InputMaybe<Scalars["Int"]>;
   /** All values that are not contained in given list. */
   price_not_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
-  product?: InputMaybe<ProductWhereInput>;
+  products_every?: InputMaybe<ProductWhereInput>;
+  products_none?: InputMaybe<ProductWhereInput>;
+  products_some?: InputMaybe<ProductWhereInput>;
   publishedAt?: InputMaybe<Scalars["DateTime"]>;
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars["DateTime"]>;
@@ -5922,7 +5931,7 @@ export enum ProductVariantTypeOrderByInput {
 export type ProductVariantTypeUpdateInput = {
   currency?: InputMaybe<ProductVariantTypeCurrencyUpdateOneInlineInput>;
   price?: InputMaybe<Scalars["Int"]>;
-  product?: InputMaybe<ProductUpdateOneInlineInput>;
+  products?: InputMaybe<ProductUpdateManyInlineInput>;
   size?: InputMaybe<SizeUpdateOneInlineInput>;
 };
 
@@ -6067,7 +6076,9 @@ export type ProductVariantTypeWhereInput = {
   price_not?: InputMaybe<Scalars["Int"]>;
   /** All values that are not contained in given list. */
   price_not_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
-  product?: InputMaybe<ProductWhereInput>;
+  products_every?: InputMaybe<ProductWhereInput>;
+  products_none?: InputMaybe<ProductWhereInput>;
+  products_some?: InputMaybe<ProductWhereInput>;
   publishedAt?: InputMaybe<Scalars["DateTime"]>;
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars["DateTime"]>;
@@ -9617,6 +9628,32 @@ export type GetProductReviewsBySlugQuery = {
   } | null;
 };
 
+export type GetProductsByCategoryQueryVariables = Exact<{
+  categorySlug: Scalars["String"];
+}>;
+
+export type GetProductsByCategoryQuery = {
+  __typename?: "Query";
+  products: Array<{
+    __typename?: "Product";
+    name: string;
+    slug: string;
+    id: string;
+    images: Array<{
+      __typename?: "Asset";
+      id: string;
+      alt?: string | null;
+      url: string;
+    }>;
+    variants: Array<{
+      __typename?: "ProductVariantType";
+      id: string;
+      price: number;
+    }>;
+    categories: Array<{ __typename?: "Category"; name: string }>;
+  }>;
+};
+
 export const GetProductsDocument = gql`
   query GetProducts {
     products {
@@ -10110,4 +10147,76 @@ export type GetProductReviewsBySlugLazyQueryHookResult = ReturnType<
 export type GetProductReviewsBySlugQueryResult = Apollo.QueryResult<
   GetProductReviewsBySlugQuery,
   GetProductReviewsBySlugQueryVariables
+>;
+export const GetProductsByCategoryDocument = gql`
+  query GetProductsByCategory($categorySlug: String!) {
+    products(where: { categories_some: { slug: $categorySlug } }) {
+      name
+      slug
+      images(first: 1) {
+        id
+        alt
+        url
+      }
+      id
+      variants(orderBy: price_ASC, first: 1) {
+        id
+        price
+      }
+      categories(where: { slug: $categorySlug }) {
+        name
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetProductsByCategoryQuery__
+ *
+ * To run a query within a React component, call `useGetProductsByCategoryQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetProductsByCategoryQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetProductsByCategoryQuery({
+ *   variables: {
+ *      categorySlug: // value for 'categorySlug'
+ *   },
+ * });
+ */
+export function useGetProductsByCategoryQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetProductsByCategoryQuery,
+    GetProductsByCategoryQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetProductsByCategoryQuery,
+    GetProductsByCategoryQueryVariables
+  >(GetProductsByCategoryDocument, options);
+}
+export function useGetProductsByCategoryLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetProductsByCategoryQuery,
+    GetProductsByCategoryQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetProductsByCategoryQuery,
+    GetProductsByCategoryQueryVariables
+  >(GetProductsByCategoryDocument, options);
+}
+export type GetProductsByCategoryQueryHookResult = ReturnType<
+  typeof useGetProductsByCategoryQuery
+>;
+export type GetProductsByCategoryLazyQueryHookResult = ReturnType<
+  typeof useGetProductsByCategoryLazyQuery
+>;
+export type GetProductsByCategoryQueryResult = Apollo.QueryResult<
+  GetProductsByCategoryQuery,
+  GetProductsByCategoryQueryVariables
 >;

@@ -95,3 +95,23 @@ query GetProductReviewsBySlug($slug: String!) {
     }
   }
 }
+
+query GetProductsByCategory($categorySlug: String!) {
+  products(where: { categories_some: { slug: $categorySlug } }) {
+    name
+    slug
+    images(first: 1) {
+      id
+      alt
+      url
+    }
+    id
+    variants(orderBy: price_ASC, first: 1) {
+      id
+      price
+    }
+    categories(where: { slug: $categorySlug }) {
+      name
+    }
+  }
+}
