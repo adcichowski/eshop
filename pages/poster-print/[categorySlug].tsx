@@ -71,13 +71,22 @@ export default function ProductsByCategory(
           {props.categoryName}
         </h3>
         <ul className="grid grid-cols-2 justify-center gap-2 md:grid-cols-3 md:gap-6">
-          {props.products.map(({ id, slug, name, variants, images }) => (
-            <li key={id} className="flex justify-center">
-              <ProductCarrousel
-                {...{ id, slug, name, price: variants[0].price, images }}
-              />
-            </li>
-          ))}
+          {props.products.map(
+            ({ id, slug, name, variants, images, whiteFrame }) => (
+              <li key={id} className="flex justify-center">
+                <ProductCarrousel
+                  {...{
+                    id,
+                    slug,
+                    name,
+                    price: variants[0].price,
+                    images,
+                    whiteFrame,
+                  }}
+                />
+              </li>
+            )
+          )}
         </ul>
       </section>
     </section>

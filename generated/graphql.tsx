@@ -9521,6 +9521,7 @@ export type GetProductsQuery = {
     id: string;
     name: string;
     slug: string;
+    whiteFrame: boolean;
     variants: Array<{
       __typename?: "ProductVariantType";
       price: number;
@@ -9636,6 +9637,7 @@ export type GetProductsByCategoryQuery = {
   __typename?: "Query";
   products: Array<{
     __typename?: "Product";
+    whiteFrame: boolean;
     name: string;
     slug: string;
     id: string;
@@ -9660,6 +9662,7 @@ export const GetProductsDocument = gql`
       id
       name
       slug
+      whiteFrame
       variants(orderBy: price_ASC, first: 1) {
         price
         size {
@@ -10151,6 +10154,7 @@ export type GetProductReviewsBySlugQueryResult = Apollo.QueryResult<
 export const GetProductsByCategoryDocument = gql`
   query GetProductsByCategory($categorySlug: String!) {
     products(where: { categories_some: { slug: $categorySlug } }) {
+      whiteFrame
       name
       slug
       images(first: 1) {

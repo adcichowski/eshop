@@ -17,6 +17,8 @@ import { useRouter } from "next/router";
 import { useInputAmountProduct } from "hooks/useInputAmountProduct";
 import { ProductSale } from "./components/ProductSale";
 import ProductQuantityInput from "./components/ProductQuantityInput";
+import clsx from "clsx";
+import { Orientation } from "generated/graphql";
 
 export const ProductPage = ({
   product,
@@ -41,9 +43,10 @@ export const ProductPage = ({
 
   if (!product || !selectedVariant || !productVariants)
     return <h2>Product not found!</h2>;
-  const { finish, color, paperWeight, orientation, whiteFrame } = product;
+  const { finish, color, paperWeight, orientation, whiteFrame, sale } = product;
 
   const productAttributes = {
+    sale,
     category: product.categories[0].name,
     paperWeight,
     color,
@@ -53,56 +56,56 @@ export const ProductPage = ({
   };
   return (
     <div className="flex flex-col">
-      <div className="grid grid-cols-3 pt-3 ">
-        <Categories />
+      <div className="mx-2 grid grid-cols-1 pt-3 xl:grid-cols-3">
+        <Categories className="hidden xl:block" />
 
-        <div className="col-start-2 col-end-4 max-w-3xl text-[32px]">
-          <section className="grid grid-cols-2">
-            <h2 className="col-span-2 mb-5 max-w-md text-3xl">
-              {product.name}
-            </h2>
+        <div className="text-[32px] md:max-w-3xl xl:col-start-2 xl:col-end-4">
+          <section className="ml-4 md:grid md:grid-cols-2 xl:m-0">
+            <h2 className="mb-5 text-3xl md:col-span-2">{product.name}</h2>
 
             <Image
-              width={397.36}
-              height={585.43}
+              width={497.36}
+              height={685.43}
+              className={`h-full w-full max-w-xs object-contain md:max-w-xl ${
+                product.orientation === Orientation.Horizontal &&
+                "my-auto h-auto"
+              }`}
               alt={product?.name}
               src={product?.images[0].url || ""}
             />
 
-            <aside className="ml-5 flex max-w-[377px] flex-col text-xl">
+            <aside
+              className={`mt-3 flex max-w-[377px] flex-col md:mt-0 md:ml-5  ${clsx(
+                !sale && "gap-y-[7.2px]"
+              )} text-xl`}
+            >
               <ProductSale sale={product.sale} />
-              <div>
-                <label className="flex cursor-pointer items-center">
-                  <span className="w-24 text-base">Size:</span>
-                  <ProductSelectVariant
-                    selectedVariant={selectedVariant}
-                    setSelectedVariant={setSelectedVariant}
-                    sale={product.sale}
-                    productVariants={productVariants}
-                  />
-                </label>
 
-                <ProductQuantityInput {...inputAmountProps} />
-              </div>
+              <ProductSelectVariant
+                selectedVariant={selectedVariant}
+                setSelectedVariant={setSelectedVariant}
+                sale={product.sale}
+                productVariants={productVariants}
+              />
 
-              <div>
-                <ProductAttributes {...productAttributes} />
-                <ProductPrice
-                  sale={product.sale}
-                  price={selectedVariant.price}
-                />
-                <div className="mt-3 flex">
-                  <div className="h-4 w-4 bg-avaible-product bg-contain">
-                    <span className="hidden" aria-hidden="true">
-                      Available product
-                    </span>
-                  </div>
-                  <div className="ml-[3px] text-xs font-normal">In store</div>
+              <ProductQuantityInput {...inputAmountProps} />
+
+              <ProductAttributes {...productAttributes} />
+
+              <ProductPrice sale={product.sale} price={selectedVariant.price} />
+
+              <div className="mt-3 flex">
+                <div className="h-4 w-4 bg-avaible-product bg-contain">
+                  <span className="hidden" aria-hidden="true">
+                    Available product
+                  </span>
                 </div>
-                <span className="mt-4 text-xs">
-                  Delivery in 2-4 working days | Free delivery from 199zł
-                </span>
+                <div className="ml-[3px] text-xs font-normal">In store</div>
               </div>
+              <span className="mt-4 text-xs">
+                Delivery in 2-4 working days | Free delivery from 199zł
+              </span>
+
               <div className="mt-4 flex gap-1">
                 <Button
                   data-outside="false"
@@ -119,7 +122,7 @@ export const ProductPage = ({
                 >
                   To Cart
                 </Button>
-                <div className="relative flex cursor-pointer items-center justify-center border-[1px] border-black p-4">
+                <div className="relative flex h-full cursor-pointer items-center justify-center border-[1px] border-black p-4">
                   <FavoriteInput id={product.name} />
                 </div>
               </div>

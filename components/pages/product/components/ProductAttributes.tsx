@@ -1,3 +1,5 @@
+import clsx from "clsx";
+
 type ProductAttributesProps = {
   readonly category: string;
   readonly paperWeight: number;
@@ -5,6 +7,7 @@ type ProductAttributesProps = {
   readonly color: string;
   readonly finish: string;
   readonly whiteFrame: boolean;
+  readonly sale: string | undefined | null;
 };
 export const ProductAttributes = ({
   paperWeight,
@@ -13,6 +16,7 @@ export const ProductAttributes = ({
   color,
   orientation,
   finish,
+  sale,
 }: ProductAttributesProps) => {
   const displayAttributes = {
     category,
@@ -31,7 +35,7 @@ export const ProductAttributes = ({
       <h4 id="descriptionProduct" className="text-lg">
         Attributes
       </h4>
-      <div className="mt-2 flex flex-col">
+      <div className={`mt-2 flex flex-col ${clsx(!sale && "gap-y-1")}`}>
         {Object.entries(displayAttributes).map(([attribute, info]) => (
           <div key={attribute} className="relative">
             <dl className="grid max-w-xs grid-cols-2 justify-between bg-opacity-60">

@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { Button } from "components/Button/Button";
 import { FavoriteInput } from "components/Inputs/FavoriteInput";
 import Image from "next/image";
@@ -5,6 +6,7 @@ import Link from "next/link";
 
 export type ProductCarrouselProps = Readonly<{
   readonly id: string;
+  readonly whiteFrame: boolean;
   readonly slug: string;
   readonly name: string;
   readonly price: number;
@@ -16,6 +18,7 @@ export type ProductCarrouselProps = Readonly<{
 }>;
 
 export const ProductCarrousel = ({
+  whiteFrame,
   slug,
   name,
   price,
@@ -24,20 +27,24 @@ export const ProductCarrousel = ({
   return (
     <section
       aria-labelledby={name}
-      className="relative flex w-full max-w-[206px] flex-col"
+      className="relative flex w-full max-w-[202px] flex-col"
     >
       <div>
-        <div className="m-auto max-h-72 overflow-hidden object-center">
+        <div
+          className={`flex h-72 items-center overflow-hidden object-center ${clsx(
+            whiteFrame && "border-2 px-4"
+          )}`}
+        >
           <Image
             alt={name}
             src={images[0].url}
             width={180}
             height={251}
-            className="h-auto w-full bg-cover object-cover object-center"
+            className="h-auto w-full"
           />
         </div>
       </div>
-      <div className="my-1 mx-4 flex flex-col">
+      <div className="z-10 my-1 mx-4 flex flex-col">
         <h3 className="mt-1 text-xs" id={name}>
           <Link
             passHref
