@@ -4,7 +4,7 @@ import type { SwiperProps } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/navigation";
-import { Navigation } from "swiper";
+import { FreeMode, Pagination } from "swiper";
 import { useGetProductsQuery } from "generated/graphql";
 import { ProductCarrousel } from "./components/ProductCarrousel/ProductCarrousel";
 
@@ -12,36 +12,42 @@ type ProductsCarrouselProps = {
   id: string;
   Heading: JSX.Element;
   className: string;
+  overwriteSwiperSettings?: SwiperProps;
 };
 
-const settings: SwiperProps = {
-  navigation: true,
-  slidesPerView: 2,
+const settings = (overwriteSettings?: SwiperProps): SwiperProps => ({
+  draggable: true,
+  freeMode: true,
+  slidesPerView: 2.3,
   breakpoints: {
-    300: {
-      slidesPerView: 3,
+    400: {
+      slidesPerView: 2,
     },
-    1000: {
-      slidesPerView: 4,
+    650: {
+      slidesPerView: 2.3,
     },
-    1200: {
-      slidesPerView: 6,
+    810: {
+      slidesPerView: 3.3,
     },
-    1800: {
-      slidesPerView: 7,
+    1050: {
+      slidesPerView: 4.3,
+    },
+    1300: {
+      slidesPerView: 5.3,
     },
   },
+  modules: [FreeMode, Pagination],
   pagination: {
     clickable: true,
   },
-
-  modules: [Navigation],
-};
+  ...overwriteSettings,
+});
 
 export const ProductsCarrousel = ({
   id,
   Heading,
   className,
+  overwriteSwiperSettings,
 }: ProductsCarrouselProps) => {
   const { data } = useGetProductsQuery();
   if (!data) return <></>;
@@ -53,9 +59,9 @@ export const ProductsCarrousel = ({
   return (
     <section id={id} className={className}>
       {Heading}
-      <Swiper {...settings}>
+      <Swiper {...settings(overwriteSwiperSettings)}>
         {productsWithSmallestPrice.map((product) => (
-          <SwiperSlide key={product.name} className={"shrink basis-64"}>
+          <SwiperSlide key={product.name} className="px-5">
             <ProductCarrousel {...product} />
           </SwiperSlide>
         ))}

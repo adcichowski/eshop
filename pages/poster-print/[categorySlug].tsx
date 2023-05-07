@@ -64,17 +64,22 @@ export default function ProductsByCategory(
     return <>Page not found!</>;
   }
   return (
-    <section className="mt-11 grid max-w-6xl grid-cols-3">
-      <Categories />
-      <ul className="col-start-2 col-end-4 flex basis-44 flex-row flex-wrap gap-y-2">
-        {props.products.map(({ id, slug, name, variants, images }) => (
-          <li key={id}>
-            <ProductCarrousel
-              {...{ id, slug, name, price: variants[0].price, images }}
-            />
-          </li>
-        ))}
-      </ul>
+    <section className="mt-11 ml-5 grid max-w-6xl grid-cols-1 lg:grid-cols-3">
+      <Categories className="hidden lg:block" />
+      <section className="lg:col-start-2 lg:col-end-4">
+        <h3 className="mx-4 mb-6 border-b-[1px] border-b-black pb-3 text-center text-2xl">
+          {props.categoryName}
+        </h3>
+        <ul className="grid grid-cols-2 justify-center gap-2 md:grid-cols-3 md:gap-6">
+          {props.products.map(({ id, slug, name, variants, images }) => (
+            <li key={id} className="flex justify-center">
+              <ProductCarrousel
+                {...{ id, slug, name, price: variants[0].price, images }}
+              />
+            </li>
+          ))}
+        </ul>
+      </section>
     </section>
   );
 }

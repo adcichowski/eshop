@@ -3,6 +3,7 @@ import Link from "next/link";
 
 type CategoriesProps = {
   categories?: { name: string; slug: string }[];
+  className?: string;
 };
 const categoriesList = (categories: { name: string; slug: string }[]) => [
   {
@@ -12,7 +13,7 @@ const categoriesList = (categories: { name: string; slug: string }[]) => [
   ...categories,
 ];
 
-export function Categories({ categories }: CategoriesProps) {
+export function Categories({ categories, className }: CategoriesProps) {
   const { data } = useGetCategoriesQuery({
     skip: categories !== undefined,
   });
@@ -21,7 +22,7 @@ export function Categories({ categories }: CategoriesProps) {
   return (
     <aside
       aria-describedby="categories"
-      className="row-span-3 mx-auto w-full max-w-[230px]"
+      className={`row-span-3 mx-auto w-full max-w-[230px] ${className}`}
     >
       <h2 id="categories" className="text-xl font-medium">
         Posters

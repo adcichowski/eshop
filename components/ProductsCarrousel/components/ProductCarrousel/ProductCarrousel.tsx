@@ -22,9 +22,12 @@ export const ProductCarrousel = ({
   images,
 }: ProductCarrouselProps) => {
   return (
-    <section aria-labelledby={name} className="relative flex flex-col">
+    <section
+      aria-labelledby={name}
+      className="relative flex w-full max-w-[206px] flex-col"
+    >
       <div>
-        <div className="m-auto max-h-52 max-w-[134px] overflow-hidden object-center md:max-h-72 md:max-w-[206px]">
+        <div className="m-auto max-h-72 overflow-hidden object-center">
           <Image
             alt={name}
             src={images[0].url}
@@ -34,7 +37,7 @@ export const ProductCarrousel = ({
           />
         </div>
       </div>
-      <div className="my-1 mx-10 flex w-40 flex-col">
+      <div className="my-1 mx-4 flex flex-col">
         <h3 className="mt-1 text-xs" id={name}>
           <Link
             passHref
