@@ -18,12 +18,12 @@ export async function getStaticPaths() {
     query: GetProductsSlugsDocument,
   });
   return {
-    paths: data.products.map(({ slug }) => ({
+    paths: data.products.slice(0, 3).map(({ slug }) => ({
       params: {
         productSlug: slug,
       },
     })),
-    fallback: false,
+    fallback: "blocking",
   };
 }
 export async function getStaticProps({
