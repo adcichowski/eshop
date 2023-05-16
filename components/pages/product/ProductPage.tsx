@@ -19,6 +19,7 @@ import { ProductSale } from "./components/ProductSale";
 import ProductQuantityInput from "./components/ProductQuantityInput";
 import clsx from "clsx";
 import { Orientation } from "generated/graphql";
+import { productCarrouselOverwrite } from "./constants/constants";
 
 export const ProductPage = ({
   product,
@@ -132,6 +133,7 @@ export const ProductPage = ({
           </section>
 
           <ProductsCarrousel
+            overwriteSwiperSettings={productCarrouselOverwrite}
             className="mt-[50px] w-full"
             id="othersProduct"
             Heading={<h3 className="mb-3 text-xl">Others buy also</h3>}
@@ -140,6 +142,7 @@ export const ProductPage = ({
           <ProductReviews productSlug={product.slug} />
 
           <ProductsCarrousel
+            overwriteSwiperSettings={productCarrouselOverwrite}
             className="mt-[50px] w-full"
             id="othersProduct"
             Heading={
