@@ -61,7 +61,7 @@ export const ProductsCarrousel = ({
       {Heading}
       <Swiper {...settings(overwriteSwiperSettings)}>
         {productsWithSmallestPrice.map((product) => (
-          <SwiperSlide key={product.name} className="px-5">
+          <SwiperSlide key={product.name}>
             <ProductCarrousel {...product} />
           </SwiperSlide>
         ))}
