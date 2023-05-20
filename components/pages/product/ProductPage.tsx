@@ -2,7 +2,7 @@ import { Button } from "components/Button/Button";
 import { Categories } from "components/Categories/Categories";
 import { ProductsCarrousel } from "components/ProductsCarrousel/ProductsCarrousel";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { ProductAttributes } from "./components/ProductAttributes";
 import { ProductDescription } from "./components/ProductDescription";
 import { ProductPrice } from "./components/ProductPrice";
@@ -10,42 +10,29 @@ import type { InferGetStaticPropsType } from "next";
 import type { getStaticProps } from "pages/[productSlug]";
 import { ProductSelectVariant } from "./components/ProductSelectVariant";
 import { FavoriteInput } from "components/Inputs/FavoriteInput";
-import type { ProductVariant } from "./types";
 import { ProductReviews } from "./components/ProductReviews/Reviews";
 import { useCartContext } from "context/CartContext/CartContext";
-import { useRouter } from "next/router";
 import { useInputAmountProduct } from "hooks/useInputAmountProduct";
 import { ProductSale } from "./components/ProductSale";
 import ProductQuantityInput from "./components/ProductQuantityInput";
 import clsx from "clsx";
 import { Orientation } from "generated/graphql";
 import { productCarrouselOverwrite } from "./constants/constants";
+import { useSelectVariant } from "./hooks/useSelectVariant";
 
-export const ProductPage = ({
-  product,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+export type ProductPageProps = InferGetStaticPropsType<typeof getStaticProps>;
+
+export const ProductPage = ({ product }: ProductPageProps) => {
   const { addProduct } = useCartContext();
-  const productVariants = product?.variants.map(({ size, id, price }) => ({
-    price,
-    id,
-    width: size?.width,
-    height: size?.height,
-  }));
-  const [selectedVariant, setSelectedVariant] = useState<
-    ProductVariant | undefined
-  >(undefined);
+
   const inputAmountProps = useInputAmountProduct();
-  const router = useRouter();
-  useEffect(() => {
-    setSelectedVariant(
-      productVariants?.length ? productVariants[0] : undefined
-    );
-  }, [router.asPath]);
+  const { selectedVariant, setSelectedVariant, productVariants } =
+    useSelectVariant({ product });
 
-  if (!product || !selectedVariant || !productVariants)
+  if (!selectedVariant || !product || !productVariants)
     return <h2>Product not found!</h2>;
-  const { finish, color, paperWeight, orientation, whiteFrame, sale } = product;
 
+  const { finish, color, paperWeight, orientation, whiteFrame, sale } = product;
   const productAttributes = {
     sale,
     category: product.categories[0].name,
@@ -57,7 +44,7 @@ export const ProductPage = ({
   };
   return (
     <div className="flex flex-col">
-      <div className="mx-2 grid grid-cols-1 pt-3 xl:grid-cols-3">
+      <div className="mx-2 grid grid-cols-1 pt-3 md:mx-0 xl:grid-cols-3">
         <Categories className="hidden xl:block" />
 
         <div className="text-[32px] md:max-w-3xl xl:col-start-2 xl:col-end-4">
@@ -107,7 +94,7 @@ export const ProductPage = ({
                 Delivery in 2-4 working days | Free delivery from 199zł
               </span>
 
-              <div className="mt-4 flex gap-1">
+              <div className="mt-4 flex items-stretch gap-1">
                 <Button
                   data-outside="false"
                   onClick={() => {
@@ -119,11 +106,11 @@ export const ProductPage = ({
                       amount: Number(inputAmountProps.value),
                     });
                   }}
-                  className="h-full w-full rounded-none px-12 py-5 text-lg sm:text-sm"
+                  className="md:text-md text-md h-full w-full rounded-none px-12 py-5"
                 >
                   To Cart
                 </Button>
-                <div className="relative flex h-full cursor-pointer items-center justify-center border-[1px] border-black p-4">
+                <div className="relative cursor-pointer border-[1px] border-black p-4">
                   <FavoriteInput id={product.name} />
                 </div>
               </div>

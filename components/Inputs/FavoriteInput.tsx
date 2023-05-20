@@ -6,7 +6,7 @@ export function FavoriteInput({ id }: { readonly id: string }) {
         id={id}
         name="A3-confirmation"
         value="yes"
-        className="favorite absolute box-border h-full w-full cursor-pointer opacity-0"
+        className="favorite absolute  box-border h-full w-full cursor-pointer opacity-0"
       />
       <div className="text-red-400 border-blue-400 flex h-8 w-8 flex-shrink-0 cursor-pointer items-center justify-center">
         <svg viewBox="0 0 29 26" fill="none" xmlns="http://www.w3.org/2000/svg">
