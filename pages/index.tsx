@@ -16,7 +16,7 @@ const Home = () => {
       <PopularCategories />
       <ProductsCarrousel
         id="bestsellers"
-        className="mb-8"
+        className="mx-2 mb-8 xl:mx-48"
         Heading={<h2 className="m-8 text-center text-xl">Bestsellers</h2>}
       />
     </div>

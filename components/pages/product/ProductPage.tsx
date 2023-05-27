@@ -17,7 +17,6 @@ import { ProductSale } from "./components/ProductSale";
 import ProductQuantityInput from "./components/ProductQuantityInput";
 import clsx from "clsx";
 import { Orientation } from "generated/graphql";
-import { productCarrouselOverwrite } from "./constants/constants";
 import { useSelectVariant } from "./hooks/useSelectVariant";
 
 export type ProductPageProps = InferGetStaticPropsType<typeof getStaticProps>;
@@ -120,7 +119,6 @@ export const ProductPage = ({ product }: ProductPageProps) => {
           </section>
 
           <ProductsCarrousel
-            overwriteSwiperSettings={productCarrouselOverwrite}
             className="mt-[50px] w-full"
             id="othersProduct"
             Heading={<h3 className="mb-3 text-xl">Others buy also</h3>}
@@ -129,7 +127,6 @@ export const ProductPage = ({ product }: ProductPageProps) => {
           <ProductReviews productSlug={product.slug} />
 
           <ProductsCarrousel
-            overwriteSwiperSettings={productCarrouselOverwrite}
             className="mt-[50px] w-full"
             id="othersProduct"
             Heading={
