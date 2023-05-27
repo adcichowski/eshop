@@ -11,6 +11,9 @@ export type ProductCarrouselProps = Readonly<{
   readonly slug: string;
   readonly name: string;
   readonly price: number;
+
+  width?: number;
+  height?: number;
   readonly images: readonly {
     readonly id: string;
     readonly url: string;
@@ -25,8 +28,13 @@ export const ProductCarrousel = ({
   price,
   images,
   id,
+  width,
+  height,
 }: ProductCarrouselProps) => {
   const { addProduct } = useCartContext();
+  if (!width || !height) {
+    return <></>;
+  }
   return (
     <section aria-labelledby={name}>
       <div>
@@ -55,14 +63,14 @@ export const ProductCarrousel = ({
               {name}
             </Link>
           </h3>
-          <span className="md:text-md text-sm font-medium">
-            od {price / 100} zł
-          </span>
+          <span className="md:text-md text-sm font-medium">{price / 100}$</span>
           <div className="relative mt-2 flex items-center justify-between gap-1">
             <Button
+              data-outside="true"
               onClick={() => {
                 addProduct({
                   amount: 1,
+                  variant: { width, height },
                   id,
                   price,
                   title: name,

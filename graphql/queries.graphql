@@ -6,10 +6,8 @@ query GetProducts {
     whiteFrame
     variants(orderBy: price_ASC, first: 1) {
       price
-      size {
-        width
-        height
-      }
+      width
+      height
     }
     images(first: 1) {
       id
@@ -43,10 +41,8 @@ query GetProductDetailsBySlug($slug: String) {
       ... on ProductVariantType {
         id
         price
-        size {
-          width
-          height
-        }
+        width
+        height
       }
     }
     images {
@@ -111,6 +107,8 @@ query GetProductsByCategory($categorySlug: String!) {
     variants(orderBy: price_ASC, first: 1) {
       id
       price
+      width
+      height
     }
     categories(where: { slug: $categorySlug }) {
       name

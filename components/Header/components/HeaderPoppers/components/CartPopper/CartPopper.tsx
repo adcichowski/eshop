@@ -43,7 +43,7 @@ const ViewWithProducts = ({ cart }: { cart: Record<string, CartItem> }) => {
   }, [cart]);
   return (
     <>
-      <ul className="flex h-auto w-full flex-col gap-y-2">
+      <ul className="flex max-h-80 w-full flex-col gap-y-2 overflow-hidden overflow-y-auto">
         {Object.entries(cart).map(([id, product]) => (
           <li key={id}>
             <ProductCartPopper {...product} />

@@ -4,6 +4,11 @@ import { changeValueCurrency } from "utils/utils";
 import { useCartContext } from "context/CartContext/CartContext";
 type ProductCartPopperProps = {
   readonly id: string;
+  variant: {
+    width: number;
+    height: number;
+  };
+
   readonly image: { readonly url: string; readonly alt?: string | null };
   readonly price: number;
   readonly amount: number;
@@ -15,6 +20,7 @@ export function ProductCartPopper({
   title,
   amount,
   price,
+  variant,
 }: ProductCartPopperProps) {
   const { deleteProduct } = useCartContext();
   return (
@@ -35,12 +41,15 @@ export function ProductCartPopper({
       </div>
       <div className="ml-[14px] flex basis-[242px] flex-col py-[2px]">
         <div className="flex grow justify-between">
-          <h3 className="text-left">{title}</h3>
+          <h3 className="text-left">
+            {title}
+            {` ${variant.width} cm x ${variant.height} cm`}
+          </h3>
           <button
             onClick={() => {
-              deleteProduct({ image, title, price, id, amount });
+              deleteProduct({ id });
             }}
-            className="mt-[3px] self-start"
+            className="mt-[3px] mr-3 self-start"
           >
             <ClearIcon data-outside="false" />
           </button>

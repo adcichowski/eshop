@@ -12,18 +12,9 @@ export function useSelectVariant({
     ProductVariant | undefined
   >(undefined);
 
-  const productVariants = product?.variants.map(({ size, id, price }) => ({
-    price,
-    id,
-    width: size?.width,
-    height: size?.height,
-  }));
-
   useEffect(() => {
-    setSelectedVariant(
-      productVariants?.length ? productVariants[0] : undefined
-    );
+    setSelectedVariant(product?.variants[0] ? product?.variants[0] : undefined);
   }, [router.asPath]);
 
-  return { selectedVariant, setSelectedVariant, productVariants };
+  return { selectedVariant, setSelectedVariant };
 }

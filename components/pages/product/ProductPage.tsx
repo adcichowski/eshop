@@ -23,13 +23,12 @@ export type ProductPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 export const ProductPage = ({ product }: ProductPageProps) => {
   const { addProduct } = useCartContext();
-
   const inputAmountProps = useInputAmountProduct();
-  const { selectedVariant, setSelectedVariant, productVariants } =
-    useSelectVariant({ product });
+  const { selectedVariant, setSelectedVariant } = useSelectVariant({ product });
 
-  if (!selectedVariant || !product || !productVariants)
+  if (!selectedVariant || !product) {
     return <h2>Product not found!</h2>;
+  }
 
   const { finish, color, paperWeight, orientation, whiteFrame, sale } = product;
   const productAttributes = {
@@ -41,6 +40,7 @@ export const ProductPage = ({ product }: ProductPageProps) => {
     orientation,
     whiteFrame,
   };
+
   return (
     <div className="flex flex-col">
       <div className="mx-2 grid grid-cols-1 pt-3 md:mx-0 xl:grid-cols-3">
@@ -72,7 +72,7 @@ export const ProductPage = ({ product }: ProductPageProps) => {
                 selectedVariant={selectedVariant}
                 setSelectedVariant={setSelectedVariant}
                 sale={product.sale}
-                productVariants={productVariants}
+                productVariants={product.variants}
               />
 
               <ProductQuantityInput {...inputAmountProps} />
@@ -97,7 +97,13 @@ export const ProductPage = ({ product }: ProductPageProps) => {
                 <Button
                   data-outside="false"
                   onClick={() => {
+                    if (!selectedVariant) {
+                    }
                     addProduct({
+                      variant: {
+                        width: selectedVariant.width,
+                        height: selectedVariant.height,
+                      },
                       id: selectedVariant.id,
                       title: product.name,
                       price: selectedVariant.price,

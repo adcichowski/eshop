@@ -27,11 +27,11 @@ export const CartContextProvider = ({
     <CartContext.Provider
       value={{
         cart,
-        addProduct: (product: CartItem) => {
+        addProduct: (product) => {
           setCart(addProductToCart(product, cart));
           addToast("success", "Successful add product to cart");
         },
-        deleteProduct: (product: CartItem) => {
+        deleteProduct: (product) => {
           setCart(deleteProductFromCart(product, cart));
           addToast("success", "Successful remove product from cart");
         },
