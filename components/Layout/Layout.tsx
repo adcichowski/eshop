@@ -1,6 +1,5 @@
 import { NewsletterComp } from "components/Forms/Newsletter/Newsletter";
 import { Header } from "components/Header/Header";
-import { ToastsContainer } from "components/Toast/ToastsContainer";
 
 export function Layout({ children }: { readonly children: React.ReactNode }) {
   return (
