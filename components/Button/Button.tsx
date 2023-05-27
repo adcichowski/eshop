@@ -10,7 +10,7 @@ export function Button({ children, ...props }: ButtonProps) {
     <button
       {...props}
       className={twMerge(
-        `w-full rounded-[10px] text-base font-semibold uppercase transition-colors md:text-lg ${
+        `rounded-[10px] text-base font-semibold uppercase transition-colors  ${
           props.className
         } ${
           props.disabled

@@ -7,10 +7,7 @@ export function Layout({ children }: { readonly children: React.ReactNode }) {
     <div className="flex min-h-screen flex-col overflow-hidden">
       <div>
         <Header />
-        <main className="relative mx-auto max-w-[1440px]">
-          <ToastsContainer />
-          {children}
-        </main>
+        <main className="relative mx-auto max-w-[1440px]">{children}</main>
       </div>
 
       <NewsletterComp HeaderTag="h3" />

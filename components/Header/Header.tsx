@@ -2,6 +2,7 @@ import Clsx from "clsx";
 import { Autocomplete } from "components/Autocomplete/Autocomplete";
 import { HeaderPoppers } from "components/Header/components/HeaderPoppers/HeaderPoppers";
 import { usePopper } from "components/Popper/usePopper";
+import { ToastsContainer } from "components/Toast/ToastsContainer";
 import Link from "next/link";
 
 import { headerCategories, navigationIcons } from "./constants";
@@ -61,6 +62,7 @@ export const Header = () => {
             </li>
           ))}
         </ul>
+        <ToastsContainer />
       </header>
     </div>
   );

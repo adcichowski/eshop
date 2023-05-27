@@ -37,10 +37,7 @@ export const ProductsCarrousel = ({
       {Heading}
       <Swiper {...swiperSettings}>
         {productsWithSmallestPrice.map((product) => (
-          <SwiperSlide
-            className="min-w-[202px] max-w-[202px]"
-            key={product.name}
-          >
+          <SwiperSlide className="max-w-[202px]" key={product.name}>
             <ProductCarrousel {...product} />
           </SwiperSlide>
         ))}
