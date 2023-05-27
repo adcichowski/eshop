@@ -1,10 +1,8 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import type { SwiperProps } from "swiper/react";
-
 import "swiper/css";
 import "swiper/css/navigation";
-import { Navigation } from "swiper";
+import { FreeMode } from "swiper";
 import { useGetProductsQuery } from "generated/graphql";
 import { ProductCarrousel } from "./components/ProductCarrousel/ProductCarrousel";
 
@@ -14,28 +12,12 @@ type ProductsCarrouselProps = {
   className: string;
 };
 
-const settings: SwiperProps = {
-  navigation: true,
-  slidesPerView: 2,
-  breakpoints: {
-    300: {
-      slidesPerView: 3,
-    },
-    1000: {
-      slidesPerView: 4,
-    },
-    1200: {
-      slidesPerView: 6,
-    },
-    1800: {
-      slidesPerView: 7,
-    },
-  },
-  pagination: {
-    clickable: true,
-  },
-
-  modules: [Navigation],
+const swiperSettings: SwiperProps = {
+  draggable: true,
+  freeMode: true,
+  slidesPerView: "auto",
+  spaceBetween: 10,
+  modules: [FreeMode],
 };
 
 export const ProductsCarrousel = ({
@@ -53,9 +35,12 @@ export const ProductsCarrousel = ({
   return (
     <section id={id} className={className}>
       {Heading}
-      <Swiper {...settings}>
+      <Swiper {...swiperSettings}>
         {productsWithSmallestPrice.map((product) => (
-          <SwiperSlide key={product.name} className={"shrink basis-64"}>
+          <SwiperSlide
+            className="min-w-[202px] max-w-[202px]"
+            key={product.name}
+          >
             <ProductCarrousel {...product} />
           </SwiperSlide>
         ))}

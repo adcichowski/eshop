@@ -1,7 +1,11 @@
 import { useGetCategoriesQuery } from "generated/graphql";
 import Link from "next/link";
 
-const categories = (categories: { name: string; slug: string }[]) => [
+type CategoriesProps = {
+  categories?: { name: string; slug: string }[];
+  className?: string;
+};
+const categoriesList = (categories: { name: string; slug: string }[]) => [
   {
     name: "All posters",
     slug: "posters",
@@ -9,20 +13,22 @@ const categories = (categories: { name: string; slug: string }[]) => [
   ...categories,
 ];
 
-export function Categories() {
-  const { data } = useGetCategoriesQuery();
+export function Categories({ categories, className }: CategoriesProps) {
+  const { data } = useGetCategoriesQuery({
+    skip: categories !== undefined,
+  });
   if (data?.categories === undefined) return <></>;
 
   return (
     <aside
       aria-describedby="categories"
-      className="row-span-3 mx-auto w-full max-w-[230px]"
+      className={`row-span-3 mx-auto w-full max-w-[230px] ${className}`}
     >
       <h2 id="categories" className="text-xl font-medium">
         Posters
       </h2>
       <ul className="mt-[23px] w-full">
-        {categories(data.categories).map(({ name, slug }) => (
+        {categoriesList(data.categories).map(({ name, slug }) => (
           <li key={slug}>
             <Link href={slug}>
               <div>

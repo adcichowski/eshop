@@ -3,6 +3,7 @@ query GetProducts {
     id
     name
     slug
+    whiteFrame
     variants(orderBy: price_ASC, first: 1) {
       price
       size {
@@ -91,6 +92,27 @@ query GetProductReviewsBySlug($slug: String!) {
       email
       rating
       content
+      name
+    }
+  }
+}
+
+query GetProductsByCategory($categorySlug: String!) {
+  products(where: { categories_some: { slug: $categorySlug } }) {
+    whiteFrame
+    name
+    slug
+    images(first: 1) {
+      id
+      alt
+      url
+    }
+    id
+    variants(orderBy: price_ASC, first: 1) {
+      id
+      price
+    }
+    categories(where: { slug: $categorySlug }) {
       name
     }
   }
