@@ -2,7 +2,6 @@ import clsx from "clsx";
 import { Button } from "components/Button/Button";
 import { FavoriteInput } from "components/Inputs/FavoriteInput";
 import { useCartContext } from "context/CartContext/CartContext";
-import { useToastContext } from "context/ToastContext/ToastContext";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -28,7 +27,6 @@ export const ProductCarrousel = ({
   id,
 }: ProductCarrouselProps) => {
   const { addProduct } = useCartContext();
-  const { addToast } = useToastContext();
   return (
     <section aria-labelledby={name}>
       <div>
