@@ -57,7 +57,7 @@ const ViewWithProducts = ({ cart }: { cart: Record<string, CartItem> }) => {
         </p>
       </div>
 
-      <Button className="rounded-[10px] px-16 py-[5px] text-sm md:text-sm">
+      <Button className="w-full rounded-[10px] px-16 py-[5px] text-sm md:text-sm  ">
         <span className="whitespace-nowrap">Go to cart</span>
       </Button>
     </>
