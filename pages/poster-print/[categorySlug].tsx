@@ -73,7 +73,7 @@ export default function ProductsByCategory(
         <ul className="grid grid-cols-2 justify-center gap-2 md:grid-cols-3 md:gap-6">
           {props.products.map(
             ({ id, slug, name, variants, images, whiteFrame }) => (
-              <li key={id} className="flex justify-center">
+              <li key={id} className={"w-[202px]"}>
                 <ProductCarrousel
                   {...{
                     width: variants[0].width,

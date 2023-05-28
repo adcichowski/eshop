@@ -36,7 +36,7 @@ export const ProductCarrousel = ({
     return <></>;
   }
   return (
-    <section aria-labelledby={name}>
+    <section aria-labelledby={name} className="relative">
       <div>
         <div>
           <div
@@ -82,7 +82,7 @@ export const ProductCarrousel = ({
               To Cart
             </Button>
 
-            <div className="relative block">
+            <div className="relative">
               <FavoriteInput id={name} />
             </div>
           </div>
