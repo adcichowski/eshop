@@ -22,6 +22,7 @@ export const randomInt = (max: number, min = 0) =>
   Math.floor(Math.random() * (max - min + 1)) + min;
 
 export const roundToNearestHalf = (num: number) => {
+  if (null) return undefined;
   if (num % 1 >= 0.5) return Math.ceil(num * 2) / 2;
   return Math.floor(num * 2) / 2 + 0.5;
 };

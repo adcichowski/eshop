@@ -11,7 +11,7 @@ export function useToast(toast: { id: string }) {
     if (toasts) {
       const hideToast = setInterval(() => {
         removeToast(toast.id);
-      }, 5000);
+      }, 3000);
       return () => clearInterval(hideToast);
     }
   }, []);

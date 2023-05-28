@@ -1,6 +1,7 @@
 import { Button } from "components/Button/Button";
 
 import CartIcon from "components/Header/icons/cart.svg";
+import { Link } from "components/Link/Link";
 import { useCartContext } from "context/CartContext/CartContext";
 import { CartItem } from "context/CartContext/types";
 import { useMemo } from "react";
@@ -43,7 +44,7 @@ const ViewWithProducts = ({ cart }: { cart: Record<string, CartItem> }) => {
   }, [cart]);
   return (
     <>
-      <ul className="flex h-auto w-full flex-col gap-y-2">
+      <ul className="flex max-h-80 w-full flex-col gap-y-2 overflow-hidden overflow-y-auto">
         {Object.entries(cart).map(([id, product]) => (
           <li key={id}>
             <ProductCartPopper {...product} />
@@ -57,9 +58,12 @@ const ViewWithProducts = ({ cart }: { cart: Record<string, CartItem> }) => {
         </p>
       </div>
 
-      <Button className="rounded-[10px] px-16 py-[5px] text-sm md:text-sm">
-        <span className="whitespace-nowrap">Go to cart</span>
-      </Button>
+      <Link
+        href="/cart"
+        className="w-full rounded-[10px] px-16 py-[5px] text-sm md:text-sm  "
+      >
+        Go to cart
+      </Link>
     </>
   );
 };

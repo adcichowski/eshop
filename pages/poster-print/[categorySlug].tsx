@@ -76,6 +76,8 @@ export default function ProductsByCategory(
               <li key={id} className="flex justify-center">
                 <ProductCarrousel
                   {...{
+                    width: variants[0].width,
+                    height: variants[0].height,
                     id,
                     slug,
                     name,

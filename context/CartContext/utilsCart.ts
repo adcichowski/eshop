@@ -1,7 +1,7 @@
 import type { CartContextType, CartItem } from "./types";
 
 export const deleteProductFromCart = (
-  product: CartItem,
+  product: { id: string },
   cartState: CartContextType["cart"] | undefined
 ) => {
   const deleteProduct = cartState?.[product.id];

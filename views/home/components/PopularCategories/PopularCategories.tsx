@@ -4,12 +4,15 @@ import { pictures } from "./constants";
 
 export function PopularCategories() {
   return (
-    <section className="mx-36 mt-6" id="popularCategories">
+    <section
+      className="md:mx-26 mx-1 mt-6 hidden sm:block xl:mx-36"
+      id="popularCategories"
+    >
       <h2 className="mb-5 text-center text-xl">Popular Categories</h2>
-      <ul className="flex max-w-7xl flex-wrap justify-center gap-8">
+      <ul className="xs:grid-cols-2  max-w-7xl grid-cols-3 justify-center gap-2 sm:grid xl:gap-6">
         {pictures.map(({ alt, src }) => (
           <li key={alt}>
-            <figure className="relative h-[300px] w-[350px]">
+            <figure className="relative w-full ">
               <Image
                 width={350}
                 height={400}
@@ -17,7 +20,7 @@ export function PopularCategories() {
                 src={src}
                 alt={alt}
               />
-              <figcaption className="absolute bottom-20 w-full bg-white py-1 text-center uppercase">
+              <figcaption className="absolute bottom-10 w-full bg-white py-1 text-center text-xs uppercase md:text-base xl:bottom-20">
                 {alt}
               </figcaption>
             </figure>

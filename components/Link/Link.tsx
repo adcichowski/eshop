@@ -1,14 +1,17 @@
-import type { ReactNode } from "react";
+import LinkNext from "next/link";
+import type { LinkProps } from "next/link";
 import { twMerge } from "tailwind-merge";
-
-type ButtonProps = {
-  readonly children: ReactNode;
-} & Omit<JSX.IntrinsicElements["button"], "children">;
-
-export function Button({ children, ...props }: ButtonProps) {
+export function Link(
+  props: LinkProps & {
+    className?: string;
+    disabled?: boolean;
+    children: string;
+  }
+) {
   return (
-    <button
+    <LinkNext
       {...props}
+      href={props.disabled ? "" : props.href}
       className={twMerge(
         `rounded-[10px] text-base font-semibold uppercase transition-colors  ${
           props.className
@@ -19,7 +22,7 @@ export function Button({ children, ...props }: ButtonProps) {
         }`
       )}
     >
-      {children}
-    </button>
+      {props.children}
+    </LinkNext>
   );
 }

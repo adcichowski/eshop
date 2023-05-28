@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { Button } from "components/Button/Button";
 import { FavoriteInput } from "components/Inputs/FavoriteInput";
+import { useCartContext } from "context/CartContext/CartContext";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,6 +11,9 @@ export type ProductCarrouselProps = Readonly<{
   readonly slug: string;
   readonly name: string;
   readonly price: number;
+
+  width?: number;
+  height?: number;
   readonly images: readonly {
     readonly id: string;
     readonly url: string;
@@ -23,7 +27,14 @@ export const ProductCarrousel = ({
   name,
   price,
   images,
+  id,
+  width,
+  height,
 }: ProductCarrouselProps) => {
+  const { addProduct } = useCartContext();
+  if (!width || !height) {
+    return <></>;
+  }
   return (
     <section aria-labelledby={name}>
       <div>
@@ -52,15 +63,24 @@ export const ProductCarrousel = ({
               {name}
             </Link>
           </h3>
-          <span className="md:text-md text-sm font-medium">
-            od {price / 100} zł
-          </span>
-          <div className="relative flex items-center justify-between gap-1">
-            <div>
-              <Button className="self-start rounded-none py-1 px-4 font-thin normal-case md:text-xs">
-                To Cart
-              </Button>
-            </div>
+          <span className="md:text-md text-sm font-medium">{price / 100}$</span>
+          <div className="relative mt-2 flex items-center justify-between gap-1">
+            <Button
+              data-outside="true"
+              onClick={() => {
+                addProduct({
+                  amount: 1,
+                  variant: { width, height },
+                  id,
+                  price,
+                  title: name,
+                  image: images[0],
+                });
+              }}
+              className="self-start rounded-none py-1 px-3 font-light normal-case"
+            >
+              To Cart
+            </Button>
 
             <div className="relative block">
               <FavoriteInput id={name} />

@@ -5585,6 +5585,7 @@ export type ProductVariantType = Node & {
   currency?: Maybe<ProductVariantTypeCurrency>;
   /** Get the document in other stages */
   documentInStages: Array<ProductVariantType>;
+  height: Scalars["Int"];
   /** List of ProductVariantType versions */
   history: Array<Version>;
   /** The unique identifier */
@@ -5596,13 +5597,13 @@ export type ProductVariantType = Node & {
   /** User that last published this document */
   publishedBy?: Maybe<User>;
   scheduledIn: Array<ScheduledOperation>;
-  size?: Maybe<Size>;
   /** System stage field */
   stage: Stage;
   /** The time the document was updated */
   updatedAt: Scalars["DateTime"];
   /** User that last updated this document */
   updatedBy?: Maybe<User>;
+  width: Scalars["Int"];
 };
 
 /** Type layout vertical or horizontal */
@@ -5663,12 +5664,6 @@ export type ProductVariantTypeScheduledInArgs = {
 };
 
 /** Type layout vertical or horizontal */
-export type ProductVariantTypeSizeArgs = {
-  forceParentLocale?: InputMaybe<Scalars["Boolean"]>;
-  locales?: InputMaybe<Array<Locale>>;
-};
-
-/** Type layout vertical or horizontal */
 export type ProductVariantTypeUpdatedByArgs = {
   forceParentLocale?: InputMaybe<Scalars["Boolean"]>;
   locales?: InputMaybe<Array<Locale>>;
@@ -5694,10 +5689,11 @@ export type ProductVariantTypeConnection = {
 export type ProductVariantTypeCreateInput = {
   createdAt?: InputMaybe<Scalars["DateTime"]>;
   currency?: InputMaybe<ProductVariantTypeCurrencyCreateOneInlineInput>;
+  height: Scalars["Int"];
   price: Scalars["Int"];
   products?: InputMaybe<ProductCreateManyInlineInput>;
-  size?: InputMaybe<SizeCreateOneInlineInput>;
   updatedAt?: InputMaybe<Scalars["DateTime"]>;
+  width: Scalars["Int"];
 };
 
 export type ProductVariantTypeCreateManyInlineInput = {
@@ -5840,6 +5836,21 @@ export type ProductVariantTypeManyWhereInput = {
   documentInStages_every?: InputMaybe<ProductVariantTypeWhereStageInput>;
   documentInStages_none?: InputMaybe<ProductVariantTypeWhereStageInput>;
   documentInStages_some?: InputMaybe<ProductVariantTypeWhereStageInput>;
+  height?: InputMaybe<Scalars["Int"]>;
+  /** All values greater than the given value. */
+  height_gt?: InputMaybe<Scalars["Int"]>;
+  /** All values greater than or equal the given value. */
+  height_gte?: InputMaybe<Scalars["Int"]>;
+  /** All values that are contained in given list. */
+  height_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
+  /** All values less than the given value. */
+  height_lt?: InputMaybe<Scalars["Int"]>;
+  /** All values less than or equal the given value. */
+  height_lte?: InputMaybe<Scalars["Int"]>;
+  /** Any other value that exists and is not equal to the given value. */
+  height_not?: InputMaybe<Scalars["Int"]>;
+  /** All values that are not contained in given list. */
+  height_not_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
   id?: InputMaybe<Scalars["ID"]>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars["ID"]>;
@@ -5896,7 +5907,6 @@ export type ProductVariantTypeManyWhereInput = {
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
-  size?: InputMaybe<SizeWhereInput>;
   updatedAt?: InputMaybe<Scalars["DateTime"]>;
   /** All values greater than the given value. */
   updatedAt_gt?: InputMaybe<Scalars["DateTime"]>;
@@ -5913,11 +5923,28 @@ export type ProductVariantTypeManyWhereInput = {
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
   updatedBy?: InputMaybe<UserWhereInput>;
+  width?: InputMaybe<Scalars["Int"]>;
+  /** All values greater than the given value. */
+  width_gt?: InputMaybe<Scalars["Int"]>;
+  /** All values greater than or equal the given value. */
+  width_gte?: InputMaybe<Scalars["Int"]>;
+  /** All values that are contained in given list. */
+  width_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
+  /** All values less than the given value. */
+  width_lt?: InputMaybe<Scalars["Int"]>;
+  /** All values less than or equal the given value. */
+  width_lte?: InputMaybe<Scalars["Int"]>;
+  /** Any other value that exists and is not equal to the given value. */
+  width_not?: InputMaybe<Scalars["Int"]>;
+  /** All values that are not contained in given list. */
+  width_not_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
 };
 
 export enum ProductVariantTypeOrderByInput {
   CreatedAtAsc = "createdAt_ASC",
   CreatedAtDesc = "createdAt_DESC",
+  HeightAsc = "height_ASC",
+  HeightDesc = "height_DESC",
   IdAsc = "id_ASC",
   IdDesc = "id_DESC",
   PriceAsc = "price_ASC",
@@ -5926,13 +5953,16 @@ export enum ProductVariantTypeOrderByInput {
   PublishedAtDesc = "publishedAt_DESC",
   UpdatedAtAsc = "updatedAt_ASC",
   UpdatedAtDesc = "updatedAt_DESC",
+  WidthAsc = "width_ASC",
+  WidthDesc = "width_DESC",
 }
 
 export type ProductVariantTypeUpdateInput = {
   currency?: InputMaybe<ProductVariantTypeCurrencyUpdateOneInlineInput>;
+  height?: InputMaybe<Scalars["Int"]>;
   price?: InputMaybe<Scalars["Int"]>;
   products?: InputMaybe<ProductUpdateManyInlineInput>;
-  size?: InputMaybe<SizeUpdateOneInlineInput>;
+  width?: InputMaybe<Scalars["Int"]>;
 };
 
 export type ProductVariantTypeUpdateManyInlineInput = {
@@ -5957,7 +5987,9 @@ export type ProductVariantTypeUpdateManyInlineInput = {
 };
 
 export type ProductVariantTypeUpdateManyInput = {
+  height?: InputMaybe<Scalars["Int"]>;
   price?: InputMaybe<Scalars["Int"]>;
+  width?: InputMaybe<Scalars["Int"]>;
 };
 
 export type ProductVariantTypeUpdateManyWithNestedWhereInput = {
@@ -6042,6 +6074,21 @@ export type ProductVariantTypeWhereInput = {
   documentInStages_every?: InputMaybe<ProductVariantTypeWhereStageInput>;
   documentInStages_none?: InputMaybe<ProductVariantTypeWhereStageInput>;
   documentInStages_some?: InputMaybe<ProductVariantTypeWhereStageInput>;
+  height?: InputMaybe<Scalars["Int"]>;
+  /** All values greater than the given value. */
+  height_gt?: InputMaybe<Scalars["Int"]>;
+  /** All values greater than or equal the given value. */
+  height_gte?: InputMaybe<Scalars["Int"]>;
+  /** All values that are contained in given list. */
+  height_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
+  /** All values less than the given value. */
+  height_lt?: InputMaybe<Scalars["Int"]>;
+  /** All values less than or equal the given value. */
+  height_lte?: InputMaybe<Scalars["Int"]>;
+  /** Any other value that exists and is not equal to the given value. */
+  height_not?: InputMaybe<Scalars["Int"]>;
+  /** All values that are not contained in given list. */
+  height_not_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
   id?: InputMaybe<Scalars["ID"]>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars["ID"]>;
@@ -6098,7 +6145,6 @@ export type ProductVariantTypeWhereInput = {
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
-  size?: InputMaybe<SizeWhereInput>;
   updatedAt?: InputMaybe<Scalars["DateTime"]>;
   /** All values greater than the given value. */
   updatedAt_gt?: InputMaybe<Scalars["DateTime"]>;
@@ -6115,6 +6161,21 @@ export type ProductVariantTypeWhereInput = {
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
   updatedBy?: InputMaybe<UserWhereInput>;
+  width?: InputMaybe<Scalars["Int"]>;
+  /** All values greater than the given value. */
+  width_gt?: InputMaybe<Scalars["Int"]>;
+  /** All values greater than or equal the given value. */
+  width_gte?: InputMaybe<Scalars["Int"]>;
+  /** All values that are contained in given list. */
+  width_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
+  /** All values less than the given value. */
+  width_lt?: InputMaybe<Scalars["Int"]>;
+  /** All values less than or equal the given value. */
+  width_lte?: InputMaybe<Scalars["Int"]>;
+  /** Any other value that exists and is not equal to the given value. */
+  width_not?: InputMaybe<Scalars["Int"]>;
+  /** All values that are not contained in given list. */
+  width_not_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
 };
 
 /** The document in stages filter allows specifying a stage entry to cross compare the same document between different stages */
@@ -8630,7 +8691,6 @@ export type SizeConnection = {
 };
 
 export type SizeCreateInput = {
-  cl8hu77ab59k001ueels18imi?: InputMaybe<ProductVariantTypeCreateManyInlineInput>;
   createdAt?: InputMaybe<Scalars["DateTime"]>;
   height: Scalars["Int"];
   updatedAt?: InputMaybe<Scalars["DateTime"]>;
@@ -8791,7 +8851,6 @@ export enum SizeOrderByInput {
 }
 
 export type SizeUpdateInput = {
-  cl8hu77ab59k001ueels18imi?: InputMaybe<ProductVariantTypeUpdateManyInlineInput>;
   height?: InputMaybe<Scalars["Int"]>;
   width?: InputMaybe<Scalars["Int"]>;
 };
@@ -9525,7 +9584,8 @@ export type GetProductsQuery = {
     variants: Array<{
       __typename?: "ProductVariantType";
       price: number;
-      size?: { __typename?: "Size"; width: number; height: number } | null;
+      width: number;
+      height: number;
     }>;
     images: Array<{
       __typename?: "Asset";
@@ -9564,7 +9624,8 @@ export type GetProductDetailsBySlugQuery = {
       __typename?: "ProductVariantType";
       id: string;
       price: number;
-      size?: { __typename?: "Size"; width: number; height: number } | null;
+      width: number;
+      height: number;
     }>;
     images: Array<{ __typename?: "Asset"; url: string; alt?: string | null }>;
   } | null;
@@ -9651,6 +9712,8 @@ export type GetProductsByCategoryQuery = {
       __typename?: "ProductVariantType";
       id: string;
       price: number;
+      width: number;
+      height: number;
     }>;
     categories: Array<{ __typename?: "Category"; name: string }>;
   }>;
@@ -9665,10 +9728,8 @@ export const GetProductsDocument = gql`
       whiteFrame
       variants(orderBy: price_ASC, first: 1) {
         price
-        size {
-          width
-          height
-        }
+        width
+        height
       }
       images(first: 1) {
         id
@@ -9802,10 +9863,8 @@ export const GetProductDetailsBySlugDocument = gql`
         ... on ProductVariantType {
           id
           price
-          size {
-            width
-            height
-          }
+          width
+          height
         }
       }
       images {
@@ -10166,6 +10225,8 @@ export const GetProductsByCategoryDocument = gql`
       variants(orderBy: price_ASC, first: 1) {
         id
         price
+        width
+        height
       }
       categories(where: { slug: $categorySlug }) {
         name
