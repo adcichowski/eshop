@@ -1,10 +1,7 @@
-import { useCartContext } from "context/CartContext/CartContext";
 import React from "react";
 import { headerRows } from "./SummaryTableCart/constants/constants";
 
 export default function SummaryTableCart() {
-  const { cart } = useCartContext();
-  console.log(cart);
   return (
     <table className="mt-10 w-full">
       <thead>

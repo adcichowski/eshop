@@ -40,8 +40,8 @@ export const ProductCarrousel = ({
       <div>
         <div>
           <div
-            className={`flex h-72 items-center overflow-hidden object-center ${clsx(
-              whiteFrame && "border-2 px-4"
+            className={`flex h-56 items-center overflow-hidden object-center md:h-72 ${clsx(
+              whiteFrame && "border-2 px-2 md:px-4"
             )}`}
           >
             <Image
@@ -54,7 +54,7 @@ export const ProductCarrousel = ({
           </div>
         </div>
         <div className="z-10 my-1 mx-4 flex flex-col">
-          <h3 className="mt-1 text-xs" id={name}>
+          <h3 className="mt-1 truncate text-xs" id={name}>
             <Link
               passHref
               href={slug}
