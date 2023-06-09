@@ -11,7 +11,7 @@ export type ProductCarrouselProps = Readonly<{
   readonly slug: string;
   readonly name: string;
   readonly price: number;
-  sale: string | null | undefined;
+  sale?: string | null | undefined;
   width?: number;
   height?: number;
   readonly images: readonly {
