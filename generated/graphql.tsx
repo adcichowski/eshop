@@ -9577,6 +9577,7 @@ export type GetProductsQuery = {
   __typename?: "Query";
   products: Array<{
     __typename?: "Product";
+    sale?: string | null;
     id: string;
     name: string;
     slug: string;
@@ -9722,6 +9723,7 @@ export type GetProductsByCategoryQuery = {
 export const GetProductsDocument = gql`
   query GetProducts {
     products {
+      sale
       id
       name
       slug

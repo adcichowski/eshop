@@ -14,7 +14,7 @@ export default function CartPage() {
     );
   }
   return (
-    <div>
+    <div className="mx-20">
       <NavigationCart />
       <aside className="mt-[30px] w-full bg-green-100 py-5 text-center">
         Will you give it a try?
@@ -23,7 +23,7 @@ export default function CartPage() {
       </aside>
       <article className="mt-10">
         <h2 className="text-xl font-medium">Your cart</h2>
-        <SummaryTableCart />
+        <SummaryTableCart cart={cart} />
       </article>
     </div>
   );

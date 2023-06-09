@@ -11,7 +11,7 @@ export type ProductCarrouselProps = Readonly<{
   readonly slug: string;
   readonly name: string;
   readonly price: number;
-
+  sale: string | null | undefined;
   width?: number;
   height?: number;
   readonly images: readonly {
@@ -22,6 +22,7 @@ export type ProductCarrouselProps = Readonly<{
 }>;
 
 export const ProductCarrousel = ({
+  sale,
   whiteFrame,
   slug,
   name,
@@ -69,6 +70,8 @@ export const ProductCarrousel = ({
               data-outside="true"
               onClick={() => {
                 addProduct({
+                  sale,
+                  whiteFrame,
                   amount: 1,
                   variant: { width, height },
                   id,
