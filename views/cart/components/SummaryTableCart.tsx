@@ -3,6 +3,8 @@ import React from "react";
 import Image from "next/image";
 import clsx from "clsx";
 import { DiscountFrame } from "components/DiscountFrame/DiscountFrame";
+import { priceWithDiscount } from "utils/utils";
+import { AmountProductCart } from "./AmountProductCart";
 export default function SummaryTableCart({
   cart,
 }: {
@@ -12,20 +14,26 @@ export default function SummaryTableCart({
   return (
     <table className="mt-10 w-full">
       <thead>
-        <tr className="border-b-2 text-center">
-          <td className="flex w-2/3 justify-center">
-            <div className="w-2/3 rounded-t-md bg-green-100">Products</div>
+        <tr className="grid grid-cols-4 gap-x-5 border-b-2 text-center">
+          <td className=" col-span-3 flex justify-center">
+            <div className="w-full rounded-t-md bg-green-100">Products</div>
           </td>
-          <td>Total</td>
+
+          <td className="flex justify-center">
+            <div className="w-full rounded-t-md bg-green-100">Total</div>
+          </td>
         </tr>
       </thead>
       <tbody>
         {Object.entries(cart).map(([id, product]) => {
           return (
-            <tr className="mt-4" key={id}>
-              <td>
-                <div className="mr-1 ml-4 flex flex-wrap items-center gap-x-6">
-                  <figure className="flex flex-wrap items-center gap-x-1">
+            <tr
+              className="mt-4 grid grid-cols-4 content-center items-center"
+              key={id}
+            >
+              <td className="col-span-3">
+                <div className="mr-1 ml-2 grid items-center gap-x-6 gap-y-2 sm:grid-cols-2">
+                  <figure className="flex flex-wrap items-center gap-x-2 self-stretch md:flex-nowrap">
                     <Image
                       src={product.image.url}
                       alt=""
@@ -33,17 +41,20 @@ export default function SummaryTableCart({
                       width={100}
                       height={140}
                     />
-                    <figcaption className="max-w-[250px]">
+                    <figcaption className="basis-3/5 truncate">
                       {product.title}
                     </figcaption>
                   </figure>
-
-                  <DiscountFrame sale={product.sale} size="small" />
-                  <div>{product.price}</div>
-                  <div>{product.amount}</div>
+                  <div className="flex items-center gap-x-6 sm:justify-end">
+                    <DiscountFrame sale={product.sale} size="small" />
+                    {priceWithDiscount(product.price, Number(product.sale))}
+                    <AmountProductCart amount={product.amount} />
+                  </div>
                 </div>
               </td>
-              <td>{(product.price * product.amount) / 100}</td>
+              <td className="mr-2 justify-self-end sm:mr-0 sm:justify-self-center">
+                {(product.price * product.amount) / 100}
+              </td>
             </tr>
           );
         })}
@@ -51,37 +62,3 @@ export default function SummaryTableCart({
     </table>
   );
 }
-
-const HeaderRow = ({
-  name,
-  hidden,
-  ...props
-}: {
-  name: string;
-  hidden?: boolean;
-  className?: string;
-}) => {
-  if (hidden) {
-    return (
-      <td {...props}>
-        <div>&nbsp;</div>
-      </td>
-    );
-  }
-  return (
-    <td {...props}>
-      <div className="flex justify-center text-center">
-        <span className="p- rounded-t-md bg-green-100">{name}</span>
-      </div>
-    </td>
-  );
-};
-
-// const BodyRow = ({
-//   name,
-//   image,
-// }: {
-//   name: string;
-//   amount: number;
-//   price: number;
-// }) => {};

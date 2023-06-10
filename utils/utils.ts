@@ -7,7 +7,13 @@ export const changeValueCurrency = (price: number, format = "en-US") => {
   return formatterPLN.format(priceWithRest);
 };
 
-export const priceWithDiscount = (price: number, discount: number) => {
+export const priceWithDiscount = (
+  price: number,
+  discount: number | undefined | null
+) => {
+  if (discount === undefined || discount === null) {
+    return changeValueCurrency(price);
+  }
   const valueDiscount = Math.floor((price * discount) / 100);
   return changeValueCurrency(price - valueDiscount);
 };
