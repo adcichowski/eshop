@@ -13,11 +13,11 @@ import { FavoriteInput } from "components/Inputs/FavoriteInput";
 import { ProductReviews } from "./components/ProductReviews/Reviews";
 import { useCartContext } from "context/CartContext/CartContext";
 import { useInputAmountProduct } from "hooks/useInputAmountProduct";
-import { ProductSale } from "./components/ProductSale";
 import ProductQuantityInput from "./components/ProductQuantityInput";
 import clsx from "clsx";
 import { Orientation } from "generated/graphql";
 import { useSelectVariant } from "./hooks/useSelectVariant";
+import { DiscountFrame } from "components/DiscountFrame/DiscountFrame";
 
 export type ProductPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -43,12 +43,14 @@ export const ProductPage = ({ product }: ProductPageProps) => {
 
   return (
     <div className="flex flex-col">
-      <div className="mx-2 grid grid-cols-1 pt-3 md:mx-0 xl:grid-cols-3">
+      <div className="mx-2 grid grid-cols-1 pt-2 md:justify-items-center md:pt-6 xl:grid-cols-3">
         <Categories className="hidden xl:block" />
 
         <div className="text-[32px] md:max-w-3xl xl:col-start-2 xl:col-end-4">
           <section className="ml-4 md:grid md:grid-cols-2 xl:m-0">
-            <h2 className="mb-5 text-3xl md:col-span-2">{product.name}</h2>
+            <h2 className="mb-2 text-3xl md:col-span-2 md:mb-0">
+              {product.name}
+            </h2>
 
             <Image
               width={497.36}
@@ -66,7 +68,9 @@ export const ProductPage = ({ product }: ProductPageProps) => {
                 !sale && "gap-y-[7.2px]"
               )} text-xl`}
             >
-              <ProductSale sale={product.sale} />
+              <div className="mb-[22px] self-start">
+                <DiscountFrame sale={product.sale} size="big" />
+              </div>
 
               <ProductSelectVariant
                 selectedVariant={selectedVariant}
@@ -100,6 +104,8 @@ export const ProductPage = ({ product }: ProductPageProps) => {
                     if (!selectedVariant) {
                     }
                     addProduct({
+                      sale: product.sale,
+                      whiteFrame: product.whiteFrame,
                       variant: {
                         width: selectedVariant.width,
                         height: selectedVariant.height,

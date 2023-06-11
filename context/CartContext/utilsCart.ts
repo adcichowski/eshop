@@ -1,5 +1,31 @@
 import type { CartContextType, CartItem } from "./types";
 
+export const changeAmountOfProduct = (
+  product: { id: string; amount: number },
+  cartState: CartContextType["cart"] | undefined
+) => {
+  if (!cartState) return;
+  const productCart = cartState?.[product.id];
+  const quantityDifference = productCart.amount - product.amount;
+  if (product.amount === 0) {
+    const updatedStateCart = Object.fromEntries(
+      Object.entries(cartState).filter(([id]) => id !== product.id)
+    );
+    return {
+      quantityDifference,
+      updatedStateCart,
+    };
+  }
+  const updatedStateCart = {
+    ...cartState,
+    [product.id]: { ...productCart, amount: product.amount },
+  };
+  return {
+    quantityDifference,
+    updatedStateCart,
+  };
+};
+
 export const deleteProductFromCart = (
   product: { id: string },
   cartState: CartContextType["cart"] | undefined

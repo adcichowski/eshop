@@ -1,5 +1,7 @@
 export interface CartItem {
   readonly id: string;
+  readonly whiteFrame: boolean;
+  readonly sale: string | null | undefined;
   readonly image: {
     readonly url: string;
     readonly alt?: string | null;
@@ -16,6 +18,7 @@ export interface CartItem {
 export type DeletedCartItem = { id: string };
 export interface CartContextType {
   readonly cart: Record<string, CartItem> | undefined;
+  readonly changeAmountProduct: (product: CartItem) => void;
   readonly addProduct: (product: CartItem) => void;
   readonly deleteProduct: (product: DeletedCartItem) => void;
 }
