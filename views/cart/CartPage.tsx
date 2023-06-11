@@ -2,21 +2,21 @@ import { useCartContext } from "context/CartContext/CartContext";
 import React from "react";
 
 import { NavigationCart } from "./components/NavigationCart";
-import SummaryTableCart from "./components/SummaryTableCart";
+import SummaryTableCart from "./components/SummaryTableCart/SummaryTableCart";
 
 export default function CartPage() {
   const { cart } = useCartContext();
   if (!cart) {
     return (
-      <p className="m-auto text-lg">
+      <p className="m-auto text-center md:text-lg">
         Your cart is empty, add product to fill this page
       </p>
     );
   }
   return (
-    <div className="mx-2 md:mx-20">
+    <div className="m-2 md:mx-20">
       <NavigationCart />
-      <aside className="mt-[30px] w-full bg-green-100 py-5 text-center">
+      <aside className="mt-[30px] w-full bg-green-100 py-5 text-center text-sm md:text-base">
         Will you give it a try?
         <span className="font-bold"> Buy for an additional 46.40 USD </span>
         and qualify for <span className="font-bold">FREE</span> shipping!

@@ -3,14 +3,13 @@ import React from "react";
 import Image from "next/image";
 import clsx from "clsx";
 import { DiscountFrame } from "components/DiscountFrame/DiscountFrame";
-import { priceWithDiscount } from "utils/utils";
-import { AmountProductCart } from "./AmountProductCart";
+import { changeValueCurrency, priceWithDiscount } from "utils/utils";
+import { AmountProductCart } from "../AmountProductCart";
 export default function SummaryTableCart({
   cart,
 }: {
   cart: Record<string, CartItem>;
 }) {
-  console.log(cart);
   return (
     <table className="mt-10 w-full">
       <thead>
@@ -28,12 +27,12 @@ export default function SummaryTableCart({
         {Object.entries(cart).map(([id, product]) => {
           return (
             <tr
-              className="mt-4 grid grid-cols-4 content-center items-center"
+              className="my-4 grid grid-cols-4 content-center items-center"
               key={id}
             >
               <td className="col-span-3">
                 <div className="mr-1 ml-2 grid items-center gap-x-6 gap-y-2 sm:grid-cols-2">
-                  <figure className="flex flex-wrap items-center gap-x-2 self-stretch md:flex-nowrap">
+                  <figure className="flex flex-wrap items-center gap-x-2 self-stretch xl:flex-nowrap">
                     <Image
                       src={product.image.url}
                       alt=""
@@ -41,19 +40,27 @@ export default function SummaryTableCart({
                       width={100}
                       height={140}
                     />
-                    <figcaption className="basis-3/5 truncate">
-                      {product.title}
+                    <figcaption className="mt-1 sm:mt-0">
+                      {`${product.title} ${product.variant.width}cm x
+                      ${product.variant.height}cm`}
                     </figcaption>
                   </figure>
                   <div className="flex items-center gap-x-6 sm:justify-end">
                     <DiscountFrame sale={product.sale} size="small" />
-                    {priceWithDiscount(product.price, Number(product.sale))}
-                    <AmountProductCart amount={product.amount} />
+                    {changeValueCurrency(product.price)}
+                    <AmountProductCart
+                      product={product}
+                      amount={product.amount}
+                    />
                   </div>
                 </div>
               </td>
               <td className="mr-2 justify-self-end sm:mr-0 sm:justify-self-center">
-                {(product.price * product.amount) / 100}
+                {priceWithDiscount(
+                  product.price,
+                  Number(product.sale),
+                  product.amount
+                )}
               </td>
             </tr>
           );

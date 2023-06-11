@@ -41,7 +41,7 @@ export const ProductCarrousel = ({
       <div>
         <div>
           <div
-            className={`flex h-56 items-center overflow-hidden object-center md:h-72 ${clsx(
+            className={`flex h-48 items-center overflow-hidden object-center md:h-72 ${clsx(
               whiteFrame && "border-2 px-2 md:px-4"
             )}`}
           >
@@ -80,7 +80,7 @@ export const ProductCarrousel = ({
                   image: images[0],
                 });
               }}
-              className="self-start rounded-none py-1 px-3 font-light normal-case"
+              className="self-start rounded-none py-1 px-3 text-xs font-light normal-case md:text-base"
             >
               To Cart
             </Button>

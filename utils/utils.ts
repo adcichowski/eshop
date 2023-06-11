@@ -9,13 +9,14 @@ export const changeValueCurrency = (price: number, format = "en-US") => {
 
 export const priceWithDiscount = (
   price: number,
-  discount: number | undefined | null
+  discount: number | undefined | null,
+  amount = 1
 ) => {
   if (discount === undefined || discount === null) {
     return changeValueCurrency(price);
   }
   const valueDiscount = Math.floor((price * discount) / 100);
-  return changeValueCurrency(price - valueDiscount);
+  return changeValueCurrency(price * amount - valueDiscount * amount);
 };
 
 export const objectKeys = <Obj extends object>(obj: Obj): (keyof Obj)[] => {

@@ -1,7 +1,12 @@
 import { useToastContext } from "context/ToastContext/ToastContext";
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { toastActionCart } from "./constants/constats";
 import type { CartContextType, CartItem } from "./types";
-import { addProductToCart, deleteProductFromCart } from "./utilsCart";
+import {
+  addProductToCart,
+  changeAmountOfProduct,
+  deleteProductFromCart,
+} from "./utilsCart";
 
 const CartContext = createContext<CartContextType | null>(null);
 
@@ -27,13 +32,29 @@ export const CartContextProvider = ({
     <CartContext.Provider
       value={{
         cart,
+        changeAmountProduct: (product) => {
+          const changedProductCart = changeAmountOfProduct(product, cart);
+          if (changedProductCart) {
+            setCart(changedProductCart?.updatedStateCart);
+            addToast(
+              "success",
+              product.amount === 0
+                ? toastActionCart.deleteProduct
+                : toastActionCart.changeAmount(
+                    changedProductCart?.quantityDifference
+                  )
+            );
+          }
+        },
+
         addProduct: (product) => {
           setCart(addProductToCart(product, cart));
-          addToast("success", "Successful add product to cart");
+          addToast("success", toastActionCart.addProduct);
         },
+
         deleteProduct: (product) => {
           setCart(deleteProductFromCart(product, cart));
-          addToast("success", "Successful remove product from cart");
+          addToast("success", toastActionCart.deleteProduct);
         },
       }}
     >

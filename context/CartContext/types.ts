@@ -18,6 +18,7 @@ export interface CartItem {
 export type DeletedCartItem = { id: string };
 export interface CartContextType {
   readonly cart: Record<string, CartItem> | undefined;
+  readonly changeAmountProduct: (product: CartItem) => void;
   readonly addProduct: (product: CartItem) => void;
   readonly deleteProduct: (product: DeletedCartItem) => void;
 }

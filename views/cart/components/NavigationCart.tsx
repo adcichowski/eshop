@@ -1,4 +1,4 @@
-import React, { HTMLProps } from "react";
+import React from "react";
 import HumanIcon from "../assets/human.svg";
 import BagIcon from "../assets/bag.svg";
 import CheckIcon from "../assets/check.svg";
