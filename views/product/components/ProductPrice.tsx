@@ -10,7 +10,7 @@ export function ProductPrice({
   return (
     <div className="mt-2 flex">
       <div className={`text-4xl ${Clsx(sale && "text-red-300")} font-semibold`}>
-        {priceWithDiscount(price, Number(sale))}
+        {priceWithDiscount({ price, sale })}
       </div>
       {sale ? (
         <div className="ml-3 self-center text-2xl line-through">

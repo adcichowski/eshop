@@ -23,7 +23,7 @@ export default function SummaryTableCart({
           </td>
         </tr>
       </thead>
-      <tbody>
+      <tbody className="border-b">
         {Object.entries(cart).map(([id, product]) => {
           return (
             <tr
@@ -56,11 +56,7 @@ export default function SummaryTableCart({
                 </div>
               </td>
               <td className="mr-2 justify-self-end sm:mr-0 sm:justify-self-center">
-                {priceWithDiscount(
-                  product.price,
-                  Number(product.sale),
-                  product.amount
-                )}
+                {changeValueCurrency(priceWithDiscount(product))}
               </td>
             </tr>
           );
