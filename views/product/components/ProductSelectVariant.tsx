@@ -102,7 +102,7 @@ const SaleView = ({
 }) => {
   return (
     <span className={`${clsx(sale && "text-red-300")} font-semibold`}>
-      {priceWithDiscount({ price, sale })}
+      {changeValueCurrency(priceWithDiscount({ price, sale }))}
     </span>
   );
 };
