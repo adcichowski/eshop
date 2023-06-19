@@ -5,7 +5,7 @@ import type { InputProps } from "../types";
 
 type TextInputProps = { readonly size?: "small" | "normal" };
 const variants = {
-  small: { input: "text-sm py-2 px-2", label: "text-sm" },
+  small: { input: "text-sm px-2", label: "text-sm" },
   normal: {
     input: "text-sm rounded-sm py-3 px-2",
     label: "text-[1.12rem] mb-[6px]",

@@ -3,14 +3,17 @@ import clsx from "clsx";
 type SpinSizes = "big" | "normal" | "small";
 export function SpinIcon({ size }: { size: SpinSizes }) {
   return (
-    <div role="status">
+    <div
+      role="status"
+      className={`${clsx(
+        size === "small" && "h-3 w-3",
+        size === "normal" && "h-10 w-10",
+        size === "big" && "h-14 w-14"
+      )}`}
+    >
       <svg
         aria-hidden="true"
-        className={`inline animate-spin fill-primary text-gray-300 ${clsx(
-          size === "small" && "h-6 w-6",
-          size === "normal" && "h-10 w-10",
-          size === "big" && "h-14 w-14"
-        )}`}
+        className={`fill-primary text-gray-300`}
         viewBox="0 0 100 101"
         xmlns="http://www.w3.org/2000/svg"
       >

@@ -10,8 +10,8 @@ import { ApolloProvider } from "@apollo/client";
 import { apolloClient } from "graphql/apolloClient";
 import { ToastProvider } from "context/ToastContext/ToastContext";
 
+const queryClient = new QueryClient();
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
-  const queryClient = new QueryClient();
   return (
     <SessionProvider session={session}>
       <ApolloProvider client={apolloClient}>

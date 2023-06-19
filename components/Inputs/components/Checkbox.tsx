@@ -1,9 +1,17 @@
 import React from "react";
+import { FieldError, FieldErrorsImpl, Merge } from "react-hook-form";
 import type { InputProps } from "../types";
 import { ErrorInInput } from "./ErrorInInput";
 
+export type CheckboxProps = {
+  readonly id: string;
+  readonly hideLabel?: boolean;
+  readonly error?: FieldError | string | Merge<FieldError, FieldErrorsImpl>;
+  readonly text: string | JSX.Element;
+} & JSX.IntrinsicElements["input"];
+
 export const Checkbox = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ text, error, ...props }: InputProps, ref) => (
+  ({ text, error, ...props }: CheckboxProps, ref) => (
     <>
       <div className="flex items-start justify-center gap-2 text-xs">
         <label className="flex items-start justify-center">

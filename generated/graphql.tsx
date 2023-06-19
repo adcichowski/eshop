@@ -35,6 +35,7 @@ export type Account = Node & {
   createdAt: Scalars["DateTime"];
   /** User that created this document */
   createdBy?: Maybe<User>;
+  discountCode: Array<AccountDiscountCode>;
   /** Get the document in other stages */
   documentInStages: Array<Account>;
   email: Scalars["String"];
@@ -59,6 +60,16 @@ export type Account = Node & {
 export type AccountCreatedByArgs = {
   forceParentLocale?: InputMaybe<Scalars["Boolean"]>;
   locales?: InputMaybe<Array<Locale>>;
+};
+
+export type AccountDiscountCodeArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  before?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
+  forceParentLocale?: InputMaybe<Scalars["Boolean"]>;
+  last?: InputMaybe<Scalars["Int"]>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars["Int"]>;
 };
 
 export type AccountDocumentInStagesArgs = {
@@ -113,6 +124,7 @@ export type AccountConnection = {
 
 export type AccountCreateInput = {
   createdAt?: InputMaybe<Scalars["DateTime"]>;
+  discountCode?: InputMaybe<AccountDiscountCodeCreateManyInlineInput>;
   email: Scalars["String"];
   password: Scalars["String"];
   updatedAt?: InputMaybe<Scalars["DateTime"]>;
@@ -130,6 +142,90 @@ export type AccountCreateOneInlineInput = {
   connect?: InputMaybe<AccountWhereUniqueInput>;
   /** Create and connect one Account document */
   create?: InputMaybe<AccountCreateInput>;
+};
+
+export type AccountDiscountCode = DiscountCode;
+
+export type AccountDiscountCodeConnectInput = {
+  DiscountCode?: InputMaybe<DiscountCodeConnectInput>;
+};
+
+export type AccountDiscountCodeCreateInput = {
+  DiscountCode?: InputMaybe<DiscountCodeCreateInput>;
+};
+
+export type AccountDiscountCodeCreateManyInlineInput = {
+  /** Connect multiple existing AccountDiscountCode documents */
+  connect?: InputMaybe<Array<AccountDiscountCodeWhereUniqueInput>>;
+  /** Create and connect multiple existing AccountDiscountCode documents */
+  create?: InputMaybe<Array<AccountDiscountCodeCreateInput>>;
+};
+
+export type AccountDiscountCodeCreateOneInlineInput = {
+  /** Connect one existing AccountDiscountCode document */
+  connect?: InputMaybe<AccountDiscountCodeWhereUniqueInput>;
+  /** Create and connect one AccountDiscountCode document */
+  create?: InputMaybe<AccountDiscountCodeCreateInput>;
+};
+
+export type AccountDiscountCodeUpdateInput = {
+  DiscountCode?: InputMaybe<DiscountCodeUpdateInput>;
+};
+
+export type AccountDiscountCodeUpdateManyInlineInput = {
+  /** Connect multiple existing AccountDiscountCode documents */
+  connect?: InputMaybe<Array<AccountDiscountCodeConnectInput>>;
+  /** Create and connect multiple AccountDiscountCode documents */
+  create?: InputMaybe<Array<AccountDiscountCodeCreateInput>>;
+  /** Delete multiple AccountDiscountCode documents */
+  delete?: InputMaybe<Array<AccountDiscountCodeWhereUniqueInput>>;
+  /** Disconnect multiple AccountDiscountCode documents */
+  disconnect?: InputMaybe<Array<AccountDiscountCodeWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing AccountDiscountCode documents */
+  set?: InputMaybe<Array<AccountDiscountCodeWhereUniqueInput>>;
+  /** Update multiple AccountDiscountCode documents */
+  update?: InputMaybe<
+    Array<AccountDiscountCodeUpdateWithNestedWhereUniqueInput>
+  >;
+  /** Upsert multiple AccountDiscountCode documents */
+  upsert?: InputMaybe<
+    Array<AccountDiscountCodeUpsertWithNestedWhereUniqueInput>
+  >;
+};
+
+export type AccountDiscountCodeUpdateManyWithNestedWhereInput = {
+  DiscountCode?: InputMaybe<DiscountCodeUpdateManyWithNestedWhereInput>;
+};
+
+export type AccountDiscountCodeUpdateOneInlineInput = {
+  /** Connect existing AccountDiscountCode document */
+  connect?: InputMaybe<AccountDiscountCodeWhereUniqueInput>;
+  /** Create and connect one AccountDiscountCode document */
+  create?: InputMaybe<AccountDiscountCodeCreateInput>;
+  /** Delete currently connected AccountDiscountCode document */
+  delete?: InputMaybe<Scalars["Boolean"]>;
+  /** Disconnect currently connected AccountDiscountCode document */
+  disconnect?: InputMaybe<Scalars["Boolean"]>;
+  /** Update single AccountDiscountCode document */
+  update?: InputMaybe<AccountDiscountCodeUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single AccountDiscountCode document */
+  upsert?: InputMaybe<AccountDiscountCodeUpsertWithNestedWhereUniqueInput>;
+};
+
+export type AccountDiscountCodeUpdateWithNestedWhereUniqueInput = {
+  DiscountCode?: InputMaybe<DiscountCodeUpdateWithNestedWhereUniqueInput>;
+};
+
+export type AccountDiscountCodeUpsertWithNestedWhereUniqueInput = {
+  DiscountCode?: InputMaybe<DiscountCodeUpsertWithNestedWhereUniqueInput>;
+};
+
+export type AccountDiscountCodeWhereInput = {
+  DiscountCode?: InputMaybe<DiscountCodeWhereInput>;
+};
+
+export type AccountDiscountCodeWhereUniqueInput = {
+  DiscountCode?: InputMaybe<DiscountCodeWhereUniqueInput>;
 };
 
 /** An edge in a connection. */
@@ -167,6 +263,10 @@ export type AccountManyWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
   createdBy?: InputMaybe<UserWhereInput>;
+  /** All values in which the union is empty */
+  discountCode_empty?: InputMaybe<Scalars["Boolean"]>;
+  /** Matches if the union contains at least one connection to the provided item to the filter */
+  discountCode_some?: InputMaybe<AccountDiscountCodeWhereInput>;
   documentInStages_every?: InputMaybe<AccountWhereStageInput>;
   documentInStages_none?: InputMaybe<AccountWhereStageInput>;
   documentInStages_some?: InputMaybe<AccountWhereStageInput>;
@@ -280,6 +380,7 @@ export enum AccountOrderByInput {
 }
 
 export type AccountUpdateInput = {
+  discountCode?: InputMaybe<AccountDiscountCodeUpdateManyInlineInput>;
   email?: InputMaybe<Scalars["String"]>;
   password?: InputMaybe<Scalars["String"]>;
 };
@@ -380,6 +481,10 @@ export type AccountWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
   createdBy?: InputMaybe<UserWhereInput>;
+  /** All values in which the union is empty */
+  discountCode_empty?: InputMaybe<Scalars["Boolean"]>;
+  /** Matches if the union contains at least one connection to the provided item to the filter */
+  discountCode_some?: InputMaybe<AccountDiscountCodeWhereInput>;
   documentInStages_every?: InputMaybe<AccountWhereStageInput>;
   documentInStages_none?: InputMaybe<AccountWhereStageInput>;
   documentInStages_some?: InputMaybe<AccountWhereStageInput>;
@@ -2307,6 +2412,518 @@ export type CurrencyWhereUniqueInput = {
   id?: InputMaybe<Scalars["ID"]>;
 };
 
+export type DiscountCode = Node & {
+  __typename?: "DiscountCode";
+  accounts: Array<Account>;
+  code: Scalars["String"];
+  /** The time the document was created */
+  createdAt: Scalars["DateTime"];
+  /** User that created this document */
+  createdBy?: Maybe<User>;
+  discount: Scalars["Int"];
+  /** Get the document in other stages */
+  documentInStages: Array<DiscountCode>;
+  /** List of DiscountCode versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars["ID"];
+  newsletterUsers: Array<NewsletterUser>;
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars["DateTime"]>;
+  /** User that last published this document */
+  publishedBy?: Maybe<User>;
+  scheduledIn: Array<ScheduledOperation>;
+  /** System stage field */
+  stage: Stage;
+  /** The time the document was updated */
+  updatedAt: Scalars["DateTime"];
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>;
+  used: Scalars["Boolean"];
+};
+
+export type DiscountCodeAccountsArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  before?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
+  forceParentLocale?: InputMaybe<Scalars["Boolean"]>;
+  last?: InputMaybe<Scalars["Int"]>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars["Int"]>;
+  where?: InputMaybe<AccountWhereInput>;
+};
+
+export type DiscountCodeCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars["Boolean"]>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type DiscountCodeDocumentInStagesArgs = {
+  includeCurrent?: Scalars["Boolean"];
+  inheritLocale?: Scalars["Boolean"];
+  stages?: Array<Stage>;
+};
+
+export type DiscountCodeHistoryArgs = {
+  limit?: Scalars["Int"];
+  skip?: Scalars["Int"];
+  stageOverride?: InputMaybe<Stage>;
+};
+
+export type DiscountCodeNewsletterUsersArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  before?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
+  forceParentLocale?: InputMaybe<Scalars["Boolean"]>;
+  last?: InputMaybe<Scalars["Int"]>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars["Int"]>;
+  where?: InputMaybe<NewsletterUserWhereInput>;
+};
+
+export type DiscountCodePublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars["Boolean"]>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type DiscountCodeScheduledInArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  before?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
+  forceParentLocale?: InputMaybe<Scalars["Boolean"]>;
+  last?: InputMaybe<Scalars["Int"]>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars["Int"]>;
+  where?: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+export type DiscountCodeUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars["Boolean"]>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type DiscountCodeConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: DiscountCodeWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type DiscountCodeConnection = {
+  __typename?: "DiscountCodeConnection";
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<DiscountCodeEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type DiscountCodeCreateInput = {
+  accounts?: InputMaybe<AccountCreateManyInlineInput>;
+  code: Scalars["String"];
+  createdAt?: InputMaybe<Scalars["DateTime"]>;
+  discount: Scalars["Int"];
+  newsletterUsers?: InputMaybe<NewsletterUserCreateManyInlineInput>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]>;
+  used: Scalars["Boolean"];
+};
+
+export type DiscountCodeCreateManyInlineInput = {
+  /** Connect multiple existing DiscountCode documents */
+  connect?: InputMaybe<Array<DiscountCodeWhereUniqueInput>>;
+  /** Create and connect multiple existing DiscountCode documents */
+  create?: InputMaybe<Array<DiscountCodeCreateInput>>;
+};
+
+export type DiscountCodeCreateOneInlineInput = {
+  /** Connect one existing DiscountCode document */
+  connect?: InputMaybe<DiscountCodeWhereUniqueInput>;
+  /** Create and connect one DiscountCode document */
+  create?: InputMaybe<DiscountCodeCreateInput>;
+};
+
+/** An edge in a connection. */
+export type DiscountCodeEdge = {
+  __typename?: "DiscountCodeEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"];
+  /** The item at the end of the edge. */
+  node: DiscountCode;
+};
+
+/** Identifies documents */
+export type DiscountCodeManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<DiscountCodeWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<DiscountCodeWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<DiscountCodeWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars["String"]>;
+  accounts_every?: InputMaybe<AccountWhereInput>;
+  accounts_none?: InputMaybe<AccountWhereInput>;
+  accounts_some?: InputMaybe<AccountWhereInput>;
+  code?: InputMaybe<Scalars["String"]>;
+  /** All values containing the given string. */
+  code_contains?: InputMaybe<Scalars["String"]>;
+  /** All values ending with the given string. */
+  code_ends_with?: InputMaybe<Scalars["String"]>;
+  /** All values that are contained in given list. */
+  code_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  code_not?: InputMaybe<Scalars["String"]>;
+  /** All values not containing the given string. */
+  code_not_contains?: InputMaybe<Scalars["String"]>;
+  /** All values not ending with the given string */
+  code_not_ends_with?: InputMaybe<Scalars["String"]>;
+  /** All values that are not contained in given list. */
+  code_not_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+  /** All values not starting with the given string. */
+  code_not_starts_with?: InputMaybe<Scalars["String"]>;
+  /** All values starting with the given string. */
+  code_starts_with?: InputMaybe<Scalars["String"]>;
+  createdAt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars["DateTime"]>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars["DateTime"]>;
+  /** Any other value that exists and is not equal to the given value. */
+  createdAt_not?: InputMaybe<Scalars["DateTime"]>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  discount?: InputMaybe<Scalars["Int"]>;
+  /** All values greater than the given value. */
+  discount_gt?: InputMaybe<Scalars["Int"]>;
+  /** All values greater than or equal the given value. */
+  discount_gte?: InputMaybe<Scalars["Int"]>;
+  /** All values that are contained in given list. */
+  discount_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
+  /** All values less than the given value. */
+  discount_lt?: InputMaybe<Scalars["Int"]>;
+  /** All values less than or equal the given value. */
+  discount_lte?: InputMaybe<Scalars["Int"]>;
+  /** Any other value that exists and is not equal to the given value. */
+  discount_not?: InputMaybe<Scalars["Int"]>;
+  /** All values that are not contained in given list. */
+  discount_not_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
+  documentInStages_every?: InputMaybe<DiscountCodeWhereStageInput>;
+  documentInStages_none?: InputMaybe<DiscountCodeWhereStageInput>;
+  documentInStages_some?: InputMaybe<DiscountCodeWhereStageInput>;
+  id?: InputMaybe<Scalars["ID"]>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars["ID"]>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars["ID"]>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars["ID"]>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars["ID"]>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars["ID"]>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars["ID"]>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars["ID"]>;
+  newsletterUsers_every?: InputMaybe<NewsletterUserWhereInput>;
+  newsletterUsers_none?: InputMaybe<NewsletterUserWhereInput>;
+  newsletterUsers_some?: InputMaybe<NewsletterUserWhereInput>;
+  publishedAt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars["DateTime"]>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars["DateTime"]>;
+  /** Any other value that exists and is not equal to the given value. */
+  publishedAt_not?: InputMaybe<Scalars["DateTime"]>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars["DateTime"]>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars["DateTime"]>;
+  /** Any other value that exists and is not equal to the given value. */
+  updatedAt_not?: InputMaybe<Scalars["DateTime"]>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+  used?: InputMaybe<Scalars["Boolean"]>;
+  /** Any other value that exists and is not equal to the given value. */
+  used_not?: InputMaybe<Scalars["Boolean"]>;
+};
+
+export enum DiscountCodeOrderByInput {
+  CodeAsc = "code_ASC",
+  CodeDesc = "code_DESC",
+  CreatedAtAsc = "createdAt_ASC",
+  CreatedAtDesc = "createdAt_DESC",
+  DiscountAsc = "discount_ASC",
+  DiscountDesc = "discount_DESC",
+  IdAsc = "id_ASC",
+  IdDesc = "id_DESC",
+  PublishedAtAsc = "publishedAt_ASC",
+  PublishedAtDesc = "publishedAt_DESC",
+  UpdatedAtAsc = "updatedAt_ASC",
+  UpdatedAtDesc = "updatedAt_DESC",
+  UsedAsc = "used_ASC",
+  UsedDesc = "used_DESC",
+}
+
+export type DiscountCodeUpdateInput = {
+  accounts?: InputMaybe<AccountUpdateManyInlineInput>;
+  code?: InputMaybe<Scalars["String"]>;
+  discount?: InputMaybe<Scalars["Int"]>;
+  newsletterUsers?: InputMaybe<NewsletterUserUpdateManyInlineInput>;
+  used?: InputMaybe<Scalars["Boolean"]>;
+};
+
+export type DiscountCodeUpdateManyInlineInput = {
+  /** Connect multiple existing DiscountCode documents */
+  connect?: InputMaybe<Array<DiscountCodeConnectInput>>;
+  /** Create and connect multiple DiscountCode documents */
+  create?: InputMaybe<Array<DiscountCodeCreateInput>>;
+  /** Delete multiple DiscountCode documents */
+  delete?: InputMaybe<Array<DiscountCodeWhereUniqueInput>>;
+  /** Disconnect multiple DiscountCode documents */
+  disconnect?: InputMaybe<Array<DiscountCodeWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing DiscountCode documents */
+  set?: InputMaybe<Array<DiscountCodeWhereUniqueInput>>;
+  /** Update multiple DiscountCode documents */
+  update?: InputMaybe<Array<DiscountCodeUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple DiscountCode documents */
+  upsert?: InputMaybe<Array<DiscountCodeUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type DiscountCodeUpdateManyInput = {
+  code?: InputMaybe<Scalars["String"]>;
+  discount?: InputMaybe<Scalars["Int"]>;
+  used?: InputMaybe<Scalars["Boolean"]>;
+};
+
+export type DiscountCodeUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: DiscountCodeUpdateManyInput;
+  /** Document search */
+  where: DiscountCodeWhereInput;
+};
+
+export type DiscountCodeUpdateOneInlineInput = {
+  /** Connect existing DiscountCode document */
+  connect?: InputMaybe<DiscountCodeWhereUniqueInput>;
+  /** Create and connect one DiscountCode document */
+  create?: InputMaybe<DiscountCodeCreateInput>;
+  /** Delete currently connected DiscountCode document */
+  delete?: InputMaybe<Scalars["Boolean"]>;
+  /** Disconnect currently connected DiscountCode document */
+  disconnect?: InputMaybe<Scalars["Boolean"]>;
+  /** Update single DiscountCode document */
+  update?: InputMaybe<DiscountCodeUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single DiscountCode document */
+  upsert?: InputMaybe<DiscountCodeUpsertWithNestedWhereUniqueInput>;
+};
+
+export type DiscountCodeUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: DiscountCodeUpdateInput;
+  /** Unique document search */
+  where: DiscountCodeWhereUniqueInput;
+};
+
+export type DiscountCodeUpsertInput = {
+  /** Create document if it didn't exist */
+  create: DiscountCodeCreateInput;
+  /** Update document if it exists */
+  update: DiscountCodeUpdateInput;
+};
+
+export type DiscountCodeUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: DiscountCodeUpsertInput;
+  /** Unique document search */
+  where: DiscountCodeWhereUniqueInput;
+};
+
+/** This contains a set of filters that can be used to compare values internally */
+export type DiscountCodeWhereComparatorInput = {
+  /** This field can be used to request to check if the entry is outdated by internal comparison */
+  outdated_to?: InputMaybe<Scalars["Boolean"]>;
+};
+
+/** Identifies documents */
+export type DiscountCodeWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<DiscountCodeWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<DiscountCodeWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<DiscountCodeWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars["String"]>;
+  accounts_every?: InputMaybe<AccountWhereInput>;
+  accounts_none?: InputMaybe<AccountWhereInput>;
+  accounts_some?: InputMaybe<AccountWhereInput>;
+  code?: InputMaybe<Scalars["String"]>;
+  /** All values containing the given string. */
+  code_contains?: InputMaybe<Scalars["String"]>;
+  /** All values ending with the given string. */
+  code_ends_with?: InputMaybe<Scalars["String"]>;
+  /** All values that are contained in given list. */
+  code_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  code_not?: InputMaybe<Scalars["String"]>;
+  /** All values not containing the given string. */
+  code_not_contains?: InputMaybe<Scalars["String"]>;
+  /** All values not ending with the given string */
+  code_not_ends_with?: InputMaybe<Scalars["String"]>;
+  /** All values that are not contained in given list. */
+  code_not_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+  /** All values not starting with the given string. */
+  code_not_starts_with?: InputMaybe<Scalars["String"]>;
+  /** All values starting with the given string. */
+  code_starts_with?: InputMaybe<Scalars["String"]>;
+  createdAt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars["DateTime"]>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars["DateTime"]>;
+  /** Any other value that exists and is not equal to the given value. */
+  createdAt_not?: InputMaybe<Scalars["DateTime"]>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  discount?: InputMaybe<Scalars["Int"]>;
+  /** All values greater than the given value. */
+  discount_gt?: InputMaybe<Scalars["Int"]>;
+  /** All values greater than or equal the given value. */
+  discount_gte?: InputMaybe<Scalars["Int"]>;
+  /** All values that are contained in given list. */
+  discount_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
+  /** All values less than the given value. */
+  discount_lt?: InputMaybe<Scalars["Int"]>;
+  /** All values less than or equal the given value. */
+  discount_lte?: InputMaybe<Scalars["Int"]>;
+  /** Any other value that exists and is not equal to the given value. */
+  discount_not?: InputMaybe<Scalars["Int"]>;
+  /** All values that are not contained in given list. */
+  discount_not_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
+  documentInStages_every?: InputMaybe<DiscountCodeWhereStageInput>;
+  documentInStages_none?: InputMaybe<DiscountCodeWhereStageInput>;
+  documentInStages_some?: InputMaybe<DiscountCodeWhereStageInput>;
+  id?: InputMaybe<Scalars["ID"]>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars["ID"]>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars["ID"]>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars["ID"]>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars["ID"]>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars["ID"]>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars["ID"]>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars["ID"]>;
+  newsletterUsers_every?: InputMaybe<NewsletterUserWhereInput>;
+  newsletterUsers_none?: InputMaybe<NewsletterUserWhereInput>;
+  newsletterUsers_some?: InputMaybe<NewsletterUserWhereInput>;
+  publishedAt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars["DateTime"]>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars["DateTime"]>;
+  /** Any other value that exists and is not equal to the given value. */
+  publishedAt_not?: InputMaybe<Scalars["DateTime"]>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars["DateTime"]>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars["DateTime"]>;
+  /** Any other value that exists and is not equal to the given value. */
+  updatedAt_not?: InputMaybe<Scalars["DateTime"]>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+  used?: InputMaybe<Scalars["Boolean"]>;
+  /** Any other value that exists and is not equal to the given value. */
+  used_not?: InputMaybe<Scalars["Boolean"]>;
+};
+
+/** The document in stages filter allows specifying a stage entry to cross compare the same document between different stages */
+export type DiscountCodeWhereStageInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<DiscountCodeWhereStageInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<DiscountCodeWhereStageInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<DiscountCodeWhereStageInput>>;
+  /** This field contains fields which can be set as true or false to specify an internal comparison */
+  compareWithParent?: InputMaybe<DiscountCodeWhereComparatorInput>;
+  /** Specify the stage to compare with */
+  stage?: InputMaybe<Stage>;
+};
+
+/** References DiscountCode record uniquely */
+export type DiscountCodeWhereUniqueInput = {
+  id?: InputMaybe<Scalars["ID"]>;
+};
+
 export enum DocumentFileTypes {
   Doc = "doc",
   Docx = "docx",
@@ -2436,6 +3053,10 @@ export type Mutation = {
   createCategory?: Maybe<Category>;
   /** Create one currency */
   createCurrency?: Maybe<Currency>;
+  /** Create one discountCode */
+  createDiscountCode?: Maybe<DiscountCode>;
+  /** Create one newsletterUser */
+  createNewsletterUser?: Maybe<NewsletterUser>;
   /** Create one order */
   createOrder?: Maybe<Order>;
   /** Create one orderItem */
@@ -2458,6 +3079,8 @@ export type Mutation = {
   deleteCategory?: Maybe<Category>;
   /** Delete one currency from _all_ existing stages. Returns deleted document. */
   deleteCurrency?: Maybe<Currency>;
+  /** Delete one discountCode from _all_ existing stages. Returns deleted document. */
+  deleteDiscountCode?: Maybe<DiscountCode>;
   /**
    * Delete many Account documents
    * @deprecated Please use the new paginated many mutation (deleteManyAccountsConnection)
@@ -2486,6 +3109,20 @@ export type Mutation = {
   deleteManyCurrencies: BatchPayload;
   /** Delete many Currency documents, return deleted documents */
   deleteManyCurrenciesConnection: CurrencyConnection;
+  /**
+   * Delete many DiscountCode documents
+   * @deprecated Please use the new paginated many mutation (deleteManyDiscountCodesConnection)
+   */
+  deleteManyDiscountCodes: BatchPayload;
+  /** Delete many DiscountCode documents, return deleted documents */
+  deleteManyDiscountCodesConnection: DiscountCodeConnection;
+  /**
+   * Delete many NewsletterUser documents
+   * @deprecated Please use the new paginated many mutation (deleteManyNewsletterUsersConnection)
+   */
+  deleteManyNewsletterUsers: BatchPayload;
+  /** Delete many NewsletterUser documents, return deleted documents */
+  deleteManyNewsletterUsersConnection: NewsletterUserConnection;
   /**
    * Delete many OrderItem documents
    * @deprecated Please use the new paginated many mutation (deleteManyOrderItemsConnection)
@@ -2528,6 +3165,8 @@ export type Mutation = {
   deleteManySizes: BatchPayload;
   /** Delete many Size documents, return deleted documents */
   deleteManySizesConnection: SizeConnection;
+  /** Delete one newsletterUser from _all_ existing stages. Returns deleted document. */
+  deleteNewsletterUser?: Maybe<NewsletterUser>;
   /** Delete one order from _all_ existing stages. Returns deleted document. */
   deleteOrder?: Maybe<Order>;
   /** Delete one orderItem from _all_ existing stages. Returns deleted document. */
@@ -2552,6 +3191,8 @@ export type Mutation = {
   publishCategory?: Maybe<Category>;
   /** Publish one currency */
   publishCurrency?: Maybe<Currency>;
+  /** Publish one discountCode */
+  publishDiscountCode?: Maybe<DiscountCode>;
   /**
    * Publish many Account documents
    * @deprecated Please use the new paginated many mutation (publishManyAccountsConnection)
@@ -2580,6 +3221,20 @@ export type Mutation = {
   publishManyCurrencies: BatchPayload;
   /** Publish many Currency documents */
   publishManyCurrenciesConnection: CurrencyConnection;
+  /**
+   * Publish many DiscountCode documents
+   * @deprecated Please use the new paginated many mutation (publishManyDiscountCodesConnection)
+   */
+  publishManyDiscountCodes: BatchPayload;
+  /** Publish many DiscountCode documents */
+  publishManyDiscountCodesConnection: DiscountCodeConnection;
+  /**
+   * Publish many NewsletterUser documents
+   * @deprecated Please use the new paginated many mutation (publishManyNewsletterUsersConnection)
+   */
+  publishManyNewsletterUsers: BatchPayload;
+  /** Publish many NewsletterUser documents */
+  publishManyNewsletterUsersConnection: NewsletterUserConnection;
   /**
    * Publish many OrderItem documents
    * @deprecated Please use the new paginated many mutation (publishManyOrderItemsConnection)
@@ -2622,6 +3277,8 @@ export type Mutation = {
   publishManySizes: BatchPayload;
   /** Publish many Size documents */
   publishManySizesConnection: SizeConnection;
+  /** Publish one newsletterUser */
+  publishNewsletterUser?: Maybe<NewsletterUser>;
   /** Publish one order */
   publishOrder?: Maybe<Order>;
   /** Publish one orderItem */
@@ -2642,6 +3299,10 @@ export type Mutation = {
   schedulePublishCategory?: Maybe<Category>;
   /** Schedule to publish one currency */
   schedulePublishCurrency?: Maybe<Currency>;
+  /** Schedule to publish one discountCode */
+  schedulePublishDiscountCode?: Maybe<DiscountCode>;
+  /** Schedule to publish one newsletterUser */
+  schedulePublishNewsletterUser?: Maybe<NewsletterUser>;
   /** Schedule to publish one order */
   schedulePublishOrder?: Maybe<Order>;
   /** Schedule to publish one orderItem */
@@ -2662,6 +3323,10 @@ export type Mutation = {
   scheduleUnpublishCategory?: Maybe<Category>;
   /** Unpublish one currency from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishCurrency?: Maybe<Currency>;
+  /** Unpublish one discountCode from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishDiscountCode?: Maybe<DiscountCode>;
+  /** Unpublish one newsletterUser from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishNewsletterUser?: Maybe<NewsletterUser>;
   /** Unpublish one order from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishOrder?: Maybe<Order>;
   /** Unpublish one orderItem from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -2682,6 +3347,8 @@ export type Mutation = {
   unpublishCategory?: Maybe<Category>;
   /** Unpublish one currency from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishCurrency?: Maybe<Currency>;
+  /** Unpublish one discountCode from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishDiscountCode?: Maybe<DiscountCode>;
   /**
    * Unpublish many Account documents
    * @deprecated Please use the new paginated many mutation (unpublishManyAccountsConnection)
@@ -2710,6 +3377,20 @@ export type Mutation = {
   unpublishManyCurrencies: BatchPayload;
   /** Find many Currency documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyCurrenciesConnection: CurrencyConnection;
+  /**
+   * Unpublish many DiscountCode documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyDiscountCodesConnection)
+   */
+  unpublishManyDiscountCodes: BatchPayload;
+  /** Find many DiscountCode documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyDiscountCodesConnection: DiscountCodeConnection;
+  /**
+   * Unpublish many NewsletterUser documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyNewsletterUsersConnection)
+   */
+  unpublishManyNewsletterUsers: BatchPayload;
+  /** Find many NewsletterUser documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyNewsletterUsersConnection: NewsletterUserConnection;
   /**
    * Unpublish many OrderItem documents
    * @deprecated Please use the new paginated many mutation (unpublishManyOrderItemsConnection)
@@ -2752,6 +3433,8 @@ export type Mutation = {
   unpublishManySizes: BatchPayload;
   /** Find many Size documents that match criteria in specified stage and unpublish from target stages */
   unpublishManySizesConnection: SizeConnection;
+  /** Unpublish one newsletterUser from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishNewsletterUser?: Maybe<NewsletterUser>;
   /** Unpublish one order from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishOrder?: Maybe<Order>;
   /** Unpublish one orderItem from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -2772,6 +3455,8 @@ export type Mutation = {
   updateCategory?: Maybe<Category>;
   /** Update one currency */
   updateCurrency?: Maybe<Currency>;
+  /** Update one discountCode */
+  updateDiscountCode?: Maybe<DiscountCode>;
   /**
    * Update many accounts
    * @deprecated Please use the new paginated many mutation (updateManyAccountsConnection)
@@ -2800,6 +3485,20 @@ export type Mutation = {
   updateManyCurrencies: BatchPayload;
   /** Update many Currency documents */
   updateManyCurrenciesConnection: CurrencyConnection;
+  /**
+   * Update many discountCodes
+   * @deprecated Please use the new paginated many mutation (updateManyDiscountCodesConnection)
+   */
+  updateManyDiscountCodes: BatchPayload;
+  /** Update many DiscountCode documents */
+  updateManyDiscountCodesConnection: DiscountCodeConnection;
+  /**
+   * Update many newsletterUsers
+   * @deprecated Please use the new paginated many mutation (updateManyNewsletterUsersConnection)
+   */
+  updateManyNewsletterUsers: BatchPayload;
+  /** Update many NewsletterUser documents */
+  updateManyNewsletterUsersConnection: NewsletterUserConnection;
   /**
    * Update many orderItems
    * @deprecated Please use the new paginated many mutation (updateManyOrderItemsConnection)
@@ -2842,6 +3541,8 @@ export type Mutation = {
   updateManySizes: BatchPayload;
   /** Update many Size documents */
   updateManySizesConnection: SizeConnection;
+  /** Update one newsletterUser */
+  updateNewsletterUser?: Maybe<NewsletterUser>;
   /** Update one order */
   updateOrder?: Maybe<Order>;
   /** Update one orderItem */
@@ -2864,6 +3565,10 @@ export type Mutation = {
   upsertCategory?: Maybe<Category>;
   /** Upsert one currency */
   upsertCurrency?: Maybe<Currency>;
+  /** Upsert one discountCode */
+  upsertDiscountCode?: Maybe<DiscountCode>;
+  /** Upsert one newsletterUser */
+  upsertNewsletterUser?: Maybe<NewsletterUser>;
   /** Upsert one order */
   upsertOrder?: Maybe<Order>;
   /** Upsert one orderItem */
@@ -2892,6 +3597,14 @@ export type MutationCreateCategoryArgs = {
 
 export type MutationCreateCurrencyArgs = {
   data: CurrencyCreateInput;
+};
+
+export type MutationCreateDiscountCodeArgs = {
+  data: DiscountCodeCreateInput;
+};
+
+export type MutationCreateNewsletterUserArgs = {
+  data: NewsletterUserCreateInput;
 };
 
 export type MutationCreateOrderArgs = {
@@ -2936,6 +3649,10 @@ export type MutationDeleteCategoryArgs = {
 
 export type MutationDeleteCurrencyArgs = {
   where: CurrencyWhereUniqueInput;
+};
+
+export type MutationDeleteDiscountCodeArgs = {
+  where: DiscountCodeWhereUniqueInput;
 };
 
 export type MutationDeleteManyAccountsArgs = {
@@ -2988,6 +3705,32 @@ export type MutationDeleteManyCurrenciesConnectionArgs = {
   last?: InputMaybe<Scalars["Int"]>;
   skip?: InputMaybe<Scalars["Int"]>;
   where?: InputMaybe<CurrencyManyWhereInput>;
+};
+
+export type MutationDeleteManyDiscountCodesArgs = {
+  where?: InputMaybe<DiscountCodeManyWhereInput>;
+};
+
+export type MutationDeleteManyDiscountCodesConnectionArgs = {
+  after?: InputMaybe<Scalars["ID"]>;
+  before?: InputMaybe<Scalars["ID"]>;
+  first?: InputMaybe<Scalars["Int"]>;
+  last?: InputMaybe<Scalars["Int"]>;
+  skip?: InputMaybe<Scalars["Int"]>;
+  where?: InputMaybe<DiscountCodeManyWhereInput>;
+};
+
+export type MutationDeleteManyNewsletterUsersArgs = {
+  where?: InputMaybe<NewsletterUserManyWhereInput>;
+};
+
+export type MutationDeleteManyNewsletterUsersConnectionArgs = {
+  after?: InputMaybe<Scalars["ID"]>;
+  before?: InputMaybe<Scalars["ID"]>;
+  first?: InputMaybe<Scalars["Int"]>;
+  last?: InputMaybe<Scalars["Int"]>;
+  skip?: InputMaybe<Scalars["Int"]>;
+  where?: InputMaybe<NewsletterUserManyWhereInput>;
 };
 
 export type MutationDeleteManyOrderItemsArgs = {
@@ -3068,6 +3811,10 @@ export type MutationDeleteManySizesConnectionArgs = {
   where?: InputMaybe<SizeManyWhereInput>;
 };
 
+export type MutationDeleteNewsletterUserArgs = {
+  where: NewsletterUserWhereUniqueInput;
+};
+
 export type MutationDeleteOrderArgs = {
   where: OrderWhereUniqueInput;
 };
@@ -3124,6 +3871,11 @@ export type MutationPublishCategoryArgs = {
 export type MutationPublishCurrencyArgs = {
   to?: Array<Stage>;
   where: CurrencyWhereUniqueInput;
+};
+
+export type MutationPublishDiscountCodeArgs = {
+  to?: Array<Stage>;
+  where: DiscountCodeWhereUniqueInput;
 };
 
 export type MutationPublishManyAccountsArgs = {
@@ -3200,6 +3952,38 @@ export type MutationPublishManyCurrenciesConnectionArgs = {
   skip?: InputMaybe<Scalars["Int"]>;
   to?: Array<Stage>;
   where?: InputMaybe<CurrencyManyWhereInput>;
+};
+
+export type MutationPublishManyDiscountCodesArgs = {
+  to?: Array<Stage>;
+  where?: InputMaybe<DiscountCodeManyWhereInput>;
+};
+
+export type MutationPublishManyDiscountCodesConnectionArgs = {
+  after?: InputMaybe<Scalars["ID"]>;
+  before?: InputMaybe<Scalars["ID"]>;
+  first?: InputMaybe<Scalars["Int"]>;
+  from?: InputMaybe<Stage>;
+  last?: InputMaybe<Scalars["Int"]>;
+  skip?: InputMaybe<Scalars["Int"]>;
+  to?: Array<Stage>;
+  where?: InputMaybe<DiscountCodeManyWhereInput>;
+};
+
+export type MutationPublishManyNewsletterUsersArgs = {
+  to?: Array<Stage>;
+  where?: InputMaybe<NewsletterUserManyWhereInput>;
+};
+
+export type MutationPublishManyNewsletterUsersConnectionArgs = {
+  after?: InputMaybe<Scalars["ID"]>;
+  before?: InputMaybe<Scalars["ID"]>;
+  first?: InputMaybe<Scalars["Int"]>;
+  from?: InputMaybe<Stage>;
+  last?: InputMaybe<Scalars["Int"]>;
+  skip?: InputMaybe<Scalars["Int"]>;
+  to?: Array<Stage>;
+  where?: InputMaybe<NewsletterUserManyWhereInput>;
 };
 
 export type MutationPublishManyOrderItemsArgs = {
@@ -3304,6 +4088,11 @@ export type MutationPublishManySizesConnectionArgs = {
   where?: InputMaybe<SizeManyWhereInput>;
 };
 
+export type MutationPublishNewsletterUserArgs = {
+  to?: Array<Stage>;
+  where: NewsletterUserWhereUniqueInput;
+};
+
 export type MutationPublishOrderArgs = {
   to?: Array<Stage>;
   where: OrderWhereUniqueInput;
@@ -3369,6 +4158,20 @@ export type MutationSchedulePublishCurrencyArgs = {
   releaseId?: InputMaybe<Scalars["String"]>;
   to?: Array<Stage>;
   where: CurrencyWhereUniqueInput;
+};
+
+export type MutationSchedulePublishDiscountCodeArgs = {
+  releaseAt?: InputMaybe<Scalars["DateTime"]>;
+  releaseId?: InputMaybe<Scalars["String"]>;
+  to?: Array<Stage>;
+  where: DiscountCodeWhereUniqueInput;
+};
+
+export type MutationSchedulePublishNewsletterUserArgs = {
+  releaseAt?: InputMaybe<Scalars["DateTime"]>;
+  releaseId?: InputMaybe<Scalars["String"]>;
+  to?: Array<Stage>;
+  where: NewsletterUserWhereUniqueInput;
 };
 
 export type MutationSchedulePublishOrderArgs = {
@@ -3448,6 +4251,20 @@ export type MutationScheduleUnpublishCurrencyArgs = {
   where: CurrencyWhereUniqueInput;
 };
 
+export type MutationScheduleUnpublishDiscountCodeArgs = {
+  from?: Array<Stage>;
+  releaseAt?: InputMaybe<Scalars["DateTime"]>;
+  releaseId?: InputMaybe<Scalars["String"]>;
+  where: DiscountCodeWhereUniqueInput;
+};
+
+export type MutationScheduleUnpublishNewsletterUserArgs = {
+  from?: Array<Stage>;
+  releaseAt?: InputMaybe<Scalars["DateTime"]>;
+  releaseId?: InputMaybe<Scalars["String"]>;
+  where: NewsletterUserWhereUniqueInput;
+};
+
 export type MutationScheduleUnpublishOrderArgs = {
   from?: Array<Stage>;
   releaseAt?: InputMaybe<Scalars["DateTime"]>;
@@ -3514,6 +4331,11 @@ export type MutationUnpublishCategoryArgs = {
 export type MutationUnpublishCurrencyArgs = {
   from?: Array<Stage>;
   where: CurrencyWhereUniqueInput;
+};
+
+export type MutationUnpublishDiscountCodeArgs = {
+  from?: Array<Stage>;
+  where: DiscountCodeWhereUniqueInput;
 };
 
 export type MutationUnpublishManyAccountsArgs = {
@@ -3586,6 +4408,38 @@ export type MutationUnpublishManyCurrenciesConnectionArgs = {
   skip?: InputMaybe<Scalars["Int"]>;
   stage?: InputMaybe<Stage>;
   where?: InputMaybe<CurrencyManyWhereInput>;
+};
+
+export type MutationUnpublishManyDiscountCodesArgs = {
+  from?: Array<Stage>;
+  where?: InputMaybe<DiscountCodeManyWhereInput>;
+};
+
+export type MutationUnpublishManyDiscountCodesConnectionArgs = {
+  after?: InputMaybe<Scalars["ID"]>;
+  before?: InputMaybe<Scalars["ID"]>;
+  first?: InputMaybe<Scalars["Int"]>;
+  from?: Array<Stage>;
+  last?: InputMaybe<Scalars["Int"]>;
+  skip?: InputMaybe<Scalars["Int"]>;
+  stage?: InputMaybe<Stage>;
+  where?: InputMaybe<DiscountCodeManyWhereInput>;
+};
+
+export type MutationUnpublishManyNewsletterUsersArgs = {
+  from?: Array<Stage>;
+  where?: InputMaybe<NewsletterUserManyWhereInput>;
+};
+
+export type MutationUnpublishManyNewsletterUsersConnectionArgs = {
+  after?: InputMaybe<Scalars["ID"]>;
+  before?: InputMaybe<Scalars["ID"]>;
+  first?: InputMaybe<Scalars["Int"]>;
+  from?: Array<Stage>;
+  last?: InputMaybe<Scalars["Int"]>;
+  skip?: InputMaybe<Scalars["Int"]>;
+  stage?: InputMaybe<Stage>;
+  where?: InputMaybe<NewsletterUserManyWhereInput>;
 };
 
 export type MutationUnpublishManyOrderItemsArgs = {
@@ -3688,6 +4542,11 @@ export type MutationUnpublishManySizesConnectionArgs = {
   where?: InputMaybe<SizeManyWhereInput>;
 };
 
+export type MutationUnpublishNewsletterUserArgs = {
+  from?: Array<Stage>;
+  where: NewsletterUserWhereUniqueInput;
+};
+
 export type MutationUnpublishOrderArgs = {
   from?: Array<Stage>;
   where: OrderWhereUniqueInput;
@@ -3738,6 +4597,11 @@ export type MutationUpdateCategoryArgs = {
 export type MutationUpdateCurrencyArgs = {
   data: CurrencyUpdateInput;
   where: CurrencyWhereUniqueInput;
+};
+
+export type MutationUpdateDiscountCodeArgs = {
+  data: DiscountCodeUpdateInput;
+  where: DiscountCodeWhereUniqueInput;
 };
 
 export type MutationUpdateManyAccountsArgs = {
@@ -3798,6 +4662,36 @@ export type MutationUpdateManyCurrenciesConnectionArgs = {
   last?: InputMaybe<Scalars["Int"]>;
   skip?: InputMaybe<Scalars["Int"]>;
   where?: InputMaybe<CurrencyManyWhereInput>;
+};
+
+export type MutationUpdateManyDiscountCodesArgs = {
+  data: DiscountCodeUpdateManyInput;
+  where?: InputMaybe<DiscountCodeManyWhereInput>;
+};
+
+export type MutationUpdateManyDiscountCodesConnectionArgs = {
+  after?: InputMaybe<Scalars["ID"]>;
+  before?: InputMaybe<Scalars["ID"]>;
+  data: DiscountCodeUpdateManyInput;
+  first?: InputMaybe<Scalars["Int"]>;
+  last?: InputMaybe<Scalars["Int"]>;
+  skip?: InputMaybe<Scalars["Int"]>;
+  where?: InputMaybe<DiscountCodeManyWhereInput>;
+};
+
+export type MutationUpdateManyNewsletterUsersArgs = {
+  data: NewsletterUserUpdateManyInput;
+  where?: InputMaybe<NewsletterUserManyWhereInput>;
+};
+
+export type MutationUpdateManyNewsletterUsersConnectionArgs = {
+  after?: InputMaybe<Scalars["ID"]>;
+  before?: InputMaybe<Scalars["ID"]>;
+  data: NewsletterUserUpdateManyInput;
+  first?: InputMaybe<Scalars["Int"]>;
+  last?: InputMaybe<Scalars["Int"]>;
+  skip?: InputMaybe<Scalars["Int"]>;
+  where?: InputMaybe<NewsletterUserManyWhereInput>;
 };
 
 export type MutationUpdateManyOrderItemsArgs = {
@@ -3890,6 +4784,11 @@ export type MutationUpdateManySizesConnectionArgs = {
   where?: InputMaybe<SizeManyWhereInput>;
 };
 
+export type MutationUpdateNewsletterUserArgs = {
+  data: NewsletterUserUpdateInput;
+  where: NewsletterUserWhereUniqueInput;
+};
+
 export type MutationUpdateOrderArgs = {
   data: OrderUpdateInput;
   where: OrderWhereUniqueInput;
@@ -3945,6 +4844,16 @@ export type MutationUpsertCurrencyArgs = {
   where: CurrencyWhereUniqueInput;
 };
 
+export type MutationUpsertDiscountCodeArgs = {
+  upsert: DiscountCodeUpsertInput;
+  where: DiscountCodeWhereUniqueInput;
+};
+
+export type MutationUpsertNewsletterUserArgs = {
+  upsert: NewsletterUserUpsertInput;
+  where: NewsletterUserWhereUniqueInput;
+};
+
 export type MutationUpsertOrderArgs = {
   upsert: OrderUpsertInput;
   where: OrderWhereUniqueInput;
@@ -3973,6 +4882,537 @@ export type MutationUpsertReviewArgs = {
 export type MutationUpsertSizeArgs = {
   upsert: SizeUpsertInput;
   where: SizeWhereUniqueInput;
+};
+
+export type NewsletterUser = Node & {
+  __typename?: "NewsletterUser";
+  /** The time the document was created */
+  createdAt: Scalars["DateTime"];
+  /** User that created this document */
+  createdBy?: Maybe<User>;
+  discountCodes: Array<NewsletterUserDiscountCodes>;
+  /** Get the document in other stages */
+  documentInStages: Array<NewsletterUser>;
+  email: Scalars["String"];
+  /** List of NewsletterUser versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars["ID"];
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars["DateTime"]>;
+  /** User that last published this document */
+  publishedBy?: Maybe<User>;
+  scheduledIn: Array<ScheduledOperation>;
+  /** System stage field */
+  stage: Stage;
+  /** The time the document was updated */
+  updatedAt: Scalars["DateTime"];
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>;
+};
+
+export type NewsletterUserCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars["Boolean"]>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type NewsletterUserDiscountCodesArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  before?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
+  forceParentLocale?: InputMaybe<Scalars["Boolean"]>;
+  last?: InputMaybe<Scalars["Int"]>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars["Int"]>;
+};
+
+export type NewsletterUserDocumentInStagesArgs = {
+  includeCurrent?: Scalars["Boolean"];
+  inheritLocale?: Scalars["Boolean"];
+  stages?: Array<Stage>;
+};
+
+export type NewsletterUserHistoryArgs = {
+  limit?: Scalars["Int"];
+  skip?: Scalars["Int"];
+  stageOverride?: InputMaybe<Stage>;
+};
+
+export type NewsletterUserPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars["Boolean"]>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type NewsletterUserScheduledInArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  before?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
+  forceParentLocale?: InputMaybe<Scalars["Boolean"]>;
+  last?: InputMaybe<Scalars["Int"]>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars["Int"]>;
+  where?: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+export type NewsletterUserUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars["Boolean"]>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type NewsletterUserConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: NewsletterUserWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type NewsletterUserConnection = {
+  __typename?: "NewsletterUserConnection";
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<NewsletterUserEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type NewsletterUserCreateInput = {
+  createdAt?: InputMaybe<Scalars["DateTime"]>;
+  discountCodes?: InputMaybe<NewsletterUserDiscountCodesCreateManyInlineInput>;
+  email: Scalars["String"];
+  updatedAt?: InputMaybe<Scalars["DateTime"]>;
+};
+
+export type NewsletterUserCreateManyInlineInput = {
+  /** Connect multiple existing NewsletterUser documents */
+  connect?: InputMaybe<Array<NewsletterUserWhereUniqueInput>>;
+  /** Create and connect multiple existing NewsletterUser documents */
+  create?: InputMaybe<Array<NewsletterUserCreateInput>>;
+};
+
+export type NewsletterUserCreateOneInlineInput = {
+  /** Connect one existing NewsletterUser document */
+  connect?: InputMaybe<NewsletterUserWhereUniqueInput>;
+  /** Create and connect one NewsletterUser document */
+  create?: InputMaybe<NewsletterUserCreateInput>;
+};
+
+export type NewsletterUserDiscountCodes = DiscountCode;
+
+export type NewsletterUserDiscountCodesConnectInput = {
+  DiscountCode?: InputMaybe<DiscountCodeConnectInput>;
+};
+
+export type NewsletterUserDiscountCodesCreateInput = {
+  DiscountCode?: InputMaybe<DiscountCodeCreateInput>;
+};
+
+export type NewsletterUserDiscountCodesCreateManyInlineInput = {
+  /** Connect multiple existing NewsletterUserDiscountCodes documents */
+  connect?: InputMaybe<Array<NewsletterUserDiscountCodesWhereUniqueInput>>;
+  /** Create and connect multiple existing NewsletterUserDiscountCodes documents */
+  create?: InputMaybe<Array<NewsletterUserDiscountCodesCreateInput>>;
+};
+
+export type NewsletterUserDiscountCodesCreateOneInlineInput = {
+  /** Connect one existing NewsletterUserDiscountCodes document */
+  connect?: InputMaybe<NewsletterUserDiscountCodesWhereUniqueInput>;
+  /** Create and connect one NewsletterUserDiscountCodes document */
+  create?: InputMaybe<NewsletterUserDiscountCodesCreateInput>;
+};
+
+export type NewsletterUserDiscountCodesUpdateInput = {
+  DiscountCode?: InputMaybe<DiscountCodeUpdateInput>;
+};
+
+export type NewsletterUserDiscountCodesUpdateManyInlineInput = {
+  /** Connect multiple existing NewsletterUserDiscountCodes documents */
+  connect?: InputMaybe<Array<NewsletterUserDiscountCodesConnectInput>>;
+  /** Create and connect multiple NewsletterUserDiscountCodes documents */
+  create?: InputMaybe<Array<NewsletterUserDiscountCodesCreateInput>>;
+  /** Delete multiple NewsletterUserDiscountCodes documents */
+  delete?: InputMaybe<Array<NewsletterUserDiscountCodesWhereUniqueInput>>;
+  /** Disconnect multiple NewsletterUserDiscountCodes documents */
+  disconnect?: InputMaybe<Array<NewsletterUserDiscountCodesWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing NewsletterUserDiscountCodes documents */
+  set?: InputMaybe<Array<NewsletterUserDiscountCodesWhereUniqueInput>>;
+  /** Update multiple NewsletterUserDiscountCodes documents */
+  update?: InputMaybe<
+    Array<NewsletterUserDiscountCodesUpdateWithNestedWhereUniqueInput>
+  >;
+  /** Upsert multiple NewsletterUserDiscountCodes documents */
+  upsert?: InputMaybe<
+    Array<NewsletterUserDiscountCodesUpsertWithNestedWhereUniqueInput>
+  >;
+};
+
+export type NewsletterUserDiscountCodesUpdateManyWithNestedWhereInput = {
+  DiscountCode?: InputMaybe<DiscountCodeUpdateManyWithNestedWhereInput>;
+};
+
+export type NewsletterUserDiscountCodesUpdateOneInlineInput = {
+  /** Connect existing NewsletterUserDiscountCodes document */
+  connect?: InputMaybe<NewsletterUserDiscountCodesWhereUniqueInput>;
+  /** Create and connect one NewsletterUserDiscountCodes document */
+  create?: InputMaybe<NewsletterUserDiscountCodesCreateInput>;
+  /** Delete currently connected NewsletterUserDiscountCodes document */
+  delete?: InputMaybe<Scalars["Boolean"]>;
+  /** Disconnect currently connected NewsletterUserDiscountCodes document */
+  disconnect?: InputMaybe<Scalars["Boolean"]>;
+  /** Update single NewsletterUserDiscountCodes document */
+  update?: InputMaybe<NewsletterUserDiscountCodesUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single NewsletterUserDiscountCodes document */
+  upsert?: InputMaybe<NewsletterUserDiscountCodesUpsertWithNestedWhereUniqueInput>;
+};
+
+export type NewsletterUserDiscountCodesUpdateWithNestedWhereUniqueInput = {
+  DiscountCode?: InputMaybe<DiscountCodeUpdateWithNestedWhereUniqueInput>;
+};
+
+export type NewsletterUserDiscountCodesUpsertWithNestedWhereUniqueInput = {
+  DiscountCode?: InputMaybe<DiscountCodeUpsertWithNestedWhereUniqueInput>;
+};
+
+export type NewsletterUserDiscountCodesWhereInput = {
+  DiscountCode?: InputMaybe<DiscountCodeWhereInput>;
+};
+
+export type NewsletterUserDiscountCodesWhereUniqueInput = {
+  DiscountCode?: InputMaybe<DiscountCodeWhereUniqueInput>;
+};
+
+/** An edge in a connection. */
+export type NewsletterUserEdge = {
+  __typename?: "NewsletterUserEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"];
+  /** The item at the end of the edge. */
+  node: NewsletterUser;
+};
+
+/** Identifies documents */
+export type NewsletterUserManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<NewsletterUserWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<NewsletterUserWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<NewsletterUserWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars["String"]>;
+  createdAt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars["DateTime"]>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars["DateTime"]>;
+  /** Any other value that exists and is not equal to the given value. */
+  createdAt_not?: InputMaybe<Scalars["DateTime"]>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  /** All values in which the union is empty */
+  discountCodes_empty?: InputMaybe<Scalars["Boolean"]>;
+  /** Matches if the union contains at least one connection to the provided item to the filter */
+  discountCodes_some?: InputMaybe<NewsletterUserDiscountCodesWhereInput>;
+  documentInStages_every?: InputMaybe<NewsletterUserWhereStageInput>;
+  documentInStages_none?: InputMaybe<NewsletterUserWhereStageInput>;
+  documentInStages_some?: InputMaybe<NewsletterUserWhereStageInput>;
+  email?: InputMaybe<Scalars["String"]>;
+  /** All values containing the given string. */
+  email_contains?: InputMaybe<Scalars["String"]>;
+  /** All values ending with the given string. */
+  email_ends_with?: InputMaybe<Scalars["String"]>;
+  /** All values that are contained in given list. */
+  email_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  email_not?: InputMaybe<Scalars["String"]>;
+  /** All values not containing the given string. */
+  email_not_contains?: InputMaybe<Scalars["String"]>;
+  /** All values not ending with the given string */
+  email_not_ends_with?: InputMaybe<Scalars["String"]>;
+  /** All values that are not contained in given list. */
+  email_not_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+  /** All values not starting with the given string. */
+  email_not_starts_with?: InputMaybe<Scalars["String"]>;
+  /** All values starting with the given string. */
+  email_starts_with?: InputMaybe<Scalars["String"]>;
+  id?: InputMaybe<Scalars["ID"]>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars["ID"]>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars["ID"]>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars["ID"]>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars["ID"]>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars["ID"]>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars["ID"]>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars["ID"]>;
+  publishedAt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars["DateTime"]>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars["DateTime"]>;
+  /** Any other value that exists and is not equal to the given value. */
+  publishedAt_not?: InputMaybe<Scalars["DateTime"]>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars["DateTime"]>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars["DateTime"]>;
+  /** Any other value that exists and is not equal to the given value. */
+  updatedAt_not?: InputMaybe<Scalars["DateTime"]>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+export enum NewsletterUserOrderByInput {
+  CreatedAtAsc = "createdAt_ASC",
+  CreatedAtDesc = "createdAt_DESC",
+  EmailAsc = "email_ASC",
+  EmailDesc = "email_DESC",
+  IdAsc = "id_ASC",
+  IdDesc = "id_DESC",
+  PublishedAtAsc = "publishedAt_ASC",
+  PublishedAtDesc = "publishedAt_DESC",
+  UpdatedAtAsc = "updatedAt_ASC",
+  UpdatedAtDesc = "updatedAt_DESC",
+}
+
+export type NewsletterUserUpdateInput = {
+  discountCodes?: InputMaybe<NewsletterUserDiscountCodesUpdateManyInlineInput>;
+  email?: InputMaybe<Scalars["String"]>;
+};
+
+export type NewsletterUserUpdateManyInlineInput = {
+  /** Connect multiple existing NewsletterUser documents */
+  connect?: InputMaybe<Array<NewsletterUserConnectInput>>;
+  /** Create and connect multiple NewsletterUser documents */
+  create?: InputMaybe<Array<NewsletterUserCreateInput>>;
+  /** Delete multiple NewsletterUser documents */
+  delete?: InputMaybe<Array<NewsletterUserWhereUniqueInput>>;
+  /** Disconnect multiple NewsletterUser documents */
+  disconnect?: InputMaybe<Array<NewsletterUserWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing NewsletterUser documents */
+  set?: InputMaybe<Array<NewsletterUserWhereUniqueInput>>;
+  /** Update multiple NewsletterUser documents */
+  update?: InputMaybe<Array<NewsletterUserUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple NewsletterUser documents */
+  upsert?: InputMaybe<Array<NewsletterUserUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type NewsletterUserUpdateManyInput = {
+  /** No fields in updateMany data input */
+  _?: InputMaybe<Scalars["String"]>;
+};
+
+export type NewsletterUserUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: NewsletterUserUpdateManyInput;
+  /** Document search */
+  where: NewsletterUserWhereInput;
+};
+
+export type NewsletterUserUpdateOneInlineInput = {
+  /** Connect existing NewsletterUser document */
+  connect?: InputMaybe<NewsletterUserWhereUniqueInput>;
+  /** Create and connect one NewsletterUser document */
+  create?: InputMaybe<NewsletterUserCreateInput>;
+  /** Delete currently connected NewsletterUser document */
+  delete?: InputMaybe<Scalars["Boolean"]>;
+  /** Disconnect currently connected NewsletterUser document */
+  disconnect?: InputMaybe<Scalars["Boolean"]>;
+  /** Update single NewsletterUser document */
+  update?: InputMaybe<NewsletterUserUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single NewsletterUser document */
+  upsert?: InputMaybe<NewsletterUserUpsertWithNestedWhereUniqueInput>;
+};
+
+export type NewsletterUserUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: NewsletterUserUpdateInput;
+  /** Unique document search */
+  where: NewsletterUserWhereUniqueInput;
+};
+
+export type NewsletterUserUpsertInput = {
+  /** Create document if it didn't exist */
+  create: NewsletterUserCreateInput;
+  /** Update document if it exists */
+  update: NewsletterUserUpdateInput;
+};
+
+export type NewsletterUserUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: NewsletterUserUpsertInput;
+  /** Unique document search */
+  where: NewsletterUserWhereUniqueInput;
+};
+
+/** This contains a set of filters that can be used to compare values internally */
+export type NewsletterUserWhereComparatorInput = {
+  /** This field can be used to request to check if the entry is outdated by internal comparison */
+  outdated_to?: InputMaybe<Scalars["Boolean"]>;
+};
+
+/** Identifies documents */
+export type NewsletterUserWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<NewsletterUserWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<NewsletterUserWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<NewsletterUserWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars["String"]>;
+  createdAt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars["DateTime"]>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars["DateTime"]>;
+  /** Any other value that exists and is not equal to the given value. */
+  createdAt_not?: InputMaybe<Scalars["DateTime"]>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  /** All values in which the union is empty */
+  discountCodes_empty?: InputMaybe<Scalars["Boolean"]>;
+  /** Matches if the union contains at least one connection to the provided item to the filter */
+  discountCodes_some?: InputMaybe<NewsletterUserDiscountCodesWhereInput>;
+  documentInStages_every?: InputMaybe<NewsletterUserWhereStageInput>;
+  documentInStages_none?: InputMaybe<NewsletterUserWhereStageInput>;
+  documentInStages_some?: InputMaybe<NewsletterUserWhereStageInput>;
+  email?: InputMaybe<Scalars["String"]>;
+  /** All values containing the given string. */
+  email_contains?: InputMaybe<Scalars["String"]>;
+  /** All values ending with the given string. */
+  email_ends_with?: InputMaybe<Scalars["String"]>;
+  /** All values that are contained in given list. */
+  email_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  email_not?: InputMaybe<Scalars["String"]>;
+  /** All values not containing the given string. */
+  email_not_contains?: InputMaybe<Scalars["String"]>;
+  /** All values not ending with the given string */
+  email_not_ends_with?: InputMaybe<Scalars["String"]>;
+  /** All values that are not contained in given list. */
+  email_not_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+  /** All values not starting with the given string. */
+  email_not_starts_with?: InputMaybe<Scalars["String"]>;
+  /** All values starting with the given string. */
+  email_starts_with?: InputMaybe<Scalars["String"]>;
+  id?: InputMaybe<Scalars["ID"]>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars["ID"]>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars["ID"]>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars["ID"]>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars["ID"]>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars["ID"]>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars["ID"]>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars["ID"]>;
+  publishedAt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars["DateTime"]>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars["DateTime"]>;
+  /** Any other value that exists and is not equal to the given value. */
+  publishedAt_not?: InputMaybe<Scalars["DateTime"]>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars["DateTime"]>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars["DateTime"]>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars["DateTime"]>;
+  /** Any other value that exists and is not equal to the given value. */
+  updatedAt_not?: InputMaybe<Scalars["DateTime"]>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+/** The document in stages filter allows specifying a stage entry to cross compare the same document between different stages */
+export type NewsletterUserWhereStageInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<NewsletterUserWhereStageInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<NewsletterUserWhereStageInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<NewsletterUserWhereStageInput>>;
+  /** This field contains fields which can be set as true or false to specify an internal comparison */
+  compareWithParent?: InputMaybe<NewsletterUserWhereComparatorInput>;
+  /** Specify the stage to compare with */
+  stage?: InputMaybe<Stage>;
+};
+
+/** References NewsletterUser record uniquely */
+export type NewsletterUserWhereUniqueInput = {
+  email?: InputMaybe<Scalars["String"]>;
+  id?: InputMaybe<Scalars["ID"]>;
 };
 
 /** An object with an ID */
@@ -6500,6 +7940,22 @@ export type Query = {
   currency?: Maybe<Currency>;
   /** Retrieve document version */
   currencyVersion?: Maybe<DocumentVersion>;
+  /** Retrieve a single discountCode */
+  discountCode?: Maybe<DiscountCode>;
+  /** Retrieve document version */
+  discountCodeVersion?: Maybe<DocumentVersion>;
+  /** Retrieve multiple discountCodes */
+  discountCodes: Array<DiscountCode>;
+  /** Retrieve multiple discountCodes using the Relay connection interface */
+  discountCodesConnection: DiscountCodeConnection;
+  /** Retrieve a single newsletterUser */
+  newsletterUser?: Maybe<NewsletterUser>;
+  /** Retrieve document version */
+  newsletterUserVersion?: Maybe<DocumentVersion>;
+  /** Retrieve multiple newsletterUsers */
+  newsletterUsers: Array<NewsletterUser>;
+  /** Retrieve multiple newsletterUsers using the Relay connection interface */
+  newsletterUsersConnection: NewsletterUserConnection;
   /** Fetches an object given its ID */
   node?: Maybe<Node>;
   /** Retrieve a single order */
@@ -6704,6 +8160,74 @@ export type QueryCurrencyArgs = {
 
 export type QueryCurrencyVersionArgs = {
   where: VersionWhereInput;
+};
+
+export type QueryDiscountCodeArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: DiscountCodeWhereUniqueInput;
+};
+
+export type QueryDiscountCodeVersionArgs = {
+  where: VersionWhereInput;
+};
+
+export type QueryDiscountCodesArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  before?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
+  last?: InputMaybe<Scalars["Int"]>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<DiscountCodeOrderByInput>;
+  skip?: InputMaybe<Scalars["Int"]>;
+  stage?: Stage;
+  where?: InputMaybe<DiscountCodeWhereInput>;
+};
+
+export type QueryDiscountCodesConnectionArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  before?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
+  last?: InputMaybe<Scalars["Int"]>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<DiscountCodeOrderByInput>;
+  skip?: InputMaybe<Scalars["Int"]>;
+  stage?: Stage;
+  where?: InputMaybe<DiscountCodeWhereInput>;
+};
+
+export type QueryNewsletterUserArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: NewsletterUserWhereUniqueInput;
+};
+
+export type QueryNewsletterUserVersionArgs = {
+  where: VersionWhereInput;
+};
+
+export type QueryNewsletterUsersArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  before?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
+  last?: InputMaybe<Scalars["Int"]>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<NewsletterUserOrderByInput>;
+  skip?: InputMaybe<Scalars["Int"]>;
+  stage?: Stage;
+  where?: InputMaybe<NewsletterUserWhereInput>;
+};
+
+export type QueryNewsletterUsersConnectionArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  before?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
+  last?: InputMaybe<Scalars["Int"]>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<NewsletterUserOrderByInput>;
+  skip?: InputMaybe<Scalars["Int"]>;
+  stage?: Stage;
+  where?: InputMaybe<NewsletterUserWhereInput>;
 };
 
 export type QueryNodeArgs = {
@@ -7675,6 +9199,8 @@ export type ScheduledOperationAffectedDocument =
   | Asset
   | Category
   | Currency
+  | DiscountCode
+  | NewsletterUser
   | Order
   | OrderItem
   | Product
@@ -9639,6 +11165,26 @@ export type GetCategoriesQuery = {
   categories: Array<{ __typename?: "Category"; name: string; slug: string }>;
 };
 
+export type GetDiscountCodeQueryVariables = Exact<{
+  accountId: Scalars["ID"];
+}>;
+
+export type GetDiscountCodeQuery = {
+  __typename?: "Query";
+  discountCodesConnection: {
+    __typename?: "DiscountCodeConnection";
+    edges: Array<{
+      __typename?: "DiscountCodeEdge";
+      node: {
+        __typename?: "DiscountCode";
+        id: string;
+        code: string;
+        used: boolean;
+      };
+    }>;
+  };
+};
+
 export type CreateAccountMutationVariables = Exact<{
   email: Scalars["String"];
   password: Scalars["String"];
@@ -9646,7 +11192,22 @@ export type CreateAccountMutationVariables = Exact<{
 
 export type CreateAccountMutation = {
   __typename?: "Mutation";
-  createAccount?: { __typename?: "Account"; id: string; email: string } | null;
+  createAccount?: { __typename?: "Account"; email: string; id: string } | null;
+};
+
+export type GetDiscountCodesQueryVariables = Exact<{
+  code: Scalars["String"];
+  email: Scalars["String"];
+}>;
+
+export type GetDiscountCodesQuery = {
+  __typename?: "Query";
+  discountCodes: Array<{
+    __typename?: "DiscountCode";
+    code: string;
+    discount: number;
+    used: boolean;
+  }>;
 };
 
 export type GetAccountByEmailQueryVariables = Exact<{
@@ -9985,11 +11546,85 @@ export type GetCategoriesQueryResult = Apollo.QueryResult<
   GetCategoriesQuery,
   GetCategoriesQueryVariables
 >;
+export const GetDiscountCodeDocument = gql`
+  query GetDiscountCode($accountId: ID!) {
+    discountCodesConnection(where: { accounts_some: { id: $accountId } }) {
+      edges {
+        node {
+          id
+          code
+          used
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetDiscountCodeQuery__
+ *
+ * To run a query within a React component, call `useGetDiscountCodeQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetDiscountCodeQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetDiscountCodeQuery({
+ *   variables: {
+ *      accountId: // value for 'accountId'
+ *   },
+ * });
+ */
+export function useGetDiscountCodeQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetDiscountCodeQuery,
+    GetDiscountCodeQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetDiscountCodeQuery, GetDiscountCodeQueryVariables>(
+    GetDiscountCodeDocument,
+    options
+  );
+}
+export function useGetDiscountCodeLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetDiscountCodeQuery,
+    GetDiscountCodeQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetDiscountCodeQuery,
+    GetDiscountCodeQueryVariables
+  >(GetDiscountCodeDocument, options);
+}
+export type GetDiscountCodeQueryHookResult = ReturnType<
+  typeof useGetDiscountCodeQuery
+>;
+export type GetDiscountCodeLazyQueryHookResult = ReturnType<
+  typeof useGetDiscountCodeLazyQuery
+>;
+export type GetDiscountCodeQueryResult = Apollo.QueryResult<
+  GetDiscountCodeQuery,
+  GetDiscountCodeQueryVariables
+>;
 export const CreateAccountDocument = gql`
   mutation CreateAccount($email: String!, $password: String!) {
-    createAccount(data: { email: $email, password: $password }) {
-      id
+    createAccount(
+      data: {
+        email: $email
+        password: $password
+        discountCode: {
+          create: {
+            DiscountCode: { code: "Start15", used: false, discount: 10 }
+          }
+        }
+      }
+    ) {
       email
+      id
     }
   }
 `;
@@ -10036,6 +11671,73 @@ export type CreateAccountMutationResult =
 export type CreateAccountMutationOptions = Apollo.BaseMutationOptions<
   CreateAccountMutation,
   CreateAccountMutationVariables
+>;
+export const GetDiscountCodesDocument = gql`
+  query GetDiscountCodes($code: String!, $email: String!) {
+    discountCodes(
+      where: {
+        code_contains: $code
+        used: false
+        accounts_some: { email: $email }
+      }
+    ) {
+      code
+      discount
+      used
+    }
+  }
+`;
+
+/**
+ * __useGetDiscountCodesQuery__
+ *
+ * To run a query within a React component, call `useGetDiscountCodesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetDiscountCodesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetDiscountCodesQuery({
+ *   variables: {
+ *      code: // value for 'code'
+ *      email: // value for 'email'
+ *   },
+ * });
+ */
+export function useGetDiscountCodesQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetDiscountCodesQuery,
+    GetDiscountCodesQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetDiscountCodesQuery, GetDiscountCodesQueryVariables>(
+    GetDiscountCodesDocument,
+    options
+  );
+}
+export function useGetDiscountCodesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetDiscountCodesQuery,
+    GetDiscountCodesQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetDiscountCodesQuery,
+    GetDiscountCodesQueryVariables
+  >(GetDiscountCodesDocument, options);
+}
+export type GetDiscountCodesQueryHookResult = ReturnType<
+  typeof useGetDiscountCodesQuery
+>;
+export type GetDiscountCodesLazyQueryHookResult = ReturnType<
+  typeof useGetDiscountCodesLazyQuery
+>;
+export type GetDiscountCodesQueryResult = Apollo.QueryResult<
+  GetDiscountCodesQuery,
+  GetDiscountCodesQueryVariables
 >;
 export const GetAccountByEmailDocument = gql`
   query GetAccountByEmail($email: String!) {
