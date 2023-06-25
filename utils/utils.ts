@@ -12,7 +12,7 @@ export const priceWithDiscount = ({
   price,
   sale,
 }: {
-  sale: string | null | undefined;
+  sale: string | null | undefined | number;
   price: number;
   amount?: number;
 }) => {

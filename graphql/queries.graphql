@@ -60,25 +60,13 @@ query GetCategories {
   }
 }
 
-query GetDiscountCode($accountId: ID!) {
-  discountCodesConnection(where: { accounts_some: { id: $accountId } }) {
-    edges {
-      node {
-        id
-        code
-        used
-      }
-    }
-  }
-}
-
 mutation CreateAccount($email: String!, $password: String!) {
   createAccount(
     data: {
       email: $email
       password: $password
       discountCode: {
-        create: { DiscountCode: { code: "START15", used: false, discount: 10 } }
+        create: { DiscountCode: { code: "START15", used: false, discount: 15 } }
       }
     }
   ) {
@@ -94,6 +82,7 @@ query GetDiscountCodes($code: String!, $email: String!) {
       used: false
       accounts_some: { email: $email }
     }
+    stage: DRAFT
   ) {
     code
     discount

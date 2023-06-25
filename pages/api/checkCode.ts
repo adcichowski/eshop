@@ -31,13 +31,19 @@ const handler: NextApiHandler = async (req, res) => {
       query: GetDiscountCodesDocument,
       variables: { code, email },
     });
-    if (!data.discountCodes) return res.json({ error: "Code is used" });
-    return res.json({ discount: data.discountCodes[0].discount });
+
+    if (!data.discountCodes.length) {
+      return res.json({ error: "Code is used" });
+    }
+    return res.json({
+      discount: data.discountCodes[0].discount,
+      code: data.discountCodes[0].code,
+    });
   } catch (err) {
     if (err instanceof Yup.ValidationError) {
-      res.status(400).json(convertYupError(err));
+      return res.status(400).json(convertYupError(err));
     }
-    res
+    return res
       .status(404)
       .json({ error: "Unknown error in implemented discount code" });
   }

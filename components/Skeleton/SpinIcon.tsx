@@ -13,7 +13,7 @@ export function SpinIcon({ size }: { size: SpinSizes }) {
     >
       <svg
         aria-hidden="true"
-        className={`fill-primary text-gray-300`}
+        className={`animate-spin text-gray-300`}
         viewBox="0 0 100 101"
         xmlns="http://www.w3.org/2000/svg"
       >

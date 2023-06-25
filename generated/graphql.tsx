@@ -11165,26 +11165,6 @@ export type GetCategoriesQuery = {
   categories: Array<{ __typename?: "Category"; name: string; slug: string }>;
 };
 
-export type GetDiscountCodeQueryVariables = Exact<{
-  accountId: Scalars["ID"];
-}>;
-
-export type GetDiscountCodeQuery = {
-  __typename?: "Query";
-  discountCodesConnection: {
-    __typename?: "DiscountCodeConnection";
-    edges: Array<{
-      __typename?: "DiscountCodeEdge";
-      node: {
-        __typename?: "DiscountCode";
-        id: string;
-        code: string;
-        used: boolean;
-      };
-    }>;
-  };
-};
-
 export type CreateAccountMutationVariables = Exact<{
   email: Scalars["String"];
   password: Scalars["String"];
@@ -11546,70 +11526,6 @@ export type GetCategoriesQueryResult = Apollo.QueryResult<
   GetCategoriesQuery,
   GetCategoriesQueryVariables
 >;
-export const GetDiscountCodeDocument = gql`
-  query GetDiscountCode($accountId: ID!) {
-    discountCodesConnection(where: { accounts_some: { id: $accountId } }) {
-      edges {
-        node {
-          id
-          code
-          used
-        }
-      }
-    }
-  }
-`;
-
-/**
- * __useGetDiscountCodeQuery__
- *
- * To run a query within a React component, call `useGetDiscountCodeQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetDiscountCodeQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetDiscountCodeQuery({
- *   variables: {
- *      accountId: // value for 'accountId'
- *   },
- * });
- */
-export function useGetDiscountCodeQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    GetDiscountCodeQuery,
-    GetDiscountCodeQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetDiscountCodeQuery, GetDiscountCodeQueryVariables>(
-    GetDiscountCodeDocument,
-    options
-  );
-}
-export function useGetDiscountCodeLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetDiscountCodeQuery,
-    GetDiscountCodeQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    GetDiscountCodeQuery,
-    GetDiscountCodeQueryVariables
-  >(GetDiscountCodeDocument, options);
-}
-export type GetDiscountCodeQueryHookResult = ReturnType<
-  typeof useGetDiscountCodeQuery
->;
-export type GetDiscountCodeLazyQueryHookResult = ReturnType<
-  typeof useGetDiscountCodeLazyQuery
->;
-export type GetDiscountCodeQueryResult = Apollo.QueryResult<
-  GetDiscountCodeQuery,
-  GetDiscountCodeQueryVariables
->;
 export const CreateAccountDocument = gql`
   mutation CreateAccount($email: String!, $password: String!) {
     createAccount(
@@ -11618,7 +11534,7 @@ export const CreateAccountDocument = gql`
         password: $password
         discountCode: {
           create: {
-            DiscountCode: { code: "Start15", used: false, discount: 10 }
+            DiscountCode: { code: "START15", used: false, discount: 15 }
           }
         }
       }
@@ -11680,6 +11596,7 @@ export const GetDiscountCodesDocument = gql`
         used: false
         accounts_some: { email: $email }
       }
+      stage: DRAFT
     ) {
       code
       discount

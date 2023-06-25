@@ -1,10 +1,8 @@
 import { Button } from "components/Button/Button";
-import { Checkbox } from "components/Inputs/components/Checkbox";
-import { Input } from "components/Inputs/components/Input";
 import { useCartContext } from "context/CartContext/CartContext";
 import React, { useMemo } from "react";
 import { changeValueCurrency, priceWithDiscount } from "utils/utils";
-import { useForm, FormProvider, useFormContext } from "react-hook-form";
+import { useForm, FormProvider } from "react-hook-form";
 import { NavigationCart } from "./components/NavigationCart";
 import SummaryTableCart from "./components/SummaryTableCart/SummaryTableCart";
 import DiscountCodeInput from "./components/DiscountCodeInput/DiscountCodeInput";
@@ -12,8 +10,8 @@ import DiscountCodeInput from "./components/DiscountCodeInput/DiscountCodeInput"
 const DELIVERY_PRICE = 1190;
 export default function CartPage() {
   const methods = useForm<{
-    isDiscountCode?: boolean;
-    discountCode?: string;
+    code?: string;
+    discount?: number;
   }>();
   const { cart } = useCartContext();
   const summaryOrderValue = useMemo(() => {
@@ -24,6 +22,12 @@ export default function CartPage() {
       }, 0)
     );
   }, [cart]);
+  const discount = methods.getValues("discount");
+  const discountInOrder = useMemo(() => {
+    if (summaryOrderValue && discount) {
+      return Math.floor(summaryOrderValue / discount);
+    }
+  }, [summaryOrderValue, discount]);
   if (!cart || !summaryOrderValue) {
     return (
       <p className="m-auto text-center md:text-lg">
@@ -44,13 +48,34 @@ export default function CartPage() {
         <SummaryTableCart cart={cart} />
 
         <section className="mt-7 flex w-full flex-col gap-y-2 sm:flex-row">
-          <DiscountCodeInput />
+          <DiscountCodeInput
+            setForm={({
+              code,
+              discount,
+            }: {
+              code: string | undefined;
+              discount: number | undefined;
+            }) => {
+              methods.setValue("discount", discount);
+              methods.setValue("code", code);
+            }}
+          />
           <div className="grow md:max-w-md">
             <dl className="flex flex-col gap-y-4">
               <div className="flex flex-wrap justify-between">
                 <dt>Order value</dt>
                 <dd>{changeValueCurrency(summaryOrderValue)}</dd>
               </div>
+              {discountInOrder ? (
+                <div className="flex flex-wrap justify-between">
+                  <dt>Discount</dt>
+                  <dd className="font-semibold text-red-300">
+                    -{changeValueCurrency(discountInOrder)}
+                  </dd>
+                </div>
+              ) : (
+                <></>
+              )}
               <div className="flex flex-wrap justify-between">
                 <dt>Delivery</dt>
                 <dd>{changeValueCurrency(DELIVERY_PRICE)}</dd>
