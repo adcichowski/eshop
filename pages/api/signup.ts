@@ -33,13 +33,13 @@ const handler: NextApiHandler = async (req, res) => {
     });
     res.status(200).json({
       email: data?.createAccount?.email,
-      password: data?.createAccount?.id,
+      id: data?.createAccount?.id,
     });
   } catch (err) {
     if (err instanceof Yup.ValidationError) {
       res.status(400).json(convertYupError(err));
     }
-    res.status(404).json({ error: "Uknown error in signup!" });
+    res.status(404).json({ error: "Unknown error in signup!" });
   }
 };
 

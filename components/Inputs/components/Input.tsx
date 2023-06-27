@@ -5,7 +5,7 @@ import type { InputProps } from "../types";
 
 type TextInputProps = { readonly size?: "small" | "normal" };
 const variants = {
-  small: { input: "text-sm py-2 px-2", label: "text-sm" },
+  small: { input: "text-sm px-2", label: "text-sm" },
   normal: {
     input: "text-sm rounded-sm py-3 px-2",
     label: "text-[1.12rem] mb-[6px]",
@@ -29,7 +29,7 @@ export const Input = React.forwardRef<
         ref={ref}
         className={`border-gray border border-gray-400 ${Clsx(
           error && "border-red-200 bg-red-100"
-        )} ${variants[size].input}`}
+        )} ${variants[size].input} ${props.className}`}
       />
       <ErrorInInput id={`${props.id}Error`} error={error} />
     </>

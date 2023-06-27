@@ -7,16 +7,20 @@ export const changeValueCurrency = (price: number, format = "en-US") => {
   return formatterPLN.format(priceWithRest);
 };
 
-export const priceWithDiscount = (
-  price: number,
-  discount: number | undefined | null,
-  amount = 1
-) => {
-  if (discount === undefined || discount === null) {
-    return changeValueCurrency(price);
+export const priceWithDiscount = ({
+  amount = 1,
+  price,
+  sale,
+}: {
+  sale: string | null | undefined | number;
+  price: number;
+  amount?: number;
+}) => {
+  if (sale === undefined || sale === null) {
+    return price * amount;
   }
-  const valueDiscount = Math.floor((price * discount) / 100);
-  return changeValueCurrency(price * amount - valueDiscount * amount);
+  const discountedPrice = price * (100 - Number(sale));
+  return Math.floor((discountedPrice * amount) / 100);
 };
 
 export const objectKeys = <Obj extends object>(obj: Obj): (keyof Obj)[] => {

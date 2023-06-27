@@ -1,12 +1,34 @@
+import { Button } from "components/Button/Button";
 import { useCartContext } from "context/CartContext/CartContext";
-import React from "react";
-
+import React, { useMemo } from "react";
+import { changeValueCurrency, priceWithDiscount } from "utils/utils";
+import { useForm, FormProvider } from "react-hook-form";
 import { NavigationCart } from "./components/NavigationCart";
 import SummaryTableCart from "./components/SummaryTableCart/SummaryTableCart";
+import DiscountCodeInput from "./components/DiscountCodeInput/DiscountCodeInput";
 
+const DELIVERY_PRICE = 1190;
 export default function CartPage() {
+  const methods = useForm<{
+    code?: string;
+    discount?: number;
+  }>();
   const { cart } = useCartContext();
-  if (!cart) {
+  const summaryOrderValue = useMemo(() => {
+    if (!cart) return undefined;
+    return Math.ceil(
+      Object.values(cart).reduce((initial, product) => {
+        return priceWithDiscount(product) + initial;
+      }, 0)
+    );
+  }, [cart]);
+  const discount = methods.getValues("discount");
+  const discountInOrder = useMemo(() => {
+    if (summaryOrderValue && discount) {
+      return Math.floor(summaryOrderValue / discount);
+    }
+  }, [summaryOrderValue, discount]);
+  if (!cart || !summaryOrderValue) {
     return (
       <p className="m-auto text-center md:text-lg">
         Your cart is empty, add product to fill this page
@@ -14,17 +36,61 @@ export default function CartPage() {
     );
   }
   return (
-    <div className="m-2 md:mx-20">
-      <NavigationCart />
-      <aside className="mt-[30px] w-full bg-green-100 py-5 text-center text-sm md:text-base">
-        Will you give it a try?
-        <span className="font-bold"> Buy for an additional 46.40 USD </span>
-        and qualify for <span className="font-bold">FREE</span> shipping!
-      </aside>
-      <article className="mt-10">
-        <h2 className="text-xl font-medium">Your cart</h2>
+    <FormProvider {...methods}>
+      <div className="m-2 md:mx-20">
+        <NavigationCart />
+        <aside className="mt-[30px] w-full bg-green-100 py-5 text-center text-sm md:text-base">
+          Will you give it a try?
+          <span className="font-bold">Buy for an additional 46.40 USD </span>
+          and qualify for <span className="font-bold">FREE</span> shipping!
+        </aside>
+
         <SummaryTableCart cart={cart} />
-      </article>
-    </div>
+
+        <section className="mt-7 flex w-full flex-col gap-y-2 sm:flex-row">
+          <DiscountCodeInput
+            setForm={({
+              code,
+              discount,
+            }: {
+              code: string | undefined;
+              discount: number | undefined;
+            }) => {
+              methods.setValue("discount", discount);
+              methods.setValue("code", code);
+            }}
+          />
+          <div className="grow md:max-w-md">
+            <dl className="flex flex-col gap-y-4">
+              <div className="flex flex-wrap justify-between">
+                <dt>Order value</dt>
+                <dd>{changeValueCurrency(summaryOrderValue)}</dd>
+              </div>
+              {discountInOrder ? (
+                <div className="flex flex-wrap justify-between">
+                  <dt>Discount</dt>
+                  <dd className="font-semibold text-red-300">
+                    -{changeValueCurrency(discountInOrder)}
+                  </dd>
+                </div>
+              ) : (
+                <></>
+              )}
+              <div className="flex flex-wrap justify-between">
+                <dt>Delivery</dt>
+                <dd>{changeValueCurrency(DELIVERY_PRICE)}</dd>
+              </div>
+              <div className="flex flex-wrap justify-between border-t pt-4 text-lg font-semibold">
+                <dt>Total to pay</dt>
+                <dd>
+                  {changeValueCurrency(DELIVERY_PRICE + summaryOrderValue)}
+                </dd>
+              </div>
+              <Button className="mt-1 rounded-none py-2">Set Delivery</Button>
+            </dl>
+          </div>
+        </section>
+      </div>
+    </FormProvider>
   );
 }

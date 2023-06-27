@@ -61,9 +61,32 @@ query GetCategories {
 }
 
 mutation CreateAccount($email: String!, $password: String!) {
-  createAccount(data: { email: $email, password: $password }) {
-    id
+  createAccount(
+    data: {
+      email: $email
+      password: $password
+      discountCode: {
+        create: { DiscountCode: { code: "START15", used: false, discount: 15 } }
+      }
+    }
+  ) {
     email
+    id
+  }
+}
+
+query GetDiscountCodes($code: String!, $email: String!) {
+  discountCodes(
+    where: {
+      code_contains: $code
+      used: false
+      accounts_some: { email: $email }
+    }
+    stage: DRAFT
+  ) {
+    code
+    discount
+    used
   }
 }
 

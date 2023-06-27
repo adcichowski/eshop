@@ -13,10 +13,12 @@ export function useForm<TFieldValues extends FieldValues>(
     formState: { errors, isValid, isDirty },
     watch,
     control,
+    ...rest
   } = useFormHook<TFieldValues>({
     resolver: yupResolver(provideSchema),
   });
   return {
+    ...rest,
     register,
     handleSubmit,
     errors,

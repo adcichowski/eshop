@@ -27,9 +27,7 @@ export default NextAuth({
           GetAccountByEmailQueryVariables
         >({
           query: GetAccountByEmailDocument,
-          variables: {
-            ...credentials,
-          },
+          variables: credentials,
         });
         const accountFromGraph = userByEmail.data.account;
         if (!accountFromGraph) {
