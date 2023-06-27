@@ -2,7 +2,6 @@ import { Button } from "components/Button/Button";
 import { useCartContext } from "context/CartContext/CartContext";
 import React from "react";
 import { useForm } from "react-hook-form";
-
 import DiscountCodeInput from "./components/DiscountCodeInput/DiscountCodeInput";
 import SummaryTableCart from "./components/SummaryTableCart/SummaryTableCart";
 import { DetailsOrder } from "../DetailsOrder/DetailsOrder";

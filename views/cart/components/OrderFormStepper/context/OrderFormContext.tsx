@@ -1,5 +1,5 @@
 import { CartItem } from "context/CartContext/types";
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 export type StepsFormOrder = "cart" | "account" | "shipping" | "summary";
 
