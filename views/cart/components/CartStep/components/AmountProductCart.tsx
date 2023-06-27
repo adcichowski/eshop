@@ -13,6 +13,7 @@ export function AmountProductCart({
   return (
     <div className="flex h-10">
       <button
+        type="button"
         onClick={() => deleteProduct(product)}
         className="border border-r-0 px-3"
       >
@@ -34,6 +35,7 @@ export function AmountProductCart({
         }}
       />
       <button
+        type="button"
         onClick={() => addProduct({ ...product, amount: 1 })}
         className="border border-l-0 px-3"
       >
