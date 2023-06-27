@@ -5,14 +5,7 @@ import { SpinIcon } from "components/Skeleton/SpinIcon";
 import { Button } from "components/Button/Button";
 import useDiscountCodeInput from "./useDiscountCodeInput";
 
-export default function DiscountCodeInput({
-  setForm,
-}: {
-  setForm: (params: {
-    code: string | undefined;
-    discount: number | undefined;
-  }) => void;
-}) {
+export default function DiscountCodeInput() {
   const {
     refCode,
     error,
@@ -20,7 +13,7 @@ export default function DiscountCodeInput({
     haveDiscount,
     handleCheckCode,
     isLoading,
-  } = useDiscountCodeInput({ setForm });
+  } = useDiscountCodeInput();
   return (
     <div className="mb-2 flex grow flex-col items-start gap-y-2 ">
       <Checkbox

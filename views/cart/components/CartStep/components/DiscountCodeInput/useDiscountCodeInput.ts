@@ -3,21 +3,16 @@ import { useSession } from "next-auth/react";
 import React, { useRef, useState } from "react";
 import { useMutation } from "react-query";
 import { fetcher } from "utils/fetcher";
+import { useOrderFormContext } from "views/cart/components/OrderFormStepper/context/OrderFormContext";
 
-export default function useDiscountCodeInput({
-  setForm,
-}: {
-  setForm: (params: {
-    code: string | undefined;
-    discount: number | undefined;
-  }) => void;
-}) {
+export default function useDiscountCodeInput() {
   const refCode = useRef<HTMLInputElement>(null);
+  const { handleSetDiscount } = useOrderFormContext();
   const [error, setError] = useState<undefined | string>(undefined);
   const [haveDiscount, setHaveDiscount] = useState(false);
   const handleHaveDiscount = () => {
     setHaveDiscount((prev) => !prev);
-    if (haveDiscount) setForm({ code: undefined, discount: undefined });
+    if (haveDiscount) handleSetDiscount();
   };
   const { addToast } = useToastContext();
   const { isLoading, mutate } = useMutation(
@@ -36,7 +31,7 @@ export default function useDiscountCodeInput({
       ) => {
         if ("code" in res) {
           addToast("success", "Success! Your discount code has been applied.");
-          setForm(res);
+          handleSetDiscount(res.code, res.discount);
         }
         if ("error" in res) {
           addToast(
