@@ -10,18 +10,18 @@ const fields = {
     text: "E-mail:",
     type: "email",
   },
-  password: { text: "Hasło:", type: "password" },
-  passwordConfirmation: { text: "Powtórz hasło:", type: "password" },
+  password: { text: "Password:", type: "password" },
+  passwordConfirmation: { text: "Repeat password:", type: "password" },
   statueCheck: {
-    text: "*Akceptuję regulamin serwisu i zapoznałem się z informacjami dotyczącymi moich danych osobowych poniżej.",
+    text: "*I accept the terms and conditions of the service and have read the information regarding my personal data below.",
     type: "checkbox",
   },
   newsletter: {
     text: (
       <span>
-        Chcę zapisać się do Newsletter, aby otrzymywać informacje o nowościach i
-        promocjach oraz otrzymać kupon rabatowy w wysokości
-        <span className="text-primary"> 10%</span> na pierwsze zakupy.
+        I want to sign up for the newsletter to receive updates and promotions,
+        as well as receive a discount coupon worth
+        <span className="text-primary"> 10%</span> on first purchase.
       </span>
     ),
     type: "checkbox",
@@ -60,7 +60,7 @@ export function RegisterForm({
       <form autoComplete="off" noValidate onSubmit={onSubmit}>
         <fieldset className="flex shrink-0 flex-col items-center gap-2 text-left">
           <h2 id="sectionRegister" className="self-stretch text-2xl">
-            Zarejestruj się
+            Register in
           </h2>
           {Object.entries(fields).map(([name, { text, type }]) => {
             return (
@@ -82,7 +82,7 @@ export function RegisterForm({
           data-testid="buttonRegister"
           disabled={!!Object.values(errors).length}
         >
-          Zarejestruj się
+          Sign up
         </Button>
       </form>
     </section>

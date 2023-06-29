@@ -1,4 +1,5 @@
 import React from "react";
+import AccountStep from "../AccountStep/AccountStep";
 import { CartStep } from "../CartStep/CartStep";
 import { useOrderFormContext } from "./context/OrderFormContext";
 
@@ -8,7 +9,7 @@ export function OrderFormStepper() {
     case "cart":
       return <CartStep />;
     case "account":
-      return <>Account Step</>;
+      return <AccountStep />;
     case "shipping":
       return <>Shipping Step</>;
     case "summary":

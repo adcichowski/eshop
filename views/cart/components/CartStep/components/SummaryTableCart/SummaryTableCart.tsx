@@ -11,7 +11,7 @@ export default function SummaryTableCart({
   cart: Record<string, CartItem>;
 }) {
   return (
-    <article className="mt-10">
+    <>
       <h2 className="text-xl font-medium">Your cart</h2>
       <table className="mt-10 w-full">
         <thead>
@@ -64,6 +64,6 @@ export default function SummaryTableCart({
           })}
         </tbody>
       </table>
-    </article>
+    </>
   );
 }
