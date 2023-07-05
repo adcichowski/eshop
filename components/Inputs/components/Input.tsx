@@ -8,7 +8,7 @@ const variants = {
   small: { input: "text-sm px-2", label: "text-sm" },
   normal: {
     input: "text-sm rounded-sm py-3 px-2",
-    label: "text-[1.12rem] mb-[6px]",
+    label: "text-sm mb-[6px]",
   },
 };
 export const Input = React.forwardRef<
@@ -16,7 +16,7 @@ export const Input = React.forwardRef<
   InputProps & TextInputProps
 >(({ text, error, hideLabel, size = "normal", ...props }, ref) => {
   return (
-    <>
+    <div className="flex w-full flex-col">
       <label htmlFor={props.id}>
         <span
           className={`${Clsx(hideLabel && "sr-only")} ${variants[size].label}`}
@@ -32,7 +32,7 @@ export const Input = React.forwardRef<
         )} ${variants[size].input} ${props.className}`}
       />
       <ErrorInInput id={`${props.id}Error`} error={error} />
-    </>
+    </div>
   );
 });
 Input.displayName = "Input";

@@ -10,7 +10,7 @@ export const Header = () => {
   const { saveParentPopper, typePopper, popperRef } = usePopper();
   return (
     <div className="relative h-14 sm:h-[100px] md:h-40">
-      <div className="fixed left-0 z-50 w-full">
+      <div className="fixed left-0 z-30 w-full">
         <header className="mx-auto max-w-[1440px]">
           <div className="grid grid-cols-3 place-items-center bg-white p-3 sm:p-4">
             <Autocomplete />
@@ -28,7 +28,7 @@ export const Header = () => {
                 free delivery from 199 PLN
               </p>
             </div>
-            <div ref={popperRef} className="relative z-20">
+            <div ref={popperRef} className="relative z-10">
               <ul aria-label="navigation icons" className="mr-5 flex gap-4">
                 {navigationIcons.map(({ Icon, popper, ...propsArchon }) => (
                   <li

@@ -42,7 +42,7 @@ export function LoginForm({
       <form noValidate onSubmit={handleSubmit(onSubmit)}>
         <fieldset className="flex flex-col items-center gap-2 text-left">
           <h2 id="sectionLogin" className="self-stretch text-2xl">
-            Zaloguj się
+            Sign in
           </h2>
           {objectKeys(fields).map((name) => (
             <div className="flex w-full flex-col" key={`${name}Login`}>
@@ -62,12 +62,12 @@ export function LoginForm({
           data-testid="buttonLogin"
           className="mt-6 px-8 py-2 md:px-16 md:py-4"
         >
-          Zaloguj się
+          Log in
         </Button>
         <p className="mt-3">
-          Nie pamiętasz hasła?{" "}
+          Forgot password?{" "}
           <Link aria-label="to remind account" href="/remaind">
-            <span className="cursor-pointer font-semibold">Kliknij Tutaj.</span>
+            <span className="font-semibold underline">Click here.</span>
           </Link>
         </p>
       </form>

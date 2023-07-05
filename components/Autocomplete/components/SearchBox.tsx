@@ -11,12 +11,11 @@ const SearchBox = ({ refine }: SearchBoxProvided) => {
   }, [debouncedSearchTerm]);
 
   return (
-    <form noValidate role="search">
-      <input
-        className="border-2"
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-    </form>
+    <input
+      placeholder="Search product..."
+      className="w-full border-2 p-1 placeholder:pl-1 placeholder:text-sm"
+      onChange={(e) => setSearchTerm(e.target.value)}
+    />
   );
 };
 

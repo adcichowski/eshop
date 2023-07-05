@@ -13,7 +13,7 @@ export type CheckboxProps = {
 export const Checkbox = React.forwardRef<HTMLInputElement, InputProps>(
   ({ text, error, ...props }: CheckboxProps, ref) => (
     <>
-      <div className="flex items-start justify-center gap-2 text-xs">
+      <div className="flex items-start justify-center gap-2 self-start text-xs">
         <label className="flex items-start justify-center">
           <input
             {...props}
