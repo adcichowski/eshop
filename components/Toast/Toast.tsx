@@ -1,5 +1,5 @@
 import SuccessIcon from "./assets/success-icon.svg";
-import CloseIcon from "./assets/close-icon.svg";
+import CloseIcon from "public/close-icon.svg";
 import InfoIcon from "./assets/info-icon.svg";
 import clsx from "clsx";
 import { ToastTypes } from "context/ToastContext/constants";
