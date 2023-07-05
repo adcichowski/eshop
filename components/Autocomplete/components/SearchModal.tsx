@@ -1,5 +1,5 @@
 import algoliasearch from "algoliasearch";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { Configure, InstantSearch } from "react-instantsearch-dom";
 import { CustomHits } from "./CustomHits";
 import { CustomSearchBox } from "./SearchBox";
