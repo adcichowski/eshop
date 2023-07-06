@@ -27,32 +27,38 @@ function Hits({
       >
         Search Results
       </h2>
-      <ul
-        aria-labelledby="#ariaSearch"
-        aria-orientation="horizontal"
-        role="listbox"
-        className="mt-6 grid grid-cols-2 items-center gap-x-10 gap-y-5 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5"
-      >
-        {allSearchResults?.hits.map((poster) => (
-          <li className="relative h-full w-full" key={poster.name}>
-            <Link passHref href={poster.slug} className="cursor-pointer">
-              <article className="flex h-full flex-col gap-y-2">
-                <Image
-                  className="h-full self-center object-contain"
-                  src={poster.images[0].url}
-                  width={180}
-                  height={100}
-                  alt={poster.name}
-                />
+      {allSearchResults?.hits.length ? (
+        <ul
+          aria-labelledby="#ariaSearch"
+          aria-orientation="horizontal"
+          role="listbox"
+          className="mt-6 grid grid-cols-2 items-center gap-x-10 gap-y-5 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5"
+        >
+          {allSearchResults?.hits.map((poster) => (
+            <li className="relative h-full w-full" key={poster.name}>
+              <Link passHref href={poster.slug} className="cursor-pointer">
+                <article className="flex h-full flex-col gap-y-2">
+                  <Image
+                    className="h-full self-center object-contain"
+                    src={poster.images[0].url}
+                    width={180}
+                    height={100}
+                    alt={poster.name}
+                  />
 
-                <h3 className="truncate px-7 text-center text-xs xl:text-base">
-                  {poster.name}
-                </h3>
-              </article>
-            </Link>
-          </li>
-        ))}
-      </ul>
+                  <h3 className="truncate px-7 text-center text-xs xl:text-base">
+                    {poster.name}
+                  </h3>
+                </article>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="my-12 w-full text-center">
+          No matching results were found
+        </p>
+      )}
     </section>
   );
 }
