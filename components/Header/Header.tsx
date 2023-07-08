@@ -4,6 +4,7 @@ import { HeaderPoppers } from "components/Header/components/HeaderPoppers/Header
 import { usePopper } from "components/Popper/usePopper";
 import { ToastsContainer } from "components/Toast/ToastsContainer";
 import Link from "next/link";
+import { twMerge } from "tailwind-merge";
 import { MenuIcon } from "./components/MenuIcon/MenuIcon";
 
 import { headerCategories, navigationIcons } from "./constants";
@@ -33,16 +34,23 @@ export const Header = () => {
               </p>
             </div>
             <div ref={popperRef} className="relative z-10">
-              <ul aria-label="navigation icons" className="mr-5 flex gap-4">
+              <ul
+                aria-label="navigation icons"
+                className="mr-5 flex w-full items-center justify-end gap-2 md:justify-start md:gap-4"
+              >
                 {navigationIcons.map(({ Icon, popper, ...propsArchon }) => (
                   <li
                     key={popper ?? propsArchon.href}
                     onClick={(e) => saveParentPopper(e, popper)}
-                    className={`relative cursor-pointer ${Clsx(
-                      typePopper === popper &&
-                        popper &&
-                        "before:absolute before:-bottom-[9px] before:h-[1.5px] before:w-full before:translate-x-0.5 before:bg-black"
-                    )}`}
+                    className={twMerge(
+                      `relative cursor-pointer ${Clsx(
+                        typePopper === popper &&
+                          popper &&
+                          "before:absolute before:-bottom-[9px] before:h-[1.5px] before:w-full before:translate-x-0.5 before:bg-black",
+                        propsArchon.className,
+                        propsArchon.href && "hidden sm:block"
+                      )}`
+                    )}
                   >
                     {Icon}
                   </li>
