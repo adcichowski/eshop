@@ -6,9 +6,28 @@ module.exports = {
     "./src/**/*.{ts,tsx}",
     "./views/**/*.{ts,tsx}",
   ],
+  plugins: [require("tailwindcss-animate")],
   theme: {
     extend: {
       keyframes: {
+        "rotate-menu-top": {
+          "0%": {
+            transform: "rotate(0deg)",
+          },
+          "100%": {
+            transform: "translateY(10px) rotate(-45deg)",
+          },
+        },
+
+        "rotate-menu-bottom": {
+          "0%": {
+            transform: "rotate(0deg)",
+          },
+          "100%": {
+            transform: "translateY(-10px) rotate(45deg)",
+          },
+        },
+
         "fade-down": {
           "0%": {
             opacity: "0",
@@ -22,6 +41,8 @@ module.exports = {
       },
       animation: {
         "fade-down": "fade-down .2s ease-in-out",
+        "open-menu-top": "rotate-menu-top .35s ease-in-out",
+        "open-menu-bottom": "rotate-menu-bottom .35s ease-in-out",
       },
       backgroundImage: {
         "avaible-product": "url('/avaible-product.svg')",

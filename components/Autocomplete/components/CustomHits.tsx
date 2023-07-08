@@ -56,7 +56,7 @@ function Hits({
         </ul>
       ) : (
         <p className="my-12 w-full text-center">
-          No matching results were found
+          No matching results were found.
         </p>
       )}
     </section>
