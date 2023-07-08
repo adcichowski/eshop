@@ -38,6 +38,7 @@
     "swiper": "^9.3.2",
     "tailwind-merge": "^1.8.1",
     "tailwindcss": "^3.2.4",
+    "tailwindcss-animate": "^1.0.6",
     "yup": "^0.32.11"
   },
   "devDependencies": {
