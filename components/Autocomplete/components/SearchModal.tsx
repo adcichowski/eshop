@@ -18,7 +18,7 @@ export default function SearchModal({
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
-  // useClickOutside(ref, handleModal);
+  useClickOutside(ref, handleModal);
 
   return (
     <InstantSearch searchClient={searchClient()} indexName="eshop">
