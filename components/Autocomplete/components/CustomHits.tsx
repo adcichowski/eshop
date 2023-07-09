@@ -14,7 +14,7 @@ function Hits({ allSearchResults }: StateResultsProvided<ResponseAlgolia>) {
   return (
     <section
       aria-label="Search results"
-      className="max-h-[calc(100vh-78px)] overflow-y-auto bg-white p-4 md:mx-12"
+      className="max-h-[calc(100vh-94px)] overflow-y-auto bg-white p-4 md:mx-12"
     >
       <h2
         id="titleSearch"
