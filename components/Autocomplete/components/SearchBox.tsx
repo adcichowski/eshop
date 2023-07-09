@@ -12,6 +12,7 @@ const SearchBox = ({ refine }: SearchBoxProvided) => {
 
   return (
     <input
+      autoFocus
       placeholder="Search product..."
       className="w-full border-2 p-1 placeholder:pl-1 placeholder:text-sm"
       onChange={(e) => setSearchTerm(e.target.value)}

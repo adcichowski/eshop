@@ -10,12 +10,7 @@ type ResponseAlgolia = {
     url: string;
   }[];
 };
-function Hits({
-  allSearchResults,
-  searchState,
-}: StateResultsProvided<ResponseAlgolia>) {
-  if (searchState.query === "") return <></>;
-
+function Hits({ allSearchResults }: StateResultsProvided<ResponseAlgolia>) {
   return (
     <section
       aria-label="Search results"
