@@ -1,25 +1,20 @@
+import Portal from "components/Portal/Portal";
 import SearchIcon from "public/searchIcon.svg";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
-import SearchModal from "./components/SearchModal";
+import { useState } from "react";
+import { SearchModal } from "./components/SearchModal";
 export function Autocomplete() {
-  const [isOpenModal, setOpenModal] = useState(false);
-  const handleModal = useCallback(() => {
-    setOpenModal((prev) => !prev);
-  }, []);
-  const ref = useRef<Element | null>(null);
-
-  useEffect(() => {
-    const modal = document.getElementById("__next");
-    ref.current = modal;
-    document.body.style.overflow = isOpenModal ? "hidden" : "visible";
-  }, [isOpenModal, handleModal]);
-
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const handleModal = () => {
+    setIsOpenModal((prev) => !prev);
+  };
   return (
     <div className="flex w-full justify-center">
+      <Portal isOpen={isOpenModal}>
+        <SearchModal handleModal={handleModal} />
+      </Portal>
       <button
         onClick={handleModal}
-        className="z-10 flex w-full max-w-[225px] items-center sm:justify-between sm:border sm:pr-3 sm:pl-1"
+        className="z-10 flex max-w-[225px] items-center sm:w-full sm:justify-between sm:border sm:pr-3 sm:pl-1"
       >
         <span className="sr-only z-0 text-gray-100 sm:not-sr-only">
           Search product...
@@ -28,11 +23,6 @@ export function Autocomplete() {
           <SearchIcon />
         </div>
       </button>
-      {isOpenModal && ref.current ? (
-        createPortal(<SearchModal handleModal={handleModal} />, ref.current)
-      ) : (
-        <></>
-      )}
     </div>
   );
 }

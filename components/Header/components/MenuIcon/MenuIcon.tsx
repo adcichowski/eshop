@@ -8,7 +8,7 @@ export function MenuIcon() {
   return (
     <button
       onClick={handleClickMenu}
-      className="flex w-8 flex-col gap-y-1 sm:hidden"
+      className="flex w-8 flex-col gap-y-1 overflow-hidden sm:hidden"
     >
       <LineMenuIcon className={clsx(isOpen && "translate-y-[6px] rotate-45")} />
       <LineMenuIcon

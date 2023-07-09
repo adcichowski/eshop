@@ -11,18 +11,12 @@ const searchClient = () => {
   return algoliasearch("WA189JW1IR", process.env.NEXT_PUBLIC_ALGOLIA);
 };
 
-export default function SearchModal({
-  handleModal,
-}: {
-  handleModal: () => void;
-}) {
+export function SearchModal({ handleModal }: { handleModal: () => void }) {
   const ref = useRef<HTMLDivElement>(null);
-
   useClickOutside(ref, handleModal);
-
   return (
     <InstantSearch searchClient={searchClient()} indexName="eshop">
-      <div className="fixed top-0 z-40 flex h-full w-full animate-fade-down flex-col bg-white/75 duration-100">
+      <div className="fixed top-0 h-full w-full animate-fade-down flex-col bg-white/75 duration-100">
         <div className="max-w-[1440px] self-stretch">
           <Configure clickAnalytics />
           <form
