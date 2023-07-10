@@ -12,9 +12,7 @@ export default function Portal({
   const { ref } = usePortal({ isOpen });
   if (!ref.current || !isOpen) return <></>;
   return createPortal(
-    <dialog className="top relative z-40 flex h-full w-full">
-      {children}
-    </dialog>,
+    <dialog className="top fixed z-40 flex h-full w-full">{children}</dialog>,
     ref.current
   );
 }
