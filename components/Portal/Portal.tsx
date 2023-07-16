@@ -10,11 +10,11 @@ export default function Portal({
   children: JSX.Element;
 }) {
   const { ref } = usePortal({ isOpen });
-  if (!ref.current || !isOpen) return <></>;
+  if (!ref || !isOpen) return <></>;
   return createPortal(
     <dialog className="top relative z-40 flex h-full w-full">
       {children}
     </dialog>,
-    ref.current
+    ref
   );
 }
