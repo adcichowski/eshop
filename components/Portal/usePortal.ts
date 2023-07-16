@@ -1,18 +1,18 @@
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   disableBodyScroll,
   enableBodyScroll,
   clearAllBodyScrollLocks,
 } from "body-scroll-lock";
 export function usePortal({ isOpen }: { isOpen: boolean }) {
-  const ref = useRef<Element | null>(null);
-  useLayoutEffect(() => {
-    const modal = document.getElementById("__next");
-    ref.current = modal;
-    if (modal) {
-      isOpen ? disableBodyScroll(modal) : enableBodyScroll(modal);
+  const [ref, setRef] = useState<Element | null>(null);
+  useEffect(() => {
+    setRef(document.getElementById("__next"));
+
+    if (ref) {
+      isOpen ? disableBodyScroll(ref) : enableBodyScroll(ref);
     }
     return () => clearAllBodyScrollLocks();
-  }, [isOpen]);
+  }, [isOpen, ref]);
   return { ref };
 }

@@ -10,6 +10,7 @@ import { MenuIcon } from "./components/MenuIcon/MenuIcon";
 import { headerCategories, navigationIcons } from "./constants";
 export const Header = () => {
   const { saveParentPopper, typePopper, popperRef } = usePopper();
+
   return (
     <div className="relative h-14 sm:h-[100px] md:h-40">
       <div className="fixed left-0 z-30 w-full">
