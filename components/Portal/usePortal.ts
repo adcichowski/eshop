@@ -10,7 +10,14 @@ export function usePortal({ isOpen }: { isOpen: boolean }) {
     setRef(document.getElementById("__next"));
 
     if (ref) {
-      isOpen ? disableBodyScroll(ref) : enableBodyScroll(ref);
+      if (isOpen) {
+        ref.classList.add("w-screen");
+        disableBodyScroll(ref);
+      }
+      if (!isOpen) {
+        enableBodyScroll(ref);
+        ref.classList.remove("w-screen");
+      }
     }
     return () => clearAllBodyScrollLocks();
   }, [isOpen, ref]);
