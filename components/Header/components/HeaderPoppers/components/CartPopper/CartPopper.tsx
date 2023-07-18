@@ -12,7 +12,7 @@ export const CartPopper = () => {
 
   return (
     <section>
-      <div className="flex flex-col items-center px-10 text-center">
+      <div className="flex flex-col items-center text-center">
         {!cart ? <ViewWithoutProducts /> : <ViewWithProducts cart={cart} />}
       </div>
     </section>
@@ -44,7 +44,7 @@ const ViewWithProducts = ({ cart }: { cart: Record<string, CartItem> }) => {
   }, [cart]);
   return (
     <>
-      <ul className="flex max-h-80 w-full flex-col gap-y-2 overflow-hidden overflow-y-auto">
+      <ul className="grid max-h-80 w-full gap-y-2 overflow-hidden overflow-y-auto pr-3">
         {Object.entries(cart).map(([id, product]) => (
           <li key={id}>
             <ProductCartPopper {...product} />

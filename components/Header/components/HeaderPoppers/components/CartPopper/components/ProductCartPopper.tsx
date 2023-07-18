@@ -24,12 +24,9 @@ export function ProductCartPopper({
 }: ProductCartPopperProps) {
   const { deleteProduct } = useCartContext();
   return (
-    <section
-      className="flex w-[322px] border-b-[1px] border-gray-100 pb-2"
-      aria-label="products in your cart"
-    >
-      <div className="basis-[86px]">
-        <div className="h-[112px] w-full border p-[6px]">
+    <article className="grid w-full grid-cols-4 gap-x-3 border-b-[1px] border-gray-100 pb-2">
+      <div className="basis-[88px]">
+        <div className="w-auto border p-[6px]">
           <Image
             className="object-cover"
             width={100}
@@ -39,8 +36,8 @@ export function ProductCartPopper({
           />
         </div>
       </div>
-      <div className="ml-[14px] flex basis-[242px] flex-col py-[2px]">
-        <div className="flex grow justify-between">
+      <div className="col-span-3 flex flex-col py-[2px]">
+        <div className="flex grow justify-between gap-x-4">
           <h3 className="text-left">
             {title}
             {` ${variant.width} cm x ${variant.height} cm`}
@@ -49,9 +46,9 @@ export function ProductCartPopper({
             onClick={() => {
               deleteProduct({ id });
             }}
-            className="mt-[3px] mr-3 self-start"
+            className="mt-[3px] self-start"
           >
-            <ClearIcon data-outside="false" />
+            <ClearIcon />
           </button>
         </div>
         <div className="flex justify-between">
@@ -61,6 +58,6 @@ export function ProductCartPopper({
           </div>
         </div>
       </div>
-    </section>
+    </article>
   );
 }
