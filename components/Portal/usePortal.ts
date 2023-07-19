@@ -12,6 +12,6 @@ export function usePortal() {
     return () => {
       document.body.style.overflow = originalStyle;
     };
-  }, []);
+  }, [ref]);
   return { ref };
 }
