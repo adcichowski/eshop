@@ -14,23 +14,21 @@ export function HeaderPoppers({
   resetPopper: () => void;
 }) {
   const { isMobile } = useHeaderPoppers();
-  const ref = useRef<HTMLDivElement>(null);
-  useClickOutside(ref, resetPopper);
+
   if (type === undefined || isMobile === undefined) return <></>;
 
+  if (isMobile) {
+    return (
+      <WrapperMobile isOpen={Boolean(type)}>
+        <Poppers popper={type} resetPopper={resetPopper} />
+      </WrapperMobile>
+    );
+  }
+
   return (
-    <div ref={ref}>
-      {isMobile && (
-        <WrapperMobile isOpen={Boolean(type)}>
-          <Poppers popper={type} />
-        </WrapperMobile>
-      )}
-      {!isMobile && (
-        <WrapperDesktop>
-          <Poppers popper={type} />
-        </WrapperDesktop>
-      )}
-    </div>
+    <WrapperDesktop>
+      <Poppers popper={type} resetPopper={resetPopper} />
+    </WrapperDesktop>
   );
 }
 
@@ -60,7 +58,19 @@ const WrapperDesktop = ({ children }: { children: JSX.Element }) => {
   );
 };
 
-const Poppers = ({ popper }: { readonly popper: string }) => {
+const Poppers = ({
+  popper,
+  resetPopper,
+}: {
+  readonly popper: string;
+  resetPopper: () => void;
+}) => {
+  const ref = useRef<HTMLDivElement>(null);
+  useClickOutside(ref, resetPopper);
+  return <div ref={ref}>{popperByType(popper)}</div>;
+};
+
+const popperByType = (popper: string) => {
   switch (popper) {
     case "cart":
       return <CartPopper />;

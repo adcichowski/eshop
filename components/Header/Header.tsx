@@ -61,9 +61,7 @@ export const Header = () => {
                   </li>
                 ))}
               </ul>
-              {typePopper && (
-                <HeaderPoppers resetPopper={resetPopper} type={typePopper} />
-              )}
+              <HeaderPoppers resetPopper={resetPopper} type={typePopper} />
             </div>
           </div>
           <ul

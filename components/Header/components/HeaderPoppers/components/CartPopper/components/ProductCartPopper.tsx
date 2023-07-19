@@ -44,7 +44,10 @@ export function ProductCartPopper({
           </h3>
           <button
             onClick={() => {
-              deleteProduct({ id });
+              //TODO: SET CART IN COOKIE HTTP ONLY
+              setTimeout(() => {
+                deleteProduct({ id });
+              }, 1000);
             }}
             className="mt-[3px] self-start"
           >

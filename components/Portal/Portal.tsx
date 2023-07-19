@@ -9,7 +9,7 @@ export default function Portal({
   isOpen: boolean;
   children: JSX.Element;
 }) {
-  const { ref } = usePortal({ isOpen });
+  const { ref } = usePortal();
   if (!ref || !isOpen) return <></>;
   return createPortal(
     <dialog className="top relative z-40 flex h-full w-full">
