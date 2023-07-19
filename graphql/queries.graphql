@@ -123,6 +123,7 @@ query GetProductsByCategory($categorySlug: String!) {
     whiteFrame
     name
     slug
+    orientation
     images(first: 1) {
       id
       alt

@@ -72,10 +72,11 @@ export default function ProductsByCategory(
         </h3>
         <ul className="grid grid-cols-2 justify-center gap-2 md:grid-cols-3 md:gap-6">
           {props.products.map(
-            ({ id, slug, name, variants, images, whiteFrame }) => (
+            ({ id, slug, name, variants, images, whiteFrame, orientation }) => (
               <li key={id} className={"w-[202px]"}>
                 <ProductCarrousel
                   {...{
+                    orientation,
                     width: variants[0].width,
                     height: variants[0].height,
                     id,

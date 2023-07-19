@@ -11244,6 +11244,7 @@ export type GetProductsByCategoryQuery = {
     whiteFrame: boolean;
     name: string;
     slug: string;
+    orientation: Orientation;
     id: string;
     images: Array<{
       __typename?: "Asset";
@@ -11839,6 +11840,7 @@ export const GetProductsByCategoryDocument = gql`
       whiteFrame
       name
       slug
+      orientation
       images(first: 1) {
         id
         alt
