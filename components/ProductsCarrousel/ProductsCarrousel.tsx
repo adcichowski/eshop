@@ -32,6 +32,7 @@ export const ProductsCarrousel = ({
     ...product,
     price: Math.min(...product.variants.map(({ price }) => price)),
   }));
+  console.log(productsWithSmallestPrice);
   return (
     <section id={id} className={className}>
       {Heading}
