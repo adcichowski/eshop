@@ -16,7 +16,7 @@ export default function Document() {
         />
       </Head>
 
-      <body className="relative mx-auto flex min-h-screen max-w-[1440px] flex-col">
+      <body className="relative mx-auto flex  max-w-[1440px] flex-col">
         <Main />
         <NextScript />
       </body>

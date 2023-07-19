@@ -60,7 +60,7 @@ function Newsletter({ HeaderTag }: NewsletterProps) {
   }
   return !isCookieAvaible ? (
     <section
-      className="w-full bg-primary py-5"
+      className="w-full bg-primary p-6"
       role="dialog"
       aria-labelledby="newsletterHeading"
       aria-describedby="newsletterDescription"
@@ -68,29 +68,29 @@ function Newsletter({ HeaderTag }: NewsletterProps) {
       <div className="flex flex-col items-center">
         <HeaderTag
           id="newsletterHeading"
-          className="text-center text-2xl font-semibold uppercase md:text-left"
+          className="text-center text-xl font-semibold uppercase md:text-left md:text-2xl"
         >
-          Zapisz się do naszego newslettera
+          Sign up for our newsletter
         </HeaderTag>
 
         <div
-          className="mt-3 w-3/4 text-center text-2xl"
+          className="mt-3 w-3/4 text-center text-xl md:text-2xl"
           id="newsletterDescription"
         >
           <div className="-mt-2 inline-flex flex-wrap items-center justify-center">
-            <span>Zyskaj</span>
-            <span className="mx-1 my-1 text-4xl font-semibold text-white">
+            get
+            <span className="mx-1 text-4xl font-semibold text-white">
               {DISCOUNT_PERCENT}
             </span>
-            <span>zniżki na pierwsze zakupy</span>
+            <span>discounts on your first purchase</span>
             <form
               noValidate
-              className="ml-2 block h-20 text-base"
+              className="ml-2 flex items-center text-sm md:text-base"
               onSubmit={onSumbit}
             >
               <fieldset className="my-2 inline xl:my-0">
-                <div className="flex">
-                  <div className="flex max-h-5 flex-col">
+                <div className="flex flex-wrap items-center">
+                  <div className="flex">
                     <Input
                       id="newsletterEmail"
                       text="Your email"
@@ -100,17 +100,17 @@ function Newsletter({ HeaderTag }: NewsletterProps) {
                     />
                   </div>
                   <button
-                    className="w-32 border-2 border-black py-2 px-2 font-semibold uppercase"
+                    className="border-2 border-black py-2 px-2 font-semibold uppercase"
                     type="submit"
                   >
-                    Zapisz się
+                    Sign in
                   </button>
                 </div>
               </fieldset>
             </form>
           </div>
-          <div className="mt-1 text-sm font-medium">
-            i otrzymuj informację o nowościach oraz promocjach
+          <div className="mt-1 text-xs font-medium md:text-sm">
+            and receive information about news and promotions
           </div>
         </div>
       </div>
