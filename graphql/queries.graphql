@@ -4,6 +4,7 @@ query GetProducts {
     id
     name
     slug
+    orientation
     whiteFrame
     variants(orderBy: price_ASC, first: 1) {
       price

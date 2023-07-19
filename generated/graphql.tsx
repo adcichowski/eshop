@@ -11107,6 +11107,7 @@ export type GetProductsQuery = {
     id: string;
     name: string;
     slug: string;
+    orientation: Orientation;
     whiteFrame: boolean;
     variants: Array<{
       __typename?: "ProductVariantType";
@@ -11268,6 +11269,7 @@ export const GetProductsDocument = gql`
       id
       name
       slug
+      orientation
       whiteFrame
       variants(orderBy: price_ASC, first: 1) {
         price
