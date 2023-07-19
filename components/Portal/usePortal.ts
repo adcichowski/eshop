@@ -1,25 +1,17 @@
 import { useEffect, useState } from "react";
-import {
-  disableBodyScroll,
-  enableBodyScroll,
-  clearAllBodyScrollLocks,
-} from "body-scroll-lock";
-export function usePortal({ isOpen }: { isOpen: boolean }) {
+
+export function usePortal() {
   const [ref, setRef] = useState<Element | null>(null);
   useEffect(() => {
-    setRef(document.getElementById("__next"));
-
-    if (ref) {
-      if (isOpen) {
-        ref.classList.add("w-screen");
-        disableBodyScroll(ref);
-      }
-      if (!isOpen) {
-        enableBodyScroll(ref);
-        ref.classList.remove("w-screen");
-      }
+    const originalStyle = window.getComputedStyle(document.body).overflow;
+    if (!ref) {
+      setRef(document.getElementById("__next"));
     }
-    return () => clearAllBodyScrollLocks();
-  }, [isOpen, ref]);
+    if (ref) document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = originalStyle;
+    };
+  }, []);
   return { ref };
 }

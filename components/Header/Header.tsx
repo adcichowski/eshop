@@ -9,7 +9,7 @@ import { MenuIcon } from "./components/MenuIcon/MenuIcon";
 
 import { headerCategories, navigationIcons } from "./constants";
 export const Header = () => {
-  const { saveParentPopper, typePopper, popperRef } = usePopper();
+  const { saveParentPopper, typePopper, resetPopper } = usePopper();
 
   return (
     <div className="relative h-14 sm:h-[100px] md:h-40">
@@ -34,30 +34,34 @@ export const Header = () => {
                 free delivery from 199 PLN
               </p>
             </div>
-            <div ref={popperRef} className="relative z-10">
+            <div className="relative z-10">
               <ul
                 aria-label="navigation icons"
                 className="mr-5 flex w-full items-center justify-end gap-2 md:justify-start md:gap-4"
               >
                 {navigationIcons.map(({ Icon, popper, ...propsArchon }) => (
-                  <li
-                    key={popper ?? propsArchon.href}
-                    onClick={(e) => saveParentPopper(e, popper)}
-                    className={twMerge(
-                      `relative cursor-pointer ${Clsx(
-                        typePopper === popper &&
-                          popper &&
-                          "before:absolute before:-bottom-[9px] before:h-[1.5px] before:w-full before:translate-x-0.5 before:bg-black",
-                        propsArchon.className,
-                        propsArchon.href && "hidden sm:block"
-                      )}`
-                    )}
-                  >
-                    {Icon}
+                  <li key={popper ?? propsArchon.href}>
+                    <button
+                      data-outside="false"
+                      className={twMerge(
+                        `relative cursor-pointer ${Clsx(
+                          typePopper === popper &&
+                            popper &&
+                            "before:absolute before:-bottom-[9px] before:left-0 before:h-[1.5px] before:w-full before:translate-x-0.5 before:bg-black",
+                          propsArchon.className,
+                          propsArchon.href && "hidden sm:block"
+                        )}`
+                      )}
+                      onClick={(e) => {
+                        saveParentPopper(e, popper);
+                      }}
+                    >
+                      {Icon}
+                    </button>
                   </li>
                 ))}
               </ul>
-              {typePopper && <HeaderPoppers type={typePopper} />}
+              <HeaderPoppers resetPopper={resetPopper} type={typePopper} />
             </div>
           </div>
           <ul

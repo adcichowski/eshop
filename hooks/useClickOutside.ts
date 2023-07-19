@@ -22,9 +22,14 @@ export function useClickOutside(
       }
       handler();
     };
-    document.addEventListener("mousedown", listener);
+    const timeId = setTimeout(
+      () => document.addEventListener("click", listener),
+      0
+    );
+
     return () => {
-      document.removeEventListener("mousedown", listener);
+      clearTimeout(timeId);
+      document.removeEventListener("click", listener);
     };
   }, [ref, handler]);
 }
