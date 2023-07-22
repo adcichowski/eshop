@@ -1,15 +1,14 @@
 import { Button } from "components/Button/Button";
+import { SpinIcon } from "components/Skeleton/SpinIcon";
 import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
-
-import { Spinner } from "components/Spinner/Spinner";
 
 export function AccountPopper() {
   const { status } = useSession();
 
   return (
     <div className="flex w-full flex-col px-14 text-center">
-      {status === "loading" && <Spinner />}
+      {status === "loading" && <SpinIcon size="normal" />}
       {status === "authenticated" && <Authenticated />}
       {status === "unauthenticated" && <Unauthenticated />}
     </div>

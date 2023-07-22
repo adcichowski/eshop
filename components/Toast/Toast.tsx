@@ -39,7 +39,7 @@ export const ToastChild = ({
       >
         <span className="sr-only">Close</span>
         <div className="h-5 w-5">
-          <CloseIcon />
+          <CloseIcon aria-hidden="true" />
         </div>
       </button>
     </div>

@@ -2,13 +2,13 @@ import { useDebounce } from "hooks/useDebounce";
 import { useEffect, useState } from "react";
 import { connectSearchBox } from "react-instantsearch-dom";
 import type { SearchBoxProvided } from "react-instantsearch-core";
-const SearchBox = ({ refine }: SearchBoxProvided) => {
+const SearchBox = ({ refine, ...rest }: SearchBoxProvided) => {
   const [searchTerm, setSearchTerm] = useState("");
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
-
   useEffect(() => {
-    refine(debouncedSearchTerm ? searchTerm : "");
-  }, [debouncedSearchTerm]);
+    console.log(rest, "HALO");
+    if (debouncedSearchTerm) refine(debouncedSearchTerm ? searchTerm : "");
+  }, [debouncedSearchTerm, refine, searchTerm]);
 
   return (
     <input
