@@ -1,25 +1,11 @@
-import { StateResultsProvided } from "react-instantsearch-core";
-import { connectStateResults } from "react-instantsearch-dom";
+import { connectHits, HitsProvided } from "react-instantsearch-core";
 import Image from "next/image";
 import Link from "next/link";
-import { SpinIcon } from "components/Skeleton/SpinIcon";
-type ResponseAlgolia = {
-  slug: string;
-  name: string;
-  description: string;
-  images: {
-    url: string;
-  }[];
-};
+import { ResponseAlgolia } from "../types/types";
 
-const HitsBoxStates = ({
-  allSearchResults,
-  isSearchStalled,
-}: StateResultsProvided<ResponseAlgolia>) => {
-  console.log(allSearchResults);
-  if (isSearchStalled) return <SpinIcon size="normal" />;
-  if (allSearchResults?.hits.length === 0) return <HitsEmpty />;
-  return <HitsProducts allSearchResults={allSearchResults.hits} />;
+const HitsBoxStates = ({ hits }: HitsProvided<ResponseAlgolia>) => {
+  if (hits.length === 0) return <HitsEmpty />;
+  return <HitsProducts allSearchResults={hits} />;
 };
 
 const HitsBox = ({ children }: { children: JSX.Element }) => (
@@ -37,8 +23,8 @@ const HitsBox = ({ children }: { children: JSX.Element }) => (
   </section>
 );
 
-export const CustomHits = connectStateResults(Hits);
-function Hits(props: StateResultsProvided<ResponseAlgolia>) {
+export const CustomHits = connectHits(Hits);
+function Hits(props: HitsProvided<ResponseAlgolia>) {
   return (
     <HitsBox>
       <HitsBoxStates {...props} />
@@ -49,6 +35,7 @@ function Hits(props: StateResultsProvided<ResponseAlgolia>) {
 const HitsEmpty = () => (
   <p className="my-12 w-full text-center">No matching results were found.</p>
 );
+
 const HitsProducts = ({
   allSearchResults,
 }: {
@@ -56,6 +43,7 @@ const HitsProducts = ({
 }) => {
   return (
     <ul
+      id="search-hits-list"
       aria-labelledby="#ariaSearch"
       aria-orientation="horizontal"
       role="listbox"
