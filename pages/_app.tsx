@@ -13,21 +13,19 @@ import { ToastProvider } from "context/ToastContext/ToastContext";
 const queryClient = new QueryClient();
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
-    <div id="root">
-      <SessionProvider session={session}>
-        <ApolloProvider client={apolloClient}>
-          <ToastProvider>
-            <CartContextProvider>
-              <QueryClientProvider client={queryClient}>
-                <Layout>
-                  <Component {...pageProps} />
-                </Layout>
-              </QueryClientProvider>
-            </CartContextProvider>
-          </ToastProvider>
-        </ApolloProvider>
-      </SessionProvider>
-    </div>
+    <SessionProvider session={session}>
+      <ApolloProvider client={apolloClient}>
+        <ToastProvider>
+          <CartContextProvider>
+            <QueryClientProvider client={queryClient}>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </QueryClientProvider>
+          </CartContextProvider>
+        </ToastProvider>
+      </ApolloProvider>
+    </SessionProvider>
   );
 }
 

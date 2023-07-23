@@ -24,7 +24,7 @@ export const navigationIcons = [
 
   {
     popper: "cart",
-    className: "w-6 h-5 md:w-8 md:h-7",
+    className: "w-6 h-6 md:w-8 md:h-7",
     Icon: (
       <IconAbsolute>
         <CartIcon />

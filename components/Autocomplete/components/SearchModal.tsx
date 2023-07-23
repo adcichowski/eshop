@@ -2,7 +2,7 @@ import algoliasearch from "algoliasearch";
 import React, { useRef } from "react";
 import { Configure, InstantSearch, PoweredBy } from "react-instantsearch-dom";
 import { CustomHits } from "./CustomHits";
-import { CustomSearchBox } from "./SearchBox";
+import { SearchBox } from "./SearchBox";
 import SearchIcon from "public/searchIcon.svg";
 import CloseIcon from "public/close-icon.svg";
 import { useClickOutside } from "hooks/useClickOutside";
@@ -17,7 +17,14 @@ export function SearchModal({ handleModal }: { handleModal: () => void }) {
   return (
     <InstantSearch searchClient={searchClient()} indexName="eshop">
       <div className="fixed top-0 h-full w-full animate-fade-down flex-col bg-white/75 duration-100">
-        <div className="max-w-[1440px] self-stretch">
+        <div
+          className="max-w-[1440px] self-stretch"
+          aria-owns="search-hits-list"
+          role="combobox"
+          aria-expanded="true"
+          aria-controls="search-hits-list"
+          aria-haspopup="listbox"
+        >
           <Configure clickAnalytics />
           <form
             className="relative flex items-center justify-center gap-x-4 border-b-2 border-gray-100/25 bg-white py-7 px-2"
@@ -31,7 +38,7 @@ export function SearchModal({ handleModal }: { handleModal: () => void }) {
               className="flex max-w-md grow items-center self-center"
             >
               <div role="search" className="relative max-w-md grow">
-                <CustomSearchBox />
+                <SearchBox handleModal={handleModal} />
               </div>
               <button className="ml-2 h-6 w-6">
                 <SearchIcon />
