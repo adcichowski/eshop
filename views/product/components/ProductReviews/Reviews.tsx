@@ -18,7 +18,7 @@ export function ProductReviews({ productSlug }: { productSlug: string }) {
   }, [data?.product?.reviews]);
 
   return (
-    <section className="col-span-2 mt-10">
+    <div className="m-auto mt-10 w-4/6">
       <section
         className="flex items-center gap-1"
         aria-describedby="averageRate"
@@ -55,6 +55,6 @@ export function ProductReviews({ productSlug }: { productSlug: string }) {
         </div>
       )}
       <CreateReviewForm productSlug={productSlug} />
-    </section>
+    </div>
   );
 }

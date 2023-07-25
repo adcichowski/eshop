@@ -16,7 +16,7 @@ const swiperSettings: SwiperProps = {
   draggable: true,
   freeMode: true,
   slidesPerView: "auto",
-  spaceBetween: 10,
+  spaceBetween: 40,
   modules: [FreeMode],
 };
 
@@ -32,14 +32,13 @@ export const ProductsCarrousel = ({
     ...product,
     price: Math.min(...product.variants.map(({ price }) => price)),
   }));
-  console.log(productsWithSmallestPrice);
   return (
     <section id={id} className={className}>
       {Heading}
       <Swiper {...swiperSettings}>
         {productsWithSmallestPrice.map((product) => (
           <SwiperSlide
-            className="max-w-[140px] md:max-w-[202px]"
+            className=" max-w-[140px] md:max-w-[202px]"
             key={product.name}
           >
             <ProductCarrousel

@@ -40,7 +40,7 @@ export const ProductCarrousel = ({
     return <></>;
   }
   return (
-    <section aria-labelledby={name} className="relative">
+    <section aria-labelledby={name}>
       <div
         className={`flex h-48 items-center justify-center overflow-hidden object-center md:h-72 ${clsx(
           whiteFrame && "border-2 p-2 md:p-4"

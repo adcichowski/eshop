@@ -42,7 +42,7 @@ export const ProductPage = ({ product }: ProductPageProps) => {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="relative flex flex-col">
       <div className="mx-2 grid grid-cols-1 pt-2 md:justify-items-center md:pt-6 xl:grid-cols-3">
         <Categories className="hidden xl:block" />
 
@@ -129,9 +129,10 @@ export const ProductPage = ({ product }: ProductPageProps) => {
 
             <ProductDescription productDescription={product.description} />
           </section>
-
+        </div>
+        <div className="col-span-3 w-full max-w-full">
           <ProductsCarrousel
-            className="mt-[50px] w-full"
+            className="mt-[50px]"
             id="othersProduct"
             Heading={<h3 className="mb-3 text-xl">Others buy also</h3>}
           />
@@ -139,7 +140,7 @@ export const ProductPage = ({ product }: ProductPageProps) => {
           <ProductReviews productSlug={product.slug} />
 
           <ProductsCarrousel
-            className="mt-[50px] w-full"
+            className=" mt-[50px]"
             id="othersProduct"
             Heading={
               <h3 className="mb-3 text-xl">
@@ -149,7 +150,6 @@ export const ProductPage = ({ product }: ProductPageProps) => {
           />
         </div>
       </div>
-
       <footer>Footer</footer>
     </div>
   );
