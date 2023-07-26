@@ -49,7 +49,7 @@ export function ProductCartPopper({
               //TODO: SET CART IN COOKIE HTTP ONLY
               setTimeout(() => {
                 deleteProduct({ id });
-              }, 1000);
+              }, 1);
             }}
             className="mt-[3px] self-start"
           >
