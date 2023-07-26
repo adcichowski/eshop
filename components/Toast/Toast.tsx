@@ -18,7 +18,7 @@ export const ToastChild = ({
   return (
     <div
       id="toast"
-      className={`flex w-5/6 items-center p-2 ${clsx(
+      className={`absolute mt-2 flex w-5/6 items-center p-2 ${clsx(
         type === "success" && "bg-primary",
         type === "info" && "bg-blue-200"
       )} rounded-lg shadow`}
