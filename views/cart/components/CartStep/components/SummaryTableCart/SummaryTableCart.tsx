@@ -5,14 +5,31 @@ import clsx from "clsx";
 import { DiscountFrame } from "components/DiscountFrame/DiscountFrame";
 import { changeValueCurrency, priceWithDiscount } from "utils/utils";
 import { AmountProductCart } from "../AmountProductCart";
+import { Button } from "components/Button/Button";
+import { UserDataBody } from "pages/api/checkout";
 export default function SummaryTableCart({
   cart,
 }: {
   cart: Record<string, CartItem>;
 }) {
+  const send = async () => {
+    const body = JSON.stringify({
+      products: Object.values(cart).map((product) => ({
+        variantId: product.variant.id,
+        id: product.id,
+        amount: product.amount,
+      })),
+    });
+    const data = await fetch("/api/checkout", { body, method: "POST" });
+    console.log(await data.json());
+  };
+
   return (
     <>
       <h2 className="text-xl font-medium">Your cart</h2>
+      <Button type="button" onClick={send}>
+        Send Products
+      </Button>
       <table className="mt-10 w-full">
         <thead>
           <tr className="grid grid-cols-4 gap-x-5 border-b-2 text-center">

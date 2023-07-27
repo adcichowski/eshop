@@ -109,8 +109,9 @@ export const ProductPage = ({ product }: ProductPageProps) => {
                       variant: {
                         width: selectedVariant.width,
                         height: selectedVariant.height,
+                        id: selectedVariant.id,
                       },
-                      id: selectedVariant.id,
+                      id: product.id,
                       title: product.name,
                       price: selectedVariant.price,
                       image: product.images[0],
