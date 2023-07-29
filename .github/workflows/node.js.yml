@@ -1,8 +1,6 @@
 name: Test & Build Project
 
 on:
-  push:
-    branches: [main, dev]
   pull_request:
     branches: [main]
 
@@ -12,13 +10,12 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [18.x]
 
     env:
       NEXT_PUBLIC_API: ${{ secrets.NEXT_PUBLIC_API }}
       NEXT_PUBLIC_MAILERLITE: ${{ secrets.NEXT_PUBLIC_MAILERLITE }}
       HYGRAPH_TOKEN: ${{ secrets.HYGRAPH_TOKEN }}
-      Greeting: Hello
 
     steps:
       - uses: actions/checkout@v3
