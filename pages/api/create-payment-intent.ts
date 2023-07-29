@@ -22,7 +22,7 @@ const handler: NextApiHandler = async (_req, res) => {
       enabled: true,
     },
   });
-  console.log(paymentIntent);
+
   res.json({
     clientSecret: paymentIntent.client_secret,
   });

@@ -60,7 +60,7 @@ function Newsletter({ HeaderTag }: NewsletterProps) {
   }
   return !isCookieAvaible ? (
     <section
-      className="w-full bg-primary p-6"
+      className="bg-primary w-full p-6"
       role="dialog"
       aria-labelledby="newsletterHeading"
       aria-describedby="newsletterDescription"
