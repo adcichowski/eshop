@@ -41,8 +41,8 @@ const WrapperMobile = ({
 }) => {
   return (
     <Portal isOpen={isOpen}>
-      <div className="fixed top-0 flex h-full w-full animate-fade-down flex-col items-center justify-center bg-white/75 duration-100">
-        <div className="mx-1 w-full max-w-md bg-white py-6 px-3">
+      <div className="animate-fade-down fixed top-0 flex h-full w-full flex-col items-center justify-center bg-white/75 duration-100">
+        <div className="mx-1 w-full max-w-md bg-white px-3 py-6">
           {children}
         </div>
       </div>
@@ -52,7 +52,7 @@ const WrapperMobile = ({
 
 const WrapperDesktop = ({ children }: { children: JSX.Element }) => {
   return (
-    <div className="border-gray md:-left-38 absolute -left-72 top-7 z-10 flex w-[400px] max-w-[400px] justify-center border-[0.5px] bg-white px-3 py-[19px] sm:top-9 sm:-left-44">
+    <div className="border-gray md:-left-38 absolute -left-72 top-7 z-10 flex w-[400px] max-w-[400px] justify-center border-[0.5px] bg-white px-3 py-[19px] sm:-left-44 sm:top-9">
       {children}
     </div>
   );
