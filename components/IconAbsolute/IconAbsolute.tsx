@@ -19,7 +19,7 @@ export function IconAbsolute({ children }: { readonly children: JSX.Element }) {
 const sumCartItems = (cart: Record<string, CartItem> | undefined) => {
   if (cart)
     return Object.entries(cart).reduce(
-      (prev, [_, product]) => prev + product.amount,
+      (prev, [_v, product]) => prev + product.amount,
       0
     );
 };

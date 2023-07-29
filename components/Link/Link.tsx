@@ -17,7 +17,7 @@ export function Link(
           props.className
         } ${
           props.disabled
-            ? "cursor-not-allowed border-2 border-primary bg-white text-primary"
+            ? "border-primary text-primary cursor-not-allowed border-2 bg-white"
             : "bg-primary text-white"
         }`
       )}

@@ -27,6 +27,7 @@ query GetProductsSlugs {
 
 query GetProductDetailsBySlug($slug: String) {
   product(where: { slug: $slug }) {
+    id
     name
     description
     paperWeight
@@ -139,5 +140,40 @@ query GetProductsByCategory($categorySlug: String!) {
     categories(where: { slug: $categorySlug }) {
       name
     }
+  }
+}
+
+# type ConnectProduct {
+#   id: String!,
+# }
+# mutation CreateOrder($email:String!, productsId:[ConnectProduct]!) {
+#   createOrder(
+#     data: {email: "adam@gmail.com", total: 10, stripeCheckoutId: "dddd", orderItems: {create: {product: {connect: $productsId}, quantity: 10, total: 10}}}
+#   ) {
+#     id
+#   }
+# }
+
+# mutation CreateOrder {
+#   createOrder(
+#     data: {email: "adam@gmail.com", total: 10, stripeCheckoutId: "dddd", orderItems: {create: {product: {connect: {id: "clhazkwoebsa10buju6tjnrtx"}}, quantity: 10, total: 10}}}
+#   ) {
+#     id
+#     orderItems {
+#       product {
+#         variants {
+#           id
+#           price
+#         }
+#       }
+#     }
+#   }
+# }
+# # clhb3nx1818ek0bumujehqzkr
+
+query GetVariantsByIds($variants: [ID!]!) {
+  productVariantTypes(where: { id_in: $variants }) {
+    price
+    id
   }
 }

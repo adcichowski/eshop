@@ -37,3 +37,8 @@ export const roundToNearestHalf = (num: number) => {
   if (num % 1 >= 0.5) return Math.ceil(num * 2) / 2;
   return Math.floor(num * 2) / 2 + 0.5;
 };
+
+export const getEnv = (env: string | undefined) => {
+  if (!env) throw Error(`Variable ${env} is not set in dot env`);
+  return env;
+};

@@ -16,7 +16,7 @@ export function SearchModal({ handleModal }: { handleModal: () => void }) {
   useClickOutside(ref, handleModal);
   return (
     <InstantSearch searchClient={searchClient()} indexName="eshop">
-      <div className="fixed top-0 h-full w-full animate-fade-down flex-col bg-white/75 duration-100">
+      <div className="animate-fade-down fixed top-0 h-full w-full flex-col bg-white/75 duration-100">
         <div
           className="max-w-[1440px] self-stretch"
           aria-owns="search-hits-list"

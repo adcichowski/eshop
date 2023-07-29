@@ -7,6 +7,7 @@ export interface CartItem {
     readonly alt?: string | null;
   };
   readonly variant: {
+    readonly id: string;
     readonly width: number;
     readonly height: number;
   };

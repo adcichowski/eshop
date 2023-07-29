@@ -57,7 +57,7 @@ export const ProductCarrousel = ({
         />
       </div>
 
-      <div className="z-10 my-1 mx-4 flex flex-col">
+      <div className="z-10 mx-4 my-1 flex flex-col">
         <h3 className="mt-1 truncate text-xs" id={name}>
           <Link
             passHref
@@ -76,14 +76,14 @@ export const ProductCarrousel = ({
                 sale,
                 whiteFrame,
                 amount: 1,
-                variant: { width, height },
+                variant: { width, height, id },
                 id,
                 price,
                 title: name,
                 image: images[0],
               });
             }}
-            className="self-start rounded-none py-1 px-3 text-xs font-light normal-case md:text-base"
+            className="self-start rounded-none px-3 py-1 text-xs font-light normal-case md:text-base"
           >
             To Cart
           </Button>

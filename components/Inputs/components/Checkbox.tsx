@@ -18,7 +18,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, InputProps>(
           <input
             {...props}
             type="checkbox"
-            className="text-white accent-primary"
+            className="accent-primary text-white"
             ref={ref}
           />
           <span className="ml-[5px]">{text}</span>

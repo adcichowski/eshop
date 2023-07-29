@@ -1,12 +1,13 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import type { Config } from "tailwindcss";
+
+const config = {
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
     "./views/**/*.{ts,tsx}",
   ],
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("@tailwindcss/forms"), require("tailwindcss-animate")],
   theme: {
     extend: {
       keyframes: {
@@ -70,4 +71,6 @@ module.exports = {
       blue: { 200: "#0070B8" },
     },
   },
-};
+} satisfies Config;
+
+export default config;

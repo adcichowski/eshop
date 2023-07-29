@@ -42,8 +42,8 @@ export function NavigationCart() {
             <div
               aria-hidden="true"
               className={twMerge(
-                `rounded-full border p-[15px] text-primary ${clsx(
-                  stepName === step && "border-none bg-primary text-white"
+                `text-primary rounded-full border p-[15px] ${clsx(
+                  stepName === step && "bg-primary border-none text-white"
                 )}`
               )}
             >

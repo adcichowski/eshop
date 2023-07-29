@@ -24,7 +24,7 @@ export const ToastChild = ({
       )} rounded-lg shadow`}
       role="alert"
     >
-      <div className="text-green-500 relative inline-flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-lg">
+      <div className="relative inline-flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-lg text-green-500">
         {type === "success" && <SuccessIcon />}
         {type === "info" && <InfoIcon />}
         <span className="sr-only">Check icon</span>

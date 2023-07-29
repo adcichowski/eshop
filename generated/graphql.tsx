@@ -5564,6 +5564,8 @@ export type OrderItem = Node & {
   /** The unique identifier */
   id: Scalars["ID"];
   order?: Maybe<Order>;
+  product?: Maybe<Product>;
+  productVariantType?: Maybe<ProductVariantType>;
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars["DateTime"]>;
   /** User that last published this document */
@@ -5597,6 +5599,16 @@ export type OrderItemHistoryArgs = {
 };
 
 export type OrderItemOrderArgs = {
+  forceParentLocale?: InputMaybe<Scalars["Boolean"]>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type OrderItemProductArgs = {
+  forceParentLocale?: InputMaybe<Scalars["Boolean"]>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type OrderItemProductVariantTypeArgs = {
   forceParentLocale?: InputMaybe<Scalars["Boolean"]>;
   locales?: InputMaybe<Array<Locale>>;
 };
@@ -5642,6 +5654,8 @@ export type OrderItemConnection = {
 export type OrderItemCreateInput = {
   createdAt?: InputMaybe<Scalars["DateTime"]>;
   order?: InputMaybe<OrderCreateOneInlineInput>;
+  product?: InputMaybe<ProductCreateOneInlineInput>;
+  productVariantType?: InputMaybe<ProductVariantTypeCreateOneInlineInput>;
   quantity: Scalars["Int"];
   total: Scalars["Int"];
   updatedAt?: InputMaybe<Scalars["DateTime"]>;
@@ -5719,6 +5733,8 @@ export type OrderItemManyWhereInput = {
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars["ID"]>;
   order?: InputMaybe<OrderWhereInput>;
+  product?: InputMaybe<ProductWhereInput>;
+  productVariantType?: InputMaybe<ProductVariantTypeWhereInput>;
   publishedAt?: InputMaybe<Scalars["DateTime"]>;
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars["DateTime"]>;
@@ -5803,6 +5819,8 @@ export enum OrderItemOrderByInput {
 
 export type OrderItemUpdateInput = {
   order?: InputMaybe<OrderUpdateOneInlineInput>;
+  product?: InputMaybe<ProductUpdateOneInlineInput>;
+  productVariantType?: InputMaybe<ProductVariantTypeUpdateOneInlineInput>;
   quantity?: InputMaybe<Scalars["Int"]>;
   total?: InputMaybe<Scalars["Int"]>;
 };
@@ -5927,6 +5945,8 @@ export type OrderItemWhereInput = {
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars["ID"]>;
   order?: InputMaybe<OrderWhereInput>;
+  product?: InputMaybe<ProductWhereInput>;
+  productVariantType?: InputMaybe<ProductVariantTypeWhereInput>;
   publishedAt?: InputMaybe<Scalars["DateTime"]>;
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars["DateTime"]>;
@@ -6452,6 +6472,7 @@ export type Product = Node & {
   /** Get the other localizations for this document */
   localizations: Array<Product>;
   name: Scalars["String"];
+  orderItems: Array<OrderItem>;
   orientation: Orientation;
   paperWeight: Scalars["Int"];
   /** The time the document was published. Null on documents in draft stage. */
@@ -6520,6 +6541,18 @@ export type ProductImagesArgs = {
 export type ProductLocalizationsArgs = {
   includeCurrent?: Scalars["Boolean"];
   locales?: Array<Locale>;
+};
+
+export type ProductOrderItemsArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  before?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
+  forceParentLocale?: InputMaybe<Scalars["Boolean"]>;
+  last?: InputMaybe<Scalars["Int"]>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<OrderItemOrderByInput>;
+  skip?: InputMaybe<Scalars["Int"]>;
+  where?: InputMaybe<OrderItemWhereInput>;
 };
 
 export type ProductPublishedAtArgs = {
@@ -6604,6 +6637,7 @@ export type ProductCreateInput = {
   localizations?: InputMaybe<ProductCreateLocalizationsInput>;
   /** name input for default locale (en) */
   name: Scalars["String"];
+  orderItems?: InputMaybe<OrderItemCreateManyInlineInput>;
   orientation: Orientation;
   paperWeight: Scalars["Int"];
   reviews?: InputMaybe<ReviewCreateManyInlineInput>;
@@ -6747,6 +6781,9 @@ export type ProductManyWhereInput = {
   images_every?: InputMaybe<AssetWhereInput>;
   images_none?: InputMaybe<AssetWhereInput>;
   images_some?: InputMaybe<AssetWhereInput>;
+  orderItems_every?: InputMaybe<OrderItemWhereInput>;
+  orderItems_none?: InputMaybe<OrderItemWhereInput>;
+  orderItems_some?: InputMaybe<OrderItemWhereInput>;
   orientation?: InputMaybe<Orientation>;
   /** All values that are contained in given list. */
   orientation_in?: InputMaybe<Array<InputMaybe<Orientation>>>;
@@ -6893,6 +6930,7 @@ export type ProductUpdateInput = {
   localizations?: InputMaybe<ProductUpdateLocalizationsInput>;
   /** name input for default locale (en) */
   name?: InputMaybe<Scalars["String"]>;
+  orderItems?: InputMaybe<OrderItemUpdateManyInlineInput>;
   orientation?: InputMaybe<Orientation>;
   paperWeight?: InputMaybe<Scalars["Int"]>;
   reviews?: InputMaybe<ReviewUpdateManyInlineInput>;
@@ -7030,6 +7068,7 @@ export type ProductVariantType = Node & {
   history: Array<Version>;
   /** The unique identifier */
   id: Scalars["ID"];
+  orderItems: Array<OrderItem>;
   price: Scalars["Int"];
   products: Array<Product>;
   /** The time the document was published. Null on documents in draft stage. */
@@ -7070,6 +7109,19 @@ export type ProductVariantTypeHistoryArgs = {
   limit?: Scalars["Int"];
   skip?: Scalars["Int"];
   stageOverride?: InputMaybe<Stage>;
+};
+
+/** Type layout vertical or horizontal */
+export type ProductVariantTypeOrderItemsArgs = {
+  after?: InputMaybe<Scalars["String"]>;
+  before?: InputMaybe<Scalars["String"]>;
+  first?: InputMaybe<Scalars["Int"]>;
+  forceParentLocale?: InputMaybe<Scalars["Boolean"]>;
+  last?: InputMaybe<Scalars["Int"]>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<OrderItemOrderByInput>;
+  skip?: InputMaybe<Scalars["Int"]>;
+  where?: InputMaybe<OrderItemWhereInput>;
 };
 
 /** Type layout vertical or horizontal */
@@ -7130,6 +7182,7 @@ export type ProductVariantTypeCreateInput = {
   createdAt?: InputMaybe<Scalars["DateTime"]>;
   currency?: InputMaybe<ProductVariantTypeCurrencyCreateOneInlineInput>;
   height: Scalars["Int"];
+  orderItems?: InputMaybe<OrderItemCreateManyInlineInput>;
   price: Scalars["Int"];
   products?: InputMaybe<ProductCreateManyInlineInput>;
   updatedAt?: InputMaybe<Scalars["DateTime"]>;
@@ -7310,6 +7363,9 @@ export type ProductVariantTypeManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars["ID"]>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars["ID"]>;
+  orderItems_every?: InputMaybe<OrderItemWhereInput>;
+  orderItems_none?: InputMaybe<OrderItemWhereInput>;
+  orderItems_some?: InputMaybe<OrderItemWhereInput>;
   price?: InputMaybe<Scalars["Int"]>;
   /** All values greater than the given value. */
   price_gt?: InputMaybe<Scalars["Int"]>;
@@ -7400,6 +7456,7 @@ export enum ProductVariantTypeOrderByInput {
 export type ProductVariantTypeUpdateInput = {
   currency?: InputMaybe<ProductVariantTypeCurrencyUpdateOneInlineInput>;
   height?: InputMaybe<Scalars["Int"]>;
+  orderItems?: InputMaybe<OrderItemUpdateManyInlineInput>;
   price?: InputMaybe<Scalars["Int"]>;
   products?: InputMaybe<ProductUpdateManyInlineInput>;
   width?: InputMaybe<Scalars["Int"]>;
@@ -7548,6 +7605,9 @@ export type ProductVariantTypeWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars["ID"]>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars["ID"]>;
+  orderItems_every?: InputMaybe<OrderItemWhereInput>;
+  orderItems_none?: InputMaybe<OrderItemWhereInput>;
+  orderItems_some?: InputMaybe<OrderItemWhereInput>;
   price?: InputMaybe<Scalars["Int"]>;
   /** All values greater than the given value. */
   price_gt?: InputMaybe<Scalars["Int"]>;
@@ -7773,6 +7833,9 @@ export type ProductWhereInput = {
   name_not_starts_with?: InputMaybe<Scalars["String"]>;
   /** All values starting with the given string. */
   name_starts_with?: InputMaybe<Scalars["String"]>;
+  orderItems_every?: InputMaybe<OrderItemWhereInput>;
+  orderItems_none?: InputMaybe<OrderItemWhereInput>;
+  orderItems_some?: InputMaybe<OrderItemWhereInput>;
   orientation?: InputMaybe<Orientation>;
   /** All values that are contained in given list. */
   orientation_in?: InputMaybe<Array<InputMaybe<Orientation>>>;
@@ -11139,6 +11202,7 @@ export type GetProductDetailsBySlugQuery = {
   __typename?: "Query";
   product?: {
     __typename?: "Product";
+    id: string;
     name: string;
     description: string;
     paperWeight: number;
@@ -11260,6 +11324,19 @@ export type GetProductsByCategoryQuery = {
       height: number;
     }>;
     categories: Array<{ __typename?: "Category"; name: string }>;
+  }>;
+};
+
+export type GetVariantsByIdsQueryVariables = Exact<{
+  variants: Array<Scalars["ID"]> | Scalars["ID"];
+}>;
+
+export type GetVariantsByIdsQuery = {
+  __typename?: "Query";
+  productVariantTypes: Array<{
+    __typename?: "ProductVariantType";
+    price: number;
+    id: string;
   }>;
 };
 
@@ -11393,6 +11470,7 @@ export type GetProductsSlugsQueryResult = Apollo.QueryResult<
 export const GetProductDetailsBySlugDocument = gql`
   query GetProductDetailsBySlug($slug: String) {
     product(where: { slug: $slug }) {
+      id
       name
       description
       paperWeight
@@ -11909,4 +11987,63 @@ export type GetProductsByCategoryLazyQueryHookResult = ReturnType<
 export type GetProductsByCategoryQueryResult = Apollo.QueryResult<
   GetProductsByCategoryQuery,
   GetProductsByCategoryQueryVariables
+>;
+export const GetVariantsByIdsDocument = gql`
+  query GetVariantsByIds($variants: [ID!]!) {
+    productVariantTypes(where: { id_in: $variants }) {
+      price
+      id
+    }
+  }
+`;
+
+/**
+ * __useGetVariantsByIdsQuery__
+ *
+ * To run a query within a React component, call `useGetVariantsByIdsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetVariantsByIdsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetVariantsByIdsQuery({
+ *   variables: {
+ *      variants: // value for 'variants'
+ *   },
+ * });
+ */
+export function useGetVariantsByIdsQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetVariantsByIdsQuery,
+    GetVariantsByIdsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetVariantsByIdsQuery, GetVariantsByIdsQueryVariables>(
+    GetVariantsByIdsDocument,
+    options
+  );
+}
+export function useGetVariantsByIdsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetVariantsByIdsQuery,
+    GetVariantsByIdsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetVariantsByIdsQuery,
+    GetVariantsByIdsQueryVariables
+  >(GetVariantsByIdsDocument, options);
+}
+export type GetVariantsByIdsQueryHookResult = ReturnType<
+  typeof useGetVariantsByIdsQuery
+>;
+export type GetVariantsByIdsLazyQueryHookResult = ReturnType<
+  typeof useGetVariantsByIdsLazyQuery
+>;
+export type GetVariantsByIdsQueryResult = Apollo.QueryResult<
+  GetVariantsByIdsQuery,
+  GetVariantsByIdsQueryVariables
 >;
