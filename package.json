@@ -91,5 +91,8 @@
     "*.{json,md,yaml,yml,scss,css}": [
       "prettier --write"
     ]
+  },
+  "engines": {
+    "npm": ">=18.0.0"
   }
 }
