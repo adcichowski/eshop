@@ -40,7 +40,7 @@ export default function DiscountCodeInput() {
             onClick={handleCheckCode}
             disabled={isLoading}
             type="submit"
-            className="flex grow-0 items-center gap-x-1 rounded-none rounded-br-md rounded-tr-md border border-primary bg-white p-2 text-sm font-semibold normal-case text-primary"
+            className="border-primary text-primary flex grow-0 items-center gap-x-1 rounded-none rounded-br-md rounded-tr-md border bg-white p-2 text-sm font-semibold normal-case"
           >
             {isLoading ? <SpinIcon size="small" /> : <></>}
             <span>Use</span>

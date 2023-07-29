@@ -17,9 +17,7 @@ export const CartPage = () => {
           <span className="font-bold"> Buy for an additional 46.40 USD </span>
           and qualify for <span className="font-bold">FREE</span> shipping!
         </aside>
-        <article className="mt-10">
-          <OrderFormStepper />
-        </article>
+        <OrderFormStepper />
       </div>
     </OrderFormProvider>
   );

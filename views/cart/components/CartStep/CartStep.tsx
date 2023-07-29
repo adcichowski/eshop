@@ -6,6 +6,7 @@ import DiscountCodeInput from "./components/DiscountCodeInput/DiscountCodeInput"
 import SummaryTableCart from "./components/SummaryTableCart/SummaryTableCart";
 import { DetailsOrder } from "../DetailsOrder/DetailsOrder";
 import { useOrderFormContext } from "../OrderFormStepper/context/OrderFormContext";
+import ContentInStep from "../ContentInStep/ContentInStep";
 
 export type CartStepType = {
   code?: string;
@@ -19,7 +20,7 @@ export function CartStep() {
 
   const onSubmit = handleSubmit(() => handleSetProducts(Object.values(cart)));
   return (
-    <>
+    <ContentInStep header="Your cart">
       <form noValidate onSubmit={onSubmit}>
         <SummaryTableCart cart={cart} />
 
@@ -33,6 +34,6 @@ export function CartStep() {
           </div>
         </section>
       </form>
-    </>
+    </ContentInStep>
   );
 }
