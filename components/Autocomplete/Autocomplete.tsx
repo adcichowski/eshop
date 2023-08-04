@@ -1,4 +1,4 @@
-import Portal from "components/Portal/Portal";
+import Portal from "components/Modal/Modal";
 import SearchIcon from "public/searchIcon.svg";
 import { useState } from "react";
 import { SearchModal } from "./components/SearchModal";

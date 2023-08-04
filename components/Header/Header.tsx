@@ -14,7 +14,7 @@ export const Header = () => {
   return (
     <div className="sticky top-0 z-30">
       <header role="banner" className="mx-auto max-w-[1440px]">
-        <div className="b-2·pt-4 grid grid-cols-3 place-items-center bg-white sm:p-4">
+        <div className="grid grid-cols-3 place-items-center bg-white p-3">
           <div className="flex w-full items-center gap-x-10 pl-5">
             <MenuIcon />
             <Autocomplete />
@@ -27,7 +27,7 @@ export const Header = () => {
             >
               <h1 className="text-lg md:text-3xl">PosterWall</h1>
             </Link>
-            <p className="hidden text-xs opacity-70 md:inline-block">
+            <p className="hidden text-xs opacity-70 md:inline-block mb-1">
               Shipping in 2-4 business days
               <span className="mx-1 inline-block before:relative before:-bottom-1 before:block before:h-4 before:w-[1px] before:bg-black"></span>
               free delivery from 199 PLN
@@ -39,7 +39,7 @@ export const Header = () => {
               className="mr-5 flex w-full items-center justify-end gap-2 md:justify-start md:gap-4"
             >
               {navigationIcons.map(({ Icon, popper, ...propsArchon }) => (
-                <li key={popper ?? propsArchon.href}>
+                <li className="inline-flex" key={popper ?? propsArchon.href}>
                   <button
                     data-outside="false"
                     className={twMerge(

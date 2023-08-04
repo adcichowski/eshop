@@ -1,7 +1,7 @@
 import { AccountPopper } from "components/Header/components/HeaderPoppers/components/AccountPopper";
 import { CartPopper } from "components/Header/components/HeaderPoppers/components/CartPopper/CartPopper";
 import { FavoritePopper } from "components/Header/components/HeaderPoppers/components/FavoritePopper";
-import Portal from "components/Portal/Portal";
+import Portal from "components/Modal/Modal";
 import { useClickOutside } from "hooks/useClickOutside";
 import { useRef } from "react";
 import { useHeaderPoppers } from "./hooks/useHeaderPoppers";
