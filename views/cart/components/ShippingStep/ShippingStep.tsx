@@ -58,7 +58,9 @@ export function ShippingStep() {
         </div>
         <div className="flex flex-col">
           <DetailsOrder />
-          <Button className="mt-4 rounded-none py-2">I order and pay</Button>
+          <Button type="submit" className="mt-4 rounded-none py-2">
+            I order and pay
+          </Button>
         </div>
       </div>
     </ContentInStep>

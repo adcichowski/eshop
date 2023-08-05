@@ -9,7 +9,7 @@ export default function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
 
-  const [message] = React.useState<string | null>(null);
+  const [message, setMessage] = React.useState<string | null>(null);
   const [isLoading, setIsLoading] = React.useState(false);
 
   React.useEffect(() => {
@@ -25,27 +25,28 @@ export default function CheckoutForm() {
       return;
     }
 
-    // stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
-    //   switch (paymentIntent.status) {
-    //     case "succeeded":
-    //       setMessage("Payment succeeded!");
-    //       break;
-    //     case "processing":
-    //       setMessage("Your payment is processing.");
-    //       break;
-    //     case "requires_payment_method":
-    //       setMessage("Your payment was not successful, please try again.");
-    //       break;
-    //     default:
-    //       setMessage("Something went wrong.");
-    //       break;
-    //   }
-    // });
+    stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
+      if (!paymentIntent) return;
+      switch (paymentIntent.status) {
+        case "succeeded":
+          setMessage("Payment succeeded!");
+          break;
+        case "processing":
+          setMessage("Your payment is processing.");
+          break;
+        case "requires_payment_method":
+          setMessage("Your payment was not successful, please try again.");
+          break;
+        default:
+          setMessage("Something went wrong.");
+          break;
+      }
+    });
   }, [stripe]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    console.log(!stripe || !elements);
     if (!stripe || !elements) {
       // Stripe.js hasn't yet loaded.
       // Make sure to disable form submission until Stripe.js has loaded.
@@ -54,14 +55,28 @@ export default function CheckoutForm() {
 
     setIsLoading(true);
 
-    // const { error } = await stripe.confirmPayment({
-    //   elements,
-    //   confirmParams: {
-    //     // Make sure to change this to your payment completion page
-    //     return_url: "http://localhost:3000",
-    //   },
-    // });
+    const { error } = await stripe.confirmPayment({
+      elements,
+      confirmParams: {
+        payment_method_data: {
+          billing_details: {
+            address: {
+              city: "Gdansk",
+              country: "pl",
+              line1: "Lawendowe Wzgórze",
+              line2: "Bulonska",
+              postal_code: "80-288",
+              state: "pl",
+            },
+            email: "a@gmail.com",
+          },
+        },
+        // Make sure to change this to your payment completion page
+        return_url: "http://localhost:3000",
+      },
+    });
 
+    console.log(error);
     // This point will only be reached if there is an immediate error when
     // confirming the payment. Otherwise, your customer will be redirected to
     // your `return_url`. For some payment methods like iDEAL, your customer will
@@ -82,7 +97,11 @@ export default function CheckoutForm() {
         options={{ fields: { billingDetails: { address: "never" } } }}
         id="payment-element"
       />
-      <button disabled={isLoading || !stripe || !elements} id="submit">
+      <button
+        type="submit"
+        disabled={isLoading || !stripe || !elements}
+        id="submit"
+      >
         <span id="button-text">
           {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
         </span>

@@ -9,6 +9,7 @@ const calculateOrderAmount = () => {
 
 const handler: NextApiHandler = async (_req, res) => {
   // const { items } = req.body;
+
   const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
   if (!stripeSecretKey)
     return res.status(405).json({ error: "Stripe secret key not set" });

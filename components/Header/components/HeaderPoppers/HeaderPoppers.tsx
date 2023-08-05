@@ -15,7 +15,7 @@ export function HeaderPoppers({
 }) {
   const { isMobile } = useHeaderPoppers();
 
-  if (type === undefined || isMobile === undefined) return <></>;
+  if (type === undefined) return <></>;
 
   if (isMobile) {
     return (
