@@ -6,7 +6,6 @@ import {
 import { BoxWithSelects } from "../../../ShippingStep/components/BoxWithSelects/BoxWithSelects";
 import { DetailsOrder } from "../../../../../DetailsOrder/DetailsOrder";
 import { Button } from "components/Button/Button";
-import { DeliverySelect } from "../../../ShippingStep/components/DeliverySelect/DeliverySelect";
 
 export function CheckoutForm() {
   const stripe = useStripe();
@@ -19,25 +18,25 @@ export function CheckoutForm() {
       return;
     }
 
-    const { error } = await stripe.confirmPayment({
-      elements,
-      confirmParams: {
-        payment_method_data: {
-          billing_details: {
-            address: {
-              city: "Gdansk",
-              country: "pl",
-              line1: "Lawendowe Wzgórze",
-              line2: "Bulonska",
-              postal_code: "80-288",
-              state: "pl",
-            },
-            email: "a@gmail.com",
-          },
-        },
-        return_url: "http://localhost:3000",
-      },
-    });
+    // const { error } = await stripe.confirmPayment({
+    //   elements,
+    //   confirmParams: {
+    //     payment_method_data: {
+    //       billing_details: {
+    //         address: {
+    //           city: "Gdansk",
+    //           country: "pl",
+    //           line1: "Lawendowe Wzgórze",
+    //           line2: "Bulonska",
+    //           postal_code: "80-288",
+    //           state: "pl",
+    //         },
+    //         email: "a@gmail.com",
+    //       },
+    //     },
+    //     return_url: "http://localhost:3000",
+    //   },
+    // });
   };
 
   return (
