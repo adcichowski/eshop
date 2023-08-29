@@ -1,14 +1,75 @@
+import {
+  CreateOrderDocument,
+  CreateOrderMutation,
+  CreateOrderMutationVariables,
+  GetProductsByIdsDocument,
+  GetProductsByIdsQuery,
+  GetProductsByIdsQueryVariables,
+  StatusOrder,
+} from "generated/graphql";
+import { apolloClient, authorizedApolloClient } from "graphql/apolloClient";
 import { NextApiHandler } from "next";
 import { Stripe } from "stripe";
-const calculateOrderAmount = () => {
-  // Replace this constant with a calculation of the order's amount
-  // Calculate the order total on the server to prevent
-  // people from directly manipulating the amount on the client
-  return 1400;
+
+export type UserDataBody = {
+  orderProducts: { variantId: string; amount: number; productId: string }[];
+  email: string;
 };
 
-const handler: NextApiHandler = async (_req, res) => {
-  // const { items } = req.body;
+export type SecuredProduct = {
+  price: number;
+  id: string;
+  variantId: string;
+  quantity: number;
+  width: number;
+  height: number;
+};
+
+export type SuccessCreatePaymentIntent = {
+  clientSecret: string | undefined;
+};
+
+export type ErrorCreatePaymentIntent = {
+  error: string;
+};
+
+const handler: NextApiHandler<
+  SuccessCreatePaymentIntent | ErrorCreatePaymentIntent
+> = async (req, res) => {
+  const user = req.body as UserDataBody;
+  console.log(user);
+  const { data } = await authorizedApolloClient.query<
+    GetProductsByIdsQuery,
+    GetProductsByIdsQueryVariables
+  >({
+    query: GetProductsByIdsDocument,
+    variables: {
+      productsId: user.orderProducts.map(({ productId }) => productId),
+    },
+  });
+
+  //Check products price and filter if is not equal
+  const filteredDangerousProducts = user.orderProducts
+    .map((dangerProduct) => {
+      const securedProduct = data.products.find(
+        (resProduct) => resProduct.id === dangerProduct.productId
+      );
+      const securedVariant = securedProduct?.variants.find(
+        (variant) => variant.id === dangerProduct.variantId
+      );
+      if (securedProduct && securedVariant) {
+        const { width, height, price } = securedVariant;
+        return {
+          width,
+          height,
+          id: securedProduct.id,
+          quantity: dangerProduct.amount,
+          price,
+          variantId: securedVariant.id,
+        };
+      }
+    })
+    .filter((product): product is SecuredProduct => Boolean(product));
 
   const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
   if (!stripeSecretKey)
@@ -17,16 +78,45 @@ const handler: NextApiHandler = async (_req, res) => {
 
   // Create a PaymentIntent with the order amount and currency
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: calculateOrderAmount(),
+    payment_method_types: ["card", "p24", "paypal"],
+    amount: calculateOrderAmount(filteredDangerousProducts),
     currency: "eur",
-    automatic_payment_methods: {
-      enabled: true,
-    },
   });
 
-  res.json({
-    clientSecret: paymentIntent.client_secret,
+  const userOrder = await authorizedApolloClient.mutate<
+    CreateOrderMutation,
+    CreateOrderMutationVariables
+  >({
+    mutation: CreateOrderDocument,
+    variables: {
+      email: user.email,
+      orderItems: {
+        create: filteredDangerousProducts.map(
+          ({ width, height, quantity, price }) => ({
+            width,
+            height,
+            quantity,
+            total: quantity * price,
+          })
+        ),
+      },
+      statusOrder: StatusOrder.Progress,
+      totalOrderPrice: calculateOrderAmount(filteredDangerousProducts),
+      stripeCheckoutId: paymentIntent.id,
+    },
+  });
+  // if (!userOrder.data?.createOrder) {
+  //   return res.json({ error: "Problem while create order" });
+  // }
+  console.log(JSON.stringify(userOrder.data, null, 2));
+  return res.json({
+    clientSecret: paymentIntent.client_secret ?? undefined,
   });
 };
 
 export default handler;
+
+const calculateOrderAmount = (securedProducts: SecuredProduct[]) =>
+  securedProducts.reduce((orderAmount, product) => {
+    return orderAmount + product.price * product.quantity;
+  }, 0);

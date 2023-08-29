@@ -1,8 +1,9 @@
 import React from "react";
-import AccountStep from "../AccountStep/AccountStep";
-import { CartStep } from "../CartStep/CartStep";
-import { ShippingStep } from "../ShippingStep/ShippingStep";
+import AccountStep from "./components/AccountStep/AccountStep";
+import { CartStep } from "./components/CartStep/CartStep";
+import { ShippingStep } from "./components/ShippingStep/ShippingStep";
 import { useOrderFormContext } from "./context/OrderFormContext";
+import { PaymentStep } from "./components/PaymentStep/PaymentStep";
 
 export function OrderFormStepper() {
   const { step } = useOrderFormContext();
@@ -13,6 +14,8 @@ export function OrderFormStepper() {
       return <AccountStep />;
     case "shipping":
       return <ShippingStep />;
+    case "payment":
+      return <PaymentStep />;
     case "summary":
       return <>Summary Step</>;
   }

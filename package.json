@@ -28,6 +28,7 @@
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
     "graphql": "^16.5.0",
+    "lucide-react": "^0.271.0",
     "next": "^13.1.3",
     "next-auth": "^4.18.8",
     "next-mdx-remote": "^4.1.0",
@@ -81,6 +82,7 @@
     "jest-environment-jsdom": "^29.0.3",
     "lint-staged": "^13.0.3",
     "postcss": "^8.4.27",
+    "stripe-event-types": "^2.4.0",
     "typescript": "^5.1.6"
   },
   "lint-staged": {

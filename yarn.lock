@@ -7320,6 +7320,11 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
+lucide-react@^0.271.0:
+  version "0.271.0"
+  resolved "https://registry.yarnpkg.com/lucide-react/-/lucide-react-0.271.0.tgz#3d2109853d484693d39673a6133fa6eb0c8d713c"
+  integrity sha512-oc3/6m7gg/5E9FsX0F7t7DOuBiafsLTwg5/f0hJUJYePbmLmCXpZj1OESilmaUSwXGztawV7V12ZXBfAb8wRAA==
+
 lz-string@^1.4.4:
   version "1.5.0"
   resolved "https://registry.npmjs.org/lz-string/-/lz-string-1.5.0.tgz"
@@ -9624,6 +9629,11 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.npmjs.org/strip-json-comments/-/strip-json-comments-2.0.1.tgz"
   integrity sha512-4gB8na07fecVVkOI6Rs4e7T6NOTki5EmL7TUduTs6bu3EdnSycntVJ4re8kgZA+wx9IueI2Y11bfbgwtzuE0KQ==
+
+stripe-event-types@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/stripe-event-types/-/stripe-event-types-2.4.0.tgz#75ef84d60bc14545e836c3ebfca6aa1cfd23e580"
+  integrity sha512-5ORZMW/WKjc31nsGMCUECOS+xVjtHhAFJJ8833ft3471hIjQrMbLMPBEb5AcJM8mKRRULpKmCVMDU0lLYrxERQ==
 
 stripe@^12.14.0:
   version "12.14.0"

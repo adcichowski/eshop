@@ -1,3 +1,12 @@
+/// <reference types="stripe-event-types" />
+
+import { FetchResult } from "@apollo/client";
+import {
+  CreateOrderDocument,
+  CreateOrderMutationHookResult,
+  CreateOrderMutationVariables,
+} from "generated/graphql";
+import { apolloClient } from "graphql/apolloClient";
 import { NextApiHandler, PageConfig } from "next";
 import { Readable } from "stream";
 import { Stripe } from "stripe";
@@ -19,28 +28,9 @@ const handler: NextApiHandler = async (req, res) => {
       sig,
       getEnv(process.env.STRIPE_WEBHOOK)
     );
+
     // Handle the event
-    switch (event.type) {
-      case "checkout.session.async_payment_failed":
-        const checkoutSessionAsyncPaymentFailed = event.data.object;
-        // Then define and call a function to handle the event checkout.session.async_payment_failed
-        break;
-      case "checkout.session.async_payment_succeeded":
-        const checkoutSessionAsyncPaymentSucceeded = event.data.object;
-        // Then define and call a function to handle the event checkout.session.async_payment_succeeded
-        break;
-      case "checkout.session.completed":
-        const checkoutSessionCompleted = event.data.object;
-        // Then define and call a function to handle the event checkout.session.completed
-        break;
-      case "checkout.session.expired":
-        const checkoutSessionExpired = event.data.object;
-        // Then define and call a function to handle the event checkout.session.expired
-        break;
-      // ... handle other event types
-      default:
-        console.log(`Unhandled event type ${event.type}`);
-    }
+    eventStripeWebhook(event);
 
     // Return a 200 response to acknowledge receipt of the event
     res.status(200).end();
@@ -66,3 +56,32 @@ async function buffer(readable: Readable) {
 }
 
 export default handler;
+
+const eventStripeWebhook = async (event: Stripe.Event) => {
+  const type = event.type as Stripe.DiscriminatedEvent.Type;
+  const charge = event.data.object as Stripe.Charge;
+  switch (type) {
+    case "payment_intent.succeeded":
+      return;
+
+    case "checkout.session.async_payment_failed":
+      const checkoutSessionAsyncPaymentFailed = event.data.object;
+      // Then define and call a function to handle the event checkout.session.async_payment_failed
+      return;
+    case "checkout.session.async_payment_succeeded":
+      const checkoutSessionAsyncPaymentSucceeded = event.data.object;
+      // Then define and call a function to handle the event checkout.session.async_payment_succeeded
+      return;
+    case "checkout.session.completed":
+      const checkoutSessionCompleted = event.data.object;
+      // Then define and call a function to handle the event checkout.session.completed
+      return;
+    case "checkout.session.expired":
+      const checkoutSessionExpired = event.data.object;
+      // Then define and call a function to handle the event checkout.session.expired
+      return;
+    // ... handle other event types
+    default:
+      console.log(`Unhandled event type ${event.type}`);
+  }
+};

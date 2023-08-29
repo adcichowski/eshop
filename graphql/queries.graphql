@@ -143,37 +143,34 @@ query GetProductsByCategory($categorySlug: String!) {
   }
 }
 
-# type ConnectProduct {
-#   id: String!,
-# }
-# mutation CreateOrder($email:String!, productsId:[ConnectProduct]!) {
-#   createOrder(
-#     data: {email: "adam@gmail.com", total: 10, stripeCheckoutId: "dddd", orderItems: {create: {product: {connect: $productsId}, quantity: 10, total: 10}}}
-#   ) {
-#     id
-#   }
-# }
+query GetProductsByIds($productsId: [ID!]!) {
+  products(where: { id_in: $productsId }) {
+    id
+    variants {
+      id
+      price
+      width
+      height
+    }
+  }
+}
 
-# mutation CreateOrder {
-#   createOrder(
-#     data: {email: "adam@gmail.com", total: 10, stripeCheckoutId: "dddd", orderItems: {create: {product: {connect: {id: "clhazkwoebsa10buju6tjnrtx"}}, quantity: 10, total: 10}}}
-#   ) {
-#     id
-#     orderItems {
-#       product {
-#         variants {
-#           id
-#           price
-#         }
-#       }
-#     }
-#   }
-# }
-# # clhb3nx1818ek0bumujehqzkr
-
-query GetVariantsByIds($variants: [ID!]!) {
-  productVariantTypes(where: { id_in: $variants }) {
-    price
+mutation CreateOrder(
+  $email: String!
+  $totalOrderPrice: Int!
+  $stripeCheckoutId: String!
+  $orderItems: OrderItemCreateManyInlineInput!
+  $statusOrder: StatusOrder!
+) {
+  createOrder(
+    data: {
+      email: $email
+      total: $totalOrderPrice
+      stripeCheckoutId: $stripeCheckoutId
+      orderItems: $orderItems
+      statusOrder: $statusOrder
+    }
+  ) {
     id
   }
 }

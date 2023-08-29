@@ -4,8 +4,8 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import DiscountCodeInput from "./components/DiscountCodeInput/DiscountCodeInput";
 import SummaryTableCart from "./components/SummaryTableCart/SummaryTableCart";
-import { DetailsOrder } from "../DetailsOrder/DetailsOrder";
-import { useOrderFormContext } from "../OrderFormStepper/context/OrderFormContext";
+import { DetailsOrder } from "../../../DetailsOrder/DetailsOrder";
+import { useOrderFormContext } from "../../../OrderFormStepper/context/OrderFormContext";
 import ContentInStep from "../ContentInStep/ContentInStep";
 
 export type CartStepType = {

@@ -1,7 +1,12 @@
 import { CartItem } from "context/CartContext/types";
 import React, { createContext, useContext, useState } from "react";
 
-export type StepsFormOrder = "cart" | "account" | "shipping" | "summary";
+export type StepsFormOrder =
+  | "cart"
+  | "account"
+  | "shipping"
+  | "summary"
+  | "payment";
 
 type OrderFormState = {
   products?: CartItem[];
@@ -10,9 +15,13 @@ type OrderFormState = {
 };
 
 type OrderFormContextType = {
+  payment: { id: string } | undefined;
+  shipping: { label: string; value: number } | undefined;
   order: OrderFormState | undefined;
   step: StepsFormOrder;
   account: { email: string } | undefined;
+  handleSetShipping: (shipping: { label: string; value: number }) => void;
+  handleSetPayment: (paymentId: string) => void;
   handleSetProducts: (products: CartItem[]) => void;
   handleSetDiscount: (code?: string, discount?: number) => void;
   handleSetAccount: ({ email }: { email: string }) => void;
@@ -27,10 +36,16 @@ export const OrderFormProvider = ({
 }) => {
   const [step, setStep] = useState<StepsFormOrder>("cart");
   const [order, setOrder] = useState<OrderFormState | undefined>();
+  const [payment, setPayment] = useState<{ id: string } | undefined>();
   const [account, setAccount] = useState<{ email: string } | undefined>();
+  const [shipping, setShipping] = useState<
+    { label: string; value: number } | undefined
+  >();
   return (
     <OrderFormContext.Provider
       value={{
+        payment,
+        shipping,
         account,
         order,
         step,
@@ -45,6 +60,11 @@ export const OrderFormProvider = ({
           setStep("shipping");
           setAccount(account);
         },
+        handleSetShipping: (shipping: { label: string; value: number }) => {
+          setStep("payment");
+          setShipping(shipping);
+        },
+        handleSetPayment: (paymentId: string) => setPayment({ id: paymentId }),
       }}
     >
       {children}
