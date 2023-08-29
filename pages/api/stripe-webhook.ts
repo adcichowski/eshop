@@ -1,12 +1,5 @@
 /// <reference types="stripe-event-types" />
 
-import { FetchResult } from "@apollo/client";
-import {
-  CreateOrderDocument,
-  CreateOrderMutationHookResult,
-  CreateOrderMutationVariables,
-} from "generated/graphql";
-import { apolloClient } from "graphql/apolloClient";
 import { NextApiHandler, PageConfig } from "next";
 import { Readable } from "stream";
 import { Stripe } from "stripe";
