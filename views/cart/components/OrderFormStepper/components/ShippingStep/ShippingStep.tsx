@@ -1,7 +1,4 @@
 import React, { FormEvent, useMemo } from "react";
-import tailwindConfig from "tailwind.config";
-import { loadStripe, StripeElementsOptions } from "@stripe/stripe-js";
-import { getEnv } from "utils/utils";
 import ContentInStep from "../ContentInStep/ContentInStep";
 import { useCreatePayment } from "./hooks/useCreatePayment";
 import { useOrderFormContext } from "../../context/OrderFormContext";
@@ -10,7 +7,7 @@ import { DetailsOrder } from "views/cart/components/DetailsOrder/DetailsOrder";
 import { Button } from "components/Button/Button";
 
 export function ShippingStep() {
-  const { data, mutate, status } = useCreatePayment();
+  const { data } = useCreatePayment();
   const { order, account } = useOrderFormContext();
 
   const orderProducts = useMemo(() => {
