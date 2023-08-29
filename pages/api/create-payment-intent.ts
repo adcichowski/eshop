@@ -7,7 +7,7 @@ import {
   GetProductsByIdsQueryVariables,
   StatusOrder,
 } from "generated/graphql";
-import { apolloClient, authorizedApolloClient } from "graphql/apolloClient";
+import { authorizedApolloClient } from "graphql/apolloClient";
 import { NextApiHandler } from "next";
 import { Stripe } from "stripe";
 
