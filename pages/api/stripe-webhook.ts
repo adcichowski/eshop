@@ -52,28 +52,8 @@ export default handler;
 
 const eventStripeWebhook = async (event: Stripe.Event) => {
   const type = event.type as Stripe.DiscriminatedEvent.Type;
-  const charge = event.data.object as Stripe.Charge;
+  // const charge = event.data.object as Stripe.Charge;
   switch (type) {
-    case "payment_intent.succeeded":
-      return;
-
-    case "checkout.session.async_payment_failed":
-      const checkoutSessionAsyncPaymentFailed = event.data.object;
-      // Then define and call a function to handle the event checkout.session.async_payment_failed
-      return;
-    case "checkout.session.async_payment_succeeded":
-      const checkoutSessionAsyncPaymentSucceeded = event.data.object;
-      // Then define and call a function to handle the event checkout.session.async_payment_succeeded
-      return;
-    case "checkout.session.completed":
-      const checkoutSessionCompleted = event.data.object;
-      // Then define and call a function to handle the event checkout.session.completed
-      return;
-    case "checkout.session.expired":
-      const checkoutSessionExpired = event.data.object;
-      // Then define and call a function to handle the event checkout.session.expired
-      return;
-    // ... handle other event types
     default:
       console.log(`Unhandled event type ${event.type}`);
   }
