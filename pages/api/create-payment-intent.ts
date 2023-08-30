@@ -70,7 +70,6 @@ const handler: NextApiHandler<
     })
     .filter((product): product is SecuredProduct => Boolean(product));
 
-  console.log(user, calculateOrderAmount(filteredDangerousProducts));
   const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
   if (!stripeSecretKey)
     return res.status(405).json({ error: "Stripe secret key not set" });
@@ -83,7 +82,7 @@ const handler: NextApiHandler<
     currency: "eur",
   });
 
-  const userOrder = await authorizedApolloClient.mutate<
+  await authorizedApolloClient.mutate<
     CreateOrderMutation,
     CreateOrderMutationVariables
   >({
