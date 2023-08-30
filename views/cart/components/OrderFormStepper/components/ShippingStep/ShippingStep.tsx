@@ -8,8 +8,9 @@ import { Button } from "components/Button/Button";
 
 export function ShippingStep() {
   const { data } = useCreatePayment();
-  const { order, account } = useOrderFormContext();
-
+  const { order, account, handleSetShipping, handleSetPayment } =
+    useOrderFormContext();
+  const { mutateAsync } = useCreatePayment();
   const orderProducts = useMemo(() => {
     if (order?.products) {
       return order.products.map((product) => ({
@@ -19,21 +20,19 @@ export function ShippingStep() {
       }));
     }
   }, [order?.products]);
-  const { handleSetPayment } = useOrderFormContext();
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    if (account && orderProducts) {
-      console.log({
-        email: account.email,
-        orderProducts,
-      });
-      // mutate({
-      //   email: account.email,
-      //   orderProducts,
-      // });
-    }
 
-    if (data?.clientSecret) handleSetPayment(data.clientSecret);
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!account || !orderProducts) return;
+    const data = await mutateAsync({
+      email: account.email,
+      orderProducts,
+    });
+
+    if (data?.clientSecret) {
+      handleSetPayment(data.clientSecret);
+      handleSetShipping({ label: "DPD", value: 909 });
+    }
   };
 
   return (

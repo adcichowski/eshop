@@ -4,8 +4,10 @@ import type {
   UserDataBody,
 } from "pages/api/create-payment-intent";
 import { useMutation } from "react-query";
+import { useOrderFormContext } from "../../../context/OrderFormContext";
 
 export function useCreatePayment() {
+  const { handleSetPayment } = useOrderFormContext();
   const mutation = useMutation<
     SuccessCreatePaymentIntent,
     ErrorCreatePaymentIntent,
@@ -16,8 +18,7 @@ export function useCreatePayment() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(mutateData),
     });
-    const data = res.json();
-
+    const data = await res.json();
     return data;
   });
 

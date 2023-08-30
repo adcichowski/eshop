@@ -37,7 +37,6 @@ const handler: NextApiHandler<
   SuccessCreatePaymentIntent | ErrorCreatePaymentIntent
 > = async (req, res) => {
   const user = req.body as UserDataBody;
-  console.log(user);
   const { data } = await authorizedApolloClient.query<
     GetProductsByIdsQuery,
     GetProductsByIdsQueryVariables
@@ -71,6 +70,7 @@ const handler: NextApiHandler<
     })
     .filter((product): product is SecuredProduct => Boolean(product));
 
+  console.log(user, calculateOrderAmount(filteredDangerousProducts));
   const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
   if (!stripeSecretKey)
     return res.status(405).json({ error: "Stripe secret key not set" });
@@ -108,7 +108,7 @@ const handler: NextApiHandler<
   // if (!userOrder.data?.createOrder) {
   //   return res.json({ error: "Problem while create order" });
   // }
-  console.log(JSON.stringify(userOrder.data, null, 2));
+  console.log(paymentIntent.client_secret);
   return res.json({
     clientSecret: paymentIntent.client_secret ?? undefined,
   });
