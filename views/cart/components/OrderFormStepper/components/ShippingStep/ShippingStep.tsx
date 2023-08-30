@@ -7,7 +7,6 @@ import { DetailsOrder } from "views/cart/components/DetailsOrder/DetailsOrder";
 import { Button } from "components/Button/Button";
 
 export function ShippingStep() {
-  const { data } = useCreatePayment();
   const { order, account, handleSetShipping, handleSetPayment } =
     useOrderFormContext();
   const { mutateAsync } = useCreatePayment();

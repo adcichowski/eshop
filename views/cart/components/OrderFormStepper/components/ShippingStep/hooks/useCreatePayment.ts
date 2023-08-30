@@ -4,10 +4,8 @@ import type {
   UserDataBody,
 } from "pages/api/create-payment-intent";
 import { useMutation } from "react-query";
-import { useOrderFormContext } from "../../../context/OrderFormContext";
 
 export function useCreatePayment() {
-  const { handleSetPayment } = useOrderFormContext();
   const mutation = useMutation<
     SuccessCreatePaymentIntent,
     ErrorCreatePaymentIntent,
