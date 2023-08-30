@@ -7,9 +7,11 @@ export function useHeaderPoppers() {
 
   useEffect(() => {
     const resizeObserver = new ResizeObserver((entries) => {
-      const bodyWidth = entries[0].contentRect.width;
-      if (checkIsMobileDevice(bodyWidth)) setIsMobile(true);
-      if (!checkIsMobileDevice(bodyWidth)) setIsMobile(false);
+      setTimeout(() => {
+        const bodyWidth = entries[0].contentRect.width;
+        if (checkIsMobileDevice(bodyWidth) && !isMobile) setIsMobile(true);
+        if (!checkIsMobileDevice(bodyWidth) && isMobile) setIsMobile(false);
+      }, 0);
     });
     resizeObserver.observe(window.document.body);
     return () => {

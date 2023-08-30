@@ -1,9 +1,7 @@
-import React from "react";
-import HumanIcon from "../assets/human.svg";
-import BagIcon from "../assets/bag.svg";
-import CheckIcon from "../assets/check.svg";
-import CarIcon from "../assets/car.svg";
+import { ShoppingBag, User2, Truck, Wallet, Check } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { twMerge } from "tailwind-merge";
+import React from "react";
 import {
   StepsFormOrder,
   useOrderFormContext,
@@ -12,44 +10,39 @@ import clsx from "clsx";
 const navigationStepsIcons = [
   {
     stepName: "cart",
-    Icon: BagIcon,
-    className: "w-5 md:w-7",
+    Icon: ShoppingBag,
   },
   {
     stepName: "account",
-    Icon: HumanIcon,
-    className: "w-5 md:w-7",
+    Icon: User2,
   },
   {
     stepName: "shipping",
-    Icon: CarIcon,
-    className: "w-6 md:w-8",
+    Icon: Truck,
   },
+  { stepName: "payment", Icon: Wallet },
   {
     stepName: "summary",
-    Icon: CheckIcon,
-    className: "w-5 md:w-7",
+    Icon: Check,
   },
-] satisfies { Icon: Element; className: string; stepName: StepsFormOrder }[];
+] satisfies { Icon: LucideIcon; stepName: StepsFormOrder }[];
 
 export function NavigationCart() {
   const { step } = useOrderFormContext();
   return (
     <header className="mt-8">
       <ul className="flex flex-wrap items-center">
-        {navigationStepsIcons.map(({ Icon, className, stepName }) => (
+        {navigationStepsIcons.map(({ Icon, stepName }) => (
           <React.Fragment key={Icon.name}>
             <div
               aria-hidden="true"
               className={twMerge(
-                `text-primary rounded-full border p-[15px] ${clsx(
+                `text-primary rounded-full border p-4 ${clsx(
                   stepName === step && "bg-primary border-none text-white"
                 )}`
               )}
             >
-              <div className={twMerge(className)}>
-                <Icon />
-              </div>
+              <Icon size={30} />
             </div>
             <hr className="h-[.5px] grow bg-black" />
           </React.Fragment>

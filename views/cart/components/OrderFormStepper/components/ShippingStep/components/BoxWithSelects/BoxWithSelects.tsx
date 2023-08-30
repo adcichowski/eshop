@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function BoxWithSelects({
+export function BoxWithSelects({
   header,
   id,
   children,

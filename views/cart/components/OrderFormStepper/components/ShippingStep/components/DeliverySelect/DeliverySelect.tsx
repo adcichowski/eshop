@@ -1,5 +1,5 @@
 import { Radio } from "components/Inputs/components/Radio";
-import BoxWithSelects from "../BoxWithSelects/BoxWithSelects";
+import { BoxWithSelects } from "../BoxWithSelects/BoxWithSelects";
 
 const deliveryTypes = {
   address: [

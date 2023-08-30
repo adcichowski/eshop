@@ -2,7 +2,7 @@ import { Button } from "components/Button/Button";
 import { Checkbox } from "components/Inputs/components/Checkbox";
 import { Input } from "components/Inputs/components/Input";
 import React, { useState } from "react";
-import { useOrderFormContext } from "../OrderFormStepper/context/OrderFormContext";
+import { useOrderFormContext } from "../../context/OrderFormContext";
 import FormAccountWrapper from "./components/FormAccountWrapper";
 import ContentInStep from "../ContentInStep/ContentInStep";
 
