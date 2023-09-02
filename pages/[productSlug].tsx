@@ -18,7 +18,7 @@ export async function getStaticPaths() {
     query: GetProductsSlugsDocument,
   });
   return {
-    paths: data.products.slice(0, 3).map(({ slug }) => ({
+    paths: data.products.slice(0, 2).map(({ slug }) => ({
       params: {
         productSlug: slug,
       },
