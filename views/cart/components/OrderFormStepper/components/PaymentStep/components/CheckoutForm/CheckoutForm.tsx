@@ -56,8 +56,8 @@ export function CheckoutForm() {
           />
         </BoxWithSelects>
       </div>
-      <div className="flex flex-col">
-        <div className="flex flex-col sticky top-40">
+      <div className="flex flex-col col-span-2 md:col-span-1 md:mx-2 relative">
+        <div className="flex flex-col sticky">
           <DetailsOrder />
           <Button type="submit" className="mt-4 rounded-none py-2">
             I order and pay

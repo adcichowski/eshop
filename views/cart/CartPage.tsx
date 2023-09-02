@@ -10,7 +10,7 @@ export const CartPage = () => {
   if (!cart) return <EmptyCartPage />;
   return (
     <OrderFormProvider>
-      <div className="m-2 md:mx-20">
+      <div className="m-2 md:mx-16">
         <NavigationCart />
         <aside className="mt-[30px] w-full bg-green-100 px-2 py-5 text-center text-sm md:text-base">
           Will you give it a try?
