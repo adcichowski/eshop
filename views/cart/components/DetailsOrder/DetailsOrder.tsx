@@ -8,7 +8,7 @@ export function DetailsOrder() {
   const { summaryOrderValue, discountInOrder } = useDetailsOrder();
   if (!summaryOrderValue) return <></>;
   return (
-    <dl className="flex flex-col gap-y-4">
+    <dl className="flex flex-col gap-y-4 -mt-1">
       <div className="flex flex-wrap justify-between">
         <dt>Order value</dt>
         <dd>{changeValueCurrency(summaryOrderValue)}</dd>

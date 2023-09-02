@@ -43,8 +43,8 @@ export function ShippingStep() {
         <div className="col-span-2 flex flex-col gap-y-2">
           <DeliverySelect />
         </div>
-        <div className="flex flex-col">
-          <div className="flex flex-col sticky top-40">
+        <div className="flex flex-col relative">
+          <div className="flex flex-col sticky">
             <DetailsOrder />
             <Button type="submit" className="mt-4 rounded-none py-2">
               I order and pay

@@ -51,7 +51,7 @@ const ViewWithProducts = ({ cart }: { cart: Record<string, CartItem> }) => {
           </li>
         ))}
       </ul>
-      <div className="my-4 flex w-full text-left">
+      <div className="my-4 flex w-full text-left pr-4">
         <p className="grow text-sm">Total cost:</p>{" "}
         <p className="text-md font-semibold">
           {changeValueCurrency(totalCostCart)}

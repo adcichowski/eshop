@@ -12,7 +12,7 @@ export function BoxWithSelects({
   return (
     <section id={id} className="flex flex-col">
       <h4
-        className="my-4 w-full bg-green-100 py-4 text-center text-lg"
+        className="mb-4 w-full bg-green-100 py-4 text-center text-lg"
         aria-labelledby={id}
       >
         {header}

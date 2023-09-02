@@ -8,7 +8,10 @@ import { Elements } from "@stripe/react-stripe-js";
 import { CheckoutForm } from "./components/CheckoutForm/CheckoutForm";
 
 const stripePromise = loadStripe(
-  getEnv(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
+  getEnv(
+    process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
+    "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY"
+  )
 );
 
 export function PaymentStep() {
@@ -24,7 +27,7 @@ export function PaymentStep() {
   };
   return (
     <ContentInStep header="Payment For Order">
-      <form id="payment-form" className="grid md:grid-cols-3 md:gap-x-12 mb-32">
+      <form id="payment-form">
         <Elements options={options} stripe={stripePromise}>
           <CheckoutForm />
         </Elements>
