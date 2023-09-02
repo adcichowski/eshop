@@ -1,8 +1,8 @@
 /// <reference types="stripe-event-types" />
 
 import { NextApiHandler, PageConfig } from "next";
-import { Readable } from "stream";
-import { Stripe } from "stripe";
+// import { Readable } from "stream";
+// import { Stripe } from "stripe";
 
 const handler: NextApiHandler = async (_req, res) => {
   // try {
@@ -39,21 +39,21 @@ export const config: PageConfig = {
   },
 };
 
-async function buffer(readable: Readable) {
-  const chunks = [];
-  for await (const chunk of readable) {
-    chunks.push(typeof chunk === "string" ? Buffer.from(chunk) : chunk);
-  }
-  return Buffer.concat(chunks);
-}
+// async function buffer(readable: Readable) {
+//   const chunks = [];
+//   for await (const chunk of readable) {
+//     chunks.push(typeof chunk === "string" ? Buffer.from(chunk) : chunk);
+//   }
+//   return Buffer.concat(chunks);
+// }
 
 export default handler;
 
-const eventStripeWebhook = async (event: Stripe.Event) => {
-  const type = event.type as Stripe.DiscriminatedEvent.Type;
-  // const charge = event.data.object as Stripe.Charge;
-  switch (type) {
-    default:
-      console.log(`Unhandled event type ${event.type}`);
-  }
-};
+// const eventStripeWebhook = async (event: Stripe.Event) => {
+//   const type = event.type as Stripe.DiscriminatedEvent.Type;
+//   // const charge = event.data.object as Stripe.Charge;
+//   switch (type) {
+//     default:
+//       console.log(`Unhandled event type ${event.type}`);
+//   }
+// };
