@@ -7,7 +7,10 @@ import { getEnv } from "utils/utils";
 
 const handler: NextApiHandler = async (req, res) => {
   try {
-    const stripeKey = getEnv(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
+    const stripeKey = getEnv(
+      process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
+      "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY"
+    );
     const stripe = new Stripe(stripeKey, { apiVersion: "2022-11-15" });
     const body = await buffer(req);
     const sig = req.headers["stripe-signature"];
@@ -19,7 +22,7 @@ const handler: NextApiHandler = async (req, res) => {
     const event = stripe.webhooks.constructEvent(
       body,
       sig,
-      getEnv(process.env.STRIPE_WEBHOOK)
+      getEnv(process.env.STRIPE_WEBHOOK, "STRIPE_WEBHOOK")
     );
 
     // Handle the event

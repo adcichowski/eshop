@@ -8,7 +8,10 @@ import { Elements } from "@stripe/react-stripe-js";
 import { CheckoutForm } from "./components/CheckoutForm/CheckoutForm";
 
 const stripePromise = loadStripe(
-  getEnv(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
+  getEnv(
+    process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
+    "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY"
+  )
 );
 
 export function PaymentStep() {
