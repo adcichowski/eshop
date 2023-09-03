@@ -41,7 +41,7 @@ export function CheckoutForm() {
       },
     });
     if (error) return;
-    const data = await mutate({ variables: { orderId: payment.orderId } });
+    await mutate({ variables: { orderId: payment.orderId } });
   };
 
   return (
