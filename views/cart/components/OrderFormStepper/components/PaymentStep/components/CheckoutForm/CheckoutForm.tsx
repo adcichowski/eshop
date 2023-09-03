@@ -4,39 +4,44 @@ import {
   useStripe,
 } from "@stripe/react-stripe-js";
 import { BoxWithSelects } from "../../../ShippingStep/components/BoxWithSelects/BoxWithSelects";
-import { DetailsOrder } from "../../../../../DetailsOrder/DetailsOrder";
+import { DetailsOrder } from "views/cart/components/DetailsOrder/DetailsOrder";
 import { Button } from "components/Button/Button";
+import { useUpdateOrderPaymentByIdMutation } from "generated/graphql";
+import { useOrderFormContext } from "views/cart/components/OrderFormStepper/context/OrderFormContext";
 
 export function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
-
+  const { payment } = useOrderFormContext();
+  const [mutate] = useUpdateOrderPaymentByIdMutation();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!stripe || !elements) {
+    if (!stripe || !elements || !payment?.orderId) {
       return;
     }
-
-    // const { error } = await stripe.confirmPayment({
-    //   elements,
-    //   confirmParams: {
-    //     payment_method_data: {
-    //       billing_details: {
-    //         address: {
-    //           city: "Gdansk",
-    //           country: "pl",
-    //           line1: "Lawendowe Wzgórze",
-    //           line2: "Bulonska",
-    //           postal_code: "80-288",
-    //           state: "pl",
-    //         },
-    //         email: "a@gmail.com",
-    //       },
-    //     },
-    //     return_url: "http://localhost:3000",
-    //   },
-    // });
+    const { error } = await stripe.confirmPayment({
+      elements,
+      redirect: "if_required",
+      confirmParams: {
+        payment_method_data: {
+          billing_details: {
+            address: {
+              city: "Gdansk",
+              country: "pl",
+              line1: "Lawendowe Wzgórze",
+              line2: "Bulonska",
+              postal_code: "80-288",
+              state: "pl",
+            },
+            email: "a@gmail.com",
+          },
+        },
+        return_url: `http://localhost:3000/cart?order=${payment.orderId}`,
+      },
+    });
+    if (error) return;
+    const data = await mutate({ variables: { orderId: payment.orderId } });
   };
 
   return (

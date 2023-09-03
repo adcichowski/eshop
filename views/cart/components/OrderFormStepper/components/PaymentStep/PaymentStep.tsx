@@ -27,11 +27,9 @@ export function PaymentStep() {
   };
   return (
     <ContentInStep header="Payment For Order">
-      <form id="payment-form">
-        <Elements options={options} stripe={stripePromise}>
-          <CheckoutForm />
-        </Elements>
-      </form>
+      <Elements options={options} stripe={stripePromise}>
+        <CheckoutForm />
+      </Elements>
     </ContentInStep>
   );
 }

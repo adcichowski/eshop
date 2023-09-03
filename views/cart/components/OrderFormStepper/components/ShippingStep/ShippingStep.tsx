@@ -29,7 +29,7 @@ export function ShippingStep() {
     });
 
     if (data?.clientSecret) {
-      handleSetPayment(data.clientSecret);
+      handleSetPayment({ paymentId: data.clientSecret, orderId: data.orderId });
       handleSetShipping({ label: "DPD", value: 909 });
     }
   };
@@ -55,11 +55,3 @@ export function ShippingStep() {
     </ContentInStep>
   );
 }
-
-// {data?.clientSecret ? (
-//   <Elements options={options} stripe={stripePromise}>
-//     <CheckoutForm />
-//   </Elements>
-// ) : (
-//   <></>
-// )}

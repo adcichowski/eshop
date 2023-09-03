@@ -15,13 +15,19 @@ type OrderFormState = {
 };
 
 type OrderFormContextType = {
-  payment: { id: string } | undefined;
+  payment: { id: string; orderId: string } | undefined;
   shipping: { label: string; value: number } | undefined;
   order: OrderFormState | undefined;
   step: StepsFormOrder;
   account: { email: string } | undefined;
   handleSetShipping: (shipping: { label: string; value: number }) => void;
-  handleSetPayment: (paymentId: string) => void;
+  handleSetPayment: ({
+    paymentId,
+    orderId,
+  }: {
+    paymentId: string;
+    orderId: string;
+  }) => void;
   handleSetProducts: (products: CartItem[]) => void;
   handleSetDiscount: (code?: string, discount?: number) => void;
   handleSetAccount: ({ email }: { email: string }) => void;
@@ -36,7 +42,9 @@ export const OrderFormProvider = ({
 }) => {
   const [step, setStep] = useState<StepsFormOrder>("cart");
   const [order, setOrder] = useState<OrderFormState | undefined>();
-  const [payment, setPayment] = useState<{ id: string } | undefined>();
+  const [payment, setPayment] = useState<
+    { id: string; orderId: string } | undefined
+  >();
   const [account, setAccount] = useState<{ email: string } | undefined>();
   const [shipping, setShipping] = useState<
     { label: string; value: number } | undefined
@@ -61,10 +69,18 @@ export const OrderFormProvider = ({
           setAccount(account);
         },
         handleSetShipping: (shipping: { label: string; value: number }) => {
-          setStep("payment");
           setShipping(shipping);
         },
-        handleSetPayment: (paymentId: string) => setPayment({ id: paymentId }),
+        handleSetPayment: ({
+          paymentId,
+          orderId,
+        }: {
+          paymentId: string;
+          orderId: string;
+        }) => {
+          setPayment({ id: paymentId, orderId });
+          setStep("payment");
+        },
       }}
     >
       {children}
@@ -75,7 +91,7 @@ export const OrderFormProvider = ({
 export const useOrderFormContext = () => {
   const stepFormContext = useContext(OrderFormContext);
   if (!stepFormContext) {
-    throw new Error("Wrap components using OrderFormContextProvider");
+    throw new Error("Wrap components with OrderFormContextProvider");
   }
   return stepFormContext;
 };

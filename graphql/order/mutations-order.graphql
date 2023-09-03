@@ -1,0 +1,25 @@
+mutation CreateOrder(
+  $email: String!
+  $totalOrderPrice: Int!
+  $stripeCheckoutId: String!
+  $orderItems: OrderItemCreateManyInlineInput!
+  $statusOrder: StatusOrder!
+) {
+  createOrder(
+    data: {
+      email: $email
+      total: $totalOrderPrice
+      stripeCheckoutId: $stripeCheckoutId
+      orderItems: $orderItems
+      statusOrder: $statusOrder
+    }
+  ) {
+    id
+  }
+}
+
+mutation UpdateOrderPaymentById($orderId: ID!) {
+  updateOrder(data: { statusOrder: PAID }, where: { id: $orderId }) {
+    id
+  }
+}

@@ -26,7 +26,8 @@ export type SecuredProduct = {
 };
 
 export type SuccessCreatePaymentIntent = {
-  clientSecret: string | undefined;
+  clientSecret: string;
+  orderId: string;
 };
 
 export type ErrorCreatePaymentIntent = {
@@ -82,7 +83,7 @@ const handler: NextApiHandler<
     currency: "eur",
   });
 
-  await authorizedApolloClient.mutate<
+  const order = await authorizedApolloClient.mutate<
     CreateOrderMutation,
     CreateOrderMutationVariables
   >({
@@ -99,17 +100,19 @@ const handler: NextApiHandler<
           })
         ),
       },
-      statusOrder: StatusOrder.Progress,
+      statusOrder: StatusOrder.Unpaid,
       totalOrderPrice: calculateOrderAmount(filteredDangerousProducts),
       stripeCheckoutId: paymentIntent.id,
     },
   });
-  // if (!userOrder.data?.createOrder) {
-  //   return res.json({ error: "Problem while create order" });
-  // }
-  console.log(paymentIntent.client_secret);
+
+  const orderId = order.data?.createOrder?.id;
+  if (!paymentIntent.client_secret || !orderId) {
+    return res.status(404).json({ error: "Problem while create order!" });
+  }
   return res.json({
-    clientSecret: paymentIntent.client_secret ?? undefined,
+    clientSecret: paymentIntent.client_secret,
+    orderId,
   });
 };
 

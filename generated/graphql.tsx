@@ -10587,6 +10587,28 @@ export enum _SystemDateTimeFieldVariation {
   Localization = "localization",
 }
 
+export type CreateOrderMutationVariables = Exact<{
+  email: Scalars["String"];
+  totalOrderPrice: Scalars["Int"];
+  stripeCheckoutId: Scalars["String"];
+  orderItems: OrderItemCreateManyInlineInput;
+  statusOrder: StatusOrder;
+}>;
+
+export type CreateOrderMutation = {
+  __typename?: "Mutation";
+  createOrder?: { __typename?: "Order"; id: string } | null;
+};
+
+export type UpdateOrderPaymentByIdMutationVariables = Exact<{
+  orderId: Scalars["ID"];
+}>;
+
+export type UpdateOrderPaymentByIdMutation = {
+  __typename?: "Mutation";
+  updateOrder?: { __typename?: "Order"; id: string } | null;
+};
+
 export type GetProductsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetProductsQuery = {
@@ -10773,19 +10795,124 @@ export type GetProductsByIdsQuery = {
   }>;
 };
 
-export type CreateOrderMutationVariables = Exact<{
-  email: Scalars["String"];
-  totalOrderPrice: Scalars["Int"];
-  stripeCheckoutId: Scalars["String"];
-  orderItems: OrderItemCreateManyInlineInput;
-  statusOrder: StatusOrder;
-}>;
+export const CreateOrderDocument = gql`
+  mutation CreateOrder(
+    $email: String!
+    $totalOrderPrice: Int!
+    $stripeCheckoutId: String!
+    $orderItems: OrderItemCreateManyInlineInput!
+    $statusOrder: StatusOrder!
+  ) {
+    createOrder(
+      data: {
+        email: $email
+        total: $totalOrderPrice
+        stripeCheckoutId: $stripeCheckoutId
+        orderItems: $orderItems
+        statusOrder: $statusOrder
+      }
+    ) {
+      id
+    }
+  }
+`;
+export type CreateOrderMutationFn = Apollo.MutationFunction<
+  CreateOrderMutation,
+  CreateOrderMutationVariables
+>;
 
-export type CreateOrderMutation = {
-  __typename?: "Mutation";
-  createOrder?: { __typename?: "Order"; id: string } | null;
-};
+/**
+ * __useCreateOrderMutation__
+ *
+ * To run a mutation, you first call `useCreateOrderMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateOrderMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createOrderMutation, { data, loading, error }] = useCreateOrderMutation({
+ *   variables: {
+ *      email: // value for 'email'
+ *      totalOrderPrice: // value for 'totalOrderPrice'
+ *      stripeCheckoutId: // value for 'stripeCheckoutId'
+ *      orderItems: // value for 'orderItems'
+ *      statusOrder: // value for 'statusOrder'
+ *   },
+ * });
+ */
+export function useCreateOrderMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    CreateOrderMutation,
+    CreateOrderMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<CreateOrderMutation, CreateOrderMutationVariables>(
+    CreateOrderDocument,
+    options
+  );
+}
+export type CreateOrderMutationHookResult = ReturnType<
+  typeof useCreateOrderMutation
+>;
+export type CreateOrderMutationResult =
+  Apollo.MutationResult<CreateOrderMutation>;
+export type CreateOrderMutationOptions = Apollo.BaseMutationOptions<
+  CreateOrderMutation,
+  CreateOrderMutationVariables
+>;
+export const UpdateOrderPaymentByIdDocument = gql`
+  mutation UpdateOrderPaymentById($orderId: ID!) {
+    updateOrder(data: { statusOrder: PAID }, where: { id: $orderId }) {
+      id
+    }
+  }
+`;
+export type UpdateOrderPaymentByIdMutationFn = Apollo.MutationFunction<
+  UpdateOrderPaymentByIdMutation,
+  UpdateOrderPaymentByIdMutationVariables
+>;
 
+/**
+ * __useUpdateOrderPaymentByIdMutation__
+ *
+ * To run a mutation, you first call `useUpdateOrderPaymentByIdMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateOrderPaymentByIdMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateOrderPaymentByIdMutation, { data, loading, error }] = useUpdateOrderPaymentByIdMutation({
+ *   variables: {
+ *      orderId: // value for 'orderId'
+ *   },
+ * });
+ */
+export function useUpdateOrderPaymentByIdMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateOrderPaymentByIdMutation,
+    UpdateOrderPaymentByIdMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    UpdateOrderPaymentByIdMutation,
+    UpdateOrderPaymentByIdMutationVariables
+  >(UpdateOrderPaymentByIdDocument, options);
+}
+export type UpdateOrderPaymentByIdMutationHookResult = ReturnType<
+  typeof useUpdateOrderPaymentByIdMutation
+>;
+export type UpdateOrderPaymentByIdMutationResult =
+  Apollo.MutationResult<UpdateOrderPaymentByIdMutation>;
+export type UpdateOrderPaymentByIdMutationOptions = Apollo.BaseMutationOptions<
+  UpdateOrderPaymentByIdMutation,
+  UpdateOrderPaymentByIdMutationVariables
+>;
 export const GetProductsDocument = gql`
   query GetProducts {
     products {
@@ -11497,72 +11624,4 @@ export type GetProductsByIdsLazyQueryHookResult = ReturnType<
 export type GetProductsByIdsQueryResult = Apollo.QueryResult<
   GetProductsByIdsQuery,
   GetProductsByIdsQueryVariables
->;
-export const CreateOrderDocument = gql`
-  mutation CreateOrder(
-    $email: String!
-    $totalOrderPrice: Int!
-    $stripeCheckoutId: String!
-    $orderItems: OrderItemCreateManyInlineInput!
-    $statusOrder: StatusOrder!
-  ) {
-    createOrder(
-      data: {
-        email: $email
-        total: $totalOrderPrice
-        stripeCheckoutId: $stripeCheckoutId
-        orderItems: $orderItems
-        statusOrder: $statusOrder
-      }
-    ) {
-      id
-    }
-  }
-`;
-export type CreateOrderMutationFn = Apollo.MutationFunction<
-  CreateOrderMutation,
-  CreateOrderMutationVariables
->;
-
-/**
- * __useCreateOrderMutation__
- *
- * To run a mutation, you first call `useCreateOrderMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useCreateOrderMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [createOrderMutation, { data, loading, error }] = useCreateOrderMutation({
- *   variables: {
- *      email: // value for 'email'
- *      totalOrderPrice: // value for 'totalOrderPrice'
- *      stripeCheckoutId: // value for 'stripeCheckoutId'
- *      orderItems: // value for 'orderItems'
- *      statusOrder: // value for 'statusOrder'
- *   },
- * });
- */
-export function useCreateOrderMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    CreateOrderMutation,
-    CreateOrderMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<CreateOrderMutation, CreateOrderMutationVariables>(
-    CreateOrderDocument,
-    options
-  );
-}
-export type CreateOrderMutationHookResult = ReturnType<
-  typeof useCreateOrderMutation
->;
-export type CreateOrderMutationResult =
-  Apollo.MutationResult<CreateOrderMutation>;
-export type CreateOrderMutationOptions = Apollo.BaseMutationOptions<
-  CreateOrderMutation,
-  CreateOrderMutationVariables
 >;
