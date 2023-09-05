@@ -1,3 +1,4 @@
+"use client";
 import Portal from "components/Modal/Modal";
 import SearchIcon from "public/searchIcon.svg";
 import { useState } from "react";

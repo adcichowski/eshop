@@ -12,13 +12,13 @@ const Home = () => {
 
   return (
     <div className="flex min-h-screen flex-col ">
-      <RoomsCarrousel isLoading={loading} />
+      {/* <RoomsCarrousel isLoading={loading} /> */}
       <PopularCategories />
-      <ProductsCarrousel
+      {/* <ProductsCarrousel
         id="bestsellers"
         className="mx-2 mb-8 xl:mx-48"
         Heading={<h2 className="m-8 text-center text-xl">Bestsellers</h2>}
-      />
+      /> */}
     </div>
   );
 };

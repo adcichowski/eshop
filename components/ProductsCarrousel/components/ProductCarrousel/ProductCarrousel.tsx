@@ -1,3 +1,4 @@
+"use client";
 import clsx from "clsx";
 import { Button } from "components/Button/Button";
 import { FavoriteInput } from "components/Inputs/FavoriteInput";

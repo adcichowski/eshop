@@ -1,3 +1,4 @@
+"use client";
 import type { TypeHeadlineTags } from "types/types";
 import { defaultSchema } from "../schemas/defaultSchema";
 import { useForm } from "../useForm";
@@ -5,37 +6,25 @@ import * as Yup from "yup";
 import { useMutation } from "react-query";
 import { fetcher } from "utils/fetcher";
 import { Input } from "components/Inputs/components/Input";
-import { useRouter } from "next/router";
-import Dynamic from "next/dynamic";
-import { schemaResponseMailerLite } from "pages/api/newsletter";
+import { useRouter } from "next/navigation";
+import { schemaResponseMailerLite } from "demo/api/newsletter";
 
 const DISCOUNT_PERCENT = "10%";
 export type NewsletterProps = {
   readonly HeaderTag: TypeHeadlineTags;
 };
 
-const checkIsCookieMailerLite = () => {
-  const COOKIE_VALUE_MAILERLITE = "ML=1";
-  const cookie = document.cookie;
-  return cookie === COOKIE_VALUE_MAILERLITE;
-};
+// const checkIsCookieMailerLite = () => {
+//   const COOKIE_VALUE_MAILERLITE = "ML=1";
+//   const cookie = document.cookie;
+//   return cookie === COOKIE_VALUE_MAILERLITE;
+// };
 
 const PATHS_RENDER = ["/account", "/"];
 
-export const NewsletterComp = Dynamic<NewsletterProps>(
-  () =>
-    import(
-      /* webpackChunkName: "newsletter" */
-      "./Newsletter"
-    ).then(() => Newsletter),
-  {
-    ssr: false,
-  }
-);
-
-function Newsletter({ HeaderTag }: NewsletterProps) {
+export function Newsletter({ HeaderTag }: NewsletterProps) {
   const router = useRouter();
-  const isCookieAvaible = checkIsCookieMailerLite();
+  const isCookieAvaible = false; //checkIsCookieMailerLite
   const schemaEmail = Yup.object({ email: defaultSchema.email });
   const { errors, register, handleSubmit } = useForm<{
     readonly email: string;
@@ -55,9 +44,9 @@ function Newsletter({ HeaderTag }: NewsletterProps) {
   const onSumbit = handleSubmit((data) => {
     mutate(data);
   });
-  if (!PATHS_RENDER.includes(router.asPath)) {
-    return <></>;
-  }
+  // if (!PATHS_RENDER.includes(router.asPath)) {
+  //   return <></>;
+  // }
   return !isCookieAvaible ? (
     <section
       className="bg-primary w-full p-6"

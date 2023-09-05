@@ -3,7 +3,7 @@ import { RegisterForm } from "components/Forms/RegisterForm/RegisterForm";
 import { AlertInfo } from "components/AlertInfo/AlertInfo";
 import { useAlertInfo } from "components/AlertInfo/useAlertInfo";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export function AccountPage() {
   const { status } = useSession();

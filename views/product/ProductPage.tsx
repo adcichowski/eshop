@@ -7,7 +7,7 @@ import { ProductAttributes } from "./components/ProductAttributes";
 import { ProductDescription } from "./components/ProductDescription";
 import { ProductPrice } from "./components/ProductPrice";
 import type { InferGetStaticPropsType } from "next";
-import type { getStaticProps } from "pages/[productSlug]";
+import type { getStaticProps } from "demo/[productSlug]";
 import { ProductSelectVariant } from "./components/ProductSelectVariant";
 import { FavoriteInput } from "components/Inputs/FavoriteInput";
 import { ProductReviews } from "./components/ProductReviews/Reviews";

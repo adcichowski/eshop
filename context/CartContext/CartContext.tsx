@@ -1,3 +1,4 @@
+"use client";
 import { useToastContext } from "context/ToastContext/ToastContext";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { toastActionCart } from "./constants/constats";

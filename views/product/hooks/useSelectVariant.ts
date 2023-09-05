@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ProductPageProps } from "../ProductPage";
 import { ProductVariant } from "../types";

@@ -1,3 +1,4 @@
+"use client";
 import Clsx from "clsx";
 import { Autocomplete } from "components/Autocomplete/Autocomplete";
 import { HeaderPoppers } from "components/Header/components/HeaderPoppers/HeaderPoppers";

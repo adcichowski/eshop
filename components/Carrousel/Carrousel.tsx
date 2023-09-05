@@ -1,7 +1,5 @@
 import type { SwiperProps } from "swiper/react";
 import { Swiper } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
 
 export const Carrousel = (
   props: SwiperProps & { readonly renderSwiperSlide: () => JSX.Element }

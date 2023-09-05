@@ -1,4 +1,4 @@
-import { NewsletterComp } from "components/Forms/Newsletter/Newsletter";
+import { Newsletter } from "components/Forms/Newsletter/Newsletter";
 import { Header } from "components/Header/Header";
 
 export function Layout({ children }: { readonly children: React.ReactNode }) {
@@ -6,7 +6,7 @@ export function Layout({ children }: { readonly children: React.ReactNode }) {
     <>
       <Header />
       <main className="flex grow flex-col">{children}</main>
-      <NewsletterComp HeaderTag="h3" />
+      <Newsletter HeaderTag="h3" />
     </>
   );
 }

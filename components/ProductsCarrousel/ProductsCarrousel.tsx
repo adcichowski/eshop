@@ -1,8 +1,9 @@
+"use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { SwiperProps } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import { FreeMode } from "swiper";
+import FreeMode from "swiper";
 import { useGetProductsQuery } from "generated/graphql";
 import { ProductCarrousel } from "./components/ProductCarrousel/ProductCarrousel";
 

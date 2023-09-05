@@ -2,7 +2,7 @@ import type {
   ErrorCreatePaymentIntent,
   SuccessCreatePaymentIntent,
   UserDataBody,
-} from "pages/api/create-payment-intent";
+} from "demo/api/create-payment-intent";
 import { useMutation } from "react-query";
 
 export function useCreatePayment() {
