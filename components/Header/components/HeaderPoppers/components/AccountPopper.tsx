@@ -1,7 +1,6 @@
 import { Button } from "components/Button/Button";
 import { SpinIcon } from "components/Skeleton/SpinIcon";
 import { useSession, signOut } from "next-auth/react";
-import Link from "next/link";
 
 export function AccountPopper() {
   const { status } = useSession();
@@ -23,9 +22,9 @@ const Unauthenticated = () => (
     <div className="line text-sm leading-6">
       Are you here for the first time?
     </div>
-    <Link href="/account">
+    {/* <Link href="/account">
       <span className="cursor-pointer text-sm underline">Sign up</span>
-    </Link>
+    </Link> */}
   </>
 );
 
@@ -40,9 +39,9 @@ const Authenticated = () => (
     <div className="line text-sm leading-6">
       Do you wanna see your profile?{" "}
       <div>
-        <Link href="/account">
+        {/* <Link href="/account">
           <span className="cursor-pointer text-sm underline">Check it.</span>
-        </Link>
+        </Link> */}
       </div>
     </div>
   </>

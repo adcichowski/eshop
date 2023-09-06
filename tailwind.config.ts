@@ -6,6 +6,7 @@ const config = {
     "./components/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
     "./views/**/*.{ts,tsx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}", // Note the addition of the `app` directory.
   ],
   plugins: [require("@tailwindcss/forms"), require("tailwindcss-animate")],
   theme: {

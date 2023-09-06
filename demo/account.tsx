@@ -1,5 +1,5 @@
-import { AccountPage } from "views/account/AccountPage";
+// import { AccountPage } from "views/account/AccountPage";
 
-export default function Account() {
-  return <AccountPage />;
-}
+// export default function Account() {
+//   return <AccountPage />;
+// }

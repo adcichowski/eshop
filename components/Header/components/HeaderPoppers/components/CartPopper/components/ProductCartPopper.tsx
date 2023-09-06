@@ -30,7 +30,7 @@ export function ProductCartPopper({
       <div className="basis-[88px]">
         <Image
           className={`w-auto object-cover ${clsx(
-            "border  p-[6px]" && whiteFrame
+            "border  p-[6px]" && whiteFrame,
           )}`}
           width={100}
           height={90}

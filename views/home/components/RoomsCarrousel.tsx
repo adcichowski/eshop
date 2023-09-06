@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { SpinIcon } from "components/Skeleton/SpinIcon";
+import { Navigation, Autoplay } from "swiper/modules";
 
 const ROOMS_IMAGES: { src: string; alt: string }[] = [
   { alt: "Beige room with mountain posters", src: "/carrousel/swiper-1.jpg" },
@@ -30,7 +31,7 @@ export function RoomsCarrousel({ isLoading }: { isLoading: boolean }) {
         speed={650}
         navigation={true}
         autoplay={{ delay: 3500, disableOnInteraction: true }}
-        // modules={[Navigation, Autoplay]}
+        modules={[Navigation, Autoplay]}
       >
         {ROOMS_IMAGES.map((image, i) => (
           <SwiperSlide

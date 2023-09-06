@@ -15,6 +15,6 @@ export default function Portal({
     <dialog className="top relative z-40 flex h-full w-full">
       {children}
     </dialog>,
-    ref
+    ref,
   );
 }

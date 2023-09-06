@@ -5,7 +5,7 @@ export function usePopper() {
   const [typePopper, setTypePopper] = useState<string | undefined>(undefined);
   const saveParentPopper = (
     _: MouseEvent<HTMLButtonElement>,
-    type: string | undefined
+    type: string | undefined,
   ) => {
     setTypePopper(type);
   };

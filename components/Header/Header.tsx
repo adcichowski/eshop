@@ -49,8 +49,8 @@ export const Header = () => {
                           popper &&
                           "before:absolute before:-bottom-[9px] before:left-0 before:h-[1.5px] before:w-full before:translate-x-0.5 before:bg-black",
                         propsArchon.className,
-                        propsArchon.href && "hidden sm:block"
-                      )}`
+                        propsArchon.href && "hidden sm:block",
+                      )}`,
                     )}
                     onClick={(e) => {
                       saveParentPopper(e, popper);
@@ -71,12 +71,12 @@ export const Header = () => {
         >
           {headerCategories.map((category) => (
             <li key={category}>
-              <Link
+              {/* <Link
                 aria-label={`Go to category ${category}`}
-                href={`poster-print/${category}`}
-              >
-                {category}
-              </Link>
+                // href={`poster-print/${category}`}
+              > */}
+              {category}
+              {/* </Link> */}
             </li>
           ))}
         </ul>

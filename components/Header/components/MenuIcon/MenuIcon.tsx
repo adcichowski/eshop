@@ -14,7 +14,7 @@ export function MenuIcon() {
       <LineMenuIcon className={clsx(isOpen && "translate-y-[6px] rotate-45")} />
       <LineMenuIcon
         className={clsx(
-          isOpen && "-translate-x-1 opacity-0 transition-opacity duration-100"
+          isOpen && "-translate-x-1 opacity-0 transition-opacity duration-100",
         )}
       />
       <LineMenuIcon
@@ -29,7 +29,7 @@ const LineMenuIcon = ({ className }: { className?: string }) => {
     <div
       className={twMerge(
         `h-[2px] w-full  bg-black transition-transform`,
-        className
+        className,
       )}
     ></div>
   );

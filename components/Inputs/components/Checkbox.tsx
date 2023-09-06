@@ -32,7 +32,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, InputProps>(
         />
       )}
     </>
-  )
+  ),
 );
 
 Checkbox.displayName = "Checkbox";
