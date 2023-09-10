@@ -3,18 +3,8 @@ import ClearIcon from "./clear.svg";
 import { changeValueCurrency } from "utils/utils";
 import { useCartContext } from "context/CartContext/CartContext";
 import clsx from "clsx";
-type ProductCartPopperProps = {
-  readonly id: string;
-  readonly whiteFrame: boolean;
-  readonly variant: {
-    readonly width: number;
-    readonly height: number;
-  };
-  readonly image: { readonly url: string; readonly alt?: string | null };
-  readonly price: number;
-  readonly amount: number;
-  readonly title: string;
-};
+import { CartItem } from "context/CartContext/types";
+
 export function ProductCartPopper({
   id,
   image,
@@ -23,7 +13,7 @@ export function ProductCartPopper({
   whiteFrame,
   price,
   variant,
-}: ProductCartPopperProps) {
+}: CartItem) {
   const { deleteProduct } = useCartContext();
   return (
     <article className="grid w-full grid-cols-4 gap-x-3 border-b-[1px] border-gray-100 pb-2">
@@ -34,8 +24,8 @@ export function ProductCartPopper({
           )}`}
           width={100}
           height={90}
-          src={image.url}
-          alt={image.alt ?? title}
+          src={image}
+          alt={title}
         />
       </div>
       <div className="col-span-3 flex flex-col py-[2px]">

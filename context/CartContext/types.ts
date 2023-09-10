@@ -1,11 +1,8 @@
 export interface CartItem {
   readonly id: string;
   readonly whiteFrame: boolean;
-  readonly sale: string | null | undefined;
-  readonly image: {
-    readonly url: string;
-    readonly alt?: string | null;
-  };
+  readonly sale: number | null | undefined;
+  readonly image: string;
   readonly variant: {
     readonly id: string;
     readonly width: number;

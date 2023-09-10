@@ -3,7 +3,7 @@ import { useSelect } from "downshift";
 import { changeValueCurrency, priceWithDiscount } from "utils/utils";
 
 import type { Dispatch } from "react";
-import type { ProductVariant } from "../types";
+import type { ProductVariant } from "../../../types";
 
 export function ProductSelectVariant({
   sale,
@@ -11,7 +11,7 @@ export function ProductSelectVariant({
   selectedVariant,
   setSelectedVariant,
 }: {
-  readonly sale?: string | null;
+  readonly sale: number | null | undefined;
   readonly productVariants: readonly ProductVariant[];
   readonly selectedVariant: ProductVariant;
   readonly setSelectedVariant: Dispatch<ProductVariant>;
@@ -97,7 +97,7 @@ const SaleView = ({
   sale,
   price,
 }: {
-  readonly sale: string | null | undefined;
+  readonly sale: number | null | undefined;
   readonly price: number;
 }) => {
   return (
