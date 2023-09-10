@@ -51,13 +51,7 @@ const HitsProducts = ({
     >
       {allSearchResults.map((poster) => (
         <li className="relative h-full w-full" key={poster.name}>
-          <Link
-            passHref
-            href={
-              poster.slug as __next_route_internal_types__.RouteImpl<string>
-            }
-            className="cursor-pointer"
-          >
+          <Link passHref href={poster.slug} className="cursor-pointer">
             <article className="flex h-full flex-col gap-y-2">
               <Image
                 className="h-full self-center object-contain"
