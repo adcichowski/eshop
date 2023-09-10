@@ -1,0 +1,16 @@
+fragment ProductCarousel on Product {
+    sale
+    id
+    name
+    slug
+    orientation
+    whiteFrame
+    variants(orderBy: price_ASC, first: 1) {
+      price
+      width
+      height
+    }
+    images{
+    ...Images
+    }
+}

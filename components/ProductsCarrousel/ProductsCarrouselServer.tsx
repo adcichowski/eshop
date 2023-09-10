@@ -1,4 +1,4 @@
-import { getProducts } from "lib";
+import { getProductsToCarrousel } from "lib";
 import React from "react";
 import { ProductsCarrousel } from "./ProductsCarrousel";
 
@@ -13,13 +13,13 @@ export const ProductsCarrouselServer = async ({
   Heading,
   className,
 }: ProductsCarrouselProps) => {
-  const data = await getProducts();
+  const data = await getProductsToCarrousel();
   if (!data) return <></>;
 
   return (
     <section id={id} className={className}>
       {Heading}
-      <ProductsCarrousel data={data} />
+      <ProductsCarrousel products={data.products} />
     </section>
   );
 };

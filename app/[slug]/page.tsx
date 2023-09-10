@@ -1,7 +1,7 @@
 import React from "react";
 import { ProductPage } from "./components/product/ProductPage";
-import { getProductBySlug } from "lib/queries/product";
 import { notFound } from "next/navigation";
+import { getProductBySlug } from "lib";
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const data = await getProductBySlug(params.slug);

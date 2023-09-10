@@ -1,21 +1,6 @@
-query GetProducts {
-  products {
-    sale
-    id
-    name
-    slug
-    orientation
-    whiteFrame
-    variants(orderBy: price_ASC, first: 1) {
-      price
-      width
-      height
-    }
-    images(first: 1) {
-      id
-      alt
-      url
-    }
+query GetProductsToCarrousel {
+  products{
+  ...ProductCarousel
   }
 }
 

@@ -10,9 +10,6 @@ const nextConfig = {
 
     return config;
   },
-  experimental: {
-    typedRoutes: true,
-  },
   images: {
     formats: ["image/avif", "image/webp"],
     domains: ["media.graphassets.com"],

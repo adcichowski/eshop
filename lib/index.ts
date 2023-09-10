@@ -1,9 +1,11 @@
 import { getEnv } from "utils/utils";
 import {
   GetCategoriesDocument,
-  GetProductsDocument,
+  GetProductBySlugDocument,
+  GetProductsToCarrouselDocument,
   TypedDocumentString,
 } from "./hygraph/generated/graphql";
+import { reshapeProductDetails } from "./mappers";
 export * from "./hygraph/generated/gql";
 
 type GraphQlError = {
@@ -53,12 +55,25 @@ export async function fetcher<Result, Variables>({
 
 export async function getProducts() {
   const data = await fetcher({
-    query: GetProductsDocument,
+    query: GetProductBySlugDocument,
+    cache: "no-store",
+  });
+
+  if (!data) {
+    throw new Error(`Problem to fetch products!`);
+  }
+
+  return data;
+}
+
+export async function getProductsToCarrousel() {
+  const data = await fetcher({
+    query: GetProductsToCarrouselDocument,
     cache: "no-store",
   });
 
   if (!data.products) {
-    throw new Error(`Problem to fetch products!`);
+    throw new Error(`Problem to get products to carrousel!`);
   }
 
   return data;
@@ -75,4 +90,20 @@ export async function getAllCategories() {
   }
 
   return data;
+}
+
+export async function getProductBySlug(slug: string) {
+  const data = await fetcher({
+    query: GetProductBySlugDocument,
+    variables: {
+      slug: slug,
+    },
+    cache: "no-store",
+  });
+
+  if (!data.product) {
+    throw new Error(`Product not found: ${slug}`);
+  }
+
+  return reshapeProductDetails(data.product);
 }

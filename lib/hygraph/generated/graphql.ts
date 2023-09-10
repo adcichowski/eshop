@@ -10749,6 +10749,17 @@ export enum _SystemDateTimeFieldVariation {
 
 export type ImagesFragment = { id: string; alt?: string | null; url: string };
 
+export type ProductCarouselFragment = {
+  sale?: string | null;
+  id: string;
+  name: string;
+  slug: string;
+  orientation: Orientation;
+  whiteFrame: boolean;
+  variants: Array<{ price: number; width: number; height: number }>;
+  images: Array<{ id: string; alt?: string | null; url: string }>;
+};
+
 export type ProductDetailsFragment = {
   id: string;
   name: string;
@@ -10789,9 +10800,11 @@ export type UpdateOrderPaymentByIdMutation = {
   updateOrder?: { id: string } | null;
 };
 
-export type GetProductsQueryVariables = Exact<{ [key: string]: never }>;
+export type GetProductsToCarrouselQueryVariables = Exact<{
+  [key: string]: never;
+}>;
 
-export type GetProductsQuery = {
+export type GetProductsToCarrouselQuery = {
   products: Array<{
     sale?: string | null;
     id: string;
@@ -10945,6 +10958,41 @@ export class TypedDocumentString<TResult, TVariables>
     return this.value;
   }
 }
+export const ImagesFragmentDoc = new TypedDocumentString(
+  `
+    fragment Images on Asset {
+  id
+  alt
+  url
+}
+    `,
+  { fragmentName: "Images" },
+) as unknown as TypedDocumentString<ImagesFragment, unknown>;
+export const ProductCarouselFragmentDoc = new TypedDocumentString(
+  `
+    fragment ProductCarousel on Product {
+  sale
+  id
+  name
+  slug
+  orientation
+  whiteFrame
+  variants(orderBy: price_ASC, first: 1) {
+    price
+    width
+    height
+  }
+  images {
+    ...Images
+  }
+}
+    fragment Images on Asset {
+  id
+  alt
+  url
+}`,
+  { fragmentName: "ProductCarousel" },
+) as unknown as TypedDocumentString<ProductCarouselFragment, unknown>;
 export const VariantFragmentDoc = new TypedDocumentString(
   `
     fragment Variant on ProductVariantType {
@@ -10956,16 +11004,6 @@ export const VariantFragmentDoc = new TypedDocumentString(
     `,
   { fragmentName: "Variant" },
 ) as unknown as TypedDocumentString<VariantFragment, unknown>;
-export const ImagesFragmentDoc = new TypedDocumentString(
-  `
-    fragment Images on Asset {
-  id
-  alt
-  url
-}
-    `,
-  { fragmentName: "Images" },
-) as unknown as TypedDocumentString<ImagesFragment, unknown>;
 export const ProductDetailsFragmentDoc = new TypedDocumentString(
   `
     fragment ProductDetails on Product {
@@ -11025,30 +11063,35 @@ export const UpdateOrderPaymentByIdDocument = new TypedDocumentString(`
   UpdateOrderPaymentByIdMutation,
   UpdateOrderPaymentByIdMutationVariables
 >;
-export const GetProductsDocument = new TypedDocumentString(`
-    query GetProducts {
+export const GetProductsToCarrouselDocument = new TypedDocumentString(`
+    query GetProductsToCarrousel {
   products {
-    sale
-    id
-    name
-    slug
-    orientation
-    whiteFrame
-    variants(orderBy: price_ASC, first: 1) {
-      price
-      width
-      height
-    }
-    images(first: 1) {
-      id
-      alt
-      url
-    }
+    ...ProductCarousel
   }
 }
-    `) as unknown as TypedDocumentString<
-  GetProductsQuery,
-  GetProductsQueryVariables
+    fragment Images on Asset {
+  id
+  alt
+  url
+}
+fragment ProductCarousel on Product {
+  sale
+  id
+  name
+  slug
+  orientation
+  whiteFrame
+  variants(orderBy: price_ASC, first: 1) {
+    price
+    width
+    height
+  }
+  images {
+    ...Images
+  }
+}`) as unknown as TypedDocumentString<
+  GetProductsToCarrouselQuery,
+  GetProductsToCarrouselQueryVariables
 >;
 export const GetProductsSlugsDocument = new TypedDocumentString(`
     query GetProductsSlugs {
