@@ -7,7 +7,7 @@ type ProductAttributesProps = {
   readonly color: string;
   readonly finish: string;
   readonly whiteFrame: boolean;
-  readonly sale: string | undefined | null;
+  readonly sale: number | undefined | null;
 };
 export const ProductAttributes = ({
   paperWeight,

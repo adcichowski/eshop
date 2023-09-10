@@ -69,7 +69,7 @@ export function ProductSelectVariant({
                 <div>
                   <span
                     className={`mr-1 text-[0.6875rem] ${clsx(
-                      sale && "line-through"
+                      sale && "line-through",
                     )}`}
                   >
                     {changeValueCurrency(item?.price)}

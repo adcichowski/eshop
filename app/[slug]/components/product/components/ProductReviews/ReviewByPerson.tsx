@@ -19,7 +19,7 @@ export function ReviewByPerson({
       <header className="text-base">
         <p
           className={`uppercase ${clsx(
-            data?.user?.email === email && "font-semibold"
+            data?.user?.email === email && "font-semibold",
           )}`}
         >
           {name}

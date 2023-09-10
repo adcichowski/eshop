@@ -12,6 +12,6 @@ export const addReviewSchema = Yup.object().shape({
       "opinion",
       "Max number is 60 chars.",
       (reviewText) =>
-        !reviewText || reviewText?.length < MAX_CHARS_FIELD_OPINION
+        !reviewText || reviewText?.length < MAX_CHARS_FIELD_OPINION,
     ),
 });

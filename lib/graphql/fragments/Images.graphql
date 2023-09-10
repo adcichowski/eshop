@@ -1,0 +1,5 @@
+fragment Images on Asset {
+  id
+  alt
+  url
+}

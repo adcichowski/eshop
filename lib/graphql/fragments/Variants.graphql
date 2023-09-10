@@ -1,0 +1,6 @@
+fragment Variant on ProductVariantType {
+  id
+  width
+  height
+  price
+}

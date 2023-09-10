@@ -28,9 +28,9 @@ export type Scalars = {
   Int: { input: number; output: number };
   Float: { input: number; output: number };
   /** A date string, such as 2007-12-03 (YYYY-MM-DD), compliant with ISO 8601 standard for representation of dates using the Gregorian calendar. */
-  Date: { input: unknown; output: unknown };
+  Date: { input: string; output: string };
   /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the date-timeformat outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representationof dates and times using the Gregorian calendar. */
-  DateTime: { input: unknown; output: unknown };
+  DateTime: { input: string; output: string };
   Hex: { input: unknown; output: unknown };
   /** Raw JSON value */
   Json: { input: unknown; output: unknown };
@@ -10747,6 +10747,30 @@ export enum _SystemDateTimeFieldVariation {
   Localization = "localization",
 }
 
+export type ImagesFragment = { id: string; alt?: string | null; url: string };
+
+export type ProductDetailsFragment = {
+  id: string;
+  name: string;
+  description: string;
+  paperWeight: number;
+  orientation: Orientation;
+  color: string;
+  sale?: string | null;
+  whiteFrame: boolean;
+  finish: string;
+  variants: Array<{ id: string; width: number; height: number; price: number }>;
+  categories: Array<{ id: string; name: string }>;
+  images: Array<{ id: string; alt?: string | null; url: string }>;
+};
+
+export type VariantFragment = {
+  id: string;
+  width: number;
+  height: number;
+  price: number;
+};
+
 export type CreateOrderMutationVariables = Exact<{
   email: Scalars["String"]["input"];
   totalOrderPrice: Scalars["Int"]["input"];
@@ -10784,11 +10808,11 @@ export type GetProductsSlugsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetProductsSlugsQuery = { products: Array<{ slug: string }> };
 
-export type GetProductDetailsBySlugQueryVariables = Exact<{
+export type GetProductBySlugQueryVariables = Exact<{
   slug?: InputMaybe<Scalars["String"]["input"]>;
 }>;
 
-export type GetProductDetailsBySlugQuery = {
+export type GetProductBySlugQuery = {
   product?: {
     id: string;
     name: string;
@@ -10799,14 +10823,14 @@ export type GetProductDetailsBySlugQuery = {
     sale?: string | null;
     whiteFrame: boolean;
     finish: string;
-    categories: Array<{ name: string }>;
     variants: Array<{
       id: string;
-      price: number;
       width: number;
       height: number;
+      price: number;
     }>;
-    images: Array<{ url: string; alt?: string | null }>;
+    categories: Array<{ id: string; name: string }>;
+    images: Array<{ id: string; alt?: string | null; url: string }>;
   } | null;
 };
 
@@ -10921,7 +10945,64 @@ export class TypedDocumentString<TResult, TVariables>
     return this.value;
   }
 }
-
+export const VariantFragmentDoc = new TypedDocumentString(
+  `
+    fragment Variant on ProductVariantType {
+  id
+  width
+  height
+  price
+}
+    `,
+  { fragmentName: "Variant" },
+) as unknown as TypedDocumentString<VariantFragment, unknown>;
+export const ImagesFragmentDoc = new TypedDocumentString(
+  `
+    fragment Images on Asset {
+  id
+  alt
+  url
+}
+    `,
+  { fragmentName: "Images" },
+) as unknown as TypedDocumentString<ImagesFragment, unknown>;
+export const ProductDetailsFragmentDoc = new TypedDocumentString(
+  `
+    fragment ProductDetails on Product {
+  id
+  name
+  description
+  paperWeight
+  orientation
+  color
+  sale
+  whiteFrame
+  paperWeight
+  finish
+  variants {
+    ...Variant
+  }
+  categories {
+    id
+    name
+  }
+  images {
+    ...Images
+  }
+}
+    fragment Images on Asset {
+  id
+  alt
+  url
+}
+fragment Variant on ProductVariantType {
+  id
+  width
+  height
+  price
+}`,
+  { fragmentName: "ProductDetails" },
+) as unknown as TypedDocumentString<ProductDetailsFragment, unknown>;
 export const CreateOrderDocument = new TypedDocumentString(`
     mutation CreateOrder($email: String!, $totalOrderPrice: Int!, $stripeCheckoutId: String!, $orderItems: OrderItemCreateManyInlineInput!, $statusOrder: StatusOrder!) {
   createOrder(
@@ -10979,39 +11060,47 @@ export const GetProductsSlugsDocument = new TypedDocumentString(`
   GetProductsSlugsQuery,
   GetProductsSlugsQueryVariables
 >;
-export const GetProductDetailsBySlugDocument = new TypedDocumentString(`
-    query GetProductDetailsBySlug($slug: String) {
+export const GetProductBySlugDocument = new TypedDocumentString(`
+    query GetProductBySlug($slug: String) {
   product(where: {slug: $slug}) {
-    id
-    name
-    description
-    paperWeight
-    orientation
-    color
-    sale
-    whiteFrame
-    paperWeight
-    finish
-    categories {
-      name
-    }
-    variants {
-      ... on ProductVariantType {
-        id
-        price
-        width
-        height
-      }
-    }
-    images {
-      url
-      alt
-    }
+    ...ProductDetails
   }
 }
-    `) as unknown as TypedDocumentString<
-  GetProductDetailsBySlugQuery,
-  GetProductDetailsBySlugQueryVariables
+    fragment Images on Asset {
+  id
+  alt
+  url
+}
+fragment ProductDetails on Product {
+  id
+  name
+  description
+  paperWeight
+  orientation
+  color
+  sale
+  whiteFrame
+  paperWeight
+  finish
+  variants {
+    ...Variant
+  }
+  categories {
+    id
+    name
+  }
+  images {
+    ...Images
+  }
+}
+fragment Variant on ProductVariantType {
+  id
+  width
+  height
+  price
+}`) as unknown as TypedDocumentString<
+  GetProductBySlugQuery,
+  GetProductBySlugQueryVariables
 >;
 export const GetCategoriesDocument = new TypedDocumentString(`
     query GetCategories {

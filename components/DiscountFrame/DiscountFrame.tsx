@@ -8,7 +8,7 @@ export const DiscountFrame = ({
   sale,
   size = "standard",
 }: {
-  readonly sale: string | undefined | null;
+  readonly sale: number | undefined | null;
   size?: keyof typeof variants;
 }) =>
   sale ? (

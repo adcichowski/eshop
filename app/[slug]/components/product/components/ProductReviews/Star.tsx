@@ -19,8 +19,8 @@ export function Star({
         clsx(
           "stroke-gray-100",
           selected && `fill-black stroke-black `,
-          className
-        )
+          className,
+        ),
       )}
       xmlns="http://www.w3.org/2000/svg"
     >

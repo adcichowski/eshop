@@ -1,3 +1,5 @@
+import { ProductsCarrousel } from "components/ProductsCarrousel/ProductsCarrousel";
+import { ProductsCarrouselServer } from "components/ProductsCarrousel/ProductsCarrouselServer";
 import React from "react";
 
 // import { ProductsCarrousel } from "components/ProductsCarrousel/ProductsCarrousel";
@@ -8,11 +10,11 @@ const Home = async () => {
     <div className="flex min-h-screen flex-col ">
       {/* <RoomsCarrousel /> */}
       <PopularCategories />
-      {/* <ProductsCarrousel
+      <ProductsCarrouselServer
         id="bestsellers"
         className="mx-2 my-5"
         Heading={<h2 className="my-2 text-center text-xl">Bestsellers</h2>}
-      /> */}
+      />
     </div>
   );
 };

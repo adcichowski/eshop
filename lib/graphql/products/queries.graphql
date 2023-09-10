@@ -25,33 +25,9 @@ query GetProductsSlugs {
   }
 }
 
-query GetProductDetailsBySlug($slug: String) {
+query GetProductBySlug($slug: String) {
   product(where: { slug: $slug }) {
-    id
-    name
-    description
-    paperWeight
-    orientation
-    color
-    sale
-    whiteFrame
-    paperWeight
-    finish
-    categories {
-      name
-    }
-    variants {
-      ... on ProductVariantType {
-        id
-        price
-        width
-        height
-      }
-    }
-    images {
-      url
-      alt
-    }
+    ...ProductDetails
   }
 }
 
