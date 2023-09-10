@@ -1,4 +1,3 @@
-import { ProductsCarrousel } from "components/ProductsCarrousel/ProductsCarrousel";
 import { ProductsCarrouselServer } from "components/ProductsCarrousel/ProductsCarrouselServer";
 import React from "react";
 
