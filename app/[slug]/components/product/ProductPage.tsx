@@ -2,13 +2,6 @@
 // import { Categories } from "components/Categories/Categories";
 import Image from "next/image";
 import React from "react";
-import { ProductAttributes } from "./components/ProductInfos/components/ProductAttributes";
-import { ProductDescription } from "./components/ProductDescription";
-import { FavoriteInput } from "components/Inputs/FavoriteInput";
-import { useInputAmountProduct } from "hooks/useInputAmountProduct";
-import ProductQuantityInput from "./components/ProductInfos/components/ProductQuantityInput";
-import clsx from "clsx";
-import { DiscountFrame } from "components/DiscountFrame/DiscountFrame";
 import { Orientation } from "lib/hygraph/generated/graphql";
 import { ProductInfos } from "./components/ProductInfos/ProductInfos";
 
