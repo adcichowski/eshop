@@ -1,4 +1,4 @@
-import { ProductPageProps } from "app/[slug]/components/product/ProductPage";
+import { ProductPageProps } from "app/poster/[slug]/components/product/ProductPage";
 import { ProductDetailsFragment } from "./hygraph/generated/graphql";
 
 export const reshapeProductDetails = (
@@ -9,6 +9,7 @@ export const reshapeProductDetails = (
   variants: productDetailsFragment.variants,
   image: productDetailsFragment.images[0].url,
   description: productDetailsFragment.description,
+  slug: productDetailsFragment.slug,
   attributes: {
     category: productDetailsFragment.categories[0].name,
     color: productDetailsFragment.color,

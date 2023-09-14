@@ -10766,6 +10766,7 @@ export type ProductDetailsFragment = {
   description: string;
   paperWeight: number;
   orientation: Orientation;
+  slug: string;
   color: string;
   sale?: string | null;
   whiteFrame: boolean;
@@ -10832,6 +10833,7 @@ export type GetProductBySlugQuery = {
     description: string;
     paperWeight: number;
     orientation: Orientation;
+    slug: string;
     color: string;
     sale?: string | null;
     whiteFrame: boolean;
@@ -11012,6 +11014,7 @@ export const ProductDetailsFragmentDoc = new TypedDocumentString(
   description
   paperWeight
   orientation
+  slug
   color
   sale
   whiteFrame
@@ -11120,6 +11123,7 @@ fragment ProductDetails on Product {
   description
   paperWeight
   orientation
+  slug
   color
   sale
   whiteFrame

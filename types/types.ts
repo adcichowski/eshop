@@ -13,7 +13,7 @@ export type InferGetStaticPathsType<T> = T extends () => Promise<{
 
 export type GenerateFields<
   Schema extends AnyObjectSchema,
-  StructureSchema = InferType<Schema>
+  StructureSchema = InferType<Schema>,
 > = {
   readonly [Keys in keyof StructureSchema]: InputProps;
 };

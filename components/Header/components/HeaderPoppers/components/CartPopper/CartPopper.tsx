@@ -7,6 +7,7 @@ import { CartItem } from "context/CartContext/types";
 import { useMemo } from "react";
 import { changeValueCurrency } from "utils/utils";
 import { ProductCartPopper } from "./components/ProductCartPopper";
+import Link from "next/link";
 export const CartPopper = () => {
   const { cart } = useCartContext();
 
@@ -58,12 +59,12 @@ const ViewWithProducts = ({ cart }: { cart: Record<string, CartItem> }) => {
         </p>
       </div>
 
-      {/* <Link
+      <Link
         href="/cart"
         className="w-full rounded-[10px] px-16 py-[5px] text-sm md:text-sm  "
       >
         Go to cart
-      </Link> */}
+      </Link>
     </>
   );
 };

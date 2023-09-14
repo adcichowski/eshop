@@ -4,6 +4,9 @@ import Image from "next/image";
 import React from "react";
 import { Orientation } from "lib/hygraph/generated/graphql";
 import { ProductInfos } from "./components/ProductInfos/ProductInfos";
+import { Categories } from "components/Categories/Categories";
+import { ProductsCarrouselServer } from "components/ProductsCarrousel/ProductsCarrouselServer";
+import { ProductReviews } from "./components/ProductReviews/Reviews";
 
 export type ProductPageProps = {
   variants: {
@@ -21,6 +24,7 @@ export type ProductPageProps = {
     orientation: Orientation;
     whiteFrame: boolean;
   };
+  slug: string;
   id: string;
   description: string;
   name: string;
@@ -31,7 +35,7 @@ export const ProductPage = ({ product }: { product: ProductPageProps }) => {
   return (
     <div className="relative flex flex-col">
       <div className="mx-2 grid grid-cols-1 pt-2 md:justify-items-center md:pt-6 xl:grid-cols-3">
-        {/* <Categories className="hidden xl:block" /> */}
+        <Categories className="hidden xl:block" />
 
         <div className="text-[32px] md:max-w-3xl xl:col-start-2 xl:col-end-4">
           <section className="ml-4 md:grid md:grid-cols-2 xl:m-0">
@@ -54,15 +58,15 @@ export const ProductPage = ({ product }: { product: ProductPageProps }) => {
           </section>
         </div>
         <div className="col-span-3 w-full max-w-full">
-          {/* <ProductsCarrouselServer
+          <ProductsCarrouselServer
             className="mt-[50px]"
             id="othersProduct"
             Heading={<h3 className="mb-3 text-xl">Others buy also</h3>}
-          /> */}
+          />
 
-          {/* <ProductReviews productSlug={product.slug} /> */}
+          <ProductReviews productSlug={product.slug} />
 
-          {/* <ProductsCarrouselServer
+          <ProductsCarrouselServer
             className=" mt-[50px]"
             id="othersProduct"
             Heading={
@@ -70,7 +74,7 @@ export const ProductPage = ({ product }: { product: ProductPageProps }) => {
                 Popular products in this category
               </h3>
             }
-          /> */}
+          />
         </div>
       </div>
       <footer>Footer</footer>

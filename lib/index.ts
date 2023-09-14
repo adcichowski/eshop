@@ -2,6 +2,7 @@ import { getEnv } from "utils/utils";
 import {
   GetCategoriesDocument,
   GetProductBySlugDocument,
+  GetProductReviewsBySlugDocument,
   GetProductsToCarrouselDocument,
   TypedDocumentString,
 } from "./hygraph/generated/graphql";
@@ -82,7 +83,6 @@ export async function getProductsToCarrousel() {
 export async function getAllCategories() {
   const data = await fetcher({
     query: GetCategoriesDocument,
-    cache: "no-store",
   });
 
   if (!data.categories) {
@@ -106,4 +106,20 @@ export async function getProductBySlug(slug: string) {
   }
 
   return reshapeProductDetails(data.product);
+}
+
+export async function getProductReviewsBySlug(slug: string) {
+  const data = await fetcher({
+    query: GetProductReviewsBySlugDocument,
+    variables: {
+      slug: slug,
+    },
+    cache: "no-store",
+  });
+
+  if (!data.product) {
+    throw new Error(`Product reviews not found: ${slug}`);
+  }
+
+  return data;
 }

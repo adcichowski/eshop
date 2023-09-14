@@ -4,6 +4,7 @@ fragment ProductDetails on Product {
   description
   paperWeight
   orientation
+  slug
   color
   sale
   whiteFrame
