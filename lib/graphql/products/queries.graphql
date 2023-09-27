@@ -1,6 +1,6 @@
 query GetProductsToCarrousel {
-  products{
-  ...ProductCarousel
+  products {
+    ...ProductCarousel
   }
 }
 
@@ -58,13 +58,6 @@ query GetAccountByEmail($email: String!) {
     id
     email
     password
-  }
-}
-
-mutation CreateReviewProduct($review: ReviewCreateInput!) {
-  createReview(data: $review) {
-    id
-    stage
   }
 }
 

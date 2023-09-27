@@ -8680,7 +8680,6 @@ export type ReviewCreateInput = {
   content: Scalars["String"]["input"];
   createdAt?: InputMaybe<Scalars["DateTime"]["input"]>;
   email: Scalars["String"]["input"];
-  name: Scalars["String"]["input"];
   product?: InputMaybe<ProductCreateOneInlineInput>;
   rating: Scalars["Int"]["input"];
   updatedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
@@ -10881,14 +10880,6 @@ export type GetAccountByEmailQuery = {
   account?: { id: string; email: string; password: string } | null;
 };
 
-export type CreateReviewProductMutationVariables = Exact<{
-  review: ReviewCreateInput;
-}>;
-
-export type CreateReviewProductMutation = {
-  createReview?: { id: string; stage: Stage } | null;
-};
-
 export type GetProductReviewsBySlugQueryVariables = Exact<{
   slug: Scalars["String"]["input"];
 }>;
@@ -10941,6 +10932,14 @@ export type GetProductsByIdsQuery = {
       height: number;
     }>;
   }>;
+};
+
+export type CreateReviewProductMutationVariables = Exact<{
+  review: ReviewCreateInput;
+}>;
+
+export type CreateReviewProductMutation = {
+  createReview?: { id: string; stage: Stage } | null;
 };
 
 export class TypedDocumentString<TResult, TVariables>
@@ -11200,17 +11199,6 @@ export const GetAccountByEmailDocument = new TypedDocumentString(`
   GetAccountByEmailQuery,
   GetAccountByEmailQueryVariables
 >;
-export const CreateReviewProductDocument = new TypedDocumentString(`
-    mutation CreateReviewProduct($review: ReviewCreateInput!) {
-  createReview(data: $review) {
-    id
-    stage
-  }
-}
-    `) as unknown as TypedDocumentString<
-  CreateReviewProductMutation,
-  CreateReviewProductMutationVariables
->;
 export const GetProductReviewsBySlugDocument = new TypedDocumentString(`
     query GetProductReviewsBySlug($slug: String!) {
   product(where: {slug: $slug}, stage: DRAFT) {
@@ -11270,4 +11258,15 @@ export const GetProductsByIdsDocument = new TypedDocumentString(`
     `) as unknown as TypedDocumentString<
   GetProductsByIdsQuery,
   GetProductsByIdsQueryVariables
+>;
+export const CreateReviewProductDocument = new TypedDocumentString(`
+    mutation CreateReviewProduct($review: ReviewCreateInput!) {
+  createReview(data: $review) {
+    id
+    stage
+  }
+}
+    `) as unknown as TypedDocumentString<
+  CreateReviewProductMutation,
+  CreateReviewProductMutationVariables
 >;

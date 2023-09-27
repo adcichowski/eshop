@@ -14,6 +14,7 @@
   "dependencies": {
     "@algolia/autocomplete-js": "^1.11.0",
     "@algolia/autocomplete-theme-classic": "^1.11.0",
+    "@apollo/client": "^3.8.4",
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
     "@hookform/resolvers": "^3.3.1",
@@ -25,7 +26,7 @@
     "cookie": "^0.5.0",
     "eslint-config-next": "^13.4.19",
     "eslint-plugin-prettier": "^5.0.0",
-    "graphql": "^16.8.0",
+    "graphql": "^16.8.1",
     "lucide-react": "^0.274.0",
     "next": "^13.4.19",
     "next-auth": "^4.23.1",

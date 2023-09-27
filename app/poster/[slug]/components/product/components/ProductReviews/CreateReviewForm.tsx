@@ -1,48 +1,65 @@
 "use client";
 import { Input } from "components/Inputs/components/Input";
 import { Star } from "./Star";
-import { Controller, useForm } from "react-hook-form";
+import { Controller } from "react-hook-form";
 import { useSession } from "next-auth/react";
+import { gql, useMutation } from "@apollo/client";
+import {
+  CreateReviewProductDocument,
+  CreateReviewProductMutation,
+  CreateReviewProductMutationVariables,
+} from "lib/hygraph/generated/graphql";
+import { ErrorInInput } from "components/Inputs/components/ErrorInInput";
+import { addReviewSchema } from "./addReviewSchema";
+import { useForm } from "components/Forms/useForm";
 
+type CreateReviewType = {
+  content: string;
+  rating: number;
+  email: string;
+};
 export function CreateReviewForm({ productSlug }: { productSlug: string }) {
-  // const { register, errors, control, handleSubmit } =
-  //   useForm<ReviewFormProps>();
-  // const [createReview] = useCreateReviewProductMutation();
+  const { register, control, handleSubmit, errors } =
+    useForm<CreateReviewType>(addReviewSchema);
+  const [createReview] = useMutation<
+    CreateReviewProductMutation,
+    CreateReviewProductMutationVariables
+  >(gql`
+    ${CreateReviewProductDocument}
+  `);
   const session = useSession();
   if (session.status === "unauthenticated" || !session.data) {
     return <></>;
   }
-  // const onSubmit = handleSubmit((data, e?: React.BaseSyntheticEvent) => {
-  //   e?.preventDefault();
-  //   createReview({
-  //     variables: {
-  //       review: {
-  //         ...data,
-  //         email: session.data.user.email,
-  //         //Needed to implement number type for mutation
-  //         rating: Number(data.rating),
-  //         product: { connect: { slug: productSlug } },
-  //       },
-  //     },
-  //   });
-  // });
+  const onSubmit = handleSubmit((data, e?: React.BaseSyntheticEvent) => {
+    e?.preventDefault();
+    createReview({
+      variables: {
+        review: {
+          content: data.content,
+          email: session.data.user.email,
+          rating: Number(data.rating),
+          product: { connect: { slug: productSlug } },
+        },
+      },
+    });
+  });
   return (
-    <form>
+    <form onSubmit={onSubmit}>
       <fieldset className="flex flex-col">
         <Input
           id="name"
           size="small"
-          // error={errors.name?.message}
           text="Name or pseudonym"
           type="text"
-          // {...register("name")}
+          {...register("email")}
         />
 
         <label className="mt-[14px] text-sm" htmlFor="rating">
           Your opinion
         </label>
         <Controller
-          // control={control}
+          control={control}
           name="rating"
           render={({ field }) => {
             return (
@@ -75,15 +92,15 @@ export function CreateReviewForm({ productSlug }: { productSlug: string }) {
           }}
         />
         <div className="mb-2">
-          {/* <ErrorInInput error={errors.rating?.message} id="rating" /> */}
+          <ErrorInInput error={errors.rating?.message} id="rating" />
         </div>
 
         <textarea
           className="border-200 text-md h-24 resize-none border border-gray-400 pt-2 pl-2 text-sm"
-          // {...register("content")}
+          {...register("content")}
         />
         <div className="mt-[1px]">
-          {/* <ErrorInInput error={errors.content?.message} id="content" /> */}
+          <ErrorInInput error={errors.content?.message} id="content" />
         </div>
       </fieldset>
       <button className="mt-2 border border-primary px-6 py-3 text-base text-primary transition-colors hover:bg-primary hover:text-white">
