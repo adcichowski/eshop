@@ -14,8 +14,8 @@ export const Header = () => {
 
   return (
     <div className="sticky top-0 z-30">
-      <header role="banner" className="mx-auto max-w-[1440px]">
-        <div className="grid grid-cols-3 place-items-center bg-white p-3">
+      <header role="banner">
+        <div className="grid grid-cols-3 place-items-center bg-white p-3 max-w-[1440px] mx-auto">
           <div className="flex w-full items-center gap-x-10 pl-5">
             <MenuIcon />
             <Autocomplete />
