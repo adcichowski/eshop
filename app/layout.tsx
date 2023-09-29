@@ -1,4 +1,3 @@
-import { Layout } from "components/Layout/Layout";
 import ClientContext from "context/ClientContext";
 import React from "react";
 import { Montserrat } from "next/font/google";
