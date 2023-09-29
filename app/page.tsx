@@ -1,13 +1,11 @@
 import { ProductsCarrouselServer } from "components/ProductsCarrousel/ProductsCarrouselServer";
 import React from "react";
-
-// import { ProductsCarrousel } from "components/ProductsCarrousel/ProductsCarrousel";
-// import { RoomsCarrousel } from "views/home/components/RoomsCarrousel";
 import { PopularCategories } from "views/home/components/PopularCategories/PopularCategories";
+import { RoomsCarrousel } from "views/home/components/RoomsCarrousel";
 const Home = async () => {
   return (
     <div className="flex min-h-screen flex-col ">
-      {/* <RoomsCarrousel /> */}
+      <RoomsCarrousel />
       <PopularCategories />
       <ProductsCarrouselServer
         id="bestsellers"

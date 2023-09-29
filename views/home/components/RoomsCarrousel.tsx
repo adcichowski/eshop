@@ -2,7 +2,6 @@
 import React from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { SpinIcon } from "components/Skeleton/SpinIcon";
 import { Navigation, Autoplay } from "swiper/modules";
 
 const ROOMS_IMAGES: { src: string; alt: string }[] = [
@@ -17,16 +16,9 @@ const ROOMS_IMAGES: { src: string; alt: string }[] = [
   },
 ];
 
-export function RoomsCarrousel({ isLoading }: { isLoading: boolean }) {
-  if (isLoading) {
-    return (
-      <div className="flex aspect-video items-center justify-center">
-        <SpinIcon size="big" />
-      </div>
-    );
-  }
+export function RoomsCarrousel() {
   return (
-    <div>
+    <div className="aspect-video">
       <Swiper
         speed={650}
         navigation={true}
