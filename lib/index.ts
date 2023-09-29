@@ -6,7 +6,7 @@ import {
   GetProductsToCarrouselDocument,
   TypedDocumentString,
 } from "./hygraph/generated/graphql";
-import { reshapeProductDetails } from "./mappers";
+import { reshapeProductDetails, reshapeProductReviews } from "./mappers";
 export * from "./hygraph/generated/gql";
 
 type GraphQlError = {
@@ -121,5 +121,5 @@ export async function getProductReviewsBySlug(slug: string) {
     throw new Error(`Product reviews not found: ${slug}`);
   }
 
-  return data;
+  return reshapeProductReviews(data.product.reviews);
 }

@@ -15,5 +15,6 @@ export const addReviewSchema = Yup.object()
         (reviewText) =>
           !reviewText || reviewText?.length < MAX_CHARS_FIELD_OPINION,
       ),
+    name: Yup.string().email().required("Field is required"),
   })
   .required();

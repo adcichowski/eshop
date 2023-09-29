@@ -8680,6 +8680,7 @@ export type ReviewCreateInput = {
   content: Scalars["String"]["input"];
   createdAt?: InputMaybe<Scalars["DateTime"]["input"]>;
   email: Scalars["String"]["input"];
+  name: Scalars["String"]["input"];
   product?: InputMaybe<ProductCreateOneInlineInput>;
   rating: Scalars["Int"]["input"];
   updatedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
@@ -10775,6 +10776,14 @@ export type ProductDetailsFragment = {
   images: Array<{ id: string; alt?: string | null; url: string }>;
 };
 
+export type ReviewProductFragment = {
+  name: string;
+  id: string;
+  email: string;
+  rating: number;
+  content: string;
+};
+
 export type VariantFragment = {
   id: string;
   width: number;
@@ -10880,22 +10889,6 @@ export type GetAccountByEmailQuery = {
   account?: { id: string; email: string; password: string } | null;
 };
 
-export type GetProductReviewsBySlugQueryVariables = Exact<{
-  slug: Scalars["String"]["input"];
-}>;
-
-export type GetProductReviewsBySlugQuery = {
-  product?: {
-    reviews: Array<{
-      id: string;
-      email: string;
-      rating: number;
-      content: string;
-      name: string;
-    }>;
-  } | null;
-};
-
 export type GetProductsByCategoryQueryVariables = Exact<{
   categorySlug: Scalars["String"]["input"];
 }>;
@@ -10940,6 +10933,22 @@ export type CreateReviewProductMutationVariables = Exact<{
 
 export type CreateReviewProductMutation = {
   createReview?: { id: string; stage: Stage } | null;
+};
+
+export type GetProductReviewsBySlugQueryVariables = Exact<{
+  slug: Scalars["String"]["input"];
+}>;
+
+export type GetProductReviewsBySlugQuery = {
+  product?: {
+    reviews: Array<{
+      id: string;
+      email: string;
+      rating: number;
+      content: string;
+      name: string;
+    }>;
+  } | null;
 };
 
 export class TypedDocumentString<TResult, TVariables>
@@ -11043,6 +11052,18 @@ fragment Variant on ProductVariantType {
 }`,
   { fragmentName: "ProductDetails" },
 ) as unknown as TypedDocumentString<ProductDetailsFragment, unknown>;
+export const ReviewProductFragmentDoc = new TypedDocumentString(
+  `
+    fragment ReviewProduct on Review {
+  name
+  id
+  email
+  rating
+  content
+}
+    `,
+  { fragmentName: "ReviewProduct" },
+) as unknown as TypedDocumentString<ReviewProductFragment, unknown>;
 export const CreateOrderDocument = new TypedDocumentString(`
     mutation CreateOrder($email: String!, $totalOrderPrice: Int!, $stripeCheckoutId: String!, $orderItems: OrderItemCreateManyInlineInput!, $statusOrder: StatusOrder!) {
   createOrder(
@@ -11199,22 +11220,6 @@ export const GetAccountByEmailDocument = new TypedDocumentString(`
   GetAccountByEmailQuery,
   GetAccountByEmailQueryVariables
 >;
-export const GetProductReviewsBySlugDocument = new TypedDocumentString(`
-    query GetProductReviewsBySlug($slug: String!) {
-  product(where: {slug: $slug}, stage: DRAFT) {
-    reviews {
-      id
-      email
-      rating
-      content
-      name
-    }
-  }
-}
-    `) as unknown as TypedDocumentString<
-  GetProductReviewsBySlugQuery,
-  GetProductReviewsBySlugQueryVariables
->;
 export const GetProductsByCategoryDocument = new TypedDocumentString(`
     query GetProductsByCategory($categorySlug: String!) {
   products(where: {categories_some: {slug: $categorySlug}}) {
@@ -11269,4 +11274,20 @@ export const CreateReviewProductDocument = new TypedDocumentString(`
     `) as unknown as TypedDocumentString<
   CreateReviewProductMutation,
   CreateReviewProductMutationVariables
+>;
+export const GetProductReviewsBySlugDocument = new TypedDocumentString(`
+    query GetProductReviewsBySlug($slug: String!) {
+  product(where: {slug: $slug}, stage: DRAFT) {
+    reviews {
+      id
+      email
+      rating
+      content
+      name
+    }
+  }
+}
+    `) as unknown as TypedDocumentString<
+  GetProductReviewsBySlugQuery,
+  GetProductReviewsBySlugQueryVariables
 >;

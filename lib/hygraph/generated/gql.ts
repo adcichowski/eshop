@@ -17,14 +17,18 @@ const documents = {
     types.ProductCarouselFragmentDoc,
   "fragment ProductDetails on Product {\n  id\n  name\n  description\n  paperWeight\n  orientation\n  slug\n  color\n  sale\n  whiteFrame\n  paperWeight\n  finish\n  variants {\n    ...Variant\n  }\n  categories {\n    id\n    name\n  }\n  images {\n    ...Images\n  }\n}":
     types.ProductDetailsFragmentDoc,
+  "fragment ReviewProduct on Review {\n  name\n  id\n  email\n  rating\n  content\n}":
+    types.ReviewProductFragmentDoc,
   "fragment Variant on ProductVariantType {\n  id\n  width\n  height\n  price\n}":
     types.VariantFragmentDoc,
   "mutation CreateOrder($email: String!, $totalOrderPrice: Int!, $stripeCheckoutId: String!, $orderItems: OrderItemCreateManyInlineInput!, $statusOrder: StatusOrder!) {\n  createOrder(\n    data: {email: $email, total: $totalOrderPrice, stripeCheckoutId: $stripeCheckoutId, orderItems: $orderItems, statusOrder: $statusOrder}\n  ) {\n    id\n  }\n}\n\nmutation UpdateOrderPaymentById($orderId: ID!) {\n  updateOrder(data: {statusOrder: PAID}, where: {id: $orderId}) {\n    id\n  }\n}":
     types.CreateOrderDocument,
-  'query GetProductsToCarrousel {\n  products {\n    ...ProductCarousel\n  }\n}\n\nquery GetProductsSlugs {\n  products {\n    slug\n  }\n}\n\nquery GetProductBySlug($slug: String) {\n  product(where: {slug: $slug}) {\n    ...ProductDetails\n  }\n}\n\nquery GetCategories {\n  categories {\n    name\n    slug\n  }\n}\n\nmutation CreateAccount($email: String!, $password: String!) {\n  createAccount(\n    data: {email: $email, password: $password, discountCode: {create: {DiscountCode: {code: "START15", used: false, discount: 15}}}}\n  ) {\n    email\n    id\n  }\n}\n\nquery GetDiscountCodes($code: String!, $email: String!) {\n  discountCodes(\n    where: {code_contains: $code, used: false, accounts_some: {email: $email}}\n    stage: DRAFT\n  ) {\n    code\n    discount\n    used\n  }\n}\n\nquery GetAccountByEmail($email: String!) {\n  account(where: {email: $email}, stage: DRAFT) {\n    id\n    email\n    password\n  }\n}\n\nquery GetProductReviewsBySlug($slug: String!) {\n  product(where: {slug: $slug}, stage: DRAFT) {\n    reviews {\n      id\n      email\n      rating\n      content\n      name\n    }\n  }\n}\n\nquery GetProductsByCategory($categorySlug: String!) {\n  products(where: {categories_some: {slug: $categorySlug}}) {\n    whiteFrame\n    name\n    slug\n    orientation\n    images(first: 1) {\n      id\n      alt\n      url\n    }\n    id\n    variants(orderBy: price_ASC, first: 1) {\n      id\n      price\n      width\n      height\n    }\n    categories(where: {slug: $categorySlug}) {\n      name\n    }\n  }\n}\n\nquery GetProductsByIds($productsId: [ID!]!) {\n  products(where: {id_in: $productsId}) {\n    id\n    variants {\n      id\n      price\n      width\n      height\n    }\n  }\n}':
+  'query GetProductsToCarrousel {\n  products {\n    ...ProductCarousel\n  }\n}\n\nquery GetProductsSlugs {\n  products {\n    slug\n  }\n}\n\nquery GetProductBySlug($slug: String) {\n  product(where: {slug: $slug}) {\n    ...ProductDetails\n  }\n}\n\nquery GetCategories {\n  categories {\n    name\n    slug\n  }\n}\n\nmutation CreateAccount($email: String!, $password: String!) {\n  createAccount(\n    data: {email: $email, password: $password, discountCode: {create: {DiscountCode: {code: "START15", used: false, discount: 15}}}}\n  ) {\n    email\n    id\n  }\n}\n\nquery GetDiscountCodes($code: String!, $email: String!) {\n  discountCodes(\n    where: {code_contains: $code, used: false, accounts_some: {email: $email}}\n    stage: DRAFT\n  ) {\n    code\n    discount\n    used\n  }\n}\n\nquery GetAccountByEmail($email: String!) {\n  account(where: {email: $email}, stage: DRAFT) {\n    id\n    email\n    password\n  }\n}\n\nquery GetProductsByCategory($categorySlug: String!) {\n  products(where: {categories_some: {slug: $categorySlug}}) {\n    whiteFrame\n    name\n    slug\n    orientation\n    images(first: 1) {\n      id\n      alt\n      url\n    }\n    id\n    variants(orderBy: price_ASC, first: 1) {\n      id\n      price\n      width\n      height\n    }\n    categories(where: {slug: $categorySlug}) {\n      name\n    }\n  }\n}\n\nquery GetProductsByIds($productsId: [ID!]!) {\n  products(where: {id_in: $productsId}) {\n    id\n    variants {\n      id\n      price\n      width\n      height\n    }\n  }\n}':
     types.GetProductsToCarrouselDocument,
   "mutation CreateReviewProduct($review: ReviewCreateInput!) {\n  createReview(data: $review) {\n    id\n    stage\n  }\n}":
     types.CreateReviewProductDocument,
+  "query GetProductReviewsBySlug($slug: String!) {\n  product(where: {slug: $slug}, stage: DRAFT) {\n    reviews {\n      id\n      email\n      rating\n      content\n      name\n    }\n  }\n}":
+    types.GetProductReviewsBySlugDocument,
 };
 
 /**
@@ -49,6 +53,12 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
+  source: "fragment ReviewProduct on Review {\n  name\n  id\n  email\n  rating\n  content\n}",
+): typeof import("./graphql").ReviewProductFragmentDoc;
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
   source: "fragment Variant on ProductVariantType {\n  id\n  width\n  height\n  price\n}",
 ): typeof import("./graphql").VariantFragmentDoc;
 /**
@@ -61,7 +71,7 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: 'query GetProductsToCarrousel {\n  products {\n    ...ProductCarousel\n  }\n}\n\nquery GetProductsSlugs {\n  products {\n    slug\n  }\n}\n\nquery GetProductBySlug($slug: String) {\n  product(where: {slug: $slug}) {\n    ...ProductDetails\n  }\n}\n\nquery GetCategories {\n  categories {\n    name\n    slug\n  }\n}\n\nmutation CreateAccount($email: String!, $password: String!) {\n  createAccount(\n    data: {email: $email, password: $password, discountCode: {create: {DiscountCode: {code: "START15", used: false, discount: 15}}}}\n  ) {\n    email\n    id\n  }\n}\n\nquery GetDiscountCodes($code: String!, $email: String!) {\n  discountCodes(\n    where: {code_contains: $code, used: false, accounts_some: {email: $email}}\n    stage: DRAFT\n  ) {\n    code\n    discount\n    used\n  }\n}\n\nquery GetAccountByEmail($email: String!) {\n  account(where: {email: $email}, stage: DRAFT) {\n    id\n    email\n    password\n  }\n}\n\nquery GetProductReviewsBySlug($slug: String!) {\n  product(where: {slug: $slug}, stage: DRAFT) {\n    reviews {\n      id\n      email\n      rating\n      content\n      name\n    }\n  }\n}\n\nquery GetProductsByCategory($categorySlug: String!) {\n  products(where: {categories_some: {slug: $categorySlug}}) {\n    whiteFrame\n    name\n    slug\n    orientation\n    images(first: 1) {\n      id\n      alt\n      url\n    }\n    id\n    variants(orderBy: price_ASC, first: 1) {\n      id\n      price\n      width\n      height\n    }\n    categories(where: {slug: $categorySlug}) {\n      name\n    }\n  }\n}\n\nquery GetProductsByIds($productsId: [ID!]!) {\n  products(where: {id_in: $productsId}) {\n    id\n    variants {\n      id\n      price\n      width\n      height\n    }\n  }\n}',
+  source: 'query GetProductsToCarrousel {\n  products {\n    ...ProductCarousel\n  }\n}\n\nquery GetProductsSlugs {\n  products {\n    slug\n  }\n}\n\nquery GetProductBySlug($slug: String) {\n  product(where: {slug: $slug}) {\n    ...ProductDetails\n  }\n}\n\nquery GetCategories {\n  categories {\n    name\n    slug\n  }\n}\n\nmutation CreateAccount($email: String!, $password: String!) {\n  createAccount(\n    data: {email: $email, password: $password, discountCode: {create: {DiscountCode: {code: "START15", used: false, discount: 15}}}}\n  ) {\n    email\n    id\n  }\n}\n\nquery GetDiscountCodes($code: String!, $email: String!) {\n  discountCodes(\n    where: {code_contains: $code, used: false, accounts_some: {email: $email}}\n    stage: DRAFT\n  ) {\n    code\n    discount\n    used\n  }\n}\n\nquery GetAccountByEmail($email: String!) {\n  account(where: {email: $email}, stage: DRAFT) {\n    id\n    email\n    password\n  }\n}\n\nquery GetProductsByCategory($categorySlug: String!) {\n  products(where: {categories_some: {slug: $categorySlug}}) {\n    whiteFrame\n    name\n    slug\n    orientation\n    images(first: 1) {\n      id\n      alt\n      url\n    }\n    id\n    variants(orderBy: price_ASC, first: 1) {\n      id\n      price\n      width\n      height\n    }\n    categories(where: {slug: $categorySlug}) {\n      name\n    }\n  }\n}\n\nquery GetProductsByIds($productsId: [ID!]!) {\n  products(where: {id_in: $productsId}) {\n    id\n    variants {\n      id\n      price\n      width\n      height\n    }\n  }\n}',
 ): typeof import("./graphql").GetProductsToCarrouselDocument;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
@@ -69,6 +79,12 @@ export function graphql(
 export function graphql(
   source: "mutation CreateReviewProduct($review: ReviewCreateInput!) {\n  createReview(data: $review) {\n    id\n    stage\n  }\n}",
 ): typeof import("./graphql").CreateReviewProductDocument;
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: "query GetProductReviewsBySlug($slug: String!) {\n  product(where: {slug: $slug}, stage: DRAFT) {\n    reviews {\n      id\n      email\n      rating\n      content\n      name\n    }\n  }\n}",
+): typeof import("./graphql").GetProductReviewsBySlugDocument;
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

@@ -61,17 +61,7 @@ query GetAccountByEmail($email: String!) {
   }
 }
 
-query GetProductReviewsBySlug($slug: String!) {
-  product(where: { slug: $slug }, stage: DRAFT) {
-    reviews {
-      id
-      email
-      rating
-      content
-      name
-    }
-  }
-}
+
 
 query GetProductsByCategory($categorySlug: String!) {
   products(where: { categories_some: { slug: $categorySlug } }) {

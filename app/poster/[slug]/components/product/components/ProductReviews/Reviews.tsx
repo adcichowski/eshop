@@ -3,7 +3,7 @@ import { getProductReviewsBySlug } from "lib";
 import { CreateReviewForm } from "./CreateReviewForm";
 
 export async function ProductReviews({ productSlug }: { productSlug: string }) {
-  const data = await getProductReviewsBySlug(productSlug);
+  const reviews = await getProductReviewsBySlug(productSlug);
 
   return (
     <div className="m-auto mt-10 w-4/6">
@@ -12,26 +12,18 @@ export async function ProductReviews({ productSlug }: { productSlug: string }) {
         aria-describedby="averageRate"
       >
         <h4 className="text-xl">
-          Opinions about product ({`${data.product?.reviews.length}`})
+          Opinions about product ({`${reviews.length}`})
         </h4>
         {4 ? <StarsReview elementId="averageRate" rating={4} /> : <></>}
       </section>
-      {data?.product?.reviews.length ? (
+      {reviews.length ? (
         <ul
           className="mt-3 flex flex-col items-stretch gap-4
       pl-12"
         >
-          {data?.product?.reviews.map(
-            ({ content, name, id, rating, email }) => (
-              <ReviewByPerson
-                email={email}
-                content={content}
-                name={name}
-                key={id}
-                rating={rating}
-              />
-            ),
-          )}
+          {reviews.map((review) => (
+            <ReviewByPerson {...review} key={review.id} />
+          ))}
         </ul>
       ) : (
         <div className="mt-4 w-full rounded-sm border py-12  text-center text-base">

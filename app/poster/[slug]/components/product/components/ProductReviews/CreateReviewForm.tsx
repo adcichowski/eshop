@@ -17,6 +17,7 @@ type CreateReviewType = {
   content: string;
   rating: number;
   email: string;
+  name: string;
 };
 export function CreateReviewForm({ productSlug }: { productSlug: string }) {
   const { register, control, handleSubmit, errors } =
@@ -36,6 +37,7 @@ export function CreateReviewForm({ productSlug }: { productSlug: string }) {
     createReview({
       variables: {
         review: {
+          name: data.name,
           content: data.content,
           email: session.data.user.email,
           rating: Number(data.rating),

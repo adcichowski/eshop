@@ -1,5 +1,9 @@
 import { ProductPageProps } from "app/poster/[slug]/components/product/ProductPage";
-import { ProductDetailsFragment } from "./hygraph/generated/graphql";
+import {
+  ProductDetailsFragment,
+  ReviewProductFragment,
+} from "./hygraph/generated/graphql";
+import { ReviewByPersonProps } from "app/poster/[slug]/components/product/components/ProductReviews/ReviewByPerson";
 
 export const reshapeProductDetails = (
   productDetailsFragment: ProductDetailsFragment,
@@ -20,3 +24,14 @@ export const reshapeProductDetails = (
     paperWeight: productDetailsFragment.paperWeight,
   },
 });
+
+export const reshapeProductReviews = (
+  reviews: ReviewProductFragment[],
+): ReviewByPersonProps[] =>
+  reviews.map(({ name, content, rating, email, id }) => ({
+    id,
+    name,
+    content,
+    rating,
+    email,
+  }));
