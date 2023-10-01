@@ -1,9 +1,11 @@
 import { ProductPageProps } from "app/poster/[slug]/components/product/ProductPage";
 import {
+  ProductCarouselFragment,
   ProductDetailsFragment,
   ReviewProductFragment,
 } from "./hygraph/generated/graphql";
 import { ReviewByPersonProps } from "app/poster/[slug]/components/product/components/ProductReviews/ReviewByPerson";
+import { ProductsCarrouselPropsType } from "components/ProductsCarrousel/components/ProductCarrousel/ProductCarrousel";
 
 export const reshapeProductDetails = (
   productDetailsFragment: ProductDetailsFragment,
@@ -35,3 +37,34 @@ export const reshapeProductReviews = (
     rating,
     email,
   }));
+
+export const reshapeProductCarrousel = (
+  products: ProductCarouselFragment[],
+): ProductsCarrouselPropsType[] =>
+  products.map(
+    ({
+      id,
+      name,
+      whiteFrame,
+      variants,
+      sale,
+      orientation,
+      slug,
+      ...product
+    }) => ({
+      id,
+      whiteFrame,
+      sale: Number(sale),
+      image: product.images[0].url,
+      variant: {
+        id: variants[0].id,
+        width: variants[0].width,
+        height: variants[0].height,
+      },
+      slug,
+      orientation,
+      price: variants[0].price,
+      amount: 1,
+      name,
+    }),
+  );

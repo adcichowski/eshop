@@ -6,7 +6,11 @@ import {
   GetProductsToCarrouselDocument,
   TypedDocumentString,
 } from "./hygraph/generated/graphql";
-import { reshapeProductDetails, reshapeProductReviews } from "./mappers";
+import {
+  reshapeProductCarrousel,
+  reshapeProductDetails,
+  reshapeProductReviews,
+} from "./mappers";
 export * from "./hygraph/generated/gql";
 
 type GraphQlError = {
@@ -77,7 +81,7 @@ export async function getProductsToCarrousel() {
     throw new Error(`Problem to get products to carrousel!`);
   }
 
-  return data;
+  return reshapeProductCarrousel(data.products);
 }
 
 export async function getAllCategories() {

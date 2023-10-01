@@ -13,7 +13,7 @@ import * as types from "./graphql";
  */
 const documents = {
   "fragment Images on Asset {\n  id\n  alt\n  url\n}": types.ImagesFragmentDoc,
-  "fragment ProductCarousel on Product {\n  sale\n  id\n  name\n  slug\n  orientation\n  whiteFrame\n  variants(orderBy: price_ASC, first: 1) {\n    price\n    width\n    height\n  }\n  images {\n    ...Images\n  }\n}":
+  "fragment ProductCarousel on Product {\n  sale\n  id\n  name\n  slug\n  orientation\n  whiteFrame\n  variants(orderBy: price_ASC, first: 1) {\n    id\n    price\n    width\n    height\n  }\n  images {\n    ...Images\n  }\n}":
     types.ProductCarouselFragmentDoc,
   "fragment ProductDetails on Product {\n  id\n  name\n  description\n  paperWeight\n  orientation\n  slug\n  color\n  sale\n  whiteFrame\n  paperWeight\n  finish\n  variants {\n    ...Variant\n  }\n  categories {\n    id\n    name\n  }\n  images {\n    ...Images\n  }\n}":
     types.ProductDetailsFragmentDoc,
@@ -41,7 +41,7 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "fragment ProductCarousel on Product {\n  sale\n  id\n  name\n  slug\n  orientation\n  whiteFrame\n  variants(orderBy: price_ASC, first: 1) {\n    price\n    width\n    height\n  }\n  images {\n    ...Images\n  }\n}",
+  source: "fragment ProductCarousel on Product {\n  sale\n  id\n  name\n  slug\n  orientation\n  whiteFrame\n  variants(orderBy: price_ASC, first: 1) {\n    id\n    price\n    width\n    height\n  }\n  images {\n    ...Images\n  }\n}",
 ): typeof import("./graphql").ProductCarouselFragmentDoc;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.

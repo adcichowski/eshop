@@ -10756,7 +10756,7 @@ export type ProductCarouselFragment = {
   slug: string;
   orientation: Orientation;
   whiteFrame: boolean;
-  variants: Array<{ price: number; width: number; height: number }>;
+  variants: Array<{ id: string; price: number; width: number; height: number }>;
   images: Array<{ id: string; alt?: string | null; url: string }>;
 };
 
@@ -10821,7 +10821,12 @@ export type GetProductsToCarrouselQuery = {
     slug: string;
     orientation: Orientation;
     whiteFrame: boolean;
-    variants: Array<{ price: number; width: number; height: number }>;
+    variants: Array<{
+      id: string;
+      price: number;
+      width: number;
+      height: number;
+    }>;
     images: Array<{ id: string; alt?: string | null; url: string }>;
   }>;
 };
@@ -10988,6 +10993,7 @@ export const ProductCarouselFragmentDoc = new TypedDocumentString(
   orientation
   whiteFrame
   variants(orderBy: price_ASC, first: 1) {
+    id
     price
     width
     height
@@ -11105,6 +11111,7 @@ fragment ProductCarousel on Product {
   orientation
   whiteFrame
   variants(orderBy: price_ASC, first: 1) {
+    id
     price
     width
     height

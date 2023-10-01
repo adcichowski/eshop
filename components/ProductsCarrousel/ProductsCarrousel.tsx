@@ -5,6 +5,7 @@ import type { SwiperProps } from "swiper/react";
 import { FreeMode } from "swiper/modules";
 import { ProductCarrousel } from "./components/ProductCarrousel/ProductCarrousel";
 import { ProductCarouselFragment } from "lib/hygraph/generated/graphql";
+import { ProductCarrouselPropsType } from "./types";
 
 const swiperSettings: SwiperProps = {
   draggable: true,
@@ -16,7 +17,7 @@ const swiperSettings: SwiperProps = {
 export const ProductsCarrousel = ({
   products,
 }: {
-  products: ProductCarouselFragment[];
+  products: ProductCarrouselPropsType[];
 }) => {
   return (
     <Swiper {...swiperSettings}>

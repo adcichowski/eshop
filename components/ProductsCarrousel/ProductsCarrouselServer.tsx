@@ -13,13 +13,13 @@ export const ProductsCarrouselServer = async ({
   Heading,
   className,
 }: ProductsCarrouselProps) => {
-  const data = await getProductsToCarrousel();
-  if (!data) return <></>;
+  const products = await getProductsToCarrousel();
+  if (!products) return <></>;
 
   return (
     <section id={id} className={className}>
       {Heading}
-      <ProductsCarrousel products={data.products} />
+      <ProductsCarrousel products={products} />
     </section>
   );
 };
