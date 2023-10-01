@@ -18,7 +18,7 @@ const ROOMS_IMAGES: { src: string; alt: string }[] = [
 
 export function RoomsCarrousel() {
   return (
-    <div className="aspect-video">
+    <div>
       <Swiper
         speed={650}
         navigation={true}

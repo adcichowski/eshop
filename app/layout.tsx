@@ -12,13 +12,11 @@ const montserrat = Montserrat({
 });
 export default function GlobalLayout({ children }: { children: JSX.Element }) {
   return (
-    <html lang="en" className={montserrat.className}>
+    <html lang="en" className={`${montserrat.className} w-full`}>
       <ClientContext>
-        <body className="relative mx-auto flex flex-col">
+        <body className="flex grow flex-col items-center">
           <Header />
-          <main className="flex grow flex-col max-w-[1440px] mx-auto">
-            {children}
-          </main>
+          <main className="flex grow flex-col max-w-[1440px]">{children}</main>
           <div id="__next"></div>
         </body>
       </ClientContext>

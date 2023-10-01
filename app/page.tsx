@@ -4,7 +4,7 @@ import { PopularCategories } from "views/home/components/PopularCategories/Popul
 import { RoomsCarrousel } from "views/home/components/RoomsCarrousel";
 const Home = async () => {
   return (
-    <div className="flex min-h-screen flex-col ">
+    <div className="flex min-h-screen flex-col">
       <RoomsCarrousel />
       <PopularCategories />
       <ProductsCarrouselServer
