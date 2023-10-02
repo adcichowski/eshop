@@ -20,17 +20,14 @@ export function RoomsCarrousel() {
   return (
     <div>
       <Swiper
+        className="aspect-video min-w-screen"
         speed={650}
         navigation={true}
         autoplay={{ delay: 3500, disableOnInteraction: true }}
         modules={[Navigation, Autoplay]}
       >
         {ROOMS_IMAGES.map((image, i) => (
-          <SwiperSlide
-            aria-label="gallery"
-            className="min-w-screen aspect-video"
-            key={image.alt}
-          >
+          <SwiperSlide aria-label="gallery" key={image.alt}>
             <Image priority={!i} fill {...image} />
           </SwiperSlide>
         ))}
