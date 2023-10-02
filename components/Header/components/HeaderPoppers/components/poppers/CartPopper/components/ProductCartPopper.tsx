@@ -20,7 +20,7 @@ export function ProductCartPopper({
       <div className="basis-[88px]">
         <Image
           className={`w-auto object-cover ${clsx(
-            "border  p-[6px]" && whiteFrame,
+            "border p-[6px]" && whiteFrame,
           )}`}
           width={100}
           height={90}
@@ -30,10 +30,7 @@ export function ProductCartPopper({
       </div>
       <div className="col-span-3 flex flex-col py-[2px]">
         <div className="flex grow justify-between gap-x-4">
-          <h3 className="text-left">
-            {title}
-            {` ${variant.width} cm x ${variant.height} cm`}
-          </h3>
+          <h3 className="text-left">{title}</h3>
           <button
             onClick={() => {
               //TODO: SET CART IN COOKIE HTTP ONLY

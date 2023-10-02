@@ -1,6 +1,6 @@
 import { Button } from "components/Button/Button";
 
-import CartIcon from "components/Header/icons/cart.svg";
+import { ShoppingCartIcon } from "lucide-react";
 // import { Link } from "components/Link/Link";
 import { useCartContext } from "context/CartContext/CartContext";
 import { CartItem } from "context/CartContext/types";
@@ -24,7 +24,7 @@ const ViewWithoutProducts = () => {
   return (
     <>
       <div className="justify-self-center">
-        <CartIcon />
+        <ShoppingCartIcon size={28} strokeWidth={1.5} />
       </div>
       <div className="line mt-1 whitespace-nowrap text-sm leading-6">
         Your cart is empty
@@ -61,7 +61,7 @@ const ViewWithProducts = ({ cart }: { cart: Record<string, CartItem> }) => {
 
       <Link
         href="/cart"
-        className="w-full rounded-[10px] px-16 py-[5px] text-sm md:text-sm  "
+        className="w-full rounded-[10px] px-16 py-[5px] text-sm md:text-sm bg-primary text-white"
       >
         Go to cart
       </Link>

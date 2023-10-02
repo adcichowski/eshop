@@ -5,7 +5,7 @@ export const MAX_RENDER_TOASTS = 4;
 
 export const addToastToList = (
   toasts: ToastStateType[] | [],
-  toast: Omit<ToastStateType, "id">
+  toast: Omit<ToastStateType, "id">,
 ) => {
   const newToasts = [{ ...toast, id: uniqId() }, ...toasts];
   if (newToasts.length === MAX_RENDER_TOASTS) {

@@ -1,12 +1,12 @@
 import { Button } from "components/Button/Button";
 
-import FavoriteIcon from "components/Header/icons/favorite.svg";
+import { HeartIcon } from "lucide-react";
 export function FavoritePopper() {
   return (
     <div>
       <div className="flex flex-col items-center px-10 text-center">
         <div className="justify-self-center">
-          <FavoriteIcon />
+          <HeartIcon size={30} strokeWidth={1.5} />
         </div>
         <div className="line mt-1 whitespace-nowrap text-sm leading-6">
           Your likes list is empty

@@ -8,9 +8,9 @@ export interface CartItem {
     readonly width: number;
     readonly height: number;
   };
+  readonly title: string;
   readonly amount: number;
   readonly price: number;
-  readonly title: string;
 }
 
 export type DeletedCartItem = { id: string };
