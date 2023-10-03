@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 import { Configure, InstantSearch, PoweredBy } from "react-instantsearch-dom";
 import { CustomHits } from "./CustomHits";
 import { SearchBox } from "./SearchBox";
-import SearchIcon from "public/searchIcon.svg";
+import { SearchIcon } from "lucide-react";
 import CloseIcon from "public/close-icon.svg";
 import { useClickOutside } from "hooks/useClickOutside";
 const searchClient = () => {
@@ -40,8 +40,8 @@ export function SearchModal({ handleModal }: { handleModal: () => void }) {
               <div role="search" className="relative max-w-md grow">
                 <SearchBox handleModal={handleModal} />
               </div>
-              <button className="ml-2 h-6 w-6">
-                <SearchIcon />
+              <button className="ml-2">
+                <SearchIcon size={30} strokeWidth={1.5} />
               </button>
               <PoweredBy className="absolute bottom-0 right-8 flex w-28 items-center gap-x-2 whitespace-nowrap text-xs" />
             </div>

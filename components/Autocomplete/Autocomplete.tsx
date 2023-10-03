@@ -1,6 +1,6 @@
 "use client";
 import Portal from "components/Modal/Modal";
-import SearchIcon from "public/searchIcon.svg";
+import { SearchIcon } from "lucide-react";
 import { useState } from "react";
 import { SearchModal } from "./components/SearchModal";
 export function Autocomplete() {
@@ -20,9 +20,7 @@ export function Autocomplete() {
         <span className="sr-only z-0 text-gray-100 sm:not-sr-only">
           Search product...
         </span>
-        <div className="h-5 w-5">
-          <SearchIcon />
-        </div>
+        <SearchIcon size={25} strokeWidth={1.5} />
       </button>
     </div>
   );
