@@ -12,7 +12,6 @@ export function ProductCartPopper({
   amount,
   whiteFrame,
   price,
-  variant,
 }: CartItem) {
   const { deleteProduct } = useCartContext();
   return (
