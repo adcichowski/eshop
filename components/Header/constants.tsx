@@ -37,10 +37,10 @@ export const navigationIcons = [
 ];
 
 export const headerCategories = [
-  "animals",
-  "black&white",
-  "landscape",
-  "architecture",
-  "botanics",
-  "others",
+  { title: "animals" },
+  { title: "black&white", slug: "black-and-white" },
+  { title: "landscape" },
+  { title: "architecture" },
+  { title: "botanics" },
+  { title: "others" },
 ];

@@ -1360,7 +1360,6 @@ export type Category = Node & {
   createdAt: Scalars["DateTime"]["output"];
   /** User that created this document */
   createdBy?: Maybe<User>;
-  description?: Maybe<Scalars["String"]["output"]>;
   /** Get the document in other stages */
   documentInStages: Array<Category>;
   /** List of Category versions */
@@ -1483,23 +1482,18 @@ export type CategoryConnection = {
 
 export type CategoryCreateInput = {
   createdAt?: InputMaybe<Scalars["DateTime"]["input"]>;
-  /** description input for default locale (en) */
-  description?: InputMaybe<Scalars["String"]["input"]>;
   /** Inline mutations for managing document localizations excluding the default locale */
   localizations?: InputMaybe<CategoryCreateLocalizationsInput>;
   /** name input for default locale (en) */
   name: Scalars["String"]["input"];
   products?: InputMaybe<ProductCreateManyInlineInput>;
-  /** slug input for default locale (en) */
   slug: Scalars["String"]["input"];
   updatedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
 };
 
 export type CategoryCreateLocalizationDataInput = {
   createdAt?: InputMaybe<Scalars["DateTime"]["input"]>;
-  description?: InputMaybe<Scalars["String"]["input"]>;
   name: Scalars["String"]["input"];
-  slug: Scalars["String"]["input"];
   updatedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
 };
 
@@ -1610,6 +1604,25 @@ export type CategoryManyWhereInput = {
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  slug?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values containing the given string. */
+  slug_contains?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values ending with the given string. */
+  slug_ends_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values that are contained in given list. */
+  slug_in?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  slug_not?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values not containing the given string. */
+  slug_not_contains?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values not ending with the given string */
+  slug_not_ends_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values that are not contained in given list. */
+  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  /** All values not starting with the given string. */
+  slug_not_starts_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values starting with the given string. */
+  slug_starts_with?: InputMaybe<Scalars["String"]["input"]>;
   updatedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
   /** All values greater than the given value. */
   updatedAt_gt?: InputMaybe<Scalars["DateTime"]["input"]>;
@@ -1633,8 +1646,6 @@ export type CategoryManyWhereInput = {
 export enum CategoryOrderByInput {
   CreatedAtAsc = "createdAt_ASC",
   CreatedAtDesc = "createdAt_DESC",
-  DescriptionAsc = "description_ASC",
-  DescriptionDesc = "description_DESC",
   IdAsc = "id_ASC",
   IdDesc = "id_DESC",
   NameAsc = "name_ASC",
@@ -1648,21 +1659,16 @@ export enum CategoryOrderByInput {
 }
 
 export type CategoryUpdateInput = {
-  /** description input for default locale (en) */
-  description?: InputMaybe<Scalars["String"]["input"]>;
   /** Manage document localizations */
   localizations?: InputMaybe<CategoryUpdateLocalizationsInput>;
   /** name input for default locale (en) */
   name?: InputMaybe<Scalars["String"]["input"]>;
   products?: InputMaybe<ProductUpdateManyInlineInput>;
-  /** slug input for default locale (en) */
   slug?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 export type CategoryUpdateLocalizationDataInput = {
-  description?: InputMaybe<Scalars["String"]["input"]>;
   name?: InputMaybe<Scalars["String"]["input"]>;
-  slug?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 export type CategoryUpdateLocalizationInput = {
@@ -1698,24 +1704,8 @@ export type CategoryUpdateManyInlineInput = {
 };
 
 export type CategoryUpdateManyInput = {
-  /** description input for default locale (en) */
-  description?: InputMaybe<Scalars["String"]["input"]>;
-  /** Optional updates to localizations */
-  localizations?: InputMaybe<CategoryUpdateManyLocalizationsInput>;
-};
-
-export type CategoryUpdateManyLocalizationDataInput = {
-  description?: InputMaybe<Scalars["String"]["input"]>;
-};
-
-export type CategoryUpdateManyLocalizationInput = {
-  data: CategoryUpdateManyLocalizationDataInput;
-  locale: Locale;
-};
-
-export type CategoryUpdateManyLocalizationsInput = {
-  /** Localizations to update */
-  update?: InputMaybe<Array<CategoryUpdateManyLocalizationInput>>;
+  /** No fields in updateMany data input */
+  _?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 export type CategoryUpdateManyWithNestedWhereInput = {
@@ -1801,27 +1791,6 @@ export type CategoryWhereInput = {
     Array<InputMaybe<Scalars["DateTime"]["input"]>>
   >;
   createdBy?: InputMaybe<UserWhereInput>;
-  description?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values containing the given string. */
-  description_contains?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values ending with the given string. */
-  description_ends_with?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values that are contained in given list. */
-  description_in?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  description_not?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values not containing the given string. */
-  description_not_contains?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values not ending with the given string */
-  description_not_ends_with?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values that are not contained in given list. */
-  description_not_in?: InputMaybe<
-    Array<InputMaybe<Scalars["String"]["input"]>>
-  >;
-  /** All values not starting with the given string. */
-  description_not_starts_with?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values starting with the given string. */
-  description_starts_with?: InputMaybe<Scalars["String"]["input"]>;
   documentInStages_every?: InputMaybe<CategoryWhereStageInput>;
   documentInStages_none?: InputMaybe<CategoryWhereStageInput>;
   documentInStages_some?: InputMaybe<CategoryWhereStageInput>;
@@ -1943,6 +1912,7 @@ export type CategoryWhereStageInput = {
 /** References Category record uniquely */
 export type CategoryWhereUniqueInput = {
   id?: InputMaybe<Scalars["ID"]["input"]>;
+  slug?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 /** Representing a color value comprising of HEX, RGBA and css color values */
@@ -10747,9 +10717,44 @@ export enum _SystemDateTimeFieldVariation {
   Localization = "localization",
 }
 
+export type GetCategoriesQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetCategoriesQuery = {
+  categories: Array<{ id: string; name: string; slug: string }>;
+};
+
+export type GetProductsByCategorySlugQueryVariables = Exact<{
+  categorySlug: Scalars["String"]["input"];
+}>;
+
+export type GetProductsByCategorySlugQuery = {
+  category?: {
+    id: string;
+    name: string;
+    products: Array<{
+      sale?: string | null;
+      id: string;
+      name: string;
+      slug: string;
+      orientation: Orientation;
+      whiteFrame: boolean;
+      variants: Array<{
+        id: string;
+        price: number;
+        width: number;
+        height: number;
+      }>;
+      categories: Array<{ slug: string }>;
+      images: Array<{ id: string; alt?: string | null; url: string }>;
+    }>;
+  } | null;
+};
+
+export type CategoriesFragment = { id: string; name: string; slug: string };
+
 export type ImagesFragment = { id: string; alt?: string | null; url: string };
 
-export type ProductCarouselFragment = {
+export type ProductDisplayFragment = {
   sale?: string | null;
   id: string;
   name: string;
@@ -10757,6 +10762,7 @@ export type ProductCarouselFragment = {
   orientation: Orientation;
   whiteFrame: boolean;
   variants: Array<{ id: string; price: number; width: number; height: number }>;
+  categories: Array<{ slug: string }>;
   images: Array<{ id: string; alt?: string | null; url: string }>;
 };
 
@@ -10827,6 +10833,7 @@ export type GetProductsToCarrouselQuery = {
       width: number;
       height: number;
     }>;
+    categories: Array<{ slug: string }>;
     images: Array<{ id: string; alt?: string | null; url: string }>;
   }>;
 };
@@ -10862,12 +10869,6 @@ export type GetProductBySlugQuery = {
   } | null;
 };
 
-export type GetCategoriesQueryVariables = Exact<{ [key: string]: never }>;
-
-export type GetCategoriesQuery = {
-  categories: Array<{ name: string; slug: string }>;
-};
-
 export type CreateAccountMutationVariables = Exact<{
   email: Scalars["String"]["input"];
   password: Scalars["String"]["input"];
@@ -10892,28 +10893,6 @@ export type GetAccountByEmailQueryVariables = Exact<{
 
 export type GetAccountByEmailQuery = {
   account?: { id: string; email: string; password: string } | null;
-};
-
-export type GetProductsByCategoryQueryVariables = Exact<{
-  categorySlug: Scalars["String"]["input"];
-}>;
-
-export type GetProductsByCategoryQuery = {
-  products: Array<{
-    whiteFrame: boolean;
-    name: string;
-    slug: string;
-    orientation: Orientation;
-    id: string;
-    images: Array<{ id: string; alt?: string | null; url: string }>;
-    variants: Array<{
-      id: string;
-      price: number;
-      width: number;
-      height: number;
-    }>;
-    categories: Array<{ name: string }>;
-  }>;
 };
 
 export type GetProductsByIdsQueryVariables = Exact<{
@@ -10973,6 +10952,16 @@ export class TypedDocumentString<TResult, TVariables>
     return this.value;
   }
 }
+export const CategoriesFragmentDoc = new TypedDocumentString(
+  `
+    fragment Categories on Category {
+  id
+  name
+  slug
+}
+    `,
+  { fragmentName: "Categories" },
+) as unknown as TypedDocumentString<CategoriesFragment, unknown>;
 export const ImagesFragmentDoc = new TypedDocumentString(
   `
     fragment Images on Asset {
@@ -10983,9 +10972,9 @@ export const ImagesFragmentDoc = new TypedDocumentString(
     `,
   { fragmentName: "Images" },
 ) as unknown as TypedDocumentString<ImagesFragment, unknown>;
-export const ProductCarouselFragmentDoc = new TypedDocumentString(
+export const ProductDisplayFragmentDoc = new TypedDocumentString(
   `
-    fragment ProductCarousel on Product {
+    fragment ProductDisplay on Product {
   sale
   id
   name
@@ -10998,6 +10987,9 @@ export const ProductCarouselFragmentDoc = new TypedDocumentString(
     width
     height
   }
+  categories {
+    slug
+  }
   images {
     ...Images
   }
@@ -11007,8 +10999,8 @@ export const ProductCarouselFragmentDoc = new TypedDocumentString(
   alt
   url
 }`,
-  { fragmentName: "ProductCarousel" },
-) as unknown as TypedDocumentString<ProductCarouselFragment, unknown>;
+  { fragmentName: "ProductDisplay" },
+) as unknown as TypedDocumentString<ProductDisplayFragment, unknown>;
 export const VariantFragmentDoc = new TypedDocumentString(
   `
     fragment Variant on ProductVariantType {
@@ -11070,6 +11062,58 @@ export const ReviewProductFragmentDoc = new TypedDocumentString(
     `,
   { fragmentName: "ReviewProduct" },
 ) as unknown as TypedDocumentString<ReviewProductFragment, unknown>;
+export const GetCategoriesDocument = new TypedDocumentString(`
+    query GetCategories {
+  categories {
+    ...Categories
+  }
+}
+    fragment Categories on Category {
+  id
+  name
+  slug
+}`) as unknown as TypedDocumentString<
+  GetCategoriesQuery,
+  GetCategoriesQueryVariables
+>;
+export const GetProductsByCategorySlugDocument = new TypedDocumentString(`
+    query GetProductsByCategorySlug($categorySlug: String!) {
+  category(where: {slug: $categorySlug}) {
+    id
+    name
+    products {
+      ...ProductDisplay
+    }
+  }
+}
+    fragment Images on Asset {
+  id
+  alt
+  url
+}
+fragment ProductDisplay on Product {
+  sale
+  id
+  name
+  slug
+  orientation
+  whiteFrame
+  variants(orderBy: price_ASC, first: 1) {
+    id
+    price
+    width
+    height
+  }
+  categories {
+    slug
+  }
+  images {
+    ...Images
+  }
+}`) as unknown as TypedDocumentString<
+  GetProductsByCategorySlugQuery,
+  GetProductsByCategorySlugQueryVariables
+>;
 export const CreateOrderDocument = new TypedDocumentString(`
     mutation CreateOrder($email: String!, $totalOrderPrice: Int!, $stripeCheckoutId: String!, $orderItems: OrderItemCreateManyInlineInput!, $statusOrder: StatusOrder!) {
   createOrder(
@@ -11095,7 +11139,7 @@ export const UpdateOrderPaymentByIdDocument = new TypedDocumentString(`
 export const GetProductsToCarrouselDocument = new TypedDocumentString(`
     query GetProductsToCarrousel {
   products {
-    ...ProductCarousel
+    ...ProductDisplay
   }
 }
     fragment Images on Asset {
@@ -11103,7 +11147,7 @@ export const GetProductsToCarrouselDocument = new TypedDocumentString(`
   alt
   url
 }
-fragment ProductCarousel on Product {
+fragment ProductDisplay on Product {
   sale
   id
   name
@@ -11115,6 +11159,9 @@ fragment ProductCarousel on Product {
     price
     width
     height
+  }
+  categories {
+    slug
   }
   images {
     ...Images
@@ -11176,17 +11223,6 @@ fragment Variant on ProductVariantType {
   GetProductBySlugQuery,
   GetProductBySlugQueryVariables
 >;
-export const GetCategoriesDocument = new TypedDocumentString(`
-    query GetCategories {
-  categories {
-    name
-    slug
-  }
-}
-    `) as unknown as TypedDocumentString<
-  GetCategoriesQuery,
-  GetCategoriesQueryVariables
->;
 export const CreateAccountDocument = new TypedDocumentString(`
     mutation CreateAccount($email: String!, $password: String!) {
   createAccount(
@@ -11226,34 +11262,6 @@ export const GetAccountByEmailDocument = new TypedDocumentString(`
     `) as unknown as TypedDocumentString<
   GetAccountByEmailQuery,
   GetAccountByEmailQueryVariables
->;
-export const GetProductsByCategoryDocument = new TypedDocumentString(`
-    query GetProductsByCategory($categorySlug: String!) {
-  products(where: {categories_some: {slug: $categorySlug}}) {
-    whiteFrame
-    name
-    slug
-    orientation
-    images(first: 1) {
-      id
-      alt
-      url
-    }
-    id
-    variants(orderBy: price_ASC, first: 1) {
-      id
-      price
-      width
-      height
-    }
-    categories(where: {slug: $categorySlug}) {
-      name
-    }
-  }
-}
-    `) as unknown as TypedDocumentString<
-  GetProductsByCategoryQuery,
-  GetProductsByCategoryQueryVariables
 >;
 export const GetProductsByIdsDocument = new TypedDocumentString(`
     query GetProductsByIds($productsId: [ID!]!) {

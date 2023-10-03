@@ -1,10 +1,11 @@
-import { ProductPageProps } from "app/poster/[slug]/components/product/ProductPage";
+import { ProductPageProps } from "app/[categorySlug]/poster/[slug]/components/product/ProductPage";
 import {
-  ProductCarouselFragment,
+  CategoriesFragment,
   ProductDetailsFragment,
+  ProductDisplayFragment,
   ReviewProductFragment,
 } from "./hygraph/generated/graphql";
-import { ReviewByPersonProps } from "app/poster/[slug]/components/product/components/ProductReviews/ReviewByPerson";
+import { ReviewByPersonProps } from "app/[categorySlug]/poster/[slug]/components/product/components/ProductReviews/ReviewByPerson";
 import { ProductCarrouselPropsType } from "components/ProductsCarrousel/types";
 
 export const reshapeProductDetails = (
@@ -38,8 +39,8 @@ export const reshapeProductReviews = (
     email,
   }));
 
-export const reshapeProductCarrousel = (
-  products: ProductCarouselFragment[],
+export const reshapeProductDisplay = (
+  products: ProductDisplayFragment[],
 ): ProductCarrouselPropsType[] =>
   products.map(
     ({
@@ -50,6 +51,7 @@ export const reshapeProductCarrousel = (
       sale,
       orientation,
       slug,
+      categories,
       ...product
     }) => ({
       id,
@@ -61,6 +63,9 @@ export const reshapeProductCarrousel = (
         width: variants[0].width,
         height: variants[0].height,
       },
+      category: {
+        slug: categories[0].slug,
+      },
       slug,
       orientation,
       price: variants[0].price,
@@ -68,3 +73,8 @@ export const reshapeProductCarrousel = (
       name,
     }),
   );
+
+export const reshapeGetCategories = (
+  categories: CategoriesFragment[],
+): { id: string; slug: string; name: string }[] =>
+  categories.map(({ id, name, slug }) => ({ id, name, slug }));

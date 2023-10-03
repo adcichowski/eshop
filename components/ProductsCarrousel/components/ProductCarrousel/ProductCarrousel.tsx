@@ -33,7 +33,7 @@ export const ProductCarrousel = (product: ProductCarrouselPropsType) => {
         <h3 className="mt-1 truncate text-xs" id={product.id}>
           <Link
             passHref
-            href={`poster/${product.slug}`}
+            href={`/${product.category.slug}/poster/${product.slug}`}
             className="after:content after:absolute after:left-0 after:top-0 after:h-full after:w-full after:cursor-pointer"
           >
             {product.name}

@@ -6,6 +6,9 @@ export type ProductCarrouselPropsType = {
   whiteFrame: boolean;
   sale: number | null | undefined;
   image: string;
+  category: {
+    slug: string;
+  };
   variant: {
     id: string;
     width: number;

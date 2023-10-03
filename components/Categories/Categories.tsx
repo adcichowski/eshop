@@ -1,11 +1,7 @@
 import { getAllCategories } from "lib";
 import Link from "next/link";
 
-type CategoriesProps = {
-  categories?: { name: string; slug: string }[];
-  className?: string;
-};
-const categoriesList = (categories: { name: string; slug: string }[]) => [
+const generateCategories = (categories: { name: string; slug: string }[]) => [
   {
     name: "All posters",
     slug: "posters",
@@ -13,19 +9,16 @@ const categoriesList = (categories: { name: string; slug: string }[]) => [
   ...categories,
 ];
 
-export async function Categories({ className }: CategoriesProps) {
+export async function Categories() {
   const data = await getAllCategories();
 
   return (
-    <aside
-      aria-describedby="categories"
-      className={`row-span-3 mx-auto w-full max-w-[230px] ${className}`}
-    >
+    <aside aria-describedby="categories">
       <h2 id="categories" className="text-xl font-medium">
         Posters
       </h2>
       <ul className="mt-[23px] w-full">
-        {categoriesList(data.categories).map(({ name, slug }) => (
+        {generateCategories(data).map(({ name, slug }) => (
           <li key={slug}>
             <Link href={slug}>
               <div>

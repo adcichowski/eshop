@@ -7,7 +7,7 @@ loadEnvConfig(process.cwd());
 const config = {
   overwrite: true,
   schema:
-    "https://api-eu-central-1.hygraph.com/v2/cl5zbzm8w367c01t32ivxf8ze/master",
+    "https://eu-central-1.cdn.hygraph.com/content/cl5zbzm8w367c01t32ivxf8ze/master",
   documents: "lib/graphql/**/*.graphql",
   generates: {
     "lib/hygraph/generated/": {

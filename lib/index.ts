@@ -3,11 +3,13 @@ import {
   GetCategoriesDocument,
   GetProductBySlugDocument,
   GetProductReviewsBySlugDocument,
+  GetProductsByCategorySlugDocument,
   GetProductsToCarrouselDocument,
   TypedDocumentString,
 } from "./hygraph/generated/graphql";
 import {
-  reshapeProductCarrousel,
+  reshapeGetCategories,
+  reshapeProductDisplay,
   reshapeProductDetails,
   reshapeProductReviews,
 } from "./mappers";
@@ -80,8 +82,7 @@ export async function getProductsToCarrousel() {
   if (!data.products) {
     throw new Error(`Problem to get products to carrousel!`);
   }
-
-  return reshapeProductCarrousel(data.products);
+  return reshapeProductDisplay(data.products);
 }
 
 export async function getAllCategories() {
@@ -93,7 +94,7 @@ export async function getAllCategories() {
     throw new Error(`Problem to get categories!`);
   }
 
-  return data;
+  return reshapeGetCategories(data.categories);
 }
 
 export async function getProductBySlug(slug: string) {
@@ -126,4 +127,24 @@ export async function getProductReviewsBySlug(slug: string) {
   }
 
   return reshapeProductReviews(data.product.reviews);
+}
+
+export async function getProductsByCategorySlug(categorySlug: string) {
+  const { category } = await fetcher({
+    query: GetProductsByCategorySlugDocument,
+    cache: "no-store",
+    variables: {
+      categorySlug,
+    },
+  });
+
+  if (!category) {
+    throw new Error(`Problem to find products to !`);
+  }
+
+  return {
+    name: category.name,
+    id: category.id,
+    products: reshapeProductDisplay(category.products),
+  };
 }

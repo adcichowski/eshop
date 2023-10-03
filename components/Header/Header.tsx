@@ -48,7 +48,6 @@ export const Header = () => {
                         typePopper === popper &&
                           popper &&
                           "before:absolute before:-bottom-[9px] before:left-0 before:h-[1.5px] before:w-full before:translate-x-0.5 before:bg-black",
-                        propsArchon.className,
                         propsArchon.href && "hidden sm:block",
                       )}`,
                     )}
@@ -70,13 +69,14 @@ export const Header = () => {
           aria-label="poster categories"
         >
           {headerCategories.map((category) => (
-            <li key={category}>
-              {/* <Link
-                aria-label={`Go to category ${category}`}
-                // href={`poster-print/${category}`}
-              > */}
-              {category}
-              {/* </Link> */}
+            <li key={category.title}>
+              <Link
+                className="cursor-pointer"
+                aria-label={`Go to category ${category.title}`}
+                href={`/${category.slug || category.title}`}
+              >
+                {category.title}
+              </Link>
             </li>
           ))}
         </ul>

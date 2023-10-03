@@ -35,7 +35,9 @@ export const ProductPage = ({ product }: { product: ProductPageProps }) => {
   return (
     <div className="relative flex flex-col">
       <div className="mx-2 grid grid-cols-1 pt-2 md:justify-items-center md:pt-6 xl:grid-cols-3">
-        <Categories className="hidden xl:block" />
+        <div className="hidden xl:block min-w-[240px]">
+          <Categories />
+        </div>
         <div className="text-[32px] md:max-w-3xl xl:col-start-2 xl:col-end-4">
           <section className="ml-4 md:grid md:grid-cols-2 xl:m-0">
             <h2 className="mb-2 text-3xl md:col-span-2 md:mb-0">

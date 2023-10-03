@@ -1,4 +1,4 @@
-fragment ProductCarousel on Product {
+fragment ProductDisplay on Product {
   sale
   id
   name
@@ -10,6 +10,9 @@ fragment ProductCarousel on Product {
     price
     width
     height
+  }
+  categories {
+    slug
   }
   images {
     ...Images

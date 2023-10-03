@@ -1,6 +1,6 @@
 query GetProductsToCarrousel {
   products {
-    ...ProductCarousel
+    ...ProductDisplay
   }
 }
 
@@ -13,13 +13,6 @@ query GetProductsSlugs {
 query GetProductBySlug($slug: String) {
   product(where: { slug: $slug }) {
     ...ProductDetails
-  }
-}
-
-query GetCategories {
-  categories {
-    name
-    slug
   }
 }
 
@@ -58,32 +51,6 @@ query GetAccountByEmail($email: String!) {
     id
     email
     password
-  }
-}
-
-
-
-query GetProductsByCategory($categorySlug: String!) {
-  products(where: { categories_some: { slug: $categorySlug } }) {
-    whiteFrame
-    name
-    slug
-    orientation
-    images(first: 1) {
-      id
-      alt
-      url
-    }
-    id
-    variants(orderBy: price_ASC, first: 1) {
-      id
-      price
-      width
-      height
-    }
-    categories(where: { slug: $categorySlug }) {
-      name
-    }
   }
 }
 
