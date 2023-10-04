@@ -13,9 +13,9 @@ export default function GlobalLayout({ children }: { children: JSX.Element }) {
   return (
     <html lang="en" className={`${montserrat.className}`}>
       <ClientContext>
-        <body className="flex grow flex-col w-full items-center relative">
+        <body className="flex grow flex-col w-full items-center relative min-h-screen">
           <Header />
-          <main className="max-w-[1440px] w-full flex min-h-screen flex-col">
+          <main className="max-w-[1440px] w-full flex grow flex-col">
             {children}
           </main>
           <div id="__next" className="absolute left-0"></div>
