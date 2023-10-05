@@ -13,7 +13,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "PosterWall",
+  title: "PosterWall - Buy poster to your wall",
   description: "Welcome to PosterWall",
   robots: {
     index: true,
@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL(baseUrl),
   openGraph: {
+    title: "PosterWall - Shop with posters",
+    description:
+      "Discover a world of artistry with our stunning e-shop poster! Immerse yourself in a visual masterpiece that is sure to captivate your senses.",
     images: [
       {
         url: "/_next/image?url=%2Fcarrousel%2Fswiper-1.jpg&w=3840&q=75",

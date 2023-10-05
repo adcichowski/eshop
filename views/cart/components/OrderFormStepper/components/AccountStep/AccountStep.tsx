@@ -1,4 +1,4 @@
-import { Button } from "components/Button/Button";
+import { Action } from "components/Action/Action";
 import { Checkbox } from "components/Inputs/components/Checkbox";
 import { Input } from "components/Inputs/components/Input";
 import React, { useState } from "react";
@@ -27,7 +27,9 @@ export default function AccountStep() {
                 type="password"
                 text="Password:"
               />
-              <Button className="h-10 w-36">Log in</Button>
+              <Action as="button" onClick={() => {}}>
+                Log in
+              </Action>
             </>
           </FormAccountWrapper>
         </div>
@@ -86,15 +88,15 @@ export default function AccountStep() {
                   text="I want to sign up for the newsletter to receive updates and promotions, as well as receive a 10% discount coupon on my first purchase."
                 />
               </div>
-              <Button className="mt-3 h-12 w-44">Sign up</Button>
+              <Action as="button">Sign up</Action>
             </>
           </FormAccountWrapper>
-          <Button
+          <Action
+            as="button"
             onClick={() => handleSetAccount({ email: "adamcek7@gmail.com" })}
-            className="mt-4 rounded-none px-2 py-2"
           >
             Set Delivery
-          </Button>
+          </Action>
         </div>
       </div>
     </ContentInStep>

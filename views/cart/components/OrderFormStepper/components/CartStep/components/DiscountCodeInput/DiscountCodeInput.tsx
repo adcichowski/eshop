@@ -2,7 +2,7 @@ import { Checkbox } from "components/Inputs/components/Checkbox";
 import { Input } from "components/Inputs/components/Input";
 import React from "react";
 // import { SpinIcon } from "components/Skeleton/SpinIcon";
-import { Button } from "components/Button/Button";
+import { Action } from "components/Action/Action";
 // import useDiscountCodeInput from "./useDiscountCodeInput";
 
 export default function DiscountCodeInput() {
@@ -36,15 +36,15 @@ export default function DiscountCodeInput() {
               className="h-full border-r-0"
             />
           </div>
-          <Button
+          <Action
+            as="button"
             // onClick={handleCheckCode}
             // disabled={isLoading}
             type="submit"
-            className="border-primary text-primary flex grow-0 items-center gap-x-1 rounded-none rounded-br-md rounded-tr-md border bg-white p-2 text-sm font-semibold normal-case"
           >
             {/* {isLoading ? <SpinIcon size="small" /> : <></>} */}
             <span>Use</span>
-          </Button>
+          </Action>
         </div>
       )}
     </div>

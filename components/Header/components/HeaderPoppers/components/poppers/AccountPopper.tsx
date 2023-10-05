@@ -1,4 +1,4 @@
-import { Button } from "components/Button/Button";
+import { Action } from "components/Action/Action";
 import { SpinIcon } from "components/Skeleton/SpinIcon";
 import { useSession, signOut } from "next-auth/react";
 
@@ -16,9 +16,9 @@ export function AccountPopper() {
 
 const Unauthenticated = () => (
   <>
-    <Button className="rounded-[10px] px-16 py-[5px] text-sm md:text-sm">
+    <Action as="link" href={"/login"}>
       <span className="whitespace-nowrap">Log in</span>
-    </Button>
+    </Action>
     <div className="line text-sm leading-6">
       Are you here for the first time?
     </div>
@@ -30,12 +30,9 @@ const Unauthenticated = () => (
 
 const Authenticated = () => (
   <>
-    <Button
-      onClick={() => signOut()}
-      className="rounded-[10px] px-16 py-[5px] text-sm md:text-sm"
-    >
+    <Action as="button" onClick={() => signOut()}>
       <span className="whitespace-nowrap">Log out</span>
-    </Button>
+    </Action>
     <div className="line text-sm leading-6">
       Do you wanna see your profile?{" "}
       <div>

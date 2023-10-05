@@ -1,4 +1,4 @@
-import { Button } from "components/Button/Button";
+import { Action } from "components/Action/Action";
 import { useCartContext } from "context/CartContext/CartContext";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -28,9 +28,11 @@ export function CartStep() {
           <DiscountCodeInput />
           <div className="grow md:max-w-md">
             <DetailsOrder />
-            <Button className="mt-4 w-full rounded-none py-2">
-              Set Delivery
-            </Button>
+            <div className="mt-2">
+              <Action as="button">
+                <div className="px-1 py-1 text-sm">Set Delivery</div>
+              </Action>
+            </div>
           </div>
         </section>
       </form>

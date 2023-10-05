@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import ShoppingError from "public/shopping-error.svg";
-import { Button } from "components/Button/Button";
+import { Action } from "components/Action/Action";
 export default function ErrorPage({
   error,
 }: {
@@ -12,8 +12,11 @@ export default function ErrorPage({
       <div className="max-w-[200px] w-full opacity-80">
         <ShoppingError />
       </div>
-      <h2 className="text-xl text-center">{error.message}</h2>
-      <Button className="p-3 text-sm">Back to home</Button>
+      <h2 className="text-2xl font-semibold">Oh no!</h2>
+      <p className="text-center">{error.message}</p>
+      <Action as="link" href={"/"}>
+        Back to home
+      </Action>
     </section>
   );
 }
