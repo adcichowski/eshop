@@ -1,7 +1,5 @@
-import { Button } from "components/Button/Button";
-
+import { Action } from "components/Action/Action";
 import { ShoppingCartIcon } from "lucide-react";
-// import { Link } from "components/Link/Link";
 import { useCartContext } from "context/CartContext/CartContext";
 import { CartItem } from "context/CartContext/types";
 import { useMemo } from "react";
@@ -29,9 +27,9 @@ const ViewWithoutProducts = () => {
       <div className="line mt-1 whitespace-nowrap text-sm leading-6">
         Your cart is empty
       </div>
-      <Button className="mt-2 rounded-[10px] px-16 py-[5px] text-sm md:text-sm">
+      <Action as="link" href="/">
         <span className="min-w-fit whitespace-nowrap">go to new products</span>
-      </Button>
+      </Action>
     </>
   );
 };

@@ -4,7 +4,7 @@ import ContentInStep from "../ContentInStep/ContentInStep";
 import { useOrderFormContext } from "../../context/OrderFormContext";
 import { DeliverySelect } from "./components/DeliverySelect/DeliverySelect";
 import { DetailsOrder } from "views/cart/components/DetailsOrder/DetailsOrder";
-import { Button } from "components/Button/Button";
+import { Action } from "components/Action/Action";
 
 export function ShippingStep() {
   const { order, account } = useOrderFormContext();
@@ -45,9 +45,9 @@ export function ShippingStep() {
         <div className="flex flex-col relative">
           <div className="flex flex-col sticky">
             <DetailsOrder />
-            <Button type="submit" className="mt-4 rounded-none py-2">
+            <Action as="button" type="submit">
               I order and pay
-            </Button>
+            </Action>
           </div>
         </div>
       </form>

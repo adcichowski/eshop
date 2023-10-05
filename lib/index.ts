@@ -139,7 +139,7 @@ export async function getProductsByCategorySlug(categorySlug: string) {
   });
 
   if (!category) {
-    throw new Error(`Problem to find products from category ${categorySlug}!`);
+    throw new Error(`Problem to find products from category!`);
   }
 
   return {

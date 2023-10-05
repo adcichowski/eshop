@@ -1,6 +1,6 @@
 "use client";
 import clsx from "clsx";
-import { Button } from "components/Button/Button";
+import { Action } from "components/Action/Action";
 import { FavoriteInput } from "components/Inputs/FavoriteInput";
 import { useCartContext } from "context/CartContext/CartContext";
 import Image from "next/image";
@@ -43,7 +43,8 @@ export const ProductCarrousel = (product: ProductCarrouselPropsType) => {
           {changeValueCurrency(product.price)}
         </span>
         <div className="relative mt-2 flex items-center justify-between gap-1">
-          <Button
+          <Action
+            as="button"
             data-outside="true"
             onClick={() => {
               addProduct({
@@ -51,10 +52,9 @@ export const ProductCarrousel = (product: ProductCarrouselPropsType) => {
                 title: `${product.name} ${product.variant.width} cm x ${product.variant.height} cm`,
               });
             }}
-            className="self-start rounded-none px-3 py-1 text-xs font-light normal-case md:text-base"
           >
             To Cart
-          </Button>
+          </Action>
 
           <div className="relative">
             <FavoriteInput id={product.id} />

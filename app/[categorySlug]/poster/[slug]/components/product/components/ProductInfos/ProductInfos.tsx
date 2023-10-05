@@ -9,7 +9,7 @@ import { ProductAttributes } from "./components/ProductAttributes";
 import { useSelectVariant } from "../../hooks/useSelectVariant";
 import { ProductPageProps } from "../../ProductPage";
 import { ProductSelectVariant } from "./components/ProductSelectVariant";
-import { Button } from "components/Button/Button";
+import { Action } from "components/Action/Action";
 import { useCartContext } from "context/CartContext/CartContext";
 
 export function ProductInfos({ product }: { product: ProductPageProps }) {
@@ -52,7 +52,9 @@ export function ProductInfos({ product }: { product: ProductPageProps }) {
       </span>
 
       <div className="mt-4 flex items-stretch gap-1">
-        <Button
+        <Action
+          fullWidth
+          as="button"
           data-outside="false"
           onClick={() => {
             addProduct({
@@ -70,10 +72,9 @@ export function ProductInfos({ product }: { product: ProductPageProps }) {
               amount: Number(inputAmountProps.value),
             });
           }}
-          className="md:text-md text-md h-full w-full rounded-none px-12 py-5"
         >
-          To Cart
-        </Button>
+          <div className="text-base">To Cart</div>
+        </Action>
         <div className="relative cursor-pointer border-[1px] border-black p-4">
           <FavoriteInput id={product.name} />
         </div>
