@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Image from "next/image";
 import ShoppingError from "public/shopping-error.svg";
 import { Button } from "components/Button/Button";
 export default function ErrorPage({
