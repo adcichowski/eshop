@@ -1,8 +1,8 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { SpinIcon } from "components/Skeleton/SpinIcon";
-import { Autoplay, Navigation } from "swiper";
+import { Navigation, Autoplay } from "swiper/modules";
 
 const ROOMS_IMAGES: { src: string; alt: string }[] = [
   { alt: "Beige room with mountain posters", src: "/carrousel/swiper-1.jpg" },
@@ -16,28 +16,18 @@ const ROOMS_IMAGES: { src: string; alt: string }[] = [
   },
 ];
 
-export function RoomsCarrousel({ isLoading }: { isLoading: boolean }) {
-  if (isLoading) {
-    return (
-      <div className="flex aspect-video items-center justify-center">
-        <SpinIcon size="big" />
-      </div>
-    );
-  }
+export function RoomsCarrousel() {
   return (
     <div>
       <Swiper
+        className="aspect-video min-w-screen"
         speed={650}
         navigation={true}
         autoplay={{ delay: 3500, disableOnInteraction: true }}
         modules={[Navigation, Autoplay]}
       >
         {ROOMS_IMAGES.map((image, i) => (
-          <SwiperSlide
-            aria-label="gallery"
-            className="min-w-screen aspect-video"
-            key={image.alt}
-          >
+          <SwiperSlide aria-label="gallery" key={image.alt}>
             <Image priority={!i} fill {...image} />
           </SwiperSlide>
         ))}

@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+input.favorite:checked + div svg {
+  @apply fill-red-200;
+  @apply border-none;
+}
+input.favorite:checked + div svg path {
+  @apply stroke-red-200;
+}
+input.favorite:checked + div svg {
+  @apply block;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  color: black;
+  stroke-width: 10px;
+}
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.ais-PoweredBy svg {
+  width: 60px;
+}

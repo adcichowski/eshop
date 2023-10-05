@@ -10,6 +10,9 @@ const nextConfig = {
 
     return config;
   },
+  experimental: {
+    serverActions: true,
+  },
   images: {
     formats: ["image/avif", "image/webp"],
     domains: ["media.graphassets.com"],

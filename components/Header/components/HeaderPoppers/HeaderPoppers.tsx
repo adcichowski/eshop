@@ -1,9 +1,5 @@
-import { AccountPopper } from "components/Header/components/HeaderPoppers/components/AccountPopper";
-import { CartPopper } from "components/Header/components/HeaderPoppers/components/CartPopper/CartPopper";
-import { FavoritePopper } from "components/Header/components/HeaderPoppers/components/FavoritePopper";
 import Portal from "components/Modal/Modal";
-import { useClickOutside } from "hooks/useClickOutside";
-import { useRef } from "react";
+import { Poppers } from "./components/Poppers";
 import { useHeaderPoppers } from "./hooks/useHeaderPoppers";
 
 export function HeaderPoppers({
@@ -56,29 +52,4 @@ const WrapperDesktop = ({ children }: { children: JSX.Element }) => {
       {children}
     </div>
   );
-};
-
-const Poppers = ({
-  popper,
-  resetPopper,
-}: {
-  readonly popper: string;
-  resetPopper: () => void;
-}) => {
-  const ref = useRef<HTMLDivElement>(null);
-  useClickOutside(ref, resetPopper);
-  return <div ref={ref}>{popperByType(popper)}</div>;
-};
-
-const popperByType = (popper: string) => {
-  switch (popper) {
-    case "cart":
-      return <CartPopper />;
-    case "account":
-      return <AccountPopper />;
-    case "favorite":
-      return <FavoritePopper />;
-    default:
-      return <></>;
-  }
 };

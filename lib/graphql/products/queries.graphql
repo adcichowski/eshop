@@ -1,0 +1,67 @@
+query GetProductsToCarrousel {
+  products {
+    ...ProductDisplay
+  }
+}
+
+query GetProductsSlugs {
+  products {
+    slug
+  }
+}
+
+query GetProductBySlug($slug: String) {
+  product(where: { slug: $slug }) {
+    ...ProductDetails
+  }
+}
+
+mutation CreateAccount($email: String!, $password: String!) {
+  createAccount(
+    data: {
+      email: $email
+      password: $password
+      discountCode: {
+        create: { DiscountCode: { code: "START15", used: false, discount: 15 } }
+      }
+    }
+  ) {
+    email
+    id
+  }
+}
+
+query GetDiscountCodes($code: String!, $email: String!) {
+  discountCodes(
+    where: {
+      code_contains: $code
+      used: false
+      accounts_some: { email: $email }
+    }
+    stage: DRAFT
+  ) {
+    code
+    discount
+    used
+  }
+}
+
+query GetAccountByEmail($email: String!) {
+  account(where: { email: $email }, stage: DRAFT) {
+    id
+    email
+    password
+  }
+}
+
+query GetProductsByIds($productsId: [ID!]!) {
+  products(where: { id_in: $productsId }) {
+    id
+    variants {
+      id
+      price
+      width
+      height
+    }
+  }
+}

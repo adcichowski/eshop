@@ -1,19 +1,16 @@
 export interface CartItem {
   readonly id: string;
   readonly whiteFrame: boolean;
-  readonly sale: string | null | undefined;
-  readonly image: {
-    readonly url: string;
-    readonly alt?: string | null;
-  };
+  readonly sale: number | null | undefined;
+  readonly image: string;
   readonly variant: {
     readonly id: string;
     readonly width: number;
     readonly height: number;
   };
+  readonly title: string;
   readonly amount: number;
   readonly price: number;
-  readonly title: string;
 }
 
 export type DeletedCartItem = { id: string };

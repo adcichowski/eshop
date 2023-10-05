@@ -1,0 +1,11 @@
+query GetProductReviewsBySlug($slug: String!) {
+  product(where: { slug: $slug }, stage: DRAFT) {
+    reviews {
+      id
+      email
+      rating
+      content
+      name
+    }
+  }
+}

@@ -1,0 +1,23 @@
+fragment ProductDetails on Product {
+  id
+  name
+  description
+  paperWeight
+  orientation
+  slug
+  color
+  sale
+  whiteFrame
+  paperWeight
+  finish
+  variants {
+    ...Variant
+  }
+  categories {
+    id
+    name
+  }
+  images {
+    ...Images
+  }
+}

@@ -13,8 +13,12 @@ export type InferGetStaticPathsType<T> = T extends () => Promise<{
 
 export type GenerateFields<
   Schema extends AnyObjectSchema,
-  StructureSchema = InferType<Schema>
+  StructureSchema = InferType<Schema>,
 > = {
   readonly [Keys in keyof StructureSchema]: InputProps;
 };
 export type TypeHeadlineTags = "h1" | "h2" | "h3" | "h4" | "h5";
+
+export type Params<T extends string> = {
+  readonly [K in T]: string;
+};

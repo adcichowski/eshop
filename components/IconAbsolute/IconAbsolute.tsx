@@ -20,6 +20,6 @@ const sumCartItems = (cart: Record<string, CartItem> | undefined) => {
   if (cart)
     return Object.entries(cart).reduce(
       (prev, [_v, product]) => prev + product.amount,
-      0
+      0,
     );
 };

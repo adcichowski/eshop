@@ -33,7 +33,7 @@ export default function SummaryTableCart({
                 <div className="ml-2 mr-1 grid items-center gap-x-6 gap-y-2 sm:grid-cols-2">
                   <figure className="flex flex-wrap items-center gap-x-2 self-stretch xl:flex-nowrap">
                     <Image
-                      src={product.image.url}
+                      src={product.image}
                       alt=""
                       className={clsx(product.whiteFrame && "border p-2")}
                       width={100}

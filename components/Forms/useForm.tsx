@@ -1,10 +1,9 @@
-import type { Resolver } from "@hookform/resolvers/yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import type { FieldValues } from "react-hook-form";
 import { useForm as useFormHook } from "react-hook-form";
 
 export function useForm<TFieldValues extends FieldValues>(
-  provideSchema: Parameters<Resolver>[0]
+  provideSchema: Parameters<typeof yupResolver<TFieldValues>>[0],
 ) {
   const {
     register,
@@ -14,7 +13,7 @@ export function useForm<TFieldValues extends FieldValues>(
     watch,
     control,
     ...rest
-  } = useFormHook<TFieldValues>({
+  } = useFormHook({
     resolver: yupResolver(provideSchema),
   });
   return {

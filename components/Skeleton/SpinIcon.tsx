@@ -8,7 +8,7 @@ export function SpinIcon({ size }: { size: SpinSizes }) {
       className={`fill-primary ${clsx(
         size === "small" && "h-3 w-3",
         size === "normal" && "h-10 w-10",
-        size === "big" && "h-14 w-14"
+        size === "big" && "h-14 w-14",
       )}`}
     >
       <svg

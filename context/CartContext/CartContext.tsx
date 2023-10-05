@@ -1,3 +1,4 @@
+"use client";
 import { useToastContext } from "context/ToastContext/ToastContext";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { toastActionCart } from "./constants/constats";
@@ -16,7 +17,7 @@ export const CartContextProvider = ({
   readonly children?: React.ReactNode;
 }) => {
   const [cart, setCart] = useState<Record<string, CartItem> | undefined>(
-    undefined
+    undefined,
   );
   const { addToast } = useToastContext();
 
@@ -41,8 +42,8 @@ export const CartContextProvider = ({
               product.amount === 0
                 ? toastActionCart.deleteProduct
                 : toastActionCart.changeAmount(
-                    changedProductCart?.quantityDifference
-                  )
+                    changedProductCart?.quantityDifference,
+                  ),
             );
           }
         },

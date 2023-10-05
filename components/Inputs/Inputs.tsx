@@ -10,6 +10,6 @@ export const InputsRender = React.forwardRef<HTMLInputElement, InputProps>(
       default:
         return <Input {...props} ref={ref} />;
     }
-  }
+  },
 );
 InputsRender.displayName = "InputsRender";

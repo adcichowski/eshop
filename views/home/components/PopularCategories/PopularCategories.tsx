@@ -4,10 +4,7 @@ import { pictures } from "./constants";
 
 export function PopularCategories() {
   return (
-    <section
-      className="md:mx-26 mx-1 mt-6 hidden sm:block xl:mx-36"
-      id="popularCategories"
-    >
+    <section className="mt-6 hidden sm:block mx-auto" id="popularCategories">
       <h2 className="mb-5 text-center text-xl">Popular Categories</h2>
       <ul className="xs:grid-cols-2  max-w-7xl grid-cols-3 justify-center gap-2 sm:grid xl:gap-6">
         {pictures.map(({ alt, src }) => (

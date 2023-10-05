@@ -1,3 +1,4 @@
+"use client";
 import Clsx from "clsx";
 import { Autocomplete } from "components/Autocomplete/Autocomplete";
 import { HeaderPoppers } from "components/Header/components/HeaderPoppers/HeaderPoppers";
@@ -12,9 +13,9 @@ export const Header = () => {
   const { saveParentPopper, typePopper, resetPopper } = usePopper();
 
   return (
-    <div className="sticky top-0 z-30">
-      <header role="banner" className="mx-auto max-w-[1440px]">
-        <div className="grid grid-cols-3 place-items-center bg-white p-3">
+    <div className="sticky top-0 z-30 self-stretch">
+      <header role="banner">
+        <div className="grid grid-cols-3 place-items-center bg-white p-3 max-w-[1440px] mx-auto">
           <div className="flex w-full items-center gap-x-10 pl-5">
             <MenuIcon />
             <Autocomplete />
@@ -47,9 +48,8 @@ export const Header = () => {
                         typePopper === popper &&
                           popper &&
                           "before:absolute before:-bottom-[9px] before:left-0 before:h-[1.5px] before:w-full before:translate-x-0.5 before:bg-black",
-                        propsArchon.className,
-                        propsArchon.href && "hidden sm:block"
-                      )}`
+                        propsArchon.href && "hidden sm:block",
+                      )}`,
                     )}
                     onClick={(e) => {
                       saveParentPopper(e, popper);
@@ -69,12 +69,13 @@ export const Header = () => {
           aria-label="poster categories"
         >
           {headerCategories.map((category) => (
-            <li key={category}>
+            <li key={category.title}>
               <Link
-                aria-label={`Go to category ${category}`}
-                href={`poster-print/${category}`}
+                className="cursor-pointer"
+                aria-label={`Go to category ${category.title}`}
+                href={`/${category.slug || category.title}`}
               >
-                {category}
+                {category.title}
               </Link>
             </li>
           ))}

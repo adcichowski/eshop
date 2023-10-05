@@ -5,7 +5,7 @@ export function useToast(toast: { id: string }) {
   const { removeToast, toasts } = useToastContext();
   const handleClose = useCallback(
     () => removeToast(toast.id),
-    [removeToast, toast.id]
+    [removeToast, toast.id],
   );
   useEffect(() => {
     if (toasts) {

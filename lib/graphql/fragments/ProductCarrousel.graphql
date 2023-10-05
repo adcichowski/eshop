@@ -1,0 +1,20 @@
+fragment ProductDisplay on Product {
+  sale
+  id
+  name
+  slug
+  orientation
+  whiteFrame
+  variants(orderBy: price_ASC, first: 1) {
+    id
+    price
+    width
+    height
+  }
+  categories {
+    slug
+  }
+  images {
+    ...Images
+  }
+}
