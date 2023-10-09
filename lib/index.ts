@@ -13,6 +13,7 @@ import {
   reshapeProductDetails,
   reshapeProductReviews,
 } from "./mappers";
+import { baseUrl } from "../constants";
 export * from "./hygraph/generated/gql";
 
 type GraphQlError = {
@@ -82,6 +83,7 @@ export async function getProductsToCarrousel() {
   if (!data.products) {
     throw new Error(`Problem to get products to carrousel!`);
   }
+
   return reshapeProductDisplay(data.products);
 }
 

@@ -76,7 +76,11 @@ export function ProductInfos({ product }: { product: ProductPageProps }) {
           <div className="text-base">To Cart</div>
         </Action>
         <div className="relative cursor-pointer border-[1px] border-black p-4">
-          <FavoriteInput id={product.name} />
+          {/* <FavoriteInput
+            id={product.id}
+            name={product.name}
+            image={product.image}
+          /> */}
         </div>
       </div>
     </aside>

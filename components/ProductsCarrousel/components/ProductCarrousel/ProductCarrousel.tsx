@@ -57,7 +57,11 @@ export const ProductCarrousel = (product: ProductCarrouselPropsType) => {
           </Action>
 
           <div className="relative">
-            <FavoriteInput id={product.id} />
+            <FavoriteInput
+              name={product.name}
+              image={product.image}
+              id={product.id}
+            />
           </div>
         </div>
       </div>

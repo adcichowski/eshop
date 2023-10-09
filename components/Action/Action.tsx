@@ -30,18 +30,14 @@ export function Action({
   const className = twMerge(
     `text-xs p-1 px-2 bg-primary text-white font-semibold uppercase transition-colors ${clsx(
       disabled &&
-        "cursor-not-allowed border-gray-100 bg-white fill-gray-100 text-gray-100",
+        "cursor-not-allowed border-gray-100 bg-white fill-gray-100 text-gray-100 pointer-events-none",
       fullWidth && "w-full",
     )}`,
   );
 
   if (props.as === "link") {
     return (
-      <Link
-        className={clsx(disabled && "pointer-events-none")}
-        aria-disabled={disabled}
-        href={props.href}
-      >
+      <Link className={className} aria-disabled={disabled} href={props.href}>
         {children}
       </Link>
     );

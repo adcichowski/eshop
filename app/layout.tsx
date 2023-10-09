@@ -13,7 +13,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "PosterWall - Buy poster to your wall",
+  title: "PosterWall - Buy Poster To Your Wall",
   description: "Welcome to PosterWall",
   robots: {
     index: true,
