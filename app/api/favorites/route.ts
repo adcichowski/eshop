@@ -1,7 +1,6 @@
+import { FAVORITES_PRODUCTS_COOKIE } from "constants";
 import { NextRequest, NextResponse } from "next/server";
 import { jsonParse } from "utils/utils";
-
-export const FAVORITES_PRODUCTS_COOKIE = "fav";
 
 export type ProductFromCookieType = {
   id: string;
