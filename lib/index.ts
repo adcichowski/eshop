@@ -13,7 +13,6 @@ import {
   reshapeProductDetails,
   reshapeProductReviews,
 } from "./mappers";
-import { baseUrl } from "../constants";
 export * from "./hygraph/generated/gql";
 
 type GraphQlError = {
