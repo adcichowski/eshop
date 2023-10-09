@@ -1,4 +1,4 @@
-import { FAVORITES_PRODUCTS_COOKIE } from "constants";
+import { FAVORITES_PRODUCTS_COOKIE } from "../../../constants";
 import { NextRequest, NextResponse } from "next/server";
 import { jsonParse } from "utils/utils";
 
