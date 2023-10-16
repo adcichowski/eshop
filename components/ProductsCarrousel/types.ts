@@ -1,6 +1,7 @@
 import { Orientation } from "lib/hygraph/generated/graphql";
 
 export type ProductCarrouselPropsType = {
+  favorite: boolean;
   id: string;
   slug: string;
   whiteFrame: boolean;

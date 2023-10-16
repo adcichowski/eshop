@@ -1,3 +1,5 @@
+import { FavoriteProduct } from "app/actions";
+
 export const changeValueCurrency = (price: number, format = "en-US") => {
   const priceWithRest = price / 100;
   const formatterPLN = new Intl.NumberFormat(format, {

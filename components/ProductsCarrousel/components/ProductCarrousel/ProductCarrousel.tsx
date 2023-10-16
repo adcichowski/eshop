@@ -58,6 +58,7 @@ export const ProductCarrousel = (product: ProductCarrouselPropsType) => {
 
           <div className="relative">
             <FavoriteInput
+              favorite={product.favorite}
               name={product.name}
               image={product.image}
               id={product.id}

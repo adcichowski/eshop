@@ -1,6 +1,6 @@
 import { Action } from "components/Action/Action";
-
 import { HeartIcon } from "lucide-react";
+// import "server-only";
 export function FavoritePopper() {
   return (
     <div>
@@ -9,7 +9,7 @@ export function FavoritePopper() {
           <HeartIcon size={30} strokeWidth={1.5} />
         </div>
         <div className="line whitespace-nowrap text-sm leading-6">
-          Your likes list is empty
+          Your likes list are empty
         </div>
         <Action as="link" href="/">
           <span className="whitespace-nowrap">Go to new products</span>

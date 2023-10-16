@@ -1,6 +1,7 @@
 import { getProductsToCarrousel } from "lib";
 import React from "react";
 import { ProductsCarrousel } from "./ProductsCarrousel";
+import { getFavoriteProducts } from "app/actions";
 
 type ProductsCarrouselProps = {
   id: string;
@@ -14,12 +15,17 @@ export const ProductsCarrouselServer = async ({
   className,
 }: ProductsCarrouselProps) => {
   const products = await getProductsToCarrousel();
+  const favorite = getFavoriteProducts()?.products;
+  const updatedProducts = products.map((product) => ({
+    ...product,
+    favorite: Boolean(favorite?.find((fav) => fav.id === product.id)),
+  }));
   if (!products) return <></>;
 
   return (
     <section id={id} className={className}>
       {Heading}
-      <ProductsCarrousel products={products} />
+      <ProductsCarrousel products={updatedProducts} />
     </section>
   );
 };

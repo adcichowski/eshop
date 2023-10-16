@@ -1,7 +1,7 @@
 "use client";
 import clsx from "clsx";
 import { DiscountFrame } from "components/DiscountFrame/DiscountFrame";
-import { FavoriteInput } from "components/Inputs/FavoriteInput";
+// import { FavoriteInput } from "components/Inputs/FavoriteInput";
 import { useInputAmountProduct } from "hooks/useInputAmountProduct";
 import React from "react";
 import ProductQuantityInput from "./components/ProductQuantityInput";
@@ -11,6 +11,7 @@ import { ProductPageProps } from "../../ProductPage";
 import { ProductSelectVariant } from "./components/ProductSelectVariant";
 import { Action } from "components/Action/Action";
 import { useCartContext } from "context/CartContext/CartContext";
+import { FavoriteInput } from "components/Inputs/FavoriteInput";
 
 export function ProductInfos({ product }: { product: ProductPageProps }) {
   const inputAmountProps = useInputAmountProduct();
@@ -77,6 +78,7 @@ export function ProductInfos({ product }: { product: ProductPageProps }) {
         </Action>
         <div className="relative cursor-pointer border-[1px] border-black p-4">
           <FavoriteInput
+            favorite={product.favorite}
             id={product.id}
             name={product.name}
             image={product.image}

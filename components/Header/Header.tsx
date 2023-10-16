@@ -1,17 +1,11 @@
-"use client";
-import Clsx from "clsx";
 import { Autocomplete } from "components/Autocomplete/Autocomplete";
-import { HeaderPoppers } from "components/Header/components/HeaderPoppers/HeaderPoppers";
-import { usePopper } from "components/Popper/usePopper";
 import { ToastsContainer } from "components/Toast/ToastsContainer";
 import Link from "next/link";
-import { twMerge } from "tailwind-merge";
 import { MenuIcon } from "./components/MenuIcon/MenuIcon";
 
-import { headerCategories, navigationIcons } from "./constants";
+import { NavigationIcons } from "./components/NavigationIcons";
+import HeaderCategories from "./components/HeaderCategories";
 export const Header = () => {
-  const { saveParentPopper, typePopper, resetPopper } = usePopper();
-
   return (
     <div className="sticky top-0 z-30 self-stretch">
       <header role="banner">
@@ -34,52 +28,9 @@ export const Header = () => {
               free delivery from 199 PLN
             </p>
           </div>
-          <div className="relative z-10">
-            <ul
-              aria-label="navigation icons"
-              className="mr-5 flex w-full items-center justify-end gap-2 md:justify-start md:gap-4"
-            >
-              {navigationIcons.map(({ Icon, popper, ...propsArchon }) => (
-                <li className="inline-flex" key={popper ?? propsArchon.href}>
-                  <button
-                    data-outside="false"
-                    className={twMerge(
-                      `relative cursor-pointer ${Clsx(
-                        typePopper === popper &&
-                          popper &&
-                          "before:absolute before:-bottom-[9px] before:left-0 before:h-[1.5px] before:w-full before:translate-x-0.5 before:bg-black",
-                        propsArchon.href && "hidden sm:block",
-                      )}`,
-                    )}
-                    onClick={(e) => {
-                      saveParentPopper(e, popper);
-                    }}
-                  >
-                    {Icon}
-                  </button>
-                </li>
-              ))}
-            </ul>
-            <HeaderPoppers resetPopper={resetPopper} type={typePopper} />
-          </div>
+          <NavigationIcons />
         </div>
-        <ul
-          className="hidden justify-center gap-4 bg-black p-2 text-sm font-medium uppercase
-          text-white sm:flex md:text-base"
-          aria-label="poster categories"
-        >
-          {headerCategories.map((category) => (
-            <li key={category.title}>
-              <Link
-                className="cursor-pointer"
-                aria-label={`Go to category ${category.title}`}
-                href={`/${category.slug || category.title}`}
-              >
-                {category.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <HeaderCategories />
         <ToastsContainer />
       </header>
     </div>
