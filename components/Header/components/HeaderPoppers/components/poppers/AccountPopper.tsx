@@ -1,15 +1,13 @@
 import { Action } from "components/Action/Action";
 import { SpinIcon } from "components/Skeleton/SpinIcon";
-import { useSession, signOut } from "next-auth/react";
+import { signOut } from "next-auth/react";
 
 export function AccountPopper() {
-  const { status } = useSession();
-
   return (
     <div className="flex w-full flex-col px-14 text-center">
-      {status === "loading" && <SpinIcon size="normal" />}
-      {status === "authenticated" && <Authenticated />}
-      {status === "unauthenticated" && <Unauthenticated />}
+      <SpinIcon size="normal" />
+      {/* {status === "authenticated" && <Authenticated />}
+      {status === "unauthenticated" && <Unauthenticated />} */}
     </div>
   );
 }

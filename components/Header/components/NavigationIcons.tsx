@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import { navigationIcons } from "../constants";
 import Clsx from "clsx";
@@ -6,10 +5,10 @@ import { HeaderPoppers } from "components/Header/components/HeaderPoppers/Header
 import { usePopper } from "components/Popper/usePopper";
 import { twMerge } from "tailwind-merge";
 import { Poppers } from "./HeaderPoppers/components/Poppers";
-
+import Link from "next/link";
+import router from "next/navigation";
+import { headers } from "next/headers";
 export function NavigationIcons() {
-  const { saveParentPopper, typePopper, resetPopper } = usePopper();
-
   return (
     <div className="relative z-10">
       <ul
@@ -18,28 +17,24 @@ export function NavigationIcons() {
       >
         {navigationIcons.map(({ Icon, popper, ...propsArchon }) => (
           <li className="inline-flex" key={popper ?? propsArchon.href}>
-            <button
+            <Link
+              key={popper}
+              href={propsArchon.href ? propsArchon.href : `/view/${popper}`}
               data-outside="false"
               className={twMerge(
                 `relative cursor-pointer ${Clsx(
-                  typePopper === popper &&
-                    popper &&
+                  popper &&
                     "before:absolute before:-bottom-[9px] before:left-0 before:h-[1.5px] before:w-full before:translate-x-0.5 before:bg-black",
                   propsArchon.href && "hidden sm:block",
                 )}`,
               )}
-              onClick={(e) => {
-                saveParentPopper(e, popper);
-              }}
+              scroll={false}
             >
               {Icon}
-            </button>
+            </Link>
           </li>
         ))}
       </ul>
-      <HeaderPoppers isOpen={Boolean(typePopper)} resetPopper={resetPopper}>
-        <Poppers popper={typePopper} />
-      </HeaderPoppers>
     </div>
   );
 }

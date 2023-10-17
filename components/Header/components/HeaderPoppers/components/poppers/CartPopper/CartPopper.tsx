@@ -1,18 +1,16 @@
 import { Action } from "components/Action/Action";
 import { ShoppingCartIcon } from "lucide-react";
-import { useCartContext } from "context/CartContext/CartContext";
 import { CartItem } from "context/CartContext/types";
 import { useMemo } from "react";
 import { changeValueCurrency } from "utils/utils";
 import { ProductCartPopper } from "./components/ProductCartPopper";
 import Link from "next/link";
 export const CartPopper = () => {
-  const { cart } = useCartContext();
-
+  const cart = {};
   return (
     <section>
       <div className="flex flex-col items-center text-center">
-        {!cart ? <ViewWithoutProducts /> : <ViewWithProducts cart={cart} />}
+        <ViewWithoutProducts />
       </div>
     </section>
   );

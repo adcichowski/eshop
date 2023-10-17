@@ -1,4 +1,3 @@
-"use client";
 import { NavigationCart } from "./NavigationCart";
 import { OrderFormStepper } from "./OrderFormStepper/OrderFormStepper";
 

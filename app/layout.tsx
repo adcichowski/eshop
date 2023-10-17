@@ -35,7 +35,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function GlobalLayout({ children }: { children: JSX.Element }) {
+export default function GlobalLayout({
+  children,
+  modal,
+}: {
+  children: JSX.Element;
+  modal: React.ReactNode;
+}) {
   return (
     <html lang="en" className={`${montserrat.className}`}>
       <ClientContext>
@@ -44,7 +50,7 @@ export default function GlobalLayout({ children }: { children: JSX.Element }) {
           <main className="max-w-[1440px] w-full flex grow flex-col">
             {children}
           </main>
-          <div id="__next" className="absolute left-0"></div>
+          {modal}
         </body>
       </ClientContext>
     </html>

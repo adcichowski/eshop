@@ -1,3 +1,4 @@
+"use server";
 import { AccountPopper } from "./poppers/AccountPopper";
 import { CartPopper } from "./poppers/CartPopper/CartPopper";
 import { FavoritePopper } from "./poppers/FavoritePopper";

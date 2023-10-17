@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ClearIcon from "./clear.svg";
+import { XIcon } from "lucide-react";
 import { changeValueCurrency } from "utils/utils";
 import { useCartContext } from "context/CartContext/CartContext";
 import clsx from "clsx";
@@ -39,7 +39,7 @@ export function ProductCartPopper({
             }}
             className="mt-[3px] self-start"
           >
-            <ClearIcon />
+            <XIcon />
           </button>
         </div>
         <div className="flex justify-between">

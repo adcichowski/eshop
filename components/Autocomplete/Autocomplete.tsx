@@ -1,5 +1,5 @@
 "use client";
-import Portal from "components/Modal/Modal";
+import { Modal } from "components/Modal/Modal";
 import { SearchIcon } from "lucide-react";
 import { useState } from "react";
 import { SearchModal } from "./components/SearchModal";
@@ -10,9 +10,9 @@ export function Autocomplete() {
   };
   return (
     <div className="flex w-full justify-center">
-      <Portal isOpen={isOpenModal}>
+      <Modal isOpen={isOpenModal}>
         <SearchModal handleModal={handleModal} />
-      </Portal>
+      </Modal>
       <button
         onClick={handleModal}
         className="z-10 flex max-w-[225px] items-center sm:w-full sm:justify-between sm:border sm:pr-3 sm:pl-1"
