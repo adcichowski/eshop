@@ -2,10 +2,7 @@ import { ShoppingBag, User2, Truck, Wallet, Check } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { twMerge } from "tailwind-merge";
 import React from "react";
-import {
-  StepsFormOrder,
-  useOrderFormContext,
-} from "./OrderFormStepper/context/OrderFormContext";
+import { StepsFormOrder } from "./OrderFormStepper/context/OrderFormContext";
 import clsx from "clsx";
 const navigationStepsIcons = [
   {

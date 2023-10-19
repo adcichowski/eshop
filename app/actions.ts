@@ -3,7 +3,6 @@
 import { FAVORITES_PRODUCTS_COOKIE } from "../constants";
 import { cookies } from "next/headers";
 import { jsonParse } from "../utils/utils";
-import { ProductCarrouselPropsType } from "components/ProductsCarrousel/types";
 export type FavoriteProduct = {
   id: string;
   image: string;
@@ -13,7 +12,6 @@ export type FavoriteProduct = {
 export const manageFavorites = async (product: FavoriteProduct) => {
   const favorite = getFavoriteProducts();
   const productInFavorite = favorite?.products.find((p) => p.id === product.id);
-  console.log(productInFavorite);
   if (productInFavorite) {
     const removedProductFromFavorite = favorite?.products.filter(
       (p) => p.id !== product.id,
