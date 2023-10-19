@@ -1,10 +1,9 @@
-import { useCartContext } from "context/CartContext/CartContext";
 import type { CartItem } from "context/CartContext/types";
-import React, { useMemo } from "react";
+import React from "react";
 
 export function IconAbsolute({ children }: { readonly children: JSX.Element }) {
-  const { cart } = useCartContext();
-  const numberItemsInCart = useMemo(() => sumCartItems(cart), [cart]);
+  const cart = {};
+  const numberItemsInCart = sumCartItems(cart);
   if (cart === undefined) return children;
   return (
     <div>

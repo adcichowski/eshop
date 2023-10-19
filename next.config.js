@@ -11,6 +11,7 @@ const nextConfig = {
     return config;
   },
   experimental: {
+    scrollRestoration: true,
     serverActions: true,
   },
   images: {

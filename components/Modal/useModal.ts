@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const scrollBarWidth = () =>
   document.body.offsetWidth - document.body.clientWidth;
-export function usePortal({ isOpen }: { isOpen: boolean }) {
+export function useModal({ isOpen }: { isOpen: boolean }) {
   const [ref, setRef] = useState<Element | null>(null);
   useEffect(() => {
     const originalStyle = window.getComputedStyle(document.body).overflow;

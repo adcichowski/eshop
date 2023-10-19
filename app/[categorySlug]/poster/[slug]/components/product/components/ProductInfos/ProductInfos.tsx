@@ -1,7 +1,7 @@
 "use client";
 import clsx from "clsx";
 import { DiscountFrame } from "components/DiscountFrame/DiscountFrame";
-import { FavoriteInput } from "components/Inputs/FavoriteInput";
+// import { FavoriteInput } from "components/Inputs/FavoriteInput";
 import { useInputAmountProduct } from "hooks/useInputAmountProduct";
 import React from "react";
 import ProductQuantityInput from "./components/ProductQuantityInput";
@@ -11,11 +11,20 @@ import { ProductPageProps } from "../../ProductPage";
 import { ProductSelectVariant } from "./components/ProductSelectVariant";
 import { Action } from "components/Action/Action";
 import { useCartContext } from "context/CartContext/CartContext";
+import { FavoriteInput } from "components/Inputs/FavoriteInput";
 
 export function ProductInfos({ product }: { product: ProductPageProps }) {
   const inputAmountProps = useInputAmountProduct();
   const { addProduct } = useCartContext();
   const { selectedVariant, setSelectedVariant } = useSelectVariant({ product });
+  const favoriteInputProps = {
+    name: product.name,
+    image: product.image,
+    slug: product.slug,
+    id: product.id,
+    category: product.attributes.category,
+    favorite: product.favorite,
+  };
   return (
     <aside
       className={`mt-3 flex max-w-[377px] flex-col md:mt-0 md:ml-5  ${clsx(
@@ -76,7 +85,7 @@ export function ProductInfos({ product }: { product: ProductPageProps }) {
           <div className="text-base">To Cart</div>
         </Action>
         <div className="relative cursor-pointer border-[1px] border-black p-4">
-          <FavoriteInput id={product.name} />
+          <FavoriteInput product={favoriteInputProps} />
         </div>
       </div>
     </aside>

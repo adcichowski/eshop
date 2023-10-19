@@ -2,10 +2,11 @@ import type { RefObject } from "react";
 import { useEffect } from "react";
 
 export function useClickOutside(
-  ref: RefObject<HTMLDivElement>,
-  handler: () => void
+  ref: RefObject<HTMLDivElement> | null,
+  handler: () => void,
 ) {
   useEffect(() => {
+    if (!ref) return;
     const listener = (event: MouseEvent) => {
       // Do nothing if target is element with attribute data-outside
       if (event.target instanceof Element) {
@@ -24,7 +25,7 @@ export function useClickOutside(
     };
     const timeId = setTimeout(
       () => document.addEventListener("click", listener),
-      0
+      0,
     );
 
     return () => {

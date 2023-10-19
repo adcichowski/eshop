@@ -1,5 +1,3 @@
-"use client";
-// import { Categories } from "components/Categories/Categories";
 import Image from "next/image";
 import React from "react";
 import { Orientation } from "lib/hygraph/generated/graphql";
@@ -9,6 +7,7 @@ import { ProductsCarrouselServer } from "components/ProductsCarrousel/ProductsCa
 import { ProductReviews } from "./components/ProductReviews/Reviews";
 
 export type ProductPageProps = {
+  favorite: boolean;
   variants: {
     width: number;
     height: number;
@@ -59,13 +58,13 @@ export const ProductPage = ({ product }: { product: ProductPageProps }) => {
           </section>
         </div>
         <div className="col-span-3 w-full max-w-full">
+          <ProductReviews productSlug={product.slug} />
+
           <ProductsCarrouselServer
             className="mt-[50px]"
             id="othersProduct"
             Heading={<h3 className="mb-3 text-xl">Others buy also</h3>}
           />
-
-          <ProductReviews productSlug={product.slug} />
 
           <ProductsCarrouselServer
             className=" mt-[50px]"

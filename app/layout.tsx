@@ -13,7 +13,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "PosterWall - Buy poster to your wall",
+  title: "PosterWall - Buy Poster To Your Wall",
   description: "Welcome to PosterWall",
   robots: {
     index: true,
@@ -37,14 +37,14 @@ export const metadata: Metadata = {
 
 export default function GlobalLayout({ children }: { children: JSX.Element }) {
   return (
-    <html lang="en" className={`${montserrat.className}`}>
+    <html lang="en" className={`${montserrat.className} h-full`}>
       <ClientContext>
-        <body className="flex grow flex-col w-full items-center relative min-h-screen">
+        <body className="flex grow flex-col w-full items-center min-h-screen">
           <Header />
           <main className="max-w-[1440px] w-full flex grow flex-col">
             {children}
           </main>
-          <div id="__next" className="absolute left-0"></div>
+          <div id="__next" />
         </body>
       </ClientContext>
     </html>

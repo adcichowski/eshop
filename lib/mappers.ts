@@ -11,6 +11,7 @@ import { ProductCarrouselPropsType } from "components/ProductsCarrousel/types";
 export const reshapeProductDetails = (
   productDetailsFragment: ProductDetailsFragment,
 ): ProductPageProps => ({
+  favorite: false,
   id: productDetailsFragment.id,
   name: productDetailsFragment.name,
   variants: productDetailsFragment.variants,
@@ -54,6 +55,7 @@ export const reshapeProductDisplay = (
       categories,
       ...product
     }) => ({
+      favorite: false,
       id,
       whiteFrame,
       sale: Number(sale),

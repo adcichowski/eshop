@@ -1,28 +1,21 @@
+import { FavoriteProduct } from "app/actions";
 import { AccountPopper } from "./poppers/AccountPopper";
 import { CartPopper } from "./poppers/CartPopper/CartPopper";
-import { FavoritePopper } from "./poppers/FavoritePopper";
-import { useClickOutside } from "hooks/useClickOutside";
-import { useRef } from "react";
+import { FavoritesPopper } from "./poppers/CartPopper/FavoritesPopper/FavoritesPopper";
 export const Poppers = ({
   popper,
-  resetPopper,
+  favorites,
 }: {
-  readonly popper: string;
-  resetPopper: () => void;
+  popper?: string;
+  favorites: FavoriteProduct[] | undefined;
 }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  useClickOutside(ref, resetPopper);
-  return <div ref={ref}>{popperByType(popper)}</div>;
-};
-
-const popperByType = (popper: string) => {
   switch (popper) {
     case "cart":
       return <CartPopper />;
     case "account":
       return <AccountPopper />;
     case "favorite":
-      return <FavoritePopper />;
+      return <FavoritesPopper favorites={favorites} />;
     default:
       return <></>;
   }

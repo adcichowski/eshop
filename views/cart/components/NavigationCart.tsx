@@ -2,10 +2,7 @@ import { ShoppingBag, User2, Truck, Wallet, Check } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { twMerge } from "tailwind-merge";
 import React from "react";
-import {
-  StepsFormOrder,
-  useOrderFormContext,
-} from "./OrderFormStepper/context/OrderFormContext";
+import { StepsFormOrder } from "./OrderFormStepper/context/OrderFormContext";
 import clsx from "clsx";
 const navigationStepsIcons = [
   {
@@ -28,7 +25,7 @@ const navigationStepsIcons = [
 ] satisfies { Icon: LucideIcon; stepName: StepsFormOrder }[];
 
 export function NavigationCart() {
-  const { step } = useOrderFormContext();
+  const step = "cart";
   return (
     <header className="mt-8">
       <ul className="flex flex-wrap items-center">
@@ -38,8 +35,8 @@ export function NavigationCart() {
               aria-hidden="true"
               className={twMerge(
                 `text-primary rounded-full border p-4 ${clsx(
-                  stepName === step && "bg-primary border-none text-white"
-                )}`
+                  stepName === step && "bg-primary border-none text-white",
+                )}`,
               )}
             >
               <Icon size={30} />

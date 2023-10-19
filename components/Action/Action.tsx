@@ -12,6 +12,7 @@ type ActionProps =
       readonly disabled?: boolean;
       readonly children: ReactNode;
       readonly fullWidth?: boolean;
+      readonly className?: string;
     }
   | {
       readonly fullWidth?: boolean;
@@ -19,29 +20,29 @@ type ActionProps =
       readonly as: "link";
       readonly href: LinkProps["href"];
       readonly children: ReactNode;
+      readonly className?: string;
     };
 
 export function Action({
   children,
   disabled,
   fullWidth = false,
+  className,
   ...props
 }: ActionProps) {
-  const className = twMerge(
-    `text-xs p-1 px-2 bg-primary text-white font-semibold uppercase transition-colors ${clsx(
-      disabled &&
-        "cursor-not-allowed border-gray-100 bg-white fill-gray-100 text-gray-100",
-      fullWidth && "w-full",
-    )}`,
-  );
+  const classname =
+    className ||
+    twMerge(
+      `text-xs p-1 px-2 bg-primary text-white font-semibold uppercase transition-colors ${clsx(
+        disabled &&
+          "cursor-not-allowed border-gray-100 bg-white fill-gray-100 text-gray-100 pointer-events-none",
+        fullWidth && "w-full",
+      )}`,
+    );
 
   if (props.as === "link") {
     return (
-      <Link
-        className={clsx(disabled && "pointer-events-none")}
-        aria-disabled={disabled}
-        href={props.href}
-      >
+      <Link className={classname} aria-disabled={disabled} href={props.href}>
         {children}
       </Link>
     );
@@ -49,8 +50,7 @@ export function Action({
   return (
     <button
       aria-disabled={disabled}
-      {...props}
-      className={className}
+      className={classname}
       onClick={disabled ? undefined : props.onClick}
     >
       {children}

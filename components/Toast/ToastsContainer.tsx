@@ -1,3 +1,4 @@
+"use client";
 import { useToastContext } from "context/ToastContext/ToastContext";
 import { ToastChild } from "./Toast";
 

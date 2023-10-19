@@ -42,3 +42,12 @@ export const getEnv = (env: string | undefined, key: string) => {
   if (!env) throw Error(`Variable ${key} is not set in .env`);
   return env;
 };
+
+export const jsonParse = <T>(value: string | undefined): T | undefined => {
+  try {
+    if (!value) return undefined;
+    return JSON.parse(value);
+  } catch (e) {
+    console.error(e);
+  }
+};
