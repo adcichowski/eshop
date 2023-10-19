@@ -17,6 +17,14 @@ export function ProductInfos({ product }: { product: ProductPageProps }) {
   const inputAmountProps = useInputAmountProduct();
   const { addProduct } = useCartContext();
   const { selectedVariant, setSelectedVariant } = useSelectVariant({ product });
+  const favoriteInputProps = {
+    name: product.name,
+    image: product.image,
+    slug: product.slug,
+    id: product.id,
+    category: product.attributes.category,
+    favorite: product.favorite,
+  };
   return (
     <aside
       className={`mt-3 flex max-w-[377px] flex-col md:mt-0 md:ml-5  ${clsx(
@@ -77,12 +85,7 @@ export function ProductInfos({ product }: { product: ProductPageProps }) {
           <div className="text-base">To Cart</div>
         </Action>
         <div className="relative cursor-pointer border-[1px] border-black p-4">
-          <FavoriteInput
-            favorite={product.favorite}
-            id={product.id}
-            name={product.name}
-            image={product.image}
-          />
+          <FavoriteInput product={favoriteInputProps} />
         </div>
       </div>
     </aside>

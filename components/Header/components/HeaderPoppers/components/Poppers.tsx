@@ -1,14 +1,21 @@
+import { FavoriteProduct } from "app/actions";
 import { AccountPopper } from "./poppers/AccountPopper";
 import { CartPopper } from "./poppers/CartPopper/CartPopper";
-import { FavoritePopper } from "./poppers/FavoritePopper";
-export const Poppers = ({ popper }: { popper?: string }) => {
+import { FavoritesPopper } from "./poppers/CartPopper/FavoritesPopper/FavoritesPopper";
+export const Poppers = ({
+  popper,
+  favorites,
+}: {
+  popper?: string;
+  favorites: FavoriteProduct[] | undefined;
+}) => {
   switch (popper) {
     case "cart":
       return <CartPopper />;
     case "account":
       return <AccountPopper />;
     case "favorite":
-      return <FavoritePopper />;
+      return <FavoritesPopper favorites={favorites} />;
     default:
       return <></>;
   }

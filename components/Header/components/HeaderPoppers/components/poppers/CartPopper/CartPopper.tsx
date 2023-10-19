@@ -7,7 +7,7 @@ import { ShoppingCartIcon } from "lucide-react";
 // import Link from "next/link";
 export const CartPopper = () => {
   return (
-    <section>
+    <section className="flex justify-center w-full px-3 py-[19px] ">
       <div className="flex flex-col items-center text-center">
         <ViewWithoutProducts />
       </div>

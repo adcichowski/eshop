@@ -7,8 +7,13 @@ import { Action } from "components/Action/Action";
 import { usePopper } from "components/Popper/usePopper";
 import { HeaderPoppers } from "./HeaderPoppers/HeaderPoppers";
 import { Poppers } from "./HeaderPoppers/components/Poppers";
+import { FavoriteProduct } from "app/actions";
 
-export function NavigationIcons() {
+export function NavigationIcons({
+  favorites,
+}: {
+  favorites: FavoriteProduct[] | undefined;
+}) {
   const { saveParentPopper, typePopper, resetPopper } = usePopper();
 
   return (
@@ -37,10 +42,10 @@ export function NavigationIcons() {
             </Action>
           </li>
         ))}
-        <HeaderPoppers resetPopper={resetPopper} type={typePopper}>
-          <Poppers popper={typePopper} />
-        </HeaderPoppers>
       </ul>
+      <HeaderPoppers resetPopper={resetPopper} type={typePopper}>
+        <Poppers popper={typePopper} favorites={favorites} />
+      </HeaderPoppers>
     </div>
   );
 }

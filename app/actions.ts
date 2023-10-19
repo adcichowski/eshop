@@ -5,7 +5,9 @@ import { cookies } from "next/headers";
 import { jsonParse } from "../utils/utils";
 export type FavoriteProduct = {
   id: string;
+  category: string;
   image: string;
+  slug: string;
   name: string;
 };
 

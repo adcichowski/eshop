@@ -11,6 +11,14 @@ import { ProductCarrouselPropsType } from "components/ProductsCarrousel/types";
 export const ProductCarrousel = (product: ProductCarrouselPropsType) => {
   const { addProduct } = useCartContext();
 
+  const favoriteInputProps = {
+    name: product.name,
+    category: product.category.slug,
+    slug: product.slug,
+    id: product.id,
+    image: product.image,
+    favorite: product.favorite,
+  };
   return (
     <section aria-labelledby={product.name}>
       <div
@@ -57,12 +65,7 @@ export const ProductCarrousel = (product: ProductCarrouselPropsType) => {
           </Action>
 
           <div className="relative">
-            <FavoriteInput
-              favorite={product.favorite}
-              name={product.name}
-              image={product.image}
-              id={product.id}
-            />
+            <FavoriteInput product={favoriteInputProps} />
           </div>
         </div>
       </div>

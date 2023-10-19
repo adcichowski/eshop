@@ -50,7 +50,7 @@ const WrapperDesktop = forwardRef<HTMLDivElement, { children: JSX.Element }>(
     return (
       <div
         ref={ref}
-        className="border-gray md:-left-38 absolute -left-72 top-7 z-10 flex w-[400px] max-w-[400px] justify-center border-[0.5px] bg-white px-3 py-[19px] sm:-left-44 sm:top-[31px]"
+        className="border-gray md:-left-38 absolute -left-72 top-7 z-10 flex w-[400px] max-w-[400px] border-[0.5px] bg-white sm:-left-44 sm:top-[31px]"
       >
         {children}
       </div>

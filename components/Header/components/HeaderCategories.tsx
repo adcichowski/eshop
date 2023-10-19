@@ -2,7 +2,7 @@ import React from "react";
 import { headerCategories } from "../constants";
 import Link from "next/link";
 
-export default function HeaderCategories() {
+export function HeaderCategories() {
   return (
     <ul
       className="hidden justify-center gap-4 bg-black p-2 text-sm font-medium uppercase
