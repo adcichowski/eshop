@@ -23,7 +23,7 @@ export const ToastChild = memo(
           {type === "info" && <InfoIcon />}
           <span className="sr-only">Check icon</span>
         </div>
-        <div className="ml-3 text-sm font-normal">{text}</div>
+        <div className="ml-3 md:text-sm text-xs font-normal">{text}</div>
         <button
           type="button"
           className="ml-auto"
