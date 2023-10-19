@@ -1,8 +1,7 @@
 import { useClickOutside } from "hooks/useClickOutside";
 import { useHeaderPoppers } from "./hooks/useHeaderPoppers";
-import { forwardRef, useEffect, useRef } from "react";
+import { forwardRef, useRef } from "react";
 import { Modal } from "components/Modal/Modal";
-import { usePathname } from "next/navigation";
 
 export function HeaderPoppers({
   type,
