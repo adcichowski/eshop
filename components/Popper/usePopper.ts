@@ -3,10 +3,7 @@ import { useState } from "react";
 
 export function usePopper() {
   const [typePopper, setTypePopper] = useState<string | undefined>(undefined);
-  const saveParentPopper = (
-    _: MouseEvent<HTMLButtonElement>,
-    type: string | undefined,
-  ) => {
+  const saveParentPopper = (type: string | undefined) => {
     setTypePopper(type);
   };
 

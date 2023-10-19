@@ -5,6 +5,7 @@ import { MenuIcon } from "./components/MenuIcon/MenuIcon";
 
 import { NavigationIcons } from "./components/NavigationIcons";
 import HeaderCategories from "./components/HeaderCategories";
+import { Poppers } from "./components/HeaderPoppers/components/Poppers";
 export const Header = () => {
   return (
     <div className="sticky top-0 z-30 self-stretch">
@@ -22,7 +23,7 @@ export const Header = () => {
             >
               <h1 className="text-lg md:text-3xl">PosterWall</h1>
             </Link>
-            <p className="hidden text-xs opacity-70 md:inline-block mb-1">
+            <p className="hidden text-xs opacity-70 xl:inline-block mb-1">
               Shipping in 2-4 business days
               <span className="mx-1 inline-block before:relative before:-bottom-1 before:block before:h-4 before:w-[1px] before:bg-black"></span>
               free delivery from 199 PLN

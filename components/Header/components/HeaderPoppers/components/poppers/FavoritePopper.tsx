@@ -1,6 +1,5 @@
 import { Action } from "components/Action/Action";
 import { HeartIcon } from "lucide-react";
-// import "server-only";
 export function FavoritePopper() {
   return (
     <div>

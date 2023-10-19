@@ -6,7 +6,7 @@ import { InstagramIcon } from "lucide-react";
 import { IconAbsolute } from "components/IconAbsolute/IconAbsolute";
 
 const ICONS_SETTINGS = {
-  size: 30,
+  size: 27.5,
   strokeWidth: 1.5,
 };
 export const navigationIcons = [

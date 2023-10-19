@@ -35,22 +35,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function GlobalLayout({
-  children,
-  modal,
-}: {
-  children: JSX.Element;
-  modal: React.ReactNode;
-}) {
+export default function GlobalLayout({ children }: { children: JSX.Element }) {
   return (
-    <html lang="en" className={`${montserrat.className}`}>
+    <html lang="en" className={`${montserrat.className} h-full`}>
       <ClientContext>
-        <body className="flex grow flex-col w-full items-center relative min-h-screen">
+        <body className="flex grow flex-col w-full items-center min-h-screen">
           <Header />
           <main className="max-w-[1440px] w-full flex grow flex-col">
             {children}
           </main>
-          {modal}
+          <div id="__next" />
         </body>
       </ClientContext>
     </html>

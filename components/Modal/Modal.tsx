@@ -1,5 +1,6 @@
+"use client";
 import { createPortal } from "react-dom";
-import { usePortal } from "./useModal";
+import { useModal } from "./useModal";
 
 export function Modal({
   isOpen,
@@ -8,11 +9,11 @@ export function Modal({
   isOpen: boolean;
   children: JSX.Element;
 }) {
-  // const { ref } = usePortal({ isOpen });
-  const ref = null;
+  const { ref } = useModal({ isOpen });
+
   if (!ref || !isOpen) return <></>;
   return createPortal(
-    <dialog className="top relative z-40 flex h-full w-full">
+    <dialog className="top-0 fixed z-50 bg-white/80 flex h-full w-full">
       {children}
     </dialog>,
     ref,
