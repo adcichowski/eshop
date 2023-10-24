@@ -5,7 +5,7 @@ import {
   ProductDisplayFragment,
   ReviewProductFragment,
 } from "./hygraph/generated/graphql";
-import { ReviewByPersonProps } from "app/[categorySlug]/poster/[slug]/components/product/components/ProductReviews/ReviewByPerson";
+import { ReviewByPersonProps } from "app/[categorySlug]/poster/[slug]/components/product/components/ProductReviews/components/ReviewByPerson";
 import { ProductCarrouselPropsType } from "components/ProductsCarrousel/types";
 
 export const reshapeProductDetails = (
