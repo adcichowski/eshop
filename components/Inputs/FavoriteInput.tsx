@@ -1,8 +1,8 @@
 "use client";
 import { HeartIcon } from "lucide-react";
-import { manageFavorites } from "app/actions";
 import { useToastContext } from "context/ToastContext/ToastContext";
 import clsx from "clsx";
+import { favoriteProductAction } from "../../lib/actions/favorite";
 
 export function FavoriteInput({
   product,
@@ -20,11 +20,11 @@ export function FavoriteInput({
 }) {
   const { addToast } = useToastContext();
   const handleFavorite = async () => {
-    const { action } = await manageFavorites(product);
-    if (action === "like") {
+    const { action } = await favoriteProductAction(product);
+    if (action === "added") {
       addToast("success", "Product has been added as favorite");
     }
-    if (action === "unlike") {
+    if (action === "removed") {
       addToast("success", "Product has been removed from favorite");
     }
   };

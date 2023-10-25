@@ -1,4 +1,4 @@
-import { FavoriteProduct } from "app/actions";
+import { FavoriteProduct } from "app/favorite-action";
 import { Action } from "components/Action/Action";
 import { FavoriteInput } from "components/Inputs/FavoriteInput";
 import { HeartIcon } from "lucide-react";

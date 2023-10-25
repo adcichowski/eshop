@@ -1,20 +1,16 @@
-import { useCartContext } from "context/CartContext/CartContext";
-import { CartItem } from "context/CartContext/types";
 import React from "react";
 
 export function AmountProductCart({
-  amount,
-  product,
+  amount, // product,
 }: {
   amount: number;
-  product: CartItem;
+  // product: CartItem;
 }) {
-  const { addProduct, deleteProduct, changeAmountProduct } = useCartContext();
   return (
     <div className="flex h-10">
       <button
         type="button"
-        onClick={() => deleteProduct(product)}
+        // onClick={() => deleteProduct(product)}
         className="border border-r-0 px-3"
       >
         -
@@ -26,17 +22,17 @@ export function AmountProductCart({
         pattern="[0-9]"
         min={1}
         value={amount}
-        onChange={(e) => {
-          if (e.currentTarget.value === "") return;
-          changeAmountProduct({
-            ...product,
-            amount: Number(e.currentTarget.value),
-          });
-        }}
+        // onChange={(e) => {
+        //   if (e.currentTarget.value === "") return;
+        //   changeAmountProduct({
+        //     ...product,
+        //     amount: Number(e.currentTarget.value),
+        //   });
+        // }}
       />
       <button
         type="button"
-        onClick={() => addProduct({ ...product, amount: 1 })}
+        // onClick={() => addProduct({ ...product, amount: 1 })}
         className="border border-l-0 px-3"
       >
         +

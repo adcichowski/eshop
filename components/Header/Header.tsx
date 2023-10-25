@@ -5,10 +5,12 @@ import { MenuIcon } from "./components/MenuIcon/MenuIcon";
 
 import { NavigationIcons } from "./components/NavigationIcons";
 import { HeaderCategories } from "./components/HeaderCategories";
-import { getFavoriteProducts } from "app/actions";
+import { getFavoriteProducts } from "lib/actions/favorite";
+import { getCartProducts } from "lib/actions/cart";
 
 export const Header = () => {
   const favorites = getFavoriteProducts();
+  const data = getCartProducts();
   return (
     <div className="sticky top-0 z-30 self-stretch">
       <header role="banner">
@@ -31,7 +33,7 @@ export const Header = () => {
               free delivery from 199 PLN
             </p>
           </div>
-          <NavigationIcons favorites={favorites?.products} />
+          <NavigationIcons cart={data?.cart} favorites={favorites?.products} />
         </div>
         <HeaderCategories />
         <ToastsContainer />

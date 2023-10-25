@@ -2,7 +2,7 @@ import React from "react";
 import { ProductPage } from "./components/product/ProductPage";
 import { notFound } from "next/navigation";
 import { getProductBySlug } from "lib";
-import { getFavoriteProducts } from "app/actions";
+import { getFavoriteProducts } from "lib/actions/favorite";
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const data = await getProductBySlug(params.slug);

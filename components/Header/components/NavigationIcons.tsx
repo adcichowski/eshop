@@ -7,12 +7,15 @@ import { Action } from "components/Action/Action";
 import { usePopper } from "components/Popper/usePopper";
 import { HeaderPoppers } from "./HeaderPoppers/HeaderPoppers";
 import { Poppers } from "./HeaderPoppers/components/Poppers";
-import { FavoriteProduct } from "app/actions";
+import { CartProduct } from "lib/actions/cart";
+import { FavoriteProduct } from "lib/actions/favorite";
 
 export function NavigationIcons({
   favorites,
+  cart,
 }: {
   favorites: FavoriteProduct[] | undefined;
+  cart: CartProduct[] | undefined;
 }) {
   const { saveParentPopper, typePopper, resetPopper } = usePopper();
 
@@ -44,7 +47,7 @@ export function NavigationIcons({
         ))}
       </ul>
       <HeaderPoppers resetPopper={resetPopper} type={typePopper}>
-        <Poppers popper={typePopper} favorites={favorites} />
+        <Poppers popper={typePopper} favorites={favorites} cart={cart} />
       </HeaderPoppers>
     </div>
   );

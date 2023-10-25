@@ -1,9 +1,8 @@
 import Image from "next/image";
 import { XIcon } from "lucide-react";
 import { changeValueCurrency } from "utils/utils";
-import { useCartContext } from "context/CartContext/CartContext";
 import clsx from "clsx";
-import { CartItem } from "context/CartContext/types";
+import { CartProduct, runCartAction } from "lib/actions/cart";
 
 export function ProductCartPopper({
   id,
@@ -12,8 +11,7 @@ export function ProductCartPopper({
   amount,
   whiteFrame,
   price,
-}: CartItem) {
-  const { deleteProduct } = useCartContext();
+}: CartProduct) {
   return (
     <article className="grid w-full grid-cols-4 gap-x-3 border-b-[1px] border-gray-100 pb-2">
       <div className="basis-[88px]">
@@ -34,7 +32,19 @@ export function ProductCartPopper({
             onClick={() => {
               //TODO: SET CART IN COOKIE HTTP ONLY
               setTimeout(() => {
-                deleteProduct({ id });
+                // runCartAction(
+                //   {
+                //     id,
+                //     amount: 1,
+                //     sale,
+                //     whiteFrame,
+                //     image,
+                //     variant,
+                //     price,
+                //     title,
+                //   },
+                //   "remove",
+                // );
               }, 1);
             }}
             className="mt-[3px] self-start"

@@ -1,5 +1,4 @@
 import { Action } from "components/Action/Action";
-import { useCartContext } from "context/CartContext/CartContext";
 import React from "react";
 import { useForm } from "react-hook-form";
 import DiscountCodeInput from "./components/DiscountCodeInput/DiscountCodeInput";
@@ -13,7 +12,7 @@ export type CartStepType = {
   discount?: number;
 };
 export function CartStep() {
-  const { cart } = useCartContext();
+  const cart = {};
   const { handleSetProducts } = useOrderFormContext();
   const { handleSubmit } = useForm<CartStepType>();
   if (!cart) return <></>;
