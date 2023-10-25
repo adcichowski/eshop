@@ -4,7 +4,7 @@ import { Orientation } from "lib/hygraph/generated/graphql";
 import { ProductInfos } from "./components/ProductInfos/ProductInfos";
 import { Categories } from "components/Categories/Categories";
 import { ProductsCarrouselServer } from "components/ProductsCarrousel/ProductsCarrouselServer";
-import { ProductReviews } from "./components/ProductReviews/Reviews";
+import { ProductReviews } from "./components/ProductReviews/ProductReviews";
 
 export type ProductPageProps = {
   favorite: boolean;

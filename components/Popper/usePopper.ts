@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export function usePopper() {
+  const pathname = usePathname();
   const [typePopper, setTypePopper] = useState<string | undefined>(undefined);
   const saveParentPopper = (type: string | undefined) => {
     setTypePopper(type);
@@ -9,6 +11,10 @@ export function usePopper() {
   const resetPopper = () => {
     setTypePopper(undefined);
   };
+
+  useEffect(() => {
+    resetPopper();
+  }, [pathname]);
 
   return {
     saveParentPopper,

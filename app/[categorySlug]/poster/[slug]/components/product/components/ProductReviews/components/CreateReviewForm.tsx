@@ -10,7 +10,7 @@ import {
   CreateReviewProductMutationVariables,
 } from "lib/hygraph/generated/graphql";
 import { ErrorInInput } from "components/Inputs/components/ErrorInInput";
-import { addReviewSchema } from "./addReviewSchema";
+import { addReviewSchema } from "../constants/addReviewSchema";
 import { useForm } from "components/Forms/useForm";
 
 type CreateReviewType = {
