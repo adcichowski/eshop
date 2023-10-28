@@ -1,5 +1,5 @@
 import React from "react";
-import ContentInStep from "../../../../../../app/cart/components/HeaderInStep";
+import { HeaderInStep } from "app/cart/components/HeaderInStep";
 import { StripeElementsOptions, loadStripe } from "@stripe/stripe-js";
 import tailwindConfig from "tailwind.config";
 import { getEnv } from "utils/utils";
@@ -24,10 +24,10 @@ export function PaymentStep() {
     },
   };
   return (
-    <ContentInStep header="Payment For Order">
+    <HeaderInStep header="Payment For Order">
       <Elements options={options} stripe={stripePromise}>
         {/* <CheckoutForm /> */}
       </Elements>
-    </ContentInStep>
+    </HeaderInStep>
   );
 }

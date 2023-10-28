@@ -1,5 +1,5 @@
 import React, { FormEvent } from "react";
-import ContentInStep from "../../../../../../app/cart/components/HeaderInStep";
+import { HeaderInStep } from "app/cart/components/HeaderInStep";
 // import { useCreatePayment } from "./hooks/useCreatePayment";
 // import { useOrderFormContext } from "../../context/OrderFormContext";
 import { DeliverySelect } from "./components/DeliverySelect/DeliverySelect";
@@ -34,7 +34,7 @@ export function ShippingStep() {
   };
 
   return (
-    <ContentInStep header="Delivery order">
+    <HeaderInStep header="Delivery order">
       <form
         onSubmit={handleSubmit}
         className="grid md:grid-cols-3 md:gap-x-12 mb-32"
@@ -51,6 +51,6 @@ export function ShippingStep() {
           </div>
         </div>
       </form>
-    </ContentInStep>
+    </HeaderInStep>
   );
 }

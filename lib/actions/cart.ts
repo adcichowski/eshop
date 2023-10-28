@@ -77,7 +77,6 @@ const removeProductFromCart = (
 
 const getUpdatedCart = (product: CartProduct, action: CartActions) => {
   const data = getCartProducts();
-  console.log("halo", data, action);
   switch (action) {
     case "reduce":
       return reduceNumberProductFromCart(product, data?.cart);

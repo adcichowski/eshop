@@ -3,7 +3,7 @@ import { Checkbox } from "components/Inputs/components/Checkbox";
 import { Input } from "components/Inputs/components/Input";
 import React, { useState } from "react";
 import FormAccountWrapper from "./components/FormAccountWrapper";
-import ContentInStep from "../../../../../../app/cart/components/HeaderInStep";
+import { HeaderInStep } from "app/cart/components/HeaderInStep";
 
 export default function AccountStep() {
   const benefitsInfo = [
@@ -13,7 +13,7 @@ export default function AccountStep() {
   ];
   const [wantAccount, setWantAccount] = useState(false);
   return (
-    <ContentInStep header="Your personal data">
+    <HeaderInStep header="Your personal data">
       <div className="grid gap-x-5 gap-y-5 md:grid-cols-3">
         <div>
           <FormAccountWrapper title="Have an account">
@@ -94,7 +94,7 @@ export default function AccountStep() {
           </Action>
         </div>
       </div>
-    </ContentInStep>
+    </HeaderInStep>
   );
 }
 

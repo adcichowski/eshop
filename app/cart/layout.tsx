@@ -1,7 +1,5 @@
 import Image from "next/image";
 import { getCartProducts } from "lib/actions/cart";
-import { AlertTriangleIcon } from "lucide-react";
-import Link from "next/link";
 export default function Layout(props: { step: React.ReactNode }) {
   const data = getCartProducts();
   if (!data?.cart || !data.cart.length) {
