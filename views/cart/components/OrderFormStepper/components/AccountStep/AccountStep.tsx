@@ -3,7 +3,7 @@ import { Checkbox } from "components/Inputs/components/Checkbox";
 import { Input } from "components/Inputs/components/Input";
 import React, { useState } from "react";
 import FormAccountWrapper from "./components/FormAccountWrapper";
-import ContentInStep from "../ContentInStep/ContentInStep";
+import ContentInStep from "../../../../../../app/cart/components/HeaderInStep";
 
 export default function AccountStep() {
   const benefitsInfo = [

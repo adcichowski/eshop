@@ -1,6 +1,4 @@
-import React from "react";
-
-export default function ContentInStep({
+export function HeaderInStep({
   children,
   header,
 }: {

@@ -1,5 +1,5 @@
 import React from "react";
-import ContentInStep from "../ContentInStep/ContentInStep";
+import ContentInStep from "../../../../../../app/cart/components/HeaderInStep";
 import { StripeElementsOptions, loadStripe } from "@stripe/stripe-js";
 import tailwindConfig from "tailwind.config";
 import { getEnv } from "utils/utils";

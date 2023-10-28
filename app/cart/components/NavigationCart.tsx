@@ -3,9 +3,16 @@ import type { LucideIcon } from "lucide-react";
 import { twMerge } from "tailwind-merge";
 import React from "react";
 import clsx from "clsx";
+
+export type StepsInForm =
+  | "details"
+  | "account"
+  | "shipping"
+  | "payment"
+  | "summary";
 const navigationStepsIcons = [
   {
-    stepName: "cart",
+    stepName: "details",
     Icon: ShoppingBag,
   },
   {
@@ -23,13 +30,12 @@ const navigationStepsIcons = [
   },
 ] satisfies { Icon: LucideIcon; stepName: string }[];
 
-export function NavigationCart() {
-  const step = "cart";
+export function NavigationCart({ step }: { step: StepsInForm }) {
   return (
     <header className="mt-8">
       <ul className="flex flex-wrap items-center">
         {navigationStepsIcons.map(({ Icon, stepName }) => (
-          <React.Fragment key={Icon.name}>
+          <React.Fragment key={stepName}>
             <div
               aria-hidden="true"
               className={twMerge(

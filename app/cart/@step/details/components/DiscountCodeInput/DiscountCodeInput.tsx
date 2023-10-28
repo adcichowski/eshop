@@ -1,11 +1,8 @@
-import { Checkbox } from "components/Inputs/components/Checkbox";
-import { Input } from "components/Inputs/components/Input";
 import React from "react";
 // import { SpinIcon } from "components/Skeleton/SpinIcon";
-import { Action } from "components/Action/Action";
 // import useDiscountCodeInput from "./useDiscountCodeInput";
 
-export default function DiscountCodeInput() {
+export function DiscountCodeInput() {
   // const {
   //   refCode,
   //   error,
@@ -16,37 +13,37 @@ export default function DiscountCodeInput() {
   // } = useDiscountCodeInput();
   return (
     <div className="mb-2 flex grow flex-col items-start gap-y-2 ">
-      <Checkbox
+      {/* <Checkbox
         id="isDiscountCode"
         text="I have discount code"
-        // onClick={handleHaveDiscount}
+        onClick={handleHaveDiscount}
         type="checkbox"
-      />
-      {false && (
+      /> */}
+      {/* {false && (
         <div className="flex">
           <div>
             <Input
-              // ref={refCode}
+              ref={refCode}
               id="discountCode"
               text="Discount Code"
               hideLabel
               type="text"
               size="small"
-              // error={error}
+              error={error}
               className="h-full border-r-0"
             />
           </div>
           <Action
             as="button"
-            // onClick={handleCheckCode}
-            // disabled={isLoading}
+            onClick={handleCheckCode}
+            disabled={isLoading}
             type="submit"
           >
-            {/* {isLoading ? <SpinIcon size="small" /> : <></>} */}
+            {isLoading ? <SpinIcon size="small" /> : <></>}
             <span>Use</span>
           </Action>
         </div>
-      )}
+      )} */}
     </div>
   );
 }

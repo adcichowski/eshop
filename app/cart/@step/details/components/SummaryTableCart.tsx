@@ -3,11 +3,11 @@ import Image from "next/image";
 import clsx from "clsx";
 import { DiscountFrame } from "components/DiscountFrame/DiscountFrame";
 import { changeValueCurrency, priceWithDiscount } from "utils/utils";
-import { AmountProductCart } from "../AmountProductCart";
+import { AmountProductCart } from "./AmountProductCart";
 import { getCartProducts } from "lib/actions/cart";
 export default function SummaryTableCart() {
   const data = getCartProducts();
-  if (!data?.cart) throw new Error("Cart is empty");
+  if (!data?.cart) return <></>;
   return (
     <table className="w-full">
       <thead>

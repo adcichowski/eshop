@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import { CART_COOKIE } from "../../constants";
 import { jsonParse } from "utils/utils";
 
+type CartActions = "remove" | "reduce" | "add" | "changeAmount";
 export interface CartProduct {
   readonly id: string;
   readonly whiteFrame: boolean;
@@ -21,38 +22,23 @@ export interface CartProduct {
 export const getCartProducts = () =>
   jsonParse<{ cart: CartProduct[] }>(cookies().get(CART_COOKIE)?.value);
 
-export const runCartAction = (
-  product: CartProduct,
-  action: "remove" | "add" | "delete",
-) => {
-  const data = getCartProducts();
-  if (action === "remove") {
-    const listAfterRemove = removeProductFromCart(product, data?.cart);
-
-    cookies().set(CART_COOKIE, JSON.stringify({ cart: listAfterRemove }), {
-      httpOnly: true,
-    });
-
-    return {
-      cart: listAfterRemove,
-    };
-  }
-
-  if (action === "add") {
-    const updatedCart = addProductToCart(product, data?.cart);
-    cookies().set(CART_COOKIE, JSON.stringify({ cart: updatedCart }), {
-      httpOnly: true,
-    });
-    return { cart: updatedCart };
-  }
+export const runCartAction = (product: CartProduct, action: CartActions) => {
+  const updatedCart = getUpdatedCart(product, action);
+  cookies().set(CART_COOKIE, JSON.stringify({ cart: updatedCart }), {
+    httpOnly: true,
+  });
+  return updatedCart;
 };
 
-const removeProductFromCart = (product: CartProduct, cart?: CartProduct[]) => {
+const reduceNumberProductFromCart = (
+  product: CartProduct,
+  cart: CartProduct[] | undefined,
+) => {
   const removedProduct = cart?.find(
     (cartProduct) => cartProduct.id === product.id,
   );
   if (removedProduct?.amount === 1) {
-    return cart?.filter((productCart) => productCart.id !== product.id);
+    return removeProductFromCart(product, cart);
   }
 
   if (removedProduct) {
@@ -65,7 +51,10 @@ const removeProductFromCart = (product: CartProduct, cart?: CartProduct[]) => {
   }
 };
 
-const addProductToCart = (product: CartProduct, cart?: CartProduct[]) => {
+const addProductToCart = (
+  product: CartProduct,
+  cart: CartProduct[] | undefined,
+) => {
   const addedProduct = cart?.find(
     (cartProduct) => cartProduct.id === product.id,
   );
@@ -79,4 +68,22 @@ const addProductToCart = (product: CartProduct, cart?: CartProduct[]) => {
   }
 
   return [...(cart || []), product];
+};
+
+const removeProductFromCart = (
+  product: CartProduct,
+  cart: CartProduct[] | undefined,
+) => cart?.filter((cartProduct) => cartProduct.id !== product.id);
+
+const getUpdatedCart = (product: CartProduct, action: CartActions) => {
+  const data = getCartProducts();
+  console.log("halo", data, action);
+  switch (action) {
+    case "reduce":
+      return reduceNumberProductFromCart(product, data?.cart);
+    case "remove":
+      return removeProductFromCart(product, data?.cart);
+    case "add":
+      return addProductToCart(product, data?.cart);
+  }
 };

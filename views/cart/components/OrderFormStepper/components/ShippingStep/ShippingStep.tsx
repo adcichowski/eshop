@@ -1,5 +1,5 @@
 import React, { FormEvent } from "react";
-import ContentInStep from "../ContentInStep/ContentInStep";
+import ContentInStep from "../../../../../../app/cart/components/HeaderInStep";
 // import { useCreatePayment } from "./hooks/useCreatePayment";
 // import { useOrderFormContext } from "../../context/OrderFormContext";
 import { DeliverySelect } from "./components/DeliverySelect/DeliverySelect";
