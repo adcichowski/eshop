@@ -1,4 +1,4 @@
-import ClientContext from "context/ClientContext";
+import { ProviderContext } from "context/ProviderContext";
 import React from "react";
 import { Montserrat } from "next/font/google";
 import "../public/globals.css";
@@ -6,6 +6,8 @@ import "swiper/css/bundle";
 import { Header } from "components/Header/Header";
 import type { Metadata } from "next";
 import { baseUrl } from "../constants";
+import { getFavoriteProducts } from "lib/actions/favorite";
+import { getCartProducts } from "lib/actions/cart";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -36,9 +38,11 @@ export const metadata: Metadata = {
 };
 
 export default function GlobalLayout({ children }: { children: JSX.Element }) {
+  const favorites = getFavoriteProducts();
+  const data = getCartProducts();
   return (
     <html lang="en" className={`${montserrat.className} h-full`}>
-      <ClientContext>
+      <ProviderContext favorites={favorites?.products} cart={data?.cart}>
         <body className="flex grow flex-col w-full items-center min-h-screen">
           <Header />
           <main className="max-w-[1440px] w-full flex grow flex-col">
@@ -46,7 +50,7 @@ export default function GlobalLayout({ children }: { children: JSX.Element }) {
           </main>
           <div id="__next" />
         </body>
-      </ClientContext>
+      </ProviderContext>
     </html>
   );
 }

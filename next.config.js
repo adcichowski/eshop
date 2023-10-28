@@ -10,10 +10,6 @@ const nextConfig = {
 
     return config;
   },
-  experimental: {
-    scrollRestoration: true,
-    serverActions: true,
-  },
   images: {
     formats: ["image/avif", "image/webp"],
     domains: ["media.graphassets.com"],

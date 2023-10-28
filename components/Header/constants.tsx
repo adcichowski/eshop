@@ -4,6 +4,8 @@ import { ShoppingCartIcon } from "lucide-react";
 import { HeartIcon } from "lucide-react";
 import { InstagramIcon } from "lucide-react";
 import { IconAbsolute } from "components/IconAbsolute/IconAbsolute";
+import { useClientContext } from "context/ClientContext/ClientContext";
+import { useMemo } from "react";
 
 const ICONS_SETTINGS = {
   size: 27.5,
@@ -24,11 +26,18 @@ export const navigationIcons = [
   },
   {
     popper: "cart",
-    Icon: (
-      <IconAbsolute>
-        <ShoppingCartIcon {...ICONS_SETTINGS} />
-      </IconAbsolute>
-    ),
+    Icon: () => {
+      const { cart } = useClientContext();
+      const amountItems = useMemo(
+        () => cart?.reduce((init, item) => init + item.amount, 0),
+        [cart],
+      );
+      return (
+        <IconAbsolute amountItems={amountItems}>
+          <ShoppingCartIcon {...ICONS_SETTINGS} />
+        </IconAbsolute>
+      );
+    },
   },
   {
     popper: "favorite",

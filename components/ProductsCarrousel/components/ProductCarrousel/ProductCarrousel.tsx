@@ -2,15 +2,15 @@
 import clsx from "clsx";
 import { Action } from "components/Action/Action";
 import { FavoriteInput } from "components/Inputs/FavoriteInput";
-import { useCartContext } from "context/CartContext/CartContext";
 import Image from "next/image";
 import Link from "next/link";
 import { changeValueCurrency } from "utils/utils";
 import { ProductCarrouselPropsType } from "components/ProductsCarrousel/types";
+import { runCartAction } from "lib/actions/cart";
+import { useToastContext } from "context/ToastContext/ToastContext";
 
 export const ProductCarrousel = (product: ProductCarrouselPropsType) => {
-  const { addProduct } = useCartContext();
-
+  const { addToast } = useToastContext();
   const favoriteInputProps = {
     name: product.name,
     category: product.category.slug,
@@ -55,10 +55,14 @@ export const ProductCarrousel = (product: ProductCarrouselPropsType) => {
             as="button"
             data-outside="true"
             onClick={() => {
-              addProduct({
-                ...product,
-                title: `${product.name} ${product.variant.width} cm x ${product.variant.height} cm`,
-              });
+              runCartAction(
+                {
+                  ...product,
+                  title: `${product.name} ${product.variant.width} cm x ${product.variant.height} cm`,
+                },
+                "add",
+              );
+              addToast("success", "Product has been added");
             }}
           >
             To Cart

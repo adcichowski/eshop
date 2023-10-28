@@ -10,12 +10,10 @@ import { useSelectVariant } from "../../hooks/useSelectVariant";
 import { ProductPageProps } from "../../ProductPage";
 import { ProductSelectVariant } from "./components/ProductSelectVariant";
 import { Action } from "components/Action/Action";
-import { useCartContext } from "context/CartContext/CartContext";
 import { FavoriteInput } from "components/Inputs/FavoriteInput";
 
 export function ProductInfos({ product }: { product: ProductPageProps }) {
   const inputAmountProps = useInputAmountProduct();
-  const { addProduct } = useCartContext();
   const { selectedVariant, setSelectedVariant } = useSelectVariant({ product });
   const favoriteInputProps = {
     name: product.name,
@@ -65,22 +63,22 @@ export function ProductInfos({ product }: { product: ProductPageProps }) {
           fullWidth
           as="button"
           data-outside="false"
-          onClick={() => {
-            addProduct({
-              sale: product.attributes.sale,
-              whiteFrame: product.attributes.whiteFrame,
-              variant: {
-                width: selectedVariant.width,
-                height: selectedVariant.height,
-                id: selectedVariant.id,
-              },
-              id: product.id,
-              title: product.name,
-              price: selectedVariant.price,
-              image: product.image,
-              amount: Number(inputAmountProps.value),
-            });
-          }}
+          // onClick={() => {
+          //   addProduct({
+          //     sale: product.attributes.sale,
+          //     whiteFrame: product.attributes.whiteFrame,
+          //     variant: {
+          //       width: selectedVariant.width,
+          //       height: selectedVariant.height,
+          //       id: selectedVariant.id,
+          //     },
+          //     id: product.id,
+          //     title: product.name,
+          //     price: selectedVariant.price,
+          //     image: product.image,
+          //     amount: Number(inputAmountProps.value),
+          //   });
+          // }}
         >
           <div className="text-base">To Cart</div>
         </Action>

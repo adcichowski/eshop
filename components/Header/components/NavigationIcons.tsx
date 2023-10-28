@@ -7,13 +7,8 @@ import { Action } from "components/Action/Action";
 import { usePopper } from "components/Popper/usePopper";
 import { HeaderPoppers } from "./HeaderPoppers/HeaderPoppers";
 import { Poppers } from "./HeaderPoppers/components/Poppers";
-import { FavoriteProduct } from "app/actions";
 
-export function NavigationIcons({
-  favorites,
-}: {
-  favorites: FavoriteProduct[] | undefined;
-}) {
+export function NavigationIcons() {
   const { saveParentPopper, typePopper, resetPopper } = usePopper();
 
   return (
@@ -38,13 +33,13 @@ export function NavigationIcons({
               href={propsArchon.href ? propsArchon.href : ""}
               data-outside="false"
             >
-              {Icon}
+              {typeof Icon === "function" ? <Icon /> : Icon}
             </Action>
           </li>
         ))}
       </ul>
       <HeaderPoppers resetPopper={resetPopper} type={typePopper}>
-        <Poppers popper={typePopper} favorites={favorites} />
+        <Poppers popper={typePopper} />
       </HeaderPoppers>
     </div>
   );

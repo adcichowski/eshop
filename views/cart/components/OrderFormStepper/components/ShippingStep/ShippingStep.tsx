@@ -1,27 +1,27 @@
-import React, { FormEvent, useMemo } from "react";
-import ContentInStep from "../ContentInStep/ContentInStep";
+import React, { FormEvent } from "react";
+import { HeaderInStep } from "app/cart/components/HeaderInStep";
 // import { useCreatePayment } from "./hooks/useCreatePayment";
-import { useOrderFormContext } from "../../context/OrderFormContext";
+// import { useOrderFormContext } from "../../context/OrderFormContext";
 import { DeliverySelect } from "./components/DeliverySelect/DeliverySelect";
 import { DetailsOrder } from "views/cart/components/DetailsOrder/DetailsOrder";
 import { Action } from "components/Action/Action";
 
 export function ShippingStep() {
-  const { order, account } = useOrderFormContext();
+  // const { order, account } = useOrderFormContext();
   // const { mutateAsync } = useCreatePayment();
-  const orderProducts = useMemo(() => {
-    if (order?.products) {
-      return order.products.map((product) => ({
-        variantId: product.variant.id,
-        amount: product.amount,
-        productId: product.id,
-      }));
-    }
-  }, [order?.products]);
+  // const orderProducts = useMemo(() => {
+  // if (order?.products) {
+  //   return order.products.map((product) => ({
+  //     variantId: product.variant.id,
+  //     amount: product.amount,
+  //     productId: product.id,
+  //   }));
+  // }
+  // }, [order?.products]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!account || !orderProducts) return;
+    // if (!account || !orderProducts) return;
     // const data = await mutateAsync({
     //   email: account.email,
     //   orderProducts,
@@ -34,7 +34,7 @@ export function ShippingStep() {
   };
 
   return (
-    <ContentInStep header="Delivery order">
+    <HeaderInStep header="Delivery order">
       <form
         onSubmit={handleSubmit}
         className="grid md:grid-cols-3 md:gap-x-12 mb-32"
@@ -51,6 +51,6 @@ export function ShippingStep() {
           </div>
         </div>
       </form>
-    </ContentInStep>
+    </HeaderInStep>
   );
 }

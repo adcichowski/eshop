@@ -1,15 +1,13 @@
-import { CartItem } from "context/CartContext/types";
 import React from "react";
 import Image from "next/image";
 import clsx from "clsx";
 import { DiscountFrame } from "components/DiscountFrame/DiscountFrame";
 import { changeValueCurrency, priceWithDiscount } from "utils/utils";
-import { AmountProductCart } from "../AmountProductCart";
-export default function SummaryTableCart({
-  cart,
-}: {
-  cart: Record<string, CartItem>;
-}) {
+import { AmountProductCart } from "./AmountProductCart";
+import { getCartProducts } from "lib/actions/cart";
+export default function SummaryTableCart() {
+  const data = getCartProducts();
+  if (!data?.cart) return <></>;
   return (
     <table className="w-full">
       <thead>
@@ -23,11 +21,11 @@ export default function SummaryTableCart({
         </tr>
       </thead>
       <tbody className="border-b">
-        {Object.entries(cart).map(([id, product]) => {
+        {data.cart.map((product) => {
           return (
             <tr
               className="my-4 grid grid-cols-4 content-center items-center"
-              key={id}
+              key={product.id}
             >
               <td className="col-span-3">
                 <div className="ml-2 mr-1 grid items-center gap-x-6 gap-y-2 sm:grid-cols-2">

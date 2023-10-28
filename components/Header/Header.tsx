@@ -5,10 +5,8 @@ import { MenuIcon } from "./components/MenuIcon/MenuIcon";
 
 import { NavigationIcons } from "./components/NavigationIcons";
 import { HeaderCategories } from "./components/HeaderCategories";
-import { getFavoriteProducts } from "app/actions";
 
 export const Header = () => {
-  const favorites = getFavoriteProducts();
   return (
     <div className="sticky top-0 z-30 self-stretch">
       <header role="banner">
@@ -31,7 +29,7 @@ export const Header = () => {
               free delivery from 199 PLN
             </p>
           </div>
-          <NavigationIcons favorites={favorites?.products} />
+          <NavigationIcons />
         </div>
         <HeaderCategories />
         <ToastsContainer />

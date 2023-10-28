@@ -1,25 +1,23 @@
-import { useCartContext } from "context/CartContext/CartContext";
 import { useMemo } from "react";
-import { priceWithDiscount } from "utils/utils";
-import { useOrderFormContext } from "../OrderFormStepper/context/OrderFormContext";
+// import { priceWithDiscount } from "utils/utils";
 
 export default function useDetailsOrder() {
-  const { cart } = useCartContext();
-  const { order } = useOrderFormContext();
+  const cart = {};
   const summaryOrderValue = useMemo(() => {
     if (!cart) return;
-    return Math.ceil(
-      Object.values(cart).reduce((initial, product) => {
-        return priceWithDiscount(product) + initial;
-      }, 0)
-    );
+    return 0;
+    // return Math.ceil(
+    //   Object.values(cart).reduce((initial, product) => {
+    //     return priceWithDiscount(product) + initial;
+    //   }, 0)
+    // );
   }, [cart]);
 
   const discountInOrder = useMemo(() => {
-    if (summaryOrderValue && order?.discount) {
-      return Math.floor(summaryOrderValue / order.discount);
-    }
-  }, [summaryOrderValue, order]);
+    // if (summaryOrderValue && order?.discount) {
+    //   return Math.floor(summaryOrderValue / order.discount);
+    // }
+  }, []);
 
   return { summaryOrderValue, discountInOrder };
 }

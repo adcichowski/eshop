@@ -1,7 +1,7 @@
 import { getProductsToCarrousel } from "lib";
 import React from "react";
 import { ProductsCarrousel } from "./ProductsCarrousel";
-import { getFavoriteProducts } from "app/actions";
+import { getFavoriteProducts } from "lib/actions/favorite";
 
 type ProductsCarrouselProps = {
   id: string;
