@@ -1,13 +1,11 @@
-import { FavoriteProduct } from "app/favorite-action";
 import { Action } from "components/Action/Action";
 import { FavoriteInput } from "components/Inputs/FavoriteInput";
+import { useClientContext } from "context/ClientContext/ClientContext";
+import { FavoriteProduct } from "lib/actions/favorite";
 import { HeartIcon } from "lucide-react";
 import Image from "next/image";
-export function FavoritesPopper({
-  favorites,
-}: {
-  favorites: FavoriteProduct[] | undefined;
-}) {
+export function FavoritesPopper() {
+  const { favorites } = useClientContext();
   if (!favorites || !favorites.length) return <EmptyFavoritesPopper />;
   return (
     <section className="px-2 w-full flex flex-col gap-2">

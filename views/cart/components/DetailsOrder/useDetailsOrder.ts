@@ -1,10 +1,8 @@
 import { useMemo } from "react";
 // import { priceWithDiscount } from "utils/utils";
-import { useOrderFormContext } from "../OrderFormStepper/context/OrderFormContext";
 
 export default function useDetailsOrder() {
   const cart = {};
-  const { order } = useOrderFormContext();
   const summaryOrderValue = useMemo(() => {
     if (!cart) return;
     return 0;
@@ -16,10 +14,10 @@ export default function useDetailsOrder() {
   }, [cart]);
 
   const discountInOrder = useMemo(() => {
-    if (summaryOrderValue && order?.discount) {
-      return Math.floor(summaryOrderValue / order.discount);
-    }
-  }, [summaryOrderValue, order]);
+    // if (summaryOrderValue && order?.discount) {
+    //   return Math.floor(summaryOrderValue / order.discount);
+    // }
+  }, []);
 
   return { summaryOrderValue, discountInOrder };
 }

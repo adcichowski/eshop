@@ -1,16 +1,19 @@
+"use client";
+import { CartProduct, runCartAction } from "lib/actions/cart";
 import React from "react";
 
 export function AmountProductCart({
-  amount, // product,
+  amount,
+  product,
 }: {
   amount: number;
-  // product: CartItem;
+  product: CartProduct;
 }) {
   return (
     <div className="flex h-10">
       <button
         type="button"
-        // onClick={() => deleteProduct(product)}
+        onClick={() => runCartAction(product, "delete")}
         className="border border-r-0 px-3"
       >
         -
@@ -32,7 +35,7 @@ export function AmountProductCart({
       />
       <button
         type="button"
-        // onClick={() => addProduct({ ...product, amount: 1 })}
+        onClick={() => runCartAction({ ...product, amount: 1 }, "add")}
         className="border border-l-0 px-3"
       >
         +

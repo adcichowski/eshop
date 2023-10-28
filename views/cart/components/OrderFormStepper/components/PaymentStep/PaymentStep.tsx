@@ -1,6 +1,5 @@
 import React from "react";
 import ContentInStep from "../ContentInStep/ContentInStep";
-import { useOrderFormContext } from "../../context/OrderFormContext";
 import { StripeElementsOptions, loadStripe } from "@stripe/stripe-js";
 import tailwindConfig from "tailwind.config";
 import { getEnv } from "utils/utils";
@@ -15,9 +14,8 @@ const stripePromise = loadStripe(
 );
 
 export function PaymentStep() {
-  const { payment } = useOrderFormContext();
   const options: StripeElementsOptions = {
-    clientSecret: payment?.id,
+    clientSecret: "payment?.id",
     appearance: {
       theme: "stripe",
       variables: {

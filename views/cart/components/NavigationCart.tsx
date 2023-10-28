@@ -2,7 +2,6 @@ import { ShoppingBag, User2, Truck, Wallet, Check } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { twMerge } from "tailwind-merge";
 import React from "react";
-import { StepsFormOrder } from "./OrderFormStepper/context/OrderFormContext";
 import clsx from "clsx";
 const navigationStepsIcons = [
   {
@@ -22,7 +21,7 @@ const navigationStepsIcons = [
     stepName: "summary",
     Icon: Check,
   },
-] satisfies { Icon: LucideIcon; stepName: StepsFormOrder }[];
+] satisfies { Icon: LucideIcon; stepName: string }[];
 
 export function NavigationCart() {
   const step = "cart";

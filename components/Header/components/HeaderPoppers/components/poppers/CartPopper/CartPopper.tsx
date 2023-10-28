@@ -1,15 +1,20 @@
 import { Action } from "components/Action/Action";
 import { CartProduct } from "lib/actions/cart";
 import { ShoppingCartIcon } from "lucide-react";
-
 import { changeValueCurrency } from "utils/utils";
 import { ProductCartPopper } from "./components/ProductCartPopper";
 import Link from "next/link";
-export const CartPopper = ({ cart }: { cart: CartProduct[] | undefined }) => {
+import { useClientContext } from "context/ClientContext/ClientContext";
+export const CartPopper = () => {
+  const { cart } = useClientContext();
   return (
-    <section className="flex justify-center w-full px-3 py-[19px] ">
+    <section className="flex justify-center w-full px-3 py-4">
       <div className="flex flex-col items-center text-center">
-        {cart ? <ViewWithProducts cart={cart} /> : <ViewWithoutProducts />}
+        {cart?.length ? (
+          <ViewWithProducts cart={cart} />
+        ) : (
+          <ViewWithoutProducts />
+        )}
       </div>
     </section>
   );
@@ -39,7 +44,7 @@ const ViewWithProducts = ({ cart }: { cart: CartProduct[] | undefined }) => {
 
   return (
     <>
-      <ul className="grid max-h-80 w-full gap-y-2 overflow-hidden overflow-y-auto scroll-smooth pr-4">
+      <ul className="grid max-h-[248px] w-full gap-y-2 overflow-hidden overflow-y-auto scroll-smooth pr-4">
         {cart?.map((product) => (
           <li key={product.id}>
             <ProductCartPopper {...product} />
@@ -54,7 +59,7 @@ const ViewWithProducts = ({ cart }: { cart: CartProduct[] | undefined }) => {
       </div>
 
       <Link
-        href="/cart"
+        href="/cart/details"
         className="w-full rounded-[10px] px-16 py-[5px] text-sm md:text-sm bg-primary text-white"
       >
         Go to cart

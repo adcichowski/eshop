@@ -1,6 +1,6 @@
-import { NavigationCart } from "./NavigationCart";
+import { NavigationCart } from "views/cart/components/NavigationCart";
 
-export const CartPageView = () => {
+export default async function Layout(props: { step: React.ReactNode }) {
   return (
     <div className="m-2 md:mx-16">
       <NavigationCart />
@@ -9,15 +9,7 @@ export const CartPageView = () => {
         <span className="font-bold"> Buy for an additional 46.40 USD </span>
         and qualify for <span className="font-bold">FREE</span> shipping!
       </aside>
-      {/* <OrderFormStepper /> */}
+      {props.step}
     </div>
   );
-};
-
-export const EmptyCartPageView = () => {
-  return (
-    <p className="m-auto text-center md:text-lg">
-      Your cart is empty, add product to fill this page
-    </p>
-  );
-};
+}

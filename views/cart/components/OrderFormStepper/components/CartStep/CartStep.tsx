@@ -1,10 +1,8 @@
 import { Action } from "components/Action/Action";
 import React from "react";
-import { useForm } from "react-hook-form";
 import DiscountCodeInput from "./components/DiscountCodeInput/DiscountCodeInput";
 import SummaryTableCart from "./components/SummaryTableCart/SummaryTableCart";
 import { DetailsOrder } from "../../../DetailsOrder/DetailsOrder";
-import { useOrderFormContext } from "../../../OrderFormStepper/context/OrderFormContext";
 import ContentInStep from "../ContentInStep/ContentInStep";
 
 export type CartStepType = {
@@ -13,15 +11,14 @@ export type CartStepType = {
 };
 export function CartStep() {
   const cart = {};
-  const { handleSetProducts } = useOrderFormContext();
-  const { handleSubmit } = useForm<CartStepType>();
+  // const { handleSetProducts } = useOrderFormContext();
+
   if (!cart) return <></>;
 
-  const onSubmit = handleSubmit(() => handleSetProducts(Object.values(cart)));
   return (
     <ContentInStep header="Your cart">
-      <form noValidate onSubmit={onSubmit}>
-        <SummaryTableCart cart={cart} />
+      <form noValidate>
+        <SummaryTableCart />
 
         <section className="mt-7 flex w-full flex-col gap-y-2 sm:flex-row">
           <DiscountCodeInput />

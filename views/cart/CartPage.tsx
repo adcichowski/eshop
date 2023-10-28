@@ -1,5 +1,4 @@
 import React from "react";
-import { OrderFormProvider } from "./components/OrderFormStepper/context/OrderFormContext";
 import { EmptyCartPageView } from "./components/CartPageView";
 
 export const CartPageProvider = ({
@@ -9,5 +8,5 @@ export const CartPageProvider = ({
 }) => {
   const cart = {};
   if (!cart) return <EmptyCartPageView />;
-  return <OrderFormProvider>{children}</OrderFormProvider>;
+  return { children };
 };

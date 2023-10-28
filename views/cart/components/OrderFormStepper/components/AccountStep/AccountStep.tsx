@@ -2,7 +2,6 @@ import { Action } from "components/Action/Action";
 import { Checkbox } from "components/Inputs/components/Checkbox";
 import { Input } from "components/Inputs/components/Input";
 import React, { useState } from "react";
-import { useOrderFormContext } from "../../context/OrderFormContext";
 import FormAccountWrapper from "./components/FormAccountWrapper";
 import ContentInStep from "../ContentInStep/ContentInStep";
 
@@ -12,7 +11,6 @@ export default function AccountStep() {
     "the possibility of receiving discounts and promotional coupons",
     "preview of order fulfillment status",
   ];
-  const { handleSetAccount } = useOrderFormContext();
   const [wantAccount, setWantAccount] = useState(false);
   return (
     <ContentInStep header="Your personal data">
@@ -91,10 +89,7 @@ export default function AccountStep() {
               <Action as="button">Sign up</Action>
             </>
           </FormAccountWrapper>
-          <Action
-            as="button"
-            onClick={() => handleSetAccount({ email: "adamcek7@gmail.com" })}
-          >
+          <Action as="button" onClick={() => {}}>
             Set Delivery
           </Action>
         </div>
