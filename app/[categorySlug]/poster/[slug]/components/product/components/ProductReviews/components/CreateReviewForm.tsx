@@ -3,12 +3,6 @@ import { Input } from "components/Inputs/components/Input";
 import { Star } from "./Star";
 import { Controller } from "react-hook-form";
 import { useSession } from "next-auth/react";
-import { gql, useMutation } from "@apollo/client";
-import {
-  CreateReviewProductDocument,
-  CreateReviewProductMutation,
-  CreateReviewProductMutationVariables,
-} from "lib/hygraph/generated/graphql";
 import { ErrorInInput } from "components/Inputs/components/ErrorInInput";
 import { addReviewSchema } from "../constants/addReviewSchema";
 import { useForm } from "components/Forms/useForm";
@@ -19,33 +13,32 @@ type CreateReviewType = {
   email: string;
   name: string;
 };
-export function CreateReviewForm({ productSlug }: { productSlug: string }) {
-  const { register, control, handleSubmit, errors } =
+export function CreateReviewForm() {
+  // { productSlug }: { productSlug: string }
+  const { register, control, errors } =
     useForm<CreateReviewType>(addReviewSchema);
-  const [createReview] = useMutation<
-    CreateReviewProductMutation,
-    CreateReviewProductMutationVariables
-  >(gql`
-    ${CreateReviewProductDocument}
-  `);
+
   const session = useSession();
   if (session.status === "unauthenticated" || !session.data) {
     return <></>;
   }
-  const onSubmit = handleSubmit((data, e?: React.BaseSyntheticEvent) => {
-    e?.preventDefault();
-    createReview({
-      variables: {
-        review: {
-          name: data.name,
-          content: data.content,
-          email: session.data.user.email,
-          rating: Number(data.rating),
-          product: { connect: { slug: productSlug } },
-        },
-      },
-    });
-  });
+  // const onSubmit = handleSubmit(
+  //   (data, e?: React.BaseSyntheticEvent) => {
+  //   e?.preventDefault();
+  //   createReview({
+  //     variables: {
+  //       review: {
+  //         name: data.name,
+  //         content: data.content,
+  //         email: session.data.user.email,
+  //         rating: Number(data.rating),
+  //         product: { connect: { slug: productSlug } },
+  //       },
+  //     },
+  //   });
+  // }
+  // );
+  const onSubmit = () => {};
   return (
     <form onSubmit={onSubmit}>
       <fieldset className="flex flex-col">
