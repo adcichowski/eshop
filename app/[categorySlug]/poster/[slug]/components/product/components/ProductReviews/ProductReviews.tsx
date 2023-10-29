@@ -41,7 +41,7 @@ export async function ProductReviews({ productSlug }: { productSlug: string }) {
           <p>There are no reviews for this product.</p>
         </div>
       )}
-      <CreateReviewForm productSlug={productSlug} />
+      <CreateReviewForm />
     </div>
   );
 }
