@@ -22,6 +22,7 @@ export function RoomsCarrousel() {
       <Swiper
         className="aspect-video min-w-screen"
         speed={650}
+        placeholder="blur"
         navigation={true}
         autoplay={{ delay: 3500, disableOnInteraction: true }}
         modules={[Navigation, Autoplay]}

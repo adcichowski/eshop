@@ -2,30 +2,33 @@ import { clsx } from "clsx";
 import { useSelect } from "downshift";
 import { changeValueCurrency, priceWithDiscount } from "utils/utils";
 
-import type { Dispatch } from "react";
-import type { ProductVariant } from "../../../types";
+import Link from "next/link";
+
+export type ProductVariant = {
+  readonly price: number;
+  readonly id: string;
+  readonly width: number;
+  readonly height: number;
+};
 
 export function ProductSelectVariant({
   sale,
   productVariants,
   selectedVariant,
-  setSelectedVariant,
 }: {
   readonly sale: number | null | undefined;
   readonly productVariants: readonly ProductVariant[];
   readonly selectedVariant: ProductVariant;
-  readonly setSelectedVariant: Dispatch<ProductVariant>;
 }) {
   const { isOpen, getToggleButtonProps, getMenuProps, getItemProps } =
     useSelect({
       items: [...productVariants],
       itemToString,
       defaultHighlightedIndex: 0,
-      onSelectedItemChange: ({ selectedItem: newSelectedItem }) =>
-        newSelectedItem && setSelectedVariant(newSelectedItem),
     });
 
   const productHaveDiscount = sale !== null;
+
   return (
     <div className="z-10 bg-white">
       <div className="relative">
@@ -60,26 +63,38 @@ export function ProductSelectVariant({
         {isOpen &&
           productVariants.map((item, index) => (
             <li
-              className="cursor-pointer border-[0.2px] border-black border-t-white bg-white py-2 px-3 text-sm shadow-sm"
+              className={clsx(
+                "cursor-pointer border-[0.2px] border-black border-t-white py-2 px-3 hover:bg-gray-100/30 text-sm shadow-sm",
+                selectedVariant.id === item.id && "bg-gray-100/20",
+              )}
               key={`${item.price}${index}`}
               {...getItemProps({ item, index })}
             >
-              <div className="flex w-full items-center justify-between text-[0.8125rem]">
-                <div>{itemToString(item)}</div>
-                <div>
-                  <span
-                    className={`mr-1 text-[0.6875rem] ${clsx(
-                      sale && "line-through",
-                    )}`}
-                  >
-                    {changeValueCurrency(item?.price)}
-                  </span>
+              <Link
+                href={{
+                  query: {
+                    width: item.width,
+                    height: item.height,
+                  },
+                }}
+              >
+                <div className="flex w-full items-center justify-between text-[0.8125rem]">
+                  <div>{itemToString(item)}</div>
+                  <div>
+                    <span
+                      className={`mr-1 text-[0.6875rem] ${clsx(
+                        sale && "line-through",
+                      )}`}
+                    >
+                      {changeValueCurrency(item?.price)}
+                    </span>
 
-                  <span className="text-sm">
-                    {sale && <SaleView price={item.price} sale={sale} />}
-                  </span>
+                    <span className="text-sm">
+                      {sale && <SaleView price={item.price} sale={sale} />}
+                    </span>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </li>
           ))}
       </ul>

@@ -6,15 +6,19 @@ import { useInputAmountProduct } from "hooks/useInputAmountProduct";
 import React from "react";
 import ProductQuantityInput from "./components/ProductQuantityInput";
 import { ProductAttributes } from "./components/ProductAttributes";
-import { useSelectVariant } from "../../hooks/useSelectVariant";
+import { useSelectVariant } from "./components/ProductSelectVariant/hooks/useSelectVariant";
 import { ProductPageProps } from "../../ProductPage";
-import { ProductSelectVariant } from "./components/ProductSelectVariant";
+import { ProductSelectVariant } from "./components/ProductSelectVariant/ProductSelectVariant";
 import { Action } from "components/Action/Action";
 import { FavoriteInput } from "components/Inputs/FavoriteInput";
+import { ProductPrice } from "./components/ProductPrice";
 
 export function ProductInfos({ product }: { product: ProductPageProps }) {
   const inputAmountProps = useInputAmountProduct();
-  const { selectedVariant, setSelectedVariant } = useSelectVariant({ product });
+  const { selectedVariant } = useSelectVariant({
+    variants: product.variants,
+  });
+
   const favoriteInputProps = {
     name: product.name,
     image: product.image,
@@ -35,7 +39,6 @@ export function ProductInfos({ product }: { product: ProductPageProps }) {
 
       <ProductSelectVariant
         selectedVariant={selectedVariant}
-        setSelectedVariant={setSelectedVariant}
         sale={product.attributes.sale}
         productVariants={product.variants}
       />
@@ -44,7 +47,10 @@ export function ProductInfos({ product }: { product: ProductPageProps }) {
 
       <ProductAttributes {...product.attributes} />
 
-      {/* <ProductPrice sale={product.sale} price={selectedVariant.price} /> */}
+      <ProductPrice
+        sale={product.attributes.sale}
+        price={selectedVariant.price}
+      />
 
       <div className="mt-3 flex">
         <div className="h-4 w-4 bg-avaible-product bg-contain">

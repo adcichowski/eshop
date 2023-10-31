@@ -1,6 +1,6 @@
 import { AccountPopper } from "./poppers/AccountPopper";
 import { CartPopper } from "./poppers/CartPopper/CartPopper";
-import { FavoritesPopper } from "./poppers/CartPopper/FavoritesPopper/FavoritesPopper";
+import { FavoritesPopper } from "./poppers/FavoritesPopper/FavoritesPopper";
 export const Poppers = ({ popper }: { popper?: string }) => {
   switch (popper) {
     case "cart":

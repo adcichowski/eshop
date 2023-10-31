@@ -5,6 +5,7 @@ import { ProductInfos } from "./components/ProductInfos/ProductInfos";
 import { Categories } from "components/Categories/Categories";
 import { ProductsCarrouselServer } from "components/ProductsCarrousel/ProductsCarrouselServer";
 import { ProductReviews } from "./components/ProductReviews/ProductReviews";
+import { ProductDescription } from "./components/ProductDescription";
 
 export type ProductPageProps = {
   favorite: boolean;
@@ -54,17 +55,17 @@ export const ProductPage = ({ product }: { product: ProductPageProps }) => {
               src={product.image}
             />
             <ProductInfos product={product} />
-            {/* <ProductDescription description={product.description} /> */}
+            <ProductDescription description={product.description} />
           </section>
         </div>
         <div className="col-span-3 w-full max-w-full">
-          <ProductReviews productSlug={product.slug} />
-
           <ProductsCarrouselServer
             className="mt-[50px]"
             id="othersProduct"
             Heading={<h3 className="mb-3 text-xl">Others buy also</h3>}
           />
+
+          <ProductReviews productSlug={product.slug} />
 
           <ProductsCarrouselServer
             className=" mt-[50px]"
