@@ -36,7 +36,7 @@ const WrapperMobile = forwardRef<
   return (
     <Modal isOpen={isOpen}>
       <div className="animate-fade-down flex h-full w-full flex-col items-center justify-center duration-100">
-        <div ref={ref} className="mx-1 w-full max-w-md bg-white px-3 py-6">
+        <div ref={ref} className="mx-1 w-full max-w-md bg-white px-3">
           {children}
         </div>
       </div>

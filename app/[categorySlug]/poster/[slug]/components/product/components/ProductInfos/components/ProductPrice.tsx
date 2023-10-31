@@ -4,7 +4,7 @@ export function ProductPrice({
   sale,
   price,
 }: {
-  readonly sale: string | undefined | null;
+  readonly sale: number | undefined | null;
   readonly price: number;
 }) {
   return (

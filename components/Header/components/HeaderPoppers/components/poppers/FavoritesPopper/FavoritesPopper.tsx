@@ -11,7 +11,7 @@ export function FavoritesPopper() {
     <section className="px-2 w-full flex flex-col gap-2">
       <h2 className="font-medium my-3">Favorites</h2>
 
-      <ul className="max-h-52 w-full flex-wrap flex gap-5 overflow-y-scroll">
+      <ul className="max-h-52 w-full flex-wrap flex gap-5 overflow-y-scroll items-center justify-center md:justify-normal">
         {favorites.map((product) => (
           <FavoriteProductPopper key={product.id} {...product} />
         ))}
@@ -42,7 +42,7 @@ const EmptyFavoritesPopper = () => {
 export function FavoriteProductPopper(favorite: FavoriteProduct) {
   return (
     <section
-      className="flex flex-col items-center gap-3 min-w-[180px]"
+      className="flex flex-col items-center gap-1 min-w-[180px]"
       aria-labelledby={favorite.id}
     >
       <Image

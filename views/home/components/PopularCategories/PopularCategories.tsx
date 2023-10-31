@@ -11,6 +11,7 @@ export function PopularCategories() {
           <li key={alt}>
             <figure className="relative w-full ">
               <Image
+                placeholder="blur"
                 width={350}
                 height={400}
                 className="w-full object-cover"
