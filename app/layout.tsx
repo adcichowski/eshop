@@ -8,6 +8,7 @@ import type { Metadata } from "next";
 import { baseUrl } from "../constants";
 import { getFavoriteProducts } from "lib/actions/favorite";
 import { getCartProducts } from "lib/actions/cart";
+import { Footer } from "components/Footer/Footer";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -48,6 +49,7 @@ export default function GlobalLayout({ children }: { children: JSX.Element }) {
           <main className="max-w-[1440px] w-full flex grow flex-col">
             {children}
           </main>
+          <Footer />
           <div id="__next" />
         </body>
       </ProviderContext>
