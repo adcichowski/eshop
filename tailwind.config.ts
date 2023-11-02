@@ -67,6 +67,7 @@ const config = {
         300: "rgb(209 213 219)",
         400: "#a3a0a0",
       },
+      footerBg: "#F5F5F5",
       reviewContent: "#E3F5DC",
       blue: { 200: "#0070B8" },
     },
