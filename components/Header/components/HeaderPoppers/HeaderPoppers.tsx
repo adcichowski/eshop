@@ -1,7 +1,7 @@
 import { useClickOutside } from "hooks/useClickOutside";
-import { useHeaderPoppers } from "./hooks/useHeaderPoppers";
 import { forwardRef, useRef } from "react";
 import { Modal } from "components/Modal/Modal";
+import { useHeaderPoppers } from "./hooks/useHeaderPoppers";
 
 export function HeaderPoppers({
   type,

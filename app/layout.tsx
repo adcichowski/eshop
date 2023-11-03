@@ -42,9 +42,9 @@ export default function GlobalLayout({ children }: { children: JSX.Element }) {
   const favorites = getFavoriteProducts();
   const data = getCartProducts();
   return (
-    <html lang="en" className={`${montserrat.className} h-full`}>
+    <html lang="en" className={`${montserrat.className}`}>
       <ProviderContext favorites={favorites?.products} cart={data?.cart}>
-        <body className="flex grow flex-col w-full items-center min-h-screen">
+        <body className="flex grow flex-col w-full items-center">
           <Header />
           <main className="max-w-[1440px] w-full flex grow flex-col">
             {children}

@@ -1,53 +1,64 @@
-import {
-  ShieldCheckIcon,
-  Package2Icon,
-  CalendarRangeIcon,
-  MessagesSquareIcon,
-} from "lucide-react";
+import { GiftIcon, FacebookIcon, InstagramIcon } from "lucide-react";
+import Link from "next/link";
 import React from "react";
+import { Taglines } from "./components/Taglines";
 
-const taglines = [
+const joinUsIcons = [
   {
-    text: "Protected payment",
-    Icon: ShieldCheckIcon,
+    href: "Facebook",
+    Icon: FacebookIcon,
   },
   {
-    text: "Deliver in 2 business days",
-    Icon: Package2Icon,
-  },
-  {
-    text: "Events posters",
-    Icon: CalendarRangeIcon,
-  },
-  {
-    text: "Info about package",
-    Icon: MessagesSquareIcon,
+    href: "Instagram",
+    Icon: InstagramIcon,
   },
 ];
 export function Footer() {
   return (
     <>
       <div
+        aria-orientation="horizontal"
         role="separator"
-        className="h-[1px] mx-auto max-w-3xl my-8 w-full bg-gray-100"
+        className="h-[1px] mx-auto max-w-3xl my-8 w-full bg-separator"
       ></div>
-      <aside aria-labelledby="taglinesHeader" className="mb-8">
-        <h3 id="taglinesHeader" className="sr-only">
-          Taglines
-        </h3>
-        <ul className="grid grid-cols-2 xl:grid-cols-4 gap-x-10 md:gap-x-12 gap-y-8">
-          {taglines.map(({ text, Icon }) => (
-            <div
-              className="flex flex-col sm:flex-row flex-wrap items-center gap-3 justify-center text-center"
-              key={text}
-            >
-              <Icon strokeWidth={1.2} size={25} />
-              <p>{text}</p>
-            </div>
-          ))}
-        </ul>
-      </aside>
-      <footer className="bg-footerBg p-4 w-full h-40 flex items-center justify-center"></footer>
+      <Taglines />
+      <div className="bg-footerBg w-full">
+        <footer className="p-4 max-w-[1440px] mx-auto grid md:grid-cols-2 gap-x-2">
+          <aside
+            aria-labelledby="headerGiftCard"
+            aria-describedby="descGiftCard"
+            className="flex flex-col gap-2"
+          >
+            <h3 className="font-semibold uppercase" id="headerGiftCard">
+              Gift poster
+            </h3>
+            <p className="text-gray-200" id="descGiftCard">
+              Discover the perfect gift posters for every occasion in our
+              diverse online store.
+            </p>
+            <button className="bg-white py-3 border-gray-100 border flex items-center justify-center uppercase hover:bg-gray-100/5">
+              <GiftIcon className="mb-[3px]" size={20} />
+              <div>Give someone a poster</div>
+            </button>
+          </aside>
+          <aside aria-labelledby="joinHeader" className="mx-auto">
+            <h3 className="uppercase mb-2 font-semibold" id="joinHeader">
+              Join to us
+            </h3>
+            <ul className="flex justify-center items-center gap-4">
+              {joinUsIcons.map(({ href, Icon }) => (
+                <Link
+                  className="p-4 hover:bg-gray-100/5 hover:border-gray-100  border border-white bg-white"
+                  key={href}
+                  href={href}
+                >
+                  <Icon size={30} />
+                </Link>
+              ))}
+            </ul>
+          </aside>
+        </footer>
+      </div>
     </>
   );
 }

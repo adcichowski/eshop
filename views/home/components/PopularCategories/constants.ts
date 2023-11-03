@@ -8,8 +8,5 @@ export const pictures: CategoriesInPictures = [
   { src: picture.mountains, alt: "Illustrations" },
   { src: picture.animals, alt: "Animals" },
   { src: picture.landscape, alt: "Landscapes" },
-  { src: picture.artchitecture, alt: "Artchitecture" },
-  { src: picture.nature, alt: "Nature" },
-  { src: picture.ocean, alt: "Black-White" },
-  { src: picture.blackWhite, alt: "Sea ​​& Ocean" },
+  { src: picture.blackWhite, alt: "Black-White" },
 ];
