@@ -1,29 +1,41 @@
 import Image from "next/image";
 import React from "react";
 import { pictures } from "./constants";
+import clsx from "clsx";
 
 export function PopularCategories() {
   return (
-    <section className="mt-6 hidden sm:block mx-auto" id="popularCategories">
+    <section className="mt-6 block mx-auto" id="popularCategories">
       <h2 className="mb-5 text-center text-xl">Popular Categories</h2>
-      <ul className="xs:grid-cols-2  max-w-7xl grid-cols-3 justify-center gap-2 sm:grid xl:gap-6">
-        {pictures.map(({ alt, src }) => (
-          <li key={alt}>
-            <figure className="relative w-full ">
-              <Image
-                placeholder="blur"
-                width={350}
-                height={400}
-                className="w-full object-cover"
-                src={src}
-                alt={alt}
-              />
-              <figcaption className="absolute bottom-10 w-full bg-white py-1 text-center text-xs uppercase md:text-base xl:bottom-20">
-                {alt}
-              </figcaption>
-            </figure>
-          </li>
-        ))}
+      <ul className="sm:grid-cols-2 mx-3 max-w-7xl md:grid-cols-3 justify-center gap-2 grid xl:gap-6">
+        {pictures.map(({ alt, src }, i) => {
+          const shouldBeBiggest = i % 3 === 0;
+          return (
+            <li
+              key={alt}
+              className={clsx(shouldBeBiggest && "col-span-2 row-span-2")}
+            >
+              <figure className="relative w-full">
+                <Image
+                  placeholder="blur"
+                  width={350}
+                  height={400}
+                  className="w-full object-cover"
+                  src={src}
+                  alt={alt}
+                />
+                <figcaption
+                  className={clsx(
+                    "text-base absolute bottom-1/4 w-full bg-white py-1 text-center  uppercase",
+                    shouldBeBiggest && "bottom-1/2 ",
+                  )}
+                >
+                  {alt}
+                </figcaption>
+              </figure>
+            </li>
+          );
+        })}
       </ul>
     </section>
   );
