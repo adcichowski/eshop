@@ -6,7 +6,7 @@ import { getFavoriteProducts } from "lib/actions/favorite";
 type ProductsCarrouselProps = {
   id: string;
   Heading: JSX.Element;
-  className: string;
+  className?: string;
 };
 
 export const ProductsCarrouselServer = async ({
