@@ -1,8 +1,6 @@
-import { generate } from "@graphql-codegen/cli";
 import clsx from "clsx";
 import { Action } from "components/Action/Action";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-import Link from "next/link";
 import { getPaginationPages } from "./utils/utils";
 
 export const Pagination = ({
