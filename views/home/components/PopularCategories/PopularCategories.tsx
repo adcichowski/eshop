@@ -2,8 +2,6 @@ import Image from "next/image";
 import React from "react";
 import { pictures } from "./constants";
 import clsx from "clsx";
-import { ProductCarrousel } from "components/ProductsCarrousel/components/ProductCarrousel/ProductCarrousel";
-import { ProductsCarrouselServer } from "components/ProductsCarrousel/ProductsCarrouselServer";
 
 export function PopularCategories() {
   return (
