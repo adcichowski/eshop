@@ -1,10 +1,26 @@
 import { Categories } from "components/Categories/Categories";
 import { ProductCarrousel } from "components/ProductsCarrousel/components/ProductCarrousel/ProductCarrousel";
+import { Separator } from "components/Separator/Separator";
 import { getProductsByCategorySlug } from "lib";
 import { getFavoriteProducts } from "lib/actions/favorite";
-import React from "react";
 
-export async function CategoryPage({ categorySlug }: { categorySlug: string }) {
+import React from "react";
+import { Pagination } from "./Pagination/Pagination";
+
+export async function CategoryPage({
+  categorySlug,
+  currentPage = "1",
+}: {
+  categorySlug: string;
+  currentPage: string | undefined;
+}) {
+  const checkedCurrentPage =
+    Number(currentPage) < 1
+      ? 1
+      : Number(currentPage) > 10
+      ? 10
+      : Number(currentPage);
+
   const data = await getProductsByCategorySlug(categorySlug);
   const favorites = await getFavoriteProducts();
   const updatedProducts = data.products.map((product) => ({
@@ -13,8 +29,8 @@ export async function CategoryPage({ categorySlug }: { categorySlug: string }) {
   }));
   return (
     <section className="mt-11 ml-5 grid max-w-6xl grid-cols-1 lg:grid-cols-3">
-      <div className="row-span-3 mx-auto w-full max-w-[230px] hidden xl:block">
-        <Categories />
+      <div className="row-span-3 mx-auto w-full max-w-[230px] hidden lg:block">
+        <Categories selectedCategory={categorySlug} />
       </div>
       <section className="lg:col-start-2 lg:col-end-4">
         <h3 className="mx-4 mb-6 border-b-[1px] border-b-black pb-3 text-center text-2xl">
@@ -32,6 +48,10 @@ export async function CategoryPage({ categorySlug }: { categorySlug: string }) {
           <p className="text-center mt-8 text-lg">Not found any products</p>
         )}
       </section>
+      <div className="col-span-2 w-full my-8">
+        <Separator orientation="horizontal" className="w-full" />
+        <Pagination pageSize={10} checkedCurrentPage={checkedCurrentPage} />
+      </div>
     </section>
   );
 }

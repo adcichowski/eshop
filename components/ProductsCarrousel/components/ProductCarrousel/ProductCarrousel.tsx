@@ -20,7 +20,7 @@ export const ProductCarrousel = (product: ProductCarrouselPropsType) => {
     favorite: product.favorite,
   };
   return (
-    <section aria-labelledby={product.name}>
+    <article aria-labelledby={product.name}>
       <div
         className={`flex h-48 items-center justify-center overflow-hidden object-center md:h-72 ${clsx(
           product.whiteFrame && "border-2 p-2 md:p-4",
@@ -73,6 +73,6 @@ export const ProductCarrousel = (product: ProductCarrouselPropsType) => {
           </div>
         </div>
       </div>
-    </section>
+    </article>
   );
 };

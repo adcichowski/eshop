@@ -9,7 +9,6 @@ type ClientContextType = {
   favorites: FavoriteProduct[] | undefined;
 };
 
-export const MAX_RENDER_TOASTS = 4;
 const ClientContext = createContext<ClientContextType | null>(null);
 export const ClientProvider = ({
   children,
