@@ -3014,6 +3014,47 @@ export type DocumentVersion = {
   stage: Stage;
 };
 
+/** An object with an ID */
+export type Entity = {
+  /** The id of the object. */
+  id: Scalars["ID"]["output"];
+  /** The Stage of an object */
+  stage: Stage;
+};
+
+/** This enumeration holds all typenames that implement the Entity interface. Components implement the Entity interface. At the moment models are not supported, models are listed in this enum to avoid an empty enum without any components. */
+export enum EntityTypeName {
+  Account = "Account",
+  /** Asset system model */
+  Asset = "Asset",
+  /** Category of products, e.g. Menswear. */
+  Category = "Category",
+  Currency = "Currency",
+  DiscountCode = "DiscountCode",
+  NewsletterUser = "NewsletterUser",
+  Order = "Order",
+  OrderItem = "OrderItem",
+  Product = "Product",
+  /** Type layout vertical or horizontal */
+  ProductVariantType = "ProductVariantType",
+  Review = "Review",
+  /** Scheduled Operation system model */
+  ScheduledOperation = "ScheduledOperation",
+  /** Scheduled Release system model */
+  ScheduledRelease = "ScheduledRelease",
+  /** User system model */
+  User = "User",
+}
+
+/** Allows to specify input to query components directly */
+export type EntityWhereInput = {
+  /** The ID of an object */
+  id: Scalars["ID"]["input"];
+  stage: Stage;
+  /** The Type name of an object */
+  typename: EntityTypeName;
+};
+
 export enum ImageFit {
   /** Resizes the image to fit within the specified parameters without distorting, cropping, or changing the aspect ratio. */
   Clip = "clip",
@@ -8002,6 +8043,8 @@ export type Query = {
   discountCodes: Array<DiscountCode>;
   /** Retrieve multiple discountCodes using the Relay connection interface */
   discountCodesConnection: DiscountCodeConnection;
+  /** Fetches an object given its ID */
+  entities?: Maybe<Array<Entity>>;
   /** Retrieve a single newsletterUser */
   newsletterUser?: Maybe<NewsletterUser>;
   /** Retrieve document version */
@@ -8240,6 +8283,10 @@ export type QueryDiscountCodesConnectionArgs = {
   skip?: InputMaybe<Scalars["Int"]["input"]>;
   stage?: Stage;
   where?: InputMaybe<DiscountCodeWhereInput>;
+};
+
+export type QueryEntitiesArgs = {
+  where: Array<EntityWhereInput>;
 };
 
 export type QueryNewsletterUserArgs = {
@@ -10723,33 +10770,6 @@ export type GetCategoriesQuery = {
   categories: Array<{ id: string; name: string; slug: string }>;
 };
 
-export type GetProductsByCategorySlugQueryVariables = Exact<{
-  categorySlug: Scalars["String"]["input"];
-}>;
-
-export type GetProductsByCategorySlugQuery = {
-  category?: {
-    id: string;
-    name: string;
-    products: Array<{
-      sale?: string | null;
-      id: string;
-      name: string;
-      slug: string;
-      orientation: Orientation;
-      whiteFrame: boolean;
-      variants: Array<{
-        id: string;
-        price: number;
-        width: number;
-        height: number;
-      }>;
-      categories: Array<{ slug: string }>;
-      images: Array<{ id: string; alt?: string | null; url: string }>;
-    }>;
-  } | null;
-};
-
 export type CategoriesFragment = { id: string; name: string; slug: string };
 
 export type ImagesFragment = { id: string; alt?: string | null; url: string };
@@ -10909,6 +10929,32 @@ export type GetProductsByIdsQuery = {
       height: number;
     }>;
   }>;
+};
+
+export type GetProductsByCategorySlugQueryVariables = Exact<{
+  categorySlug: Scalars["String"]["input"];
+  skip: Scalars["Int"]["input"];
+  first: Scalars["Int"]["input"];
+}>;
+
+export type GetProductsByCategorySlugQuery = {
+  products: Array<{
+    sale?: string | null;
+    id: string;
+    name: string;
+    slug: string;
+    orientation: Orientation;
+    whiteFrame: boolean;
+    variants: Array<{
+      id: string;
+      price: number;
+      width: number;
+      height: number;
+    }>;
+    categories: Array<{ slug: string }>;
+    images: Array<{ id: string; alt?: string | null; url: string }>;
+  }>;
+  productsConnection: { pageInfo: { pageSize?: number | null } };
 };
 
 export type CreateReviewProductMutationVariables = Exact<{
@@ -11076,44 +11122,6 @@ export const GetCategoriesDocument = new TypedDocumentString(`
   GetCategoriesQuery,
   GetCategoriesQueryVariables
 >;
-export const GetProductsByCategorySlugDocument = new TypedDocumentString(`
-    query GetProductsByCategorySlug($categorySlug: String!) {
-  category(where: {slug: $categorySlug}) {
-    id
-    name
-    products {
-      ...ProductDisplay
-    }
-  }
-}
-    fragment Images on Asset {
-  id
-  alt
-  url
-}
-fragment ProductDisplay on Product {
-  sale
-  id
-  name
-  slug
-  orientation
-  whiteFrame
-  variants(orderBy: price_ASC, first: 1) {
-    id
-    price
-    width
-    height
-  }
-  categories {
-    slug
-  }
-  images {
-    ...Images
-  }
-}`) as unknown as TypedDocumentString<
-  GetProductsByCategorySlugQuery,
-  GetProductsByCategorySlugQueryVariables
->;
 export const CreateOrderDocument = new TypedDocumentString(`
     mutation CreateOrder($email: String!, $totalOrderPrice: Int!, $stripeCheckoutId: String!, $orderItems: OrderItemCreateManyInlineInput!, $statusOrder: StatusOrder!) {
   createOrder(
@@ -11278,6 +11286,49 @@ export const GetProductsByIdsDocument = new TypedDocumentString(`
     `) as unknown as TypedDocumentString<
   GetProductsByIdsQuery,
   GetProductsByIdsQueryVariables
+>;
+export const GetProductsByCategorySlugDocument = new TypedDocumentString(`
+    query GetProductsByCategorySlug($categorySlug: String!, $skip: Int!, $first: Int!) {
+  products(
+    first: $first
+    where: {categories_some: {slug: $categorySlug}}
+    skip: $skip
+  ) {
+    ...ProductDisplay
+  }
+  productsConnection(skip: $skip, where: {categories_some: {slug: $categorySlug}}) {
+    pageInfo {
+      pageSize
+    }
+  }
+}
+    fragment Images on Asset {
+  id
+  alt
+  url
+}
+fragment ProductDisplay on Product {
+  sale
+  id
+  name
+  slug
+  orientation
+  whiteFrame
+  variants(orderBy: price_ASC, first: 1) {
+    id
+    price
+    width
+    height
+  }
+  categories {
+    slug
+  }
+  images {
+    ...Images
+  }
+}`) as unknown as TypedDocumentString<
+  GetProductsByCategorySlugQuery,
+  GetProductsByCategorySlugQueryVariables
 >;
 export const CreateReviewProductDocument = new TypedDocumentString(`
     mutation CreateReviewProduct($review: ReviewCreateInput!) {

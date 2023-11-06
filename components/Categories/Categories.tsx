@@ -1,30 +1,35 @@
+import clsx from "clsx";
+import { Separator } from "components/Separator/Separator";
 import { getAllCategories } from "lib";
 import Link from "next/link";
 
-const generateCategories = (categories: { name: string; slug: string }[]) => [
-  {
-    name: "All posters",
-    slug: "posters",
-  },
-  ...categories,
-];
-
-export async function Categories() {
+export async function Categories({
+  selectedCategory,
+}: {
+  selectedCategory?: string;
+}) {
   const data = await getAllCategories();
-
   return (
     <aside aria-describedby="categories">
       <h2 id="categories" className="text-xl font-medium">
         Posters
       </h2>
       <ul className="mt-[23px] w-full">
-        {generateCategories(data).map(({ name, slug }) => (
+        {data.map(({ name, slug }) => (
           <li key={slug}>
             <Link href={slug}>
-              <div>
-                <span className="cursor-pointer text-sm">{name}</span>
-                <hr className="my-[6px] h-[0.4px] border-gray-100" />
-              </div>
+              <span
+                className={clsx(
+                  "cursor-pointer text-sm",
+                  selectedCategory === slug && "font-semibold",
+                )}
+              >
+                {name}
+              </span>
+              <Separator
+                orientation="horizontal"
+                className="my-[6px] h-[0.4px]"
+              />
             </Link>
           </li>
         ))}

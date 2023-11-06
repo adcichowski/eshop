@@ -3,13 +3,3 @@ query GetCategories {
     ...Categories
   }
 }
-
-query GetProductsByCategorySlug($categorySlug: String!) {
-  category(where: { slug: $categorySlug }) {
-    id
-    name
-    products {
-      ...ProductDisplay
-    }
-  }
-}

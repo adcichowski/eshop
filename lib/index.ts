@@ -60,6 +60,19 @@ export async function fetcher<Result, Variables>({
   return body.data;
 }
 
+export async function getAllProducts() {
+  const data = await fetcher({
+    query: GetProductBySlugDocument,
+    cache: "no-store",
+  });
+
+  if (!data) {
+    throw new Error(`Problem to fetch products!`);
+  }
+
+  return data;
+}
+
 export async function getProducts() {
   const data = await fetcher({
     query: GetProductBySlugDocument,
@@ -130,22 +143,34 @@ export async function getProductReviewsBySlug(slug: string) {
   return reshapeProductReviews(data.product.reviews);
 }
 
-export async function getProductsByCategorySlug(categorySlug: string) {
-  const { category } = await fetcher({
+export async function getProductsByCategorySlug({
+  skip,
+  first,
+  slug,
+}: {
+  slug: string;
+  skip: number;
+  first: number;
+}) {
+  const {
+    products,
+    productsConnection: { pageInfo },
+  } = await fetcher({
     query: GetProductsByCategorySlugDocument,
     cache: "no-store",
     variables: {
-      categorySlug,
+      categorySlug: slug,
+      skip,
+      first,
     },
   });
 
-  if (!category) {
+  if (!products) {
     throw new Error(`Problem to find products from category!`);
   }
-
+  const pageSize = pageInfo.pageSize || 0;
   return {
-    name: category.name,
-    id: category.id,
-    products: reshapeProductDisplay(category.products),
+    products: reshapeProductDisplay(products),
+    numberOfPages: Math.round((skip + pageSize) / first),
   };
 }
