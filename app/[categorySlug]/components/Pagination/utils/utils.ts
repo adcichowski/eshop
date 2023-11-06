@@ -29,7 +29,11 @@ export const getPaginationPages = ({
 
     return firstMiddle || middle || lastMiddle;
   });
-  return addDotsToPages([...new Set([1, ...generatedPages, pageSize])]);
+  return {
+    pages: addDotsToPages([...new Set([1, ...generatedPages, pageSize])]),
+    hasNextPage: currentPage !== pageSize,
+    hasPreviousPage: currentPage !== 1,
+  };
 };
 
 export const addDotsToPages = (pages: number[]) =>

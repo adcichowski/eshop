@@ -14,19 +14,22 @@ export async function CategoryPage({
   categorySlug: string;
   currentPage: string | undefined;
 }) {
-  const checkedCurrentPage =
-    Number(currentPage) < 1
-      ? 1
-      : Number(currentPage) > 10
-      ? 10
-      : Number(currentPage);
+  const skip = (Number(currentPage) - 1) * 3;
+  const { products, numberOfPages } = await getProductsByCategorySlug({
+    slug: categorySlug,
+    skip,
+    first: 3,
+  });
 
-  const data = await getProductsByCategorySlug(categorySlug);
   const favorites = await getFavoriteProducts();
-  const updatedProducts = data.products.map((product) => ({
+  const updatedProducts = products.map((product) => ({
     ...product,
     favorite: Boolean(favorites?.products.find((v) => v.id === product.id)),
   }));
+
+  if (!products.length) {
+    throw new Error("Products not found");
+  }
   return (
     <section className="mt-11 ml-5 grid max-w-6xl grid-cols-1 lg:grid-cols-3">
       <div className="row-span-3 mx-auto w-full max-w-[230px] hidden lg:block">
@@ -34,7 +37,7 @@ export async function CategoryPage({
       </div>
       <section className="lg:col-start-2 lg:col-end-4">
         <h3 className="mx-4 mb-6 border-b-[1px] border-b-black pb-3 text-center text-2xl">
-          {data.name}
+          Category name
         </h3>
         {updatedProducts?.length ? (
           <ul className="grid grid-cols-2 justify-center gap-2 md:grid-cols-3 md:gap-6">
@@ -50,7 +53,10 @@ export async function CategoryPage({
       </section>
       <div className="col-span-2 w-full my-8">
         <Separator orientation="horizontal" className="w-full" />
-        <Pagination pageSize={10} checkedCurrentPage={checkedCurrentPage} />
+        <Pagination
+          pageSize={numberOfPages}
+          checkedCurrentPage={Number(currentPage)}
+        />
       </div>
     </section>
   );

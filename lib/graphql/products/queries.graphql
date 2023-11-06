@@ -65,3 +65,25 @@ query GetProductsByIds($productsId: [ID!]!) {
     }
   }
 }
+
+query GetProductsByCategorySlug(
+  $categorySlug: String!
+  $skip: Int!
+  $first: Int!
+) {
+  products(
+    first: $first
+    where: { categories_some: { slug: $categorySlug } }
+    skip: $skip
+  ) {
+    ...ProductDisplay
+  }
+  productsConnection(
+    skip: $skip
+    where: { categories_some: { slug: $categorySlug } }
+  ) {
+    pageInfo {
+      pageSize
+    }
+  }
+}
