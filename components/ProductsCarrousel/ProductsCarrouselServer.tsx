@@ -1,4 +1,7 @@
-import { getProductsToCarrousel } from "lib";
+import {
+  getProductsToCarrouselByCategorySlug,
+  getProductsToCarrouselByCategorySlugWithoutProduct,
+} from "lib";
 import React from "react";
 import { ProductsCarrousel } from "./ProductsCarrousel";
 import { getFavoriteProducts } from "lib/actions/favorite";
@@ -7,14 +10,24 @@ type ProductsCarrouselProps = {
   id: string;
   Heading: JSX.Element;
   className?: string;
+  productId?: string;
+  categorySlug: string;
 };
 
 export const ProductsCarrouselServer = async ({
   id,
   Heading,
   className,
+  productId,
+  categorySlug,
 }: ProductsCarrouselProps) => {
-  const products = await getProductsToCarrousel();
+  const products = productId
+    ? await getProductsToCarrouselByCategorySlugWithoutProduct({
+        categorySlug,
+        productId,
+      })
+    : await getProductsToCarrouselByCategorySlug({ categorySlug });
+
   const favorite = getFavoriteProducts()?.products;
   const updatedProducts = products.map((product) => ({
     ...product,

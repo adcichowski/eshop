@@ -7093,6 +7093,7 @@ export type ProductUpsertWithNestedWhereUniqueInput = {
 
 /** Type layout vertical or horizontal */
 export type ProductVariantType = Node & {
+  available: Scalars["Int"]["output"];
   /** The time the document was created */
   createdAt: Scalars["DateTime"]["output"];
   /** User that created this document */
@@ -7201,6 +7202,7 @@ export type ProductVariantTypeConnection = {
 };
 
 export type ProductVariantTypeCreateInput = {
+  available: Scalars["Int"]["input"];
   createdAt?: InputMaybe<Scalars["DateTime"]["input"]>;
   currency?: InputMaybe<ProductVariantTypeCurrencyCreateOneInlineInput>;
   height: Scalars["Int"]["input"];
@@ -7326,6 +7328,21 @@ export type ProductVariantTypeManyWhereInput = {
   OR?: InputMaybe<Array<ProductVariantTypeWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars["String"]["input"]>;
+  available?: InputMaybe<Scalars["Int"]["input"]>;
+  /** All values greater than the given value. */
+  available_gt?: InputMaybe<Scalars["Int"]["input"]>;
+  /** All values greater than or equal the given value. */
+  available_gte?: InputMaybe<Scalars["Int"]["input"]>;
+  /** All values that are contained in given list. */
+  available_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]["input"]>>>;
+  /** All values less than the given value. */
+  available_lt?: InputMaybe<Scalars["Int"]["input"]>;
+  /** All values less than or equal the given value. */
+  available_lte?: InputMaybe<Scalars["Int"]["input"]>;
+  /** Any other value that exists and is not equal to the given value. */
+  available_not?: InputMaybe<Scalars["Int"]["input"]>;
+  /** All values that are not contained in given list. */
+  available_not_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]["input"]>>>;
   createdAt?: InputMaybe<Scalars["DateTime"]["input"]>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars["DateTime"]["input"]>;
@@ -7460,6 +7477,8 @@ export type ProductVariantTypeManyWhereInput = {
 };
 
 export enum ProductVariantTypeOrderByInput {
+  AvailableAsc = "available_ASC",
+  AvailableDesc = "available_DESC",
   CreatedAtAsc = "createdAt_ASC",
   CreatedAtDesc = "createdAt_DESC",
   HeightAsc = "height_ASC",
@@ -7477,6 +7496,7 @@ export enum ProductVariantTypeOrderByInput {
 }
 
 export type ProductVariantTypeUpdateInput = {
+  available?: InputMaybe<Scalars["Int"]["input"]>;
   currency?: InputMaybe<ProductVariantTypeCurrencyUpdateOneInlineInput>;
   height?: InputMaybe<Scalars["Int"]["input"]>;
   price?: InputMaybe<Scalars["Int"]["input"]>;
@@ -7506,6 +7526,7 @@ export type ProductVariantTypeUpdateManyInlineInput = {
 };
 
 export type ProductVariantTypeUpdateManyInput = {
+  available?: InputMaybe<Scalars["Int"]["input"]>;
   height?: InputMaybe<Scalars["Int"]["input"]>;
   price?: InputMaybe<Scalars["Int"]["input"]>;
   width?: InputMaybe<Scalars["Int"]["input"]>;
@@ -7570,6 +7591,21 @@ export type ProductVariantTypeWhereInput = {
   OR?: InputMaybe<Array<ProductVariantTypeWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars["String"]["input"]>;
+  available?: InputMaybe<Scalars["Int"]["input"]>;
+  /** All values greater than the given value. */
+  available_gt?: InputMaybe<Scalars["Int"]["input"]>;
+  /** All values greater than or equal the given value. */
+  available_gte?: InputMaybe<Scalars["Int"]["input"]>;
+  /** All values that are contained in given list. */
+  available_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]["input"]>>>;
+  /** All values less than the given value. */
+  available_lt?: InputMaybe<Scalars["Int"]["input"]>;
+  /** All values less than or equal the given value. */
+  available_lte?: InputMaybe<Scalars["Int"]["input"]>;
+  /** Any other value that exists and is not equal to the given value. */
+  available_not?: InputMaybe<Scalars["Int"]["input"]>;
+  /** All values that are not contained in given list. */
+  available_not_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]["input"]>>>;
   createdAt?: InputMaybe<Scalars["DateTime"]["input"]>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars["DateTime"]["input"]>;
@@ -10858,6 +10894,54 @@ export type GetProductsToCarrouselQuery = {
   }>;
 };
 
+export type GetProductsToCarrouselByCategorySlugWithoutProductQueryVariables =
+  Exact<{
+    categorySlug: Scalars["String"]["input"];
+    productId: Scalars["ID"]["input"];
+  }>;
+
+export type GetProductsToCarrouselByCategorySlugWithoutProductQuery = {
+  products: Array<{
+    sale?: string | null;
+    id: string;
+    name: string;
+    slug: string;
+    orientation: Orientation;
+    whiteFrame: boolean;
+    variants: Array<{
+      id: string;
+      price: number;
+      width: number;
+      height: number;
+    }>;
+    categories: Array<{ slug: string }>;
+    images: Array<{ id: string; alt?: string | null; url: string }>;
+  }>;
+};
+
+export type GetProductsToCarrouselByCategorySlugQueryVariables = Exact<{
+  categorySlug: Scalars["String"]["input"];
+}>;
+
+export type GetProductsToCarrouselByCategorySlugQuery = {
+  products: Array<{
+    sale?: string | null;
+    id: string;
+    name: string;
+    slug: string;
+    orientation: Orientation;
+    whiteFrame: boolean;
+    variants: Array<{
+      id: string;
+      price: number;
+      width: number;
+      height: number;
+    }>;
+    categories: Array<{ slug: string }>;
+    images: Array<{ id: string; alt?: string | null; url: string }>;
+  }>;
+};
+
 export type GetProductsSlugsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetProductsSlugsQuery = { products: Array<{ slug: string }> };
@@ -11146,7 +11230,7 @@ export const UpdateOrderPaymentByIdDocument = new TypedDocumentString(`
 >;
 export const GetProductsToCarrouselDocument = new TypedDocumentString(`
     query GetProductsToCarrousel {
-  products {
+  products(first: 12) {
     ...ProductDisplay
   }
 }
@@ -11178,6 +11262,79 @@ fragment ProductDisplay on Product {
   GetProductsToCarrouselQuery,
   GetProductsToCarrouselQueryVariables
 >;
+export const GetProductsToCarrouselByCategorySlugWithoutProductDocument =
+  new TypedDocumentString(`
+    query GetProductsToCarrouselByCategorySlugWithoutProduct($categorySlug: String!, $productId: ID!) {
+  products(
+    first: 12
+    where: {categories_some: {slug: $categorySlug}, id_not: $productId}
+  ) {
+    ...ProductDisplay
+  }
+}
+    fragment Images on Asset {
+  id
+  alt
+  url
+}
+fragment ProductDisplay on Product {
+  sale
+  id
+  name
+  slug
+  orientation
+  whiteFrame
+  variants(orderBy: price_ASC, first: 1) {
+    id
+    price
+    width
+    height
+  }
+  categories {
+    slug
+  }
+  images {
+    ...Images
+  }
+}`) as unknown as TypedDocumentString<
+    GetProductsToCarrouselByCategorySlugWithoutProductQuery,
+    GetProductsToCarrouselByCategorySlugWithoutProductQueryVariables
+  >;
+export const GetProductsToCarrouselByCategorySlugDocument =
+  new TypedDocumentString(`
+    query GetProductsToCarrouselByCategorySlug($categorySlug: String!) {
+  products(first: 12, where: {categories_some: {slug: $categorySlug}}) {
+    ...ProductDisplay
+  }
+}
+    fragment Images on Asset {
+  id
+  alt
+  url
+}
+fragment ProductDisplay on Product {
+  sale
+  id
+  name
+  slug
+  orientation
+  whiteFrame
+  variants(orderBy: price_ASC, first: 1) {
+    id
+    price
+    width
+    height
+  }
+  categories {
+    slug
+  }
+  images {
+    ...Images
+  }
+}`) as unknown as TypedDocumentString<
+    GetProductsToCarrouselByCategorySlugQuery,
+    GetProductsToCarrouselByCategorySlugQueryVariables
+  >;
 export const GetProductsSlugsDocument = new TypedDocumentString(`
     query GetProductsSlugs {
   products {

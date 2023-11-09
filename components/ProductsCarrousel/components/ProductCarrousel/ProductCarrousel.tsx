@@ -30,10 +30,11 @@ export const ProductCarrousel = (product: ProductCarrouselPropsType) => {
           alt={product.name}
           src={product.image}
           width={180}
-          height={251}
-          className={`${clsx(
+          style={{ objectFit: "cover" }}
+          height={2561}
+          className={`object-cover ${clsx(
             product.orientation === "Vertical" && "h-full",
-          )} w-auto md:h-auto md:w-full`}
+          )} w-full h-full md:h-auto md:w-full`}
         />
       </div>
 
