@@ -1,4 +1,4 @@
-const SIZE_PAGINATION_NUMBER = 4;
+export const SIZE_PAGINATION_NUMBER = 9;
 
 export const getPaginationPages = ({
   currentPage,

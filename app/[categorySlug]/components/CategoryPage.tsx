@@ -3,7 +3,7 @@ import { ProductCarrousel } from "components/ProductsCarrousel/components/Produc
 import { Separator } from "components/Separator/Separator";
 import { getProductsByCategorySlug } from "lib";
 import { getFavoriteProducts } from "lib/actions/favorite";
-
+import { SIZE_PAGINATION_NUMBER } from "./Pagination/utils/utils";
 import React from "react";
 import { Pagination } from "./Pagination/Pagination";
 
@@ -14,11 +14,11 @@ export async function CategoryPage({
   categorySlug: string;
   currentPage: string | undefined;
 }) {
-  const skip = (Number(currentPage) - 1) * 3;
+  const skip = (Number(currentPage) - 1) * SIZE_PAGINATION_NUMBER;
   const { products, numberOfPages } = await getProductsByCategorySlug({
     slug: categorySlug,
     skip,
-    first: 3,
+    first: SIZE_PAGINATION_NUMBER,
   });
 
   const favorites = await getFavoriteProducts();

@@ -60,6 +60,7 @@ export const ProductPage = ({ product }: { product: ProductPageProps }) => {
         </div>
         <div className="col-span-3 w-full max-w-full">
           <ProductsCarrouselServer
+            categorySlug={product.slug[0]}
             className="mt-[50px]"
             id="othersProduct"
             Heading={<h3 className="mb-3 text-xl">Others buy also</h3>}
@@ -68,6 +69,7 @@ export const ProductPage = ({ product }: { product: ProductPageProps }) => {
           <ProductReviews productSlug={product.slug} />
 
           <ProductsCarrouselServer
+            categorySlug={product.slug[1]}
             className=" mt-[50px]"
             id="othersProduct"
             Heading={

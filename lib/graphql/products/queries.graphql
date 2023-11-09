@@ -1,5 +1,23 @@
 query GetProductsToCarrousel {
-  products {
+  products(first: 12) {
+    ...ProductDisplay
+  }
+}
+
+query GetProductsToCarrouselByCategorySlugWithoutProduct(
+  $categorySlug: String!
+  $productId: ID!
+) {
+  products(
+    first: 12
+    where: { categories_some: { slug: $categorySlug }, id_not: $productId }
+  ) {
+    ...ProductDisplay
+  }
+}
+
+query GetProductsToCarrouselByCategorySlug($categorySlug: String!) {
+  products(first: 12, where: { categories_some: { slug: $categorySlug } }) {
     ...ProductDisplay
   }
 }

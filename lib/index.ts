@@ -4,6 +4,8 @@ import {
   GetProductBySlugDocument,
   GetProductReviewsBySlugDocument,
   GetProductsByCategorySlugDocument,
+  GetProductsToCarrouselByCategorySlugDocument,
+  GetProductsToCarrouselByCategorySlugWithoutProductDocument,
   GetProductsToCarrouselDocument,
   TypedDocumentString,
 } from "./hygraph/generated/graphql";
@@ -86,10 +88,40 @@ export async function getProducts() {
   return data;
 }
 
-export async function getProductsToCarrousel() {
+export async function getProductsToCarrouselByCategorySlug({
+  categorySlug,
+}: {
+  categorySlug: string;
+}) {
   const data = await fetcher({
-    query: GetProductsToCarrouselDocument,
+    query: GetProductsToCarrouselByCategorySlugDocument,
     cache: "no-store",
+    variables: {
+      categorySlug,
+    },
+  });
+
+  if (!data.products) {
+    throw new Error(`Problem to get products to carrousel!`);
+  }
+
+  return reshapeProductDisplay(data.products);
+}
+
+export async function getProductsToCarrouselByCategorySlugWithoutProduct({
+  categorySlug,
+  productId,
+}: {
+  categorySlug: string;
+  productId: string;
+}) {
+  const data = await fetcher({
+    query: GetProductsToCarrouselByCategorySlugWithoutProductDocument,
+    cache: "no-store",
+    variables: {
+      categorySlug,
+      productId,
+    },
   });
 
   if (!data.products) {
