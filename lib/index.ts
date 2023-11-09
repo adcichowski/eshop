@@ -6,7 +6,6 @@ import {
   GetProductsByCategorySlugDocument,
   GetProductsToCarrouselByCategorySlugDocument,
   GetProductsToCarrouselByCategorySlugWithoutProductDocument,
-  GetProductsToCarrouselDocument,
   TypedDocumentString,
 } from "./hygraph/generated/graphql";
 import {
