@@ -7,7 +7,7 @@ const Home = async () => {
     <div className="flex flex-col">
       <RoomsCarrousel />
       <ProductsCarrouselServer
-        categorySlug="bestseller"
+        categorySlug="bestsellers"
         id="bestsellers"
         className="mx-2 my-5"
         Heading={<h2 className="my-2 text-center text-xl">Bestsellers</h2>}

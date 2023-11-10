@@ -11,7 +11,7 @@ export function FavoritesPopper() {
     <section className="px-2 w-full flex flex-col gap-2">
       <h2 className="font-medium my-3">Favorites</h2>
 
-      <ul className="max-h-52 w-full flex-wrap flex gap-5 overflow-y-scroll items-center justify-center md:justify-normal">
+      <ul className="max-h-52 w-full grid grid-cols-2 gap-x-6 gap-y-7 overflow-y-scroll items-center justify-center md:justify-normal">
         {favorites.map((product) => (
           <FavoriteProductPopper key={product.id} {...product} />
         ))}
@@ -42,7 +42,7 @@ const EmptyFavoritesPopper = () => {
 export function FavoriteProductPopper(favorite: FavoriteProduct) {
   return (
     <section
-      className="flex flex-col items-center gap-1 min-w-[180px]"
+      className="flex flex-col items-center gap-1"
       aria-labelledby={favorite.id}
     >
       <Image
@@ -55,9 +55,11 @@ export function FavoriteProductPopper(favorite: FavoriteProduct) {
       <Action
         href={`/${favorite.category}/poster/${favorite.slug}`}
         as="link"
-        className="text-sm max-w-[150px] truncate hover:underline cursor-pointer hover:font-medium"
+        className="text-sm hover:underline cursor-pointer hover:font-medium"
       >
-        <h3 id={favorite.id}>{favorite.name}</h3>
+        <h3 id={favorite.id} className="max-w-[150px] truncate">
+          {favorite.name}
+        </h3>
       </Action>
       <FavoriteInput product={{ ...favorite, favorite: true }} size={20} />
     </section>
