@@ -6,7 +6,9 @@ import clsx from "clsx";
 export function PopularCategories() {
   return (
     <section className="mt-6 block mx-auto" id="popularCategories">
-      <h2 className="mb-5 text-center text-xl">Popular Categories</h2>
+      <h2 className="mb-5 text-center text-xl lg:text-2xl">
+        Popular Categories
+      </h2>
       <ul className="sm:grid-cols-2 mx-3 max-w-7xl md:grid-cols-3 justify-center gap-2 grid xl:gap-6">
         {pictures.map(({ alt, src }, i) => {
           const shouldBeBiggest = i % 3 === 0;
