@@ -18,6 +18,9 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: "PosterWall - Buy Poster To Your Wall",
   description: "Welcome to PosterWall",
+  icons: {
+    apple: "/logo.png",
+  },
   robots: {
     index: true,
     follow: true,
@@ -43,6 +46,7 @@ export default function GlobalLayout({ children }: { children: JSX.Element }) {
   const data = getCartProducts();
   return (
     <html lang="en" className={`${montserrat.className}`}>
+      <link rel="icon" href="/logo.png" sizes="any" />
       <ProviderContext favorites={favorites?.products} cart={data?.cart}>
         <body className="flex grow flex-col w-full items-center">
           <Header />
