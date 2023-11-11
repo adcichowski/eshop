@@ -1,7 +1,6 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { SwiperProps } from "swiper/react";
-import { FreeMode } from "swiper/modules";
 import { Action } from "components/Action/Action";
 import Image from "next/image";
 import { useQueryRecentlyView } from "lib/tanstack";
@@ -13,7 +12,6 @@ const swiperSettings: SwiperProps = {
   slidesPerView: 7,
   spaceBetween: 10,
   centeredSlides: true,
-  modules: [FreeMode],
 };
 
 export const RecentlyView = () => {

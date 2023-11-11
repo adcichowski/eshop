@@ -10,7 +10,7 @@ export async function ProductReviews({ productSlug }: { productSlug: string }) {
   const overallReviews =
     reviews.reduce((init, rev) => init + rev.rating, 0) / reviews.length;
   return (
-    <div className="m-auto mt-10 w-4/6">
+    <div className="m-auto mt-10 w-full md:w-2/3">
       <section
         className="flex items-center gap-1"
         aria-describedby="averageRate"

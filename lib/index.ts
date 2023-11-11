@@ -122,7 +122,6 @@ export async function getProductsToCarrouselByCategorySlugWithoutProduct({
       productId,
     },
   });
-
   if (!data.products) {
     throw new Error(`Problem to get products to carrousel!`);
   }
