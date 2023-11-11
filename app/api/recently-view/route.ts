@@ -40,8 +40,9 @@ const setRecentlyViewedProduct = (product: RecentlyViewProductType) => {
     recentlyView?.products.filter(
       (recentlyView, i) =>
         recentlyView.name !== product.name &&
-        i + 1 > MAX_NUMBER_RECENTLY_VIEWED_PRODUCTS,
+        i + 1 < MAX_NUMBER_RECENTLY_VIEWED_PRODUCTS,
     ) || [];
+
   const updatedProducts = [product, ...products];
 
   cookies().set(
