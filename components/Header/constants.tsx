@@ -8,8 +8,7 @@ import { useClientContext } from "context/ClientContext/ClientContext";
 import { useMemo } from "react";
 
 const ICONS_SETTINGS = {
-  size: 27.5,
-  strokeWidth: 1.5,
+  className: "md:h-7 h-5 w-auto stroke-[1.5]",
 };
 export const navigationIcons = [
   {

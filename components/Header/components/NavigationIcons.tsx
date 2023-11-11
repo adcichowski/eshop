@@ -13,9 +13,15 @@ export function NavigationIcons() {
 
   return (
     <div className="relative">
-      <ul aria-label="navigation icons" className="mr-5 flex gap-2 md:gap-4">
+      <ul
+        aria-label="navigation icons"
+        className="items-center justify-center mr-5 flex gap-2 md:gap-4 w-full h-full"
+      >
         {navigationIcons.map(({ Icon, popper, ...propsArchon }) => (
-          <li key={popper ?? propsArchon.href}>
+          <li
+            key={popper ?? propsArchon.href}
+            className="md:h-7 h-5 stroke-[1.5]"
+          >
             <Action
               className={twMerge(
                 `relative cursor-pointer ${Clsx(

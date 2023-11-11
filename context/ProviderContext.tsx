@@ -6,6 +6,8 @@ import { ToastProvider } from "./ToastContext/ToastContext";
 import { ClientProvider } from "./ClientContext/ClientContext";
 import { FavoriteProduct } from "lib/actions/favorite";
 import { CartProduct } from "lib/actions/cart";
+import { queryClient } from "lib/tanstack";
+import { QueryClientProvider } from "@tanstack/react-query";
 
 export function ProviderContext({
   children,
@@ -17,10 +19,12 @@ export function ProviderContext({
   cart: CartProduct[] | undefined;
 }) {
   return (
-    <ClientProvider favorites={favorites} cart={cart}>
-      <SessionProvider>
-        <ToastProvider>{children}</ToastProvider>
-      </SessionProvider>
-    </ClientProvider>
+    <QueryClientProvider client={queryClient}>
+      <ClientProvider favorites={favorites} cart={cart}>
+        <SessionProvider>
+          <ToastProvider>{children}</ToastProvider>
+        </SessionProvider>
+      </ClientProvider>
+    </QueryClientProvider>
   );
 }
