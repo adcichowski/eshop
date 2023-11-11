@@ -34,7 +34,7 @@ export type RecentlyViewProductType = {
   category: string;
 };
 
-export const setRecentlyViewedProduct = (product: RecentlyViewProductType) => {
+const setRecentlyViewedProduct = (product: RecentlyViewProductType) => {
   const recentlyView = getRecentlyViewedProducts();
   const products =
     recentlyView?.products.filter(
@@ -54,7 +54,7 @@ export const setRecentlyViewedProduct = (product: RecentlyViewProductType) => {
   return updatedProducts;
 };
 
-export const getRecentlyViewedProducts = () =>
+const getRecentlyViewedProducts = () =>
   jsonParse<{ products: RecentlyViewProductType[] }>(
     cookies().get(RECENTLY_VIEWED_PRODUCTS_COOKIE)?.value,
   );
