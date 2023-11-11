@@ -28,7 +28,6 @@ export async function fetcherTanstack<Result, Body = undefined>({
     });
 
     if (result.ok) {
-      console.log(result);
       const { body } = await result.json();
       return body as Result;
     }
