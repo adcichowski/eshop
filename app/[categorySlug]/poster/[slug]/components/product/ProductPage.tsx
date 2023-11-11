@@ -6,6 +6,8 @@ import { Categories } from "components/Categories/Categories";
 import { ProductsCarrouselServer } from "components/ProductsCarrousel/ProductsCarrouselServer";
 import { ProductReviews } from "./components/ProductReviews/ProductReviews";
 import { ProductDescription } from "./components/ProductDescription";
+import { RecentlyView } from "components/Footer/components/RecentlyView/RecentlyView";
+import { RecentlyViewUpdater } from "components/Footer/components/RecentlyView/RecentlyViewUpdater";
 
 export type ProductPageProps = {
   favorite: boolean;
@@ -34,6 +36,9 @@ export type ProductPageProps = {
 export const ProductPage = ({ product }: { product: ProductPageProps }) => {
   return (
     <div className="relative flex flex-col">
+      <RecentlyViewUpdater
+        product={{ ...product, category: product.attributes.category }}
+      />
       <div className="mx-2 grid grid-cols-1 pt-2 md:justify-items-center md:pt-6 xl:grid-cols-3">
         <div className="hidden xl:block min-w-[240px]">
           <Categories />
@@ -60,7 +65,7 @@ export const ProductPage = ({ product }: { product: ProductPageProps }) => {
         </div>
         <div className="col-span-3 w-full max-w-full">
           <ProductsCarrouselServer
-            categorySlug={product.slug[0]}
+            categorySlug={product.attributes.category[0]}
             className="mt-[50px]"
             id="othersProduct"
             Heading={<h3 className="mb-3 text-xl">Others buy also</h3>}
@@ -69,7 +74,7 @@ export const ProductPage = ({ product }: { product: ProductPageProps }) => {
           <ProductReviews productSlug={product.slug} />
 
           <ProductsCarrouselServer
-            categorySlug={product.slug[1]}
+            categorySlug={product.attributes.category[1]}
             className=" mt-[50px]"
             id="othersProduct"
             Heading={
@@ -78,9 +83,9 @@ export const ProductPage = ({ product }: { product: ProductPageProps }) => {
               </h3>
             }
           />
+          <RecentlyView />
         </div>
       </div>
-      <footer>Footer</footer>
     </div>
   );
 };

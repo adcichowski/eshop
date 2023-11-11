@@ -14,5 +14,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
       favorites?.products.find((favorite) => favorite.id === data.id),
     ),
   };
+
   return <ProductPage product={updatedFavoriteData} />;
 }

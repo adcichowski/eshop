@@ -1,3 +1,4 @@
+import { RecentlyView } from "components/Footer/components/RecentlyView/RecentlyView";
 import { ProductsCarrouselServer } from "components/ProductsCarrousel/ProductsCarrouselServer";
 import React from "react";
 import { PopularCategories } from "views/home/components/PopularCategories/PopularCategories";
@@ -13,6 +14,7 @@ const Home = async () => {
         Heading={<h2 className="my-2 text-center text-xl">Bestsellers</h2>}
       />
       <PopularCategories />
+      <RecentlyView />
     </div>
   );
 };
