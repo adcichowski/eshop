@@ -1,6 +1,5 @@
 import { QueryClient, useMutation, useQuery } from "@tanstack/react-query";
 import { RecentlyViewProductType } from "app/api/recently-view/route";
-import { fetcher } from "lib";
 
 export const queryClient = new QueryClient();
 
