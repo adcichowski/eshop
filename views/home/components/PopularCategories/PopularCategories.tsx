@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { pictures } from "./constants";
 import clsx from "clsx";
-
+import Link from "next/link";
 export function PopularCategories() {
   return (
     <section className="mt-6 block mx-auto" id="popularCategories">
@@ -17,24 +17,30 @@ export function PopularCategories() {
               key={alt}
               className={clsx(shouldBeBiggest && "col-span-2 row-span-2")}
             >
-              <figure className="relative w-full">
-                <Image
-                  placeholder="blur"
-                  width={350}
-                  height={400}
-                  className="w-full object-cover"
-                  src={src}
-                  alt={alt}
-                />
-                <figcaption
-                  className={clsx(
-                    "text-base absolute bottom-1/4 w-full bg-white py-1 text-center  uppercase",
-                    shouldBeBiggest && "bottom-1/2 ",
-                  )}
-                >
-                  {alt}
-                </figcaption>
-              </figure>
+              <Link
+                href={"/"}
+                className="group group-focus:outline-1  outline-primary"
+              >
+                <figure className="relative w-full overflow-hidden">
+                  <Image
+                    // placeholder="blur"
+                    width={350}
+                    height={300}
+                    className="w-full object-contain filter drop-shadow-md group-hover:brightness-75 group-focus:brightness-75 animate-in group-hover:scale-110 group-focus:scale-110 duration-500"
+                    src={src}
+                    alt={alt}
+                  />
+
+                  <figcaption
+                    className={clsx(
+                      "text-base absolute bottom-1/4 w-full bg-white py-1 text-center  uppercase  group-focus:text-primary group-hover:text-primary  group-focus:font-medium",
+                      shouldBeBiggest && "bottom-1/2",
+                    )}
+                  >
+                    {alt}
+                  </figcaption>
+                </figure>
+              </Link>
             </li>
           );
         })}

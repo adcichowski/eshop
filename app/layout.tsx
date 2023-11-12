@@ -26,6 +26,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   metadataBase: new URL(baseUrl),
+
   openGraph: {
     title: "PosterWall - Shop with posters",
     description:
@@ -47,6 +48,10 @@ export default function GlobalLayout({ children }: { children: JSX.Element }) {
   return (
     <html lang="en" className={`${montserrat.className}`}>
       <link rel="icon" href="/logo.png" sizes="any" />
+      <meta
+        name="google-site-verification"
+        content="akX5gDkHNwWBpYqMfiSQynPVbhqCB3zXXzBX2rlsrFw"
+      />
       <ProviderContext favorites={favorites?.products} cart={data?.cart}>
         <body className="flex grow flex-col w-full items-center">
           <Header />

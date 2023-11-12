@@ -1,12 +1,14 @@
-import { StaticImageData } from "next/image";
-import * as picture from "./assets/assets";
-
-type CategoriesInPictures = { src: StaticImageData; alt: string }[];
+type CategoriesInPictures = { src: string; alt: string; dataBlur?: string }[];
 export const pictures: CategoriesInPictures = [
-  { src: picture.qoute, alt: "Typography & Quotes" },
-  { src: picture.toys, alt: "For Kids" },
-  { src: picture.mountains, alt: "Illustrations" },
-  { src: picture.animals, alt: "Animals" },
-  { src: picture.landscape, alt: "Landscapes" },
-  { src: picture.blackWhite, alt: "Black-White" },
+  { src: "/popular-categories/botanics.jpg", alt: "Botanics" },
+  {
+    src: "/popular-categories/for-kids.jpg",
+    alt: "For Kids",
+    dataBlur:
+      "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAADAAIDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAX/xAAcEAACAgIDAAAAAAAAAAAAAAAAAgEDERMiQlH/xAAVAQEBAAAAAAAAAAAAAAAAAAABAv/EABcRAAMBAAAAAAAAAAAAAAAAAAACElH/2gAMAwEAAhEDEQA/ALl6pvsyiTynrHoACFwu20//2Q==",
+  },
+  { src: "/popular-categories/architecture.jpg", alt: "Architecture" },
+  { src: "/popular-categories/landscape.jpg", alt: "Landscapes" },
+  { src: "/popular-categories/animals.jpg", alt: "Animals" },
+  { src: "/popular-categories/black&white.jpg", alt: "Black-White" },
 ];
