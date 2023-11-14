@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import clsx from "clsx";
 import { DiscountFrame } from "components/DiscountFrame/DiscountFrame";
 import { changeValueCurrency, priceWithDiscount } from "utils/utils";
 import { AmountProductCart } from "./AmountProductCart";
