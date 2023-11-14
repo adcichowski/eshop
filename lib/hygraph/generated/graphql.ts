@@ -11038,6 +11038,7 @@ export type GetProductsByCategorySlugQuery = {
     categories: Array<{ slug: string }>;
     images: Array<{ id: string; alt?: string | null; url: string }>;
   }>;
+  categories: Array<{ name: string }>;
   productsConnection: { pageInfo: { pageSize?: number | null } };
 };
 
@@ -11194,7 +11195,7 @@ export const ReviewProductFragmentDoc = new TypedDocumentString(
 ) as unknown as TypedDocumentString<ReviewProductFragment, unknown>;
 export const GetCategoriesDocument = new TypedDocumentString(`
     query GetCategories {
-  categories {
+  categories(orderBy: name_ASC) {
     ...Categories
   }
 }
@@ -11452,6 +11453,9 @@ export const GetProductsByCategorySlugDocument = new TypedDocumentString(`
     skip: $skip
   ) {
     ...ProductDisplay
+  }
+  categories(where: {slug: $categorySlug}) {
+    name
   }
   productsConnection(skip: $skip, where: {categories_some: {slug: $categorySlug}}) {
     pageInfo {

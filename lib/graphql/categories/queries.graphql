@@ -1,5 +1,5 @@
 query GetCategories {
-  categories {
+  categories(orderBy: name_ASC) {
     ...Categories
   }
 }

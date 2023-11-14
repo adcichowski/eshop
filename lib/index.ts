@@ -185,6 +185,7 @@ export async function getProductsByCategorySlug({
   const {
     products,
     productsConnection: { pageInfo },
+    categories,
   } = await fetcher({
     query: GetProductsByCategorySlugDocument,
     cache: "no-store",
@@ -202,5 +203,6 @@ export async function getProductsByCategorySlug({
   return {
     products: reshapeProductDisplay(products),
     numberOfPages: Math.round((skip + pageSize) / first),
+    categoryName: categories[0].name,
   };
 }

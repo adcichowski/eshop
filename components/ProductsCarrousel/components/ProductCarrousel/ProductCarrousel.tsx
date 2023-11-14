@@ -22,9 +22,7 @@ export const ProductCarrousel = (product: ProductCarrouselPropsType) => {
   return (
     <article aria-labelledby={product.name}>
       <div
-        className={`flex h-48 items-center justify-center overflow-hidden object-center md:h-72 ${clsx(
-          product.whiteFrame && "border-2 p-2 md:p-4",
-        )}`}
+        className={`flex h-48 items-center justify-center overflow-hidden object-center md:h-72`}
       >
         <Image
           alt={product.name}

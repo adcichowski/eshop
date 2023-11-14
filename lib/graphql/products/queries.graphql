@@ -96,6 +96,9 @@ query GetProductsByCategorySlug(
   ) {
     ...ProductDisplay
   }
+  categories(where: { slug: $categorySlug }) {
+    name
+  }
   productsConnection(
     skip: $skip
     where: { categories_some: { slug: $categorySlug } }

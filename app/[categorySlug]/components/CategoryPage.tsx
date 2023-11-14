@@ -15,11 +15,12 @@ export async function CategoryPage({
   currentPage: string | undefined;
 }) {
   const skip = (Number(currentPage) - 1) * SIZE_PAGINATION_NUMBER;
-  const { products, numberOfPages } = await getProductsByCategorySlug({
-    slug: categorySlug,
-    skip,
-    first: SIZE_PAGINATION_NUMBER,
-  });
+  const { products, numberOfPages, categoryName } =
+    await getProductsByCategorySlug({
+      slug: categorySlug,
+      skip,
+      first: SIZE_PAGINATION_NUMBER,
+    });
 
   const favorites = await getFavoriteProducts();
   const updatedProducts = products.map((product) => ({
@@ -36,8 +37,8 @@ export async function CategoryPage({
         <Categories selectedCategory={categorySlug} />
       </div>
       <section className="lg:col-start-2 lg:col-end-4">
-        <h3 className="mx-4 mb-6 border-b-[1px] border-b-black pb-3 text-center text-2xl">
-          Category name
+        <h3 className="mx-4 mb-6 border-b-[1px] border-b-black pb-3 text-center text-2xl capitalize">
+          {categoryName}
         </h3>
         {updatedProducts?.length ? (
           <ul className="grid grid-cols-2 justify-center gap-2 md:grid-cols-3 md:gap-6">
