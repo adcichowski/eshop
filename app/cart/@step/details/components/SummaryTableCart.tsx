@@ -33,7 +33,6 @@ export default function SummaryTableCart() {
                     <Image
                       src={product.image}
                       alt=""
-                      className={clsx(product.whiteFrame && "border p-2")}
                       width={100}
                       height={140}
                     />

@@ -2,7 +2,6 @@
 import Image from "next/image";
 import { XIcon } from "lucide-react";
 import { changeValueCurrency } from "utils/utils";
-import clsx from "clsx";
 import { CartProduct, runCartAction } from "lib/actions/cart";
 import { useToastContext } from "context/ToastContext/ToastContext";
 
@@ -21,9 +20,7 @@ export function ProductCartPopper({
     <article className="grid w-full grid-cols-4 gap-x-3 border-b-[1px] border-gray-100 pb-2">
       <div className="basis-[88px]">
         <Image
-          className={`w-auto object-cover ${clsx(
-            "border p-[6px]" && whiteFrame,
-          )}`}
+          className="w-auto object-cover"
           width={100}
           height={90}
           src={image}

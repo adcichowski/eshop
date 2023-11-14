@@ -17,10 +17,11 @@ export async function Categories({
       <ul className="mt-[23px] w-full">
         {data.map(({ name, slug }) => (
           <li key={slug}>
-            <Link href={slug}>
+            <Link href={`/${slug}`}>
               <span
                 className={clsx(
-                  "cursor-pointer text-sm",
+                  "cursor-pointer text-sm capitalize",
+                  slug === "bestsellers" && "text-red-300",
                   selectedCategory === slug && "font-semibold",
                 )}
               >
