@@ -1,0 +1,14 @@
+mutation CreateAccount($email: String!, $password: String!) {
+  createAccount(
+    data: {
+      email: $email
+      password: $password
+      discountCode: {
+        create: { DiscountCode: { code: "START15", used: false, discount: 15 } }
+      }
+    }
+  ) {
+    email
+    id
+  }
+}

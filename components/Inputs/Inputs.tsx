@@ -1,3 +1,4 @@
+"use client";
 import type { InputProps } from "./types";
 import { Input } from "./components/Input";
 import { Checkbox } from "./components/Checkbox";
@@ -8,7 +9,11 @@ export const InputsRender = React.forwardRef<HTMLInputElement, InputProps>(
       case "checkbox":
         return <Checkbox {...props} ref={ref} />;
       default:
-        return <Input {...props} ref={ref} />;
+        return (
+          <div className="flex w-full flex-col">
+            <Input {...props} ref={ref} />{" "}
+          </div>
+        );
     }
   },
 );

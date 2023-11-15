@@ -4,15 +4,12 @@
 // } from "generated/graphql";
 // import { CreateAccountDocument } from "generated/graphql";
 // import * as Bcrypt from "bcrypt";
-// import { authorizedApolloClient } from "lib/graphql/apolloClient";
+
 // import type { NextApiHandler } from "next";
 // import { defaultSchema } from "components/Forms/schemas/defaultSchema";
 // import * as Yup from "yup";
 // import { convertYupError } from "utils/errors";
 // const handler: NextApiHandler = async (req, res) => {
-//   if (req.method !== "POST") {
-//     res.setHeader("Allow", "POST").status(405).json({});
-//   }
 //   if (process.env.HYGRAPH_TOKEN === undefined) {
 //     throw new Error("Problem to get hygraph token");
 //   }
@@ -43,4 +40,4 @@
 //   }
 // };
 
-// export default handler;
+// export { handler as POST };
