@@ -1,0 +1,7 @@
+query GetAccountByEmail($email: String!) {
+  account(where: { email: $email }, stage: DRAFT) {
+    id
+    email
+    password
+  }
+}

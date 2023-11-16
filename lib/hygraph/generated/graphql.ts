@@ -42,32 +42,33 @@ export type Scalars = {
   RichTextAST: { input: unknown; output: unknown };
 };
 
-export type Account = Node & {
-  /** The time the document was created */
-  createdAt: Scalars["DateTime"]["output"];
-  /** User that created this document */
-  createdBy?: Maybe<User>;
-  discountCode: Array<AccountDiscountCode>;
-  /** Get the document in other stages */
-  documentInStages: Array<Account>;
-  email: Scalars["String"]["output"];
-  /** List of Account versions */
-  history: Array<Version>;
-  /** The unique identifier */
-  id: Scalars["ID"]["output"];
-  password: Scalars["String"]["output"];
-  /** The time the document was published. Null on documents in draft stage. */
-  publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
-  /** User that last published this document */
-  publishedBy?: Maybe<User>;
-  scheduledIn: Array<ScheduledOperation>;
-  /** System stage field */
-  stage: Stage;
-  /** The time the document was updated */
-  updatedAt: Scalars["DateTime"]["output"];
-  /** User that last updated this document */
-  updatedBy?: Maybe<User>;
-};
+export type Account = Entity &
+  Node & {
+    /** The time the document was created */
+    createdAt: Scalars["DateTime"]["output"];
+    /** User that created this document */
+    createdBy?: Maybe<User>;
+    discountCode: Array<AccountDiscountCode>;
+    /** Get the document in other stages */
+    documentInStages: Array<Account>;
+    email: Scalars["String"]["output"];
+    /** List of Account versions */
+    history: Array<Version>;
+    /** The unique identifier */
+    id: Scalars["ID"]["output"];
+    password: Scalars["String"]["output"];
+    /** The time the document was published. Null on documents in draft stage. */
+    publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
+    /** User that last published this document */
+    publishedBy?: Maybe<User>;
+    scheduledIn: Array<ScheduledOperation>;
+    /** System stage field */
+    stage: Stage;
+    /** The time the document was updated */
+    updatedAt: Scalars["DateTime"]["output"];
+    /** User that last updated this document */
+    updatedBy?: Maybe<User>;
+  };
 
 export type AccountCreatedByArgs = {
   forceParentLocale?: InputMaybe<Scalars["Boolean"]["input"]>;
@@ -629,49 +630,50 @@ export type Aggregate = {
 };
 
 /** Asset system model */
-export type Asset = Node & {
-  alt?: Maybe<Scalars["String"]["output"]>;
-  /** The time the document was created */
-  createdAt: Scalars["DateTime"]["output"];
-  /** User that created this document */
-  createdBy?: Maybe<User>;
-  /** Get the document in other stages */
-  documentInStages: Array<Asset>;
-  /** The file name */
-  fileName: Scalars["String"]["output"];
-  /** The file handle */
-  handle: Scalars["String"]["output"];
-  /** The height of the file */
-  height?: Maybe<Scalars["Float"]["output"]>;
-  /** List of Asset versions */
-  history: Array<Version>;
-  /** The unique identifier */
-  id: Scalars["ID"]["output"];
-  /** System Locale field */
-  locale: Locale;
-  /** Get the other localizations for this document */
-  localizations: Array<Asset>;
-  /** The mime type of the file */
-  mimeType?: Maybe<Scalars["String"]["output"]>;
-  productImages: Array<Product>;
-  /** The time the document was published. Null on documents in draft stage. */
-  publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
-  /** User that last published this document */
-  publishedBy?: Maybe<User>;
-  scheduledIn: Array<ScheduledOperation>;
-  /** The file size */
-  size?: Maybe<Scalars["Float"]["output"]>;
-  /** System stage field */
-  stage: Stage;
-  /** The time the document was updated */
-  updatedAt: Scalars["DateTime"]["output"];
-  /** User that last updated this document */
-  updatedBy?: Maybe<User>;
-  /** Get the url for the asset with provided transformations applied. */
-  url: Scalars["String"]["output"];
-  /** The file width */
-  width?: Maybe<Scalars["Float"]["output"]>;
-};
+export type Asset = Entity &
+  Node & {
+    alt?: Maybe<Scalars["String"]["output"]>;
+    /** The time the document was created */
+    createdAt: Scalars["DateTime"]["output"];
+    /** User that created this document */
+    createdBy?: Maybe<User>;
+    /** Get the document in other stages */
+    documentInStages: Array<Asset>;
+    /** The file name */
+    fileName: Scalars["String"]["output"];
+    /** The file handle */
+    handle: Scalars["String"]["output"];
+    /** The height of the file */
+    height?: Maybe<Scalars["Float"]["output"]>;
+    /** List of Asset versions */
+    history: Array<Version>;
+    /** The unique identifier */
+    id: Scalars["ID"]["output"];
+    /** System Locale field */
+    locale: Locale;
+    /** Get the other localizations for this document */
+    localizations: Array<Asset>;
+    /** The mime type of the file */
+    mimeType?: Maybe<Scalars["String"]["output"]>;
+    productImages: Array<Product>;
+    /** The time the document was published. Null on documents in draft stage. */
+    publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
+    /** User that last published this document */
+    publishedBy?: Maybe<User>;
+    scheduledIn: Array<ScheduledOperation>;
+    /** The file size */
+    size?: Maybe<Scalars["Float"]["output"]>;
+    /** System stage field */
+    stage: Stage;
+    /** The time the document was updated */
+    updatedAt: Scalars["DateTime"]["output"];
+    /** User that last updated this document */
+    updatedBy?: Maybe<User>;
+    /** Get the url for the asset with provided transformations applied. */
+    url: Scalars["String"]["output"];
+    /** The file width */
+    width?: Maybe<Scalars["Float"]["output"]>;
+  };
 
 /** Asset system model */
 export type AssetCreatedAtArgs = {
@@ -1355,36 +1357,37 @@ export type BatchPayload = {
 };
 
 /** Category of products, e.g. Menswear. */
-export type Category = Node & {
-  /** The time the document was created */
-  createdAt: Scalars["DateTime"]["output"];
-  /** User that created this document */
-  createdBy?: Maybe<User>;
-  /** Get the document in other stages */
-  documentInStages: Array<Category>;
-  /** List of Category versions */
-  history: Array<Version>;
-  /** The unique identifier */
-  id: Scalars["ID"]["output"];
-  /** System Locale field */
-  locale: Locale;
-  /** Get the other localizations for this document */
-  localizations: Array<Category>;
-  name: Scalars["String"]["output"];
-  products: Array<Product>;
-  /** The time the document was published. Null on documents in draft stage. */
-  publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
-  /** User that last published this document */
-  publishedBy?: Maybe<User>;
-  scheduledIn: Array<ScheduledOperation>;
-  slug: Scalars["String"]["output"];
-  /** System stage field */
-  stage: Stage;
-  /** The time the document was updated */
-  updatedAt: Scalars["DateTime"]["output"];
-  /** User that last updated this document */
-  updatedBy?: Maybe<User>;
-};
+export type Category = Entity &
+  Node & {
+    /** The time the document was created */
+    createdAt: Scalars["DateTime"]["output"];
+    /** User that created this document */
+    createdBy?: Maybe<User>;
+    /** Get the document in other stages */
+    documentInStages: Array<Category>;
+    /** List of Category versions */
+    history: Array<Version>;
+    /** The unique identifier */
+    id: Scalars["ID"]["output"];
+    /** System Locale field */
+    locale: Locale;
+    /** Get the other localizations for this document */
+    localizations: Array<Category>;
+    name: Scalars["String"]["output"];
+    products: Array<Product>;
+    /** The time the document was published. Null on documents in draft stage. */
+    publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
+    /** User that last published this document */
+    publishedBy?: Maybe<User>;
+    scheduledIn: Array<ScheduledOperation>;
+    slug: Scalars["String"]["output"];
+    /** System stage field */
+    stage: Stage;
+    /** The time the document was updated */
+    updatedAt: Scalars["DateTime"]["output"];
+    /** User that last updated this document */
+    updatedBy?: Maybe<User>;
+  };
 
 /** Category of products, e.g. Menswear. */
 export type CategoryCreatedAtArgs = {
@@ -1939,33 +1942,34 @@ export type ConnectPositionInput = {
   start?: InputMaybe<Scalars["Boolean"]["input"]>;
 };
 
-export type Currency = Node & {
-  code: Scalars["String"]["output"];
-  /** The time the document was created */
-  createdAt: Scalars["DateTime"]["output"];
-  /** User that created this document */
-  createdBy?: Maybe<User>;
-  default: Scalars["Boolean"]["output"];
-  /** Get the document in other stages */
-  documentInStages: Array<Currency>;
-  /** List of Currency versions */
-  history: Array<Version>;
-  /** The unique identifier */
-  id: Scalars["ID"]["output"];
-  productVariantType?: Maybe<ProductVariantType>;
-  /** The time the document was published. Null on documents in draft stage. */
-  publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
-  /** User that last published this document */
-  publishedBy?: Maybe<User>;
-  rate: Scalars["Float"]["output"];
-  scheduledIn: Array<ScheduledOperation>;
-  /** System stage field */
-  stage: Stage;
-  /** The time the document was updated */
-  updatedAt: Scalars["DateTime"]["output"];
-  /** User that last updated this document */
-  updatedBy?: Maybe<User>;
-};
+export type Currency = Entity &
+  Node & {
+    code: Scalars["String"]["output"];
+    /** The time the document was created */
+    createdAt: Scalars["DateTime"]["output"];
+    /** User that created this document */
+    createdBy?: Maybe<User>;
+    default: Scalars["Boolean"]["output"];
+    /** Get the document in other stages */
+    documentInStages: Array<Currency>;
+    /** List of Currency versions */
+    history: Array<Version>;
+    /** The unique identifier */
+    id: Scalars["ID"]["output"];
+    productVariantType?: Maybe<ProductVariantType>;
+    /** The time the document was published. Null on documents in draft stage. */
+    publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
+    /** User that last published this document */
+    publishedBy?: Maybe<User>;
+    rate: Scalars["Float"]["output"];
+    scheduledIn: Array<ScheduledOperation>;
+    /** System stage field */
+    stage: Stage;
+    /** The time the document was updated */
+    updatedAt: Scalars["DateTime"]["output"];
+    /** User that last updated this document */
+    updatedBy?: Maybe<User>;
+  };
 
 export type CurrencyCreatedByArgs = {
   forceParentLocale?: InputMaybe<Scalars["Boolean"]["input"]>;
@@ -2430,34 +2434,35 @@ export type CurrencyWhereUniqueInput = {
   id?: InputMaybe<Scalars["ID"]["input"]>;
 };
 
-export type DiscountCode = Node & {
-  accounts: Array<Account>;
-  code: Scalars["String"]["output"];
-  /** The time the document was created */
-  createdAt: Scalars["DateTime"]["output"];
-  /** User that created this document */
-  createdBy?: Maybe<User>;
-  discount: Scalars["Int"]["output"];
-  /** Get the document in other stages */
-  documentInStages: Array<DiscountCode>;
-  /** List of DiscountCode versions */
-  history: Array<Version>;
-  /** The unique identifier */
-  id: Scalars["ID"]["output"];
-  newsletterUsers: Array<NewsletterUser>;
-  /** The time the document was published. Null on documents in draft stage. */
-  publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
-  /** User that last published this document */
-  publishedBy?: Maybe<User>;
-  scheduledIn: Array<ScheduledOperation>;
-  /** System stage field */
-  stage: Stage;
-  /** The time the document was updated */
-  updatedAt: Scalars["DateTime"]["output"];
-  /** User that last updated this document */
-  updatedBy?: Maybe<User>;
-  used: Scalars["Boolean"]["output"];
-};
+export type DiscountCode = Entity &
+  Node & {
+    accounts: Array<Account>;
+    code: Scalars["String"]["output"];
+    /** The time the document was created */
+    createdAt: Scalars["DateTime"]["output"];
+    /** User that created this document */
+    createdBy?: Maybe<User>;
+    discount: Scalars["Int"]["output"];
+    /** Get the document in other stages */
+    documentInStages: Array<DiscountCode>;
+    /** List of DiscountCode versions */
+    history: Array<Version>;
+    /** The unique identifier */
+    id: Scalars["ID"]["output"];
+    newsletterUsers: Array<NewsletterUser>;
+    /** The time the document was published. Null on documents in draft stage. */
+    publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
+    /** User that last published this document */
+    publishedBy?: Maybe<User>;
+    scheduledIn: Array<ScheduledOperation>;
+    /** System stage field */
+    stage: Stage;
+    /** The time the document was updated */
+    updatedAt: Scalars["DateTime"]["output"];
+    /** User that last updated this document */
+    updatedBy?: Maybe<User>;
+    used: Scalars["Boolean"]["output"];
+  };
 
 export type DiscountCodeAccountsArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
@@ -3022,7 +3027,7 @@ export type Entity = {
   stage: Stage;
 };
 
-/** This enumeration holds all typenames that implement the Entity interface. Components implement the Entity interface. At the moment models are not supported, models are listed in this enum to avoid an empty enum without any components. */
+/** This enumeration holds all typenames that implement the Entity interface. Components and models implement the Entity interface. */
 export enum EntityTypeName {
   Account = "Account",
   /** Asset system model */
@@ -3046,7 +3051,7 @@ export enum EntityTypeName {
   User = "User",
 }
 
-/** Allows to specify input to query components directly */
+/** Allows to specify input to query models and components directly */
 export type EntityWhereInput = {
   /** The ID of an object */
   id: Scalars["ID"]["input"];
@@ -4803,31 +4808,32 @@ export type MutationUpsertReviewArgs = {
   where: ReviewWhereUniqueInput;
 };
 
-export type NewsletterUser = Node & {
-  /** The time the document was created */
-  createdAt: Scalars["DateTime"]["output"];
-  /** User that created this document */
-  createdBy?: Maybe<User>;
-  discountCodes: Array<NewsletterUserDiscountCodes>;
-  /** Get the document in other stages */
-  documentInStages: Array<NewsletterUser>;
-  email: Scalars["String"]["output"];
-  /** List of NewsletterUser versions */
-  history: Array<Version>;
-  /** The unique identifier */
-  id: Scalars["ID"]["output"];
-  /** The time the document was published. Null on documents in draft stage. */
-  publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
-  /** User that last published this document */
-  publishedBy?: Maybe<User>;
-  scheduledIn: Array<ScheduledOperation>;
-  /** System stage field */
-  stage: Stage;
-  /** The time the document was updated */
-  updatedAt: Scalars["DateTime"]["output"];
-  /** User that last updated this document */
-  updatedBy?: Maybe<User>;
-};
+export type NewsletterUser = Entity &
+  Node & {
+    /** The time the document was created */
+    createdAt: Scalars["DateTime"]["output"];
+    /** User that created this document */
+    createdBy?: Maybe<User>;
+    discountCodes: Array<NewsletterUserDiscountCodes>;
+    /** Get the document in other stages */
+    documentInStages: Array<NewsletterUser>;
+    email: Scalars["String"]["output"];
+    /** List of NewsletterUser versions */
+    history: Array<Version>;
+    /** The unique identifier */
+    id: Scalars["ID"]["output"];
+    /** The time the document was published. Null on documents in draft stage. */
+    publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
+    /** User that last published this document */
+    publishedBy?: Maybe<User>;
+    scheduledIn: Array<ScheduledOperation>;
+    /** System stage field */
+    stage: Stage;
+    /** The time the document was updated */
+    updatedAt: Scalars["DateTime"]["output"];
+    /** User that last updated this document */
+    updatedBy?: Maybe<User>;
+  };
 
 export type NewsletterUserCreatedByArgs = {
   forceParentLocale?: InputMaybe<Scalars["Boolean"]["input"]>;
@@ -5351,34 +5357,35 @@ export type Node = {
   stage: Stage;
 };
 
-export type Order = Node & {
-  /** The time the document was created */
-  createdAt: Scalars["DateTime"]["output"];
-  /** User that created this document */
-  createdBy?: Maybe<User>;
-  /** Get the document in other stages */
-  documentInStages: Array<Order>;
-  email: Scalars["String"]["output"];
-  /** List of Order versions */
-  history: Array<Version>;
-  /** The unique identifier */
-  id: Scalars["ID"]["output"];
-  orderItems: Array<OrderItem>;
-  /** The time the document was published. Null on documents in draft stage. */
-  publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
-  /** User that last published this document */
-  publishedBy?: Maybe<User>;
-  scheduledIn: Array<ScheduledOperation>;
-  /** System stage field */
-  stage: Stage;
-  statusOrder: StatusOrder;
-  stripeCheckoutId: Scalars["String"]["output"];
-  total: Scalars["Int"]["output"];
-  /** The time the document was updated */
-  updatedAt: Scalars["DateTime"]["output"];
-  /** User that last updated this document */
-  updatedBy?: Maybe<User>;
-};
+export type Order = Entity &
+  Node & {
+    /** The time the document was created */
+    createdAt: Scalars["DateTime"]["output"];
+    /** User that created this document */
+    createdBy?: Maybe<User>;
+    /** Get the document in other stages */
+    documentInStages: Array<Order>;
+    email: Scalars["String"]["output"];
+    /** List of Order versions */
+    history: Array<Version>;
+    /** The unique identifier */
+    id: Scalars["ID"]["output"];
+    orderItems: Array<OrderItem>;
+    /** The time the document was published. Null on documents in draft stage. */
+    publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
+    /** User that last published this document */
+    publishedBy?: Maybe<User>;
+    scheduledIn: Array<ScheduledOperation>;
+    /** System stage field */
+    stage: Stage;
+    statusOrder: StatusOrder;
+    stripeCheckoutId: Scalars["String"]["output"];
+    total: Scalars["Int"]["output"];
+    /** The time the document was updated */
+    updatedAt: Scalars["DateTime"]["output"];
+    /** User that last updated this document */
+    updatedBy?: Maybe<User>;
+  };
 
 export type OrderCreatedByArgs = {
   forceParentLocale?: InputMaybe<Scalars["Boolean"]["input"]>;
@@ -5478,35 +5485,36 @@ export type OrderEdge = {
   node: Order;
 };
 
-export type OrderItem = Node & {
-  /** The time the document was created */
-  createdAt: Scalars["DateTime"]["output"];
-  /** User that created this document */
-  createdBy?: Maybe<User>;
-  /** Get the document in other stages */
-  documentInStages: Array<OrderItem>;
-  height: Scalars["Int"]["output"];
-  /** List of OrderItem versions */
-  history: Array<Version>;
-  /** The unique identifier */
-  id: Scalars["ID"]["output"];
-  order?: Maybe<Order>;
-  product?: Maybe<Product>;
-  /** The time the document was published. Null on documents in draft stage. */
-  publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
-  /** User that last published this document */
-  publishedBy?: Maybe<User>;
-  quantity: Scalars["Int"]["output"];
-  scheduledIn: Array<ScheduledOperation>;
-  /** System stage field */
-  stage: Stage;
-  total: Scalars["Int"]["output"];
-  /** The time the document was updated */
-  updatedAt: Scalars["DateTime"]["output"];
-  /** User that last updated this document */
-  updatedBy?: Maybe<User>;
-  width: Scalars["Int"]["output"];
-};
+export type OrderItem = Entity &
+  Node & {
+    /** The time the document was created */
+    createdAt: Scalars["DateTime"]["output"];
+    /** User that created this document */
+    createdBy?: Maybe<User>;
+    /** Get the document in other stages */
+    documentInStages: Array<OrderItem>;
+    height: Scalars["Int"]["output"];
+    /** List of OrderItem versions */
+    history: Array<Version>;
+    /** The unique identifier */
+    id: Scalars["ID"]["output"];
+    order?: Maybe<Order>;
+    product?: Maybe<Product>;
+    /** The time the document was published. Null on documents in draft stage. */
+    publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
+    /** User that last published this document */
+    publishedBy?: Maybe<User>;
+    quantity: Scalars["Int"]["output"];
+    scheduledIn: Array<ScheduledOperation>;
+    /** System stage field */
+    stage: Stage;
+    total: Scalars["Int"]["output"];
+    /** The time the document was updated */
+    updatedAt: Scalars["DateTime"]["output"];
+    /** User that last updated this document */
+    updatedBy?: Maybe<User>;
+    width: Scalars["Int"]["output"];
+  };
 
 export type OrderItemCreatedByArgs = {
   forceParentLocale?: InputMaybe<Scalars["Boolean"]["input"]>;
@@ -6485,47 +6493,48 @@ export type PageInfo = {
   startCursor?: Maybe<Scalars["String"]["output"]>;
 };
 
-export type Product = Node & {
-  categories: Array<Category>;
-  color: Scalars["String"]["output"];
-  /** The time the document was created */
-  createdAt: Scalars["DateTime"]["output"];
-  /** User that created this document */
-  createdBy?: Maybe<User>;
-  description: Scalars["String"]["output"];
-  /** Get the document in other stages */
-  documentInStages: Array<Product>;
-  finish: Scalars["String"]["output"];
-  /** List of Product versions */
-  history: Array<Version>;
-  /** The unique identifier */
-  id: Scalars["ID"]["output"];
-  images: Array<Asset>;
-  /** System Locale field */
-  locale: Locale;
-  /** Get the other localizations for this document */
-  localizations: Array<Product>;
-  name: Scalars["String"]["output"];
-  orderItems: Array<OrderItem>;
-  orientation: Orientation;
-  paperWeight: Scalars["Int"]["output"];
-  /** The time the document was published. Null on documents in draft stage. */
-  publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
-  /** User that last published this document */
-  publishedBy?: Maybe<User>;
-  reviews: Array<Review>;
-  sale?: Maybe<Scalars["String"]["output"]>;
-  scheduledIn: Array<ScheduledOperation>;
-  slug: Scalars["String"]["output"];
-  /** System stage field */
-  stage: Stage;
-  /** The time the document was updated */
-  updatedAt: Scalars["DateTime"]["output"];
-  /** User that last updated this document */
-  updatedBy?: Maybe<User>;
-  variants: Array<ProductVariantType>;
-  whiteFrame: Scalars["Boolean"]["output"];
-};
+export type Product = Entity &
+  Node & {
+    categories: Array<Category>;
+    color: Scalars["String"]["output"];
+    /** The time the document was created */
+    createdAt: Scalars["DateTime"]["output"];
+    /** User that created this document */
+    createdBy?: Maybe<User>;
+    description: Scalars["String"]["output"];
+    /** Get the document in other stages */
+    documentInStages: Array<Product>;
+    finish: Scalars["String"]["output"];
+    /** List of Product versions */
+    history: Array<Version>;
+    /** The unique identifier */
+    id: Scalars["ID"]["output"];
+    images: Array<Asset>;
+    /** System Locale field */
+    locale: Locale;
+    /** Get the other localizations for this document */
+    localizations: Array<Product>;
+    name: Scalars["String"]["output"];
+    orderItems: Array<OrderItem>;
+    orientation: Orientation;
+    paperWeight: Scalars["Int"]["output"];
+    /** The time the document was published. Null on documents in draft stage. */
+    publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
+    /** User that last published this document */
+    publishedBy?: Maybe<User>;
+    reviews: Array<Review>;
+    sale?: Maybe<Scalars["String"]["output"]>;
+    scheduledIn: Array<ScheduledOperation>;
+    slug: Scalars["String"]["output"];
+    /** System stage field */
+    stage: Stage;
+    /** The time the document was updated */
+    updatedAt: Scalars["DateTime"]["output"];
+    /** User that last updated this document */
+    updatedBy?: Maybe<User>;
+    variants: Array<ProductVariantType>;
+    whiteFrame: Scalars["Boolean"]["output"];
+  };
 
 export type ProductCategoriesArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
@@ -7092,35 +7101,36 @@ export type ProductUpsertWithNestedWhereUniqueInput = {
 };
 
 /** Type layout vertical or horizontal */
-export type ProductVariantType = Node & {
-  available: Scalars["Int"]["output"];
-  /** The time the document was created */
-  createdAt: Scalars["DateTime"]["output"];
-  /** User that created this document */
-  createdBy?: Maybe<User>;
-  currency?: Maybe<ProductVariantTypeCurrency>;
-  /** Get the document in other stages */
-  documentInStages: Array<ProductVariantType>;
-  height: Scalars["Int"]["output"];
-  /** List of ProductVariantType versions */
-  history: Array<Version>;
-  /** The unique identifier */
-  id: Scalars["ID"]["output"];
-  price: Scalars["Int"]["output"];
-  products: Array<Product>;
-  /** The time the document was published. Null on documents in draft stage. */
-  publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
-  /** User that last published this document */
-  publishedBy?: Maybe<User>;
-  scheduledIn: Array<ScheduledOperation>;
-  /** System stage field */
-  stage: Stage;
-  /** The time the document was updated */
-  updatedAt: Scalars["DateTime"]["output"];
-  /** User that last updated this document */
-  updatedBy?: Maybe<User>;
-  width: Scalars["Int"]["output"];
-};
+export type ProductVariantType = Entity &
+  Node & {
+    available: Scalars["Int"]["output"];
+    /** The time the document was created */
+    createdAt: Scalars["DateTime"]["output"];
+    /** User that created this document */
+    createdBy?: Maybe<User>;
+    currency?: Maybe<ProductVariantTypeCurrency>;
+    /** Get the document in other stages */
+    documentInStages: Array<ProductVariantType>;
+    height: Scalars["Int"]["output"];
+    /** List of ProductVariantType versions */
+    history: Array<Version>;
+    /** The unique identifier */
+    id: Scalars["ID"]["output"];
+    price: Scalars["Int"]["output"];
+    products: Array<Product>;
+    /** The time the document was published. Null on documents in draft stage. */
+    publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
+    /** User that last published this document */
+    publishedBy?: Maybe<User>;
+    scheduledIn: Array<ScheduledOperation>;
+    /** System stage field */
+    stage: Stage;
+    /** The time the document was updated */
+    updatedAt: Scalars["DateTime"]["output"];
+    /** User that last updated this document */
+    updatedBy?: Maybe<User>;
+    width: Scalars["Int"]["output"];
+  };
 
 /** Type layout vertical or horizontal */
 export type ProductVariantTypeCreatedByArgs = {
@@ -8641,34 +8651,35 @@ export type RgbaInput = {
   r: Scalars["RGBAHue"]["input"];
 };
 
-export type Review = Node & {
-  content: Scalars["String"]["output"];
-  /** The time the document was created */
-  createdAt: Scalars["DateTime"]["output"];
-  /** User that created this document */
-  createdBy?: Maybe<User>;
-  /** Get the document in other stages */
-  documentInStages: Array<Review>;
-  email: Scalars["String"]["output"];
-  /** List of Review versions */
-  history: Array<Version>;
-  /** The unique identifier */
-  id: Scalars["ID"]["output"];
-  name: Scalars["String"]["output"];
-  product?: Maybe<Product>;
-  /** The time the document was published. Null on documents in draft stage. */
-  publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
-  /** User that last published this document */
-  publishedBy?: Maybe<User>;
-  rating: Scalars["Int"]["output"];
-  scheduledIn: Array<ScheduledOperation>;
-  /** System stage field */
-  stage: Stage;
-  /** The time the document was updated */
-  updatedAt: Scalars["DateTime"]["output"];
-  /** User that last updated this document */
-  updatedBy?: Maybe<User>;
-};
+export type Review = Entity &
+  Node & {
+    content: Scalars["String"]["output"];
+    /** The time the document was created */
+    createdAt: Scalars["DateTime"]["output"];
+    /** User that created this document */
+    createdBy?: Maybe<User>;
+    /** Get the document in other stages */
+    documentInStages: Array<Review>;
+    email: Scalars["String"]["output"];
+    /** List of Review versions */
+    history: Array<Version>;
+    /** The unique identifier */
+    id: Scalars["ID"]["output"];
+    name: Scalars["String"]["output"];
+    product?: Maybe<Product>;
+    /** The time the document was published. Null on documents in draft stage. */
+    publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
+    /** User that last published this document */
+    publishedBy?: Maybe<User>;
+    rating: Scalars["Int"]["output"];
+    scheduledIn: Array<ScheduledOperation>;
+    /** System stage field */
+    stage: Stage;
+    /** The time the document was updated */
+    updatedAt: Scalars["DateTime"]["output"];
+    /** User that last updated this document */
+    updatedBy?: Maybe<User>;
+  };
 
 export type ReviewCreatedByArgs = {
   forceParentLocale?: InputMaybe<Scalars["Boolean"]["input"]>;
@@ -9221,37 +9232,38 @@ export type RichText = {
 };
 
 /** Scheduled Operation system model */
-export type ScheduledOperation = Node & {
-  affectedDocuments: Array<ScheduledOperationAffectedDocument>;
-  /** The time the document was created */
-  createdAt: Scalars["DateTime"]["output"];
-  /** User that created this document */
-  createdBy?: Maybe<User>;
-  /** Operation description */
-  description?: Maybe<Scalars["String"]["output"]>;
-  /** Get the document in other stages */
-  documentInStages: Array<ScheduledOperation>;
-  /** Operation error message */
-  errorMessage?: Maybe<Scalars["String"]["output"]>;
-  /** The unique identifier */
-  id: Scalars["ID"]["output"];
-  /** The time the document was published. Null on documents in draft stage. */
-  publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
-  /** User that last published this document */
-  publishedBy?: Maybe<User>;
-  /** Raw operation payload including all details, this field is subject to change */
-  rawPayload: Scalars["Json"]["output"];
-  /** The release this operation is scheduled for */
-  release?: Maybe<ScheduledRelease>;
-  /** System stage field */
-  stage: Stage;
-  /** operation Status */
-  status: ScheduledOperationStatus;
-  /** The time the document was updated */
-  updatedAt: Scalars["DateTime"]["output"];
-  /** User that last updated this document */
-  updatedBy?: Maybe<User>;
-};
+export type ScheduledOperation = Entity &
+  Node & {
+    affectedDocuments: Array<ScheduledOperationAffectedDocument>;
+    /** The time the document was created */
+    createdAt: Scalars["DateTime"]["output"];
+    /** User that created this document */
+    createdBy?: Maybe<User>;
+    /** Operation description */
+    description?: Maybe<Scalars["String"]["output"]>;
+    /** Get the document in other stages */
+    documentInStages: Array<ScheduledOperation>;
+    /** Operation error message */
+    errorMessage?: Maybe<Scalars["String"]["output"]>;
+    /** The unique identifier */
+    id: Scalars["ID"]["output"];
+    /** The time the document was published. Null on documents in draft stage. */
+    publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
+    /** User that last published this document */
+    publishedBy?: Maybe<User>;
+    /** Raw operation payload including all details, this field is subject to change */
+    rawPayload: Scalars["Json"]["output"];
+    /** The release this operation is scheduled for */
+    release?: Maybe<ScheduledRelease>;
+    /** System stage field */
+    stage: Stage;
+    /** operation Status */
+    status: ScheduledOperationStatus;
+    /** The time the document was updated */
+    updatedAt: Scalars["DateTime"]["output"];
+    /** User that last updated this document */
+    updatedBy?: Maybe<User>;
+  };
 
 /** Scheduled Operation system model */
 export type ScheduledOperationAffectedDocumentsArgs = {
@@ -9678,42 +9690,43 @@ export type ScheduledOperationWhereUniqueInput = {
 };
 
 /** Scheduled Release system model */
-export type ScheduledRelease = Node & {
-  /** The time the document was created */
-  createdAt: Scalars["DateTime"]["output"];
-  /** User that created this document */
-  createdBy?: Maybe<User>;
-  /** Release description */
-  description?: Maybe<Scalars["String"]["output"]>;
-  /** Get the document in other stages */
-  documentInStages: Array<ScheduledRelease>;
-  /** Release error message */
-  errorMessage?: Maybe<Scalars["String"]["output"]>;
-  /** The unique identifier */
-  id: Scalars["ID"]["output"];
-  /** Whether scheduled release should be run */
-  isActive: Scalars["Boolean"]["output"];
-  /** Whether scheduled release is implicit */
-  isImplicit: Scalars["Boolean"]["output"];
-  /** Operations to run with this release */
-  operations: Array<ScheduledOperation>;
-  /** The time the document was published. Null on documents in draft stage. */
-  publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
-  /** User that last published this document */
-  publishedBy?: Maybe<User>;
-  /** Release date and time */
-  releaseAt?: Maybe<Scalars["DateTime"]["output"]>;
-  /** System stage field */
-  stage: Stage;
-  /** Release Status */
-  status: ScheduledReleaseStatus;
-  /** Release Title */
-  title?: Maybe<Scalars["String"]["output"]>;
-  /** The time the document was updated */
-  updatedAt: Scalars["DateTime"]["output"];
-  /** User that last updated this document */
-  updatedBy?: Maybe<User>;
-};
+export type ScheduledRelease = Entity &
+  Node & {
+    /** The time the document was created */
+    createdAt: Scalars["DateTime"]["output"];
+    /** User that created this document */
+    createdBy?: Maybe<User>;
+    /** Release description */
+    description?: Maybe<Scalars["String"]["output"]>;
+    /** Get the document in other stages */
+    documentInStages: Array<ScheduledRelease>;
+    /** Release error message */
+    errorMessage?: Maybe<Scalars["String"]["output"]>;
+    /** The unique identifier */
+    id: Scalars["ID"]["output"];
+    /** Whether scheduled release should be run */
+    isActive: Scalars["Boolean"]["output"];
+    /** Whether scheduled release is implicit */
+    isImplicit: Scalars["Boolean"]["output"];
+    /** Operations to run with this release */
+    operations: Array<ScheduledOperation>;
+    /** The time the document was published. Null on documents in draft stage. */
+    publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
+    /** User that last published this document */
+    publishedBy?: Maybe<User>;
+    /** Release date and time */
+    releaseAt?: Maybe<Scalars["DateTime"]["output"]>;
+    /** System stage field */
+    stage: Stage;
+    /** Release Status */
+    status: ScheduledReleaseStatus;
+    /** Release Title */
+    title?: Maybe<Scalars["String"]["output"]>;
+    /** The time the document was updated */
+    updatedAt: Scalars["DateTime"]["output"];
+    /** User that last updated this document */
+    updatedBy?: Maybe<User>;
+  };
 
 /** Scheduled Release system model */
 export type ScheduledReleaseCreatedByArgs = {
@@ -10303,28 +10316,29 @@ export type UnpublishLocaleInput = {
 };
 
 /** User system model */
-export type User = Node & {
-  /** The time the document was created */
-  createdAt: Scalars["DateTime"]["output"];
-  /** Get the document in other stages */
-  documentInStages: Array<User>;
-  /** The unique identifier */
-  id: Scalars["ID"]["output"];
-  /** Flag to determine if user is active or not */
-  isActive: Scalars["Boolean"]["output"];
-  /** User Kind. Can be either MEMBER, PAT or PUBLIC */
-  kind: UserKind;
-  /** The username */
-  name: Scalars["String"]["output"];
-  /** Profile Picture url */
-  picture?: Maybe<Scalars["String"]["output"]>;
-  /** The time the document was published. Null on documents in draft stage. */
-  publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
-  /** System stage field */
-  stage: Stage;
-  /** The time the document was updated */
-  updatedAt: Scalars["DateTime"]["output"];
-};
+export type User = Entity &
+  Node & {
+    /** The time the document was created */
+    createdAt: Scalars["DateTime"]["output"];
+    /** Get the document in other stages */
+    documentInStages: Array<User>;
+    /** The unique identifier */
+    id: Scalars["ID"]["output"];
+    /** Flag to determine if user is active or not */
+    isActive: Scalars["Boolean"]["output"];
+    /** User Kind. Can be either MEMBER, PAT or PUBLIC */
+    kind: UserKind;
+    /** The username */
+    name: Scalars["String"]["output"];
+    /** Profile Picture url */
+    picture?: Maybe<Scalars["String"]["output"]>;
+    /** The time the document was published. Null on documents in draft stage. */
+    publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
+    /** System stage field */
+    stage: Stage;
+    /** The time the document was updated */
+    updatedAt: Scalars["DateTime"]["output"];
+  };
 
 /** User system model */
 export type UserDocumentInStagesArgs = {
@@ -10800,6 +10814,23 @@ export enum _SystemDateTimeFieldVariation {
   Localization = "localization",
 }
 
+export type CreateAccountMutationVariables = Exact<{
+  email: Scalars["String"]["input"];
+  password: Scalars["String"]["input"];
+}>;
+
+export type CreateAccountMutation = {
+  createAccount?: { email: string; id: string } | null;
+};
+
+export type GetAccountByEmailQueryVariables = Exact<{
+  email: Scalars["String"]["input"];
+}>;
+
+export type GetAccountByEmailQuery = {
+  account?: { id: string; email: string; password: string } | null;
+};
+
 export type GetCategoriesQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetCategoriesQuery = {
@@ -10973,15 +11004,6 @@ export type GetProductBySlugQuery = {
   } | null;
 };
 
-export type CreateAccountMutationVariables = Exact<{
-  email: Scalars["String"]["input"];
-  password: Scalars["String"]["input"];
-}>;
-
-export type CreateAccountMutation = {
-  createAccount?: { email: string; id: string } | null;
-};
-
 export type GetDiscountCodesQueryVariables = Exact<{
   code: Scalars["String"]["input"];
   email: Scalars["String"]["input"];
@@ -10989,14 +11011,6 @@ export type GetDiscountCodesQueryVariables = Exact<{
 
 export type GetDiscountCodesQuery = {
   discountCodes: Array<{ code: string; discount: number; used: boolean }>;
-};
-
-export type GetAccountByEmailQueryVariables = Exact<{
-  email: Scalars["String"]["input"];
-}>;
-
-export type GetAccountByEmailQuery = {
-  account?: { id: string; email: string; password: string } | null;
 };
 
 export type GetProductsByIdsQueryVariables = Exact<{
@@ -11193,6 +11207,31 @@ export const ReviewProductFragmentDoc = new TypedDocumentString(
     `,
   { fragmentName: "ReviewProduct" },
 ) as unknown as TypedDocumentString<ReviewProductFragment, unknown>;
+export const CreateAccountDocument = new TypedDocumentString(`
+    mutation CreateAccount($email: String!, $password: String!) {
+  createAccount(
+    data: {email: $email, password: $password, discountCode: {create: {DiscountCode: {code: "START15", used: false, discount: 15}}}}
+  ) {
+    email
+    id
+  }
+}
+    `) as unknown as TypedDocumentString<
+  CreateAccountMutation,
+  CreateAccountMutationVariables
+>;
+export const GetAccountByEmailDocument = new TypedDocumentString(`
+    query GetAccountByEmail($email: String!) {
+  account(where: {email: $email}, stage: DRAFT) {
+    id
+    email
+    password
+  }
+}
+    `) as unknown as TypedDocumentString<
+  GetAccountByEmailQuery,
+  GetAccountByEmailQueryVariables
+>;
 export const GetCategoriesDocument = new TypedDocumentString(`
     query GetCategories {
   categories(orderBy: name_ASC) {
@@ -11389,19 +11428,6 @@ fragment Variant on ProductVariantType {
   GetProductBySlugQuery,
   GetProductBySlugQueryVariables
 >;
-export const CreateAccountDocument = new TypedDocumentString(`
-    mutation CreateAccount($email: String!, $password: String!) {
-  createAccount(
-    data: {email: $email, password: $password, discountCode: {create: {DiscountCode: {code: "START15", used: false, discount: 15}}}}
-  ) {
-    email
-    id
-  }
-}
-    `) as unknown as TypedDocumentString<
-  CreateAccountMutation,
-  CreateAccountMutationVariables
->;
 export const GetDiscountCodesDocument = new TypedDocumentString(`
     query GetDiscountCodes($code: String!, $email: String!) {
   discountCodes(
@@ -11416,18 +11442,6 @@ export const GetDiscountCodesDocument = new TypedDocumentString(`
     `) as unknown as TypedDocumentString<
   GetDiscountCodesQuery,
   GetDiscountCodesQueryVariables
->;
-export const GetAccountByEmailDocument = new TypedDocumentString(`
-    query GetAccountByEmail($email: String!) {
-  account(where: {email: $email}, stage: DRAFT) {
-    id
-    email
-    password
-  }
-}
-    `) as unknown as TypedDocumentString<
-  GetAccountByEmailQuery,
-  GetAccountByEmailQueryVariables
 >;
 export const GetProductsByIdsDocument = new TypedDocumentString(`
     query GetProductsByIds($productsId: [ID!]!) {

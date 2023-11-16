@@ -1,3 +1,4 @@
+"use client";
 import Clsx from "clsx";
 import React from "react";
 import { ErrorInInput } from "./ErrorInInput";

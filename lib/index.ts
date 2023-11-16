@@ -1,5 +1,6 @@
 import { getEnv } from "utils/utils";
 import {
+  GetAccountByEmailDocument,
   GetCategoriesDocument,
   GetProductBySlugDocument,
   GetProductReviewsBySlugDocument,
@@ -205,4 +206,23 @@ export async function getProductsByCategorySlug({
     numberOfPages: Math.round((skip + pageSize) / first),
     categoryName: categories[0].name,
   };
+}
+
+export async function getAccountByEmail(email: string) {
+  const authToken = getEnv(process.env.HYGRAPH_TOKEN, "HYGRAPH_TOKEN");
+  const data = await fetcher({
+    query: GetAccountByEmailDocument,
+    headers: {
+      Authorization: `Bearer ${authToken}`,
+    },
+    variables: {
+      email,
+    },
+  });
+
+  if (!data.account) {
+    throw new Error(`Account not found: ${email}`);
+  }
+
+  return data.account;
 }

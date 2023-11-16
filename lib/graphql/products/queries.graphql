@@ -34,21 +34,6 @@ query GetProductBySlug($slug: String) {
   }
 }
 
-mutation CreateAccount($email: String!, $password: String!) {
-  createAccount(
-    data: {
-      email: $email
-      password: $password
-      discountCode: {
-        create: { DiscountCode: { code: "START15", used: false, discount: 15 } }
-      }
-    }
-  ) {
-    email
-    id
-  }
-}
-
 query GetDiscountCodes($code: String!, $email: String!) {
   discountCodes(
     where: {
@@ -61,14 +46,6 @@ query GetDiscountCodes($code: String!, $email: String!) {
     code
     discount
     used
-  }
-}
-
-query GetAccountByEmail($email: String!) {
-  account(where: { email: $email }, stage: DRAFT) {
-    id
-    email
-    password
   }
 }
 
