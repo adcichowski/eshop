@@ -60,7 +60,7 @@ export function LoginForm({
         <div className="mt-3">
           <Action
             as="button"
-            disabled={Object.values(errors).length}
+            disabled={Boolean(Object.values(errors).length)}
             type="submit"
             data-testid="buttonLogin"
           >
