@@ -5,11 +5,11 @@
 // import { CreateAccountDocument } from "generated/graphql";
 // import * as Bcrypt from "bcrypt";
 
-import type { NextApiHandler } from "next";
 // import { defaultSchema } from "components/Forms/schemas/defaultSchema";
 import * as Yup from "yup";
 import { convertYupError } from "utils/errors";
-const handler: NextApiHandler = async (req, res) => {
+import { NextRequest, NextResponse } from "next/server";
+const handler = async (_req: NextRequest) => {
   if (process.env.HYGRAPH_TOKEN === undefined) {
     throw new Error("Problem to get hygraph token");
   }
@@ -28,15 +28,21 @@ const handler: NextApiHandler = async (req, res) => {
     //     password: hashedPassword,
     //   },
     // });
-    res.status(200).json({
-      // email: data?.createAccount?.email,
-      // id: data?.createAccount?.id,
-    });
+    return NextResponse.json(
+      {
+        // email: data?.createAccount?.email,
+        // id: data?.createAccount?.id,
+      },
+      { status: 200 },
+    );
   } catch (err) {
     if (err instanceof Yup.ValidationError) {
-      res.status(400).json(convertYupError(err));
+      return NextResponse.json(convertYupError(err), { status: 400 });
     }
-    res.status(404).json({ error: "Unknown error in signup!" });
+    return NextResponse.json(
+      { error: "Unknown error in signup!" },
+      { status: 404 },
+    );
   }
 };
 
