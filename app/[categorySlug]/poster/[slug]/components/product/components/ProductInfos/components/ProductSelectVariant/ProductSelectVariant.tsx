@@ -27,7 +27,7 @@ export function ProductSelectVariant({
       defaultHighlightedIndex: 0,
     });
 
-  const productHaveDiscount = sale !== null;
+  const productHaveDiscount = sale !== null && sale !== 0;
 
   return (
     <div className="z-10 bg-white">
@@ -81,16 +81,18 @@ export function ProductSelectVariant({
                 <div className="flex w-full items-center justify-between text-[0.8125rem]">
                   <div>{itemToString(item)}</div>
                   <div>
-                    <span
-                      className={`mr-1 text-[0.6875rem] ${clsx(
-                        sale && "line-through",
-                      )}`}
-                    >
-                      {changeValueCurrency(item?.price)}
-                    </span>
+                    {productHaveDiscount && (
+                      <span
+                        className={`mr-1 text-[0.6875rem] ${clsx(
+                          sale && "line-through",
+                        )}`}
+                      >
+                        {changeValueCurrency(item?.price)}
+                      </span>
+                    )}
 
                     <span className="text-sm">
-                      {sale && <SaleView price={item.price} sale={sale} />}
+                      <SaleView price={item.price} sale={sale} />
                     </span>
                   </div>
                 </div>
@@ -105,7 +107,7 @@ export function ProductSelectVariant({
 function itemToString(item: ProductVariant | null) {
   if (item && Object.values(item).some((itemAttr) => itemAttr === undefined))
     return "";
-  return item ? `${item.width} x ${item.height} cm` : "";
+  return item ? `${item.width} cm x ${item.height} cm` : "";
 }
 
 const SaleView = ({
