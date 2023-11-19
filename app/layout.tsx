@@ -1,6 +1,6 @@
 import { ProviderContext } from "context/ProviderContext";
 import React from "react";
-import { Montserrat } from "next/font/google";
+import { Inter } from "next/font/google";
 import "../public/globals.css";
 import "swiper/css/bundle";
 import { Header } from "components/Header/Header";
@@ -10,7 +10,7 @@ import { getFavoriteProducts } from "lib/actions/favorite";
 import { getCartProducts } from "lib/actions/cart";
 import { Footer } from "components/Footer/Footer";
 
-const montserrat = Montserrat({
+const montserrat = Inter({
   subsets: ["latin"],
   display: "swap",
 });
