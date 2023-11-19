@@ -1,5 +1,6 @@
 import { uniqId } from "utils/utils";
 import { ToastStateType } from "./ToastContext";
+import { PARAM_GET_TOAST, TOAST_FROM_PARAM } from "./constants";
 
 export const MAX_RENDER_TOASTS = 4;
 
@@ -17,3 +18,6 @@ export const addToastToList = (
 export const removeToastFromList = (id: string, toasts: ToastStateType[]) => {
   return toasts.filter((toast) => toast.id !== id);
 };
+
+export const generateUrlForToast = (type: keyof typeof TOAST_FROM_PARAM) =>
+  `/?${PARAM_GET_TOAST}=${type}`;

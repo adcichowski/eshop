@@ -6,6 +6,7 @@ import { objectKeys } from "utils/utils";
 import { loginAccountSchema } from "../schemas/loginAccountSchema";
 import { useForm } from "../useForm";
 import { Action } from "components/Action/Action";
+import { generateUrlForToast } from "context/ToastContext/utilsToast";
 
 const fields = {
   email: { text: "Email:", type: "email" },
@@ -27,7 +28,10 @@ export function LoginForm({
     e?: React.BaseSyntheticEvent,
   ) => {
     e?.preventDefault();
-    await signIn("credentials", data);
+    await signIn("credentials", {
+      ...data,
+      callbackUrl: generateUrlForToast("LOG_IN_SUCCESS"),
+    });
   };
   useEffect(() => {
     if (isErrorInForm) {
