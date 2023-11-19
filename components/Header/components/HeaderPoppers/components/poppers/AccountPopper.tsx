@@ -19,7 +19,7 @@ const Unauthenticated = () => (
     <Action as="link" href={"/account"}>
       <span className="whitespace-nowrap">Log in</span>
     </Action>
-    <div className="line text-sm leading-6">
+    <div className="line text-sm mt-2 leading-6">
       Are you here for the first time?
     </div>
     <Link href="/account">
