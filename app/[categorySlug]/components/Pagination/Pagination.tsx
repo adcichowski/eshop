@@ -2,7 +2,6 @@ import clsx from "clsx";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { getPaginationPages } from "./utils/utils";
 import Link, { LinkProps } from "next/link";
-import { Separator } from "components/Separator/Separator";
 
 export const Pagination = ({
   checkedCurrentPage,
