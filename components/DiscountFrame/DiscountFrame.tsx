@@ -1,7 +1,7 @@
 const variants = {
   big: "px-8 py-2 font-semibold",
   standard: "px-4 py-1",
-  small: "px-2 py-[3px] text-sm",
+  small: "px-[5px] py-[2px] text-xs",
 } as const;
 
 export const DiscountFrame = ({
