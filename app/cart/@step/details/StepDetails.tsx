@@ -9,8 +9,6 @@ export type StepDetailsType = {
   discount?: number;
 };
 export function StepDetails() {
-  // const { handleSetProducts } = useOrderFormContext();
-
   return (
     <form noValidate>
       <SummaryTableCart />
@@ -19,7 +17,7 @@ export function StepDetails() {
         <div className="grow md:max-w-md">
           <DetailsOrder />
           <div className="mt-2">
-            <Action as="button">
+            <Action fullWidth as="button">
               <div className="px-1 py-1 text-sm">Set Delivery</div>
             </Action>
           </div>

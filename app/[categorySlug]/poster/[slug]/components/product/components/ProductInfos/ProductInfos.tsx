@@ -1,7 +1,6 @@
 "use client";
 import clsx from "clsx";
 import { DiscountFrame } from "components/DiscountFrame/DiscountFrame";
-// import { FavoriteInput } from "components/Inputs/FavoriteInput";
 import { useInputAmountProduct } from "hooks/useInputAmountProduct";
 import React from "react";
 import ProductQuantityInput from "./components/ProductQuantityInput";
