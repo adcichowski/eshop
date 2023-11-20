@@ -9,7 +9,7 @@ import { baseUrl } from "../constants";
 import { getFavoriteProducts } from "lib/actions/favorite";
 import { getCartProducts } from "lib/actions/cart";
 import { Footer } from "components/Footer/Footer";
-
+import { Analytics } from "@vercel/analytics/react";
 const montserrat = Inter({
   subsets: ["latin"],
   display: "swap",
@@ -60,6 +60,7 @@ export default function GlobalLayout({ children }: { children: JSX.Element }) {
           </main>
           <Footer />
           <div id="__next" />
+          <Analytics />
         </body>
       </ProviderContext>
     </html>
