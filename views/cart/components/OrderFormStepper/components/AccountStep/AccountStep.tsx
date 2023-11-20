@@ -1,7 +1,6 @@
 import { Action } from "components/Action/Action";
 import { Checkbox } from "components/Inputs/components/Checkbox";
 import { Input } from "components/Inputs/components/Input";
-import { useState } from "react";
 import FormAccountWrapper from "./components/FormAccountWrapper";
 import { HeaderInStep } from "app/cart/components/HeaderInStep";
 
