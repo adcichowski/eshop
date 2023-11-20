@@ -1,6 +1,6 @@
 import { ProviderContext } from "context/ProviderContext";
 import React from "react";
-import { Montserrat } from "next/font/google";
+import { Inter } from "next/font/google";
 import "../public/globals.css";
 import "swiper/css/bundle";
 import { Header } from "components/Header/Header";
@@ -9,8 +9,8 @@ import { baseUrl } from "../constants";
 import { getFavoriteProducts } from "lib/actions/favorite";
 import { getCartProducts } from "lib/actions/cart";
 import { Footer } from "components/Footer/Footer";
-
-const montserrat = Montserrat({
+import { Analytics } from "@vercel/analytics/react";
+const montserrat = Inter({
   subsets: ["latin"],
   display: "swap",
 });
@@ -60,6 +60,7 @@ export default function GlobalLayout({ children }: { children: JSX.Element }) {
           </main>
           <Footer />
           <div id="__next" />
+          <Analytics />
         </body>
       </ProviderContext>
     </html>

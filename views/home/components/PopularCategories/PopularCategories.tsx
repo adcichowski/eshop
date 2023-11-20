@@ -10,7 +10,7 @@ export function PopularCategories() {
         Popular Categories
       </h2>
       <ul className="sm:grid-cols-2 mx-3 max-w-7xl md:grid-cols-3 justify-center gap-2 grid xl:gap-6">
-        {pictures.map(({ alt, src }, i) => {
+        {pictures.map(({ alt, src, href }, i) => {
           const shouldBeBiggest = i % 3 === 0;
           return (
             <li
@@ -18,12 +18,11 @@ export function PopularCategories() {
               className={clsx(shouldBeBiggest && "col-span-2 row-span-2")}
             >
               <Link
-                href={"/"}
+                href={href}
                 className="group group-focus:outline-1  outline-primary"
               >
                 <figure className="relative w-full overflow-hidden">
                   <Image
-                    // placeholder="blur"
                     width={350}
                     height={300}
                     className="w-full object-contain filter drop-shadow-md group-hover:brightness-75 group-focus:brightness-75 animate-in group-hover:scale-110 group-focus:scale-110 duration-500"

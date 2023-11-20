@@ -1,5 +1,6 @@
 import { getEnv } from "utils/utils";
 import {
+  CreateAccountDocument,
   GetAccountByEmailDocument,
   GetCategoriesDocument,
   GetProductBySlugDocument,
@@ -15,6 +16,7 @@ import {
   reshapeProductDetails,
   reshapeProductReviews,
 } from "./mappers";
+import { ADMIN_AUTH_TOKEN } from "../constants";
 export * from "./hygraph/generated/gql";
 
 type GraphQlError = {
@@ -209,11 +211,10 @@ export async function getProductsByCategorySlug({
 }
 
 export async function getAccountByEmail(email: string) {
-  const authToken = getEnv(process.env.HYGRAPH_TOKEN, "HYGRAPH_TOKEN");
   const data = await fetcher({
     query: GetAccountByEmailDocument,
     headers: {
-      Authorization: `Bearer ${authToken}`,
+      Authorization: `Bearer ${ADMIN_AUTH_TOKEN}`,
     },
     variables: {
       email,
@@ -225,4 +226,28 @@ export async function getAccountByEmail(email: string) {
   }
 
   return data.account;
+}
+
+export async function createAccount({
+  email,
+  password,
+}: {
+  email: string;
+  password: string;
+}) {
+  const data = await fetcher({
+    query: CreateAccountDocument,
+    headers: {
+      Authorization: `Bearer ${ADMIN_AUTH_TOKEN}`,
+    },
+    variables: {
+      email,
+      password,
+    },
+  });
+  const account = data.createAccount;
+  if (!account) {
+    throw new Error(`Problem while creating account with ${email}`);
+  }
+  return account;
 }

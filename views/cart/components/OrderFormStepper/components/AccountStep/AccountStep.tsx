@@ -1,17 +1,16 @@
 import { Action } from "components/Action/Action";
 import { Checkbox } from "components/Inputs/components/Checkbox";
 import { Input } from "components/Inputs/components/Input";
-import React, { useState } from "react";
 import FormAccountWrapper from "./components/FormAccountWrapper";
 import { HeaderInStep } from "app/cart/components/HeaderInStep";
 
-export default function AccountStep() {
+export function AccountStep() {
   const benefitsInfo = [
     "10% discount on first purchases for new users",
     "the possibility of receiving discounts and promotional coupons",
     "preview of order fulfillment status",
   ];
-  const [wantAccount, setWantAccount] = useState(false);
+  // const [wantAccount, setWantAccount] = useState(false);
   return (
     <HeaderInStep header="Your personal data">
       <div className="grid gap-x-5 gap-y-5 md:grid-cols-3">
@@ -25,9 +24,9 @@ export default function AccountStep() {
                 type="password"
                 text="Password:"
               />
-              <Action as="button" onClick={() => {}}>
+              {/* <Action as="button" onClick={() => {}}>
                 Log in
-              </Action>
+              </Action> */}
             </>
           </FormAccountWrapper>
         </div>
@@ -63,7 +62,7 @@ export default function AccountStep() {
                   </div>
                   <Input id="City" text="City:" />
                 </RowInputs>
-                <Checkbox
+                {/* <Checkbox
                   checked={wantAccount}
                   onClick={() => setWantAccount((prev) => !prev)}
                   text="I want create account in shop"
@@ -76,7 +75,7 @@ export default function AccountStep() {
                   </RowInputs>
                 ) : (
                   <></>
-                )}
+                )} */}
                 <Checkbox
                   id="acceptTerm"
                   text="*I accept the terms and conditions of the service and have read the information regarding my personal data below."
@@ -89,9 +88,9 @@ export default function AccountStep() {
               <Action as="button">Sign up</Action>
             </>
           </FormAccountWrapper>
-          <Action as="button" onClick={() => {}}>
+          {/* <Action as="button" onClick={() => {}}>
             Set Delivery
-          </Action>
+          </Action> */}
         </div>
       </div>
     </HeaderInStep>

@@ -1,5 +1,6 @@
 import { Action } from "components/Action/Action";
 import { SpinIcon } from "components/Skeleton/SpinIcon";
+import { generateUrlForToast } from "context/ToastContext/utilsToast";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 
@@ -19,7 +20,7 @@ const Unauthenticated = () => (
     <Action as="link" href={"/account"}>
       <span className="whitespace-nowrap">Log in</span>
     </Action>
-    <div className="line text-sm leading-6">
+    <div className="line text-sm mt-2 leading-6">
       Are you here for the first time?
     </div>
     <Link href="/account">
@@ -30,7 +31,14 @@ const Unauthenticated = () => (
 
 const Authenticated = () => (
   <>
-    <Action as="button" onClick={() => signOut()}>
+    <Action
+      as="button"
+      onClick={() =>
+        signOut({
+          callbackUrl: generateUrlForToast("SIGN_OUT"),
+        })
+      }
+    >
       <span className="whitespace-nowrap">Log out</span>
     </Action>
     <div className="line text-sm leading-6">

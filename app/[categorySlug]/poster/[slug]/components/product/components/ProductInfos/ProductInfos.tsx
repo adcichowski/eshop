@@ -1,7 +1,6 @@
 "use client";
 import clsx from "clsx";
 import { DiscountFrame } from "components/DiscountFrame/DiscountFrame";
-// import { FavoriteInput } from "components/Inputs/FavoriteInput";
 import { useInputAmountProduct } from "hooks/useInputAmountProduct";
 import React from "react";
 import ProductQuantityInput from "./components/ProductQuantityInput";
@@ -9,9 +8,9 @@ import { ProductAttributes } from "./components/ProductAttributes";
 import { useSelectVariant } from "./components/ProductSelectVariant/hooks/useSelectVariant";
 import { ProductPageProps } from "../../ProductPage";
 import { ProductSelectVariant } from "./components/ProductSelectVariant/ProductSelectVariant";
-import { Action } from "components/Action/Action";
 import { FavoriteInput } from "components/Inputs/FavoriteInput";
 import { ProductPrice } from "./components/ProductPrice";
+import { AddProductAction } from "./components/AddProductAction";
 
 export function ProductInfos({ product }: { product: ProductPageProps }) {
   const inputAmountProps = useInputAmountProduct();
@@ -65,29 +64,18 @@ export function ProductInfos({ product }: { product: ProductPageProps }) {
       </span>
 
       <div className="mt-4 flex items-stretch gap-1">
-        <Action
-          fullWidth
-          as="button"
-          data-outside="false"
-          // onClick={() => {
-          //   addProduct({
-          //     sale: product.attributes.sale,
-          //     whiteFrame: product.attributes.whiteFrame,
-          //     variant: {
-          //       width: selectedVariant.width,
-          //       height: selectedVariant.height,
-          //       id: selectedVariant.id,
-          //     },
-          //     id: product.id,
-          //     title: product.name,
-          //     price: selectedVariant.price,
-          //     image: product.image,
-          //     amount: Number(inputAmountProps.value),
-          //   });
-          // }}
-        >
-          <div className="text-base">To Cart</div>
-        </Action>
+        <AddProductAction
+          product={{
+            whiteFrame: product.attributes.whiteFrame,
+            amount: 1,
+            id: product.id,
+            price: selectedVariant.price,
+            sale: product.attributes.sale,
+            image: product.image,
+            variant: selectedVariant,
+            title: `${product.name} ${selectedVariant.width} cm x ${selectedVariant.height} cm`,
+          }}
+        />
         <div className="relative cursor-pointer border-[1px] border-black p-4">
           <FavoriteInput product={favoriteInputProps} />
         </div>

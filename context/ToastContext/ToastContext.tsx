@@ -5,8 +5,9 @@ import {
   useContext,
   useState,
 } from "react";
-import type { ToastTypes } from "./constants";
+import { type ToastTypes } from "./constants";
 import { addToastToList, removeToastFromList } from "./utilsToast";
+import useToastFromParams from "./hooks/useToastFromParams";
 
 type ToastContextType = {
   readonly removeToast: (id: string) => void;
@@ -26,7 +27,8 @@ export const ToastProvider = ({
 }: {
   readonly children: React.ReactNode;
 }) => {
-  const [toasts, setToasts] = useState<ToastStateType[]>([]);
+  const toastsFromUrl = useToastFromParams();
+  const [toasts, setToasts] = useState<ToastStateType[]>(toastsFromUrl);
 
   return (
     <ToastContext.Provider

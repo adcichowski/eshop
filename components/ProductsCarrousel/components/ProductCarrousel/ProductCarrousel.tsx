@@ -8,6 +8,7 @@ import { changeValueCurrency } from "utils/utils";
 import { ProductCarrouselPropsType } from "components/ProductsCarrousel/types";
 import { runCartAction } from "lib/actions/cart";
 import { useToastContext } from "context/ToastContext/ToastContext";
+import { DiscountFrame } from "components/DiscountFrame/DiscountFrame";
 
 export const ProductCarrousel = (product: ProductCarrouselPropsType) => {
   const { addToast } = useToastContext();
@@ -20,7 +21,15 @@ export const ProductCarrousel = (product: ProductCarrouselPropsType) => {
     favorite: product.favorite,
   };
   return (
-    <article aria-labelledby={product.name}>
+    <article aria-labelledby={product.name} className="relative">
+      <div
+        className={`absolute right-2 top-2 ${clsx(
+          product.orientation === "Horizontal" && "top-20",
+        )}`}
+      >
+        <DiscountFrame sale={product.sale} size="small" />
+      </div>
+
       <div
         className={`flex h-48 items-center justify-center overflow-hidden object-center md:h-72`}
       >

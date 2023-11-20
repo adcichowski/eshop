@@ -1,6 +1,5 @@
 import { Categories } from "components/Categories/Categories";
 import { ProductCarrousel } from "components/ProductsCarrousel/components/ProductCarrousel/ProductCarrousel";
-import { Separator } from "components/Separator/Separator";
 import { getProductsByCategorySlug } from "lib";
 import { getFavoriteProducts } from "lib/actions/favorite";
 import { SIZE_PAGINATION_NUMBER } from "./Pagination/utils/utils";
@@ -52,13 +51,11 @@ export async function CategoryPage({
           <p className="text-center mt-8 text-lg">Not found any products</p>
         )}
       </section>
-      <div className="col-span-2 w-full my-8">
-        <Separator orientation="horizontal" className="w-full" />
-        <Pagination
-          pageSize={numberOfPages}
-          checkedCurrentPage={Number(currentPage)}
-        />
-      </div>
+
+      <Pagination
+        pageSize={numberOfPages}
+        checkedCurrentPage={Number(currentPage)}
+      />
     </section>
   );
 }
