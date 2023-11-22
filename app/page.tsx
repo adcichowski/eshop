@@ -3,7 +3,7 @@ import { ProductsCarrouselServer } from "components/ProductsCarrousel/ProductsCa
 import React from "react";
 import { PopularCategories } from "views/home/components/PopularCategories/PopularCategories";
 import { RoomsCarrousel } from "views/home/components/RoomsCarrousel";
-const Home = async () => {
+const Home = () => {
   return (
     <div className="flex flex-col">
       <RoomsCarrousel />

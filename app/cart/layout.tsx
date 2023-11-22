@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getCartProducts } from "lib/actions/cart";
+import { ProviderOrderContext } from "context/OrderContext/ProviderOrderContext";
 export default function Layout(props: { step: React.ReactNode }) {
   const data = getCartProducts();
   if (!data?.cart || !data.cart.length) {
@@ -27,5 +28,9 @@ export default function Layout(props: { step: React.ReactNode }) {
       </section>
     );
   }
-  return <div className="m-2 md:mx-16">{props.step}</div>;
+  return (
+    <ProviderOrderContext>
+      <div className="m-2 md:mx-8">{props.step}</div>
+    </ProviderOrderContext>
+  );
 }

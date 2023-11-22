@@ -11,7 +11,7 @@ export type FavoriteProduct = {
   name: string;
 };
 
-export const favoriteProductAction = async (product: FavoriteProduct) => {
+export const favoriteProductAction = (product: FavoriteProduct) => {
   const favorite = getFavoriteProducts();
   const actionOnFavorite = manageFavoriteList(product, favorite?.products);
 

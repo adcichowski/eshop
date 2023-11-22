@@ -46,6 +46,7 @@
     }
   ],
   "rules": {
+    "require-await": "error",
     "import/order": "off",
     "no-console": "warn",
     "@typescript-eslint/no-floating-promises": "off",

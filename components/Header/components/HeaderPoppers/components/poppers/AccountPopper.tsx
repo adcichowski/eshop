@@ -8,7 +8,11 @@ export function AccountPopper() {
   const { status } = useSession();
   return (
     <div className="flex w-full flex-col px-14 text-center py-4">
-      {status === "loading" && <SpinIcon size="normal" />}
+      {status === "loading" && (
+        <div className="mx-auto">
+          <SpinIcon size="normal" />
+        </div>
+      )}
       {status === "authenticated" && <Authenticated />}
       {status === "unauthenticated" && <Unauthenticated />}
     </div>
@@ -35,7 +39,7 @@ const Authenticated = () => (
       as="button"
       onClick={() =>
         signOut({
-          callbackUrl: generateUrlForToast("SIGN_OUT"),
+          callbackUrl: generateUrlForToast("/", "SIGN_OUT"),
         })
       }
     >

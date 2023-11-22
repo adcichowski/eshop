@@ -29,7 +29,7 @@ describe("<ToastContext>", () => {
     const randomNumberToasts = randomInt(1, 3);
     const notifications = addToastToList(
       setup().initialToasts(randomNumberToasts),
-      setup().toast
+      setup().toast,
     );
 
     expect(notifications.length).toBe(randomNumberToasts + 1);

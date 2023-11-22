@@ -19,7 +19,7 @@ export function ShippingStep() {
   // }
   // }, [order?.products]);
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     // if (!account || !orderProducts) return;
     // const data = await mutateAsync({

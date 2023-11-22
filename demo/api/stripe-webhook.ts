@@ -4,7 +4,7 @@ import { NextApiHandler, PageConfig } from "next";
 // import { Readable } from "stream";
 // import { Stripe } from "stripe";
 
-const handler: NextApiHandler = async (_req, res) => {
+const handler: NextApiHandler = (_req, res) => {
   // try {
   //   const stripeKey = getEnv(
   //     process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,

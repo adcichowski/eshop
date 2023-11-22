@@ -5,7 +5,7 @@ import { jsonParse } from "utils/utils";
 
 const MAX_NUMBER_RECENTLY_VIEWED_PRODUCTS = 10;
 
-export async function GET() {
+export function GET() {
   const recentlyView = getRecentlyViewedProducts();
   return NextResponse.json({
     status: 200,

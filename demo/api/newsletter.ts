@@ -28,11 +28,11 @@ const handler: NextApiHandler = async (req, res) => {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_MAILERLITE}`,
       },
       body: JSON.stringify(req.body),
-    }
+    },
   );
   try {
     const { data } = schemaResponseMailerLite.validateSync(
-      await response.json()
+      await response.json(),
     );
     const { email, id, status } = data;
     return res
@@ -40,7 +40,7 @@ const handler: NextApiHandler = async (req, res) => {
         "Set-Cookie",
         serialize("ML", "1", {
           path: "/",
-        })
+        }),
       )
       .status(200)
       .json({ email, id, status });
