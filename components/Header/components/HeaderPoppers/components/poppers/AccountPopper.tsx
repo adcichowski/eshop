@@ -39,7 +39,7 @@ const Authenticated = () => (
       as="button"
       onClick={() =>
         signOut({
-          callbackUrl: generateUrlForToast("SIGN_OUT"),
+          callbackUrl: generateUrlForToast("/", "SIGN_OUT"),
         })
       }
     >
