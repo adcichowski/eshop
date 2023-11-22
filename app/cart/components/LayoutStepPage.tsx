@@ -9,7 +9,7 @@ export function LayoutStepPage({
   step: StepsInForm;
 }) {
   return (
-    <div className="m-2 md:mx-16">
+    <div className="m-2 md:mx-8">
       <NavigationCart step={step} />
       <aside className="mt-[30px] w-full bg-green-100 px-2 py-5 text-center text-sm md:text-base">
         Will you give it a try?

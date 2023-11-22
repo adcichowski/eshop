@@ -10,7 +10,7 @@ import { generateUrlForToast } from "context/ToastContext/utilsToast";
 
 const fields = {
   email: { text: "Email:", type: "email" },
-  password: { text: "Hasło:", type: "password" },
+  password: { text: "Password:", type: "password" },
 };
 
 export function LoginForm({
@@ -30,7 +30,7 @@ export function LoginForm({
     e?.preventDefault();
     await signIn("credentials", {
       ...data,
-      callbackUrl: generateUrlForToast("LOG_IN_SUCCESS"),
+      callbackUrl: generateUrlForToast("/", "LOG_IN_SUCCESS"),
     });
   };
   useEffect(() => {

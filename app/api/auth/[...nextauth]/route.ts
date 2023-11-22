@@ -1,8 +1,8 @@
 import CredentialsProvider from "next-auth/providers/credentials";
-import NextAuth from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import bcrypt from "bcrypt";
 import { getAccountByEmail } from "lib";
-const handler = NextAuth({
+const authOptions = {
   secret: process.env.AUTH_SECRET,
   providers: [
     CredentialsProvider({
@@ -28,6 +28,8 @@ const handler = NextAuth({
     }),
   ],
   pages: { signIn: "/account" },
-});
+} satisfies NextAuthOptions;
 
-export { handler as GET, handler as POST };
+const handler = NextAuth(authOptions);
+
+export { handler as GET, handler as POST, authOptions };

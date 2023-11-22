@@ -19,5 +19,7 @@ export const removeToastFromList = (id: string, toasts: ToastStateType[]) => {
   return toasts.filter((toast) => toast.id !== id);
 };
 
-export const generateUrlForToast = (type: keyof typeof TOAST_FROM_PARAM) =>
-  `/?${PARAM_GET_TOAST}=${type}`;
+export const generateUrlForToast = (
+  url: string,
+  type: keyof typeof TOAST_FROM_PARAM,
+) => `${url}?${PARAM_GET_TOAST}=${type}`;

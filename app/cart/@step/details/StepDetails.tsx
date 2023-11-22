@@ -16,9 +16,9 @@ export function StepDetails() {
         <DiscountCodeInput />
         <div className="grow md:max-w-md">
           <DetailsOrder />
-          <div className="mt-2">
-            <Action fullWidth as="button">
-              <div className="px-1 py-1 text-sm">Set Delivery</div>
+          <div className="mt-2 flex items-stretch text-center">
+            <Action fullWidth as="link" href="/cart/account">
+              <div className="text-sm py-2">Set Delivery</div>
             </Action>
           </div>
         </div>
