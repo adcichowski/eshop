@@ -8,24 +8,72 @@ import { RowInputs } from "../RowInputs";
 import { Input } from "components/Inputs/components/Input";
 import { Session } from "next-auth";
 import { useForm } from "components/Forms/useForm";
-import { detailsDeliverySchema } from "components/Forms/schemas/detailsDeliverySchema";
-import * as Yup from "yup";
+import {
+  DetailsDeliverySchemaWithAccountType,
+  DetailsDeliverySchemaWithoutAccountType,
+  detailsDeliverySchemaWithAccount,
+  detailsDeliverySchemaWithoutAccount,
+} from "components/Forms/schemas/detailsDeliverySchema";
+import { useOrderContext } from "context/OrderContext/OrderContext";
+import { useRouter } from "next/navigation";
+import { generateUrlForToast } from "context/ToastContext/utilsToast";
+
 const benefitsInfo = [
   "10% discount on first purchases for new users",
   "the possibility of receiving discounts and promotional coupons",
-  "preview of order fulfillment status",
+  "preview of orderx fulfillment status",
 ];
 
 export function FormDetailsDelivery({ session }: { session: Session | null }) {
+  const { push, replace } = useRouter();
+  const { setPersonData } = useOrderContext();
   const [wantAccount, setWantAccount] = useState(false);
 
-  const { register, errors, handleSubmit } = useForm(detailsDeliverySchema);
+  const { register, errors, handleSubmit } = useForm<
+    | DetailsDeliverySchemaWithAccountType
+    | DetailsDeliverySchemaWithoutAccountType
+  >(
+    wantAccount
+      ? detailsDeliverySchemaWithAccount
+      : detailsDeliverySchemaWithoutAccount,
+  );
 
-  const onSubmit = (
-    _data: Yup.InferType<typeof detailsDeliverySchema>,
+  const onSubmit = async (
+    data:
+      | DetailsDeliverySchemaWithAccountType
+      | DetailsDeliverySchemaWithoutAccountType,
     e?: React.BaseSyntheticEvent,
   ) => {
     e?.preventDefault();
+
+    if ("emailOrder" in data) {
+      setPersonData({ ...data, email: data.emailOrder });
+
+      const res = await fetch("/api/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: data.emailOrder,
+          password: data.newPassword,
+        }),
+      });
+
+      if (!res.ok) {
+        return replace(generateUrlForToast("/cart/shipping", "REGISTER_ERROR"));
+      }
+
+      return push(generateUrlForToast("/cart/shipping", "REGISTER_SUCCESS"));
+    }
+
+    if (session?.user.email) {
+      setPersonData({
+        ...data,
+        email: session.user.email,
+      });
+    }
+    push("/cart/shipping");
   };
 
   return (
@@ -51,7 +99,9 @@ export function FormDetailsDelivery({ session }: { session: Session | null }) {
             <div className="flex flex-col gap-y-3 mb-5">
               {!session && (
                 <Input
-                  error={errors.emailOrder?.message}
+                  error={
+                    "emailOrder" in errors ? errors?.emailOrder?.message : ""
+                  }
                   {...register("emailOrder")}
                   id="emailOrder"
                   text="Email:"
@@ -99,16 +149,41 @@ export function FormDetailsDelivery({ session }: { session: Session | null }) {
                   text="City:"
                 />
               </RowInputs>
-              <Checkbox
-                checked={wantAccount}
-                onClick={() => setWantAccount((prev) => !prev)}
-                text="I want create account in shop"
-                id="createAccount"
-              />
-              <RowInputs>
-                <Input id="newPassword" text="Password:" />
-                <Input id="newPasswordRepeat" text="Repeat Password:" />
-              </RowInputs>
+
+              <>
+                {!session && (
+                  <Checkbox
+                    checked={wantAccount}
+                    onClick={() => setWantAccount((prev) => !prev)}
+                    text="I want create account in shop"
+                    id="createAccount"
+                  />
+                )}
+                {wantAccount && (
+                  <RowInputs>
+                    <Input
+                      id="newPassword"
+                      {...register("newPassword")}
+                      error={
+                        "newPassword" in errors
+                          ? errors?.newPassword?.message
+                          : ""
+                      }
+                      text="Password:"
+                    />
+                    <Input
+                      error={
+                        "newPassword" in errors
+                          ? errors?.repeatedNewPassword?.message
+                          : ""
+                      }
+                      {...register("repeatedNewPassword")}
+                      id="repeatedNewPassword"
+                      text="Repeat Password:"
+                    />
+                  </RowInputs>
+                )}
+              </>
               <Checkbox
                 error={errors.acceptTerm?.message}
                 {...register("acceptTerm")}

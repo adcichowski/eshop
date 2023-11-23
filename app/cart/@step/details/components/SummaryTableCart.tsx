@@ -36,8 +36,7 @@ export default function SummaryTableCart() {
                       height={140}
                     />
                     <figcaption className="mt-1 sm:mt-0">
-                      {`${product.title} ${product.variant.width}cm x
-                      ${product.variant.height}cm`}
+                      {product.title}
                     </figcaption>
                   </figure>
                   <div className="flex items-center gap-x-6 sm:justify-end">

@@ -43,9 +43,11 @@ export function LoginFormAccount() {
             type="password"
             text="Password:"
           />
-          <Action as="button" fullWidth type="submit">
-            <div className="py-1 text-base"> Sign up</div>
-          </Action>
+          <div className="mt-4">
+            <Action as="button" fullWidth type="submit">
+              <div className="py-1 text-base"> Sign up</div>
+            </Action>
+          </div>
         </form>
       </FormAccountWrapper>
     </div>

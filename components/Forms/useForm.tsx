@@ -9,7 +9,7 @@ export function useForm<TFieldValues extends FieldValues>(
     register,
     handleSubmit,
     formState,
-    formState: { errors, isValid, isDirty },
+    formState: { errors, isValid, isDirty, defaultValues },
     watch,
     control,
     ...rest
@@ -22,6 +22,7 @@ export function useForm<TFieldValues extends FieldValues>(
     handleSubmit,
     errors,
     isDirty,
+    defaultValues,
     isValid,
     watch,
     control,

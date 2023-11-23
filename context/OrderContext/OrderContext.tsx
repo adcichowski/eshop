@@ -7,8 +7,8 @@ type OrderContext = {
 };
 export type PersonDataType = {
   email: string;
-  phone: string;
-  name: string;
+  phoneNumber: string;
+  firstName: string;
   lastName: string;
   street: string;
   postalCode: string;

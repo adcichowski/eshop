@@ -28,7 +28,7 @@ export const Input = React.forwardRef<
       <input
         {...props}
         ref={ref}
-        className={`border-gray border border-gray-400 ${Clsx(
+        className={`border-gray border border-gray-400 focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50 ${Clsx(
           error && "border-red-200 bg-red-100",
         )} ${variants[size].input} ${props.className}`}
       />
