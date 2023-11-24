@@ -9,10 +9,14 @@ import { Input } from "components/Inputs/components/Input";
 import { Session } from "next-auth";
 import { useForm } from "components/Forms/useForm";
 import {
-  DetailsDeliverySchemaWithAccountType,
-  DetailsDeliverySchemaWithoutAccountType,
-  detailsDeliverySchemaWithAccount,
-  detailsDeliverySchemaWithoutAccount,
+  shippingAsGuest,
+  shippingLoggedUser,
+  shippingWithRegistration,
+} from "components/Forms/schemas/detailsDeliverySchema";
+import type {
+  ShippingAsGuestType,
+  ShippingLoggedUserType,
+  ShippingWithRegistrationType,
 } from "components/Forms/schemas/detailsDeliverySchema";
 import { useOrderContext } from "context/OrderContext/OrderContext";
 import { useRouter } from "next/navigation";
@@ -25,28 +29,30 @@ const benefitsInfo = [
 ];
 
 export function FormDetailsDelivery({ session }: { session: Session | null }) {
-  const { push, replace } = useRouter();
+  const { push } = useRouter();
   const { setPersonData } = useOrderContext();
   const [wantAccount, setWantAccount] = useState(false);
-
   const { register, errors, handleSubmit } = useForm<
-    | DetailsDeliverySchemaWithAccountType
-    | DetailsDeliverySchemaWithoutAccountType
+    ShippingAsGuestType | ShippingLoggedUserType | ShippingWithRegistrationType
   >(
-    wantAccount
-      ? detailsDeliverySchemaWithAccount
-      : detailsDeliverySchemaWithoutAccount,
+    session
+      ? shippingLoggedUser
+      : wantAccount
+      ? shippingWithRegistration
+      : shippingAsGuest,
   );
 
+  console.log(errors);
   const onSubmit = async (
     data:
-      | DetailsDeliverySchemaWithAccountType
-      | DetailsDeliverySchemaWithoutAccountType,
+      | ShippingAsGuestType
+      | ShippingLoggedUserType
+      | ShippingWithRegistrationType,
     e?: React.BaseSyntheticEvent,
   ) => {
     e?.preventDefault();
 
-    if ("emailOrder" in data) {
+    if ("emailOrder" in data && "newPassword" in data && wantAccount) {
       setPersonData({ ...data, email: data.emailOrder });
 
       const res = await fetch("/api/signup", {
@@ -59,12 +65,15 @@ export function FormDetailsDelivery({ session }: { session: Session | null }) {
           password: data.newPassword,
         }),
       });
+      console.log(res, data);
 
       if (!res.ok) {
-        return replace(generateUrlForToast("/cart/shipping", "REGISTER_ERROR"));
+        return push(generateUrlForToast("/cart/account", "REGISTER_ERROR"));
       }
 
-      return push(generateUrlForToast("/cart/shipping", "REGISTER_SUCCESS"));
+      if (res.ok) {
+        return push(generateUrlForToast("/cart/shipping", "REGISTER_SUCCESS"));
+      }
     }
 
     if (session?.user.email) {
@@ -154,7 +163,7 @@ export function FormDetailsDelivery({ session }: { session: Session | null }) {
                 {!session && (
                   <Checkbox
                     checked={wantAccount}
-                    onClick={() => setWantAccount((prev) => !prev)}
+                    onChange={() => setWantAccount((prev) => !prev)}
                     text="I want create account in shop"
                     id="createAccount"
                   />
@@ -163,6 +172,7 @@ export function FormDetailsDelivery({ session }: { session: Session | null }) {
                   <RowInputs>
                     <Input
                       id="newPassword"
+                      type="password"
                       {...register("newPassword")}
                       error={
                         "newPassword" in errors
@@ -177,6 +187,7 @@ export function FormDetailsDelivery({ session }: { session: Session | null }) {
                           ? errors?.repeatedNewPassword?.message
                           : ""
                       }
+                      type="password"
                       {...register("repeatedNewPassword")}
                       id="repeatedNewPassword"
                       text="Repeat Password:"

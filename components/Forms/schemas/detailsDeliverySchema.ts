@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-export const standardDeliverySchema = {
+export const shippingDetailsSchema = {
   firstName: Yup.string().required().label("First name"),
   lastName: Yup.string().required().label("Last name"),
   phoneNumber: Yup.string()
@@ -13,20 +13,24 @@ export const standardDeliverySchema = {
   acceptTerm: Yup.bool().oneOf([true], "Field must be checked"),
 };
 
-export const detailsDeliverySchemaWithoutAccount = Yup.object(
-  standardDeliverySchema,
-);
-export const detailsDeliverySchemaWithAccount = Yup.object({
+export const shippingLoggedUser = Yup.object(shippingDetailsSchema);
+
+export const shippingAsGuest = Yup.object({
+  ...shippingDetailsSchema,
   emailOrder: Yup.string().required().email("Invalid email").label("Email"),
-  newPassword: Yup.string().required().label("Password"),
-  repeatedNewPassword: Yup.string().required().label("Repeated password"),
-  ...standardDeliverySchema,
 });
 
-export type DetailsDeliverySchemaWithAccountType = Yup.InferType<
-  typeof detailsDeliverySchemaWithAccount
->;
+export const shippingWithRegistration = Yup.object({
+  emailOrder: Yup.string().required().email("Invalid email").label("Email"),
+  newPassword: Yup.string().required().label("Password").min(8),
+  repeatedNewPassword: Yup.string().required().label("Repeated password"),
+  ...shippingDetailsSchema,
+});
 
-export type DetailsDeliverySchemaWithoutAccountType = Yup.InferType<
-  typeof detailsDeliverySchemaWithoutAccount
+export type ShippingLoggedUserType = Yup.InferType<typeof shippingLoggedUser>;
+
+export type ShippingAsGuestType = Yup.InferType<typeof shippingAsGuest>;
+
+export type ShippingWithRegistrationType = Yup.InferType<
+  typeof shippingWithRegistration
 >;

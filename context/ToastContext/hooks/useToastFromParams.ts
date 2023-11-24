@@ -6,8 +6,13 @@ import {
   TYPES_TOASTS_IN_PARAM,
 } from "../constants";
 import { useRouter } from "next/navigation";
+import { ToastContextType } from "../ToastContext";
 
-export default function useToastFromParams() {
+export default function useToastFromParams({
+  addToast,
+}: {
+  addToast: ToastContextType["addToast"];
+}) {
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -18,8 +23,13 @@ export default function useToastFromParams() {
     [toast],
   );
   useEffect(() => {
-    if (toast) router.replace(pathname);
-  }, [pathname, router, toast, toastsFromUrl]);
+    setTimeout(() => {
+      if (toast && toastsFromUrl?.type) {
+        router.replace(pathname);
+        addToast(toastsFromUrl?.type, toastsFromUrl.text);
+      }
+    }, 0);
+  }, [pathname, router, toast, toastsFromUrl, addToast]);
 
   return toastsFromUrl ? [toastsFromUrl] : [];
 }
