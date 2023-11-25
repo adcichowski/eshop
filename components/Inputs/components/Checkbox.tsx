@@ -2,6 +2,7 @@ import React from "react";
 import { FieldError, FieldErrorsImpl, Merge } from "react-hook-form";
 import type { InputProps } from "../types";
 import { ErrorInInput } from "./ErrorInInput";
+import clsx from "clsx";
 
 export type CheckboxProps = {
   readonly id: string;
@@ -18,7 +19,10 @@ export const Checkbox = React.forwardRef<HTMLInputElement, InputProps>(
           <input
             {...props}
             type="checkbox"
-            className="accent-primary text-white"
+            className={clsx(
+              "w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-primary focus:ring-2 text-primary",
+              error && "border-red-200 bg-red-100",
+            )}
             ref={ref}
           />
           <span className="ml-[5px]">{text}</span>

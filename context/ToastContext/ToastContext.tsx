@@ -3,13 +3,14 @@ import {
   Dispatch,
   SetStateAction,
   useContext,
+  useMemo,
   useState,
 } from "react";
 import { type ToastTypes } from "./constants";
 import { addToastToList, removeToastFromList } from "./utilsToast";
 import useToastFromParams from "./hooks/useToastFromParams";
 
-type ToastContextType = {
+export type ToastContextType = {
   readonly removeToast: (id: string) => void;
   readonly addToast: (type: ToastTypes, text: string) => void;
   toasts: ToastStateType[];
@@ -27,23 +28,26 @@ export const ToastProvider = ({
 }: {
   readonly children: React.ReactNode;
 }) => {
-  const toastsFromUrl = useToastFromParams();
-  const [toasts, setToasts] = useState<ToastStateType[]>(toastsFromUrl);
+  const [toasts, setToasts] = useState<ToastStateType[]>([]);
+
+  const value = useMemo(
+    () => ({
+      removeToast: (id: string) => {
+        setToasts((prev) => removeToastFromList(id, prev));
+      },
+      setToasts,
+      toasts,
+      addToast: (type, text) =>
+        setToasts((prev) => addToastToList(prev, { type, text })),
+    }),
+    [toasts],
+  ) satisfies ToastContextType;
+
+  //add toast by param in route
+  useToastFromParams({ addToast: value.addToast });
 
   return (
-    <ToastContext.Provider
-      value={{
-        removeToast: (id: string) => {
-          setToasts((prev) => removeToastFromList(id, prev));
-        },
-        setToasts,
-        toasts,
-        addToast: (type, text) =>
-          setToasts((prev) => addToastToList(prev, { type, text })),
-      }}
-    >
-      {children}
-    </ToastContext.Provider>
+    <ToastContext.Provider value={value}>{children}</ToastContext.Provider>
   );
 };
 

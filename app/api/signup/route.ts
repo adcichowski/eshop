@@ -4,15 +4,17 @@ import * as Yup from "yup";
 import { convertYupError } from "utils/errors";
 import { NextRequest, NextResponse } from "next/server";
 import { createAccount } from "lib";
-const handler = async (req: NextRequest) => {
+const handler = async (_req: NextRequest) => {
+  const req = await _req.json();
   try {
     const { email, password } = await Yup.object(defaultSchema)
       .typeError("You should provide email and password")
-      .validate(req.body);
+      .validate(req);
     const hashedPassword = await Bcrypt.hash(password, 12);
     const account = await createAccount({ email, password: hashedPassword });
     return NextResponse.json(account, { status: 200 });
   } catch (err) {
+    console.log(err);
     if (err instanceof Yup.ValidationError) {
       return NextResponse.json(convertYupError(err), { status: 400 });
     }
