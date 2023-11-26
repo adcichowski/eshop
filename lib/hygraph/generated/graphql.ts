@@ -6244,7 +6244,6 @@ export type OrderUpdateManyInlineInput = {
 export type OrderUpdateManyInput = {
   email?: InputMaybe<Scalars["String"]["input"]>;
   statusOrder?: InputMaybe<StatusOrder>;
-  stripeCheckoutId?: InputMaybe<Scalars["String"]["input"]>;
   total?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
@@ -6472,6 +6471,7 @@ export type OrderWhereStageInput = {
 /** References Order record uniquely */
 export type OrderWhereUniqueInput = {
   id?: InputMaybe<Scalars["ID"]["input"]>;
+  stripeCheckoutId?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 export enum Orientation {
@@ -10894,11 +10894,11 @@ export type CreateOrderMutationVariables = Exact<{
 
 export type CreateOrderMutation = { createOrder?: { id: string } | null };
 
-export type UpdateOrderPaymentByIdMutationVariables = Exact<{
-  orderId: Scalars["ID"]["input"];
+export type UpdateOrderPaymentPaidMutationVariables = Exact<{
+  stripeCheckoutId: Scalars["String"]["input"];
 }>;
 
-export type UpdateOrderPaymentByIdMutation = {
+export type UpdateOrderPaymentPaidMutation = {
   updateOrder?: { id: string } | null;
 };
 
@@ -11258,15 +11258,18 @@ export const CreateOrderDocument = new TypedDocumentString(`
   CreateOrderMutation,
   CreateOrderMutationVariables
 >;
-export const UpdateOrderPaymentByIdDocument = new TypedDocumentString(`
-    mutation UpdateOrderPaymentById($orderId: ID!) {
-  updateOrder(data: {statusOrder: PAID}, where: {id: $orderId}) {
+export const UpdateOrderPaymentPaidDocument = new TypedDocumentString(`
+    mutation UpdateOrderPaymentPaid($stripeCheckoutId: String!) {
+  updateOrder(
+    data: {statusOrder: PAID}
+    where: {stripeCheckoutId: $stripeCheckoutId}
+  ) {
     id
   }
 }
     `) as unknown as TypedDocumentString<
-  UpdateOrderPaymentByIdMutation,
-  UpdateOrderPaymentByIdMutationVariables
+  UpdateOrderPaymentPaidMutation,
+  UpdateOrderPaymentPaidMutationVariables
 >;
 export const GetProductsToCarrouselDocument = new TypedDocumentString(`
     query GetProductsToCarrousel {

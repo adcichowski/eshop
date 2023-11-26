@@ -1,14 +1,19 @@
 import { getEnv } from "utils/utils";
 import {
   CreateAccountDocument,
+  CreateOrderDocument,
   GetAccountByEmailDocument,
   GetCategoriesDocument,
   GetProductBySlugDocument,
   GetProductReviewsBySlugDocument,
   GetProductsByCategorySlugDocument,
+  GetProductsByIdsDocument,
   GetProductsToCarrouselByCategorySlugDocument,
   GetProductsToCarrouselByCategorySlugWithoutProductDocument,
+  OrderItemCreateManyInlineInput,
+  StatusOrder,
   TypedDocumentString,
+  UpdateOrderPaymentPaidDocument,
 } from "./hygraph/generated/graphql";
 import {
   reshapeGetCategories,
@@ -250,4 +255,56 @@ export async function createAccount({
     throw new Error(`Problem while creating account with ${email}`);
   }
   return account;
+}
+
+export async function getProductsByIds(productsId: string[]) {
+  const data = await fetcher({
+    query: GetProductsByIdsDocument,
+    variables: {
+      productsId,
+    },
+  });
+  const products = data.products;
+  if (!products) {
+    throw new Error(`Problem while get products with array ${productsId}`);
+  }
+  return products;
+}
+
+export async function createOrder(order: {
+  email: string;
+  totalOrderPrice: number;
+  stripeCheckoutId: string;
+  orderItems: OrderItemCreateManyInlineInput;
+  statusOrder: StatusOrder;
+}) {
+  const data = await fetcher({
+    query: CreateOrderDocument,
+    headers: {
+      Authorization: `Bearer ${ADMIN_AUTH_TOKEN}`,
+    },
+    variables: order,
+  });
+  const createdOrder = data.createOrder;
+  if (!createdOrder) {
+    throw new Error(`Problem while creating order`);
+  }
+  return createdOrder;
+}
+
+export async function updateStatusOrderPaid(stripeCheckoutId: string) {
+  const data = await fetcher({
+    query: UpdateOrderPaymentPaidDocument,
+    headers: {
+      Authorization: `Bearer ${ADMIN_AUTH_TOKEN}`,
+    },
+    variables: {
+      stripeCheckoutId,
+    },
+  });
+  const paidOrder = data.updateOrder;
+  if (!paidOrder) {
+    throw new Error(`Problem while updating order to paid`);
+  }
+  return paidOrder;
 }

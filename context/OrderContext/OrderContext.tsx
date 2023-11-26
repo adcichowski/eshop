@@ -2,7 +2,9 @@ import { usePathname, useRouter } from "next/navigation";
 import { createContext, useContext, useMemo, useState } from "react";
 
 type OrderContext = {
-  personData: PersonDataType | null;
+  readonly order: OrderDataType | null;
+  readonly setOrder: (args: OrderDataType) => void;
+  readonly personData: PersonDataType | null;
   readonly setPersonData: (args: PersonDataType) => void;
 };
 export type PersonDataType = {
@@ -13,6 +15,11 @@ export type PersonDataType = {
   street: string;
   postalCode: string;
   city: string;
+};
+
+export type OrderDataType = {
+  orderId: string;
+  clientSecret: string;
 };
 
 const OrderContext = createContext<OrderContext | null>(null);
@@ -26,13 +33,16 @@ export const OrderProvider = ({
   const [personData, setStatePersonData] = useState<PersonDataType | null>(
     null,
   );
+  const [order, setOrder] = useState<OrderDataType | null>(null);
 
   const valueProvider = useMemo(
     () => ({
       setPersonData: (args: PersonDataType) => setStatePersonData(args),
       personData,
+      order,
+      setOrder,
     }),
-    [personData],
+    [personData, order],
   );
 
   if (

@@ -21,6 +21,8 @@ import type {
 import { useOrderContext } from "context/OrderContext/OrderContext";
 import { useRouter } from "next/navigation";
 import { generateUrlForToast } from "context/ToastContext/utilsToast";
+import { createPaymentIntent } from "lib/actions/paymen-intent";
+import { useClientContext } from "context/ClientContext/ClientContext";
 
 const benefitsInfo = [
   "10% discount on first purchases for new users",
@@ -30,7 +32,8 @@ const benefitsInfo = [
 
 export function FormDetailsDelivery({ session }: { session: Session | null }) {
   const { push } = useRouter();
-  const { setPersonData } = useOrderContext();
+  const { cart } = useClientContext();
+  const { setPersonData, setOrder } = useOrderContext();
   const [wantAccount, setWantAccount] = useState(false);
   const { register, errors, handleSubmit } = useForm<
     ShippingAsGuestType | ShippingLoggedUserType | ShippingWithRegistrationType
@@ -42,7 +45,6 @@ export function FormDetailsDelivery({ session }: { session: Session | null }) {
       : shippingAsGuest,
   );
 
-  console.log(errors);
   const onSubmit = async (
     data:
       | ShippingAsGuestType
@@ -51,38 +53,35 @@ export function FormDetailsDelivery({ session }: { session: Session | null }) {
     e?: React.BaseSyntheticEvent,
   ) => {
     e?.preventDefault();
-
-    if ("emailOrder" in data && "newPassword" in data && wantAccount) {
-      setPersonData({ ...data, email: data.emailOrder });
-
+    if (!cart) return;
+    const email = "emailOrder" in data ? data.emailOrder : session?.user.email;
+    if (!email) return;
+    if ("newPassword" in data && wantAccount) {
       const res = await fetch("/api/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: data.emailOrder,
+          email,
           password: data.newPassword,
         }),
       });
-      console.log(res, data);
-
       if (!res.ok) {
         return push(generateUrlForToast("/cart/account", "REGISTER_ERROR"));
       }
-
-      if (res.ok) {
-        return push(generateUrlForToast("/cart/shipping", "REGISTER_SUCCESS"));
-      }
     }
 
-    if (session?.user.email) {
-      setPersonData({
-        ...data,
-        email: session.user.email,
-      });
-    }
-    push("/cart/shipping");
+    const paymentIntent = await createPaymentIntent({
+      orderProducts: cart,
+      email,
+    });
+    setPersonData({
+      ...data,
+      email,
+    });
+    setOrder(paymentIntent);
+    push("/cart/payment");
   };
 
   return (
