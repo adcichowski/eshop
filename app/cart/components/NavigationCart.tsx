@@ -4,12 +4,7 @@ import { twMerge } from "tailwind-merge";
 import React from "react";
 import clsx from "clsx";
 
-export type StepsInForm =
-  | "details"
-  | "account"
-  | "shipping"
-  | "payment"
-  | "summary";
+export type StepsInForm = "details" | "account" | "payment" | "summary";
 const navigationStepsIcons = [
   {
     stepName: "details",
@@ -18,10 +13,6 @@ const navigationStepsIcons = [
   {
     stepName: "account",
     Icon: User2,
-  },
-  {
-    stepName: "shipping",
-    Icon: Truck,
   },
   { stepName: "payment", Icon: Wallet },
   {
