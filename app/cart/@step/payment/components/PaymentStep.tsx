@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { HeaderInStep } from "app/cart/components/HeaderInStep";
 import { StripeElementsOptions, loadStripe } from "@stripe/stripe-js";
 import tailwindConfig from "tailwind.config";
 import { getEnv } from "utils/utils";

@@ -1,4 +1,4 @@
-import { ShoppingBag, User2, Truck, Wallet, Check } from "lucide-react";
+import { ShoppingBag, User2, Wallet, Check } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { twMerge } from "tailwind-merge";
 import React from "react";
