@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import { FormAccountWrapper } from "../FormAccountWrapper";
 import { Action } from "components/Action/Action";
 import { Checkbox } from "components/Inputs/components/Checkbox";
 
@@ -23,6 +22,7 @@ import { useRouter } from "next/navigation";
 import { generateUrlForToast } from "context/ToastContext/utilsToast";
 import { createPaymentIntent } from "lib/actions/paymen-intent";
 import { useClientContext } from "context/ClientContext/ClientContext";
+import { FormAccountWrapper } from "../FormAccountWrapper";
 
 const benefitsInfo = [
   "10% discount on first purchases for new users",
