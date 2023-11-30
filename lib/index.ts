@@ -4,6 +4,7 @@ import {
   CreateOrderDocument,
   GetAccountByEmailDocument,
   GetCategoriesDocument,
+  GetOrderDocument,
   GetProductBySlugDocument,
   GetProductReviewsBySlugDocument,
   GetProductsByCategorySlugDocument,
@@ -277,6 +278,8 @@ export async function createOrder(order: {
   stripeCheckoutId: string;
   orderItems: OrderItemCreateManyInlineInput;
   statusOrder: StatusOrder;
+  delivery: number;
+  methodPayment: string;
 }) {
   const data = await fetcher({
     query: CreateOrderDocument,
@@ -307,4 +310,22 @@ export async function updateStatusOrderPaid(stripeCheckoutId: string) {
     throw new Error(`Problem while updating order to paid`);
   }
   return paidOrder;
+}
+
+export async function getOrder(orderId: string) {
+  const data = await fetcher({
+    query: GetOrderDocument,
+    headers: {
+      Authorization: `Bearer ${ADMIN_AUTH_TOKEN}`,
+    },
+    variables: {
+      orderId,
+    },
+    cache: "no-cache",
+  });
+  const order = data.order;
+  if (!order) {
+    throw new Error(`Problem to get order`);
+  }
+  return order;
 }

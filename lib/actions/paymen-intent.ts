@@ -2,7 +2,7 @@
 import { createOrder, getProductsByIds } from "lib";
 import { StatusOrder } from "lib/hygraph/generated/graphql";
 import { Stripe } from "stripe";
-import { getEnv } from "utils/utils";
+import { calculateOrderAmount, getEnv } from "utils/utils";
 import { CartProduct } from "./cart";
 import { cookies } from "next/headers";
 
@@ -18,6 +18,7 @@ export type ProductToPaymentType = {
   quantity: number;
   price: number;
   variantId: string;
+  image: string;
 };
 
 export type SuccessCreatePaymentIntent = {
@@ -54,6 +55,7 @@ export const createPaymentIntent = async ({
           quantity: dangerProduct.amount,
           price,
           variantId: securedVariant.id,
+          image: dangerProduct.image,
         };
       }
     })
@@ -73,6 +75,7 @@ export const createPaymentIntent = async ({
     currency: "eur",
   });
 
+  if (!paymentIntent.payment_method) return;
   const order = await createOrder({
     email,
     orderItems: {
@@ -83,6 +86,8 @@ export const createPaymentIntent = async ({
         total: quantity * price,
       })),
     },
+    delivery: 1199,
+    methodPayment: paymentIntent.payment_method.toString(),
     statusOrder: StatusOrder.Unpaid,
     totalOrderPrice: calculateOrderAmount(productsToPayment),
     stripeCheckoutId: paymentIntent.id,
@@ -102,8 +107,3 @@ export const createPaymentIntent = async ({
 
   return { orderId: order.id, clientSecret: paymentIntent.client_secret };
 };
-
-const calculateOrderAmount = (securedProducts: ProductToPaymentType[]) =>
-  securedProducts.reduce((orderAmount, product) => {
-    return orderAmount + product.price * product.quantity;
-  }, 0);

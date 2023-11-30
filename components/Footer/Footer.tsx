@@ -51,7 +51,7 @@ const JoinToAside = () => (
     <h3 className="uppercase mb-2 font-semibold" id="joinHeader">
       Join to us
     </h3>
-    <ul className="flex md:justify-center items-center gap-4">
+    <ul className="flex flex-wrap md:justify-center items-center gap-4">
       {joinUsIcons.map(({ href, Icon }) => (
         <Link
           className="p-4 hover:bg-gray-100/5 hover:border-gray-100  border border-white bg-white"

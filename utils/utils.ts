@@ -50,3 +50,8 @@ export const jsonParse = <T>(value: string | undefined): T | undefined => {
     console.error(e);
   }
 };
+
+export const calculateOrderAmount = (securedProducts: ProductToPaymentType[]) =>
+  securedProducts.reduce((orderAmount, product) => {
+    return orderAmount + product.price * product.quantity;
+  }, 0);

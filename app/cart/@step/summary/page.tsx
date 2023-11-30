@@ -8,12 +8,12 @@ export default function PageSummary() {
       <HeaderInStep header="Summary">
         <>
           <div className="flex justify-center">
-            <div className="flex flex-col items-center gap-y-3">
+            <div className="flex flex-col items-center gap-y-3 my-10">
               <PackageIcon
                 strokeWidth={1.25}
                 aria-describedby="orderInfo"
-                className="bg-primary rounded-full p-[10px] stroke-white border-none"
-                size={60}
+                className="bg-primary rounded-full p-[15px] stroke-white border-none my-2"
+                size={80}
               />
               <p id="orderInfo" className="text-base">
                 Order placed successfully

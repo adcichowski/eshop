@@ -1,6 +1,7 @@
 import { ProductPageProps } from "app/[categorySlug]/poster/[slug]/components/product/ProductPage";
 import {
   CategoriesFragment,
+  GetOrderQuery,
   ProductDetailsFragment,
   ProductDisplayFragment,
   ReviewProductFragment,

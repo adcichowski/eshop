@@ -4,6 +4,8 @@ mutation CreateOrder(
   $stripeCheckoutId: String!
   $orderItems: OrderItemCreateManyInlineInput!
   $statusOrder: StatusOrder!
+  $methodPayment: String!
+  $delivery: Int!
 ) {
   createOrder(
     data: {
@@ -12,6 +14,8 @@ mutation CreateOrder(
       stripeCheckoutId: $stripeCheckoutId
       orderItems: $orderItems
       statusOrder: $statusOrder
+      methodPayment: $methodPayment
+      delivery: $delivery
     }
   ) {
     id

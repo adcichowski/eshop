@@ -1,0 +1,5 @@
+query GetOrder($orderId: ID!) {
+  order(where: { id: $orderId }, stage: DRAFT) {
+    ...OrderDisplay
+  }
+}

@@ -43,7 +43,6 @@ const handler = async (req: NextRequest) => {
 
 const eventStripeWebhook = async (event: Stripe.Event) => {
   const type = event.type;
-  console.log(event.data);
   switch (type) {
     case "charge.succeeded":
       const paymentIntent = event.data.object.payment_intent;
