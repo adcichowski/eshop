@@ -5363,6 +5363,7 @@ export type Order = Entity &
     createdAt: Scalars["DateTime"]["output"];
     /** User that created this document */
     createdBy?: Maybe<User>;
+    delivery: Scalars["Int"]["output"];
     /** Get the document in other stages */
     documentInStages: Array<Order>;
     email: Scalars["String"]["output"];
@@ -5370,6 +5371,7 @@ export type Order = Entity &
     history: Array<Version>;
     /** The unique identifier */
     id: Scalars["ID"]["output"];
+    methodPayment: Scalars["String"]["output"];
     orderItems: Array<OrderItem>;
     /** The time the document was published. Null on documents in draft stage. */
     publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
@@ -5455,7 +5457,9 @@ export type OrderConnection = {
 
 export type OrderCreateInput = {
   createdAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  delivery: Scalars["Int"]["input"];
   email: Scalars["String"]["input"];
+  methodPayment: Scalars["String"]["input"];
   orderItems?: InputMaybe<OrderItemCreateManyInlineInput>;
   statusOrder: StatusOrder;
   stripeCheckoutId: Scalars["String"]["input"];
@@ -6067,6 +6071,21 @@ export type OrderManyWhereInput = {
     Array<InputMaybe<Scalars["DateTime"]["input"]>>
   >;
   createdBy?: InputMaybe<UserWhereInput>;
+  delivery?: InputMaybe<Scalars["Int"]["input"]>;
+  /** All values greater than the given value. */
+  delivery_gt?: InputMaybe<Scalars["Int"]["input"]>;
+  /** All values greater than or equal the given value. */
+  delivery_gte?: InputMaybe<Scalars["Int"]["input"]>;
+  /** All values that are contained in given list. */
+  delivery_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]["input"]>>>;
+  /** All values less than the given value. */
+  delivery_lt?: InputMaybe<Scalars["Int"]["input"]>;
+  /** All values less than or equal the given value. */
+  delivery_lte?: InputMaybe<Scalars["Int"]["input"]>;
+  /** Any other value that exists and is not equal to the given value. */
+  delivery_not?: InputMaybe<Scalars["Int"]["input"]>;
+  /** All values that are not contained in given list. */
+  delivery_not_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]["input"]>>>;
   documentInStages_every?: InputMaybe<OrderWhereStageInput>;
   documentInStages_none?: InputMaybe<OrderWhereStageInput>;
   documentInStages_some?: InputMaybe<OrderWhereStageInput>;
@@ -6108,6 +6127,27 @@ export type OrderManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars["ID"]["input"]>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars["ID"]["input"]>;
+  methodPayment?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values containing the given string. */
+  methodPayment_contains?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values ending with the given string. */
+  methodPayment_ends_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values that are contained in given list. */
+  methodPayment_in?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  methodPayment_not?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values not containing the given string. */
+  methodPayment_not_contains?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values not ending with the given string */
+  methodPayment_not_ends_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values that are not contained in given list. */
+  methodPayment_not_in?: InputMaybe<
+    Array<InputMaybe<Scalars["String"]["input"]>>
+  >;
+  /** All values not starting with the given string. */
+  methodPayment_not_starts_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values starting with the given string. */
+  methodPayment_starts_with?: InputMaybe<Scalars["String"]["input"]>;
   orderItems_every?: InputMaybe<OrderItemWhereInput>;
   orderItems_none?: InputMaybe<OrderItemWhereInput>;
   orderItems_some?: InputMaybe<OrderItemWhereInput>;
@@ -6200,10 +6240,14 @@ export type OrderManyWhereInput = {
 export enum OrderOrderByInput {
   CreatedAtAsc = "createdAt_ASC",
   CreatedAtDesc = "createdAt_DESC",
+  DeliveryAsc = "delivery_ASC",
+  DeliveryDesc = "delivery_DESC",
   EmailAsc = "email_ASC",
   EmailDesc = "email_DESC",
   IdAsc = "id_ASC",
   IdDesc = "id_DESC",
+  MethodPaymentAsc = "methodPayment_ASC",
+  MethodPaymentDesc = "methodPayment_DESC",
   PublishedAtAsc = "publishedAt_ASC",
   PublishedAtDesc = "publishedAt_DESC",
   StatusOrderAsc = "statusOrder_ASC",
@@ -6217,7 +6261,9 @@ export enum OrderOrderByInput {
 }
 
 export type OrderUpdateInput = {
+  delivery?: InputMaybe<Scalars["Int"]["input"]>;
   email?: InputMaybe<Scalars["String"]["input"]>;
+  methodPayment?: InputMaybe<Scalars["String"]["input"]>;
   orderItems?: InputMaybe<OrderItemUpdateManyInlineInput>;
   statusOrder?: InputMaybe<StatusOrder>;
   stripeCheckoutId?: InputMaybe<Scalars["String"]["input"]>;
@@ -6242,7 +6288,9 @@ export type OrderUpdateManyInlineInput = {
 };
 
 export type OrderUpdateManyInput = {
+  delivery?: InputMaybe<Scalars["Int"]["input"]>;
   email?: InputMaybe<Scalars["String"]["input"]>;
+  methodPayment?: InputMaybe<Scalars["String"]["input"]>;
   statusOrder?: InputMaybe<StatusOrder>;
   total?: InputMaybe<Scalars["Int"]["input"]>;
 };
@@ -6324,6 +6372,21 @@ export type OrderWhereInput = {
     Array<InputMaybe<Scalars["DateTime"]["input"]>>
   >;
   createdBy?: InputMaybe<UserWhereInput>;
+  delivery?: InputMaybe<Scalars["Int"]["input"]>;
+  /** All values greater than the given value. */
+  delivery_gt?: InputMaybe<Scalars["Int"]["input"]>;
+  /** All values greater than or equal the given value. */
+  delivery_gte?: InputMaybe<Scalars["Int"]["input"]>;
+  /** All values that are contained in given list. */
+  delivery_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]["input"]>>>;
+  /** All values less than the given value. */
+  delivery_lt?: InputMaybe<Scalars["Int"]["input"]>;
+  /** All values less than or equal the given value. */
+  delivery_lte?: InputMaybe<Scalars["Int"]["input"]>;
+  /** Any other value that exists and is not equal to the given value. */
+  delivery_not?: InputMaybe<Scalars["Int"]["input"]>;
+  /** All values that are not contained in given list. */
+  delivery_not_in?: InputMaybe<Array<InputMaybe<Scalars["Int"]["input"]>>>;
   documentInStages_every?: InputMaybe<OrderWhereStageInput>;
   documentInStages_none?: InputMaybe<OrderWhereStageInput>;
   documentInStages_some?: InputMaybe<OrderWhereStageInput>;
@@ -6365,6 +6428,27 @@ export type OrderWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars["ID"]["input"]>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars["ID"]["input"]>;
+  methodPayment?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values containing the given string. */
+  methodPayment_contains?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values ending with the given string. */
+  methodPayment_ends_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values that are contained in given list. */
+  methodPayment_in?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  methodPayment_not?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values not containing the given string. */
+  methodPayment_not_contains?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values not ending with the given string */
+  methodPayment_not_ends_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values that are not contained in given list. */
+  methodPayment_not_in?: InputMaybe<
+    Array<InputMaybe<Scalars["String"]["input"]>>
+  >;
+  /** All values not starting with the given string. */
+  methodPayment_not_starts_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values starting with the given string. */
+  methodPayment_starts_with?: InputMaybe<Scalars["String"]["input"]>;
   orderItems_every?: InputMaybe<OrderItemWhereInput>;
   orderItems_none?: InputMaybe<OrderItemWhereInput>;
   orderItems_some?: InputMaybe<OrderItemWhereInput>;
@@ -10841,6 +10925,18 @@ export type CategoriesFragment = { id: string; name: string; slug: string };
 
 export type ImagesFragment = { id: string; alt?: string | null; url: string };
 
+export type OrderDisplayFragment = {
+  delivery: number;
+  methodPayment: string;
+  total: number;
+  orderItems: Array<{
+    id: string;
+    width: number;
+    height: number;
+    product?: { images: Array<{ url: string }> } | null;
+  }>;
+};
+
 export type ProductDisplayFragment = {
   sale?: string | null;
   id: string;
@@ -10890,6 +10986,8 @@ export type CreateOrderMutationVariables = Exact<{
   stripeCheckoutId: Scalars["String"]["input"];
   orderItems: OrderItemCreateManyInlineInput;
   statusOrder: StatusOrder;
+  methodPayment: Scalars["String"]["input"];
+  delivery: Scalars["Int"]["input"];
 }>;
 
 export type CreateOrderMutation = { createOrder?: { id: string } | null };
@@ -10900,6 +10998,24 @@ export type UpdateOrderPaymentPaidMutationVariables = Exact<{
 
 export type UpdateOrderPaymentPaidMutation = {
   updateOrder?: { id: string } | null;
+};
+
+export type GetOrderQueryVariables = Exact<{
+  orderId: Scalars["ID"]["input"];
+}>;
+
+export type GetOrderQuery = {
+  order?: {
+    delivery: number;
+    methodPayment: string;
+    total: number;
+    orderItems: Array<{
+      id: string;
+      width: number;
+      height: number;
+      product?: { images: Array<{ url: string }> } | null;
+    }>;
+  } | null;
 };
 
 export type GetProductsToCarrouselQueryVariables = Exact<{
@@ -11107,6 +11223,26 @@ export const CategoriesFragmentDoc = new TypedDocumentString(
     `,
   { fragmentName: "Categories" },
 ) as unknown as TypedDocumentString<CategoriesFragment, unknown>;
+export const OrderDisplayFragmentDoc = new TypedDocumentString(
+  `
+    fragment OrderDisplay on Order {
+  orderItems {
+    id
+    width
+    height
+    product {
+      images(first: 1) {
+        url
+      }
+    }
+  }
+  delivery
+  methodPayment
+  total
+}
+    `,
+  { fragmentName: "OrderDisplay" },
+) as unknown as TypedDocumentString<OrderDisplayFragment, unknown>;
 export const ImagesFragmentDoc = new TypedDocumentString(
   `
     fragment Images on Asset {
@@ -11247,9 +11383,9 @@ export const GetCategoriesDocument = new TypedDocumentString(`
   GetCategoriesQueryVariables
 >;
 export const CreateOrderDocument = new TypedDocumentString(`
-    mutation CreateOrder($email: String!, $totalOrderPrice: Int!, $stripeCheckoutId: String!, $orderItems: OrderItemCreateManyInlineInput!, $statusOrder: StatusOrder!) {
+    mutation CreateOrder($email: String!, $totalOrderPrice: Int!, $stripeCheckoutId: String!, $orderItems: OrderItemCreateManyInlineInput!, $statusOrder: StatusOrder!, $methodPayment: String!, $delivery: Int!) {
   createOrder(
-    data: {email: $email, total: $totalOrderPrice, stripeCheckoutId: $stripeCheckoutId, orderItems: $orderItems, statusOrder: $statusOrder}
+    data: {email: $email, total: $totalOrderPrice, stripeCheckoutId: $stripeCheckoutId, orderItems: $orderItems, statusOrder: $statusOrder, methodPayment: $methodPayment, delivery: $delivery}
   ) {
     id
   }
@@ -11271,6 +11407,27 @@ export const UpdateOrderPaymentPaidDocument = new TypedDocumentString(`
   UpdateOrderPaymentPaidMutation,
   UpdateOrderPaymentPaidMutationVariables
 >;
+export const GetOrderDocument = new TypedDocumentString(`
+    query GetOrder($orderId: ID!) {
+  order(where: {id: $orderId}, stage: DRAFT) {
+    ...OrderDisplay
+  }
+}
+    fragment OrderDisplay on Order {
+  orderItems {
+    id
+    width
+    height
+    product {
+      images(first: 1) {
+        url
+      }
+    }
+  }
+  delivery
+  methodPayment
+  total
+}`) as unknown as TypedDocumentString<GetOrderQuery, GetOrderQueryVariables>;
 export const GetProductsToCarrouselDocument = new TypedDocumentString(`
     query GetProductsToCarrousel {
   products(first: 12) {

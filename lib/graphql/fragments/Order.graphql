@@ -1,0 +1,15 @@
+fragment OrderDisplay on Order {
+  orderItems {
+    id
+    width
+    height
+    product {
+      images(first: 1) {
+        url
+      }
+    }
+  }
+  delivery
+  methodPayment
+  total
+}
