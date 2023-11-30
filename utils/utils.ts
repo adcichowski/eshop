@@ -1,3 +1,5 @@
+import { ProductToPaymentType } from "lib/actions/paymen-intent";
+
 export const changeValueCurrency = (price: number, format = "en-US") => {
   const priceWithRest = price / 100;
   const formatterPLN = new Intl.NumberFormat(format, {
