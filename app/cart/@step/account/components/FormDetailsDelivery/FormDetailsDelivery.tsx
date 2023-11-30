@@ -80,8 +80,10 @@ export function FormDetailsDelivery({ session }: { session: Session | null }) {
       ...data,
       email,
     });
-    setOrder(paymentIntent);
-    push("/cart/payment");
+    if (paymentIntent) {
+      setOrder(paymentIntent);
+      push("/cart/payment");
+    }
   };
 
   return (
