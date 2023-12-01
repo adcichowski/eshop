@@ -1,7 +1,7 @@
 import { Action } from "components/Action/Action";
 import React from "react";
 import { DiscountCodeInput } from "./components/DiscountCodeInput/DiscountCodeInput";
-import { DetailsOrder } from "app/cart/components/DetailsOrder/DetailsOrder";
+import { DetailsOrder } from "views/cart/components/DetailsOrder/DetailsOrder";
 import SummaryTableCart from "./components/SummaryTableCart";
 
 export type StepDetailsType = {

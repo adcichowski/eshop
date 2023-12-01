@@ -4,7 +4,7 @@ import {
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
-import { DetailsOrder } from "app/cart/components/DetailsOrder/DetailsOrder";
+import { DetailsOrder } from "views/cart/components/DetailsOrder/DetailsOrder";
 import { BoxWithSelects } from "./BoxWithSelects/BoxWithSelects";
 import { Action } from "components/Action/Action";
 import { useOrderContext } from "context/OrderContext/OrderContext";
