@@ -1,8 +1,9 @@
 "use server";
+
 import { createOrder, getProductsByIds } from "lib";
 import { StatusOrder } from "lib/hygraph/generated/graphql";
 import { Stripe } from "stripe";
-import { calculateOrderAmount, getEnv } from "utils/utils";
+import { calculateOrderAmount, getEnv, jsonParse } from "utils/utils";
 import { CartProduct } from "./cart";
 import { cookies } from "next/headers";
 
@@ -105,3 +106,6 @@ export const createPaymentIntent = async ({
 
   return { orderId: order.id, clientSecret: paymentIntent.client_secret };
 };
+
+export const getOrderCookie = () =>
+  jsonParse<{ orderId: string }>(cookies().get("order")?.value);

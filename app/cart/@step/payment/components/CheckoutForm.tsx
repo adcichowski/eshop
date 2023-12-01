@@ -8,8 +8,10 @@ import { DetailsOrder } from "views/cart/components/DetailsOrder/DetailsOrder";
 import { BoxWithSelects } from "./BoxWithSelects/BoxWithSelects";
 import { Action } from "components/Action/Action";
 import { useOrderContext } from "context/OrderContext/OrderContext";
+import { useRouter } from "next/navigation";
 
 export function CheckoutForm() {
+  const { push } = useRouter();
   const stripe = useStripe();
   const elements = useElements();
   const { personData } = useOrderContext();
@@ -36,10 +38,10 @@ export function CheckoutForm() {
             email: personData?.email,
           },
         },
-        return_url: `http://localhost:3000/cart`,
       },
     });
     if (error) return;
+    push("/cart/summary");
   };
 
   return (

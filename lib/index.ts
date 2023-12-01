@@ -22,7 +22,7 @@ import {
   reshapeProductDetails,
   reshapeProductReviews,
 } from "./mappers";
-import { ADMIN_AUTH_TOKEN } from "../constants";
+import { ADMIN_AUTH_TOKEN } from "constants/server";
 export * from "./hygraph/generated/gql";
 
 type GraphQlError = {
@@ -296,6 +296,7 @@ export async function createOrder(order: {
 
 export async function updateStatusOrderPaid({
   stripeCheckoutId,
+  paymentMethod,
 }: {
   stripeCheckoutId: string;
   paymentMethod: string;
