@@ -4,7 +4,7 @@ import { DiscountFrame } from "components/DiscountFrame/DiscountFrame";
 import { changeValueCurrency, priceWithDiscount } from "utils/utils";
 import { AmountProductCart } from "./AmountProductCart";
 import { getCartProducts } from "lib/actions/cart";
-export default function SummaryTableCart() {
+export function SummaryTableCart() {
   const data = getCartProducts();
   if (!data?.cart) return <></>;
   return (

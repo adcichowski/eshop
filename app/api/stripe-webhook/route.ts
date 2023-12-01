@@ -24,6 +24,7 @@ const handler = async (req: NextRequest) => {
       sig,
       getEnv(process.env.STRIPE_WEBHOOK, "STRIPE_WEBHOOK"),
     );
+    console.log(event);
     // Handle the event
     eventStripeWebhook(event);
     // Return a 200 response to acknowledge receipt of the event
@@ -45,9 +46,16 @@ const eventStripeWebhook = async (event: Stripe.Event) => {
   const type = event.type;
   switch (type) {
     case "charge.succeeded":
-      const paymentIntent = event.data.object.payment_intent;
-      if (typeof paymentIntent === "string") {
-        await updateStatusOrderPaid(paymentIntent);
+      const { payment_intent, payment_method } = event.data.object;
+
+      if (
+        typeof payment_intent === "string" &&
+        typeof payment_method === "string"
+      ) {
+        await updateStatusOrderPaid({
+          stripeCheckoutId: payment_intent,
+          paymentMethod: payment_method,
+        });
       }
       return;
     default:

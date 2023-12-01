@@ -75,7 +75,6 @@ export const createPaymentIntent = async ({
     currency: "eur",
   });
 
-  if (!paymentIntent.payment_method) return;
   const order = await createOrder({
     email,
     orderItems: {
@@ -87,7 +86,6 @@ export const createPaymentIntent = async ({
       })),
     },
     delivery: 1199,
-    methodPayment: paymentIntent.payment_method.toString(),
     statusOrder: StatusOrder.Unpaid,
     totalOrderPrice: calculateOrderAmount(productsToPayment),
     stripeCheckoutId: paymentIntent.id,

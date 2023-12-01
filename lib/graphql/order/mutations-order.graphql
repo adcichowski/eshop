@@ -4,7 +4,6 @@ mutation CreateOrder(
   $stripeCheckoutId: String!
   $orderItems: OrderItemCreateManyInlineInput!
   $statusOrder: StatusOrder!
-  $methodPayment: String!
   $delivery: Int!
 ) {
   createOrder(
@@ -14,7 +13,6 @@ mutation CreateOrder(
       stripeCheckoutId: $stripeCheckoutId
       orderItems: $orderItems
       statusOrder: $statusOrder
-      methodPayment: $methodPayment
       delivery: $delivery
     }
   ) {
@@ -22,9 +20,12 @@ mutation CreateOrder(
   }
 }
 
-mutation UpdateOrderPaymentPaid($stripeCheckoutId: String!) {
+mutation UpdateOrderPaymentPaid(
+  $stripeCheckoutId: String!
+  $paymentMethod: String!
+) {
   updateOrder(
-    data: { statusOrder: PAID }
+    data: { statusOrder: PAID, paymentMethod: $paymentMethod }
     where: { stripeCheckoutId: $stripeCheckoutId }
   ) {
     id

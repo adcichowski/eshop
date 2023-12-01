@@ -15,7 +15,6 @@ export function CheckoutForm() {
   const { personData } = useOrderContext();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     if (!stripe || !elements) {
       return;
     }
@@ -29,6 +28,7 @@ export function CheckoutForm() {
               city: personData?.city,
               country: "pl",
               line1: personData?.street,
+              line2: "",
               postal_code: personData?.postalCode,
               state: "pl",
             },
