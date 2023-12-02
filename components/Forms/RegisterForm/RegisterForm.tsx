@@ -1,10 +1,11 @@
 import { InputsRender } from "components/Inputs/Inputs";
 import { useEffect } from "react";
-
 import { registerAccountSchema } from "../schemas/registerAccountSchema";
 import { useForm } from "../useForm";
 import { objectKeys } from "utils/utils";
 import { Action } from "components/Action/Action";
+import { generateUrlForToast } from "context/ToastContext/utilsToast";
+import { useRouter } from "next/navigation";
 
 const fields = {
   email: {
@@ -34,25 +35,35 @@ export function RegisterForm({
 }: {
   readonly setAlertInfo: (isOpen: boolean) => void;
 }) {
+  const { push } = useRouter();
   const { errors, register, formState, handleSubmit } = useForm(
     registerAccountSchema,
   );
   const onSubmit = handleSubmit(async (data, e) => {
     e?.preventDefault();
-    await fetch("/api/signup", {
+    const res = await fetch("/api/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
+    if (!res.ok) {
+      return push(generateUrlForToast("/cart/account", "REGISTER_ERROR"));
+    }
+    if (res.ok) {
+      push(generateUrlForToast("/", "REGISTER_SUCCESS"));
+    }
   });
+
   const isErrorInForm = !!Object.values(errors).length;
+
   useEffect(() => {
     if (isErrorInForm) {
       setAlertInfo(isErrorInForm);
     }
   }, [formState.errors]);
+
   return (
     <section
       className="mt-10 w-full max-w-[435px] md:mt-0 md:justify-self-end"
