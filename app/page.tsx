@@ -2,7 +2,7 @@ import { RecentlyView } from "components/Footer/components/RecentlyView/Recently
 import { ProductsCarrouselServer } from "components/ProductsCarrousel/ProductsCarrouselServer";
 import React from "react";
 import { PopularCategories } from "views/home/components/PopularCategories/PopularCategories";
-import { RoomsCarrousel } from "views/home/components/RoomsCarrousel";
+import { RoomsCarrousel } from "app/components/RoomsCarrousel/RoomsCarrousel";
 const Home = () => {
   return (
     <div className="flex flex-col">
