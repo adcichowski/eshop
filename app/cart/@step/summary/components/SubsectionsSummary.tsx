@@ -1,5 +1,4 @@
 import { SubsectionWrapper } from "app/cart/@step/summary/components/SubsectionWrapper";
-import { PersonDataType } from "context/OrderContext/OrderContext";
 import { ProductOrderSummary } from "./ProductOrderSummary";
 import { getCartProducts } from "lib/actions/cart";
 import { DetailsOrderSummary } from "./DetailsOrderSummary";

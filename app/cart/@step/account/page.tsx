@@ -1,4 +1,3 @@
-import { authOptions } from "app/api/auth/[...nextauth]/route";
 import { HeaderInStep } from "app/cart/components/HeaderInStep";
 import { LayoutStepPage } from "app/cart/components/LayoutStepPage";
 import clsx from "clsx";
@@ -6,6 +5,7 @@ import { getServerSession } from "next-auth";
 import React from "react";
 import { FormDetailsDelivery } from "./components/FormDetailsDelivery/FormDetailsDelivery";
 import { LoginFormAccount } from "./components/LoginFormAccount";
+import { authOptions } from "app/api/auth/[...nextauth]";
 
 export default async function Page() {
   const session = await getServerSession(authOptions);
