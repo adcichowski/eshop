@@ -20,16 +20,14 @@ export default function useToastFromParams({
 
   const toastsFromUrl = useMemo(
     () => (toast ? TOAST_FROM_PARAM?.[toast] : undefined),
-    [toast],
+    [toast, pathname],
   );
   useEffect(() => {
-    setTimeout(() => {
-      if (toast && toastsFromUrl?.type) {
-        router.replace(pathname);
-        addToast(toastsFromUrl?.type, toastsFromUrl.text);
-      }
-    }, 0);
-  }, [pathname, router, toast, toastsFromUrl, addToast]);
+    if (toast && toastsFromUrl?.type) {
+      router.replace(pathname);
+      addToast(toastsFromUrl?.type, toastsFromUrl.text);
+    }
+  }, [pathname]);
 
   return toastsFromUrl ? [toastsFromUrl] : [];
 }
