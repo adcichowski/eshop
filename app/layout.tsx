@@ -5,11 +5,11 @@ import "../public/globals.css";
 import "swiper/css/bundle";
 import { Header } from "components/Header/Header";
 import type { Metadata } from "next";
-import { baseUrl } from "../constants";
 import { getFavoriteProducts } from "lib/actions/favorite";
 import { getCartProducts } from "lib/actions/cart";
 import { Footer } from "components/Footer/Footer";
 import { Analytics } from "@vercel/analytics/react";
+import { baseUrl } from "constants/constants";
 const montserrat = Inter({
   subsets: ["latin"],
   display: "swap",

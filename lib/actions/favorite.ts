@@ -1,6 +1,6 @@
 "use server";
+import { FAVORITES_PRODUCTS_COOKIE } from "constants/constants";
 import { cookies } from "next/headers";
-import { FAVORITES_PRODUCTS_COOKIE } from "../../constants";
 import { jsonParse } from "utils/utils";
 
 export type FavoriteProduct = {

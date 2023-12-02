@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import { RECENTLY_VIEWED_PRODUCTS_COOKIE } from "../../../constants";
 import { jsonParse } from "utils/utils";
+import { RECENTLY_VIEWED_PRODUCTS_COOKIE } from "constants/constants";
 
 const MAX_NUMBER_RECENTLY_VIEWED_PRODUCTS = 10;
 

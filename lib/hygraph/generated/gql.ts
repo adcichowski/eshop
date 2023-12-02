@@ -21,7 +21,7 @@ const documents = {
   "fragment Categories on Category {\n  id\n  name\n  slug\n}":
     types.CategoriesFragmentDoc,
   "fragment Images on Asset {\n  id\n  alt\n  url\n}": types.ImagesFragmentDoc,
-  "fragment OrderDisplay on Order {\n  orderItems {\n    id\n    width\n    height\n    product {\n      images(first: 1) {\n        url\n      }\n    }\n  }\n  delivery\n  methodPayment\n  total\n}":
+  "fragment OrderDisplay on Order {\n  orderItems {\n    id\n    width\n    height\n    product {\n      images(first: 1) {\n        url\n      }\n    }\n  }\n  delivery\n  paymentMethod\n  total\n}":
     types.OrderDisplayFragmentDoc,
   "fragment ProductDisplay on Product {\n  sale\n  id\n  name\n  slug\n  orientation\n  whiteFrame\n  variants(orderBy: price_ASC, first: 1) {\n    id\n    price\n    width\n    height\n  }\n  categories {\n    slug\n  }\n  images {\n    ...Images\n  }\n}":
     types.ProductDisplayFragmentDoc,
@@ -31,7 +31,7 @@ const documents = {
     types.ReviewProductFragmentDoc,
   "fragment Variant on ProductVariantType {\n  id\n  width\n  height\n  price\n}":
     types.VariantFragmentDoc,
-  "mutation CreateOrder($email: String!, $totalOrderPrice: Int!, $stripeCheckoutId: String!, $orderItems: OrderItemCreateManyInlineInput!, $statusOrder: StatusOrder!, $methodPayment: String!, $delivery: Int!) {\n  createOrder(\n    data: {email: $email, total: $totalOrderPrice, stripeCheckoutId: $stripeCheckoutId, orderItems: $orderItems, statusOrder: $statusOrder, methodPayment: $methodPayment, delivery: $delivery}\n  ) {\n    id\n  }\n}\n\nmutation UpdateOrderPaymentPaid($stripeCheckoutId: String!) {\n  updateOrder(\n    data: {statusOrder: PAID}\n    where: {stripeCheckoutId: $stripeCheckoutId}\n  ) {\n    id\n  }\n}":
+  "mutation CreateOrder($email: String!, $totalOrderPrice: Int!, $stripeCheckoutId: String!, $orderItems: OrderItemCreateManyInlineInput!, $statusOrder: StatusOrder!, $delivery: Int!) {\n  createOrder(\n    data: {email: $email, total: $totalOrderPrice, stripeCheckoutId: $stripeCheckoutId, orderItems: $orderItems, statusOrder: $statusOrder, delivery: $delivery}\n  ) {\n    id\n  }\n}\n\nmutation UpdateOrderPaymentPaid($stripeCheckoutId: String!, $paymentMethod: String!) {\n  updateOrder(\n    data: {statusOrder: PAID, paymentMethod: $paymentMethod}\n    where: {stripeCheckoutId: $stripeCheckoutId}\n  ) {\n    id\n  }\n}":
     types.CreateOrderDocument,
   "query GetOrder($orderId: ID!) {\n  order(where: {id: $orderId}, stage: DRAFT) {\n    ...OrderDisplay\n  }\n}":
     types.GetOrderDocument,
@@ -77,7 +77,7 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "fragment OrderDisplay on Order {\n  orderItems {\n    id\n    width\n    height\n    product {\n      images(first: 1) {\n        url\n      }\n    }\n  }\n  delivery\n  methodPayment\n  total\n}",
+  source: "fragment OrderDisplay on Order {\n  orderItems {\n    id\n    width\n    height\n    product {\n      images(first: 1) {\n        url\n      }\n    }\n  }\n  delivery\n  paymentMethod\n  total\n}",
 ): typeof import("./graphql").OrderDisplayFragmentDoc;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
@@ -107,7 +107,7 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: "mutation CreateOrder($email: String!, $totalOrderPrice: Int!, $stripeCheckoutId: String!, $orderItems: OrderItemCreateManyInlineInput!, $statusOrder: StatusOrder!, $methodPayment: String!, $delivery: Int!) {\n  createOrder(\n    data: {email: $email, total: $totalOrderPrice, stripeCheckoutId: $stripeCheckoutId, orderItems: $orderItems, statusOrder: $statusOrder, methodPayment: $methodPayment, delivery: $delivery}\n  ) {\n    id\n  }\n}\n\nmutation UpdateOrderPaymentPaid($stripeCheckoutId: String!) {\n  updateOrder(\n    data: {statusOrder: PAID}\n    where: {stripeCheckoutId: $stripeCheckoutId}\n  ) {\n    id\n  }\n}",
+  source: "mutation CreateOrder($email: String!, $totalOrderPrice: Int!, $stripeCheckoutId: String!, $orderItems: OrderItemCreateManyInlineInput!, $statusOrder: StatusOrder!, $delivery: Int!) {\n  createOrder(\n    data: {email: $email, total: $totalOrderPrice, stripeCheckoutId: $stripeCheckoutId, orderItems: $orderItems, statusOrder: $statusOrder, delivery: $delivery}\n  ) {\n    id\n  }\n}\n\nmutation UpdateOrderPaymentPaid($stripeCheckoutId: String!, $paymentMethod: String!) {\n  updateOrder(\n    data: {statusOrder: PAID, paymentMethod: $paymentMethod}\n    where: {stripeCheckoutId: $stripeCheckoutId}\n  ) {\n    id\n  }\n}",
 ): typeof import("./graphql").CreateOrderDocument;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.

@@ -20,14 +20,14 @@ import type {
 import { useOrderContext } from "context/OrderContext/OrderContext";
 import { useRouter } from "next/navigation";
 import { generateUrlForToast } from "context/ToastContext/utilsToast";
-import { createPaymentIntent } from "lib/actions/paymen-intent";
+import { createPaymentIntent } from "lib/actions/payment-intent";
 import { useClientContext } from "context/ClientContext/ClientContext";
 import { FormAccountWrapper } from "../FormAccountWrapper";
 
 const benefitsInfo = [
   "10% discount on first purchases for new users",
   "the possibility of receiving discounts and promotional coupons",
-  "preview of orderx fulfillment status",
+  "preview of order fulfillment status",
 ];
 
 export function FormDetailsDelivery({ session }: { session: Session | null }) {

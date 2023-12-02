@@ -1,6 +1,6 @@
 "use server";
+import { CART_COOKIE } from "constants/constants";
 import { cookies } from "next/headers";
-import { CART_COOKIE } from "../../constants";
 import { jsonParse } from "utils/utils";
 
 type CartActions = "remove" | "reduce" | "add" | "changeAmount";

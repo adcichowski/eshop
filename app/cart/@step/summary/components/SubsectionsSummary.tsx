@@ -1,21 +1,16 @@
 import { SubsectionWrapper } from "app/cart/@step/summary/components/SubsectionWrapper";
-import { PersonDataType } from "context/OrderContext/OrderContext";
 import { ProductOrderSummary } from "./ProductOrderSummary";
 import { getCartProducts } from "lib/actions/cart";
 import { DetailsOrderSummary } from "./DetailsOrderSummary";
 import { getOrder } from "lib";
-const dataPerson: PersonDataType = {
-  email: "adam@gmail.com",
-  firstName: "Adam",
-  lastName: "Cichowski",
-  city: "Iława",
-  phoneNumber: "+48502211333",
-  street: "Władysława Jagieły",
-  postalCode: "13-113",
-};
+import { getOrderCookie } from "lib/actions/payment-intent";
+import { PersonDeliveryDetails } from "./PersonDeliveryDetails";
+
 export async function SubsectionsSummary() {
+  const orderId = getOrderCookie()?.orderId;
+  if (!orderId) return;
   const data = getCartProducts();
-  const order = await getOrder("cllpou7inxz570bun74sbnrwg");
+  const order = await getOrder(orderId);
   const subsections = [
     {
       title: "Cart",
@@ -38,23 +33,7 @@ export async function SubsectionsSummary() {
     },
     {
       title: "Delivery address",
-      content: (
-        <address>
-          <div>{`${dataPerson.firstName} ${dataPerson.lastName} `}</div>
-          <div>{dataPerson.street}</div>
-          <div>{`${dataPerson.postalCode} ${dataPerson.city} `}</div>
-          <dl className="[&>div]:flex [&>div]:gap-1">
-            <div>
-              <dt>Phone:</dt>
-              <dd>{dataPerson.phoneNumber}</dd>
-            </div>
-            <div>
-              <dt>Email:</dt>
-              <dd>{dataPerson.email}</dd>
-            </div>
-          </dl>
-        </address>
-      ),
+      content: <PersonDeliveryDetails />,
     },
     {
       title: "Order value",

@@ -5371,8 +5371,8 @@ export type Order = Entity &
     history: Array<Version>;
     /** The unique identifier */
     id: Scalars["ID"]["output"];
-    methodPayment: Scalars["String"]["output"];
     orderItems: Array<OrderItem>;
+    paymentMethod?: Maybe<Scalars["String"]["output"]>;
     /** The time the document was published. Null on documents in draft stage. */
     publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
     /** User that last published this document */
@@ -5459,8 +5459,8 @@ export type OrderCreateInput = {
   createdAt?: InputMaybe<Scalars["DateTime"]["input"]>;
   delivery: Scalars["Int"]["input"];
   email: Scalars["String"]["input"];
-  methodPayment: Scalars["String"]["input"];
   orderItems?: InputMaybe<OrderItemCreateManyInlineInput>;
+  paymentMethod?: InputMaybe<Scalars["String"]["input"]>;
   statusOrder: StatusOrder;
   stripeCheckoutId: Scalars["String"]["input"];
   total: Scalars["Int"]["input"];
@@ -6127,30 +6127,30 @@ export type OrderManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars["ID"]["input"]>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars["ID"]["input"]>;
-  methodPayment?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values containing the given string. */
-  methodPayment_contains?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values ending with the given string. */
-  methodPayment_ends_with?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values that are contained in given list. */
-  methodPayment_in?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  methodPayment_not?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values not containing the given string. */
-  methodPayment_not_contains?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values not ending with the given string */
-  methodPayment_not_ends_with?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values that are not contained in given list. */
-  methodPayment_not_in?: InputMaybe<
-    Array<InputMaybe<Scalars["String"]["input"]>>
-  >;
-  /** All values not starting with the given string. */
-  methodPayment_not_starts_with?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values starting with the given string. */
-  methodPayment_starts_with?: InputMaybe<Scalars["String"]["input"]>;
   orderItems_every?: InputMaybe<OrderItemWhereInput>;
   orderItems_none?: InputMaybe<OrderItemWhereInput>;
   orderItems_some?: InputMaybe<OrderItemWhereInput>;
+  paymentMethod?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values containing the given string. */
+  paymentMethod_contains?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values ending with the given string. */
+  paymentMethod_ends_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values that are contained in given list. */
+  paymentMethod_in?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  paymentMethod_not?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values not containing the given string. */
+  paymentMethod_not_contains?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values not ending with the given string */
+  paymentMethod_not_ends_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values that are not contained in given list. */
+  paymentMethod_not_in?: InputMaybe<
+    Array<InputMaybe<Scalars["String"]["input"]>>
+  >;
+  /** All values not starting with the given string. */
+  paymentMethod_not_starts_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values starting with the given string. */
+  paymentMethod_starts_with?: InputMaybe<Scalars["String"]["input"]>;
   publishedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars["DateTime"]["input"]>;
@@ -6246,8 +6246,8 @@ export enum OrderOrderByInput {
   EmailDesc = "email_DESC",
   IdAsc = "id_ASC",
   IdDesc = "id_DESC",
-  MethodPaymentAsc = "methodPayment_ASC",
-  MethodPaymentDesc = "methodPayment_DESC",
+  PaymentMethodAsc = "paymentMethod_ASC",
+  PaymentMethodDesc = "paymentMethod_DESC",
   PublishedAtAsc = "publishedAt_ASC",
   PublishedAtDesc = "publishedAt_DESC",
   StatusOrderAsc = "statusOrder_ASC",
@@ -6263,8 +6263,8 @@ export enum OrderOrderByInput {
 export type OrderUpdateInput = {
   delivery?: InputMaybe<Scalars["Int"]["input"]>;
   email?: InputMaybe<Scalars["String"]["input"]>;
-  methodPayment?: InputMaybe<Scalars["String"]["input"]>;
   orderItems?: InputMaybe<OrderItemUpdateManyInlineInput>;
+  paymentMethod?: InputMaybe<Scalars["String"]["input"]>;
   statusOrder?: InputMaybe<StatusOrder>;
   stripeCheckoutId?: InputMaybe<Scalars["String"]["input"]>;
   total?: InputMaybe<Scalars["Int"]["input"]>;
@@ -6290,7 +6290,7 @@ export type OrderUpdateManyInlineInput = {
 export type OrderUpdateManyInput = {
   delivery?: InputMaybe<Scalars["Int"]["input"]>;
   email?: InputMaybe<Scalars["String"]["input"]>;
-  methodPayment?: InputMaybe<Scalars["String"]["input"]>;
+  paymentMethod?: InputMaybe<Scalars["String"]["input"]>;
   statusOrder?: InputMaybe<StatusOrder>;
   total?: InputMaybe<Scalars["Int"]["input"]>;
 };
@@ -6428,30 +6428,30 @@ export type OrderWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars["ID"]["input"]>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars["ID"]["input"]>;
-  methodPayment?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values containing the given string. */
-  methodPayment_contains?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values ending with the given string. */
-  methodPayment_ends_with?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values that are contained in given list. */
-  methodPayment_in?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  methodPayment_not?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values not containing the given string. */
-  methodPayment_not_contains?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values not ending with the given string */
-  methodPayment_not_ends_with?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values that are not contained in given list. */
-  methodPayment_not_in?: InputMaybe<
-    Array<InputMaybe<Scalars["String"]["input"]>>
-  >;
-  /** All values not starting with the given string. */
-  methodPayment_not_starts_with?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values starting with the given string. */
-  methodPayment_starts_with?: InputMaybe<Scalars["String"]["input"]>;
   orderItems_every?: InputMaybe<OrderItemWhereInput>;
   orderItems_none?: InputMaybe<OrderItemWhereInput>;
   orderItems_some?: InputMaybe<OrderItemWhereInput>;
+  paymentMethod?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values containing the given string. */
+  paymentMethod_contains?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values ending with the given string. */
+  paymentMethod_ends_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values that are contained in given list. */
+  paymentMethod_in?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  paymentMethod_not?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values not containing the given string. */
+  paymentMethod_not_contains?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values not ending with the given string */
+  paymentMethod_not_ends_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values that are not contained in given list. */
+  paymentMethod_not_in?: InputMaybe<
+    Array<InputMaybe<Scalars["String"]["input"]>>
+  >;
+  /** All values not starting with the given string. */
+  paymentMethod_not_starts_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values starting with the given string. */
+  paymentMethod_starts_with?: InputMaybe<Scalars["String"]["input"]>;
   publishedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars["DateTime"]["input"]>;
@@ -10927,7 +10927,7 @@ export type ImagesFragment = { id: string; alt?: string | null; url: string };
 
 export type OrderDisplayFragment = {
   delivery: number;
-  methodPayment: string;
+  paymentMethod?: string | null;
   total: number;
   orderItems: Array<{
     id: string;
@@ -10986,7 +10986,6 @@ export type CreateOrderMutationVariables = Exact<{
   stripeCheckoutId: Scalars["String"]["input"];
   orderItems: OrderItemCreateManyInlineInput;
   statusOrder: StatusOrder;
-  methodPayment: Scalars["String"]["input"];
   delivery: Scalars["Int"]["input"];
 }>;
 
@@ -10994,6 +10993,7 @@ export type CreateOrderMutation = { createOrder?: { id: string } | null };
 
 export type UpdateOrderPaymentPaidMutationVariables = Exact<{
   stripeCheckoutId: Scalars["String"]["input"];
+  paymentMethod: Scalars["String"]["input"];
 }>;
 
 export type UpdateOrderPaymentPaidMutation = {
@@ -11007,7 +11007,7 @@ export type GetOrderQueryVariables = Exact<{
 export type GetOrderQuery = {
   order?: {
     delivery: number;
-    methodPayment: string;
+    paymentMethod?: string | null;
     total: number;
     orderItems: Array<{
       id: string;
@@ -11237,7 +11237,7 @@ export const OrderDisplayFragmentDoc = new TypedDocumentString(
     }
   }
   delivery
-  methodPayment
+  paymentMethod
   total
 }
     `,
@@ -11383,9 +11383,9 @@ export const GetCategoriesDocument = new TypedDocumentString(`
   GetCategoriesQueryVariables
 >;
 export const CreateOrderDocument = new TypedDocumentString(`
-    mutation CreateOrder($email: String!, $totalOrderPrice: Int!, $stripeCheckoutId: String!, $orderItems: OrderItemCreateManyInlineInput!, $statusOrder: StatusOrder!, $methodPayment: String!, $delivery: Int!) {
+    mutation CreateOrder($email: String!, $totalOrderPrice: Int!, $stripeCheckoutId: String!, $orderItems: OrderItemCreateManyInlineInput!, $statusOrder: StatusOrder!, $delivery: Int!) {
   createOrder(
-    data: {email: $email, total: $totalOrderPrice, stripeCheckoutId: $stripeCheckoutId, orderItems: $orderItems, statusOrder: $statusOrder, methodPayment: $methodPayment, delivery: $delivery}
+    data: {email: $email, total: $totalOrderPrice, stripeCheckoutId: $stripeCheckoutId, orderItems: $orderItems, statusOrder: $statusOrder, delivery: $delivery}
   ) {
     id
   }
@@ -11395,9 +11395,9 @@ export const CreateOrderDocument = new TypedDocumentString(`
   CreateOrderMutationVariables
 >;
 export const UpdateOrderPaymentPaidDocument = new TypedDocumentString(`
-    mutation UpdateOrderPaymentPaid($stripeCheckoutId: String!) {
+    mutation UpdateOrderPaymentPaid($stripeCheckoutId: String!, $paymentMethod: String!) {
   updateOrder(
-    data: {statusOrder: PAID}
+    data: {statusOrder: PAID, paymentMethod: $paymentMethod}
     where: {stripeCheckoutId: $stripeCheckoutId}
   ) {
     id
@@ -11425,7 +11425,7 @@ export const GetOrderDocument = new TypedDocumentString(`
     }
   }
   delivery
-  methodPayment
+  paymentMethod
   total
 }`) as unknown as TypedDocumentString<GetOrderQuery, GetOrderQueryVariables>;
 export const GetProductsToCarrouselDocument = new TypedDocumentString(`

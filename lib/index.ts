@@ -22,7 +22,7 @@ import {
   reshapeProductDetails,
   reshapeProductReviews,
 } from "./mappers";
-import { ADMIN_AUTH_TOKEN } from "../constants";
+import { ADMIN_AUTH_TOKEN } from "constants/server";
 export * from "./hygraph/generated/gql";
 
 type GraphQlError = {
@@ -279,7 +279,6 @@ export async function createOrder(order: {
   orderItems: OrderItemCreateManyInlineInput;
   statusOrder: StatusOrder;
   delivery: number;
-  methodPayment: string;
 }) {
   const data = await fetcher({
     query: CreateOrderDocument,
@@ -295,7 +294,13 @@ export async function createOrder(order: {
   return createdOrder;
 }
 
-export async function updateStatusOrderPaid(stripeCheckoutId: string) {
+export async function updateStatusOrderPaid({
+  stripeCheckoutId,
+  paymentMethod,
+}: {
+  stripeCheckoutId: string;
+  paymentMethod: string;
+}) {
   const data = await fetcher({
     query: UpdateOrderPaymentPaidDocument,
     headers: {
@@ -303,6 +308,7 @@ export async function updateStatusOrderPaid(stripeCheckoutId: string) {
     },
     variables: {
       stripeCheckoutId,
+      paymentMethod,
     },
   });
   const paidOrder = data.updateOrder;
