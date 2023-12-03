@@ -51,6 +51,7 @@ const config = {
     },
     colors: {
       primary: "#76A765",
+      activeButton: "#5A814C",
       black: "#000000",
       white: "#FFFFFF",
       green: {
