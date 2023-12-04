@@ -59,7 +59,7 @@ export const reshapeProductDisplay = (
       id,
       whiteFrame,
       sale: Number(sale),
-      image: product.images[0].url,
+      image: product.images[0]?.url,
       variant: {
         id: variants[0].id,
         width: variants[0].width,

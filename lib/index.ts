@@ -156,13 +156,11 @@ export async function getProductBySlug(slug: string) {
     variables: {
       slug: slug,
     },
-    cache: "no-store",
   });
 
   if (!data.product) {
     throw new Error(`Product not found: ${slug}`);
   }
-
   return reshapeProductDetails(data.product);
 }
 
@@ -197,7 +195,7 @@ export async function getProductsByCategorySlug({
     categories,
   } = await fetcher({
     query: GetProductsByCategorySlugDocument,
-    cache: "no-store",
+    // cache: "no-store",
     variables: {
       categorySlug: slug,
       skip,

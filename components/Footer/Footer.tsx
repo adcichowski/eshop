@@ -10,17 +10,9 @@ import React from "react";
 import { Taglines } from "./components/Taglines";
 import { Separator } from "components/Separator/Separator";
 
-const joinUsIcons = [
-  {
-    href: "Facebook",
-    Icon: FacebookIcon,
-  },
-  {
-    href: "Instagram",
-    Icon: InstagramIcon,
-  },
-  { href: "Linkedin", Icon: LinkedinIcon },
-  { href: "Github", Icon: GithubIcon },
+const projectedUs = [
+  { href: "https://www.linkedin.com/in/adcichowski/", Icon: LinkedinIcon },
+  { href: "https://github.com/adcichowski", Icon: GithubIcon },
 ];
 export function Footer() {
   return (
@@ -33,7 +25,7 @@ export function Footer() {
 
           <GiftPoster />
 
-          <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+          <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400 w-[1440px]">
             © 2023
             <span className="mx-1">PosterWall™</span>. All Rights Reserved.
           </span>
@@ -49,10 +41,10 @@ const JoinToAside = () => (
     className="w-full md:text-center md:w-auto"
   >
     <h3 className="uppercase mb-2 font-semibold" id="joinHeader">
-      Join to us
+      Projected Us
     </h3>
     <ul className="flex flex-wrap md:justify-center items-center gap-4">
-      {joinUsIcons.map(({ href, Icon }) => (
+      {projectedUs.map(({ href, Icon }) => (
         <Link
           className="p-4 hover:bg-gray-100/5 hover:border-gray-100  border border-white bg-white"
           key={href}

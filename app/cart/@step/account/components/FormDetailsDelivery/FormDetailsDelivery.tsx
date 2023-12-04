@@ -80,6 +80,7 @@ export function FormDetailsDelivery({ session }: { session: Session | null }) {
       ...data,
       email,
     });
+    console.log(paymentIntent);
     if (paymentIntent) {
       setOrder(paymentIntent);
       push("/cart/payment");

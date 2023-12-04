@@ -5,8 +5,8 @@ export type ToastTypes = (typeof toastsTypes)[number];
 export const PARAM_GET_TOAST = "cG9wcGVy";
 export type TYPES_TOASTS_IN_PARAM =
   | "LOG_IN_SUCCESS"
+  | "LOG_IN_ERROR"
   | "SIGN_OUT"
-  | "REGISTER_SUCCESS"
   | "REGISTER_ERROR";
 
 export const TOAST_FROM_PARAM = {
@@ -20,14 +20,14 @@ export const TOAST_FROM_PARAM = {
     text: "Success log out from account",
     type: "success",
   },
-  REGISTER_SUCCESS: {
-    id: "register_success",
-    text: "Success to create account",
-    type: "success",
-  },
   REGISTER_ERROR: {
     id: "register_error",
     text: "Error while register account",
+    type: "error",
+  },
+  LOG_IN_ERROR: {
+    id: "log_in_error",
+    text: "Error while login account",
     type: "error",
   },
 } satisfies Record<TYPES_TOASTS_IN_PARAM, ToastStateType>;

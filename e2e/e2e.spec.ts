@@ -1,0 +1,60 @@
+import { test } from "@playwright/test";
+import { user } from "./fixtures/user";
+
+test("order with registration user", async ({ page }) => {
+  await page.goto("http://localhost:3000/");
+  await page.getByLabel("navigation icons").getByRole("button").first().click();
+  await page.getByRole("link", { name: "Sign up" }).click();
+  await page.getByLabel("Register in").locator("#emailLogin").click();
+  await page.getByLabel("Register in").locator("#emailLogin").fill(user.email);
+  await page.getByLabel("Register in").locator("#emailLogin").press("Tab");
+  await page
+    .getByLabel("Register in")
+    .locator("#passwordLogin")
+    .fill(user.password);
+  await page.getByLabel("Register in").locator("#passwordLogin").press("Tab");
+  await page.getByLabel("Repeat password:").fill(user.password);
+  await page.getByLabel("*I accept the terms and").check();
+  await page.getByRole("button", { name: "Sign up" }).click();
+  await page.getByText("Check iconSuccess login to").click();
+  await page.goto("http://localhost:3000/");
+  await page.getByLabel("navigation icons").getByRole("button").nth(2).click();
+  await page.goto("http://localhost:3000/");
+  await page.locator("article").first().getByRole("button").first().click();
+  await page.locator("article").nth(2).getByRole("button").click();
+  await page.locator("article").nth(3).getByRole("button").click();
+  await page.getByLabel("navigation icons").getByRole("button").nth(1).click();
+  await page.getByRole("link", { name: "Go to cart" }).click();
+  await page.getByRole("button", { name: "+" }).first().click();
+  await page.getByText("2", { exact: true }).click();
+  await page.getByRole("button", { name: "-" }).first().click();
+  await page.getByText("1", { exact: true }).first().click();
+  await page.getByRole("link", { name: "Set Delivery" }).click();
+  await page.getByLabel("Phone:", { exact: true }).click();
+  await page.getByLabel("Phone:", { exact: true }).fill(user.phone);
+  await page.getByLabel("First name:", { exact: true }).click();
+  await page.getByLabel("First name:", { exact: true }).fill(user.firstName);
+  await page.getByLabel("First name:", { exact: true }).press("Tab");
+  await page.getByLabel("Last name:", { exact: true }).fill(user.lastName);
+  await page.getByLabel("Street:", { exact: true }).click();
+  await page.getByLabel("Street:", { exact: true }).fill(user.street);
+  await page.getByLabel("Postal Code:", { exact: true }).click();
+  await page.getByLabel("Postal Code:", { exact: true }).fill(user.postalCode);
+  await page.getByLabel("City:", { exact: true }).click();
+  await page.getByLabel("City:", { exact: true }).fill(user.city);
+  await page.getByText("*I accept the terms and").click();
+  await page.getByRole("button", { name: "Sign up" }).click();
+  const stripeFrame = page.frameLocator("iframe").first();
+  await stripeFrame.getByLabel("Card number").fill("4242 4242 4242 42422");
+  await stripeFrame.getByLabel("MM / YY").fill("04 / 242");
+  await stripeFrame.getByLabel("CVC").fill("4242");
+  await page.getByRole("button", { name: "I order and pay" }).click();
+  await page.getByText("Order placed successfully").click();
+  await page.getByText(`${user.firstName} ${user.lastName}`).click();
+  await page.getByText(user.street).click();
+  await page.getByText(`${user.postalCode} ${user.city}`).click();
+  await page.getByText(`${user.phone}`).click();
+  await page.getByText(`Email:${user.email}`).click();
+  await page.getByText("Credit Card").click();
+  await page.getByText("Success", { exact: true }).click();
+});
