@@ -1,10 +1,4 @@
-import {
-  GiftIcon,
-  FacebookIcon,
-  InstagramIcon,
-  LinkedinIcon,
-  GithubIcon,
-} from "lucide-react";
+import { GiftIcon, LinkedinIcon, GithubIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { Taglines } from "./components/Taglines";
