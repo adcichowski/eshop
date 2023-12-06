@@ -24,12 +24,12 @@ Here's a list of technologies and tools used in this project:
 
 | Technology            | Description                                |
 | --------------------- | ------------------------------------------ |
-| GraphQL               | A query language for your API              |
-| Tailwind CSS          | A utility-first CSS framework              |
-| TypeScript            | A typed superset of JavaScript             |
-| Next.js               | A React framework for server-rendered apps |
-| Playwright            | A Node library for browser automation      |
-| React Testing Library | A testing utility for React applications   |
+| GraphQL               | query language for your API              |
+| Tailwind CSS          | utility-first CSS framework              |
+| TypeScript            | typed superset of JavaScript             |
+| Next.js               | React framework for server-rendered apps |
+| Playwright            | Node library for browser automation      |
+| React Testing Library | testing utility for React applications   |
 
 ## Getting Started
 
