@@ -195,7 +195,7 @@ export async function getProductsByCategorySlug({
     categories,
   } = await fetcher({
     query: GetProductsByCategorySlugDocument,
-    // cache: "no-store",
+    cache: "no-store",
     variables: {
       categorySlug: slug,
       skip,

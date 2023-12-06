@@ -8,6 +8,7 @@ export type FavoriteProduct = {
   category: string;
   image: string;
   slug: string;
+  whiteFrame: boolean;
   name: string;
 };
 

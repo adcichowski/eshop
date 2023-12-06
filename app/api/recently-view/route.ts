@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { jsonParse } from "utils/utils";
 import { RECENTLY_VIEWED_PRODUCTS_COOKIE } from "constants/constants";
+import { Orientation } from "lib/hygraph/generated/graphql";
 
 const MAX_NUMBER_RECENTLY_VIEWED_PRODUCTS = 10;
 
@@ -32,6 +33,8 @@ export type RecentlyViewProductType = {
   image: string;
   slug: string;
   category: string;
+  whiteFrame: boolean;
+  orientation: Orientation;
 };
 
 const setRecentlyViewedProduct = (product: RecentlyViewProductType) => {

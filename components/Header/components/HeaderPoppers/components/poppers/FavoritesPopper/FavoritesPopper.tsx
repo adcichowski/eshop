@@ -1,3 +1,4 @@
+import { clsx } from "clsx";
 import { Action } from "components/Action/Action";
 import { FavoriteInput } from "components/Inputs/FavoriteInput";
 import { useClientContext } from "context/ClientContext/ClientContext";
@@ -47,6 +48,7 @@ export function FavoriteProductPopper(favorite: FavoriteProduct) {
     >
       <Image
         width={90}
+        className={`border ${clsx(favorite.whiteFrame && "p-1")}`}
         aria-describedby={favorite.id}
         height={110}
         alt=""

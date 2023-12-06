@@ -25,10 +25,11 @@ export function ProductInfos({ product }: { product: ProductPageProps }) {
     id: product.id,
     category: product.attributes.category,
     favorite: product.favorite,
+    whiteFrame: product.attributes.whiteFrame,
   };
   return (
-    <aside
-      className={`mt-3 flex max-w-[377px] flex-col md:mt-0 md:ml-5  ${clsx(
+    <article
+      className={`flex max-w-[377px] flex-col md:mt-0 md:ml-5  ${clsx(
         !product.attributes.sale && "gap-y-[7.2px]",
       )} text-xl`}
     >
@@ -80,6 +81,6 @@ export function ProductInfos({ product }: { product: ProductPageProps }) {
           <FavoriteInput product={favoriteInputProps} />
         </div>
       </div>
-    </aside>
+    </article>
   );
 }

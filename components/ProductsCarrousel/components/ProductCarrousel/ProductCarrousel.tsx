@@ -19,6 +19,7 @@ export const ProductCarrousel = (product: ProductCarrouselPropsType) => {
     id: product.id,
     image: product.image,
     favorite: product.favorite,
+    whiteFrame: product.whiteFrame,
   };
   return (
     <article aria-labelledby={product.name} className="relative">
@@ -38,9 +39,10 @@ export const ProductCarrousel = (product: ProductCarrouselPropsType) => {
           src={product.image}
           width={180}
           height={2561}
-          className={`object-cover ${clsx(
+          className={`${clsx(
             product.orientation === "Vertical" && "h-full",
-          )} w-full h-full md:h-auto md:w-full`}
+            product.whiteFrame && "p-3",
+          )} w-auto h-auto border`}
         />
       </div>
 

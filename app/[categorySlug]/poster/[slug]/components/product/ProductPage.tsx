@@ -8,6 +8,7 @@ import { ProductReviews } from "./components/ProductReviews/ProductReviews";
 import { ProductDescription } from "./components/ProductDescription";
 import { RecentlyView } from "components/Footer/components/RecentlyView/RecentlyView";
 import { RecentlyViewUpdater } from "components/Footer/components/RecentlyView/RecentlyViewUpdater";
+import clsx from "clsx";
 
 export type ProductPageProps = {
   favorite: boolean;
@@ -37,7 +38,12 @@ export const ProductPage = ({ product }: { product: ProductPageProps }) => {
   return (
     <div className="relative flex flex-col">
       <RecentlyViewUpdater
-        product={{ ...product, category: product.attributes.category }}
+        product={{
+          ...product,
+          category: product.attributes.category,
+          whiteFrame: product.attributes.whiteFrame,
+          orientation: product.attributes.orientation,
+        }}
       />
       <div className="mx-2 grid grid-cols-1 pt-2 md:justify-items-center md:pt-6 xl:grid-cols-3">
         <div className="hidden xl:block min-w-[240px]">
@@ -50,12 +56,15 @@ export const ProductPage = ({ product }: { product: ProductPageProps }) => {
             </h2>
 
             <Image
-              width={497.36}
-              height={685.43}
-              className={`h-full w-full max-w-xs object-contain md:max-w-xl ${
+              width={320}
+              height={
+                product.attributes.orientation === "Vertical" ? 449 : 227.95
+              }
+              className={`my-auto h-auto w-full max-w-xs object-contain md:max-w-xl ${clsx(
                 product.attributes.orientation === Orientation.Horizontal &&
-                "my-auto h-auto"
-              }`}
+                  "my-auto",
+                product.attributes.whiteFrame && "p-3 border",
+              )}`}
               alt={product.name}
               src={product.image}
             />
@@ -67,6 +76,7 @@ export const ProductPage = ({ product }: { product: ProductPageProps }) => {
           <ProductsCarrouselServer
             categorySlug={product.attributes.category.toLowerCase()}
             className="mt-[50px]"
+            productId={product.id}
             id="othersProduct"
             Heading={
               <h3 className="mb-3 text-xl">
@@ -79,6 +89,7 @@ export const ProductPage = ({ product }: { product: ProductPageProps }) => {
 
           <ProductsCarrouselServer
             categorySlug={"bestsellers"}
+            productId={product.id}
             className="mt-[50px]"
             id="othersProduct"
             Heading={<h3 className="mb-3 text-xl">Others buy also</h3>}

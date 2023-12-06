@@ -9,6 +9,7 @@ export function FavoriteInput({
   size,
 }: {
   product: {
+    readonly whiteFrame: boolean;
     readonly id: string;
     readonly name: string;
     readonly image: string;
@@ -36,7 +37,7 @@ export function FavoriteInput({
         onChange={handleFavorite}
         name="A3-confirmation"
         checked={product.favorite}
-        className="favorite absolute  box-border h-full w-full cursor-pointer opacity-0"
+        className="favorite absolute box-border h-full w-full cursor-pointer opacity-0"
       />
       <div>
         <HeartIcon

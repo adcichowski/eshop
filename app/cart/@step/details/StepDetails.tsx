@@ -2,7 +2,7 @@ import { Action } from "components/Action/Action";
 import React from "react";
 import { DiscountCodeInput } from "./components/DiscountCodeInput/DiscountCodeInput";
 import { SummaryTableCart } from "./components/SummaryTableCart";
-import { DetailsOrder } from "views/cart/components/DetailsOrder/DetailsOrder";
+import { DetailsOrder } from "app/cart/@step/details/components/DetailsOrder/DetailsOrder";
 
 export type StepDetailsType = {
   code?: string;
