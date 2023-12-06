@@ -156,13 +156,11 @@ export async function getProductBySlug(slug: string) {
     variables: {
       slug: slug,
     },
-    cache: "no-store",
   });
 
   if (!data.product) {
     throw new Error(`Product not found: ${slug}`);
   }
-
   return reshapeProductDetails(data.product);
 }
 

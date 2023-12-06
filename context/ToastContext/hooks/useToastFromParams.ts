@@ -23,13 +23,11 @@ export default function useToastFromParams({
     [toast],
   );
   useEffect(() => {
-    setTimeout(() => {
-      if (toast && toastsFromUrl?.type) {
-        router.replace(pathname);
-        addToast(toastsFromUrl?.type, toastsFromUrl.text);
-      }
-    }, 0);
-  }, [pathname, router, toast, toastsFromUrl, addToast]);
+    if (toast && toastsFromUrl?.type) {
+      router.replace(pathname);
+      addToast(toastsFromUrl?.type, toastsFromUrl.text);
+    }
+  }, [pathname, toastsFromUrl]);
 
   return toastsFromUrl ? [toastsFromUrl] : [];
 }

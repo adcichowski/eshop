@@ -33,7 +33,7 @@ export function Action({
   const classname =
     className ||
     twMerge(
-      `text-xs p-1 px-2 bg-primary text-white font-semibold uppercase transition-colors ${clsx(
+      `text-xs p-1 px-2 bg-primary text-white font-semibold uppercase transition-colors active:bg-activeButton ${clsx(
         disabled &&
           "cursor-not-allowed border-gray-100 bg-white fill-gray-100 text-gray-100 pointer-events-none border border-gray-100/80 bg-gray-100/30",
         fullWidth && "w-full",

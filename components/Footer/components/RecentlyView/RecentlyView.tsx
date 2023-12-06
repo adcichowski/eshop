@@ -5,13 +5,12 @@ import { Action } from "components/Action/Action";
 import Image from "next/image";
 import { useQueryRecentlyView } from "lib/tanstack";
 import { RecentlyViewProductType } from "app/api/recently-view/route";
-
+import clsx from "clsx";
 const swiperSettings: SwiperProps = {
   draggable: true,
   freeMode: true,
   slidesPerView: 7,
   spaceBetween: 10,
-  centeredSlides: true,
 };
 
 export const RecentlyView = () => {
@@ -26,7 +25,7 @@ export const RecentlyView = () => {
         Recently View Products
       </h3>
 
-      <div className="max-w-2xl w-full mt-5">
+      <div className="max-w-2xl w-full mt-5 flex">
         <Swiper {...swiperSettings}>
           {data.products.map((product) => (
             <SwiperSlide key={product.name}>
@@ -42,7 +41,7 @@ export const RecentlyView = () => {
 const RecentlyViewProduct = (product: RecentlyViewProductType) => {
   return (
     <article
-      className="flex flex-col items-center gap-1 w-full"
+      className="flex flex-col items-center justify-center gap-1 w-full h-full"
       aria-label={product.name}
     >
       <Action
@@ -51,6 +50,9 @@ const RecentlyViewProduct = (product: RecentlyViewProductType) => {
         className="text-sm hover:underline cursor-pointer hover:font-medium flex items-center justify-center"
       >
         <Image
+          className={`max-h-[118.59px] border ${clsx(
+            product.whiteFrame && "p-1",
+          )}`}
           width={100}
           aria-describedby={product.name}
           height={120}

@@ -6,6 +6,7 @@ import { objectKeys } from "utils/utils";
 import { Action } from "components/Action/Action";
 import { generateUrlForToast } from "context/ToastContext/utilsToast";
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 const fields = {
   email: {
@@ -41,6 +42,7 @@ export function RegisterForm({
   );
   const onSubmit = handleSubmit(async (data, e) => {
     e?.preventDefault();
+    const account = { email: data.email, password: data.password };
     const res = await fetch("/api/signup", {
       method: "POST",
       headers: {
@@ -49,10 +51,13 @@ export function RegisterForm({
       body: JSON.stringify(data),
     });
     if (!res.ok) {
-      return push(generateUrlForToast("/cart/account", "REGISTER_ERROR"));
+      return push(generateUrlForToast("/account", "REGISTER_ERROR"));
     }
     if (res.ok) {
-      push(generateUrlForToast("/", "REGISTER_SUCCESS"));
+      await signIn("credentials", {
+        ...account,
+        callbackUrl: generateUrlForToast("/", "LOG_IN_SUCCESS"),
+      });
     }
   });
 
