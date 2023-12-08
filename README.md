@@ -1,6 +1,6 @@
 # Your eShop Project
 
-<a href='https://www.poster-wall.store/'><img src="https://i.ibb.co/K05w877/eshop.png" alt="eShop Banner" width="50%"></a>
+<a href='https://www.poster-wall.store/'><img src="https://ibb.co/Mk5RDSS" alt="eShop Banner" width="50%"></a>
 
 ## About
 
