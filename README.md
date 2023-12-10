@@ -1,6 +1,6 @@
 # Poster Wall
 
-<img src="https://i.ibb.co/K05w877/eshop.png" alt="eShop Banner" width="50%">
+<a href="https://www.poster-wall.store/"><img src="https://i.ibb.co/4RgjZtt/banner-eshop.png" alt="banner-eshop" border="0" /></a>
 
 ## About
 
