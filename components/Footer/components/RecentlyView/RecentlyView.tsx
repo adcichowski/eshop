@@ -25,7 +25,7 @@ export const RecentlyView = () => {
         Recently View Products
       </h3>
 
-      <div className="max-w-2xl w-full mt-5 flex">
+      <div className="max-w-2xl w-full mt-5">
         <Swiper {...swiperSettings}>
           {data.products.map((product) => (
             <SwiperSlide key={product.name}>
@@ -41,7 +41,10 @@ export const RecentlyView = () => {
 const RecentlyViewProduct = (product: RecentlyViewProductType) => {
   return (
     <article
-      className="flex flex-col items-center justify-center gap-1 w-full h-full"
+      className={clsx(
+        "flex flex-col items-center justify-center gap-1 w-full",
+        product.orientation === "Horizontal" && "h-[106.57px]",
+      )}
       aria-label={product.name}
     >
       <Action
