@@ -33,7 +33,7 @@ export const metadata: Metadata = {
       "Discover a world of artistry with our stunning e-shop poster! Immerse yourself in a visual masterpiece that is sure to captivate your senses.",
     images: [
       {
-        url: "/_next/image?url=%2Fcarrousel%2Fswiper-1.jpg&w=3840&q=75",
+        url: "https://i.ibb.co/4RgjZtt/banner-eshop.png",
         width: 1200,
         height: 630,
         alt: "PosterWall Shop",

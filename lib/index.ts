@@ -156,6 +156,7 @@ export async function getProductBySlug(slug: string) {
     variables: {
       slug: slug,
     },
+    cache: "no-cache",
   });
 
   if (!data.product) {
