@@ -3,7 +3,6 @@ import React, { useRef } from "react";
 import { Configure, InstantSearch, PoweredBy } from "react-instantsearch-dom";
 import { CustomHits } from "./CustomHits";
 import { SearchBox } from "./SearchBox";
-import { pagination } from "instantsearch.js/es/widgets";
 import { SearchIcon } from "lucide-react";
 import CloseIcon from "public/close-icon.svg";
 import { useClickOutside } from "hooks/useClickOutside";
