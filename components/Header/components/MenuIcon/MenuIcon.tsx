@@ -1,11 +1,10 @@
 "use client";
 import clsx from "clsx";
-import { Modal } from "components/Modal/Modal";
-import { useModal } from "components/Modal/useModal";
+import { headerCategories } from "../../constants";
 import { useClickOutside } from "hooks/useClickOutside";
-import { useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
+import { useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
+import Link from "next/link";
 
 export function MenuIcon() {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,15 +53,25 @@ const Menu = ({
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   useClickOutside(wrapperRef, handleClickMenu);
-  useEffect(() => {}, []);
-  const { ref } = useModal({ isOpen });
-  if (!isOpen || !ref) return <></>;
-  return createPortal(
-    <dialog className="top-0 fixed z-50 flex h-full w-1/2 max-w-lg">
-      <div ref={wrapperRef}>
-        <h2>Text</h2>
-      </div>
-    </dialog>,
-    ref,
+  if (!isOpen) return <></>;
+  return (
+    <div
+      ref={wrapperRef}
+      className="absolute top-14 z-50 bg-white sm:hidden flex animate-fade-down"
+    >
+      <ul className="p-3 flex flex-col gap-y-2">
+        {headerCategories.map((category) => (
+          <li key={category.title} className="hover:underline capitalize">
+            <Link
+              className="cursor-pointer"
+              aria-label={`Go to category ${category.title}`}
+              href={`/${category.slug || category.title}`}
+            >
+              {category.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };

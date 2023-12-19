@@ -3,6 +3,7 @@ import React, { useRef } from "react";
 import { Configure, InstantSearch, PoweredBy } from "react-instantsearch-dom";
 import { CustomHits } from "./CustomHits";
 import { SearchBox } from "./SearchBox";
+import { pagination } from "instantsearch.js/es/widgets";
 import { SearchIcon } from "lucide-react";
 import CloseIcon from "public/close-icon.svg";
 import { useClickOutside } from "hooks/useClickOutside";
@@ -43,7 +44,7 @@ export function SearchModal({ handleModal }: { handleModal: () => void }) {
               <button className="ml-2">
                 <SearchIcon size={30} strokeWidth={1.5} />
               </button>
-              <PoweredBy className="absolute bottom-0 right-8 flex w-28 items-center gap-x-2 whitespace-nowrap text-xs" />
+              <PoweredBy className="absolute bottom-0 right-2 flex items-center gap-x-2 whitespace-nowrap text-xs" />
             </div>
           </form>
           <CustomHits />

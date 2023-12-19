@@ -39,8 +39,20 @@ const config = {
             transform: "translateY(0)",
           },
         },
+
+        "fade-left": {
+          "0%": {
+            opacity: "0",
+            transform: "translateX(-2rem)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateX(0)",
+          },
+        },
       },
       animation: {
+        "fade-left": "fade-left .2s ease-in-out",
         "fade-down": "fade-down .2s ease-in-out",
         "open-menu-top": "rotate-menu-top .35s ease-in-out",
         "open-menu-bottom": "rotate-menu-bottom .35s ease-in-out",
