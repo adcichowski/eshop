@@ -1,5 +1,4 @@
-import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 import { Orientation } from "lib/hygraph/generated/graphql";
 import { ProductInfos } from "./components/ProductInfos/ProductInfos";
 import { Categories } from "components/Categories/Categories";
