@@ -49,6 +49,6 @@ export const headerCategories = [
   { title: "black&white", slug: "black-and-white" },
   { title: "landscape" },
   { title: "architecture" },
-  { title: "botanics" },
+  { title: "botanic" },
   { title: "others" },
 ];

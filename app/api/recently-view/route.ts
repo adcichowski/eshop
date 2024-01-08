@@ -47,7 +47,6 @@ const setRecentlyViewedProduct = (product: RecentlyViewProductType) => {
     ) || [];
 
   const updatedProducts = [product, ...products];
-
   cookies().set(
     RECENTLY_VIEWED_PRODUCTS_COOKIE,
     JSON.stringify({ products: updatedProducts }),

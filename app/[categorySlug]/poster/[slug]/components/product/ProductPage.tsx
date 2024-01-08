@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { Orientation } from "lib/hygraph/generated/graphql";
 import { ProductInfos } from "./components/ProductInfos/ProductInfos";
 import { Categories } from "components/Categories/Categories";
@@ -8,7 +8,7 @@ import { ProductReviews } from "./components/ProductReviews/ProductReviews";
 import { ProductDescription } from "./components/ProductDescription";
 import { RecentlyView } from "components/Footer/components/RecentlyView/RecentlyView";
 import { RecentlyViewUpdater } from "components/Footer/components/RecentlyView/RecentlyViewUpdater";
-import clsx from "clsx";
+import ProductImage from "./components/ProductImage";
 
 export type ProductPageProps = {
   favorite: boolean;
@@ -55,18 +55,11 @@ export const ProductPage = ({ product }: { product: ProductPageProps }) => {
               {product.name}
             </h2>
 
-            <Image
-              width={320}
-              height={
-                product.attributes.orientation === "Vertical" ? 449 : 227.95
-              }
-              className={`my-auto h-auto w-full max-w-xs object-contain md:max-w-xl ${clsx(
-                product.attributes.orientation === Orientation.Horizontal &&
-                  "my-auto",
-                product.attributes.whiteFrame && "p-3 border",
-              )}`}
-              alt={product.name}
+            <ProductImage
               src={product.image}
+              name={product.name}
+              whiteFrame={product.attributes.whiteFrame}
+              orientation={product.attributes.orientation}
             />
             <ProductInfos product={product} />
             <ProductDescription description={product.description} />

@@ -57,7 +57,7 @@ const Menu = ({
   return (
     <div
       ref={wrapperRef}
-      className="absolute top-14 z-50 bg-white sm:hidden flex animate-fade-down"
+      className="absolute top-12 z-50 bg-white sm:hidden flex animate-fade-down"
     >
       <ul className="p-3 flex flex-col gap-y-2">
         {headerCategories.map((category) => (

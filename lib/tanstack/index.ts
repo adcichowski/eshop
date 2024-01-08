@@ -68,6 +68,7 @@ export const useMutationRecentlyView = () => {
         url: "/api/recently-view",
         body: { product },
       });
+
       return data;
     },
   });
