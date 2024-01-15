@@ -51,6 +51,10 @@ const reduceNumberProductFromCart = (
   }
 };
 
+export const clearCartCookie = () => {
+  cookies().delete(CART_COOKIE);
+};
+
 const addProductToCart = (
   product: CartProduct,
   cart: CartProduct[] | undefined,

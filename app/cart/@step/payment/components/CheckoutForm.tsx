@@ -9,6 +9,7 @@ import { BoxWithSelects } from "./BoxWithSelects/BoxWithSelects";
 import { Action } from "components/Action/Action";
 import { useOrderContext } from "context/OrderContext/OrderContext";
 import { useRouter } from "next/navigation";
+import { clearCartCookie } from "lib/actions/cart";
 
 export function CheckoutForm() {
   const { push } = useRouter();
@@ -40,6 +41,7 @@ export function CheckoutForm() {
         },
       },
     });
+    clearCartCookie();
     if (error) return;
     push("/cart/summary");
   };

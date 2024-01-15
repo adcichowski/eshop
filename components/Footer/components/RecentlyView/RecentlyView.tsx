@@ -50,12 +50,12 @@ const RecentlyViewProduct = (product: RecentlyViewProductType) => {
       <Action
         href={`/${product.category}/poster/${product.slug}`}
         as="link"
-        className="text-sm hover:underline cursor-pointer hover:font-medium flex items-center justify-center"
+        className={clsx(
+          "text-sm hover:underline cursor-pointer hover:font-medium flex items-center justify-center",
+        )}
       >
         <Image
-          className={`max-h-[118.59px] border ${clsx(
-            product.whiteFrame && "p-1",
-          )}`}
+          className={`border `}
           width={100}
           aria-describedby={product.name}
           height={120}
