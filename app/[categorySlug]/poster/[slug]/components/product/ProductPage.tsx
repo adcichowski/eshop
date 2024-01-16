@@ -46,7 +46,7 @@ export const ProductPage = ({ product }: { product: ProductPageProps }) => {
       />
       <div className="mx-2 grid grid-cols-1 pt-2 md:justify-items-center md:pt-6 xl:grid-cols-3">
         <div className="hidden xl:block min-w-[240px]">
-          <Categories />
+          <Categories Heading="h3" />
         </div>
         <div className="text-[32px] md:max-w-3xl xl:col-start-2 xl:col-end-4">
           <section className="ml-4 md:grid md:grid-cols-2 xl:m-0">
@@ -71,9 +71,9 @@ export const ProductPage = ({ product }: { product: ProductPageProps }) => {
             productId={product.id}
             id="othersProduct"
             Heading={
-              <h3 className="mb-3 text-xl">
+              <h4 className="mb-3 text-xl">
                 Popular products in this category
-              </h3>
+              </h4>
             }
           />
 
@@ -84,7 +84,7 @@ export const ProductPage = ({ product }: { product: ProductPageProps }) => {
             productId={product.id}
             className="mt-[50px]"
             id="othersProduct"
-            Heading={<h3 className="mb-3 text-xl">Others buy also</h3>}
+            Heading={<h4 className="mb-3 text-xl">Others buy also</h4>}
           />
           <RecentlyView />
         </div>
