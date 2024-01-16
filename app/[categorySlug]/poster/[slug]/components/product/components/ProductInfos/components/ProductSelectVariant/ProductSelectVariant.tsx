@@ -33,7 +33,7 @@ export function ProductSelectVariant({
     <div className="z-10 bg-white">
       <div className="relative">
         <button
-          aria-label="toggle menu"
+          aria-label="select variant"
           className="flex w-60 justify-between border-[0.5px] border-black bg-white p-[0.2px] px-3"
           type="button"
           {...getToggleButtonProps()}

@@ -17,7 +17,7 @@ export function NavigationIcons() {
         aria-label="navigation icons"
         className="items-center justify-center mr-5 flex gap-2 md:gap-4 w-full h-full"
       >
-        {navigationIcons.map(({ Icon, popper, ...propsArchon }) => (
+        {navigationIcons.map(({ Icon, popper, label, ...propsArchon }) => (
           <li
             key={popper ?? propsArchon.href}
             className="md:h-7 h-5 stroke-[1.5]"
@@ -41,6 +41,7 @@ export function NavigationIcons() {
             >
               {typeof Icon === "function" ? <Icon /> : Icon}
             </Action>
+            <span className="sr-only">{label}</span>
           </li>
         ))}
       </ul>

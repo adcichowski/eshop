@@ -5,8 +5,16 @@ import { Taglines } from "./components/Taglines";
 import { Separator } from "components/Separator/Separator";
 
 const projectedUs = [
-  { href: "https://www.linkedin.com/in/adcichowski/", Icon: LinkedinIcon },
-  { href: "https://github.com/adcichowski", Icon: GithubIcon },
+  {
+    href: "https://www.linkedin.com/in/adcichowski/",
+    Icon: LinkedinIcon,
+    label: "Profile in linkedin",
+  },
+  {
+    href: "https://github.com/adcichowski",
+    Icon: GithubIcon,
+    label: "Profile in github",
+  },
 ];
 export function Footer() {
   return (
@@ -19,10 +27,10 @@ export function Footer() {
 
           <GiftPoster />
 
-          <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400 w-[1440px]">
+          <p className="text-sm text-gray-500 sm:text-center dark:text-gray-400 w-[1440px]">
             © 2023
             <span className="mx-1">PosterWall™</span>. All Rights Reserved.
-          </span>
+          </p>
         </footer>
       </div>
     </>
@@ -38,14 +46,19 @@ const JoinToAside = () => (
       Projected Us
     </h3>
     <ul className="flex flex-wrap md:justify-center items-center gap-4">
-      {projectedUs.map(({ href, Icon }) => (
-        <Link
-          className="p-4 hover:bg-gray-100/5 hover:border-gray-100  border border-white bg-white"
+      {projectedUs.map(({ href, Icon, label }) => (
+        <li
+          className="w-14 h-14 hover:bg-gray-100/5 hover:border-gray-100  border border-white"
           key={href}
-          href={href}
         >
-          <Icon size={30} strokeWidth={1.75} />
-        </Link>
+          <Link
+            href={href}
+            className="w-full h-full flex items-center"
+            aria-label={label}
+          >
+            <Icon className="m-auto" size={30} strokeWidth={1.75} />
+          </Link>
+        </li>
       ))}
     </ul>
   </aside>

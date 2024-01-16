@@ -14,17 +14,21 @@ export const navigationIcons = [
   {
     href: "facebook.com",
     Icon: <FacebookIcon {...ICONS_SETTINGS} />,
+    label: "Our profile on facebook",
   },
   {
-    href: "instagramIcon.com",
+    href: "instagram.com",
     Icon: <InstagramIcon {...ICONS_SETTINGS} />,
+    label: "Our profile on instagram",
   },
   {
     popper: "account",
+    label: "Account info",
     Icon: <User2Icon {...ICONS_SETTINGS} />,
   },
   {
     popper: "cart",
+    label: "Cart",
     Icon: () => {
       const { cart } = useClientContext();
       const amountItems = useMemo(
@@ -40,6 +44,7 @@ export const navigationIcons = [
   },
   {
     popper: "favorite",
+    label: "Favorites products",
     Icon: <HeartIcon {...ICONS_SETTINGS} />,
   },
 ];
