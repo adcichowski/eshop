@@ -30,6 +30,15 @@ export function Footer() {
           <p className="text-sm text-gray-500 sm:text-center dark:text-gray-400 w-[1440px]">
             © 2023
             <span className="mx-1">PosterWall™</span>. All Rights Reserved.
+            <div>
+              Designed by:
+              <Link
+                className="underline ml-1"
+                href={"mailto:martynaklukowska7@gmail.com"}
+              >
+                Martyna Klukowska
+              </Link>
+            </div>
           </p>
         </footer>
       </div>
