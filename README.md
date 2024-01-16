@@ -64,4 +64,5 @@ Please ensure your code follows the project's coding style and conventions.
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 Designed By: Martyna Klukowska
+
 Contact: martynaklukowska7@gmail.com
