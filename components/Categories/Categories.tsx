@@ -5,15 +5,17 @@ import Link from "next/link";
 
 export async function Categories({
   selectedCategory,
+  Heading,
 }: {
   selectedCategory?: string;
+  Heading: "h2" | "h3";
 }) {
   const data = await getAllCategories();
   return (
     <aside aria-describedby="categories">
-      <h2 id="categories" className="text-xl font-medium">
+      <Heading id="categories" className="text-xl font-medium">
         Posters
-      </h2>
+      </Heading>
       <ul className="mt-[23px] w-full">
         {data.map(({ name, slug }) => (
           <li key={slug}>

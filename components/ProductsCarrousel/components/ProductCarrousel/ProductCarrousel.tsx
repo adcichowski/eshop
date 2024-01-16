@@ -10,7 +10,13 @@ import { runCartAction } from "lib/actions/cart";
 import { useToastContext } from "context/ToastContext/ToastContext";
 import { DiscountFrame } from "components/DiscountFrame/DiscountFrame";
 
-export const ProductCarrousel = (product: ProductCarrouselPropsType) => {
+export const ProductCarrousel = ({
+  product,
+  HeadingProduct,
+}: {
+  product: ProductCarrouselPropsType;
+  HeadingProduct: "h3" | "h4";
+}) => {
   const { addToast } = useToastContext();
   const favoriteInputProps = {
     name: product.name,
@@ -50,7 +56,7 @@ export const ProductCarrousel = (product: ProductCarrouselPropsType) => {
       </div>
 
       <div className="z-10 mx-4 my-1 flex flex-col">
-        <h3 className="mt-1 truncate text-xs" id={product.id}>
+        <HeadingProduct className="mt-1 truncate text-xs" id={product.id}>
           <Link
             passHref
             href={`/${product.category.slug}/poster/${product.slug}`}
@@ -58,7 +64,7 @@ export const ProductCarrousel = (product: ProductCarrouselPropsType) => {
           >
             {product.name}
           </Link>
-        </h3>
+        </HeadingProduct>
         <span className="md:text-md text-sm font-medium">
           {changeValueCurrency(product.price)}
         </span>

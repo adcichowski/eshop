@@ -8,7 +8,7 @@ export function ProductPrice({
   readonly price: number;
 }) {
   return (
-    <div className="mt-2 flex">
+    <p className="mt-2 flex">
       <div className={`text-4xl ${Clsx(sale && "text-red-300")} font-semibold`}>
         {changeValueCurrency(priceWithDiscount({ price, sale }))}
       </div>
@@ -19,6 +19,6 @@ export function ProductPrice({
       ) : (
         <></>
       )}
-    </div>
+    </p>
   );
 }

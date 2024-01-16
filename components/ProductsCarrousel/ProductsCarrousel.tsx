@@ -25,7 +25,7 @@ export const ProductsCarrousel = ({
           className="my-2 max-w-[140px] md:max-w-[202px]"
           key={product.name}
         >
-          <ProductCarrousel {...product} />
+          <ProductCarrousel HeadingProduct="h3" product={product} />
         </SwiperSlide>
       ))}
     </Swiper>

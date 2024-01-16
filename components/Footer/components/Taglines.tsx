@@ -31,13 +31,13 @@ export function Taglines() {
       </h3>
       <ul className="grid grid-cols-2 xl:grid-cols-4 gap-x-10 md:gap-x-12 gap-y-8">
         {taglines.map(({ text, Icon }) => (
-          <div
+          <li
             className="flex flex-col sm:flex-row flex-wrap items-center gap-3 justify-center text-center"
             key={text}
           >
             <Icon strokeWidth={1.2} size={25} />
             <p>{text}</p>
-          </div>
+          </li>
         ))}
       </ul>
     </aside>
